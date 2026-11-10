@@ -52,7 +52,7 @@ export const PAGINAS_HUMANAS = {
 
   'his-vargas': {
     resumo: [
-      'A Era Vargas (1930–1945) se divide em três fases: Governo Provisório (1930–34), Constitucional (1934–37) e Estado Novo (1937–45), ditadura marcada pelo DIP (censura), pela CLT (1939) e pelo culto à personalidade. A centralização do poder federal e a industrialização de base são o fio condutor.',
+      'A Era Vargas (1930–1945) se divide em três fases: Governo Provisório (1930–34), Constitucional (1934–37) e Estado Novo (1937–45), ditadura marcada pelo DIP (censura), pela CLT (1943) e pelo culto à personalidade. A centralização do poder federal e a industrialização de base são o fio condutor.',
       'A legislação trabalhista é o ponto mais cobrado: salário mínimo, jornada de 8 horas, carteira de trabalho e descanso semanal foram criados como concessão do Estado, e não como direito conquistado, daí a expressão "cidadania regulada", em que só o trabalhador formal tem direitos.',
       'A política externa é peça importante: Vargas flertou com o Eixo e só entrou na guerra ao lado dos Aliados depois de negociar a siderúrgica de Volta Redonda. O paradoxo de um ditador lutando pela democracia na Europa rendeu a expressão "é preciso mudar tudo para que tudo continue como está".',
     ],
@@ -68,7 +68,7 @@ export const PAGINAS_HUMANAS = {
 
   'his-ditadura': {
     resumo: [
-      'A Ditadura Militar (1964–1985) começa com o golpe apoiado por empresários, Igreja e EUA, dentro da lógica da Guerra Fria. Os Atos Institucionais concentraram poder: o AI-2 acabou com o pluripartidarismo, o AI-5 (1968) fechou o Congresso, cassou mandatos e legalizou a tortura.',
+      'A Ditadura Militar (1964–1985) começa com o golpe apoiado por empresários, Igreja e EUA, dentro da lógica da Guerra Fria. Os Atos Institucionais concentraram poder: o AI-2 acabou com o pluripartidarismo, o AI-5 (1968) permitiu o fechamento do Congresso, cassações e suspensão de garantias; a tortura foi praticada pelo aparato repressivo, mas não foi legalizada pelo ato.',
       'A economia viveu o "milagre" (1968–73) com crescimento alto e concentração de renda; depois veio a dívida externa e a inflação. A propaganda ("Brasil: ame-o ou deixe-o") e o futebol foram usados politicamente.',
       'A sociedade resistiu de várias formas: movimento estudantil (1968), greves do ABC (1978–80) com Lula, movimento sindical e a campanha das Diretas Já (1984). A abertura foi "lenta, gradual e segura", conduzida pelos próprios militares, e terminou com a Constituição de 1988.',
     ],

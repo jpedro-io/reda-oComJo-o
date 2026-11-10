@@ -2,7 +2,11 @@
 
 Estado local: 40/80 páginas com resumo ampliado; faltam 40 ampliações. O critério é estrutural e não comprova cobertura exaustiva nem revisão factual completa.
 
-Questões oficiais verificadas nesta rodada: 8, em 6 conteúdos. Porcentagem tem três questões; os outros conteúdos com fonte oficial misturam essas questões com autorais claramente identificadas. Ainda faltam três questões oficiais verificadas em 79 conteúdos. Há 122 questões exibidas no conjunto, incluindo autorais e legado não auditado.
+Cada um dos 80 conteúdos agora exibe três questões com resolução escrita: 240 exibições ao todo. Dessas, 59 exibições em 40 conteúdos são adaptações com caderno e gabarito do Inep; a mesma questão pode aparecer em mais de um conteúdo. As demais são exercícios autorais identificados. As antigas questões com ano e referência não conferida foram retiradas da exibição; duas referências antigas associavam números e cores de caderno incorretamente. Ainda não há três questões oficiais verificadas para todos os conteúdos.
+
+Fontes consultadas: provas e gabaritos Inep 2022 1º dia caderno azul e 2º dia caderno amarelo; 2023 2ª aplicação, 1º dia caderno azul. Os resumos são sínteses de estudo, não transcrições literais. A auditoria automatizada de contagem e formato não substitui revisão pedagógica e factual individual de todas as questões.
+
+No celular, corrigida a tabela da página Estrutura; auditoria automatizada percorreu os 80 conteúdos em 320 px. Outras resoluções e combinações de navegador e dispositivo ainda devem ser verificadas.
 
 | Área | Resumos ampliados | Pendentes |
 |---|---:|---:|

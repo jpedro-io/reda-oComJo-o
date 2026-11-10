@@ -33,9 +33,22 @@ for (const id of reais) {
   assert.equal((viewConteudo(id).match(/Abrir caderno oficial/g)||[]).length,q.length);
 }
 assert.equal(paginaDe('mat-porcentagem').questoes.filter(q=>q.urlProva).length,3);
-console.log('Questões verificadas: 8 em 6 conteúdos, incluindo 3 em porcentagem.');
+const oficiais = conteudos.flatMap(c => paginaDe(c.id).questoes).filter(q => q.gabaritoOficial);
+const temasOficiais = conteudos.filter(c => paginaDe(c.id).questoes.some(q => q.gabaritoOficial));
+console.log(`Questões com referência e gabarito do Inep: ${oficiais.length} em ${temasOficiais.length} conteúdos.`);
 for (const c of conteudos) {
   const html = viewConteudo(c.id);
+  const questoes = paginaDe(c.id).questoes;
+  assert.equal(questoes.length, 3, `${c.id}: requer três questões`);
+  assert.equal((html.match(/<details class="questao" open>/g) || []).length, 3, `${c.id}: questões visíveis`);
+  for (const q of questoes) {
+    assert.ok(q.enunciado && q.fonte && /^[A-E]$/.test(q.correta), `${c.id}: questão incompleta`);
+    assert.equal(q.alternativas.length, 5, `${c.id}: alternativas`);
+    assert.ok(q.alternativas.every(a => typeof a === 'string' && a.trim()), `${c.id}: alternativas inválidas`);
+    assert.ok(Array.isArray(q.resolucao) && q.resolucao.length >= 2, `${c.id}: resolução incompleta`);
+    if (q.gabaritoOficial) assert.ok(q.adaptada && q.urlProva && q.urlGabarito && q.correta === q.gabaritoOficial, `${c.id}: fonte oficial incompleta`);
+  }
+  assert.ok(!html.includes('As questões deste conteúdo ainda estão sendo escritas'), `${c.id}: aviso de espera`);
   assert.ok(html.includes('id="resumo"'), `${c.id}: sem resumo`);
   assert.ok(html.includes('id="questoes"'), `${c.id}: sem seção de questões`);
   assert.ok(html.includes('id="video"'), `${c.id}: sem vídeo vinculado`);

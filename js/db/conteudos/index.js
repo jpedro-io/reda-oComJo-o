@@ -14,6 +14,10 @@ import { VIDEOS } from './videos.js';
 import { AREAS } from './estrutura.js';
 import { EXPANSOES } from './expansoes.js';
 import { QUESTOES_ENEM } from './questoes-enem.js';
+import { QUESTOES_DIA1 } from './questoes-inep-dia1.js';
+import { QUESTOES_REAPLICACAO } from './questoes-inep-reaplicacao.js';
+import { QUESTOES_COMPLEMENTARES } from './questoes-autorais-complementares.js';
+import { QUESTOES_REFORCO } from './questoes-autorais-reforco.js';
 
 export const PAGINAS = {
   ...PAGINAS_LINGUAGENS,
@@ -26,6 +30,8 @@ export const PAGINAS = {
 export function paginaDe(id, conteudo) {
   const pagina = PAGINAS[id] || {};
   const extra = EXPANSOES[id] || {};
+  const oficiais = [...(QUESTOES_ENEM[id] || []), ...(QUESTOES_DIA1[id] || []), ...(QUESTOES_REAPLICACAO[id] || [])];
+  const anteriores = [...(extra.questoes?.length ? extra.questoes : (pagina.questoes || [])).filter(q => !q.ano || q.gabaritoOficial), ...(QUESTOES_COMPLEMENTARES[id] || []), ...(QUESTOES_REFORCO[id] || [])];
   return {
     ...pagina,
     ...extra,
@@ -35,7 +41,7 @@ export function paginaDe(id, conteudo) {
     figuras: extra.figuras || [],
     chave: extra.chave || pagina.chave || [],
     formulas: extra.formulas || pagina.formulas || [],
-    questoes: QUESTOES_ENEM[id]?.length ? [...QUESTOES_ENEM[id], ...(extra.questoes?.length ? extra.questoes : (pagina.questoes || [])).slice(0, Math.max(0, 3 - QUESTOES_ENEM[id].length))] : (extra.questoes?.length ? extra.questoes : (pagina.questoes || [])),
+    questoes: oficiais.length ? [...oficiais.slice(0, 3), ...anteriores.slice(0, Math.max(0, 3 - oficiais.length))] : anteriores.slice(0, 3),
     video: VIDEOS[id] || null,
     conteudo: conteudo || null,
   };

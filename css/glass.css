@@ -1407,3 +1407,14 @@ main .comp-bloco .comp-topo { background:var(--tom-faixa,#d6efe8) !important; }
 main .comp-bloco .comp-topo .comp-nota { background:#b8e4d5 !important; color:#163b34 !important; border:1px solid #8abcae !important; }
 main .comp-bloco .tabela-niveis thead, main .comp-bloco .tabela-niveis thead tr { background:#274d50 !important; }
 main .comp-bloco .tabela-niveis thead th { color:#ecfaf4 !important; opacity:1 !important; }
+
+/* Em telas estreitas, a tabela mantém seus rótulos e não força o documento. */
+@media (max-width: 600px) {
+  main .bloco-tabela { padding: 18px 14px !important; min-width: 0; }
+  main .bloco-tabela .tabela { table-layout: fixed; width: 100%; }
+  main .bloco-tabela .tabela th,
+  main .bloco-tabela .tabela td { overflow-wrap: anywhere; padding-right: 8px; }
+  main .bloco-tabela .tabela th:nth-child(1) { width: 27%; }
+  main .bloco-tabela .tabela th:nth-child(2) { width: 20%; }
+  main .bloco-tabela .tabela th:nth-child(3) { width: 53%; }
+}
