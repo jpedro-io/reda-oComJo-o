@@ -7,60 +7,42 @@
 <meta name="description" content="Guia completo da redação do ENEM: critérios oficiais das 5 competências, estrutura parte por parte, como ler o comando do tema, banco de temas com repertórios, 13 redações nota 1000 analisadas (2014–2026) e correção com nota e pontos de melhoria." />
 <meta name="theme-color" content="#FFFFFF" />
 <meta name="color-scheme" content="light" />
-<link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/general-sans-400.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="css/fontes.css?v=2026-11-09e" />
-<link rel="stylesheet" href="css/style.css?v=2026-11-09e" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2048%2048%27%3E%3Crect%20width%3D%2748%27%20height%3D%2748%27%20rx%3D%2714%27%20fill%3D%27%231A3EC8%27%2F%3E%3Cpath%20d%3D%27M13.4%2018.6c0-3.2%202.3-5.4%205.4-5.9v3.1c-1.5.4-2.4%201.4-2.4%202.8h2.4v7.8h-5.4z%27%20fill%3D%27%2523FFFFFF%27%2F%3E%3Cpath%20d%3D%27M27.4%2018.6c0-3.2%202.3-5.4%205.4-5.9v3.1c-1.5.4-2.4%201.4-2.4%202.8h2.4v7.8h-5.4z%27%20fill%3D%27%2523FFFFFF%27%2F%3E%3Cpath%20d%3D%27M14%2033.6h20%27%20stroke%3D%27%2523FFFFFF%27%20stroke-opacity%3D%27.6%27%20stroke-width%3D%272.6%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E" />
+<link rel="stylesheet" href="css/style.css?v=2026-11-10a" />
+<link rel="stylesheet" href="css/editorial.css?v=2026-11-10a" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%274%27%20fill%3D%27%23047857%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2717%27%20fill%3D%27%23fff%27%20text-anchor%3D%27middle%27%3ER%3C%2Ftext%3E%3C%2Fsvg%3E" />
 </head>
 <body>
 
 <a class="salta" href="#app">Pular para o conteúdo</a>
 
-<!-- fundo: aurora em CSS (fallback universal) + campo 3D em WebGL carregado sob demanda -->
-<div class="ceu" aria-hidden="true">
-  <div class="ceu-aurora"></div>
-  <canvas id="ceu-gl"></canvas>
-</div>
-<div class="grao" aria-hidden="true"></div>
 <div class="progresso" id="progresso" aria-hidden="true"></div>
 
 <header class="topbar">
   <div class="wrap topbar-inner">
     <a class="brand" href="#/">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" width="38" height="38" focusable="false">
-          <defs>
-            <linearGradient id="marca-azul" x1="6" y1="0" x2="42" y2="48" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#5CCDA7" />
-              <stop offset=".42" stop-color="#026842" />
-              <stop offset="1" stop-color="#003817" />
-            </linearGradient>
-          </defs>
-          <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="url(#marca-azul)" />
-          <path d="M6 17C7.6 9.4 14 4.4 22.5 3.6" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" />
-          <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="none" stroke="#FFFFFF" stroke-opacity=".42" stroke-width="1.2" />
-          <path d="M13.4 18.6c0-3.2 2.3-5.4 5.4-5.9v3.1c-1.5.4-2.4 1.4-2.4 2.8h2.4v7.8h-5.4z" fill="#FFFFFF" />
-          <path d="M27.4 18.6c0-3.2 2.3-5.4 5.4-5.9v3.1c-1.5.4-2.4 1.4-2.4 2.8h2.4v7.8h-5.4z" fill="#FFFFFF" />
-          <path d="M14 33.6h20" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round" />
-        </svg>
-      </span>
-      <span class="brand-text">
-        <strong>Redação com João</strong>
-        <small>critérios · estrutura · análise</small>
-      </span>
+      <span class="brand-text">Redação com <span class="marca-texto">João</span></span>
     </a>
 
-    <nav class="nav" aria-label="Seções do site">
+    <button class="nav-abre" id="nav-abre" type="button" aria-expanded="false" aria-controls="tabs">
+      <span class="nav-abre-risco" aria-hidden="true"></span>
+      <span class="nav-abre-risco" aria-hidden="true"></span>
+      <span class="nav-abre-risco" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Seções do site">
       <div class="nav-pills" id="tabs">
         <a class="pill" href="#/criterios">Critérios</a>
         <a class="pill" href="#/estrutura">Estrutura</a>
         <a class="pill" href="#/comandos">Ler o tema</a>
         <a class="pill" href="#/temas">Temas</a>
         <a class="pill" href="#/redacoes">Redações</a>
-        <a class="pill pill-guia" href="#/conteudos">Conteúdos</a>
+        <a class="pill" href="#/conteudos">Conteúdos</a>
+        <a class="pill pill-cta" href="#/corrigir">Corrigir</a>
       </div>
-      <a class="pill pill-cta" href="#/corrigir">Corrigir</a>
     </nav>
   </div>
 </header>
@@ -76,6 +58,23 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script type="module" src="js/ui.js?v=2026-11-09e"></script>
-<script type="module" src="js/bg.js?v=2026-11-09e"></script>
+<script>
+  // menu do celular: abre e fecha a lista de seções
+  (function () {
+    var botao = document.getElementById('nav-abre');
+    var nav = document.getElementById('nav');
+    if (!botao || !nav) return;
+    botao.addEventListener('click', function () {
+      var aberto = nav.classList.toggle('aberto');
+      botao.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        nav.classList.remove('aberto');
+        botao.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
 </body>
 </html>

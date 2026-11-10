@@ -72,7 +72,7 @@ export const AREAS = [
     id: 'humanas',
     nome: 'Ciências Humanas e suas Tecnologias',
     sigla: 'CH',
-    resumo: 'História, geografia, filosofia e sociologia — a prova mais interpretativa do Enem.',
+    resumo: 'História, geografia, filosofia e sociologia, a prova mais interpretativa do Enem.',
     materias: [
       {
         id: 'historia',

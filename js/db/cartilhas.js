@@ -20,9 +20,9 @@ export const PRINCIPIO = 'Para ser avaliado em um nível, o texto precisa cumpri
 export const GRADES = {
   C1: {
     eixo: 'estrutura sintática × quantidade e recorrência de desvios',
-    regra: 'O nível 5 exige estrutura sintática excelente — no máximo uma falha — E, no máximo, dois desvios no texto inteiro. Como a regra do nível inferior vale, um texto com estrutura impecável e três desvios cai para o nível 4.',
+    regra: 'O nível 5 exige estrutura sintática excelente (no máximo uma falha) e, no máximo, dois desvios no texto inteiro. Como a regra do nível inferior vale, um texto com estrutura impecável e três desvios cai para o nível 4.',
     niveis: {
-      5: 'estrutura sintática excelente (no máximo uma falha) E, no máximo, dois desvios',
+      5: 'estrutura sintática excelente (no máximo uma falha) e, no máximo, dois desvios',
       4: 'estrutura sintática boa E poucos desvios',
       3: 'estrutura sintática regular E alguns desvios',
       2: 'estrutura sintática deficitária OU muitos desvios',
@@ -35,13 +35,13 @@ export const GRADES = {
       'Escolha de registro: informalidade e marca de oralidade',
       'Estrutura sintática: períodos truncados, justaposição de palavras, ausência ou excesso de termos'
     ],
-    contagem: 'Cada vocábulo com desvio é contabilizado uma única vez, mesmo que o erro se repita — mas a repetição pesa como recorrência na leitura do conjunto. O nível 5 é o único com limite objetivo: no máximo uma falha de estrutura e dois desvios.',
+    contagem: 'Cada vocábulo com desvio é contabilizado uma única vez, mesmo que o erro se repita, mas a repetição pesa como recorrência na leitura do conjunto. O nível 5 é o único com limite objetivo: no máximo uma falha de estrutura e dois desvios.',
     fonte: 'Competencia_1.pdf, seções 1.2 (Grade específica) e 2 (A estrutura sintática)'
   },
 
   C2: {
     eixo: 'abordagem do tema × tipologia textual × repertório sociocultural',
-    regra: 'Abordagem completa do tema e as três partes sem nenhuma embrionária são pré-requisito para o nível 4. O que separa 160 de 200 é uma única coisa: o repertório legitimado e pertinente ser usado de forma produtiva — isto é, vinculado à discussão que o texto faz.',
+    regra: 'Abordagem completa do tema e as três partes sem nenhuma embrionária são pré-requisito para o nível 4. O que separa 160 de 200 é uma única coisa: o repertório legitimado e pertinente ser usado de forma produtiva, isto é, vinculado à discussão que o texto faz.',
     niveis: {
       5: ' abordagem completa do tema + três partes (nenhuma embrionária) + repertório legitimado, pertinente e com uso produtivo',
       4: 'abordagem completa do tema + três partes (nenhuma embrionária) + repertório legitimado e pertinente, mas com uso improdutivo',
@@ -53,7 +53,7 @@ export const GRADES = {
     repertorio: {
       legitimado: 'Referência identificável produzida nas áreas do conhecimento: lei, artigo científico, autor, obra, dado de instituição, fato histórico documentado.',
       pertinente: 'O repertório se associa a pelo menos um dos elementos do tema (por sinônimo, hiperônimo ou hipônimo).',
-      produtivo: 'O repertório é vinculado à discussão do texto — o participante diz o que ele demonstra. Citar sem explicar é uso improdutivo.',
+      produtivo: 'O repertório é vinculado à discussão do texto, o participante diz o que ele demonstra. Citar sem explicar é uso improdutivo.',
       motivadores: 'Repertório retirado dos textos motivadores da prova não sobe o nível: a grade manda não ultrapassar o nível 3 quando há muitos trechos copiados.'
     },
     fonte: 'Competencia_2.pdf, seções 2 (Grade específica) e 5 (Repertório)'
@@ -90,13 +90,13 @@ export const GRADES = {
       1: 'presença pontual de elementos coesivos, ou muitas repetições, ou muitas inadequações',
       0: 'palavras e períodos justapostos e desconexos ao longo de todo o texto'
     },
-    monobloco: 'Texto escrito em um único bloco, sem divisão em parágrafos, não ultrapassa o nível 2 — não há como articular o que não está separado.',
+    monobloco: 'Texto escrito em um único bloco, sem divisão em parágrafos, não ultrapassa o nível 2, não há como articular o que não está separado.',
     fonte: 'Competencia_4.pdf, seções 5 (Grade específica) e 6 (Termos importantes)'
   },
 
   C5: {
     eixo: 'contagem objetiva dos cinco elementos da proposta',
-    regra: 'A contagem é objetiva e cada elemento vale 1: 5 elementos = 200, 4 = 160, 3 = 120, 2 = 80, 1 = 40, nenhum = 0. O avaliador considera sempre a proposta mais completa do texto. Elemento nulo — impreciso ou genérico demais — não entra na conta.',
+    regra: 'A contagem é objetiva e cada elemento vale 1: 5 elementos = 200, 4 = 160, 3 = 120, 2 = 80, 1 = 40, nenhum = 0. O avaliador considera sempre a proposta mais completa do texto. Elemento nulo (impreciso ou genérico demais) não entra na conta.',
     niveis: {
       5: '5 elementos válidos',
       4: '4 elementos válidos',
@@ -115,7 +115,7 @@ export const GRADES = {
     nulos: {
       agente: ['alguém', 'ninguém', 'alguns', 'uns', 'você', 'as autoridades competentes', 'órgãos competentes'],
       acao: ['medidas devem ser tomadas', 'algo deve ser feito', 'é preciso mudar', 'deve haver consciência'],
-      nota: '“Todos”, “as pessoas”, “nós” e “a sociedade” são agentes válidos — a cartilha os trata como ator social definido. Já “alguém”, “ninguém” e o imperativo sem vocativo são nulos.'
+      nota: '“Todos”, “as pessoas”, “nós” e “a sociedade” são agentes válidos, a cartilha os trata como ator social definido. Já “alguém”, “ninguém” e o imperativo sem vocativo são nulos.'
     },
     constatacao: 'Constatação de falta não é proposta: “falta liberdade de escolha” aponta o problema; “é preciso garantir a liberdade de escolha” aponta a solução. Só a segunda conta.',
     fonte: 'Competencia_5.pdf, seções 3 (Grade específica) e 4 (Descrição dos níveis)'
@@ -170,7 +170,7 @@ export const EXIGE = {
 export const PARA_SUBIR = {
   C1: {
     4: 'Elimine os desvios: com dois ou menos em todo o texto, a estrutura já sustenta o nível 5.',
-    3: 'Resolva os desvios recorrentes primeiro (os mesmos erros repetidos) — a recorrência é o que separa “alguns” de “poucos”.',
+    3: 'Resolva os desvios recorrentes primeiro (os mesmos erros repetidos), a recorrência é o que separa “alguns” de “poucos”.',
     2: 'Reduza o volume de desvios e revise os períodos truncados: o nível 2 aceita muitos desvios, mas a estrutura precisa deixar de ser deficitária.',
     1: 'Reescreva os períodos incompletos e as justaposições: a estrutura sintática precisa existir antes de qualquer outra coisa.'
   },

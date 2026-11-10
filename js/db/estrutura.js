@@ -20,7 +20,7 @@ export const PARTES = [
     passos: [
       'Abra com um repertório legitimado: lei, dado, autor, obra, fato histórico.',
       'Mostre o recorte: qual é a face do problema que o seu texto vai discutir.',
-      'Feche com uma frase-tese — uma afirmação sobre a causa ou a natureza do problema.'
+      'Feche com uma frase-tese, uma afirmação sobre a causa ou a natureza do problema.'
     ],
     erroComum: 'Gastar as seis linhas contextualizando e terminar sem dizer o que defende. Sem tese, a Competência III desaba.',
     dica: 'Se você apagar a introdução, o leitor deve conseguir dizer qual é a sua opinião sobre o problema.'
@@ -34,7 +34,7 @@ export const PARTES = [
     formula: 'Tópico frasal + repertório/dado + explicação + arremate',
     passos: [
       'Abra o parágrafo com o argumento em uma frase (tópico frasal) e um conectivo de progressão.',
-      'Traga o repertório que comprova o argumento — e explique a relação, não apenas cite.',
+      'Traga o repertório que comprova o argumento, e explique a relação, não apenas cite.',
       'Desdobre a consequência: o que acontece se nada mudar.',
       'Arremate ligando de volta à tese.'
     ],
@@ -56,7 +56,7 @@ export const PARTES = [
       'Feche com a finalidade e um detalhamento que mostre viabilidade.'
     ],
     erroComum: 'Uma única frase genérica: “o governo deve conscientizar a sociedade”. Isso entrega 120 pontos quando a competência vale 200.',
-    dica: 'A proposta precisa conversar com o que você argumentou. Se você falou de falta de fiscalização, a proposta deve tratar disso — e não de “conscientização” genérica.'
+    dica: 'A proposta precisa conversar com o que você argumentou. Se você falou de falta de fiscalização, a proposta deve tratar disso, e não de “conscientização” genérica.'
   }
 ];
 

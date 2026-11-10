@@ -4,9 +4,9 @@
 export const PAGINAS_LINGUAGENS = {
   'lin-interpretacao': {
     resumo: [
-      'Interpretar no Enem é diferente de opinar. A questão sempre tem resposta ancorada no texto: o comando pede a ideia central, a função de um trecho, a intenção do autor ou a inferência possível. Se a alternativa traz uma informação que o texto não sustenta, está errada — por mais verdadeira que seja no mundo.',
+      'Interpretar no Enem é diferente de opinar. A questão sempre tem resposta ancorada no texto: o comando pede a ideia central, a função de um trecho, a intenção do autor ou a inferência possível. Se a alternativa traz uma informação que o texto não sustenta, está errada, por mais verdadeira que seja no mundo.',
       'O método que funciona: leia o comando antes do texto para saber o que procurar, marque a tese (geralmente no primeiro ou no último parágrafo), e desconfie de palavras absolutas ("sempre", "nunca", "todo") em alternativa de interpretação de texto que relativiza.',
-      'Compreensão (o que está escrito) × interpretação (o que se deduz) é distinção recorrente. Outra pegadinha: extrapolação, comum em questão de charge, tira e anúncio — que exigem ler imagem e texto juntos, e não só o verbal.',
+      'Compreensão (o que está escrito) × interpretação (o que se deduz) é distinção recorrente. Outra pegadinha: extrapolação, comum em questão de charge, tira e anúncio, que exigem ler imagem e texto juntos, e não só o verbal.',
     ],
     chave: [
       'Ideia central × ideia secundária e o comando da questão',
@@ -21,8 +21,8 @@ export const PAGINAS_LINGUAGENS = {
   'lin-variacao': {
     resumo: [
       'Variação linguística é a regra, não a exceção: toda língua varia conforme a região (diatópica), o grupo social (diastrática), o momento histórico (diacrônica) e a situação de uso (diafásica). O Enem cobra o respeito à variedade e a inadequação do preconceito linguístico.',
-      'Norma culta não é a única forma correta — é a variedade de prestígio, exigida em situações formais e na redação. A prova costuma apresentar uma variante popular ou regional e pedir a análise: qual é a marca, qual o efeito, qual o contexto em que ela é adequada.',
-      'Preconceito linguístico (Marcos Bagno) é tema recorrente: a ideia de que quem fala diferente "fala errado" é julgamento social, não linguístico. E a adequação — não a correção — é o critério que a prova usa.',
+      'Norma culta não é a única forma correta, é a variedade de prestígio, exigida em situações formais e na redação. A prova costuma apresentar uma variante popular ou regional e pedir a análise: qual é a marca, qual o efeito, qual o contexto em que ela é adequada.',
+      'Preconceito linguístico (Marcos Bagno) é tema recorrente: a ideia de que quem fala diferente "fala errado" é julgamento social, não linguístico. E a adequação (não a correção) é o critério que a prova usa.',
     ],
     chave: [
       'Tipos de variação: regional, social, histórica e de registro',
@@ -54,7 +54,7 @@ export const PAGINAS_LINGUAGENS = {
     resumo: [
       'Tipo textual é a estrutura do texto: narração, descrição, dissertação, injunção e exposição. Gênero textual é a forma social que circula: notícia, receita, e-mail, bula, post, editorial, charge. Um gênero pode conter mais de um tipo.',
       'No Enem, a questão costuma pedir a função social do gênero e sua esfera de circulação (jornalística, publicitária, digital, literária). Reconhecer o suporte (jornal, outdoor, aplicativo) é parte da resposta.',
-      'Textos digitais — meme, post, story, podcast, vlog — entram cada vez mais, com marcas próprias: multimodalidade (imagem + texto + som), brevidade e interação com o leitor. A prova cobra a leitura dessas marcas, não a nomenclatura.',
+      'Textos digitais (meme, post, story, podcast, vlog) entram cada vez mais, com marcas próprias: multimodalidade (imagem + texto + som), brevidade e interação com o leitor. A prova cobra a leitura dessas marcas, não a nomenclatura.',
     ],
     chave: [
       'Tipo textual × gênero textual (estrutura × circulação social)',
@@ -68,9 +68,9 @@ export const PAGINAS_LINGUAGENS = {
 
   'lin-coesao': {
     resumo: [
-      'Coesão é a amarração entre as partes por meio de recursos: pronomes, sinônimos, elipse, conjunções, advérbios. Coerência é a unidade de sentido: o texto não se contradiz e não foge do tema. Um texto pode ser coeso e incoerente — e a prova cobra exatamente essa diferença.',
+      'Coesão é a amarração entre as partes por meio de recursos: pronomes, sinônimos, elipse, conjunções, advérbios. Coerência é a unidade de sentido: o texto não se contradiz e não foge do tema. Um texto pode ser coeso e incoerente, e a prova cobra exatamente essa diferença.',
       'Os tipos de coesão: referencial (retomada por pronome ou sinônimo), sequencial (conectivos que ordenam) e lexical (repetição controlada, hiperônimos). O Enem pede o valor semântico do conectivo: causa, oposição, conclusão, concessão, finalidade.',
-      'O conectivo mal escolhido muda o sentido do argumento inteiro — trocar "portanto" por "porém" inverte a lógica. Em questão de reescrita, a alternativa certa mantém sentido, correção e coesão ao mesmo tempo.',
+      'O conectivo mal escolhido muda o sentido do argumento inteiro, trocar "portanto" por "porém" inverte a lógica. Em questão de reescrita, a alternativa certa mantém sentido, correção e coesão ao mesmo tempo.',
     ],
     chave: [
       'Valor semântico dos conectivos (causa, oposição, concessão, conclusão)',
@@ -85,8 +85,8 @@ export const PAGINAS_LINGUAGENS = {
   'lin-figuras': {
     resumo: [
       'Figuras de linguagem dividem-se em semânticas (metáfora, metonímia, comparação, hipérbole, eufemismo, ironia, antítese, paradoxo, personificação) e sintáticas (elipse, zeugma, pleonasmo, anacoluto, hipérbato). A prova pede o efeito de sentido, não o nome pelo nome.',
-      'As mais cobradas: metáfora (comparação sem conectivo), metonímia (troca por proximidade — "ler Machado" por "ler a obra de Machado"), ironia (dizer o contrário) e paradoxo (ideias contraditórias juntas).',
-      'Em publicidade, a figura é argumento: hipérbole vende exagero, elipse economiza e torna o leitor cúmplice. Em literatura, a figura constrói o efeito estético — e é aí que a questão costuma pedir a interpretação.',
+      'As mais cobradas: metáfora (comparação sem conectivo), metonímia (troca por proximidade, "ler Machado" por "ler a obra de Machado"), ironia (dizer o contrário) e paradoxo (ideias contraditórias juntas).',
+      'Em publicidade, a figura é argumento: hipérbole vende exagero, elipse economiza e torna o leitor cúmplice. Em literatura, a figura constrói o efeito estético, e é aí que a questão costuma pedir a interpretação.',
     ],
     chave: [
       'Metáfora × comparação × metonímia',
@@ -118,7 +118,7 @@ export const PAGINAS_LINGUAGENS = {
     resumo: [
       'Romantismo brasileiro (1836–1881) se divide em três gerações. A primeira é nacionalista e indianista: Gonçalves Dias ("Canção do Exílio", "I-Juca-Pirama") e a idealização do índio como herói. O projeto é construir uma identidade nacional depois da independência.',
       'A segunda geração é o "mal do século": pessimismo, morte, escapismo. Álvares de Azevedo, Casimiro de Abreu e Junqueira Freire. A terceira é condoreira e abolicionista: Castro Alves ("O Navio Negreiro"), poesia política e social.',
-      'O romance romântico se divide em urbano (Joaquim Manuel de Macedo, A Moreninha), indianista (José de Alencar, Iracema, O Guarani) e regionalista (Visconde de Taunay, Inocência). A idealização — da mulher, do índio, da pátria — é a marca comum.',
+      'O romance romântico se divide em urbano (Joaquim Manuel de Macedo, A Moreninha), indianista (José de Alencar, Iracema, O Guarani) e regionalista (Visconde de Taunay, Inocência). A idealização (da mulher, do índio, da pátria) é a marca comum.',
     ],
     chave: [
       'Três gerações: indianista, ultrarromântica, condoreira',
@@ -148,7 +148,7 @@ export const PAGINAS_LINGUAGENS = {
 
   'lit-contemporanea': {
     resumo: [
-      'Literatura contemporânea brasileira (depois de 1945): do concretismo (décio Pignatari, Haroldo e Augusto de Campos — poema como objeto visual) à poesia marginal dos anos 70, e ao romance que mistura documento e ficção.',
+      'Literatura contemporânea brasileira (depois de 1945): do concretismo (décio Pignatari, Haroldo e Augusto de Campos, poema como objeto visual) à poesia marginal dos anos 70, e ao romance que mistura documento e ficção.',
       'A prosa contemporânea é plural: Guimarães Rosa (Grande Sertão: Veredas, linguagem inventada) e Clarice Lispector (fluxo de consciência, epifania) são os dois nomes mais cobrados. Depois deles, a literatura de testemunho, a periférica e a indígena contemporânea.',
       'O Enem cobra leitura de texto contemporâneo, com marcas de fragmentação, intertextualidade e mistura de gêneros. A resposta costuma estar no efeito (estranhamento, ruptura da linearidade), não no rótulo de escola literária.',
     ],
@@ -180,7 +180,7 @@ export const PAGINAS_LINGUAGENS = {
 
   'art-vanguardas': {
     resumo: [
-      'Vanguardas europeias (início do século XX) rompem com a representação realista: Cubismo (Picasso, Braque — decomposição da forma em planos), Futurismo (Marinetti — velocidade, máquina, culto ao futuro), Expressionismo (Munch, Kirchner — distorção pela emoção), Dadaísmo (Duchamp — ready-made, antiarte) e Surrealismo (Dalí, Magritte, Breton — inconsciente e sonho).',
+      'Vanguardas europeias (início do século XX) rompem com a representação realista: Cubismo (Picasso, Braque, decomposição da forma em planos), Futurismo (Marinetti, velocidade, máquina, culto ao futuro), Expressionismo (Munch, Kirchner, distorção pela emoção), Dadaísmo (Duchamp, ready-made, antiarte) e Surrealismo (Dalí, Magritte, Breton, inconsciente e sonho).',
       'O Enem cobra o reconhecimento da obra e da proposta: ready-made de Duchamp questiona o que é arte; "Guernica" de Picasso é expressionismo/cubismo com denúncia política; "O Grito" de Munch é expressão de angústia.',
       'A vanguarda chega ao Brasil pela Semana de 22 e alimenta o Modernismo: Anita Malfatti traz expressionismo, Tarsila do Amaral combina cubismo com cor e tema brasileiros (Abaporu). A questão costuma pedir essa ponte.',
     ],
@@ -197,7 +197,7 @@ export const PAGINAS_LINGUAGENS = {
   'art-contemporanea': {
     resumo: [
       'Arte contemporânea (a partir dos anos 1960) abandona o objeto belo e passa à ideia: arte conceitual, performance, instalação, land art, videoarte. O conceito é a obra; a execução pode ser efêmera.',
-      'No Brasil: Hélio Oiticica (Parangolés, Tropicalia), Lygia Clark (Bichos, experiência sensorial), Cildo Meireles (inserções em circuitos ideológicos) e a arte urbana — grafite, stencil e pixo. A questão costuma contrastar com a arte moderna: participação do público, efemeridade e crítica institucional.',
+      'No Brasil: Hélio Oiticica (Parangolés, Tropicalia), Lygia Clark (Bichos, experiência sensorial), Cildo Meireles (inserções em circuitos ideológicos) e a arte urbana, grafite, stencil e pixo. A questão costuma contrastar com a arte moderna: participação do público, efemeridade e crítica institucional.',
       'O Enem cobra a leitura da obra no espaço público e o debate sobre museu, mercado de arte e direito à cidade. A resposta certa geralmente é a que aponta a ruptura de suporte, e não a que descreve a beleza da obra.',
     ],
     chave: [
@@ -230,7 +230,7 @@ export const PAGINAS_LINGUAGENS = {
     resumo: [
       'Patrimônio cultural material (igreja, monumento, acervo) e imaterial (saber-fazer, festa, música, culinária). O IPHAN reconhece e registra; o registro é o instrumento do imaterial, o tombamento é o do material.',
       'O Enem cobra o conceito de patrimônio como identidade coletiva, não como coisa antiga: roda de samba, capoeira, frevo, ofício das paneleiras, festa do Divino. E cobra a crítica: preservação sem participação da comunidade vira museificação.',
-      'Educação patrimonial, museus e memória entram junto com o debate sobre desmonte e destruição (incêndio do Museu Nacional, 2018) e sobre quais memórias são preservadas — e quais são apagadas.',
+      'Educação patrimonial, museus e memória entram junto com o debate sobre desmonte e destruição (incêndio do Museu Nacional, 2018) e sobre quais memórias são preservadas, e quais são apagadas.',
     ],
     chave: [
       'Material × imaterial (tombamento × registro)',
@@ -246,7 +246,7 @@ export const PAGINAS_LINGUAGENS = {
     resumo: [
       'Na prova de Linguagens, educação física aparece como prática corporal e sociedade: esporte, dança, ginástica, luta e jogo, cada um com origem cultural e função própria. A questão cobra a dimensão simbólica e social, não a técnica do movimento.',
       'O Enem cobra a relação entre esporte e saúde: sedentarismo, obesidade, hipertensão e a diferença entre atividade física do cotidiano e exercício sistematizado. Também o esporte como direito e política pública.',
-      'Temas de gênero, corpo e padrão de beleza, doping, violência em torcidas e megaeventos completam. O critério é analisar o esporte como fenômeno social — com inclusão e exclusão — e não como espetáculo.',
+      'Temas de gênero, corpo e padrão de beleza, doping, violência em torcidas e megaeventos completam. O critério é analisar o esporte como fenômeno social (com inclusão e exclusão) e não como espetáculo.',
     ],
     chave: [
       'Práticas corporais: esporte, dança, luta, ginástica, jogo',
@@ -262,7 +262,7 @@ export const PAGINAS_LINGUAGENS = {
     resumo: [
       'Inglês no Enem não cobra gramática pela gramática: cobra leitura. São cinco questões com texto curto (artigo, anúncio, tira, poema) e a pergunta sobre ideia principal, propósito, público-alvo ou vocabulário em contexto.',
       'Estratégias que resolvem: procure cognatos (informação, culture, technology), identifique a estrutura do texto e localize o tópico frasal. Em anúncio, procure o verbo de ação e o produto; em tira, leia a relação entre imagem e fala.',
-      'A alternativa errada costuma usar uma palavra do texto em sentido diferente. Traduzir palavra por palavra é o caminho mais rápido para errar — leia a frase inteira e a que palavra ela remete.',
+      'A alternativa errada costuma usar uma palavra do texto em sentido diferente. Traduzir palavra por palavra é o caminho mais rápido para errar, leia a frase inteira e a que palavra ela remete.',
     ],
     chave: [
       'Ideia principal e propósito do texto',
@@ -278,7 +278,7 @@ export const PAGINAS_LINGUAGENS = {
     resumo: [
       'Espanhol no Enem segue a mesma lógica do inglês: leitura e compreensão em contexto, com cinco questões. A vantagem da proximidade com o português é real, mas é também a armadilha dos "falsos amigos".',
       'Falsos amigos clássicos: largo (comprido, não "largo"), embarazada (grávida), rato (momento), salada (salgada), taller (oficina), vaso (copo), cerrar (fechar), exquisito (delicioso). Questão de interpretação costuma usar um deles.',
-      'Os temas culturais hispânicos aparecem sempre: festas, culinária, música, futebol, migração. A prova valoriza a leitura de diversidade cultural da América Latina e da Espanha, e a identificação de registro (formal/informal — "usted" × "tú").',
+      'Os temas culturais hispânicos aparecem sempre: festas, culinária, música, futebol, migração. A prova valoriza a leitura de diversidade cultural da América Latina e da Espanha, e a identificação de registro (formal/informal, "usted" × "tú").',
     ],
     chave: [
       'Falsos amigos (largo, embarazada, rato, vaso)',

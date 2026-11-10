@@ -20,8 +20,8 @@ export const PAGINAS_HUMANAS = {
 
   'his-imperio': {
     resumo: [
-      'O Brasil Império (1822–1889) começa com a independência financiada pela Inglaterra e organiza um Estado centralizado sob a Constituição de 1824 — que criou o Poder Moderador e o voto censitário, excluindo analfabetos, mulheres e escravizados.',
-      'O período é marcado por revoltas provinciais (Cabanagem, Farroupilha, Balaiada, Sabinada, Malês), cada uma com uma pauta: autonomia provincial, fim da escravidão, miséria regional. E termina com a abolição (1888) e a Proclamação da República (1889) — sem participação popular.',
+      'O Brasil Império (1822–1889) começa com a independência financiada pela Inglaterra e organiza um Estado centralizado sob a Constituição de 1824, que criou o Poder Moderador e o voto censitário, excluindo analfabetos, mulheres e escravizados.',
+      'O período é marcado por revoltas provinciais (Cabanagem, Farroupilha, Balaiada, Sabinada, Malês), cada uma com uma pauta: autonomia provincial, fim da escravidão, miséria regional. E termina com a abolição (1888) e a Proclamação da República (1889), sem participação popular.',
       'A economia gira em torno do café no Vale do Paraíba e depois no Oeste Paulista, com mão de obra escravizada e, depois de 1850, do imigrante europeu. A Lei de Terras de 1850 é decisiva: ela impede o acesso à terra de quem não pode comprar, e isso define quem seria pobre no Brasil republicano.',
     ],
     chave: [
@@ -53,7 +53,7 @@ export const PAGINAS_HUMANAS = {
   'his-vargas': {
     resumo: [
       'A Era Vargas (1930–1945) se divide em três fases: Governo Provisório (1930–34), Constitucional (1934–37) e Estado Novo (1937–45), ditadura marcada pelo DIP (censura), pela CLT (1939) e pelo culto à personalidade. A centralização do poder federal e a industrialização de base são o fio condutor.',
-      'A legislação trabalhista é o ponto mais cobrado: salário mínimo, jornada de 8 horas, carteira de trabalho e descanso semanal foram criados como concessão do Estado, e não como direito conquistado — daí a expressão "cidadania regulada", em que só o trabalhador formal tem direitos.',
+      'A legislação trabalhista é o ponto mais cobrado: salário mínimo, jornada de 8 horas, carteira de trabalho e descanso semanal foram criados como concessão do Estado, e não como direito conquistado, daí a expressão "cidadania regulada", em que só o trabalhador formal tem direitos.',
       'A política externa é peça importante: Vargas flertou com o Eixo e só entrou na guerra ao lado dos Aliados depois de negociar a siderúrgica de Volta Redonda. O paradoxo de um ditador lutando pela democracia na Europa rendeu a expressão "é preciso mudar tudo para que tudo continue como está".',
     ],
     chave: [
@@ -85,7 +85,7 @@ export const PAGINAS_HUMANAS = {
   'his-redemocratizacao': {
     resumo: [
       'A Redemocratização vai de 1979 a 1988: anistia, retorno do pluripartidarismo, eleições diretas para governador em 1982, Diretas Já em 1984 (derrotada no Congresso) e eleição indireta de Tancredo Neves, que morre antes de assumir, em 1985.',
-      'A Constituição de 1988 — "Constituição Cidadã" — ampliou direitos sociais, criou o SUS, garantiu direitos trabalhistas e definiu a saúde, a educação e a assistência como dever do Estado. Depois vieram Collor, o impeachment de 1992, o Plano Real (1994) e a estabilização da moeda.',
+      'A Constituição de 1988 ("Constituição Cidadã") ampliou direitos sociais, criou o SUS, garantiu direitos trabalhistas e definiu a saúde, a educação e a assistência como dever do Estado. Depois vieram Collor, o impeachment de 1992, o Plano Real (1994) e a estabilização da moeda.',
       'No Enem, o período aparece conectado a direitos: SUS, ECA (1990), Lei de Diretrizes da Educação, cotas e políticas de transferência de renda. A pergunta costuma ser sobre a efetivação desses direitos, não sobre a cronologia.',
     ],
     chave: [
@@ -118,7 +118,7 @@ export const PAGINAS_HUMANAS = {
     resumo: [
       'Guerra Fria (1947–1991) foi a disputa entre EUA (capitalismo) e URSS (socialismo) sem confronto direto entre as duas potências. O mundo se dividiu em blocos, com corrida armamentista, espacial e ideológica, e conflitos por procuração (Coreia, Vietnã, Afeganistão).',
       'No Brasil, a Guerra Fria entra pela política externa e pelo golpe de 1964: a lógica de "combater o comunismo" justifica a intervenção militar em várias partes da América Latina. Revolução Cubana (1959) e a Aliança para o Progresso dão o tom do continente.',
-      'O fim vem com a crise soviética: glasnost e perestroika de Gorbachev, queda do Muro de Berlim (1989) e dissolução da URSS (1991). O Enem cobra a nova ordem mundial que surge depois — unipolar, depois multipolar.',
+      'O fim vem com a crise soviética: glasnost e perestroika de Gorbachev, queda do Muro de Berlim (1989) e dissolução da URSS (1991). O Enem cobra a nova ordem mundial que surge depois, unipolar, depois multipolar.',
     ],
     chave: [
       'Blocos, corrida armamentista e espacial',
@@ -133,7 +133,7 @@ export const PAGINAS_HUMANAS = {
   'his-guerras-mundiais': {
     resumo: [
       'A 1ª Guerra (1914–18) nasce do imperialismo, da corrida por colônias e do sistema de alianças: Tríplice Entente × Tríplice Aliança. O estopim foi o assassinato de Francisco Ferdinando; a guerra de trincheiras, a entrada dos EUA e o Tratado de Versalhes definiram o resto.',
-      'O Tratado de Versalhes impôs à Alemanha perdas territoriais, desarmamento e indenizações impagáveis — e é essa humilhação que alimenta o nazismo. Aqui está a ponte que o Enem mais cobra entre as duas guerras.',
+      'O Tratado de Versalhes impôs à Alemanha perdas territoriais, desarmamento e indenizações impagáveis, e é essa humilhação que alimenta o nazismo. Aqui está a ponte que o Enem mais cobra entre as duas guerras.',
       'A 2ª Guerra (1939–45) é a do totalitarismo, do Holocausto, dos campos de concentração e da bomba atômica. No Brasil, a FEB lutou na Itália, e a contradição de um país sem democracia interna lutando contra o nazismo fortaleceu a queda de Vargas.',
     ],
     chave: [
@@ -148,7 +148,7 @@ export const PAGINAS_HUMANAS = {
 
   'his-antiguidade': {
     resumo: [
-      'Antiguidade Clássica no Enem é Grécia e Roma, quase sempre para falar de cidadania: na democracia ateniense só o homem livre, maior e filho de pais atenienses votava — mulheres, escravizados e estrangeiros ficavam fora. É a primeira comparação que a prova pede com a democracia atual.',
+      'Antiguidade Clássica no Enem é Grécia e Roma, quase sempre para falar de cidadania: na democracia ateniense só o homem livre, maior e filho de pais atenienses votava, mulheres, escravizados e estrangeiros ficavam fora. É a primeira comparação que a prova pede com a democracia atual.',
       'Roma oferece o direito como legado: Lei das XII Tábuas, direito civil × direito das gentes, e a ideia de cidadania romana, que era concedida e podia ser ampliada. O Direito e o Senado atuais são heranças diretas.',
       'A crise do Império Romano (pressão de povos, inflação, desagregação política) e o fim do mundo antigo abrem a Idade Média. O que se cobra é a relação entre escravidão, trabalho e economia nas sociedades antigas.',
     ],
@@ -182,7 +182,7 @@ export const PAGINAS_HUMANAS = {
     resumo: [
       'Biomas brasileiros são clima, solo, vegetação e água combinados. Amazônia (quente, úmido, latifoliada, rios caudalosos), Cerrado (savana, árvores tortas, solo ácido, "berço das águas"), Mata Atlântica (úmida, degradada), Caatinga (semiárido, xerófila, rios intermitentes), Pampa (campo, pecuária) e Pantanal (planície alagável).',
       'O Enem cobra a relação entre bioma e impacto: desmatamento da Amazônia afeta o regime de chuvas do próprio cerrado e do sudeste (rios voadores); ocupação do cerrado pela soja avança a fronteira agrícola; o pantanal sofre com fogo e assoreamento.',
-      'Bioma não é o mesmo que domínio morfoclimático nem que bioma de vegetação isolada: a prova gosta de afirmar que um bioma é homogêneo. Não é — são mosaicos com variação dentro.',
+      'Bioma não é o mesmo que domínio morfoclimático nem que bioma de vegetação isolada: a prova gosta de afirmar que um bioma é homogêneo. Não é, são mosaicos com variação dentro.',
     ],
     chave: [
       'Caracterizar cada bioma por clima, vegetação e solo',
@@ -197,7 +197,7 @@ export const PAGINAS_HUMANAS = {
   'geo-clima': {
     resumo: [
       'Mudanças climáticas no Enem aparecem por consequência: eventos extremos mais frequentes (enchentes, secas, ondas de calor), elevação do nível do mar e impacto na agricultura. O efeito estufa é fenômeno natural; o que muda é a intensidade pelo excesso de gases.',
-      'Desmatamento e queimada emitem CO₂ e reduzem a capacidade de absorção. O Brasil é ao mesmo tempo grande emissor (uso da terra) e potência em energia renovável — a matriz elétrica é majoritariamente hidrelétrica, o que relativiza a emissão do setor elétrico.',
+      'Desmatamento e queimada emitem CO₂ e reduzem a capacidade de absorção. O Brasil é ao mesmo tempo grande emissor (uso da terra) e potência em energia renovável, a matriz elétrica é majoritariamente hidrelétrica, o que relativiza a emissão do setor elétrico.',
       'Políticas climáticas aparecem em questão de interpretação: Protocolo de Kyoto, Acordo de Paris, NDCs e o mercado de carbono. O Enem cobra a diferença entre meta voluntária e obrigação, e o princípio de responsabilidade comum, porém diferenciada.',
     ],
     chave: [
@@ -213,7 +213,7 @@ export const PAGINAS_HUMANAS = {
   'geo-climatologia': {
     resumo: [
       'Climatologia: massas de ar (equatorial, tropical, polar), frentes e a dinâmica que gera a chuva. No Brasil, Massa Equatorial Atlântica, Massa Tropical Atlântica, Massa Polar Atlântica e Massa Equatorial Continental explicam o clima de cada região.',
-      'As três formas de gênesis da chuva: orográfica (relevo — serra), convectiva (calor — início de tarde no verão) e frontal (encontro de massas — chuva de inverno no sul). O Enem cobra a explicação dos fenômenos urbanos: enchente, ilha de calor e chuva ácida.',
+      'As três formas de gênesis da chuva: orográfica (relevo, serra), convectiva (calor, início de tarde no verão) e frontal (encontro de massas, chuva de inverno no sul). O Enem cobra a explicação dos fenômenos urbanos: enchente, ilha de calor e chuva ácida.',
       'Climas equatoriais/tropicais/estacionais e a relação com agricultura e ocupação. Também aparecem El Niño e La Niña: aquecimento ou resfriamento das águas do Pacífico, com efeito direto na chuva do nordeste e sul do Brasil.',
     ],
     chave: [
@@ -230,7 +230,7 @@ export const PAGINAS_HUMANAS = {
     resumo: [
       'Geografia agrária no Enem é estrutura fundiária e modelo produtivo. No Brasil, a concentração de terras vem da Lei de Terras de 1850 e do plantation; hoje convivem agronegócio exportador (mecanizado, monocultor) e agricultura familiar (diversificada, produtora da maior parte do alimento da mesa).',
       'Reforma agrária, movimentos sociais (MST) e conflito pela terra aparecem quase sempre com dados de concentração: o índice de Gini da posse da terra e a ociosidade de propriedades. Esteja pronto para ler sobre "cumprimento da função social".',
-      'A modernização agrícola dos anos 1970 (Revolução Verde) trouxe insumos, irrigação e genética — e também desmatamento, contaminação por agrotóxico e exclusão do pequeno produtor. O Enem liga isso a segurança alimentar e a soberania.',
+      'A modernização agrícola dos anos 1970 (Revolução Verde) trouxe insumos, irrigação e genética, e também desmatamento, contaminação por agrotóxico e exclusão do pequeno produtor. O Enem liga isso a segurança alimentar e a soberania.',
     ],
     chave: [
       'Estrutura fundiária concentrada e concentração histórica',
@@ -245,7 +245,7 @@ export const PAGINAS_HUMANAS = {
   'geo-urbanizacao': {
     resumo: [
       'Urbanização brasileira foi acelerada a partir da industrialização de 1930–60 e feita sem planejamento: periferização, favelização e uma metrópole que cresce na borda. Hoje, mais de 84% da população vive em cidades.',
-      'Conceitos que a prova usa: conurbação, metrópole, megalópole, região metropolitana, especulação imobiliária e segregação socioespacial. A renda define onde se mora, e o transporte define quanto tempo se perde — e é isso que a questão cobra em contexto de mobilidade.',
+      'Conceitos que a prova usa: conurbação, metrópole, megalópole, região metropolitana, especulação imobiliária e segregação socioespacial. A renda define onde se mora, e o transporte define quanto tempo se perde, e é isso que a questão cobra em contexto de mobilidade.',
       'Problemas urbanos: enchente por impermeabilização, ilha de calor, coleta de lixo irregular, favela em área de risco. Políticas públicas: Estatuto da Cidade (2001), plano diretor, IPTU progressivo e zoneamento são as respostas que o Enem espera ver citadas.',
     ],
     chave: [
@@ -261,7 +261,7 @@ export const PAGINAS_HUMANAS = {
   'geo-demografia': {
     resumo: [
       'Demografia brasileira: queda acentuada da fecundidade (de 6,3 para perto de 1,7 filho por mulher), aumento da expectativa de vida e, portanto, envelhecimento populacional. A pirâmide etária de base larga virou base estreita e topo largo.',
-      'O bônus demográfico — população majoritariamente em idade ativa — é uma janela que se fecha com o envelhecimento. O Enem cobra as consequências: pressão sobre previdência e saúde, e queda da população economicamente ativa no futuro.',
+      'O bônus demográfico (população majoritariamente em idade ativa) é uma janela que se fecha com o envelhecimento. O Enem cobra as consequências: pressão sobre previdência e saúde, e queda da população economicamente ativa no futuro.',
       'Migrações: transição rural-urbana no passado, e hoje migração de retorno, pendular (diária) e a imigração de haitianos, venezuelanos e bolivianos. Conceitos de emigrante/imigrante, saldo migratório e refugiado aparecem em questão de interpretação de dados.',
     ],
     chave: [
@@ -280,7 +280,7 @@ export const PAGINAS_HUMANAS = {
     resumo: [
       'Geopolítica no Enem é a nova ordem mundial: do mundo bipolar da Guerra Fria para a multipolaridade com novas potências (China, Índia, Rússia) e blocos (UE, Mercosul, BRICS). O poder hoje não é só militar: é econômico, tecnológico e energético.',
       'Conflitos atuais têm raiz territorial e de recursos: Oriente Médio e petróleo, Ucrânia e o cerco da OTAN, Taiwan e a disputa por semicondutores, Saara e rotas migratórias, e a corrida por minerais críticos (lítio, terras raras) na América Latina.',
-      'O Brasil no cenário: potência agrícola e ambiental, com papel na agenda climática e no BRICS. O Enem cobra a contradição brasileira — exportador de commodities, com pressão sobre a floresta.',
+      'O Brasil no cenário: potência agrícola e ambiental, com papel na agenda climática e no BRICS. O Enem cobra a contradição brasileira, exportador de commodities, com pressão sobre a floresta.',
     ],
     chave: [
       'Bipolaridade → multipolaridade e novas potências',
@@ -310,8 +310,8 @@ export const PAGINAS_HUMANAS = {
 
   'fil-antiga': {
     resumo: [
-      'Filosofia antiga é a virada do mito para o logos: explicação racional da natureza (physis). Sócrates desloca a pergunta da física para a ética — "conhece-te a ti mesmo" e o método da maiêutica, com a ironia como ferramenta para expor a contradição.',
-      'Platão responde com o mundo das ideias: o sensível é cópia imperfeita do inteligível, e conhecer é lembrar (reminiscência). A alegoria da caverna é a imagem da educação e da saída da ilusão — e o Enem cobra a sua leitura aplicada a mídia, opinião e liberdade.',
+      'Filosofia antiga é a virada do mito para o logos: explicação racional da natureza (physis). Sócrates desloca a pergunta da física para a ética, "conhece-te a ti mesmo" e o método da maiêutica, com a ironia como ferramenta para expor a contradição.',
+      'Platão responde com o mundo das ideias: o sensível é cópia imperfeita do inteligível, e conhecer é lembrar (reminiscência). A alegoria da caverna é a imagem da educação e da saída da ilusão, e o Enem cobra a sua leitura aplicada a mídia, opinião e liberdade.',
       'Aristóteles traz o empirismo possível na Antiguidade: conhecer parte da experiência, a virtude é hábito (excelência), e a felicidade é a atualização das potencialidades. A distinção entre potência e ato, causa material/formal/eficiente/final, aparece em questões de lógica e de ética.',
     ],
     chave: [
@@ -375,8 +375,8 @@ export const PAGINAS_HUMANAS = {
   'fil-racionalismo-empirismo': {
     resumo: [
       'Racionalismo (Descartes, Espinosa, Leibniz) toma a razão como fonte do conhecimento: Descartes duvida de tudo para chegar ao indubitável (penso, logo existo) e funda o sujeto moderno. O método se baseia em dedução a partir de ideias claras e distintas.',
-      'Empirismo (Locke, Berkeley, Hume) toma a experiência como fonte: a mente é uma folha em branco e as ideias vêm dos sentidos. Hume leva ao limite e mostra que nossa noção de causa não é demonstrável na experiência — é hábito.',
-      'Kant resolve a disputa: conhecemos o fenômeno (o que aparece segundo as formas da sensibilidade e categorias do entendimento), não a coisa em si. É o giro copernicano — a pergunta deixa de ser "como o objeto é conhecido" e passa a ser "o que o sujeito coloca no conhecimento".',
+      'Empirismo (Locke, Berkeley, Hume) toma a experiência como fonte: a mente é uma folha em branco e as ideias vêm dos sentidos. Hume leva ao limite e mostra que nossa noção de causa não é demonstrável na experiência, é hábito.',
+      'Kant resolve a disputa: conhecemos o fenômeno (o que aparece segundo as formas da sensibilidade e categorias do entendimento), não a coisa em si. É o giro copernicano, a pergunta deixa de ser "como o objeto é conhecido" e passa a ser "o que o sujeito coloca no conhecimento".',
     ],
     chave: [
       'Descartes: dúvida metódica, cogito, método dedutivo',
@@ -407,7 +407,7 @@ export const PAGINAS_HUMANAS = {
   'soc-movimentos': {
     resumo: [
       'Movimentos sociais são ação coletiva organizada por direitos. No Brasil: movimento operário e sindical, movimento negro (Frente Negra, Movimento Negro Unificado), feminista, MST, LGBT e os movimentos indígenas. Cada um com pauta, forma de luta e conquista.',
-      'Cidadania em Marshall tem três dimensões: civil (liberdade e justiça), política (voto e partido) e social (saúde, educação, trabalho). No Brasil, a ordem foi invertida: primeiro vieram os direitos sociais de Vargas, depois os políticos — e a social segue incompleta.',
+      'Cidadania em Marshall tem três dimensões: civil (liberdade e justiça), política (voto e partido) e social (saúde, educação, trabalho). No Brasil, a ordem foi invertida: primeiro vieram os direitos sociais de Vargas, depois os políticos, e a social segue incompleta.',
       'O Enem gosta de movimentos recentes: Junho de 2013, ocupações de escola, greve dos caminhoneiros e o papel das redes sociais na organização. O critério é distinguir movimento social de saque ou de ação isolada.',
     ],
     chave: [
@@ -422,7 +422,7 @@ export const PAGINAS_HUMANAS = {
 
   'soc-cultura': {
     resumo: [
-      'Cultura é tudo o que é aprendido e compartilhado: língua, valores, hábitos, arte. O Enem combate o etnocentrismo e cobra o relativismo cultural — a ideia de que não há cultura superior, há culturas diferentes com lógicas próprias.',
+      'Cultura é tudo o que é aprendido e compartilhado: língua, valores, hábitos, arte. O Enem combate o etnocentrismo e cobra o relativismo cultural, a ideia de que não há cultura superior, há culturas diferentes com lógicas próprias.',
       'Indústria cultural (Adorno e Horkheimer) é a produção em série de bens culturais com lógica de mercado: o produto é padronizado para consumir rápido e não para emancipar. Cultura de massa × cultura popular × cultura erudita é a distinção pedida.',
       'Também aparecem identidade (Hall: fragmentada, múltipla), multiculturalismo, apropriação cultural e patrimônio imaterial (IPHAN). O Enem cobra a leitura crítica da publicidade e do entretenimento como formadores de opinião.',
     ],
@@ -439,7 +439,7 @@ export const PAGINAS_HUMANAS = {
   'soc-classicos': {
     resumo: [
       'Os três clássicos fundam a sociologia. Marx: a sociedade se explica pela base material (modo de produção) e pela luta de classes; a ideologia naturaliza a dominação. Durkheim: o social é exterior e coercitivo ao indivíduo (fato social), e a coesão vem da solidariedade mecânica (sociedades simples) ou orgânica (divisão do trabalho).',
-      'Weber: a ação social é o objeto da sociologia, com sentidos que o pesquisador interpreta. Tipos de dominação — tradicional, carismática e racional-legal — e a burocracia com sua jaula de ferro completam o quadro. A ética protestante é usada para explicar a origem do capitalismo.',
+      'Weber: a ação social é o objeto da sociologia, com sentidos que o pesquisador interpreta. Tipos de dominação (tradicional, carismática e racional-legal) e a burocracia com sua jaula de ferro completam o quadro. A ética protestante é usada para explicar a origem do capitalismo.',
       'No Enem, o mais cobrado é comparar os três diante de um fenômeno (religião, trabalho, desigualdade, violência): Marx vê exploração, Durkheim vê integração e anomia, Weber vê sentido da ação e legitimidade.',
     ],
     chave: [

@@ -73,7 +73,7 @@ export function viewConteudos() {
 
   <p class="hub-nota" data-entrada>
     Comece pela área em que você erra mais na prova, não pela que você gosta mais.
-    O guia de redação continua nas outras abas — aqui é o conteúdo das questões objetivas.
+    O guia de redação continua nas outras abas, aqui é o conteúdo das questões objetivas.
   </p>`;
 }
 
@@ -151,7 +151,7 @@ export function viewConteudo(id) {
     </section>` : `
     <section class="cp-bloco" id="questoes">
       <h2 class="cp-rot">${icQ('check')} questões de edições passadas</h2>
-      <p class="cp-aviso">As questões deste conteúdo estão sendo transcritas e resolvidas — cada uma passa por conferência do enunciado e do gabarito oficial antes de entrar no site. O resumo acima já cobre o que a prova cobra.</p>
+      <p class="cp-aviso">As questões deste conteúdo estão sendo transcritas e resolvidas, cada uma passa por conferência do enunciado e do gabarito oficial antes de entrar no site. O resumo acima já cobre o que a prova cobra.</p>
     </section>`;
 
   const video = p.video ? `
@@ -254,11 +254,11 @@ export function tituloDeConteudos(partes = []) {
   if (partes[0] !== 'conteudos') return null;
   if (partes[1] === 'materia' && partes[2]) {
     const m = materiaPorId(decodeURIComponent(partes[2]));
-    return m ? `${m.nome} — Conteúdos do Enem` : 'Conteúdos do Enem';
+    return m ? `${m.nome}, Conteúdos do Enem` : 'Conteúdos do Enem';
   }
   if (partes[1] === 'c' && partes[2]) {
     const c = conteudoPorId(decodeURIComponent(partes[2]));
-    return c ? `${c.titulo} — ${c.materia.nome}` : 'Conteúdos do Enem';
+    return c ? `${c.titulo}, ${c.materia.nome}` : 'Conteúdos do Enem';
   }
-  return 'Conteúdos do Enem — o que cai em cada matéria';
+  return 'Conteúdos do Enem, o que cai em cada matéria';
 }

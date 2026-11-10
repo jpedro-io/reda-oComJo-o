@@ -123,6 +123,13 @@ Cada achado chega ao relatório como um cartão **“impede o 200”** (ou “pe
 
 **Calibragem** (`node test/calibragem.js`): texto fraco de dez linhas fica entre **280 e 480**; redação repetitiva, **280**; texto com frases repetidas, **320**; texto sem pontuação, **280**; redação sólida com repertório explicado e proposta completa, **800**; as treze redações modelo, **960–1000**.
 
+## Interface
+
+Duas folhas de estilo: `css/style.css` (desenho antigo) e `css/editorial.css`
+(a camada que manda hoje: papel branco, tinta, marca-texto esmeralda, fio de
+1px, raio 6px, sem sombra e sem gradiente). Fontes Sentient e General Sans
+servidas do próprio site, em `fonts/`. As decisões estão em `DESIGN.md`.
+
 ## Guia de conteúdos (áreas → matérias → conteúdo)
 
 Além do guia de redação, o site tem um guia das quatro áreas da prova:

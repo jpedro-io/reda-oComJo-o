@@ -22,7 +22,7 @@ export const TEMAS = [
       'setor privado', 'saude suplementar', 'gestao', 'municipalizacao', 'prevencao'],
     repertorios: [
       { nome: 'Constituição Federal de 1988, art. 196', uso: 'Fundamenta a saúde como direito de todos e dever do Estado.' },
-      { nome: 'OMS — determinantes sociais da saúde', uso: 'Mostra que o acesso depende também de renda, moradia e saneamento.' },
+      { nome: 'OMS, determinantes sociais da saúde', uso: 'Mostra que o acesso depende também de renda, moradia e saneamento.' },
       { nome: 'Pandemia de covid-19', uso: 'Evidencia a centralidade do SUS em crises sanitárias.' },
       { nome: 'Movimento da Reforma Sanitária', uso: 'Explica a origem do SUS e a disputa entre público e privado.' }
     ]
@@ -41,7 +41,7 @@ export const TEMAS = [
       'estatuto da pessoa idosa', 'produtividade', 'mercado de trabalho', 'solidariedade'],
     repertorios: [
       { nome: 'Estatuto da Pessoa Idosa (Lei 10.741/2003)', uso: 'Base legal para discutir direitos e proteção.' },
-      { nome: 'IBGE — transição demográfica brasileira', uso: 'Dados sobre o envelhecimento acelerado da população.' },
+      { nome: 'IBGE, transição demográfica brasileira', uso: 'Dados sobre o envelhecimento acelerado da população.' },
       { nome: 'Simone de Beauvoir, "A Velhice"', uso: 'Crítica ao modo como a sociedade trata a velhice.' },
       { nome: 'Malmquist / Barreiras arquitetônicas', uso: 'Acessibilidade urbana como condição de autonomia.' }
     ]
@@ -77,7 +77,7 @@ export const TEMAS = [
       'remuneracao', 'precarizacao', 'maternidade', 'creche', 'politica publica',
       'invisibilidade', 'reconhecimento', 'economia do cuidado', 'empregada domestica'],
     repertorios: [
-      { nome: 'IBGE — pesquisa de gênero e trabalho doméstico', uso: 'Dados de horas semanais dedicadas ao cuidado.' },
+      { nome: 'IBGE, pesquisa de gênero e trabalho doméstico', uso: 'Dados de horas semanais dedicadas ao cuidado.' },
       { nome: 'Silvia Federici', uso: 'Teoria sobre o trabalho reprodutivo não pago.' },
       { nome: 'Simone de Beauvoir, "O Segundo Sexo"', uso: 'Crítica à atribuição do cuidado às mulheres.' },
       { nome: 'Constituição de 1988 / Lei do Trabalho Doméstico', uso: 'Base legal do reconhecimento do trabalho.' }
@@ -116,7 +116,7 @@ export const TEMAS = [
       { nome: 'Hannah Arendt, "Origens do Totalitarismo"', uso: 'Direito a ter direitos e a importância da documentação.' },
       { nome: 'Carolina Maria de Jesus, "Quarto de Despejo"', uso: 'Retrato da exclusão social e da invisibilidade.' },
       { nome: 'Constituição de 1988', uso: 'Cidadania plena como fundamento da República.' },
-      { nome: 'IBGE — estatísticas do registro civil', uso: 'Dados de sub-registro no país.' }
+      { nome: 'IBGE, estatísticas do registro civil', uso: 'Dados de sub-registro no país.' }
     ]
   },
   {
@@ -132,7 +132,7 @@ export const TEMAS = [
       'lei 10.216', 'reforma psiquiatrica', 'sofrimento', 'discriminacao', 'tabu'],
     repertorios: [
       { nome: 'Lei 10.216/2001 (Reforma Psiquiátrica)', uso: 'Modelo de atenção psicossocial e fim do isolamento.' },
-      { nome: 'OMS — depressão como doença incapacitante', uso: 'Cifras sobre prevalência e afastamentos.' },
+      { nome: 'OMS, depressão como doença incapacitante', uso: 'Cifras sobre prevalência e afastamentos.' },
       { nome: 'Foucault, "História da Loucura"', uso: 'História do aprisionamento e estigmatização da loucura.' },
       { nome: 'Black Mirror / "O Conto da Aia"', uso: 'Metáforas de controle e silenciamento (usar com mediação).' }
     ]
@@ -149,7 +149,7 @@ export const TEMAS = [
       'preco do ingresso', 'sala de cinema', 'internet', 'streaming', 'financiamento',
       'ancine', 'lei do cinema', 'politica cultural', 'municipalizacao', 'mobilidade'],
     repertorios: [
-      { nome: 'Ancine — dados de mercado audiovisual', uso: 'Mapeamento de salas e concentração de renda no setor.' },
+      { nome: 'Ancine, dados de mercado audiovisual', uso: 'Mapeamento de salas e concentração de renda no setor.' },
       { nome: 'Antonio Candido, "O Direito à Literatura"', uso: 'Cultura como direito e não mercadoria.' },
       { nome: "Milton Santos, 'O Espaço Dividido'", uso: 'Desigualdade de acesso e território.' },
       { nome: 'Constituição art. 215', uso: 'Direito à cultura para todos.' }
@@ -255,7 +255,7 @@ export const TEMAS = [
     apoio: ['trabalho precoce', 'renda', 'bolsa', 'curriculo', 'transporte', 'merenda',
       'aprendizagem', 'desigualdade', 'juventude', 'ensino tecnico', 'internet'],
     repertorios: [
-      { nome: 'PNAD Contínua — educação', uso: 'Dados de evasão por faixa etária.' },
+      { nome: 'PNAD Contínua, educação', uso: 'Dados de evasão por faixa etária.' },
       { nome: 'Paulo Freire', uso: 'Educação como prática de liberdade.' },
       { nome: 'Constituição art. 205 e LDB', uso: 'Direito à educação.' },
       { nome: 'Documentário "Nunca Me Sonharam"', uso: 'Retratos do jovem e do sentido da escola.' }
@@ -293,9 +293,9 @@ TEMAS.push(
     apoio: ['eca', 'fiscalizacao', 'pobreza', 'renda', 'escola', 'bolsa', 'trabalho domestico',
       'mendicancia', 'resgate', 'ministerio publico', 'consciencia', 'zona rural', 'carvoaria'],
     repertorios: [
-      { nome: 'ECA — art. 60 a 69', uso: 'Proibição do trabalho a menores de 16 anos, salvo aprendiz.' },
-      { nome: 'OIT — Convenção 138', uso: 'Idade mínima para admissão ao emprego.' },
-      { nome: 'IBGE/PNAD — trabalho infantil', uso: 'Dados de crianças em atividade laboral.' },
+      { nome: 'ECA, art. 60 a 69', uso: 'Proibição do trabalho a menores de 16 anos, salvo aprendiz.' },
+      { nome: 'OIT, Convenção 138', uso: 'Idade mínima para admissão ao emprego.' },
+      { nome: 'IBGE/PNAD, trabalho infantil', uso: 'Dados de crianças em atividade laboral.' },
       { nome: 'Josué de Castro, "Geografia da Fome"', uso: 'Pobreza como raiz da exploração.' }
     ]
   },
@@ -307,7 +307,7 @@ TEMAS.push(
     apoio: ['esgoto', 'tratamento', 'seca', 'semiárido', 'cisterna', 'bacia hidrografica',
       'desperdicio', 'perda na distribuicao', 'agronegocio', 'mudanca climatica', 'ons', 'ana'],
     repertorios: [
-      { nome: 'ANA — Agência Nacional de Águas', uso: 'Dados de disponibilidade e perdas na distribuição.' },
+      { nome: 'ANA, Agência Nacional de Águas', uso: 'Dados de disponibilidade e perdas na distribuição.' },
       { nome: 'Lei 14.026/2020 (Marco do Saneamento)', uso: 'Metas de universalização do saneamento.' },
       { nome: 'ODS 6 da ONU', uso: 'Água potável e saneamento como direito.' },
       { nome: 'Ailton Krenak', uso: 'Relação entre rios, território e modos de vida.' }
@@ -322,7 +322,7 @@ TEMAS.push(
       'formacao de professores', 'redes sociais', 'autolesao', 'escuta', 'preconceito'],
     repertorios: [
       { nome: 'Lei 13.935/2019', uso: 'Presença de psicólogos e assistentes sociais na rede pública.' },
-      { nome: 'OMS — saúde mental na adolescência', uso: 'Prevalência de transtornos entre jovens.' },
+      { nome: 'OMS, saúde mental na adolescência', uso: 'Prevalência de transtornos entre jovens.' },
       { nome: 'Foucault, "Vigiar e Punir"', uso: 'Crítica ao disciplinamento escolar (usar com cuidado).' },
       { nome: '"O Conto da Aia" / "Black Mirror"', uso: 'Metáforas sobre silenciamento (com mediação).' }
     ]
@@ -337,7 +337,7 @@ TEMAS.push(
     repertorios: [
       { nome: 'Antonio Candido, "O Direito à Literatura"', uso: 'Literatura como direito humano.' },
       { nome: 'Plano Nacional do Livro e Leitura (PNLL)', uso: 'Política pública de formação de leitores.' },
-      { nome: 'PISA/OCDE — leitura', uso: 'Desempenho brasileiro em leitura.' },
+      { nome: 'PISA/OCDE, leitura', uso: 'Desempenho brasileiro em leitura.' },
       { nome: 'Lei 12.244/2010', uso: 'Universalização de bibliotecas escolares.' }
     ]
   },
@@ -351,7 +351,7 @@ TEMAS.push(
     repertorios: [
       { nome: 'Milton Santos, "O Espaço Dividido"', uso: 'Desigualdade de acesso e território.' },
       { nome: 'Estatuto da Cidade (Lei 10.257/2001)', uso: 'Direito à cidade.' },
-      { nome: 'IBGE — tempo médio de deslocamento', uso: 'Dados de mobilidade casa-trabalho.' },
+      { nome: 'IBGE, tempo médio de deslocamento', uso: 'Dados de mobilidade casa-trabalho.' },
       { nome: 'Marco Legal do Transporte (2012)', uso: 'Dever municipal de garantir o serviço.' }
     ]
   },
@@ -363,7 +363,7 @@ TEMAS.push(
     apoio: ['fome', 'seguranca alimentar', 'logistica', 'hortifruti', 'compostagem',
       'supermercado', 'doacao', 'lei do alimento', 'consumo consciente', 'sustentabilidade'],
     repertorios: [
-      { nome: 'FAO/ONU — perdas e desperdício', uso: 'Percentuais de alimentos perdidos no mundo.' },
+      { nome: 'FAO/ONU, perdas e desperdício', uso: 'Percentuais de alimentos perdidos no mundo.' },
       { nome: 'Josué de Castro, "Geografia da Fome"', uso: 'Fome como fenômeno político.' },
       { nome: 'Lei 14.016/2020', uso: 'Doação de alimentos excedentes.' },
       { nome: 'ODS 12.3', uso: 'Meta de reduzir o desperdício pela metade até 2030.' }
@@ -377,7 +377,7 @@ TEMAS.push(
     apoio: ['xenofobia', 'diploma', 'revalidacao', 'lingua', 'precarizacao', 'acolhimento',
       'agencias da onu', 'acnur', 'carteira de trabalho', 'interiorizacao', 'vulnerabilidade'],
     repertorios: [
-      { nome: 'ACNUR/ONU — dados de refúgio', uso: 'Números de deslocamentos forçados.' },
+      { nome: 'ACNUR/ONU, dados de refúgio', uso: 'Números de deslocamentos forçados.' },
       { nome: 'Lei 9.474/1997 (Estatuto do Refugiado)', uso: 'Marco legal do refúgio no Brasil.' },
       { nome: 'Hannah Arendt, "Origens do Totalitarismo"', uso: 'Direito a ter direitos e apatridia.' },
       { nome: 'Conceição Evaristo / Zygmunt Bauman', uso: 'Exclusão e alteridade.' }

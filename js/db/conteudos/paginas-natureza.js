@@ -75,7 +75,7 @@ export const PAGINAS_NATUREZA = {
   'bio-evolucao': {
     resumo: [
       'Evolução no Enem é seleção natural aplicada: variabilidade preexistente + pressão do ambiente = mudança na frequência das características ao longo das gerações. A frase-chave é "a característica já existia; o ambiente só mudou a proporção".',
-      'Lamarck × Darwin é cobrado pela diferença de mecanismo: para Lamarck o uso e desuso gera a característica e ela é transmitida; para Darwin a variação é anterior e a seleção escolhe. Resistência a antibióticos é o exemplo mais usado — e o mais mal interpretado: o antibiótico não cria a bactéria resistente, ele seleciona a que já era.',
+      'Lamarck × Darwin é cobrado pela diferença de mecanismo: para Lamarck o uso e desuso gera a característica e ela é transmitida; para Darwin a variação é anterior e a seleção escolhe. Resistência a antibióticos é o exemplo mais usado, e o mais mal interpretado: o antibiótico não cria a bactéria resistente, ele seleciona a que já era.',
       'Especiação, isolamento geográfico e reprodutivo, homologia (mesma origem, funções diferentes) e analogia (mesma função, origens diferentes) completam o bloco. Evolução não é progresso nem "melhoria": é adaptação ao ambiente presente.',
     ],
     chave: [
@@ -91,7 +91,7 @@ export const PAGINAS_NATUREZA = {
   'bio-reino': {
     resumo: [
       'Classificação biológica no Enem aparece em questão de saúde pública e de Biodiversidade: qual grupo causa qual doença, qual tem parede celular, qual é procarionte. Bactéria é procarionte (sem núcleo); fungo é eucarionte com parede de quitina; protozoário é eucarionte unicelular.',
-      'Os cinco reinos: Monera (bactérias e cianobactérias), Protista (protozoários e algas), Fungi, Plantae e Animalia. Vírus ficam fora dos reinos, porque não têm célula — e é justamente isso que a questão cobra.',
+      'Os cinco reinos: Monera (bactérias e cianobactérias), Protista (protozoários e algas), Fungi, Plantae e Animalia. Vírus ficam fora dos reinos, porque não têm célula, e é justamente isso que a questão cobra.',
       'Doenças tropicais brasileiras são presença certa: dengue, zika, chikungunya e febre amarela (vírus, Aedes aegypti), malária (protozoário, Anopheles), doença de Chagas (protozoário, barbeiro), esquistossomose (helminto, caramujo), leptospirose (bactéria, urina de rato).',
     ],
     chave: [
@@ -107,7 +107,7 @@ export const PAGINAS_NATUREZA = {
   'fis-eletrodinamica': {
     resumo: [
       'Eletrodinâmica é o assunto de Física mais cobrado no Enem, quase sempre ligado à conta de luz. A cadeia é sempre a mesma: lei de Ohm (U = Ri) para achar corrente ou resistência, potência (P = Ui = U²/R = Ri²) para saber o consumo, e energia (E = P·Δt) para o custo.',
-      'Em circuito em série, a corrente é a mesma e as tensões se somam; em paralelo, a tensão é a mesma e as correntes se somam. A resistência equivalente cai quando se acrescenta resistor em paralelo — é o que explica por que a casa toda apaga quando liga o chuveiro.',
+      'Em circuito em série, a corrente é a mesma e as tensões se somam; em paralelo, a tensão é a mesma e as correntes se somam. A resistência equivalente cai quando se acrescenta resistor em paralelo, é o que explica por que a casa toda apaga quando liga o chuveiro.',
       'Consumo em kWh é potência em kW multiplicada pelo tempo em horas. Se a tarifa é R$/kWh, o custo é consumo × tarifa. Questão de "economia ao trocar a lâmpada" se resolve comparando energia mensal das duas.',
     ],
     chave: [
@@ -128,8 +128,8 @@ export const PAGINAS_NATUREZA = {
   'fis-mecanica': {
     resumo: [
       'Mecânica é cinemática mais leis de Newton, e o Enem cobra em contexto de trânsito: velocidade média, distância de frenagem, tempo de reação. A distinção entre velocidade média (Δs/Δt) e instantânea resolve várias questões que parecem de cinemática complicada.',
-      'No movimento uniformemente variado, use v = v₀ + at, s = s₀ + v₀t + at²/2 e Torricelli (v² = v₀² + 2aΔs) — a última dispensa o tempo e por isso é a mais útil em frenagem. Queda livre é o caso particular com a = g ≈ 10 m/s².',
-      'Leis de Newton: sem força resultante, o corpo mantém o movimento (1ª); F = ma (2ª); toda ação tem reação de mesmo módulo e sentido oposto, em corpos diferentes (3ª). Em questão de elevador, a sensação de peso é a normal, não o peso — e é isso que a prova cobra.',
+      'No movimento uniformemente variado, use v = v₀ + at, s = s₀ + v₀t + at²/2 e Torricelli (v² = v₀² + 2aΔs), a última dispensa o tempo e por isso é a mais útil em frenagem. Queda livre é o caso particular com a = g ≈ 10 m/s².',
+      'Leis de Newton: sem força resultante, o corpo mantém o movimento (1ª); F = ma (2ª); toda ação tem reação de mesmo módulo e sentido oposto, em corpos diferentes (3ª). Em questão de elevador, a sensação de peso é a normal, não o peso, e é isso que a prova cobra.',
     ],
     chave: [
       'Frenagem: distância de parada com reação do motorista',
@@ -149,7 +149,7 @@ export const PAGINAS_NATUREZA = {
     resumo: [
       'Trabalho é força vezes deslocamento na direção da força (τ = F·d·cosθ) e potência é trabalho sobre tempo (P = τ/Δt). O Enem usa muito potência em contexto de máquina, elevador e usina, e a unidade que aparece é o watt e o kW.',
       'Energia mecânica é cinética (mv²/2) mais potencial (mgh gravitacional, kx²/2 elástica). Sem atrito, a energia se conserva: o que se perde de altura vira velocidade na descida. Com atrito, parte vira calor e a diferença é o trabalho da força de atrito.',
-      'Rendimento é energia útil sobre energia total, sempre menor que 1. Questão de "quanto se perde" é (1 − η) da energia de entrada — e é assim que a prova conecta física a consumo e a impacto ambiental.',
+      'Rendimento é energia útil sobre energia total, sempre menor que 1. Questão de "quanto se perde" é (1 − η) da energia de entrada, e é assim que a prova conecta física a consumo e a impacto ambiental.',
     ],
     chave: [
       'Conservação de energia em rampa, montanha-russa e queda',
@@ -170,7 +170,7 @@ export const PAGINAS_NATUREZA = {
   'fis-termologia': {
     resumo: [
       'Termologia no Enem é calorimetria: quantidade de calor sensível (Q = mcΔT) para variar temperatura e calor latente (Q = mL) para mudar de estado. Numa questão de gelo virando água, os dois aparecem em sequência e a soma é o total.',
-      'Equilíbrio térmico: em sistema isolado, o calor cedido é igual ao recebido (ΣQ = 0). É o cálculo de "mistura água quente com água fria" e de calorímetro. Capacidade térmica (C = mc) indica quanto calor o corpo precisa para variar 1 °C — a água tem valor alto, e é isso que estabiliza o clima.',
+      'Equilíbrio térmico: em sistema isolado, o calor cedido é igual ao recebido (ΣQ = 0). É o cálculo de "mistura água quente com água fria" e de calorímetro. Capacidade térmica (C = mc) indica quanto calor o corpo precisa para variar 1 °C, a água tem valor alto, e é isso que estabiliza o clima.',
       'Dilatação térmica aparece em trilho de trem, ponte e termômetro: ΔL = L₀·α·ΔT. E a distinção condução/convecção/radiação resolve questão de garrafa térmica, estufa e efeito estufa.',
     ],
     chave: [
@@ -211,7 +211,7 @@ export const PAGINAS_NATUREZA = {
   'fis-optica': {
     resumo: [
       'Óptica no Enem é óptica geométrica aplicada: espelhos, lentes, olho humano e instrumentos. A lei da reflexão (ângulo de incidência = de reflexão) resolve espelho plano; equação de Gauss (1/f = 1/p + 1/p′) resolve imagem em espelho esférico e lente.',
-      'Espelho côncavo converge e forma imagem real e invertida quando o objeto está além do foco; convexo diverge e forma imagem virtual, direita e menor — é o espelho de segurança e do retrovisor. Lente convergente funciona como a do olho; divergente, como a usada para miopia.',
+      'Espelho côncavo converge e forma imagem real e invertida quando o objeto está além do foco; convexo diverge e forma imagem virtual, direita e menor, é o espelho de segurança e do retrovisor. Lente convergente funciona como a do olho; divergente, como a usada para miopia.',
       'Miopia corrige-se com lente divergente (a imagem se formava antes da retina); hipermetropia, com convergente. E os defeitos da visão são presença constante em questão sobre saúde ocular e uso de telas.',
     ],
     chave: [
@@ -232,7 +232,7 @@ export const PAGINAS_NATUREZA = {
     resumo: [
       'Ligações químicas explicam propriedades: iônica (metal + ametal) forma sólido cristalino de ponto de fusão alto, conduz corrente quando dissolvido ou fundido; covalente (ametal + ametal) forma molécula; metálica explica condutividade e maleabilidade.',
       'Geometria molecular e polaridade decidem solubilidade: "semelhante dissolve semelhante". Água é polar e dissolve iônicos e polares; gasolina é apolar e dissolve apolares. É a explicação de por que óleo e água não se misturam e de por que detergente funciona (anfifílico).',
-      'Forças intermoleculares — dipolo-dipolo, ligações de hidrogênio e forças de London — definem ponto de ebulição. A ligação de hidrogênio é a mais forte e é por isso que a água ferve a 100 °C enquanto moléculas parecidas fervem muito abaixo.',
+      'Forças intermoleculares (dipolo-dipolo, ligações de hidrogênio e forças de London) definem ponto de ebulição. A ligação de hidrogênio é a mais forte e é por isso que a água ferve a 100 °C enquanto moléculas parecidas fervem muito abaixo.',
     ],
     chave: [
       'Iônica × covalente × metálica e as propriedades de cada uma',
@@ -250,7 +250,7 @@ export const PAGINAS_NATUREZA = {
     resumo: [
       'Estequiometria é a conta proporcional da química: balancear a equação, transformar massa em mol (n = m/M), usar a proporção dos coeficientes e voltar para a unidade pedida. O mol é a ponte entre o mundo da balança e o mundo das moléculas.',
       'Reagente limitante é o que acaba primeiro e define o rendimento máximo. Calcule quantos mols de cada reagente você tem, divida pelo coeficiente e compare: o menor quociente é o limitante. O excesso sobra e não reage.',
-      'Rendimento e pureza vêm em sequência: o rendimento é a massa obtida sobre a teórica; a pureza é a massa útil sobre a massa da amostra. Questão do Enem costuma encadear os dois — e é aí que a conta dobra.',
+      'Rendimento e pureza vêm em sequência: o rendimento é a massa obtida sobre a teórica; a pureza é a massa útil sobre a massa da amostra. Questão do Enem costuma encadear os dois, e é aí que a conta dobra.',
     ],
     chave: [
       'Balanceamento e proporção em mol',
@@ -269,9 +269,9 @@ export const PAGINAS_NATUREZA = {
 
   'qui-solucoes': {
     resumo: [
-      'Soluções: concentração comum (g/L), molaridade (mol/L), título e porcentagem em massa, e ppm. O Enem cobra sobretudo conversão entre elas e diluição — misturar com solvente não muda a quantidade de soluto, só o volume.',
+      'Soluções: concentração comum (g/L), molaridade (mol/L), título e porcentagem em massa, e ppm. O Enem cobra sobretudo conversão entre elas e diluição, misturar com solvente não muda a quantidade de soluto, só o volume.',
       'Diluição segue C₁V₁ = C₂V₂. Mistura de soluções do mesmo soluto soma os "mols" e soma os volumes. É o cálculo de soro, de suco em pó e de água sanitária.',
-      'Propriedades coligativas — efeito do soluto sobre ponto de ebulição, congelamento e pressão de vapor — aparecem em contexto de sal na estrada no inverno, aditivo no radiador e pressão osmótica em célula. Quanto mais partículas dissolvidas, maior o efeito.',
+      'Propriedades coligativas (efeito do soluto sobre ponto de ebulição, congelamento e pressão de vapor) aparecem em contexto de sal na estrada no inverno, aditivo no radiador e pressão osmótica em célula. Quanto mais partículas dissolvidas, maior o efeito.',
     ],
     chave: [
       'Diluição (C₁V₁ = C₂V₂) e mistura de soluções',
@@ -290,7 +290,7 @@ export const PAGINAS_NATUREZA = {
   'qui-termoquimica': {
     resumo: [
       'Termoquímica estuda energia nas reações. Entalpia (ΔH) negativa é exotérmica (libera calor, como combustão); positiva é endotérmica (absorve, como fotossíntese). A variação é sempre produtos menos reagentes.',
-      'A lei de Hess permite somar reações intermediárias para obter o ΔH de uma reação que não se mede diretamente — invertendo a equação, o sinal do ΔH inverte; multiplicando, o ΔH multiplica.',
+      'A lei de Hess permite somar reações intermediárias para obter o ΔH de uma reação que não se mede diretamente, invertendo a equação, o sinal do ΔH inverte; multiplicando, o ΔH multiplica.',
       'O Enem usa termoquímica para discutir matriz energética: poder calorífico do etanol × gasolina, eficiência de combustíveis e o balanço de CO₂. Entender que combustão sempre libera energia e que a quantidade depende do combustível é o que a questão pede.',
     ],
     chave: [
@@ -309,7 +309,7 @@ export const PAGINAS_NATUREZA = {
 
   'qui-eletroquimica': {
     resumo: [
-      'Eletroquímica divide-se em pilha (reação espontânea gera corrente) e eletrólise (corrente força reação não espontânea). Na pilha, o ânodo oxida (perde elétrons) e é o polo negativo; o cátodo reduz e é o positivo — o contrário do que acontece na eletrólise.',
+      'Eletroquímica divide-se em pilha (reação espontânea gera corrente) e eletrólise (corrente força reação não espontânea). Na pilha, o ânodo oxida (perde elétrons) e é o polo negativo; o cátodo reduz e é o positivo, o contrário do que acontece na eletrólise.',
       'A ddp da pilha é E_maior − E_menor, usando a tabela de potenciais padrão de redução. Quanto maior o potencial, mais o metal "quer" reduzir; por isso o zinco cede elétrons ao cobre na pilha de Daniell.',
       'No cotidiano: bateria de celular, galvanização (cromagem, zinco em portão), corrosão de metais e a ferrugem acelerada por sal e umidade. Eletrólise também explica produção de alumínio e cloro, com consumo alto de energia.',
     ],
@@ -330,7 +330,7 @@ export const PAGINAS_NATUREZA = {
     resumo: [
       'Química orgânica no Enem é identificação de função e leitura de estrutura, não síntese. Funções: hidrocarboneto, álcool (OH), éter, aldeído (CHO na ponta), cetona (C=O no meio), ácido carboxílico (COOH), éster, amina, amida.',
       'O contexto é combustível, plástico, medicamento, agrotóxico e alimento: etanol (álcool), biodiesel (éster), polímeros (PE, PET, PVC) e os grupos funcionais de remédios. Reconhecer a função é o que permite responder sobre solubilidade e reatividade.',
-      'Isomeria aparece como "mesma fórmula molecular, estruturas diferentes": cadeia, posição e função. E o Enem gosta de polímeros: monômero, polimerização e o problema ambiental do plástico — reciclagem, biodegradabilidade e microplástico.',
+      'Isomeria aparece como "mesma fórmula molecular, estruturas diferentes": cadeia, posição e função. E o Enem gosta de polímeros: monômero, polimerização e o problema ambiental do plástico, reciclagem, biodegradabilidade e microplástico.',
     ],
     chave: [
       'Reconhecer funções orgânicas em estrutura',

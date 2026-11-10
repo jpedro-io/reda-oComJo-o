@@ -7,17 +7,17 @@ export const MOTIVADORES_TREINO = {
   'treino-1': [
     {
       titulo: 'Texto I',
-      fonte: 'Lei 14.759/2023 — Programa Pé-de-Meia (adaptado)',
+      fonte: 'Lei 14.759/2023, Programa Pé-de-Meia (adaptado)',
       texto: 'Institui incentivo financeiro-educacional destinado a promover a permanência e a conclusão escolar de estudantes matriculados no ensino médio público. O benefício é condicionado à matrícula, à frequência e à participação em avaliações.'
     },
     {
       titulo: 'Texto II',
-      fonte: 'Censo Escolar / Inep — taxa de rendimento (adaptado)',
+      fonte: 'Censo Escolar / Inep, taxa de rendimento (adaptado)',
       texto: 'A maior parte da evasão no ensino médio acontece no primeiro ano, e é mais frequente entre estudantes que conciliam estudo e trabalho, entre meninas com gravidez precoce e em famílias com renda instável.'
     },
     {
       titulo: 'Texto III',
-      fonte: 'Bernard Charlot — relação com o saber (adaptado)',
+      fonte: 'Bernard Charlot, relação com o saber (adaptado)',
       texto: 'O jovem não abandona a escola apenas por necessidade econômica: abandona quando deixa de encontrar sentido no que aprende. Permanecer exige que o saber escolar dialogue com a vida que ele já vive.'
     }
   ],
@@ -25,12 +25,12 @@ export const MOTIVADORES_TREINO = {
   'treino-2': [
     {
       titulo: 'Texto I',
-      fonte: 'Projeto de Lei 2.630/2020 — debate público (adaptado)',
+      fonte: 'Projeto de Lei 2.630/2020, debate público (adaptado)',
       texto: 'A proposta de Lei Brasileira de Liberdade, Responsabilidade e Transparência na Internet prevê deveres de transparência para plataformas, avaliação de risco sistêmico e mecanismos de resposta a conteúdos ilícitos, com regras específicas para contas automatizadas.'
     },
     {
       titulo: 'Texto II',
-      fonte: 'Unesco — letramento midiático e informacional (adaptado)',
+      fonte: 'Unesco, letramento midiático e informacional (adaptado)',
       texto: 'A desinformação circula mais rápido quando apela à emoção e confirma crenças prévias. Por isso, educar para a leitura crítica das mídias é tão importante quanto moderar conteúdo: sem repertório, a checagem chega tarde.'
     },
     {
@@ -66,7 +66,7 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto II',
-      fonte: 'Agência Nacional de Águas — conjuntura hídrica (adaptado)',
+      fonte: 'Agência Nacional de Águas, conjuntura hídrica (adaptado)',
       texto: 'A disponibilidade de água no Brasil é desigual: a região que concentra a maior parte da população dispõe de parcela pequena dos recursos hídricos. Secas prolongadas e eventos extremos ampliam a distância entre oferta e demanda.'
     },
     {
@@ -79,17 +79,17 @@ export const MOTIVADORES_TREINO = {
   'treino-5': [
     {
       titulo: 'Texto I',
-      fonte: 'Lei 13.819/2019 — prevenção da automutilação e do suicídio (adaptado)',
+      fonte: 'Lei 13.819/2019, prevenção da automutilação e do suicídio (adaptado)',
       texto: 'Institui a Política Nacional de Prevenção da Automutilação e do Suicídio, com notificação compulsória de casos e articulação entre saúde e educação para identificar sinais de risco no ambiente escolar.'
     },
     {
       titulo: 'Texto II',
-      fonte: 'Organização Mundial da Saúde — saúde mental de adolescentes (adaptado)',
+      fonte: 'Organização Mundial da Saúde, saúde mental de adolescentes (adaptado)',
       texto: 'Metade dos transtornos mentais começa antes dos 14 anos, mas a maior parte não é identificada nessa fase. A escola é, para muitos jovens, o único lugar em que o sofrimento poderia ser percebido por um adulto.'
     },
     {
       titulo: 'Texto III',
-      fonte: 'Psicologia escolar — acolhimento e escuta (adaptado)',
+      fonte: 'Psicologia escolar, acolhimento e escuta (adaptado)',
       texto: 'Acolher não é aconselhar. O acolhimento consiste em reconhecer o sofrimento e encaminhar com cuidado, sem transformar o professor em terapeuta nem o estudante em caso disciplinar.'
     }
   ],
@@ -107,7 +107,7 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto III',
-      fonte: 'Antonio Candido — direito à literatura (adaptado)',
+      fonte: 'Antonio Candido, direito à literatura (adaptado)',
       texto: 'A literatura é um direito: atende à necessidade humana de fabulação, de compreender o outro e de nomear o que se sente. Suprimir esse acesso é reduzir a capacidade de perceber a realidade.'
     }
   ],
@@ -115,7 +115,7 @@ export const MOTIVADORES_TREINO = {
   'treino-7': [
     {
       titulo: 'Texto I',
-      fonte: 'Lei 12.587/2012 — Política Nacional de Mobilidade Urbana (adaptado)',
+      fonte: 'Lei 12.587/2012, Política Nacional de Mobilidade Urbana (adaptado)',
       texto: 'A mobilidade deve garantir o acesso amplo e democrático ao espaço urbano, priorizando os modos de transporte coletivo e não motorizados, com segurança e sustentabilidade. O transporte passa a ser entendido como direito ligado à cidade.'
     },
     {
@@ -125,7 +125,7 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto III',
-      fonte: 'Milton Santos — o espaço do cidadão (adaptado)',
+      fonte: 'Milton Santos, o espaço do cidadão (adaptado)',
       texto: 'Sem mobilidade, a cidadania é incompleta: o cidadão existe no papel, mas não chega ao hospital, à escola, ao emprego. A cidade reproduz desigualdades na própria malha que deveria ligá-la.'
     }
   ],
@@ -138,12 +138,12 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto II',
-      fonte: 'Empresa Brasileira de Pesquisa Agropecuária — logística e transporte (adaptado)',
+      fonte: 'Empresa Brasileira de Pesquisa Agropecuária, logística e transporte (adaptado)',
       texto: 'Boa parte dos alimentos se perde entre a colheita e o consumo por falhas de armazenagem, transporte e refrigeração. Em paralelo, no fim da cadeia, supermercados e consumidores descartam produtos próprios para consumo.'
     },
     {
       titulo: 'Texto III',
-      fonte: 'Sociologia do consumo — padrão de aparência dos alimentos (adaptado)',
+      fonte: 'Sociologia do consumo, padrão de aparência dos alimentos (adaptado)',
       texto: 'Frutas e legumes com pequenas imperfeições são rejeitados pela aparência, ainda que nutricionalmente idênticos. O desperdício também é uma decisão estética, ensinada pelo comércio e aceita pelo consumidor.'
     }
   ],
@@ -151,17 +151,17 @@ export const MOTIVADORES_TREINO = {
   'treino-9': [
     {
       titulo: 'Texto I',
-      fonte: 'Lei 9.474/1997 — Estatuto dos Refugiados (adaptado)',
+      fonte: 'Lei 9.474/1997, Estatuto dos Refugiados (adaptado)',
       texto: 'Reconhece como refugiado a pessoa que, em razão de fundados temores de perseguição por motivos de raça, religião, nacionalidade, grupo social ou opiniões políticas, encontre-se fora de seu país de nacionalidade e não possa a ele retornar.'
     },
     {
       titulo: 'Texto II',
-      fonte: 'Lei 13.445/2017 — Lei de Migração (adaptado)',
+      fonte: 'Lei 13.445/2017, Lei de Migração (adaptado)',
       texto: 'A política migratória brasileira rege-se pelos princípios de universalidade, sem discriminação por motivo de nacionalidade, e do repúdio à xenofobia, ao racismo e a qualquer forma de intolerância.'
     },
     {
       titulo: 'Texto III',
-      fonte: 'Agência da ONU para Refugiados — interiorização e trabalho (adaptado)',
+      fonte: 'Agência da ONU para Refugiados, interiorização e trabalho (adaptado)',
       texto: 'O reconhecimento documental é o primeiro passo; a autonomia depende do acesso ao emprego formal, à validação de diplomas e ao aprendizado do idioma. A interiorização busca distribuir oportunidades além de cidades de fronteira.'
     }
   ],
@@ -169,17 +169,17 @@ export const MOTIVADORES_TREINO = {
   'treino-10': [
     {
       titulo: 'Texto I',
-      fonte: 'Lei Geral de Proteção de Dados — Lei 13.709/2018 (adaptado)',
+      fonte: 'Lei Geral de Proteção de Dados, Lei 13.709/2018 (adaptado)',
       texto: 'Dados genéticos são classificados como dados pessoais sensíveis. O tratamento desses dados deve ter finalidade específica, ser informado ao titular e não pode ser usado para discriminação em relação de trabalho, seleção de planos de saúde ou seguros.'
     },
     {
       titulo: 'Texto II',
-      fonte: 'Declaração Universal sobre o Genoma Humano e os Direitos Humanos — Unesco, 1997 (adaptado)',
+      fonte: 'Declaração Universal sobre o Genoma Humano e os Direitos Humanos, Unesco, 1997 (adaptado)',
       texto: 'O genoma humano é patrimônio da humanidade. Ninguém pode ser reduzido às suas características genéticas: a dignidade é própria da pessoa, não de seu código. Pesquisas devem buscar consentimento livre, prévio e esclarecido.'
     },
     {
       titulo: 'Texto III',
-      fonte: 'Bioética contemporânea — determinismo genético (adaptado)',
+      fonte: 'Bioética contemporânea, determinismo genético (adaptado)',
       texto: 'A maior parte dos traços humanos resulta da interação entre genes e ambiente. Ler o DNA como destino é um erro científico que, na prática, se converte em preconceito.'
     }
   ],
@@ -187,7 +187,7 @@ export const MOTIVADORES_TREINO = {
   'treino-11': [
     {
       titulo: 'Texto I',
-      fonte: 'Estratégia Nacional de Educação Financeira — Decreto 7.397/2010 (adaptado)',
+      fonte: 'Estratégia Nacional de Educação Financeira, Decreto 7.397/2010 (adaptado)',
       texto: 'Institui a Estratégia Nacional de Educação Financeira, de caráter permanente, com o objetivo de promover a educação financeira e previdenciária e contribuir para o fortalecimento da cidadania e a tomada de decisões conscientes dos consumidores.'
     },
     {
@@ -197,7 +197,7 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto III',
-      fonte: 'Efeito de ancoragem — psicologia econômica (adaptado)',
+      fonte: 'Efeito de ancoragem, psicologia econômica (adaptado)',
       texto: 'Diante de um preço parcelado, tendemos a comparar com o valor da parcela, e não com o total pago. Compreender esse atalho mental é parte da educação financeira: o número da parcela esconde o custo do tempo.'
     }
   ],
@@ -210,7 +210,7 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto II',
-      fonte: 'John Stuart Mill — “Sobre a liberdade” (adaptado)',
+      fonte: 'John Stuart Mill, “Sobre a liberdade” (adaptado)',
       texto: 'Nenhuma opinião deveria ser silenciada, salvo quando sua expressão cause dano direto a outra pessoa. O limite da liberdade não é a opinião contrária, mas a lesão concreta.'
     },
     {
@@ -228,7 +228,7 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto II',
-      fonte: 'Organização Internacional do Trabalho — economia de plataforma (adaptado)',
+      fonte: 'Organização Internacional do Trabalho, economia de plataforma (adaptado)',
       texto: 'Chama-se trabalhador de plataforma quem presta serviços intermediados por aplicativo, sob regras definidas por algoritmo. A OIT aponta que a autonomia declarada convive com formas novas de controle: a nota, a geolocalização e o bloqueio automático.'
     },
     {
@@ -241,17 +241,17 @@ export const MOTIVADORES_TREINO = {
   'treino-14': [
     {
       titulo: 'Texto I',
-      fonte: 'Lei Brasileira de Inclusão — Lei 13.146/2015 (adaptado)',
+      fonte: 'Lei Brasileira de Inclusão, Lei 13.146/2015 (adaptado)',
       texto: 'Toda pessoa com deficiência tem direito à igualdade de oportunidades e não sofrerá nenhuma restrição ou discriminação. A acessibilidade é direito que garante o exercício dos demais direitos, em igualdade de condições com as outras pessoas.'
     },
     {
       titulo: 'Texto II',
       fonte: 'Convenção da ONU sobre os Direitos das Pessoas com Deficiência (adaptado)',
-      texto: 'A deficiência não está na pessoa, mas na interação entre suas condições e as barreiras impostos pela sociedade — atitudinais, arquitetônicas e comunicacionais. Retirar barreiras é dever do Estado e da comunidade.'
+      texto: 'A deficiência não está na pessoa, mas na interação entre suas condições e as barreiras impostos pela sociedade, atitudinais, arquitetônicas e comunicacionais. Retirar barreiras é dever do Estado e da comunidade.'
     },
     {
       titulo: 'Texto III',
-      fonte: 'Capacitismo — preconceito estrutural (adaptado)',
+      fonte: 'Capacitismo, preconceito estrutural (adaptado)',
       texto: 'O capacitismo opera pela expectativa de que a pessoa com deficiência deva ser corrigida, escondida ou merecer piedade. Reconhecer esse preconceito é o primeiro passo para políticas que não se resumam a adaptar prédios.'
     }
   ],
@@ -264,7 +264,7 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto II',
-      fonte: 'Estatuto da Cidade — Lei 10.257/2001 (adaptado)',
+      fonte: 'Estatuto da Cidade, Lei 10.257/2001 (adaptado)',
       texto: 'O Estatuto cria instrumentos como o IPTU progressivo no tempo e a desapropriação com pagamento em títulos para imóveis ociosos em áreas dotadas de infraestrutura, prevenindo a retenção especulativa.'
     },
     {
@@ -282,21 +282,21 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto II',
-      fonte: 'Empresa de Pesquisa Energética — matriz elétrica (adaptado)',
+      fonte: 'Empresa de Pesquisa Energética, matriz elétrica (adaptado)',
       texto: 'A maior parte da eletricidade brasileira vem de fontes renováveis, com destaque para a hidrelétrica, seguida por eólica e solar. A expansão recente inclui termelétricas acionadas em períodos de escassez hídrica.'
     },
     {
       titulo: 'Texto III',
       fonte: 'Conceito de transição justa (adaptado)',
-      texto: 'A transição energética justa parte do princípio de que a mudança da matriz não pode ser paga pelos trabalhadores e comunidades das atividades substituídas — mas precisa de formação, emprego alternativo e participação nas decisões.'
+      texto: 'A transição energética justa parte do princípio de que a mudança da matriz não pode ser paga pelos trabalhadores e comunidades das atividades substituídas, mas precisa de formação, emprego alternativo e participação nas decisões.'
     }
   ],
 
   'treino-17': [
     {
       titulo: 'Texto I',
-      fonte: 'Política Nacional de Medicamentos — Portaria 3.916/1998 (adaptado)',
-      texto: 'Garantir a segurança e a eficácia dos medicamentos e promover o uso racional — prescrição adequada, dispensação orientada e adesão ao tratamento — são diretrizes da política nacional.'
+      fonte: 'Política Nacional de Medicamentos, Portaria 3.916/1998 (adaptado)',
+      texto: 'Garantir a segurança e a eficácia dos medicamentos e promover o uso racional (prescrição adequada, dispensação orientada e adesão ao tratamento) são diretrizes da política nacional.'
     },
     {
       titulo: 'Texto II',
@@ -305,7 +305,7 @@ export const MOTIVADORES_TREINO = {
     },
     {
       titulo: 'Texto III',
-      fonte: 'Ivan Illich — “A expropriação da saúde” (adaptado)',
+      fonte: 'Ivan Illich, “A expropriação da saúde” (adaptado)',
       texto: 'A medicalização transforma sofrimentos cotidianos em diagnósticos e transfere ao medicamento a tarefa de resolver o que é social. Quanto mais a vida é patologizada, mais o remédio parece a única resposta disponível.'
     }
   ],
@@ -313,12 +313,12 @@ export const MOTIVADORES_TREINO = {
   'treino-18': [
     {
       titulo: 'Texto I',
-      fonte: 'Conselho Nacional de Desenvolvimento Científico e Tecnológico — bolsas por sexo (adaptado)',
+      fonte: 'Conselho Nacional de Desenvolvimento Científico e Tecnológico, bolsas por sexo (adaptado)',
       texto: 'A participação feminina diminui conforme avança a carreira científica: são maioria entre estudantes e minoria nos níveis mais altos de bolsa de produtividade e nas academias.'
     },
     {
       titulo: 'Texto II',
-      fonte: 'Organização Internacional do Trabalho — mulheres em tecnologia (adaptado)',
+      fonte: 'Organização Internacional do Trabalho, mulheres em tecnologia (adaptado)',
       texto: 'Cursos de computação e engenharia concentram a menor proporção de mulheres entre as áreas da tecnologia. A escolha não é desinteresse: pesquisas apontam que estereótipos de gênero atuam desde o ensino fundamental.'
     },
     {

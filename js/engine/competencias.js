@@ -134,7 +134,7 @@ export function avaliarC1(ctx) {
       const amostra = lista.slice(0, 2)
         .map(c => `“${c.trechos[0]}” → ${c.sugestao}`).join(' · ');
       melhorias.push(`${tipo.charAt(0).toUpperCase()}${tipo.slice(1)}`
-        + ` — ${total} ${total === 1 ? 'ocorrência' : 'ocorrências'}: ${amostra}`);
+        + `, ${total} ${total === 1 ? 'ocorrência' : 'ocorrências'}: ${amostra}`);
     }
   }
 
@@ -151,7 +151,7 @@ export function avaliarC1(ctx) {
   sinais.pontuacaoInadequada = pontuacaoRuim;
   if (pontuacaoRuim > 0) {
     desconto += Math.min(20, pontuacaoRuim * 6);
-    melhorias.push('Excesso de sinais de exclamação/interrogação ou pontuação repetida — prefira a pontuação própria do texto argumentativo.');
+    melhorias.push('Excesso de sinais de exclamação/interrogação ou pontuação repetida, prefira a pontuação própria do texto argumentativo.');
   }
 
   /* 5. repetição de palavras — mesma régua da Competência IV (estilo.js), para
@@ -176,7 +176,7 @@ export function avaliarC1(ctx) {
   sinais.frasesLongas = longas;
   if (longas > 0) {
     desconto += Math.min(15, longas * 5);
-    melhorias.push(`${longas} período(s) com mais de 45 palavras — risque a vírgula e divida em duas orações para ganhar clareza.`);
+    melhorias.push(`${longas} período(s) com mais de 45 palavras, risque a vírgula e divida em duas orações para ganhar clareza.`);
   }
 
   // 7. diversidade lexical (bônus qualitativo)
@@ -211,7 +211,7 @@ export function avaliarC1(ctx) {
   if (semPausa > 0) {
     descontoPontuacao += Math.min(54, semPausa * 18);
     melhorias.push(semPausa === 1
-      ? 'Há um período longo (32+ palavras) sem nenhuma pausa interna. Coloque vírgula, dois-pontos ou ponto e vírgula — ou divida em dois períodos.'
+      ? 'Há um período longo (32+ palavras) sem nenhuma pausa interna. Coloque vírgula, dois-pontos ou ponto e vírgula, ou divida em dois períodos.'
       : `${semPausa} períodos longos (32+ palavras) sem nenhuma pausa interna. A leitura trava: separe as orações com pontuação.`);
   }
   if (pt.semPontoFinal) {
@@ -324,7 +324,7 @@ export function avaliarC1(ctx) {
   if (totalOcorr === 0 && construcoes.length === 0 && informalidades.length === 0) {
     fortes.push(pontuacaoLimpa
       ? 'Nenhum desvio ortográfico, de regência, de registro ou de pontuação identificado nesta amostra.'
-      : 'Grafia e regência sem desvios — o que pesa aqui é a pontuação e a estrutura do período.');
+      : 'Grafia e regência sem desvios, o que pesa aqui é a pontuação e a estrutura do período.');
   }
 
   if (nota === 180 && totalDesvios === 0) {
@@ -507,7 +507,7 @@ export function avaliarC2(ctx) {
     melhorias.push('Há menção a repertório (' + exibiveis.slice(0, 3).join(', ') +
       '), mas sem desenvolvimento: explique o que ele demonstra. Menção solta não pontua como repertório produtivo.');
   } else if (todosRepertorios.length === 0) {
-    melhorias.push('Não localizei repertório sociocultural legitimado (dado, lei, autor, obra). Use 2 referências explicadas — não basta citar, é preciso relacionar ao tema.');
+    melhorias.push('Não localizei repertório sociocultural legitimado (dado, lei, autor, obra). Use 2 referências explicadas, não basta citar, é preciso relacionar ao tema.');
   } else {
     melhorias.push('O repertório citado é genérico (“segundo estudos”, “pesquisas apontam”). Nomeie a fonte: lei, instituição, autor, obra.');
   }
@@ -531,7 +531,7 @@ export function avaliarC2(ctx) {
     melhorias.unshift('Risco de tangenciamento: o recorte específico do tema aparece pouco. Verifique se você discutiu exatamente o que a proposta pede, e não um assunto vizinho.');
   } else if (relevancia < 0.45) {
     sinais.riscoTema = 'parcial';
-    melhorias.push('A aderência ao recorte ainda é parcial — cite o núcleo do tema (as palavras da proposta) ao menos uma vez com clareza.');
+    melhorias.push('A aderência ao recorte ainda é parcial, cite o núcleo do tema (as palavras da proposta) ao menos uma vez com clareza.');
   } else {
     sinais.riscoTema = 'ok';
   }
@@ -613,7 +613,7 @@ export function avaliarC3(ctx) {
   const tese = teseMarcada || (teseLonga && /[.;]/.test(introOriginal));
   sinais.tese = tese;
   if (tese) fortes.push('Há um posicionamento identificável já na introdução.');
-  else melhorias.push('A tese não ficou evidente na introdução. Feche o primeiro parágrafo com uma afirmação clara sobre o problema — é ela que orienta todo o texto.');
+  else melhorias.push('A tese não ficou evidente na introdução. Feche o primeiro parágrafo com uma afirmação clara sobre o problema, é ela que orienta todo o texto.');
 
   // argumentos desenvolvidos no corpo
   let desenvolvidos = 0;
@@ -822,7 +822,7 @@ export function avaliarC4(ctx) {
 
   if (nota === 160) {
     if (sequenciaMecanica) {
-      melhorias.push('Os parágrafos abrem sempre com conectivo da mesma família (enumeração: “em primeiro lugar”, “além disso”, “por fim”). Isso é progressão aparente: varie a RELAÇÃO entre os parágrafos — oposição, causa, consequência, conclusão.');
+      melhorias.push('Os parágrafos abrem sempre com conectivo da mesma família (enumeração: “em primeiro lugar”, “além disso”, “por fim”). Isso é progressão aparente: varie a RELAÇÃO entre os parágrafos, oposição, causa, consequência, conclusão.');
     } else if (!repeticaoForte && semArticulacao === 0 && classes.length >= 4 &&
                transicoes >= Math.min(3, ctx.paras.length - 1)) {
       // conectivos diversificados, dentro dos parágrafos e ligando todos eles
@@ -864,7 +864,7 @@ export function avaliarC4(ctx) {
   }
   if (repeticaoLeve.length >= 2 && repeticaoMedia.length === 0 && repeticaoGrave.length === 0) {
     tetoEstilo = Math.min(tetoEstilo, 160);
-    melhorias.push('Palavras de recheio repetidas: ' + repeticaoLeve.slice(0, 3).map(a => `“${a.termo}” (${a.n}×)`).join(', ') + '. São termos que não dizem nada de novo — substitua por informação concreta.');
+    melhorias.push('Palavras de recheio repetidas: ' + repeticaoLeve.slice(0, 3).map(a => `“${a.termo}” (${a.n}×)`).join(', ') + '. São termos que não dizem nada de novo, substitua por informação concreta.');
   }
   if (noMesmoParagrafo.length && repeticaoMedia.length === 0 && repeticaoGrave.length === 0) {
     tetoEstilo = Math.min(tetoEstilo, 160);
@@ -1015,7 +1015,7 @@ export function avaliarC5(ctx) {
   // proposta em uma única frase curta não sustenta quatro ou cinco elementos
   if (palavras(ultimo).length < 30 && presentes.length > 0) {
     nota = Math.min(nota, 160);
-    melhorias.push('A proposta aparece em uma frase curta. Reserve 2 a 4 linhas do último parágrafo para desenvolvê-la — é ali que a Competência V é decidida.');
+    melhorias.push('A proposta aparece em uma frase curta. Reserve 2 a 4 linhas do último parágrafo para desenvolvê-la, é ali que a Competência V é decidida.');
   }
 
   if (violacao.length) {
@@ -1024,12 +1024,12 @@ export function avaliarC5(ctx) {
   }
 
   if (validos.length === 5) {
-    fortes.push('Proposta completa: agente, ação, meio/modo, finalidade e detalhamento — a combinação que garante os 200 pontos.');
+    fortes.push('Proposta completa: agente, ação, meio/modo, finalidade e detalhamento, a combinação que garante os 200 pontos.');
   } else if (validos.length >= 3) {
     fortes.push(`Proposta bem encaminhada: ${validos.length} de 5 elementos válidos (${validos.map(k => ROTULOS[k].split(' ')[0]).join(', ')}).`);
     melhorias.push(`Para chegar aos 200, inclua: ${ausentes.map(k => ROTULOS[k]).join('; ')}.`);
   } else if (validos.length >= 1) {
-    melhorias.push(`A proposta está incompleta — encontrei apenas ${presentes.map(k => ROTULOS[k]).join(', ')}. Estruture assim: “O [agente] deve [ação] por meio de [meio], a fim de [finalidade], visto que [detalhamento]”.`);
+    melhorias.push(`A proposta está incompleta, encontrei apenas ${presentes.map(k => ROTULOS[k]).join(', ')}. Estruture assim: “O [agente] deve [ação] por meio de [meio], a fim de [finalidade], visto que [detalhamento]”.`);
     if (vagos.length) {
       melhorias.push(`Estes elementos aparecem, mas de forma vaga: ${vagos.map(k => ROTULOS[k]).join(', ')}. Troque o genérico pelo específico (quem, com que instrumento).`);
     }

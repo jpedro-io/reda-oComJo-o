@@ -83,27 +83,21 @@ function viewHome() {
   return `
   <section class="hero">
     <div class="hero-copy">
-      <span class="eyebrow" data-entrada>Guia da redação do ENEM</span>
-      <h1 data-entrada>Do tema à <em>nota 1000</em>, sem decoreba.</h1>
+      <h1 data-entrada>Como chegar à nota 1000 na redação do Enem</h1>
       <p class="hero-sub" data-entrada>Critérios oficiais explicados linha por linha, ${TOTAL_NOTA_MIL} redações nota 1000 abertas parágrafo por parágrafo e um corretor que mostra onde a nota escapa.</p>
       <div class="hero-cta" data-entrada>
-        <a class="btn btn-primario" href="#/corrigir">${ico('analise')} Corrigir minha redação</a>
+        <a class="btn btn-primario" href="#/corrigir">Corrigir minha redação</a>
         <a class="btn" href="#/redacoes">Ver as redações analisadas</a>
       </div>
-      <dl class="hero-stats" data-entrada>
-        <div><dd><span>${TOTAL_NOTA_MIL}</span></dd><dt>redações nota 1000</dt></div>
-        <div><dd>${TEMAS.length}</dd><dt>temas mapeados</dt></div>
-        <div><dd>${COMANDOS.length}</dd><dt>comandos do tema</dt></div>
-      </dl>
+      <p class="frase">${TOTAL_NOTA_MIL} redações nota 1000 analisadas, ${TEMAS.length} temas mapeados, ${COMANDOS.length} comandos de tema.</p>
     </div>
 
     <aside class="hero-painel" data-entrada aria-label="Como a nota é formada">
       <div class="hp-topo">
         <strong>Como a nota se forma</strong>
-        <span class="hp-selo">${ico('check')} 1000 pontos</span>
       </div>
       <div class="hp-lista">${comps}</div>
-      <p class="hp-pe">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, e dois avaliadores nunca fecham o mesmo número, o relatório publica sempre uma <b>faixa</b> — “nota entre X e Y” — nunca um número exato.</p>
+      <p class="hp-pe">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, e dois avaliadores nunca fecham o mesmo número, o relatório publica sempre uma faixa (nota entre X e Y), nunca um número exato.</p>
     </aside>
   </section>
 
@@ -153,73 +147,74 @@ function viewCriterios() {
       .map(nv => `<li><b>Nível ${nv.n} · ${nv.n * 40}</b> ${esc(nv.texto)}</li>`).join('');
     return `
     <article class="comp-bloco" id="crit-${c.id}" data-entrada>
-      <header class="cb-head">
-        <span class="cb-id">${c.id}</span>
-        <div>
-          <h2 class="cb-nome">${esc(c.nome)}</h2>
-          <p class="cb-resumo">${esc(c.resumo)}</p>
-        </div>
-        <span class="cb-val">vale até <b>${c.valor}</b></span>
+      <header class="comp-topo">
+        <h2 class="comp-nome"><span class="comp-id">${c.id}</span> ${esc(c.nome)}</h2>
+        <span class="comp-nota">vale até ${c.valor}</span>
       </header>
-      <div class="grade-regra">
-        <span class="gr-rot">Como o avaliador decide — ${esc(GRADES[c.id].eixo)}</span>
-        <p>${esc(GRADES[c.id].regra)}</p>
-        <p class="gr-escada">${esc(escada.avalia)}</p>
-      </div>
-      <div class="cb-grid">
-        <div class="cb-rail" role="list" aria-label="Níveis da competência ${c.id}">
+      <p class="comp-resumo">${esc(c.resumo)}</p>
+
+      <p class="comp-regra">${esc(GRADES[c.id].regra)}</p>
+
+      <table class="tabela-niveis">
+        <thead>
+          <tr><th scope="col">Nível</th><th scope="col">Descritor</th><th scope="col" class="num">Nota</th></tr>
+        </thead>
+        <tbody>
           ${c.niveis.slice().sort((a, b) => b.n - a.n).map(nv => {
             const fino = escada.niveis.find(x => x.pontos === nv.n * 40);
             return `
-            <div class="tick" data-n="${nv.n}" data-oficial="sim" role="listitem">
-              <span class="tick-n">${nv.n}</span>
-              <span class="tick-txt">${esc(nv.texto)}${fino ? `<span class="tick-of">o que o avaliador procura</span><span class="tick-fino">${esc(fino.texto)}</span>` : ''}</span>
-              <span class="tick-pts">${nv.n * 40}</span>
-            </div>`; }).join('')}
+            <tr>
+              <td class="niv">${nv.n}</td>
+              <td>
+                ${esc(nv.texto)}
+                ${fino ? `<span class="niv-fino"><b>O que o avaliador procura.</b> ${esc(fino.texto)}</span>` : ''}
+              </td>
+              <td class="num">${nv.n * 40}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+
+      <div class="comp-colunas">
+        <div class="side-bloco">
+          <h3>O que é avaliado</h3>
+          <ul class="lista-check">${c.oQueAvalia.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
         </div>
-        <div class="cb-side">
-          <div class="side-bloco">
-            <h3>O que é avaliado</h3>
-            <ul class="lista-check">${c.oQueAvalia.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-          </div>
-          <div class="side-bloco">
-            <h3>O que derruba a nota</h3>
-            <ul class="lista-check perigo">${c.derrubam.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-          </div>
-          <div class="side-bloco">
-            <h3>O que levanta</h3>
-            <ul class="lista-check">${c.sobem.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-          </div>
-          <div class="side-bloco">
-            <h3>Mesma ideia, dois níveis</h3>
-            <div class="exemplo-par">
-              <div class="ex fraco"><span class="rot">Tende ao nível 2</span>${esc(c.exemplo.fraco)}</div>
-              <div class="ex forte"><span class="rot">Tende ao nível 4–5</span>${esc(c.exemplo.forte)}</div>
-            </div>
-          </div>
-          <details class="oficial-det">
-            <summary>Descritor oficial de cada nível (0 a 200, de 40 em 40)</summary>
-            <ul class="oficial-lista">${oficialTxt}</ul>
-            <p class="oficial-fonte">Fonte: ${esc(GRADES[c.id].fonte)}</p>
-          </details>
+        <div class="side-bloco">
+          <h3>O que derruba a nota</h3>
+          <ul class="lista-check perigo">${c.derrubam.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+        </div>
+        <div class="side-bloco">
+          <h3>O que levanta</h3>
+          <ul class="lista-check">${c.sobem.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
         </div>
       </div>
+
+      <div class="side-bloco">
+        <h3>Mesma ideia, dois níveis</h3>
+        <div class="exemplo-par">
+          <div class="ex fraco"><span class="rot">Tende ao nível 2.</span> ${esc(c.exemplo.fraco)}</div>
+          <div class="ex forte"><span class="rot">Tende ao nível 4 ou 5.</span> ${esc(c.exemplo.forte)}</div>
+        </div>
+      </div>
+
+      <details class="oficial-det">
+        <summary>Descritor oficial de cada nível, de 40 em 40 pontos</summary>
+        <ul class="oficial-lista">${oficialTxt}</ul>
+        <p class="oficial-fonte">Fonte: ${esc(GRADES[c.id].fonte)}</p>
+      </details>
     </article>`;
   }).join('');
 
   return `
   <div class="secao-topo">
-    <div>
-      <span class="eyebrow" data-entrada>Critérios</span>
-      <h1 data-entrada>Cinco competências, seis níveis cada.</h1>
-    </div>
-    <p class="sub" data-entrada>A nota de cada competência é uma das <b>seis notas oficiais</b>: 0, 40, 80, 120, 160 ou 200. Quem reúne características de dois níveis fica no inferior — é a regra da grade. O que o relatório mostra é a <b>faixa</b> em que essa nota cai, porque a nota final do Enem é a média de dois avaliadores e os dois divergem: por isso você lê “nota entre 160 e 200”, e não “180”. Cada nível traz o descritor da cartilha e, abaixo dele, o que o avaliador procura no texto.</p>
+    <h1 data-entrada>As cinco competências</h1>
+    <p class="sub" data-entrada>Cada competência tem seis notas oficiais possíveis: 0, 40, 80, 120, 160 ou 200. Quem reúne características de dois níveis fica no inferior, e essa é a regra da grade. O relatório mostra a faixa em que a nota cai (de 160 a 200, por exemplo), porque a nota final do Enem é a média de dois avaliadores e os dois divergem.</p>
   </div>
 
   <div class="regua">${regua}</div>
 
   <div class="aviso" data-entrada>
-    ${ico('alerta', 'ico-g')}
     <div>
       <h3>${esc(AVISO_TANGENCIAMENTO.titulo)}</h3>
       <p>${esc(AVISO_TANGENCIAMENTO.texto)}</p>
@@ -231,13 +226,13 @@ function viewCriterios() {
     <div class="painel-solido" data-entrada>
       <h3>O que zera a redação</h3>
       <ul class="lista-num">
-        ${ZEROS.map(z => `<li><b>${esc(z.titulo)}</b> — ${esc(z.texto)}</li>`).join('')}
+        ${ZEROS.map(z => `<li><b>${esc(z.titulo)}</b>, ${esc(z.texto)}</li>`).join('')}
       </ul>
     </div>
     <div class="painel-solido" data-entrada>
       <h3>Como a nota é calculada</h3>
       <ul class="lista-num">
-        ${CALCULO_NOTA.map(z => `<li><b>${esc(z.titulo)}</b> — ${esc(z.texto)}</li>`).join('')}
+        ${CALCULO_NOTA.map(z => `<li><b>${esc(z.titulo)}</b>, ${esc(z.texto)}</li>`).join('')}
       </ul>
     </div>
   </div>`;
@@ -248,42 +243,30 @@ function viewCriterios() {
 
 function viewEstrutura() {
   const linha = PARTES.map((p, i) => `
-    <li class="lt-item" data-entrada>
-      <span class="lt-marker">${String(i + 1).padStart(2, '0')}</span>
-      <div class="lt-body">
-        <div class="lt-cabeca">
-          <h3>${esc(p.nome)}</h3>
-          <span class="apelido">${esc(p.apelido)}</span>
-        </div>
-        <div class="lt-meta">
-          <span>${esc(p.linhas)}</span>
-          <span>${esc(p.funcao)}</span>
-        </div>
-        <p class="formula"><b>Fórmula:</b> ${esc(p.formula)}</p>
-        <ol class="passos">${p.passos.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
-        <div class="nota-lateral erro"><span class="rot">Erro comum</span>${esc(p.erroComum)}</div>
-        <div class="nota-lateral dica" style="margin-top:var(--s3)"><span class="rot">Dica</span>${esc(p.dica)}</div>
-      </div>
-    </li>`).join('');
+    <section class="parte" data-entrada>
+      <h2 class="parte-tit">${i + 1}. ${esc(p.nome)}</h2>
+      <p class="parte-meta">${esc(p.linhas)} · ${esc(p.funcao)}</p>
+      <p class="parte-formula"><b>Fórmula.</b> ${esc(p.formula)}</p>
+      <ol class="passos">${p.passos.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+      <p class="parte-erro"><b>Erro comum.</b> ${esc(p.erroComum)}</p>
+      <p class="parte-dica"><b>Dica.</b> ${esc(p.dica)}</p>
+    </section>`).join('');
 
   const trilha = ELEMENTOS_PROPOSTA.map(e => `
     <div class="trilha-item">
-      <h4>${esc(e.nome)}</h4>
-      <span class="pergunta">${esc(e.pergunta)}</span>
-      <span class="exemplos">${esc(e.exemplos)}</span>
+      <h3>${esc(e.nome)}</h3>
+      <p class="pergunta">${esc(e.pergunta)}</p>
+      <p class="exemplos">${esc(e.exemplos)}</p>
     </div>`).join('');
 
   return `
   <div class="secao-topo">
-    <div>
-      <span class="eyebrow" data-entrada>Estrutura</span>
-      <h1 data-entrada>A anatomia de 30 linhas.</h1>
-    </div>
-    <p class="sub" data-entrada>Quatro partes, funções diferentes. O que decide a nota não é o tamanho do parágrafo, é <b>cada parte cumprir o seu papel</b>.</p>
+    <h1 data-entrada>Estrutura da redação</h1>
+    <p class="sub" data-entrada>São quatro partes, cada uma com a sua função. Cada parte do texto precisa cumprir a sua.</p>
   </div>
 
-  <div class="painel-solido" data-entrada style="margin-bottom:var(--s7)">
-    <h3>Distribuição sugerida</h3>
+  <div class="bloco-tabela" data-entrada>
+    <h2 class="h-tabela">Distribuição sugerida</h2>
     <table class="tabela">
       <thead><tr><th>Parte</th><th>Linhas</th><th>Função</th></tr></thead>
       <tbody>
@@ -292,7 +275,7 @@ function viewEstrutura() {
     </table>
   </div>
 
-  <ol class="lt">${linha}</ol>
+  <div class="partes">${linha}</div>
 
   <div class="bloco-titulo"><h2>Os cinco elementos da proposta</h2><span>competência V</span></div>
   <div class="trilha" data-entrada>${trilha}</div>
@@ -343,11 +326,8 @@ function viewComandos() {
 
   return `
   <div class="secao-topo">
-    <div>
-      <span class="eyebrow" data-entrada>Ler o tema</span>
-      <h1 data-entrada>O primeiro substantivo é o pedido.</h1>
-    </div>
-    <p class="sub" data-entrada>“Valorização” não pede elogio, pede o mecanismo que desvaloriza. Antes de escrever, identifique o comando — é ele que define o recorte.</p>
+    <h1 data-entrada>Como ler o tema</h1>
+    <p class="sub" data-entrada>Valorização pede que você aponte o que desvaloriza. Antes de escrever, identifique o comando: é ele que define o recorte.</p>
   </div>
 
   <div class="regra-geral" data-entrada>
@@ -384,133 +364,131 @@ function motivadoresHTML(temaId, { aberto = false } = {}) {
 
 const EIXOS = [...new Set(TEMAS.map(t => t.eixo))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
 let filtroAtual = 'todos';
+let buscaAtual = '';
 
 function linhasTemas() {
+  const termo = buscaAtual.trim().toLowerCase();
   const lista = TEMAS
     .filter(t => filtroAtual === 'todos' || t.eixo === filtroAtual)
+    .filter(t => {
+      if (!termo) return true;
+      const palheiro = [t.titulo, t.recorte, t.eixo, ...(t.nucleo || []), ...(t.apoio || [])]
+        .join(' ').toLowerCase();
+      return palheiro.includes(termo);
+    })
     .sort((a, b) => (b.ano || 0) - (a.ano || 0) || a.titulo.localeCompare(b.titulo, 'pt-BR'));
+
+  if (!lista.length) {
+    return `<p class="vazio">Nenhum tema corresponde a essa busca. Tente outra palavra ou volte para todos os eixos.</p>`;
+  }
 
   return lista.map(t => {
     const cmd = comandoDoTema(t.titulo);
     const red = REDACOES.find(r => r.temaId === t.id);
+    const palavras = [
+      ...(t.nucleo || []).slice(0, 4).map(k => esc(termoBonito(k))),
+      ...(motivadoresDe(t.id).length ? [`${motivadoresDe(t.id).length} textos motivadores`] : []),
+      ...(t.apoio || []).slice(0, 4).map(k => esc(termoBonito(k))),
+    ];
     return `
     <article class="tema-linha" data-entrada>
       <div class="tl-ano ${t.tipo === 'enem' ? '' : 'treino'}">${t.ano || 'treino'}</div>
-      <div>
+      <div class="tl-corpo">
         <h3 class="tl-tit">${esc(t.titulo)}</h3>
-        <p class="tl-comando">${cmd ? `Comando: <b>${esc(cmd.palavra.split('/')[0].trim())}</b> · ` : ''}${esc(t.recorte)}</p>
-        <div class="chips">
-          ${(t.nucleo || []).slice(0, 4).map(k => `<span class="chip vocab">${esc(termoBonito(k))}</span>`).join('')}
-          ${motivadoresDe(t.id).length ? `<span class="chip dourado">${motivadoresDe(t.id).length} textos motivadores</span>` : ''}
-          ${(t.apoio || []).slice(0, 4).map(k => `<span class="chip">${esc(termoBonito(k))}</span>`).join('')}
-        </div>
+        <p class="tl-comando">${cmd ? `Comando: <b>${esc(cmd.palavra.split('/')[0].trim())}</b>. ` : ''}${esc(t.recorte)}</p>
+        <p class="tl-chips">${palavras.slice(0, 5).join(' · ')}</p>
         ${motivadoresHTML(t.id)}
         <details class="tl-det">
           <summary>Repertórios e vocabulário de apoio</summary>
           <ul class="rep-lista">
-            ${(t.repertorios || []).map(r => `<li><b>${esc(r.nome)}</b> — ${esc(r.uso)}</li>`).join('') || '<li>Use repertório histórico, legal ou de dados — desde que explicado.</li>'}
+            ${(t.repertorios || []).map(r => `<li><b>${esc(r.nome)}</b>: ${esc(r.uso)}</li>`).join('') || '<li>Use repertório histórico, legal ou de dados, desde que explicado.</li>'}
           </ul>
-          <p class="tl-comando" style="margin-top:var(--s3)">Vocabulário de apoio: ${esc((t.apoio || []).join(', ') || '—')}</p>
+          <p class="tl-comando">Vocabulário de apoio: ${esc((t.apoio || []).join(', ') || 'não indicado')}</p>
         </details>
       </div>
       <div class="tl-acoes">
-        <span class="tl-eixo">${esc(t.eixo)}</span>
-        ${red ? `<a class="btn btn-pequeno" href="#/redacoes/${red.id}">Ver redação ${red.nota}</a>` : ''}
-        <a class="btn btn-pequeno btn-fantasma" href="#/corrigir?tema=${encodeURIComponent(t.id)}">Treinar neste tema</a>
+        ${red ? `<a href="#/redacoes/${red.id}">Ver redação ${red.nota}</a>` : ''}
+        <a href="#/corrigir?tema=${encodeURIComponent(t.id)}">Treinar neste tema</a>
       </div>
     </article>`;
   }).join('');
 }
 
-function viewTemas() {
+function viewConteudosTemas() {
   return `
   <div class="secao-topo">
-    <div>
-      <span class="eyebrow" data-entrada>Temas</span>
-      <h1 data-entrada>${TEMAS.length} propostas, com recorte e repertório.</h1>
-    </div>
-    <p class="sub" data-entrada>Temas oficiais de 2014 a 2026 e temas de treino. O <b>recorte</b> é o que a banca pede; os chips são o vocabulário que sustenta o recorte sem fugir dele.</p>
+    <h1 data-entrada>Temas de 2014 a 2026</h1>
+    <p class="sub" data-entrada>Temas oficiais e temas de treino. O recorte é o que a banca pede, e as palavras-chave são o vocabulário que sustenta esse recorte sem fugir dele.</p>
   </div>
 
-  <div class="filtros" id="filtros" role="group" aria-label="Filtrar por eixo">
-    <button class="filtro" data-eixo="todos" aria-pressed="${filtroAtual === 'todos'}">Todos</button>
-    ${EIXOS.map(e => `<button class="filtro" data-eixo="${esc(e)}" aria-pressed="${filtroAtual === e}">${esc(e)}</button>`).join('')}
+  <div class="filtro-temas">
+    <label class="campo-busca">
+      <span>Buscar tema</span>
+      <input type="search" id="busca-tema" placeholder="envelhecimento, saúde, tecnologia" value="${esc(buscaAtual)}" />
+    </label>
+    <label class="campo-eixo">
+      <span>Categoria</span>
+      <select id="filtro-eixo">
+        <option value="todos"${filtroAtual === 'todos' ? ' selected' : ''}>Todos os eixos</option>
+        ${EIXOS.map(e => `<option value="${esc(e)}"${filtroAtual === e ? ' selected' : ''}>${esc(e)}</option>`).join('')}
+      </select>
+    </label>
   </div>
 
   <div class="lista-temas" id="lista-temas">${linhasTemas()}</div>`;
 }
 
+const viewTemas = viewConteudosTemas;
+
 function ligarFiltros() {
-  const caixa = document.getElementById('filtros');
+  const busca = document.getElementById('busca-tema');
+  const eixo = document.getElementById('filtro-eixo');
   const lista = document.getElementById('lista-temas');
-  if (!caixa || !lista) return;
-  caixa.addEventListener('click', e => {
-    const b = e.target.closest('.filtro');
-    if (!b) return;
-    filtroAtual = b.dataset.eixo;
-    [...caixa.querySelectorAll('.filtro')].forEach(x =>
-      x.setAttribute('aria-pressed', String(x === b)));
+  if (!lista) return;
+
+  const redesenhar = () => {
     lista.innerHTML = linhasTemas();
     ativarMovimento(lista);
-  });
+  };
+
+  if (busca) {
+    busca.addEventListener('input', () => { buscaAtual = busca.value; redesenhar(); });
+  }
+  if (eixo) {
+    eixo.addEventListener('change', () => { filtroAtual = eixo.value; redesenhar(); });
+  }
 }
 
 /* ------------------------------------------------------------------ 6. REDAÇÕES */
 /* molde: crônica com espinha de ano */
 
 function viewRedacoes() {
-  const porAno = redacoesPorAno() // [{ ano, itens: [...] }]
-    .map(b => ({ ano: b.ano, itens: b.itens.filter(r => r.nota !== 0) }))
-    .filter(b => b.itens.length);
+  const todas = REDACOES
+    .slice()
+    .sort((a, b) => (b.ano || 0) - (a.ano || 0) || String(a.tema).localeCompare(String(b.tema), 'pt-BR'));
 
-  const blocos = porAno.map(bloco => `
-    <section class="cron-ano">
-      <div class="cron-num" aria-hidden="true">${bloco.ano}</div>
-      <div class="cron-lista">
-        <h2 class="sr-only" style="position:absolute;left:-9999px">Redações de ${bloco.ano}</h2>
-        ${bloco.itens.map(r => `
-          <a class="red-linha" href="#/redacoes/${r.id}" data-entrada>
-            <div>
-              <h3 class="rl-tema">${esc(r.tema)}</h3>
-              <div class="rl-meta">
-                <span>${esc(r.tipo)}</span>
-                <span>${r.paragrafos.length} parágrafos</span>
-                <span>${r.competencias.length} competências</span>
-              </div>
-            </div>
-            <div class="rl-nota ${r.nota === 0 ? 'zero' : ''}">${r.nota}<small>${r.nota === 0 ? 'anulada' : 'pontos'}</small></div>
-          </a>`).join('')}
-      </div>
-    </section>`).join('');
-
-  const fuga = REDACOES.filter(r => r.nota === 0);
+  const linhas = todas.map(r => `
+    <tr>
+      <td class="ano">${r.ano || 'sem ano'}</td>
+      <td class="tema">
+        <a href="#/redacoes/${r.id}">${esc(r.tema)}</a>
+        <span class="meta">${esc(r.tipo)} · ${r.paragrafos.length} parágrafos</span>
+      </td>
+      <td class="nota${r.nota === 0 ? ' zero' : ''}">${r.nota === 0 ? 'anulada' : r.nota}</td>
+    </tr>`).join('');
 
   return `
   <div class="secao-topo">
-    <div>
-      <span class="eyebrow" data-entrada>Redações analisadas</span>
-      <h1 data-entrada>${TOTAL_NOTA_MIL} textos, do primeiro ao último parágrafo.</h1>
-    </div>
-    <p class="sub" data-entrada>Cada redação traz <b>por que tirou 1000</b>, o que cada parágrafo faz, os trechos que o avaliador reconhece e um ponto de melhoria.</p>
+    <h1 data-entrada>Redações nota 1000 analisadas</h1>
+    <p class="sub" data-entrada>Cada redação traz por que tirou 1000, o que cada parágrafo faz, os trechos que o avaliador reconhece e um ponto de melhoria.</p>
   </div>
 
-  <div class="cronica">
-    ${blocos}
-    ${fuga.length ? `
-      <section class="cron-ano">
-        <div class="cron-num" aria-hidden="true" style="-webkit-text-stroke-color:rgba(255,142,158,.4)">0</div>
-        <div class="cron-lista">
-          ${fuga.map(r => `
-            <a class="red-linha" href="#/redacoes/${r.id}" data-entrada>
-              <div>
-                <h3 class="rl-tema">${esc(r.tema)}</h3>
-                <div class="rl-meta"><span>${esc(r.tipo)}</span><span>estudo de caso: fuga ao tema</span></div>
-              </div>
-              <div class="rl-nota zero">0<small>anulada</small></div>
-            </a>`).join('')}
-        </div>
-      </section>` : ''}
-  </div>`;
+  <table class="tabela-redacoes">
+    <thead>
+      <tr><th scope="col">Ano</th><th scope="col">Tema</th><th scope="col" class="nota">Nota</th></tr>
+    </thead>
+    <tbody>${linhas}</tbody>
+  </table>`;
 }
 
 function destacar(texto, destaques = []) {
@@ -612,7 +590,7 @@ function viewRedacao(id) {
     </nav>
 
     <p style="margin-top:var(--s6);font-size:.8rem;color:var(--tinta-3)">
-      Modelo didático construído para reproduzir o padrão nota 1000 — não é transcrição de texto oficial de participante.
+      Modelo didático construído para reproduzir o padrão nota 1000, não é transcrição de texto oficial de participante.
     </p>
   </article>`;
 }
@@ -639,20 +617,18 @@ function viewCorrigir(params) {
   const opcoes = TEMAS
     .slice()
     .sort((a, b) => (b.ano || 0) - (a.ano || 0))
-    .map(t => `<option value="${esc(t.id)}" ${t.id === estado.temaId ? 'selected' : ''}>${t.ano ? t.ano + ' — ' : ''}${esc(t.titulo)}</option>`)
+    .map(t => `<option value="${esc(t.id)}" ${t.id === estado.temaId ? 'selected' : ''}>${t.ano ? t.ano + ', ' : ''}${esc(t.titulo)}</option>`)
     .join('');
 
   return `
   <div class="secao-topo">
-    <div>
-      <span class="eyebrow" data-entrada>Corrigir</span>
-      <h1 data-entrada>Onde a sua nota está escapando.</h1>
-    </div>
-    <p class="sub" data-entrada>O motor aplica as <b>grades específicas</b> das cartilhas de capacitação (Competências I a V, FGV/Inep) e explica, competência por competência, <b>por que a nota não chegou a 200</b> — com o trecho do seu texto que motivou cada observação. É um diagnóstico heurístico: não substitui a correção humana.</p>
+    <h1 data-entrada>Corrigir redação</h1>
+    <p class="sub" data-entrada>O corretor aplica as grades oficiais das cinco competências e explica, uma por uma, por que a nota não chegou a 200, com o trecho do seu texto que motivou cada observação. É um diagnóstico automático e não substitui a correção humana.</p>
   </div>
 
   <div class="workspace">
     <div class="ws-entrada">
+      <div class="ws-proposta">
       <div class="campo">
         <label class="label" for="tema">Tema da proposta</label>
         <select class="select" id="tema">
@@ -667,6 +643,7 @@ function viewCorrigir(params) {
       </div>
 
       <div id="proposta-tema"></div>
+      </div>
 
       <div class="campo">
         <label class="label" for="texto">Sua redação</label>
@@ -687,7 +664,6 @@ function viewCorrigir(params) {
 
     <aside class="ws-saida" aria-live="polite" id="saida">
       <div class="vazio">
-        ${ico('mira', 'ico-g')}
         <p>Cole o texto e clique em <b>Corrigir</b>.<br />O relatório aparece aqui, competência por competência.</p>
       </div>
     </aside>
@@ -717,7 +693,7 @@ export function faixaDaComp(c) {
 }
 
 /* bloco de leitura do relatório: um rótulo curto e o texto. Sem caixa alta aos
-   berros, sem chip dentro de chip — o olho desce uma coluna só. */
+   berros, sem chip dentro de chip, o olho desce uma coluna só. */
 function bloco(rotulo, corpo, classe = '') {
   return `
     <section class="cc-bloco ${classe}">
@@ -740,7 +716,7 @@ function compCard(c, aberto) {
         ? `O texto cumpre integralmente o descritor do nível máximo, e não existe nível acima dele: os dois avaliadores tendem a fechar em ${f.min}.`
         : `O texto cumpre o descritor do nível ${oficial} e não mostra o do nível seguinte: os dois avaliadores tendem a fechar em ${f.min}.`)
     : `A nota oficial desta competência é ${f.min}, nível ${oficial}. ${f.max - f.min >= 40
-        ? `Como o texto já mostra parte do descritor de ${f.max}, o segundo avaliador pode subir um nível inteiro — por isso a faixa vai até ${f.max}.`
+        ? `Como o texto já mostra parte do descritor de ${f.max}, o segundo avaliador pode subir um nível inteiro, por isso a faixa vai até ${f.max}.`
         : `O texto está firme no nível ${oficial}; os 20 pontos de margem são a divergência previsível entre os dois avaliadores.`}`;
 
   const motivos = ex.motivos && ex.motivos.length
@@ -807,33 +783,21 @@ function relatorio(r) {
 
   return `
     <div class="rel-topo">
-      <div class="score-faixa" data-faixa-min="${fTotal.min}" data-faixa-max="${fTotal.max}"
-           ${entre ? '' : 'data-exata="true"'} style="--min:0;--max:0" role="img"
-           aria-label="${entre ? `nota final entre ${fTotal.min} e ${fTotal.max} de 1000` : `nota final ${fTotal.min} de 1000`}">
-        <span class="sf-rot">nota final</span>
-        <span class="sf-num">
-          ${entre
-            ? `<b data-conta="${fTotal.min}">0</b><i>–</i><b data-conta="${fTotal.max}">0</b>`
-            : `<b data-conta="${fTotal.min}">0</b>`}
-        </span>
-        <span class="sf-trilho" aria-hidden="true"><i></i></span>
-        <span class="sf-escala" aria-hidden="true"><i>0</i><i>500</i><i>1000</i></span>
-      </div>
-      <div class="rel-faixa">
-        <strong>${esc(r.faixa.nome)}</strong>
-        <p>${esc(r.faixa.texto)}</p>
-        <p class="rel-faixa-nota">${entre
-          ? `Faixa de <b>${fTotal.min}</b> a <b>${fTotal.max}</b>: o mínimo é a soma das notas oficiais das cinco competências; o máximo soma o que cada uma ainda comporta. Dois avaliadores corrigem a mesma redação e não fecham o mesmo número.`
-          : `Nota <b>${fTotal.min}</b>: nesta amostra o texto fecha no teto em todas as competências e não há margem para o segundo avaliador subir.`}</p>
-        <span class="confianca">${ico('check')} ${rotuloConfianca}</span>
-      </div>
+      <p class="nota-final" role="text" aria-label="${entre ? `nota final entre ${fTotal.min} e ${fTotal.max} de 1000` : `nota final ${fTotal.min} de 1000`}">
+        <span class="nf-num${entre ? ' nf-faixa' : ''}">${entre ? `${fTotal.min}<i>a</i>${fTotal.max}` : fTotal.min}</span>
+        <span class="nf-de">de 1000</span>
+      </p>
+      <p class="nota-nivel">${esc(r.faixa.nome)}</p>
+      <p class="nota-texto">${esc(r.faixa.texto)}</p>
+      <p class="nota-texto nota-faixa">${entre
+        ? `Faixa de <b>${fTotal.min}</b> a <b>${fTotal.max}</b>. O mínimo soma as notas oficiais das cinco competências; o máximo soma o que cada uma ainda comporta. Dois avaliadores corrigem a mesma redação e não fecham o mesmo número.`
+        : `Nota <b>${fTotal.min}</b>. Nesta amostra o texto fecha no teto em todas as competências, e não há margem para o segundo avaliador subir.`}</p>
     </div>
 
     ${zeros}
 
     <div class="rel-principio">
-      ${ico('regua')}
-      <div>O nível não é uma média: cada competência só sobe se cumprir <b>integralmente</b> o descritor do nível — e, quando o texto reúne características de dois níveis, o avaliador fica com o <b>inferior</b>. Abra cada competência para ver a regra aplicada e o trecho que a motivou.</div>
+      <div>O nível não é uma média: cada competência só sobe se cumprir <b>integralmente</b> o descritor do nível, e, quando o texto reúne características de dois níveis, o avaliador fica com o <b>inferior</b>. Abra cada competência para ver a regra aplicada e o trecho que a motivou.</div>
     </div>
 
     <div class="comp-lista">${cards}</div>
@@ -921,7 +885,7 @@ function ligarCorrigir() {
     textarea.value = '';
     estado.texto = '';
     contar();
-    saida.innerHTML = `<div class="vazio">${ico('mira', 'ico-g')}<p>Cole o texto e clique em <b>Corrigir</b>.</p></div>`;
+    saida.innerHTML = `<div class="vazio"><p>Cole o texto e clique em <b>Corrigir</b>. O relatório aparece aqui.</p></div>`;
     textarea.focus();
     toast('Texto apagado.');
   });
@@ -1007,13 +971,13 @@ function render() {
 
 function tituloDa(partes = []) {
   const mapa = {
-    '': 'Redação com João — critérios, estrutura, temas e redações analisadas',
-    criterios: 'Critérios das 5 competências — Redação com João',
-    estrutura: 'Estrutura da redação — Redação com João',
-    comandos: 'Ler o comando do tema — Redação com João',
-    temas: 'Temas do ENEM e de treino — Redação com João',
-    redacoes: 'Redações nota 1000 analisadas — Redação com João',
-    corrigir: 'Corrigir redação — Redação com João'
+    '': 'Redação com João, critérios, estrutura, temas e redações analisadas',
+    criterios: 'Critérios das 5 competências, Redação com João',
+    estrutura: 'Estrutura da redação, Redação com João',
+    comandos: 'Ler o comando do tema, Redação com João',
+    temas: 'Temas do ENEM e de treino, Redação com João',
+    redacoes: 'Redações nota 1000 analisadas, Redação com João',
+    corrigir: 'Corrigir redação, Redação com João'
   };
   const doGuia = tituloDeConteudos(partes);
   if (doGuia) return doGuia;

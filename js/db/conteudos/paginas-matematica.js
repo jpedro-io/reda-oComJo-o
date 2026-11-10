@@ -8,7 +8,7 @@
 export const PAGINAS_MATEMATICA = {
   'mat-porcentagem': {
     resumo: [
-      'Porcentagem é fração com denominador 100: 23% é 23/100, ou 0,23. Todo problema de porcentagem do Enem se resolve traduzindo a frase para uma multiplicação — "de" vira ×, "aumentou 15%" vira × 1,15, "caiu 15%" vira × 0,85.',
+      'Porcentagem é fração com denominador 100: 23% é 23/100, ou 0,23. Todo problema de porcentagem do Enem se resolve traduzindo a frase para uma multiplicação, "de" vira ×, "aumentou 15%" vira × 1,15, "caiu 15%" vira × 0,85.',
       'O erro clássico é somar porcentagens que se aplicam a bases diferentes. Aumentar 20% e depois descontar 20% não volta ao valor inicial: 100 → 120 → 96. O encadeamento é multiplicativo, nunca aditivo. Se a questão fala em dois aumentos seguidos, multiplique os fatores (1,2 × 1,3 = 1,56, ou seja, +56%).',
       'Variação percentual é sempre (valor final − valor inicial) / valor inicial. Repare que o denominador é o valor de partida: cair de 80 para 60 é uma queda de 25%, e voltar de 60 para 80 é um aumento de 33,3%. Mesma distância absoluta, porcentagens diferentes.',
     ],
@@ -37,10 +37,10 @@ export const PAGINAS_MATEMATICA = {
         gabaritoOficial: 'A',
         resolucao: [
           'Preço normal: 1 000 × 1,10 = R$ 1 100,00.',
-          'Preço no cartão: 1 100 × 0,98 = R$ 1 078,00 — é o valor que a loja apresenta.',
+          'Preço no cartão: 1 100 × 0,98 = R$ 1 078,00, é o valor que a loja apresenta.',
           'Cálculo da cliente: 1 000 × 1,08 = R$ 1 080,00.',
           'Diferença: 1 078 − 1 080 = −R$ 2,00. O valor da loja é R$ 2,00 menor que o cálculo dela. Alternativa A.',
-          'O erro que a questão arma: a cliente somou um acréscimo de 8% sobre a promoção, mas o desconto de 2% incide sobre o preço NORMAL — base diferente, resultado diferente. É o mesmo raciocínio do "aumento e desconto não se anulam".',
+          'O erro que a questão arma: a cliente somou um acréscimo de 8% sobre a promoção, mas o desconto de 2% incide sobre o preço NORMAL, base diferente, resultado diferente. É o mesmo raciocínio do "aumento e desconto não se anulam".',
         ],
       },
       {
@@ -65,7 +65,7 @@ export const PAGINAS_MATEMATICA = {
 
   'mat-razao-proporcao': {
     resumo: [
-      'Razão compara duas grandezas da mesma espécie por divisão; proporção é a igualdade entre duas razões. A regra de ouro: só se compara o que está na mesma unidade — antes de montar a proporção, converta tudo.',
+      'Razão compara duas grandezas da mesma espécie por divisão; proporção é a igualdade entre duas razões. A regra de ouro: só se compara o que está na mesma unidade, antes de montar a proporção, converta tudo.',
       'Grandezas diretamente proporcionais crescem juntas (mais litros, mais quilômetros rodados); inversamente proporcionais uma sobe quando a outra desce (mais operários, menos dias). Reconhecer qual é o caso é o que decide a montagem da conta.',
       'Escala, densidade demográfica, velocidade média e consumo por quilômetro são todos proporção. O Enem raramente cobra a definição: cobra a leitura de uma situação em que a razão aparece escondida dentro de um texto.',
     ],
@@ -105,7 +105,7 @@ export const PAGINAS_MATEMATICA = {
 
   'mat-escalas': {
     resumo: [
-      'Escala é razão entre desenho e realidade. Em 1:50 000, cada centímetro do mapa equivale a 50 000 cm reais — 500 metros. O cuidado com unidade é aqui que decide a questão: quase sempre a resposta é pedida em km.',
+      'Escala é razão entre desenho e realidade. Em 1:50 000, cada centímetro do mapa equivale a 50 000 cm reais, 500 metros. O cuidado com unidade é aqui que decide a questão: quase sempre a resposta é pedida em km.',
       'A armadilha do Enem é a área. Se o comprimento foi multiplicado por k, a área foi multiplicada por k². Um terreno que no mapa tem o dobro do lado de outro tem quatro vezes a área.',
       'Semelhança de figuras segue a mesma lógica: lados proporcionais, ângulos iguais, áreas na razão do quadrado e volumes na razão do cubo.',
     ],
@@ -125,14 +125,14 @@ export const PAGINAS_MATEMATICA = {
 
   'mat-financeira': {
     resumo: [
-      'No Enem, matemática financeira é porcentagem aplicada: juros simples e compostos, descontos, parcelamento e comparação de ofertas. A diferença entre simples e composto está na base de cálculo — no simples, sempre o capital inicial; no composto, o montante do período anterior.',
+      'No Enem, matemática financeira é porcentagem aplicada: juros simples e compostos, descontos, parcelamento e comparação de ofertas. A diferença entre simples e composto está na base de cálculo, no simples, sempre o capital inicial; no composto, o montante do período anterior.',
       'Juros compostos são uma função exponencial: M = C(1 + i)^t. Todo crescimento (ou queda) com taxa constante por período é exponencial, e é por isso que a curva do gráfico "acelera".',
-      'Comparar ofertas exige trazer tudo para a mesma data: à vista com desconto, parcelado sem juros e parcelado com juros não se comparam somando parcelas — é preciso trazer cada parcela para valor presente, ou comparar o total pago com o preço à vista.',
+      'Comparar ofertas exige trazer tudo para a mesma data: à vista com desconto, parcelado sem juros e parcelado com juros não se comparam somando parcelas, é preciso trazer cada parcela para valor presente, ou comparar o total pago com o preço à vista.',
     ],
     chave: [
       'Juros simples × compostos no mesmo período (a diferença aparece no gráfico)',
       'Desconto sobre o preço à vista versus parcelamento',
-      'Taxa mensal com prazo em anos — converter o tempo, não a taxa',
+      'Taxa mensal com prazo em anos, converter o tempo, não a taxa',
       'Inflação e perda do poder de compra',
     ],
     formulas: [
@@ -162,7 +162,7 @@ export const PAGINAS_MATEMATICA = {
   'mat-medidas': {
     resumo: [
       'Média aritmética soma e divide pelo número de valores; média ponderada multiplica cada valor pelo seu peso antes de dividir pela soma dos pesos. No Enem, a ponderada aparece como média de notas com pesos diferentes ou média de velocidades por trecho.',
-      'Mediana é o valor central da lista ordenada. Com número par de dados, é a média dos dois centrais. É a medida que resiste a valores extremos — por isso salário mediano aparece em questão de desigualdade.',
+      'Mediana é o valor central da lista ordenada. Com número par de dados, é a média dos dois centrais. É a medida que resiste a valores extremos, por isso salário mediano aparece em questão de desigualdade.',
       'Moda é o valor mais frequente, e pode não existir (todos diferentes) ou haver mais de uma. Em questão de "qual medida usar", o critério é a presença de valor atípico: com um outlier, a mediana representa melhor o conjunto.',
     ],
     chave: [
@@ -194,7 +194,7 @@ export const PAGINAS_MATEMATICA = {
           'A média é ponderada pelo número de professores: (60 × 10 000 + 40 × 12 000k) / 100 ≤ 12 240.',
           '600 000 + 480 000k ≤ 1 224 000 ⟹ 480 000k ≤ 624 000 ⟹ k ≤ 1,30.',
           'k = 1,30 é um aumento de 30%. Alternativa D.',
-          'Note que a média NÃO é (10 000 + 12 000k)/2: os grupos têm tamanhos diferentes. Ignorar o peso leva a 22%, que está na alternativa C — o distrator perfeito.',
+          'Note que a média NÃO é (10 000 + 12 000k)/2: os grupos têm tamanhos diferentes. Ignorar o peso leva a 22%, que está na alternativa C, o distrator perfeito.',
         ],
       },
     ],
@@ -203,8 +203,8 @@ export const PAGINAS_MATEMATICA = {
   'mat-geo-plana': {
     resumo: [
       'Geometria plana no Enem é, quase sempre, área de figura composta: um retângulo com um semicírculo, um quadrado com um triângulo recortado. O método é decompor em figuras conhecidas, calcular cada parte e somar ou subtrair.',
-      'Triângulo é metade da base pela altura — e a altura nem sempre é um lado. Em triângulo equilátero de lado a, a altura vale a√3/2. Em triângulo retângulo, Pitágoras relaciona os três lados; e as relações métricas (h² = m·n) resolvem a altura relativa à hipotenusa.',
-      'Semelhança e Teorema de Tales aparecem juntos: feixes de retas paralelas cortadas por transversais e figuras que são a mesma em escalas diferentes. A proporção se escreve entre lados correspondentes — os que estão "na mesma posição".',
+      'Triângulo é metade da base pela altura, e a altura nem sempre é um lado. Em triângulo equilátero de lado a, a altura vale a√3/2. Em triângulo retângulo, Pitágoras relaciona os três lados; e as relações métricas (h² = m·n) resolvem a altura relativa à hipotenusa.',
+      'Semelhança e Teorema de Tales aparecem juntos: feixes de retas paralelas cortadas por transversais e figuras que são a mesma em escalas diferentes. A proporção se escreve entre lados correspondentes, os que estão "na mesma posição".',
     ],
     chave: [
       'Área de figura composta e área sombreada por subtração',
@@ -226,7 +226,7 @@ export const PAGINAS_MATEMATICA = {
     resumo: [
       'O Enem cobra volume de três sólidos quase sempre: prisma (e cilindro, que é prisma de base circular), pirâmide (e cone) e esfera. Volume de prisma é área da base vezes altura; de pirâmide e cone é um terço disso; de esfera é 4πr³/3.',
       'Área total é a soma das faces e é onde o aluno perde ponto: no cilindro são duas bases mais a lateral (2πrh); no cone, a geratriz entra na lateral (πrg). Em questão de "quantos metros de lona", o que se pede é área, não volume.',
-      'Relação de Euler (V − A + F = 2) resolve questão de poliedro; e a razão entre volumes de sólidos semelhantes é o cubo da razão entre lados — dobrar o raio dobra a área e multiplica o volume por oito.',
+      'Relação de Euler (V − A + F = 2) resolve questão de poliedro; e a razão entre volumes de sólidos semelhantes é o cubo da razão entre lados, dobrar o raio dobra a área e multiplica o volume por oito.',
     ],
     chave: [
       'Volume de cilindro e de cone em situação de embalagem e reservatório',
@@ -247,7 +247,7 @@ export const PAGINAS_MATEMATICA = {
     resumo: [
       'Função do 1º grau é f(x) = ax + b, cujo gráfico é reta. O coeficiente a é a taxa de variação (inclinação): a > 0 cresce, a < 0 decresce. O b é onde a reta corta o eixo y, ou seja, o valor inicial quando x = 0.',
       'O Enem adora o contexto de tarifa: valor fixo mais valor por unidade. Uma corrida de aplicativo com bandeirada de R$ 5 e R$ 2,50 por km é y = 5 + 2,5x. Saber ler a lei de formação a partir do texto é metade da questão.',
-      'Raiz da função (onde f(x) = 0) é o ponto em que o gráfico cruza o eixo x. Comparar duas funções do 1º grau é achar a interseção, resolvendo ax + b = cx + d — situação típica de "a partir de quantas unidades o plano B é mais barato".',
+      'Raiz da função (onde f(x) = 0) é o ponto em que o gráfico cruza o eixo x. Comparar duas funções do 1º grau é achar a interseção, resolvendo ax + b = cx + d, situação típica de "a partir de quantas unidades o plano B é mais barato".',
     ],
     chave: [
       'Montar a lei de formação a partir de tarifa fixa + variável',
@@ -285,7 +285,7 @@ export const PAGINAS_MATEMATICA = {
 
   'mat-exponencial': {
     resumo: [
-      'Crescimento exponencial é aquele em que a taxa incide sobre o valor já crescido — a quantidade é multiplicada pelo mesmo fator a cada período. É o modelo de população, de contágio, de juros compostos e de decaimento radioativo.',
+      'Crescimento exponencial é aquele em que a taxa incide sobre o valor já crescido, a quantidade é multiplicada pelo mesmo fator a cada período. É o modelo de população, de contágio, de juros compostos e de decaimento radioativo.',
       'Logaritmo é a pergunta "a que expoente elevo a base para obter esse número". Ele serve para resolver equação em que a incógnita está no expoente: 2^x = 32 ⟹ x = 5. O Enem cobra mais a interpretação (escala logarítmica, pH, Richter) do que a manipulação algébrica pesada.',
       'Meia-vida e decaimento seguem o mesmo padrão com fator menor que 1: a cada meia-vida, resta metade. Reconhecer se o fator é maior ou menor que 1 é o que distingue crescimento de decaimento.',
     ],
@@ -324,7 +324,7 @@ export const PAGINAS_MATEMATICA = {
     resumo: [
       'Probabilidade é casos favoráveis sobre casos possíveis, quando todos os resultados são igualmente prováveis. A parte difícil é contar os casos: é aí que probabilidade e análise combinatória se encontram.',
       'Eventos independentes multiplicam probabilidades (dois dados: 1/6 × 1/6); eventos mutuamente exclusivos somam (sair 1 ou 6: 1/6 + 1/6). "Pelo menos um" quase sempre se resolve pelo complementar: 1 − P(nenhum).',
-      'O Enem cobra probabilidade em contexto de sorteio, vacinação, genética, trânsito e jogo. Em questão com retirada sem reposição, o denominador diminui a cada retirada — é o erro mais comum.',
+      'O Enem cobra probabilidade em contexto de sorteio, vacinação, genética, trânsito e jogo. Em questão com retirada sem reposição, o denominador diminui a cada retirada, é o erro mais comum.',
     ],
     chave: [
       'Probabilidade da união e do complementar ("pelo menos um")',
@@ -343,7 +343,7 @@ export const PAGINAS_MATEMATICA = {
   'mat-combinatoria': {
     resumo: [
       'Antes de calcular, classifique o problema em três perguntas: a ordem importa? todos os elementos são usados? pode repetir? Ordem importando e sem usar todos, é arranjo; ordem não importando, é combinação; usando todos, é permutação.',
-      'Combinação é arranjo dividido pelas permutações dos escolhidos, porque a ordem não distingue os grupos. C(n,p) = n!/(p!(n−p)!). Permutação com repetição divide o fatorial total pelo fatorial das repetições — caso clássico de anagramas.',
+      'Combinação é arranjo dividido pelas permutações dos escolhidos, porque a ordem não distingue os grupos. C(n,p) = n!/(p!(n−p)!). Permutação com repetição divide o fatorial total pelo fatorial das repetições, caso clássico de anagramas.',
       'O Enem gosta de contagem com restrição: senha que começa com vogal, comissão com pelo menos uma mulher, fila em que duas pessoas ficam juntas (resolve-se "colando" as duas e multiplicando por 2).',
     ],
     chave: [

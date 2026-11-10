@@ -16,7 +16,7 @@ export const MOTIVADORES_OFICIAIS = {
     },
     {
       titulo: 'Texto II',
-      fonte: 'Lei 8.080/1990 — Lei Orgânica da Saúde (adaptado)',
+      fonte: 'Lei 8.080/1990, Lei Orgânica da Saúde (adaptado)',
       texto: 'O Sistema Único de Saúde rege-se pelos princípios de universalidade de acesso, integralidade da assistência e igualdade, sem preconceitos ou privilégios de qualquer espécie. A iniciativa privada poderá participar do sistema em caráter complementar.'
     },
     {
@@ -29,13 +29,13 @@ export const MOTIVADORES_OFICIAIS = {
   'enem-2025': [
     {
       titulo: 'Texto I',
-      fonte: 'Estatuto da Pessoa Idosa — Lei 10.741/2003 (adaptado)',
+      fonte: 'Estatuto da Pessoa Idosa, Lei 10.741/2003 (adaptado)',
       texto: 'É assegurada a atenção integral à saúde da pessoa idosa, por intermédio do Sistema Único de Saúde, garantindo-lhe o acesso universal e igualitário, em conjunto articulado e contínuo das ações e serviços, para a prevenção, promoção, proteção e recuperação da saúde.'
     },
     {
       titulo: 'Texto II',
       fonte: 'IBGE, Censo 2022 (adaptado)',
-      texto: 'O país tem cerca de 32 milhões de pessoas com 60 anos ou mais — aproximadamente 15% da população. O índice de envelhecimento quase dobrou em duas décadas, e as projeções indicam que, em 2050, uma em cada três pessoas no Brasil terá mais de 60 anos.'
+      texto: 'O país tem cerca de 32 milhões de pessoas com 60 anos ou mais, aproximadamente 15% da população. O índice de envelhecimento quase dobrou em duas décadas, e as projeções indicam que, em 2050, uma em cada três pessoas no Brasil terá mais de 60 anos.'
     },
     {
       titulo: 'Texto III',
@@ -65,7 +65,7 @@ export const MOTIVADORES_OFICIAIS = {
   'enem-2023': [
     {
       titulo: 'Texto I',
-      fonte: 'Organização Internacional do Trabalho — trabalho de cuidado não remunerado (adaptado)',
+      fonte: 'Organização Internacional do Trabalho, trabalho de cuidado não remunerado (adaptado)',
       texto: 'Cozinhar, limpar, cuidar de crianças, idosos e pessoas com deficiência sustentam todas as outras atividades econômicas. Em todo o mundo, esse trabalho é majoritariamente feminino, não remunerado e ausente das estatísticas de emprego.'
     },
     {
@@ -76,7 +76,7 @@ export const MOTIVADORES_OFICIAIS = {
     {
       titulo: 'Texto III',
       fonte: 'Conceito de divisão sexual do trabalho (adaptado)',
-      texto: 'A divisão sexual do trabalho atribui aos homens a produção e às mulheres a reprodução: o cuidado, a casa e a família. Essa separação não é natural — é histórica e social — e organiza salários, carreiras e o próprio conceito de produtividade.'
+      texto: 'A divisão sexual do trabalho atribui aos homens a produção e às mulheres a reprodução: o cuidado, a casa e a família. Essa separação não é natural (é histórica e social) e organiza salários, carreiras e o próprio conceito de produtividade.'
     }
   ],
 
@@ -93,8 +93,8 @@ export const MOTIVADORES_OFICIAIS = {
     },
     {
       titulo: 'Texto III',
-      fonte: 'Mapa de conflitos no campo — Comissão Pastoral da Terra (adaptado)',
-      texto: 'Comunidades tradicionais — ribeirinhas, quilombolas, quebradeiras de coco, pescadores artesanais — acumulam registros de conflitos por terra e água. A invisibilidade jurídica desses territórios frequentemente antecede a disputa econômica.'
+      fonte: 'Mapa de conflitos no campo, Comissão Pastoral da Terra (adaptado)',
+      texto: 'Comunidades tradicionais (ribeirinhas, quilombolas, quebradeiras de coco, pescadores artesanais) acumulam registros de conflitos por terra e água. A invisibilidade jurídica desses territórios frequentemente antecede a disputa econômica.'
     }
   ],
 
@@ -106,7 +106,7 @@ export const MOTIVADORES_OFICIAIS = {
     },
     {
       titulo: 'Texto II',
-      fonte: 'Lei 6.015/1973 — Lei de Registros Públicos (adaptado)',
+      fonte: 'Lei 6.015/1973, Lei de Registros Públicos (adaptado)',
       texto: 'O registro civil de nascimento é gratuito e obrigatório. É ele que confere existência formal à pessoa: sem certidão, não há CPF, título de eleitor, matrícula escolar, carteira de vacinação nem admissão em emprego formal.'
     },
     {
@@ -119,7 +119,7 @@ export const MOTIVADORES_OFICIAIS = {
   'enem-2020': [
     {
       titulo: 'Texto I',
-      fonte: 'Lei 10.216/2001 — Reforma Psiquiátrica (adaptado)',
+      fonte: 'Lei 10.216/2001, Reforma Psiquiátrica (adaptado)',
       texto: 'Os pacientes com transtornos mentais têm direito à presença médica para esclarecer a necessidade de hospitalização involuntária, e à proteção contra qualquer forma de abuso e exploração. A internação deve ser indicada apenas quando os recursos extra-hospitalares forem insuficientes.'
     },
     {
@@ -142,20 +142,20 @@ export const MOTIVADORES_OFICIAIS = {
     },
     {
       titulo: 'Texto II',
-      fonte: 'Ancine — dados de mercado (adaptado)',
+      fonte: 'Ancine, dados de mercado (adaptado)',
       texto: 'A maioria das salas de cinema do país está concentrada em pouco mais de cem municípios. Em parte das cidades médias, os moradores precisam se deslocar para outro município para assistir a um filme, e o preço do ingresso é apontado como a principal barreira de acesso.'
     },
     {
       titulo: 'Texto III',
-      fonte: 'Pierre Bourdieu — capital cultural (adaptado)',
-      texto: 'O gosto não é natural: é aprendido, e depende do contato prévio com repertórios valorizados socialmente. Oferecer iguais condições de acesso é diferente de possibilitar a experiência — a frequentação transforma o apreço, não o inverso.'
+      fonte: 'Pierre Bourdieu, capital cultural (adaptado)',
+      texto: 'O gosto não é natural: é aprendido, e depende do contato prévio com repertórios valorizados socialmente. Oferecer iguais condições de acesso é diferente de possibilitar a experiência, a frequentação transforma o apreço, não o inverso.'
     }
   ],
 
   'enem-2018': [
     {
       titulo: 'Texto I',
-      fonte: 'Marco Civil da Internet — Lei 12.965/2014 (adaptado)',
+      fonte: 'Marco Civil da Internet, Lei 12.965/2014 (adaptado)',
       texto: 'O acesso à internet é essencial ao exercício da cidadania. O consentimento do usuário deve ser obtido de forma livre, informada e inequívoca para coleta e uso dos registros e dados pessoais, que só podem ser utilizados para as finalidades que justificaram sua coleta.'
     },
     {
@@ -165,7 +165,7 @@ export const MOTIVADORES_OFICIAIS = {
     },
     {
       titulo: 'Texto III',
-      fonte: 'Shoshana Zuboff — capitalismo de vigilância (adaptado)',
+      fonte: 'Shoshana Zuboff, capitalismo de vigilância (adaptado)',
       texto: 'Os hábitos, as preferências e as hesitações dos usuários são convertidos em dados que predizem comportamentos. Quando o produto é a predição, não há escolha realmente livre: a arquitetura da interface define as opções disponíveis.'
     }
   ],
@@ -202,25 +202,25 @@ export const MOTIVADORES_OFICIAIS = {
     {
       titulo: 'Texto III',
       fonte: 'Relatórios de direitos humanos no Brasil (adaptado)',
-      texto: 'Denúncias de intolerância religiosa alcançam principalmente crianças e mulheres, e se concentram em comunidades de matriz africana. Em muitos relatos, o agressor se reconhece como defensor de uma fé legítima — o que mostra que a intolerância raramente se apresenta como tal.'
+      texto: 'Denúncias de intolerância religiosa alcançam principalmente crianças e mulheres, e se concentram em comunidades de matriz africana. Em muitos relatos, o agressor se reconhece como defensor de uma fé legítima, o que mostra que a intolerância raramente se apresenta como tal.'
     }
   ],
 
   'enem-2015': [
     {
       titulo: 'Texto I',
-      fonte: 'Lei Maria da Penha — Lei 11.340/2006 (adaptado)',
+      fonte: 'Lei Maria da Penha, Lei 11.340/2006 (adaptado)',
       texto: 'A lei cria mecanismos para coibir a violência doméstica e familiar contra a mulher, compreendida como ação que cause morte, lesão, sofrimento físico, sexual ou psicológico e dano moral ou patrimonial, no âmbito da unidade doméstica, familiar ou de relação íntima.'
     },
     {
       titulo: 'Texto II',
-      fonte: 'Lei 13.104/2015 — feminicídio (adaptado)',
-      texto: 'O feminicídio passa a ser circunstância qualificadora do crime de homicídio — quando o crime envolve violência doméstica e familiar ou menosprezo à condição de mulher. O direito penal reconhece, assim, que a motivação do crime é estrutural, não circunstancial.'
+      fonte: 'Lei 13.104/2015, feminicídio (adaptado)',
+      texto: 'O feminicídio passa a ser circunstância qualificadora do crime de homicídio, quando o crime envolve violência doméstica e familiar ou menosprezo à condição de mulher. O direito penal reconhece, assim, que a motivação do crime é estrutural, não circunstancial.'
     },
     {
       titulo: 'Texto III',
       fonte: 'Nota técnica sobre o poder simbólico da lei (adaptado)',
-      texto: 'A existência de uma lei não encerra o problema: a proteção depende de condições concretas de aplicação — delegacias especializadas, rede de acolhimento, abrigos, assistência jurídica e acompanhamento da mulher após a denúncia.'
+      texto: 'A existência de uma lei não encerra o problema: a proteção depende de condições concretas de aplicação, delegacias especializadas, rede de acolhimento, abrigos, assistência jurídica e acompanhamento da mulher após a denúncia.'
     }
   ],
 
@@ -238,7 +238,7 @@ export const MOTIVADORES_OFICIAIS = {
     {
       titulo: 'Texto III',
       fonte: 'Conceito de “consumo infantil” na sociologia (adaptado)',
-      texto: 'A criança recebe do mercado um papel que a lei não lhe concedeu: a de consumidora autônoma. Quando a publicidade se dirige a ela, o pedido é transferido para o adulto — o merchandising usa o afeto como canal de venda.'
+      texto: 'A criança recebe do mercado um papel que a lei não lhe concedeu: a de consumidora autônoma. Quando a publicidade se dirige a ela, o pedido é transferido para o adulto, o merchandising usa o afeto como canal de venda.'
     }
   ]
 };
