@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Redação com João — critérios, estrutura, temas e redações analisadas</title>
+<meta name="description" content="Guia completo da redação do ENEM: critérios oficiais das 5 competências, estrutura parte por parte, como ler o comando do tema, banco de temas com repertórios, 13 redações nota 1000 analisadas (2014–2026) e correção com nota e pontos de melhoria." />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F6F4EF" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14181D" />
+<meta name="color-scheme" content="dark" />
+<link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="css/fontes.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23C8A24A'/><stop offset='1' stop-color='%2317395C'/></linearGradient></defs><rect width='100' height='100' rx='26' fill='url(%23g)'/><text x='50' y='68' font-size='42' font-family='Georgia,serif' font-weight='bold' fill='%23FFFFFF' text-anchor='middle'>RJ</text></svg>" />
+</head>
+<body>
+
+<a class="salta" href="#app">Pular para o conteúdo</a>
+
+<!-- fundo: aurora em CSS (fallback universal) + campo 3D em WebGL carregado sob demanda -->
+<div class="ceu" aria-hidden="true">
+  <div class="ceu-aurora"></div>
+  <canvas id="ceu-gl"></canvas>
+</div>
+<div class="grao" aria-hidden="true"></div>
+<div class="progresso" id="progresso" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#/">
+      <span class="brand-mark">RJ</span>
+      <span class="brand-text">
+        <strong>Redação com João</strong>
+        <small>critérios · estrutura · análise</small>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Seções do site">
+      <div class="nav-pills" id="tabs">
+        <a class="pill" href="#/criterios">Critérios</a>
+        <a class="pill" href="#/estrutura">Estrutura</a>
+        <a class="pill" href="#/comandos">Ler o tema</a>
+        <a class="pill" href="#/temas">Temas</a>
+        <a class="pill" href="#/redacoes">Redações</a>
+      </div>
+      <a class="pill pill-cta" href="#/corrigir">Corrigir</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="app" tabindex="-1"></main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p><b>Redação com João</b> — projeto educacional independente, sem vínculo com o Inep. Descritores de nível transcritos do guia oficial da redação do Enem. As redações analisadas são modelos didáticos que reconstroem o padrão nota 1000, e não transcrições de textos oficiais de participantes. A correção automática é um diagnóstico heurístico e não substitui a avaliação humana.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="js/ui.js"></script>
+<script type="module" src="js/bg.js"></script>
+</body>
+</html>

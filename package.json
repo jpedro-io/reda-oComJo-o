@@ -1,0 +1,11 @@
+{
+  "name": "corretor-enem",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Corretor de redação do ENEM por competências (motor heurístico + base de temas)",
+  "scripts": {
+    "start": "python3 -m http.server 8000 --bind 0.0.0.0",
+    "test": "node test/engine.test.js"
+  }
+}
