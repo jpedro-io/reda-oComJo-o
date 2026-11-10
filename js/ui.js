@@ -73,6 +73,19 @@ function viewHome() {
     ['#/corrigir', 'Corrigir', 'Cole seu texto: nota por competência, o que segura a nota e o que fazer primeiro.', 'analise']
   ];
 
+  /* amostra da folha corrigida: trecho real de uma das redações do site */
+  const folha = `
+    <figure class="folha">
+      <figcaption class="folha-topo">Trecho de redação nota 1000</figcaption>
+      <div class="folha-corpo">
+        <blockquote class="folha-texto">
+          <p><mark>A Lei 10.216, de 2001, redirecionou o cuidado em saúde mental no Brasil</mark> ao substituir o isolamento manicomial por serviços de base comunitária. Duas décadas depois, o estigma segue funcionando como barreira: <mark>falar de sofrimento psíquico ainda é tratado como sinal de fraqueza</mark>. Esse silêncio não é apenas cultural, pois <span class="folha-erro">adia o diagnóstico, esvazia a busca por tratamento e reproduz o preconceito</span> dentro do próprio sistema de saúde.</p>
+        </blockquote>
+        <p class="folha-nota">Três efeitos no mesmo período. Um ponto antes de “pois” resolve.</p>
+      </div>
+      <p class="folha-legenda">Marca-texto: acerto. Vermelho: ponto de melhoria.</p>
+    </figure>`;
+
   const comps = CRITERIOS.map(c => `
     <div class="hp-linha">
       <span class="id">${c.id}</span>
@@ -92,13 +105,7 @@ function viewHome() {
       <p class="frase">${TOTAL_NOTA_MIL} redações nota 1000 analisadas, ${TEMAS.length} temas mapeados, ${COMANDOS.length} comandos de tema.</p>
     </div>
 
-    <aside class="hero-painel" data-entrada aria-label="Como a nota é formada">
-      <div class="hp-topo">
-        <strong>Como a nota se forma</strong>
-      </div>
-      <div class="hp-lista">${comps}</div>
-      <p class="hp-pe">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, e dois avaliadores nunca fecham o mesmo número, o relatório publica sempre uma faixa (nota entre X e Y), nunca um número exato.</p>
-    </aside>
+    <div class="hero-folha">${folha}</div>
   </section>
 
   <section aria-labelledby="h-indice">
@@ -124,6 +131,7 @@ function viewHome() {
       <h2 id="h-comp">As cinco competências</h2>
       <span>0 a 200 cada</span>
     </div>
+    <p class="comp-lead">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, e dois avaliadores nunca fecham o mesmo número, o relatório publica sempre uma faixa (nota entre X e Y), nunca um número exato.</p>
     <div class="faixa-comp" data-entrada>
       ${CRITERIOS.map(c => `
         <a class="rc-item" href="#/criterios">

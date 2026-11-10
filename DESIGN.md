@@ -74,10 +74,11 @@ Contraste mínimo AA (o cinza `#5B6B64` sobre branco dá 5,1:1), foco visível
 com contorno de 2px em esmeralda, alvos de toque de 40px, tabelas que
 empilham no celular e menu por botão anunciado com `aria-expanded`.
 
-## 10. Vida na página
-A capa leva uma fotografia de mesa de estudo atrás do texto: a faixa ocupa a
-largura toda, a imagem fica no fundo com foco macio e um véu branco em
-diagonal protege a coluna de leitura, então o contraste do texto não cai.
-No celular e no tablet a foto vira uma faixa no alto, dissolvida no branco,
-e o texto fica sempre sobre papel limpo. O espaço entre o cabeçalho e o
-conteúdo foi reduzido para 44 px, sem faixa vazia.
+## 10. A capa
+A capa não usa foto. No lugar dela, à direita do título, entra uma amostra do
+relatório: um trecho real de uma das redações nota 1000 do site, em serifada de
+18 px sobre 1,7, com marca-texto esmeralda nos acertos e sublinhado ondulado
+vermelho no ponto de melhoria, com a anotação na margem direita. No celular a
+anotação desce para baixo do parágrafo. O bloco é uma caixa branca de borda
+1 px, raio 6 px, sem sombra e sem animação. Duas colunas no desktop, uma no
+resto, dentro de 1120 px, com 44 px entre o cabeçalho e o título.
