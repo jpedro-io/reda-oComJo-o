@@ -10,9 +10,9 @@ export const VIDEOS = {
     "canal": ""
   },
   "art-patrimonio": {
-    "id": "_bjGPdzbNHQ",
-    "titulo": "PATRIMÔNIO CULTURAL: conceito, história e tipos | Cortes dos Aulões Enem | Artes | Mariane Martins",
-    "canal": ""
+    "id": "jUhSMOk3W00",
+    "titulo": "ENEM - Artes - Patrimônio Cultural",
+    "canal": "Eu conto a Arte"
   },
   "art-plasticas": {
     "id": "UBDOa7cz4eA",
@@ -42,7 +42,7 @@ export const VIDEOS = {
   "bio-fisiologia": {
     "id": "AotglnRfNOo",
     "titulo": "Fisiologia Humana no Enem - Brasil Escola",
-    "canal": "Biologia Total com Prof. Jubilut"
+    "canal": "Brasil Escola"
   },
   "bio-genetica": {
     "id": "2rqEmRrtkYc",
@@ -52,7 +52,7 @@ export const VIDEOS = {
   "bio-reino": {
     "id": "hYNe7hYpu7s",
     "titulo": "Os Cinco Reinos dos Seres Vivos - Características e Classificação | Biologia com Samuel Cunha",
-    "canal": "Biologia Total com Prof. Jubilut"
+    "canal": "Biologia com Samuel Cunha"
   },
   "edf-corporal": {
     "id": "PBe_8I1nkUg",
@@ -340,9 +340,9 @@ export const VIDEOS = {
     "canal": "Equaciona com Paulo Pereira"
   },
   "mat-razao-proporcao": {
-    "id": "uIulBEk8gcM",
-    "titulo": "RAZÃO E PROPORÇÃO (Parte 1): Propriedades e Conceitos | Matemática Básica - Aula 24",
-    "canal": "Professor Ferretto"
+    "id": "MA_ZrgV2xws",
+    "titulo": "Tudo de Matemática para o Enem — aula completa",
+    "canal": ""
   },
   "mat-regra-tres": {
     "id": "alLifth7gxE",

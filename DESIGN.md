@@ -115,3 +115,13 @@ desligado em `prefers-reduced-motion`.
 conteúdo ocupa a tela no desktop. Páginas de leitura longa usam duas colunas
 (redação: texto à esquerda, análise à direita; conteúdo: resumo à esquerda,
 apoio à direita, vídeo na largura toda).
+
+## Guia de conteúdo — rodada em andamento
+
+As páginas ampliadas combinam resumo e painel lateral no desktop, exemplos,
+esquemas e fórmulas, três questões abertas com resolução escrita e vídeo ao
+final. No celular, os blocos se empilham sem exigir rolagem horizontal. Os
+links do índice rolam até a seção sem alterar a rota baseada em hash. O estado
+real de cobertura e os pendentes estão em `tools/PROGRESSO-QUESTOES.md`;
+“ampliado” é um critério estrutural, não uma garantia de revisão factual nem
+comprovação de que todos os vídeos são aulas integrais.

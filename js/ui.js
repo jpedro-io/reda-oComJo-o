@@ -993,6 +993,16 @@ function tituloDa(partes = []) {
   return mapa[partes[0] || ''] || 'Redação com João';
 }
 
+// Os links internos não podem trocar o hash usado pelo roteador da aplicação.
+document.addEventListener('click', event => {
+  const link = event.target.closest('.cp-indice a[href^="#"]');
+  if (!link) return;
+  const alvo = document.getElementById(link.getAttribute('href').slice(1));
+  if (!alvo) return;
+  event.preventDefault();
+  alvo.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+});
+
 window.addEventListener('hashchange', render);
 
 window.addEventListener('scroll', () => {

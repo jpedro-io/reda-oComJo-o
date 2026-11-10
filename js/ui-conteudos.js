@@ -11,7 +11,7 @@
  */
 import {
   AREAS, TOTAL_CONTEUDOS, areaPorId, materiaPorId, conteudoPorId,
-  paginaDe, temTexto,
+  paginaDe, temTexto, paginaCompleta,
 } from './db/conteudos/index.js';
 
 const escQ = (s = '') => String(s)
@@ -27,6 +27,9 @@ const ICO_Q = {
   check: '<path d="M4 12.5l5 5L20 6.5"/>',
   alvo: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/>',
   formula: '<path d="M6 5h6M6 12h4M6 19h5"/><path d="M14 5l5 14M19 5l-5 14"/>',
+  exemplo: '<path d="M12 3.5 14.5 9l6 .8-4.3 4.2 1 6-5.2-2.9-5.2 2.9 1-6L3.5 9.8 9.5 9z"/>',
+  imagem: '<rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M4 16.5l4.5-4 3.5 3 3-2.5 5 4"/>',
+  lapis: '<path d="M4 20l1-4.5L16.5 4a2.1 2.1 0 0 1 3 3L8 18.5z"/><path d="M14.5 6l3 3"/>',
 };
 const icQ = (nome, cls = '') =>
   `<svg class="ico ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICO_Q[nome] || ''}</svg>`;
@@ -65,7 +68,7 @@ export function viewConteudos() {
     </div>
     <p class="sub" data-entrada>
       ${TOTAL_CONTEUDOS} conteúdos das quatro áreas da prova. Cada página traz o resumo do assunto,
-      as fórmulas quando existem, uma aula em vídeo e questões de edições passadas resolvidas passo a passo.
+      as fórmulas quando existem, uma aula em vídeo e questões resolvidas passo a passo, identificadas por fonte.
     </p>
   </div>
 
@@ -88,7 +91,7 @@ export function viewMateria(id) {
       <span class="cb-num">${String(i + 1).padStart(2, '0')}</span>
       <span class="cb-nome">${escQ(c.titulo)}</span>
       <span class="cb-acoes">
-        ${temTexto(c.id) ? '<span class="cb-tag">resumo</span>' : ''}
+        ${paginaCompleta(c.id) ? '<span class="cb-tag completo">completo</span>' : (temTexto(c.id) ? '<span class="cb-tag">resumo</span>' : '')}
         ${icQ('seta', 'cb-seta')}
       </span>
     </a>`).join('');
@@ -108,7 +111,7 @@ export function viewMateria(id) {
       <span class="eyebrow" data-entrada>${escQ(materia.area.sigla)} · ${escQ(materia.area.nome.split(' e suas')[0])}</span>
       <h1 data-entrada>${escQ(materia.nome)}</h1>
     </div>
-    <p class="sub" data-entrada>${materia.conteudos.length} conteúdos nesta matéria. Clique em um para abrir o resumo, as fórmulas, o vídeo e as questões resolvidas.</p>
+    <p class="sub" data-entrada>${materia.conteudos.length} conteúdos nesta matéria. Clique em um para abrir o resumo, os exemplos, os esquemas, as questões resolvidas e o vídeo.</p>
   </div>
 
   <div class="conteudo-lista">${botoes}</div>
@@ -122,38 +125,72 @@ export function viewConteudo(id) {
   if (!base) return naoEncontrado('Conteúdo não encontrado.');
   const p = paginaDe(id, base);
 
-  const resumo = p.resumo.length
-    ? p.resumo.map(par => `<p>${escQ(par)}</p>`).join('')
-    : '<p class="vazio-txt">O resumo deste conteúdo ainda está sendo escrito.</p>';
+  /* 1. resumo completo, por subtema */
+  const resumo = p.secoes.length
+    ? p.secoes.map(sec => `
+        <section class="cp-secao">
+          <h3>${escQ(sec.h)}</h3>
+          ${(sec.ps || []).map(par => `<p>${escQ(par)}</p>`).join('')}
+        </section>`).join('')
+    : (p.resumo.length
+      ? p.resumo.map(par => `<p>${escQ(par)}</p>`).join('')
+      : '<p class="vazio-txt">O texto completo deste conteúdo ainda está sendo escrito.</p>');
 
+  /* 2. exemplos */
+  const exemplos = p.exemplos.length ? `
+    <section class="cp-bloco" id="exemplos">
+      <h2 class="cp-rot">${icQ('exemplo')} exemplos</h2>
+      <div class="cp-exemplos">
+      ${p.exemplos.map((ex, i) => `
+        <article class="cp-exemplo">
+          <span class="cp-ex-num">${i + 1}</span>
+          <div>
+            <h3>${escQ(ex.titulo)}</h3>
+            <p class="cp-ex-texto">${escQ(ex.texto)}</p>
+            ${ex.comentario ? `<p class="cp-ex-coment"><b>Por que importa:</b> ${escQ(ex.comentario)}</p>` : ''}
+          </div>
+        </article>`).join('')}
+      </div>
+    </section>` : '';
+
+  /* 3. imagens, esquemas e fórmulas */
+  const figuras = (p.figuras || []).length
+    ? `<div class="cp-figuras">${(p.figuras || []).map(f => figuraHTML(f)).join('')}</div>` : '';
+  const formulas = p.formulas.length ? `
+    <div class="formula-grade">
+      ${p.formulas.map(f => `
+        <div class="formula-card">
+          <span class="fc-rot">${escQ(f.titulo)}</span>
+          <code class="fc-expr">${escQ(f.expr)}</code>
+          ${f.uso ? `<span class="fc-uso">${escQ(f.uso)}</span>` : ''}
+        </div>`).join('')}
+    </div>` : '';
+  const imagens = (figuras || formulas) ? `
+    <section class="cp-bloco" id="imagens">
+      <h2 class="cp-rot">${icQ('imagem')} imagens, esquemas e fórmulas</h2>
+      ${figuras}
+      ${formulas}
+    </section>` : '';
+
+  /* 4. o que mais cai */
   const chave = p.chave.length ? `
     <section class="cp-bloco">
       <h2 class="cp-rot">${icQ('alvo')} o que mais cai</h2>
       <ul class="chave-lista">${p.chave.map(c => `<li>${escQ(c)}</li>`).join('')}</ul>
     </section>` : '';
 
-  const formulas = p.formulas.length ? `
-    <section class="cp-bloco">
-      <h2 class="cp-rot">${icQ('formula')} fórmulas e relações</h2>
-      <div class="formula-grade">
-        ${p.formulas.map(f => `
-          <div class="formula-card">
-            <span class="fc-rot">${escQ(f.titulo)}</span>
-            <code class="fc-expr">${escQ(f.expr)}</code>
-          </div>`).join('')}
-      </div>
-    </section>` : '';
-
+  /* 5. questões com resolução escrita */
   const questoes = p.questoes.length ? `
     <section class="cp-bloco" id="questoes">
-      <h2 class="cp-rot">${icQ('check')} ${p.questoes.length} ${p.questoes.length === 1 ? 'questão resolvida' : 'questões resolvidas'}</h2>
+      <h2 class="cp-rot">${icQ('check')} ${p.questoes.length} ${p.questoes.length === 1 ? 'questão resolvida' : 'questões resolvidas'} por escrito</h2>
       ${p.questoes.map((q, i) => questaoHTML(q, i)).join('')}
     </section>` : `
     <section class="cp-bloco" id="questoes">
-      <h2 class="cp-rot">${icQ('check')} questões de edições passadas</h2>
-      <p class="cp-aviso">As questões deste conteúdo estão sendo transcritas e resolvidas, cada uma passa por conferência do enunciado e do gabarito oficial antes de entrar no site. O resumo acima já cobre o que a prova cobra.</p>
+      <h2 class="cp-rot">${icQ('check')} questões resolvidas</h2>
+      <p class="cp-aviso">As questões deste conteúdo ainda estão sendo escritas. Este conteúdo ainda está em preparação.</p>
     </section>`;
 
+  /* 6. vídeo */
   const video = p.video ? `
     <section class="cp-bloco" id="video">
       <h2 class="cp-rot">${icQ('video')} aula em vídeo</h2>
@@ -180,6 +217,12 @@ export function viewConteudo(id) {
   const ant = pos > 0 ? irmaos[pos - 1] : null;
   const prox = pos >= 0 && pos < irmaos.length - 1 ? irmaos[pos + 1] : null;
 
+  const indicePagina = [
+    ['#resumo', 'resumo'], p.exemplos.length ? ['#exemplos', 'exemplos'] : null,
+    (figuras || formulas) ? ['#imagens', 'imagens e fórmulas'] : null,
+    ['#questoes', 'questões'], p.video ? ['#video', 'vídeo'] : null,
+  ].filter(Boolean).map(([href, rot]) => `<a href="${href}">${rot}</a>`).join('');
+
   return `
   <nav class="migalha" aria-label="Caminho">
     <a href="#/conteudos">Conteúdos</a> <span aria-hidden="true">/</span>
@@ -191,15 +234,19 @@ export function viewConteudo(id) {
     <header class="cp-topo" data-entrada>
       <span class="eyebrow">${escQ(base.area.sigla)} · ${escQ(base.materia.nome)}</span>
       <h1>${escQ(base.titulo)}</h1>
+      <nav class="cp-indice" aria-label="Nesta página">${indicePagina}</nav>
     </header>
 
-    <section class="cp-bloco cp-resumo" data-entrada>
-      <h2 class="cp-rot">${icQ('livro')} resumo</h2>
-      ${resumo}
-    </section>
+    <div class="cp-duas">
+      <section class="cp-bloco cp-resumo" id="resumo" data-entrada>
+        <h2 class="cp-rot">${icQ('livro')} ${paginaCompleta(id) ? 'texto completo' : 'resumo'}</h2>
+        ${resumo}
+      </section>
+      ${chave ? `<aside class="cp-lado">${chave}</aside>` : ''}
+    </div>
 
-    ${chave}
-    ${formulas}
+    ${exemplos}
+    ${imagens}
     ${questoes}
     ${video}
 
@@ -208,6 +255,39 @@ export function viewConteudo(id) {
       ${prox ? `<a class="cp-nav-btn prox" href="#/conteudos/c/${prox.id}"><span><small>próximo</small>${escQ(prox.titulo)}</span>${icQ('seta')}</a>` : '<span></span>'}
     </nav>
   </article>`;
+}
+
+/* figura simples desenhada em HTML/SVG, sem requisição externa */
+function figuraHTML(f) {
+  const itens = f.itens || [];
+  let corpo = '';
+
+  if (f.tipo === 'fluxo') {
+    corpo = `<ol class="fig-fluxo">${itens.map(it => `
+      <li><span class="ff-txt">${escQ(typeof it === 'string' ? it : it.txt)}</span>
+      ${typeof it === 'object' && it.nota ? `<span class="ff-nota">${escQ(it.nota)}</span>` : ''}</li>`).join('')}</ol>`;
+  } else if (f.tipo === 'camadas') {
+    corpo = `<ul class="fig-camadas">${itens.map(it => `
+      <li><b>${escQ(typeof it === 'string' ? it : it.txt)}</b>
+      ${typeof it === 'object' && it.nota ? `<span>${escQ(it.nota)}</span>` : ''}</li>`).join('')}</ul>`;
+  } else if (f.tipo === 'barras') {
+    const max = Math.max(...itens.map(it => Number(it.valor) || 0), 1);
+    corpo = `<ul class="fig-barras">${itens.map(it => `
+      <li>
+        <span class="fb-rot">${escQ(it.txt)}</span>
+        <span class="fb-trilha"><span class="fb-preenche" style="width:${Math.max(4, (Number(it.valor) || 0) / max * 100).toFixed(1)}%"></span></span>
+        <span class="fb-val">${escQ(it.valor)}${it.unidade ? ` ${escQ(it.unidade)}` : ''}</span>
+      </li>`).join('')}</ul>`;
+  } else {
+    corpo = `<ul class="fig-lista">${itens.map(it => `<li>${escQ(typeof it === 'string' ? it : it.txt)}</li>`).join('')}</ul>`;
+  }
+
+  return `
+  <figure class="cp-figura">
+    <figcaption>${escQ(f.titulo || 'Esquema')}</figcaption>
+    ${corpo}
+    ${f.legenda ? `<p class="fig-legenda">${escQ(f.legenda)}</p>` : ''}
+  </figure>`;
 }
 
 function questaoHTML(q, i) {
@@ -221,19 +301,26 @@ function questaoHTML(q, i) {
     </li>`).join('');
 
   return `
-  <details class="questao">
+  <details class="questao" open>
     <summary class="q-topo">
       <span class="q-num">${i + 1}</span>
       <span class="q-fonte">${escQ(fonte || 'Enem')}</span>
-      <span class="q-abre">ver resolução</span>
+      <span class="q-abre">resolução escrita</span>
     </summary>
     <div class="q-corpo">
       ${(q.textoApoio || []).map(t => `<p class="q-apoio">${escQ(t)}</p>`).join('')}
       <p class="q-enunciado">${escQ(q.enunciado || '')}</p>
       <ol class="q-alts">${alternativas}</ol>
       <div class="q-resolucao">
-        <span class="q-rot">Resolução</span>
-        ${(q.resolucao || []).map(r => `<p>${escQ(r)}</p>`).join('')}
+        <span class="q-rot">${icQ('lapis')} resolução passo a passo</span>
+        <ol class="q-passos">
+          ${(q.resolucao || []).map(r => `<li>${escQ(r)}</li>`).join('')}
+        </ol>
+        ${(q.porqueErram || []).length ? `
+        <div class="q-erram">
+          <span class="q-rot">por que as outras erram</span>
+          <ul>${q.porqueErram.map(e => `<li>${escQ(e)}</li>`).join('')}</ul>
+        </div>` : ''}
         ${q.gabaritoOficial ? `<p class="q-gab"><b>Gabarito oficial:</b> ${escQ(q.gabaritoOficial)}</p>` : ''}
       </div>
     </div>

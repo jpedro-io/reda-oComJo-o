@@ -1110,3 +1110,225 @@ main .comp-bloco .oficial-det summary { color: var(--g-200); }
   main .hub-area-topo { padding: 12px 16px !important; }
   main .ws-entrada, main .ws-saida { padding: 16px !important; }
 }
+
+/* ==========================================================================
+   25. LEITURA: alto contraste e as seções novas do conteúdo
+   ========================================================================== */
+
+/* tinta mais firme em todo o site: texto sobre vidro precisa de contraste */
+:root {
+  --ink: #F6FDFA;
+  --muted: rgba(228, 246, 238, .88);
+  --tinta-3: rgba(226, 244, 236, .74);
+}
+
+main p, main li, main dd, main td, main .sub { color: var(--ink); }
+main .sub, main .cp-rot, main .q-apoio { color: var(--muted); }
+
+/* páginas de conteúdo: coluna de leitura mais legível */
+main .conteudo-pag { grid-template-columns: minmax(0, 1fr) 410px !important; gap: 22px 28px !important; }
+main .cp-bloco {
+  background: linear-gradient(158deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .035)) !important;
+  border-color: rgba(255, 255, 255, .16) !important;
+}
+main .cp-resumo { padding: 34px 38px !important; }
+main .cp-resumo p { font-size: 1.06rem; line-height: 1.74; color: var(--ink); }
+
+/* subtemas do texto completo */
+main .cp-secao + .cp-secao { margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, .12); }
+main .cp-secao h3 {
+  font-family: var(--f-display, 'Sentient', Georgia, serif);
+  font-size: 1.28rem;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0 0 10px;
+  letter-spacing: -.01em;
+}
+main .cp-secao h3::before {
+  content: '';
+  display: inline-block;
+  width: 9px; height: 9px;
+  margin-right: 10px;
+  border-radius: 2px;
+  background: var(--g-300);
+  transform: translateY(-3px) rotate(45deg);
+}
+main .cp-secao p { max-width: 78ch; color: var(--ink); }
+main .cp-secao p + p { margin-top: 12px; }
+
+/* índice curto no topo da página */
+main .cp-indice { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+main .cp-indice a {
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--g-100);
+  background: rgba(255, 255, 255, .09);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+main .cp-indice a:hover { background: rgba(110, 231, 183, .2); color: #fff; }
+
+/* exemplos */
+main .cp-exemplo {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
+main .cp-exemplo:first-of-type { border-top: 0; padding-top: 2px; }
+main .cp-ex-num {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border-radius: 9px;
+  background: rgba(52, 211, 153, .18);
+  border: 1px solid rgba(110, 231, 183, .45);
+  color: var(--g-100);
+  font-size: .82rem;
+  font-weight: 600;
+}
+main .cp-exemplo h3 { font-size: 1rem; font-weight: 600; color: #fff; margin: 0 0 6px; }
+main .cp-ex-texto {
+  font-size: .99rem;
+  line-height: 1.66;
+  color: var(--ink);
+  background: rgba(0, 0, 0, .22);
+  border-left: 3px solid var(--g-400);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+  margin: 0;
+  font-family: var(--f-display, Georgia, serif);
+}
+main .cp-ex-coment { margin: 8px 0 0; font-size: .95rem; color: var(--muted); }
+
+/* figuras */
+main .cp-figura {
+  margin: 6px 0 20px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(0, 0, 0, .2);
+}
+main .cp-figura figcaption {
+  font-size: .76rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--g-200);
+  margin-bottom: 14px;
+}
+main .fig-legenda { margin: 12px 0 0; font-size: .9rem; color: var(--muted); }
+
+main .fig-fluxo { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; counter-reset: f; }
+main .fig-fluxo li {
+  flex: 1 1 150px;
+  position: relative;
+  padding: 12px 14px 12px 34px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .14);
+  font-size: .93rem;
+  line-height: 1.45;
+  color: var(--ink);
+  counter-increment: f;
+}
+main .fig-fluxo li::before {
+  content: counter(f);
+  position: absolute; left: 12px; top: 12px;
+  color: var(--g-200); font-size: .78rem; font-weight: 700;
+}
+main .ff-nota { display: block; margin-top: 4px; font-size: .82rem; color: var(--muted); }
+
+main .fig-camadas { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+main .fig-camadas li {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(52, 211, 153, .26), rgba(52, 211, 153, .06));
+  border: 1px solid rgba(110, 231, 183, .3);
+  font-size: .93rem;
+  color: var(--ink);
+}
+main .fig-camadas li b { color: #fff; font-weight: 600; }
+main .fig-camadas li span { display: block; font-size: .84rem; color: var(--muted); margin-top: 2px; }
+
+main .fig-barras { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+main .fig-barras li { display: grid; grid-template-columns: 132px minmax(0, 1fr) auto; align-items: center; gap: 12px; font-size: .9rem; color: var(--ink); }
+main .fb-trilha { height: 10px; border-radius: 999px; background: rgba(255, 255, 255, .12); overflow: hidden; }
+main .fb-preenche { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--g-400), var(--g-200)); }
+main .fb-val { color: var(--g-100); font-variant-numeric: tabular-nums; }
+
+main .fig-lista { margin: 0; padding-left: 18px; color: var(--ink); }
+main .fig-lista li { margin: 6px 0; }
+
+/* fórmulas com legenda de uso */
+main .formula-card { background: rgba(0, 0, 0, .26) !important; border: 1px solid rgba(255, 255, 255, .16) !important; }
+main .fc-expr { font-size: 1.02rem !important; color: #fff !important; }
+main .fc-rot { color: var(--g-200) !important; }
+main .fc-uso { display: block; margin-top: 8px; font-size: .86rem; color: var(--muted); }
+
+/* questões: resolução escrita, em passos numerados */
+main .q-passos { margin: 8px 0 0; padding-left: 20px; color: var(--ink); }
+main .q-passos li { margin: 8px 0; line-height: 1.62; }
+main .q-passos li::marker { color: var(--g-200); font-weight: 700; }
+main .q-erram { margin-top: 14px; padding-top: 12px; border-top: 1px dashed rgba(255, 255, 255, .16); }
+main .q-erram ul { margin: 8px 0 0; padding-left: 18px; }
+main .q-erram li { color: var(--muted); font-size: .93rem; margin: 4px 0; }
+main .q-enunciado { font-size: 1.02rem; line-height: 1.62; color: #fff; }
+main .q-apoio { font-size: .96rem; line-height: 1.62; }
+main .q-alts li { color: var(--ink); }
+main .q-alts li.correta { background: rgba(52, 211, 153, .16); border-color: rgba(110, 231, 183, .45); }
+main .q-alts li.correta .alt-txt { color: #fff; }
+main .cb-tag.completo { background: rgba(52, 211, 153, .22); border-color: rgba(110, 231, 183, .5); color: #DFFCEF; }
+main .questao { background: rgba(255, 255, 255, .05) !important; border: 1px solid rgba(255, 255, 255, .14) !important; border-radius: 16px; }
+
+/* ---------- 26. página de conteúdo em coluna cheia, na ordem pedida ---------- */
+main .conteudo-pag { display: block !important; max-width: none !important; }
+main .cp-bloco { margin: 0 0 20px !important; }
+
+main .cp-duas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+main .cp-lado { position: sticky; top: 92px; }
+main .cp-lado .cp-bloco { margin: 0 !important; }
+main .cp-duas .cp-resumo { margin: 0 !important; }
+
+/* exemplos em três colunas */
+main .cp-exemplos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+}
+main .cp-exemplo {
+  display: block;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .055);
+}
+main .cp-exemplo:first-of-type { padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .14); }
+main .cp-ex-num { margin-bottom: 10px; }
+main .cp-ex-texto { font-size: 1rem; }
+
+/* figuras lado a lado quando houver mais de uma */
+main .cp-figuras { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 16px; }
+main .cp-figuras .cp-figura { margin: 0; }
+main .formula-grade { margin-top: 16px; }
+
+/* questões ocupam a largura toda */
+main #questoes .questao { margin-bottom: 14px; }
+
+@media (max-width: 1100px) {
+  main .cp-duas { grid-template-columns: minmax(0, 1fr); }
+  main .cp-lado { position: static; }
+}
+
+/* questões abertas por padrão: resolução escrita sempre visível */
+main .questao[open] > .q-topo { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+main .questao .q-abre { color: rgba(226, 244, 236, .72); }
+main .questao[open] .q-abre { color: var(--tinta-3); }

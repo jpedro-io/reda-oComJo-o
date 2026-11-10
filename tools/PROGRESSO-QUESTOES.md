@@ -1,50 +1,31 @@
 # Cobertura do guia de conteúdos
 
-Atualizado em 9 de novembro de 2026.
+Situação local: 38 de 80 conteúdos com texto ampliado, exemplos, esquema e três questões resolvidas. Os demais 42 ainda precisam de expansão. O total de questões exibidas é 116, incluindo o conteúdo antigo ainda não ampliado.
 
-| Situação | Conteúdos |
-|---|---|
-| Resumo longo (6 ou 7 parágrafos) e questão real do Inep resolvida | 14 |
-| Questão real, resumo ainda curto | 2 (porcentagem, medidas) |
-| Só resumo curto, aviso de preparação | 64 |
+As questões autorais são identificadas como tal; o critério automático verifica a estrutura, não substitui revisão factual, pedagógica ou dos vídeos. A cobertura não significa que todos os subtemas possíveis estejam esgotados.
 
-## Feitos
+| Área | Ampliados | Pendentes |
+|---|---:|---:|
+| Linguagens, Códigos e suas Tecnologias | 2 | 16 |
+| Ciências Humanas e suas Tecnologias | 2 | 26 |
+| Ciências da Natureza e suas Tecnologias | 19 | 0 |
+| Matemática e suas Tecnologias | 15 | 0 |
 
-| Conteúdo | Resumo | Questão |
-|---|---|---|
-| Porcentagem | curto | 2022 dia 2, q.140 e q.149 |
-| Razão e proporção | longo | 2022 dia 2, q.147 |
-| Regra de três | longo | 2023 dia 2, q.150 |
-| Matemática financeira | longo | 2023 dia 2, q.155 |
-| Medidas e grandezas | curto | 2022 dia 2, q.136 |
-| Geometria espacial | longo | 2022 dia 2, q.167 |
-| Probabilidade | longo | 2023 dia 2, q.158 |
-| Ecologia | longo | 2022 dia 2, q.104 |
-| Genética | longo | 2023 dia 2, q.120 |
-| Citologia | longo | 2023 dia 2, q.122 |
-| Mecânica | longo | 2023 dia 2, q.106 |
-| Óptica | longo | 2022 dia 2, q.96 |
-| Soluções e ácidos | longo | 2022 dia 2, q.112 |
-| Revolução Industrial | longo | 2022 dia 1, q.73 |
-| Urbanização | longo | 2022 dia 1, q.87 |
-| Filosofia antiga | longo | 2022 dia 1, q.88 |
+## Conteúdos pendentes de expansão
 
-## Como cada questão entra
+- **Língua Portuguesa e Interpretação:** Funções da linguagem (lin-funcoes); Gêneros e tipos textuais (lin-generos); Coesão e coerência (lin-coesao); Figuras de linguagem (lin-figuras).
+- **Literatura:** Modernismo (1ª e 2ª fases) (lit-modernismo); Romantismo (lit-romantismo); Realismo e Naturalismo (lit-realismo); Literatura contemporânea (lit-contemporanea); Intertextualidade e artes visuais (lit-intertexto).
+- **Artes e Educação Física:** Vanguardas europeias (art-vanguardas); Arte contemporânea (art-contemporanea); Elementos das artes visuais (art-plasticas); Patrimônio cultural (art-patrimonio); Práticas corporais, saúde e sociedade (edf-corporal).
+- **Língua Estrangeira (Inglês / Espanhol):** Inglês: interpretação de texto (ing-interpretacao); Espanhol: interpretação de texto (esp-interpretacao).
+- **História:** Brasil Império (his-imperio); República Velha (his-republica-velha); Era Vargas (his-vargas); Ditadura Militar (his-ditadura); Redemocratização (his-redemocratizacao); Revolução Industrial (his-revolucao-industrial); Guerra Fria (his-guerra-fria); Primeira e Segunda Guerra Mundial (his-guerras-mundiais); Antiguidade Clássica (his-antiguidade); Povos indígenas e escravidão (his-indigenas).
+- **Geografia:** Biomas brasileiros (geo-biomas); Desmatamento e mudanças climáticas (geo-clima); Climatologia (geo-climatologia); Geografia agrária (geo-agraria); Demografia (geo-demografia); Geopolítica global (geo-geopolitica); Globalização e blocos econômicos (geo-globalizacao).
+- **Filosofia:** Filosofia antiga: Sócrates, Platão e Aristóteles (fil-antiga); Ética (fil-etica); Filosofia política (fil-politica); Iluminismo (fil-iluminismo); Racionalismo e empirismo (fil-racionalismo-empirismo).
+- **Sociologia:** Mundo do trabalho (soc-trabalho); Movimentos sociais e cidadania (soc-movimentos); Cultura e indústria cultural (soc-cultura); Marx, Durkheim e Weber (soc-classicos).
 
-1. Baixar o caderno oficial do Inep e extrair o texto do PDF.
-2. Transcrever enunciado, apoio e as cinco alternativas palavra por palavra.
-3. Resolver sem consultar gabarito e conferir a conta duas vezes.
-4. Escrever a resolução em passos, dizendo também por que as outras
-   alternativas erram.
-5. Só entra questão cujo texto se sustente sozinho: se depende de figura,
-   gráfico ou imagem, fica para quando houver tratamento de imagem.
+## Critérios de fechamento
 
-## Próximos lotes
-
-1. Linguagens: interpretação, funções da linguagem, figuras de linguagem,
-   gêneros e coesão. Exige cuidado com texto de terceiro protegido.
-2. Ciências da Natureza: estequiometria, termoquímica, eletroquímica,
-   ondulatória, termologia, evolução e fisiologia.
-3. Humanas: história do Brasil (colônia, império, Vargas, ditadura),
-   geografia agrária e clima, sociologia, ética e política.
-4. Fechar os resumos curtos que sobrarem (64).
+- Cobrir os 80 conteúdos e revisar a precisão das explicações.
+- Três questões por página, resolvidas por escrito e com indicação fiel da fonte.
+- Conferir se os vídeos são aulas integrais, pertinentes e disponíveis; não usar cortes.
+- Manter ordem resumo → exemplos → esquemas/fórmulas → questões → vídeo.
+- Testar navegação, responsividade e suíte de regressão antes da publicação.
