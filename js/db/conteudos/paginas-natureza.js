@@ -4,9 +4,13 @@
 export const PAGINAS_NATUREZA = {
   'bio-ecologia': {
     resumo: [
-      'Ecologia é o assunto mais cobrado de Biologia no Enem, e quase sempre em contexto de impacto ambiental. Cadeia alimentar organiza a transferência de energia: produtores (fotossintetizantes) → consumidores → decompositores. Cada nível perde cerca de 90% da energia, e é por isso que cadeias longas sustentam menos biomassa.',
-      'Os ciclos biogeoquímicos conectam tudo: no ciclo do carbono, fotossíntese retira CO₂ e respiração, decomposição e queima de combustível fóssil devolvem. No ciclo do nitrogênio, bactérias fixadoras são as únicas que transformam N₂ atmosférico em forma assimilável.',
-      'Relações ecológicas podem ser harmônicas (mutualismo, comensalismo, inquilinismo) ou desarmônicas (competição, predatismo, parasitismo). Em questão de impacto, identifique o nível afetado: desmatamento atinge produtores, o que desce pela cadeia e pode provocar biomagnificação de poluentes nos predadores de topo.',
+      'Ecologia é o assunto que mais aparece em Biologia no Enem, e quase sempre embrulhado em problema ambiental: desmatamento, espécie invasora, poluição de rio, queimada. A pergunta costuma ser a mesma por trás de enunciados diferentes: o que acontece com a energia e com a matéria quando alguma peça desse sistema sai do lugar.',
+      'A cadeia alimentar organiza a passagem de energia. Produtores (plantas, algas, cianobactérias) produzem matéria orgânica pela fotossíntese; consumidores a transferem adiante; decompositores fecham o ciclo devolvendo nutrientes ao ambiente. Em cada transferência perde-se cerca de 90% da energia, principalmente como calor. É por isso que cadeias longas sustentam menos biomassa, que o número de predadores de topo é sempre pequeno e que comer mais baixo na cadeia é mais eficiente do ponto de vista energético.',
+      'Matéria e energia têm destinos diferentes, e essa distinção resolve várias questões. A energia atravessa o sistema e não volta: chega como luz solar e sai como calor. A matéria circula, e é isso que os ciclos biogeoquímicos descrevem. No ciclo do carbono, a fotossíntese retira CO₂ da atmosfera; respiração, decomposição e queima de combustível fóssil devolvem. No ciclo do nitrogênio, só bactérias fixadoras (e cianobactérias) transformam o N₂ do ar em forma que planta consegue usar, o que explica por que leguminosas enriquecem o solo.',
+      'Relações ecológicas aparecem em forma de exemplo, não de definição. Harmônicas, quando os dois ganham ou um ganha sem prejudicar o outro: mutualismo (liquens, micorrizas, polinização), comensalismo (urubu e carcaça), inquilinismo (peixe-palhaço e anêmona). Desarmônicas, quando há prejuízo: competição, predatismo, parasitismo e amensalismo. Duas que o Enem adora: competição intraespecífica, que regula o tamanho da população, e a competição interespecífica, que decide quem fica com o nicho.',
+      'Sucessão ecológica é a sequência previsível de comunidades que ocupam uma área. Começa com espécies pioneiras, resistentes e de crescimento rápido, e caminha para um clímax estável, com mais biomassa e mais diversidade. A sucessão primária parte de um ambiente sem solo; a secundária parte de um solo já formado, por exemplo depois de uma queimada. Nos dois casos a produtividade primária bruta cresce e depois se estabiliza, enquanto a respiração da comunidade aumenta até igualá-la no clímax.',
+      'Três padrões de impacto que caem quase todo ano. Eutrofização: esgoto rico em nutrientes provoca proliferação de algas, que morrem, são decompostas por bactérias que consomem o oxigênio dissolvido e matam peixes por hipoxia. Biomagnificação: poluente lipossolúvel, como mercúrio, sobe na cadeia e se concentra mais em cada nível, atingindo os predadores de topo e o ser humano. Espécie exótica invasora: sem inimigo natural, ela se multiplica e substitui a vegetação nativa, simplificando o ecossistema inteiro.',
+      'Biomas brasileiros entram como cenário, e o aluno precisa reconhecê-los pelas características: Amazônia (latifoliada, úmida, rios de água doce em volume), Cerrado (solo ácido e rico em alumínio, árvores tortuosas, fogo natural), Caatinga (xerófila, caducifólia, exclusivamente brasileira), Mata Atlântica (mata densa e mais desmatada do país), Pantanal (planície alagável sazonal) e Pampa (campo, clima subtropical).',
     ],
     chave: [
       'Fluxo de energia × ciclo de matéria (energia não se recicla)',
@@ -15,7 +19,30 @@ export const PAGINAS_NATUREZA = {
       'Relações ecológicas com exemplos brasileiros',
     ],
     formulas: [],
-    questoes: [],
+    questoes: [
+      {
+        ano: 2022,
+        fonte: 'Dia 2 · caderno 5 (amarelo) · questão 104',
+        textoApoio: [
+          'A extinção de espécies é uma ameaça real que afeta diversas regiões do país. A introdução de espécies exóticas pode ser considerada um fator maximizador desse processo. A jaqueira (Artocarpus heterophyllus), por exemplo, é uma árvore originária da Índia e de regiões do Sudeste Asiático que foi introduzida ainda na era colonial e se aclimatou muito bem em praticamente todo o território nacional.',
+        ],
+        enunciado: 'Casos como o dessa árvore podem provocar a redução da biodiversidade, pois elas',
+        alternativas: [
+          'ocupam áreas de vegetação nativa e substituem parcialmente a flora original.',
+          'estimulam a competição por seus frutos entre animais típicos da região e eliminam as espécies perdedoras.',
+          'alteram os nichos e aumentam o número de possibilidades de relações entre os seres vivos daquele ambiente.',
+          'apresentam alta taxa de reprodução e se mantêm com um número de indivíduos superior à capacidade de suporte do ambiente.',
+          'diminuem a relação de competição entre os polinizadores e facilitam a ação de dispersores de sementes de espécies nativas.',
+        ],
+        correta: 'A',
+        resolucao: [
+          'Espécie exótica é a que foi levada para fora da sua área de origem. Quando ela se estabelece bem e passa a se reproduzir sozinha, vira espécie exótica invasora, e é aí que o problema começa.',
+          'A jaqueira cresce rápido, faz sombra densa e ocupa o espaço que era da vegetação nativa. Como não tem inimigo natural aqui, nada a controla: ela substitui parte da flora original, e cada planta nativa que sai leva junto os animais que dependiam dela.',
+          'A alternativa B erra porque a competição em si não elimina espécies típicas de forma automática. A C erra ao falar em aumento de possibilidades: a invasão simplifica o ambiente, não o diversifica. A D descreve um efeito possível de qualquer população grande, mas a questão pergunta pelo mecanismo de perda de biodiversidade, que é a substituição da flora. A E descreve o contrário do que acontece: a invasora costuma atrapalhar polinizadores e dispersores nativos.',
+          'Resposta: A.',
+        ],
+      },
+    ],
   },
 
   'bio-genetica': {
@@ -127,9 +154,13 @@ export const PAGINAS_NATUREZA = {
 
   'fis-mecanica': {
     resumo: [
-      'Mecânica é cinemática mais leis de Newton, e o Enem cobra em contexto de trânsito: velocidade média, distância de frenagem, tempo de reação. A distinção entre velocidade média (Δs/Δt) e instantânea resolve várias questões que parecem de cinemática complicada.',
-      'No movimento uniformemente variado, use v = v₀ + at, s = s₀ + v₀t + at²/2 e Torricelli (v² = v₀² + 2aΔs), a última dispensa o tempo e por isso é a mais útil em frenagem. Queda livre é o caso particular com a = g ≈ 10 m/s².',
-      'Leis de Newton: sem força resultante, o corpo mantém o movimento (1ª); F = ma (2ª); toda ação tem reação de mesmo módulo e sentido oposto, em corpos diferentes (3ª). Em questão de elevador, a sensação de peso é a normal, não o peso, e é isso que a prova cobra.',
+      'Mecânica é o bloco mais previsível da prova de Física. Quase toda questão parte de três perguntas: o movimento muda de quanto em quanto tempo (cinemática), qual força produz essa mudança (dinâmica) e quanta energia passou de um corpo para outro (trabalho e conservação). Identificar qual das três está sendo pedida é metade da solução.',
+      'Cinemática não precisa de força, só de tempo, posição e velocidade. Velocidade média é deslocamento dividido por tempo, e é diferente de velocidade instantânea. No movimento uniforme, v é constante e a posição anda em linha reta no gráfico. No movimento uniformemente variado, a aceleração é constante, a velocidade varia linearmente e a posição varia com o quadrado do tempo, o que aparece como parábola.',
+      'Os gráficos são a versão visual dessas relações e caem muito. No v × t, a inclinação é a aceleração e a área entre a curva e o eixo é o deslocamento. No s × t, a inclinação é a velocidade. Muita questão dispensa conta: basta comparar áreas ou inclinações para saber quem andou mais ou quem acelerou mais.',
+      'Queda livre e lançamento vertical são o caso particular em que a aceleração é g, para baixo, e não depende da massa. No ponto mais alto do lançamento vertical a velocidade é zero, mas a aceleração continua sendo g: é o erro que a prova cobra com frequência. Tempo de subida e de descida são iguais, e a velocidade de retorno tem o mesmo módulo da de partida.',
+      'As três leis de Newton explicam por que o movimento muda. Sem força resultante, um corpo continua como está, parado ou em movimento retilíneo uniforme. Força resultante e aceleração apontam para o mesmo lado e são proporcionais (F = m·a). Toda força tem par de mesma intensidade e sentido oposto, mas em corpos diferentes, e por isso o par nunca se anula. Atrito é força de contato que se opõe ao escorregamento e transforma energia cinética em calor.',
+      'Trabalho e energia resolvem o que a dinâmica tornaria trabalhoso. Trabalho é força na direção do deslocamento vezes deslocamento, e a unidade é o joule. A energia cinética depende da massa e do quadrado da velocidade, então dobrar a velocidade quadruplica a energia cinética, e é por isso que o limite de velocidade existe. A energia mecânica se conserva quando só o peso realiza trabalho; com atrito, parte vira calor e o balanço tem de incluir essa perda.',
+      'Plano inclinado, polias e elevadores são os cenários favoritos. No plano inclinado, o peso se decompõe em uma componente que empurra o corpo ladeira abaixo e outra que pressiona a superfície, e é a segunda que define o atrito. Em elevador, a sensação de peso depende da aceleração: subindo acelerado o corpo parece mais pesado, descendo acelerado parece mais leve, e em queda livre a força normal é zero.',
     ],
     chave: [
       'Frenagem: distância de parada com reação do motorista',
@@ -142,7 +173,31 @@ export const PAGINAS_NATUREZA = {
       { titulo: 'Torricelli', expr: 'v² = v₀² + 2aΔs' },
       { titulo: '2ª lei', expr: 'F = m · a   ·   P = m · g' },
     ],
-    questoes: [],
+    questoes: [
+      {
+        ano: 2023,
+        fonte: 'Dia 2 · caderno 5 (amarelo) · questão 106',
+        textoApoio: [
+          'Um professor lança uma esfera verticalmente para cima, a qual retorna, depois de alguns segundos, ao ponto de lançamento. Em seguida, lista em um quadro todas as possibilidades para as grandezas cinemáticas (módulo e sentido da velocidade e da aceleração).',
+          'Ele solicita aos alunos que analisem as grandezas cinemáticas no instante em que a esfera atinge a altura máxima, escolhendo uma combinação para os módulos e sentidos da velocidade e da aceleração.',
+        ],
+        enunciado: 'A escolha que corresponde à combinação correta é',
+        alternativas: [
+          'v = 0 e a ≠ 0 para cima.',
+          'v ≠ 0 para cima e a = 0.',
+          'v = 0 e a ≠ 0 para baixo.',
+          'v ≠ 0 para cima e a ≠ 0 para cima.',
+          'v ≠ 0 para baixo e a ≠ 0 para baixo.',
+        ],
+        correta: 'C',
+        resolucao: [
+          'No ponto mais alto, a esfera para de subir e ainda não começou a descer. A velocidade, portanto, é nula: v = 0.',
+          'A aceleração não depende da velocidade. Durante todo o voo, inclusive no ponto mais alto, a única força que age é o peso, então a aceleração é a da gravidade, de módulo constante e apontando para baixo. Logo a ≠ 0 e o sentido é para baixo.',
+          'O erro que a questão cobra é acreditar que, se a velocidade é zero, a aceleração também é. Seriam iguais apenas se a esfera estivesse parada e permanecesse parada: aí, sim, não haveria força resultante.',
+          'Resposta: C. Uma frase para guardar: no alto do lançamento vertical, a velocidade zera, mas a aceleração continua a mesma do começo ao fim do movimento.',
+        ],
+      },
+    ],
   },
 
   'fis-energia': {
@@ -269,9 +324,13 @@ export const PAGINAS_NATUREZA = {
 
   'qui-solucoes': {
     resumo: [
-      'Soluções: concentração comum (g/L), molaridade (mol/L), título e porcentagem em massa, e ppm. O Enem cobra sobretudo conversão entre elas e diluição, misturar com solvente não muda a quantidade de soluto, só o volume.',
-      'Diluição segue C₁V₁ = C₂V₂. Mistura de soluções do mesmo soluto soma os "mols" e soma os volumes. É o cálculo de soro, de suco em pó e de água sanitária.',
-      'Propriedades coligativas (efeito do soluto sobre ponto de ebulição, congelamento e pressão de vapor) aparecem em contexto de sal na estrada no inverno, aditivo no radiador e pressão osmótica em célula. Quanto mais partículas dissolvidas, maior o efeito.',
+      'Soluções são misturas homogêneas de soluto em solvente, e o Enem cobra quase sempre a relação entre quantidade de soluto, volume e efeito prático: concentração de poluente, diluição de soro, acidez de chuva, teor de álcool na gasolina. Antes de calcular, identifique quem é soluto e quem é solvente, porque é isso que decide em qual unidade a resposta deve sair.',
+      'Concentração comum mede massa de soluto por volume de solução (g/L). Concentração em mol/L, a molaridade, mede quantidade de matéria por volume (mol/L) e é a preferida em cálculo estequiométrico. Título e porcentagem em massa relacionam massas, sem volume. Densidade relaciona massa e volume da solução inteira, não do soluto. Confundir título com densidade é o erro mais comum em questão de leitura de rótulo.',
+      'Diluição conserva a quantidade de soluto: acrescentar solvente aumenta o volume e diminui a concentração, e a igualdade C₁·V₁ = C₂·V₂ resolve a maior parte dos casos. Mistura de soluções do mesmo soluto soma as quantidades de matéria; se houver reação, a estequiometria decide quem está em excesso. Misturar ácido e base é neutralização, e o pH final depende de sobrar H⁺, OH⁻ ou nenhum dos dois.',
+      'Ácidos e bases aparecem pelo comportamento, não pela fórmula decorada. Segundo Brønsted-Lowry, ácido doa próton e base recebe. Ácido forte ioniza quase por completo em água (HCl, H₂SO₄, HNO₃); base forte também (NaOH, KOH, Ca(OH)₂). Escala de pH é logarítmica: cada unidade é fator 10 na concentração de H⁺, então pH 4 é dez vezes mais ácido que pH 5 e cem vezes mais que pH 6.',
+      'As reações que o Enem usa como exemplo têm assinatura própria. Carbonato mais ácido libera CO₂ e faz efervescência: é o mármore com HCl, é o comprimido antiácido, é a casca de ovo no vinagre. Metal mais ácido libera H₂. Ácido mais base dá sal e água. Óxido ácido com água forma ácido, e óxido básico com água forma base, o que explica por que SO₂ e NO₂, liberados na queima de combustível, estão por trás da chuva ácida.',
+      'Indicadores e medidas também entram. Fenolftaleína fica rosa em meio básico e incolor em meio ácido; papel de tornassol azul fica vermelho em ácido, e o vermelho fica azul em base. Em titulação, o ponto de virada é o indicador mudando de cor, e o volume gasto na bureta, com a concentração do titulante, dá a quantidade de substância problema. Peagâmetro mede pH direto e é o que aparece em questão de solo agrícola.',
+      'Em questão ambiental, cuidado com a escala. Chuva natural já é levemente ácida (pH em torno de 5,6) por causa do CO₂ dissolvido; chuva ácida é a que fica abaixo disso por SO₂ e NOₓ. Oceanos absorvem CO₂ e ficam mais ácidos, o que dissolve carbonato de cálcio de conchas e recifes. É sempre o mesmo raciocínio: um gás na atmosfera, uma reação na água, um efeito sobre quem vive ali.',
     ],
     chave: [
       'Diluição (C₁V₁ = C₂V₂) e mistura de soluções',
@@ -284,7 +343,24 @@ export const PAGINAS_NATUREZA = {
       { titulo: 'Diluição', expr: 'C₁ · V₁ = C₂ · V₂' },
       { titulo: 'Título', expr: 'τ = m_soluto / m_solução   ·   ppm = mg/L' },
     ],
-    questoes: [],
+    questoes: [
+      {
+        ano: 2022,
+        fonte: 'Dia 2 · caderno 5 (amarelo) · questão 112',
+        textoApoio: [
+          'Um grupo de alunos realizou um experimento para observar algumas propriedades dos ácidos, adicionando um pedaço de mármore (CaCO3) a uma solução aquosa de ácido clorídrico (HCl), observando a liberação de um gás e o aumento da temperatura.',
+        ],
+        enunciado: 'O gás obtido no experimento é o',
+        alternativas: ['H2', 'O2', 'CO2', 'CO', 'Cl2'],
+        correta: 'C',
+        resolucao: [
+          'Mármore é carbonato de cálcio. Ácido sobre carbonato libera gás carbônico numa reação clássica de efervescência: CaCO3 + 2 HCl → CaCl2 + H2O + CO2.',
+          'O gás que borbulha é o CO2. O calor que os alunos sentem é a energia liberada pela reação, que é exotérmica.',
+          'Por que as outras não são: H2 sairia de ácido com metal, não com carbonato. O2 e Cl2 não se formam nessas condições. O CO só aparece em combustão incompleta, não aqui.',
+          'Resposta: C. Guarde a regra prática: carbonato + ácido dá efervescência de CO2, que turva a água de cal.',
+        ],
+      },
+    ],
   },
 
   'qui-termoquimica': {

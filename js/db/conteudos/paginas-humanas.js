@@ -100,9 +100,13 @@ export const PAGINAS_HUMANAS = {
 
   'his-revolucao-industrial': {
     resumo: [
-      'A Revolução Industrial começa na Inglaterra do século XVIII com a máquina a vapor, o carvão e a fábrica. A 1ª fase é têxtil e inglesa; a 2ª (fim do XIX) traz aço, eletricidade, petróleo e química, com Alemanha e EUA na frente; a 3ª, após 1945, é a da automação e da informática.',
-      'As consequências sociais são o que o Enem cobra: êxodo rural, urbanização acelerada, surgimento do proletariado, condições de trabalho degradantes, jornadas de 16 horas e trabalho infantil. Daí nascem o movimento operário, o sindicalismo e as leis trabalhistas.',
-      'A industrialização brasileira é tardia e dependente: começa nos anos 1930 com Vargas, aprofunda-se com JK (plano de metas, indústria automobilística) e passa pela internacionalização do capital. Comparar com a inglesa é o exercício típico.',
+      'A Revolução Industrial é o divisor de águas que a prova usa para explicar quase todo o resto: urbanização, classes sociais, movimento operário, imperialismo, poluição e até a estrutura das cidades brasileiras de hoje. Entender o mecanismo vale mais do que memorizar datas, porque o Enem cobra a consequência, não o ano.',
+      'A primeira fase, inglesa, começa na segunda metade do século XVIII e se apoia em três condições: capital acumulado pelo comércio colonial, mão de obra disponível depois dos cercamentos e mercado consumidor. A máquina a vapor resolve o problema de energia e permite sair da manufatura para a fábrica. O algodão é a primeira grande indústria, e o carvão e o ferro sustentam o resto. O trabalhador deixa de ser dono das ferramentas e passa a vender apenas o próprio tempo.',
+      'A segunda fase, a partir de 1870, muda a escala. Aço, eletricidade e petróleo substituem carvão e ferro como símbolos, e a ciência passa a ser aplicada direto na produção. Surgem a linha de montagem, as grandes empresas e o capital financeiro, e países como Alemanha e Estados Unidos entram na disputa. Essa nova potência industrial precisando de matéria-prima e mercado é uma das raízes do imperialismo africano e asiático.',
+      'As consequências sociais aparecem na prova em forma de texto, charge ou gráfico. Êxodo rural e crescimento desordenado das cidades, sem saneamento. Jornadas de 14 a 16 horas, trabalho infantil, acidentes de trabalho. Duas classes se definem em oposição: burguesia industrial, dona dos meios de produção, e proletariado, dono da força de trabalho. E o contraste entre a produtividade da fábrica e a miséria de quem trabalha nela gera as primeiras críticas, de onde saem o socialismo e o anarquismo.',
+      'O movimento operário é a resposta organizada. Os sindicatos e as greves conquistam direitos paulatinamente: redução de jornada, proibição do trabalho infantil, descanso semanal, direito à organização. Datas comemorativas funcionam como pedagogia da identidade coletiva, e o Primeiro de Maio é o exemplo clássico: mais do que festa, é instrumento de unidade política e cultural da classe trabalhadora.',
+      'No Brasil, a industrialização chega tarde e por outro caminho. Capital do café financia a primeira indústria, no fim do século XIX, concentrada em São Paulo, e a política de substituição de importações ganha força nos anos 1930, com a Era Vargas. A urbanização acelerada, a migração interna e a desigualdade regional que aparecem nas provas de geografia vêm, em boa medida, dessa industrialização concentrada e da falta de reforma agrária.',
+      'Em questão de fonte histórica, cuidado com o recorte. Um texto de 1890 falando sobre a classe operária fala de um grupo pequeno e europeu, não do conjunto dos trabalhadores do mundo. Localizar o sujeito, o lugar e o interesse de quem escreveu é o que separa a leitura histórica da opinião solta.',
     ],
     chave: [
       'Três fases e as fontes de energia de cada uma',
@@ -111,7 +115,31 @@ export const PAGINAS_HUMANAS = {
       'Industrialização brasileira tardia (Vargas, JK)',
     ],
     formulas: [],
-    questoes: [],
+    questoes: [
+      {
+        ano: 2022,
+        fonte: 'Dia 1 · caderno 5 (amarelo) · questão 73',
+        textoApoio: [
+          'A história do Primeiro de Maio de 1890, na França e na Europa, o primeiro de todos os Primeiros de Maio, é, sob vários aspectos, exemplar. Resultante de um ato político deliberado, essa manifestação ilustra o lado voluntário da construção de uma classe, a classe operária, à qual os socialistas tentam dar uma unidade política e cultural através daquela pedagogia da festa cujo princípio, eficácia e limites há muito tempo tinham sido experimentados pela Revolução Francesa.',
+          'PERROT, M. Os excluídos da história: operários, mulheres e prisioneiros. Rio de Janeiro: Paz e Terra, 1988.',
+        ],
+        enunciado: 'Com base no texto, a fixação dessa data comemorativa tinha por objetivo',
+        alternativas: [
+          'valorizar um sentimento burguês.',
+          'afirmar uma identidade coletiva.',
+          'edificar uma memória nacional.',
+          'criar uma comunidade cívica.',
+          'definir uma tradição popular.',
+        ],
+        correta: 'B',
+        resolucao: [
+          'O texto diz que a data nasce de um ato político deliberado e serve para dar à classe operária uma unidade política e cultural. Unidade construída, não herdada: é exatamente o que se chama de identidade coletiva.',
+          'A comemoração é uma ferramenta de organização. Reunir trabalhadores no mesmo dia, com os mesmos símbolos, faz cada um se reconhecer como parte de um grupo, e um grupo organizado consegue reivindicar.',
+          'As outras alternativas erram por atribuir a festa a outro sujeito: burguesia (A), nação (C), cidadania em geral (D) ou povo sem recorte de classe (E). O Primeiro de Maio é operário e internacionalista, e o texto deixa isso explícito.',
+          'Resposta: B.',
+        ],
+      },
+    ],
   },
 
   'his-guerra-fria': {
