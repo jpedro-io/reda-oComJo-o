@@ -1,6 +1,6 @@
 # Redação com João
 
-Site estático de estudo da redação do ENEM. Paleta de seriedade e foco: **azul-marinho `#17395C`** e **azul-petróleo `#1F5A63`** sobre **cinza-gelo quente `#F6F4EF`**, com **areia `#EFE6D6`** como neutro de apoio e **dourado `#B8891F`** reservado a conquistas — notas, medalhas, "o que já está certo". Tema escuro automático em chumbo `#14181D`. **Vidro em quatro superfícies apenas**, mobile primeiro, sem dependências externas e sem build obrigatório.
+Site estático de estudo da redação do ENEM. Paleta de vidro sobre **esmeralda profundo**: fundo `#031A13`, superfícies translúcidas com desfoque de fundo e faixa clara de tom próprio em cada seção, indo do **off-white `#F4FBF7`** ao **verde claro `#B2EACD`**. Botão, link e destaque em esmeralda `#34D399`, alerta em `#FF8F85`. Camada de vidro em `css/glass.css` sobre `style.css`/`editorial.css`, interação em `js/glass.js`.
 
 > As decisões de direção de arte (cores, par de fontes, ícones, escala de espaçamento, lógica de raio, tokens de movimento, formato de cada seção, uso do vidro e por que **não** entrou Three.js/Framer Motion) estão fechadas em [`DESIGN.md`](DESIGN.md).
 

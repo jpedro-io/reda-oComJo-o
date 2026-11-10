@@ -65,7 +65,7 @@ const ico = (nome, cls = '') =>
 
 function viewHome() {
   const indice = [
-    ['#/criterios', 'Critérios', 'As 5 competências, os 6 níveis de cada uma e por que o mesmo erro repetido pesa mais.', 'regua'],
+    ['#/competencias', 'Competências', 'As 5 competências, os 6 níveis de cada uma e por que o mesmo erro repetido pesa mais.', 'regua'],
     ['#/estrutura', 'Estrutura', 'Anatomia parte por parte, os 5 elementos da proposta e o esqueleto de 30 linhas.', 'camada'],
     ['#/comandos', 'Ler o tema', 'O substantivo que abre a proposta é um pedido. 11 comandos, com armadilha e roteiro.', 'mira'],
     ['#/temas', 'Temas', `${TEMAS.length} temas com recorte, núcleo, vocabulário de apoio e repertórios.`, 'tema'],
@@ -97,7 +97,7 @@ function viewHome() {
   <section class="hero">
     <div class="hero-copy">
       <h1 data-entrada>Como chegar à nota 1000 na redação do Enem</h1>
-      <p class="hero-sub" data-entrada>Critérios oficiais explicados linha por linha, ${TOTAL_NOTA_MIL} redações nota 1000 abertas parágrafo por parágrafo e um corretor que mostra onde a nota escapa.</p>
+      <p class="hero-sub" data-entrada>As 5 competências oficiais explicadas linha por linha, ${TOTAL_NOTA_MIL} redações nota 1000 abertas parágrafo por parágrafo e um corretor que mostra onde a nota escapa.</p>
       <div class="hero-cta" data-entrada>
         <a class="btn btn-primario" href="#/corrigir">Corrigir minha redação</a>
         <a class="btn" href="#/redacoes">Ver as redações analisadas</a>
@@ -134,7 +134,7 @@ function viewHome() {
     <p class="comp-lead">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, e dois avaliadores nunca fecham o mesmo número, o relatório publica sempre uma faixa (nota entre X e Y), nunca um número exato.</p>
     <div class="faixa-comp" data-entrada>
       ${CRITERIOS.map(c => `
-        <a class="rc-item" href="#/criterios">
+        <a class="rc-item" href="#/competencias">
           <span class="rc-num">${c.id}</span>
           <span class="rc-nome">${esc(c.nome)}</span>
           <span class="rc-nota">6 níveis</span>
@@ -943,7 +943,8 @@ function render() {
   let aba = caminho;
 
   if (partes.length === 0) { html = viewHome(); aba = '/'; }
-  else if (partes[0] === 'criterios') html = viewCriterios();
+  else if (partes[0] === 'competencias') html = viewCriterios();
+  else if (partes[0] === 'criterios') { location.replace('#/competencias'); return; }
   else if (partes[0] === 'estrutura') html = viewEstrutura();
   else if (partes[0] === 'comandos') html = viewComandos();
   else if (partes[0] === 'temas') html = viewTemas();
@@ -979,8 +980,8 @@ function render() {
 
 function tituloDa(partes = []) {
   const mapa = {
-    '': 'Redação com João, critérios, estrutura, temas e redações analisadas',
-    criterios: 'Critérios das 5 competências, Redação com João',
+    '': 'Redação com João, competências, estrutura, temas e redações analisadas',
+    competencias: 'Competências da redação do Enem, Redação com João',
     estrutura: 'Estrutura da redação, Redação com João',
     comandos: 'Ler o comando do tema, Redação com João',
     temas: 'Temas do ENEM e de treino, Redação com João',

@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Redação com João — critérios, estrutura, temas e redações analisadas</title>
-<meta name="description" content="Guia completo da redação do ENEM: critérios oficiais das 5 competências, estrutura parte por parte, como ler o comando do tema, banco de temas com repertórios, 13 redações nota 1000 analisadas (2014–2026) e correção com nota e pontos de melhoria." />
-<meta name="theme-color" content="#FFFFFF" />
-<meta name="color-scheme" content="light" />
+<title>Redação com João — competências, estrutura, temas e redações analisadas</title>
+<meta name="description" content="Guia completo da redação do ENEM: as 5 competências oficiais, estrutura parte por parte, como ler o comando do tema, banco de temas com repertórios, 13 redações nota 1000 analisadas (2014–2026) e correção com nota e pontos de melhoria." />
+<meta name="theme-color" content="#04241B" />
+<meta name="color-scheme" content="dark" />
 <style>
 /* Fontes self-hosted — Sentient (títulos) e General Sans (texto).
    Baixadas da Fontshare e servidas do próprio site: nada de CDN, nada de
@@ -4631,6 +4631,1121 @@ main.wrap { padding-top: 0; }
 .comp-lead b { color: var(--ink); font-weight: 500; }
 
 </style>
+<style>
+/* ==========================================================================
+   REDAÇÃO COM JOÃO · CAMADA DE VIDRO
+
+   Esta folha entra por cima de style.css e editorial.css. Ela troca a folha
+   branca por um fundo esmeralda profundo com vários tons e trata as
+   superfícies como vidro: fundo translúcido, desfoque do que está atrás,
+   fio claro de 1px e brilho que segue o ponteiro.
+   ========================================================================== */
+
+:root {
+  /* tons de esmeralda, do mais fundo ao mais claro */
+  --g-950: #031A13;
+  --g-900: #04241B;
+  --g-800: #063A2B;
+  --g-700: #065F46;
+  --g-600: #047857;
+  --g-500: #059669;
+  --g-400: #10B981;
+  --g-300: #34D399;
+  --g-200: #6EE7B7;
+  --g-100: #A7F3D0;
+
+  /* tokens do resto do site, reinterpretados para o escuro */
+  --bg: transparent;
+  --surface: rgba(255, 255, 255, .06);
+  --ink: #EDF9F3;
+  --muted: rgba(214, 240, 230, .72);
+  --line: rgba(255, 255, 255, .14);
+  --brand: var(--g-300);
+  --brand-dark: var(--g-200);
+  --brand-soft: rgba(16, 185, 129, .16);
+  --highlight: rgba(52, 211, 153, .38);
+  --alert: #FF8F85;
+  --alert-soft: rgba(180, 35, 24, .3);
+  --tinta-2: var(--muted);
+  --tinta-3: rgba(214, 240, 230, .58);
+
+  /* geometria: o vidro pede raio maior */
+  --r-vidro: 20px;
+  --r-vidro-p: 14px;
+  --fio: 1px solid rgba(255, 255, 255, .16);
+  --fio-forte: 1px solid rgba(255, 255, 255, .26);
+  --vidro-fundo: linear-gradient(155deg, rgba(255, 255, 255, .11), rgba(255, 255, 255, .035));
+  --vidro-sombra: 0 24px 60px -30px rgba(0, 0, 0, .7), inset 0 1px 0 rgba(255, 255, 255, .22);
+
+  --largura: 1400px;
+}
+
+/* ------------------------------------------------------------- 1. o fundo */
+html { background: var(--g-950); }
+
+body {
+  background-color: var(--g-950);
+  background-image:
+    radial-gradient(1100px 720px at 8% -8%, rgba(16, 185, 129, .42), transparent 62%),
+    radial-gradient(880px 640px at 92% -4%, rgba(110, 231, 183, .26), transparent 60%),
+    radial-gradient(1200px 900px at 76% 104%, rgba(4, 120, 87, .55), transparent 64%),
+    radial-gradient(900px 700px at 4% 88%, rgba(5, 150, 105, .34), transparent 60%),
+    linear-gradient(168deg, #052A1F 0%, #04241B 42%, #031A13 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--ink);
+}
+
+::selection { background: rgba(52, 211, 153, .45); color: #fff; }
+
+a { color: var(--g-200); }
+a:hover { color: #fff; }
+
+h1, h2, h3, h4 { color: #fff; }
+p, li, dd, dt, td, th, label, blockquote { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--g-300); outline-offset: 3px; border-radius: 4px; }
+
+.progresso { background: linear-gradient(90deg, var(--g-500), var(--g-300)); height: 3px; }
+
+/* --------------------------------------------------------- 2. barra de topo */
+.topbar {
+  background: rgba(4, 36, 27, .62);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 18px 40px -30px rgba(0, 0, 0, .9);
+}
+.brand-text { color: #fff; }
+.brand:hover .brand-text { color: #fff; }
+.marca-texto {
+  background-image: linear-gradient(120deg, rgba(16, 185, 129, .85), rgba(52, 211, 153, .85));
+  color: #04241B !important;
+  border-radius: 4px;
+  padding: 0 .18em;
+}
+
+.pill {
+  color: rgba(233, 250, 243, .82);
+  border-radius: 999px;
+  padding: 7px 14px;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+.pill:hover { color: #fff; background: rgba(255, 255, 255, .08); }
+.pill.ativo, .pill[aria-current="page"] {
+  color: #04241B;
+  background: var(--g-200);
+}
+.nav-abre { border-color: rgba(255, 255, 255, .28); }
+.nav-abre-risco { background: #fff; }
+
+/* ------------------------------------------------------- 3. tipografia base */
+.eyebrow, .kicker, .rot { color: var(--g-200); }
+.sub, .secao-topo p, .bloco-titulo span, .frase { color: var(--muted); }
+.bloco-titulo { border-bottom: 1px solid rgba(255, 255, 255, .14); }
+
+/* --------------------------------------------------- 4. superfícies de vidro */
+.folha,
+.card,
+.cartao,
+.painel,
+.painel-solido,
+.aviso,
+.motivo,
+.motivo-zero,
+.proposta,
+.metricas,
+.rel-topo,
+.comp-bloco,
+.hub-materia,
+.tema-linha,
+.red-card,
+.conteudo-btn,
+.side-bloco,
+.ac-bloco,
+.trilha,
+.workspace,
+.ws-entrada,
+.ws-saida,
+.ws-proposta,
+.caixa,
+.bloco,
+.destaque {
+  background: var(--vidro-fundo);
+  border: var(--fio);
+  border-radius: var(--r-vidro);
+  box-shadow: var(--vidro-sombra);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+/* o brilho que segue o ponteiro, desenhado por js/glass.js */
+.brilho::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(110, 231, 183, .22), rgba(52, 211, 153, .10) 38%, transparent 66%);
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+.brilho:hover::after, .brilho:focus-within::after { opacity: 1; }
+
+/* no vidro, o cartão dentro do cartão perde a caixa e vira linha */
+.painel .card,
+.card .card,
+.comp-bloco .painel,
+.painel-solido .painel {
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------ 5. a folha */
+.folha { background: rgba(255, 255, 255, .07); }
+.folha-topo, .folha-legenda { color: var(--muted); border-color: rgba(255, 255, 255, .14); }
+.folha-texto p { color: var(--ink); }
+.folha-texto mark {
+  background: rgba(52, 211, 153, .3);
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(110, 231, 183, .35) inset;
+}
+.folha-erro { text-decoration-color: var(--alert); }
+.folha-nota { color: var(--alert); }
+
+/* --------------------------------------------------------- 6. listas e índices */
+.indice-item, .indice-link { color: var(--ink); }
+.indice-item {
+  border-radius: var(--r-vidro-p);
+  border: 1px solid transparent;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+.indice-item:hover {
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .16);
+  transform: translateY(-1px);
+}
+.idx-num, .idx-desc, .idx-go { color: var(--muted); }
+.idx-tit { color: #fff; }
+
+.faixa-comp .rc-item {
+  background: var(--vidro-fundo);
+  border: var(--fio);
+  border-radius: var(--r-vidro-p);
+  box-shadow: var(--vidro-sombra);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+.faixa-comp .rc-num { color: var(--g-200); }
+.faixa-comp .rc-nome { color: #fff; }
+.faixa-comp .rc-nota { color: var(--muted); }
+.faixa-comp .rc-item:hover { border-color: rgba(110, 231, 183, .5); transform: translateY(-2px); }
+
+/* ---------------------------------------------------------------- 7. tabelas */
+.tabela-redacoes, .tabela-niveis, .tabela-simples, table {
+  border-color: rgba(255, 255, 255, .14);
+  color: var(--ink);
+}
+.tabela-redacoes thead th,
+.tabela-niveis thead th,
+table thead th {
+  color: var(--muted);
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+  font-weight: 400;
+}
+.tabela-redacoes tbody td,
+.tabela-niveis tbody td,
+table tbody td {
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  color: var(--ink);
+}
+.tabela-redacoes tbody tr, .tabela-niveis tbody tr { transition: background-color 180ms ease; }
+.tabela-redacoes tbody tr:hover, .tabela-niveis tbody tr:hover { background: rgba(255, 255, 255, .05); }
+.tabela-redacoes .ano, .tabela-redacoes td.ano { color: var(--g-200); font-variant-numeric: tabular-nums; }
+.tabela-redacoes .nota, .tabela-redacoes td:nth-child(3) { color: #fff; }
+
+/* a lista de redações ganha corpo de vidro */
+.lista-redacoes, .tabela-redacoes {
+  background: var(--vidro-fundo);
+  border: var(--fio);
+  border-radius: var(--r-vidro);
+  box-shadow: var(--vidro-sombra);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  overflow: hidden;
+  padding: 4px 22px;
+}
+.tabela-redacoes thead th:first-child { border-top-left-radius: 0; }
+
+/* ---------------------------------------------------------------- 8. botões */
+.btn {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+.btn:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .42); color: #fff; }
+.btn:active { transform: translateY(1px); }
+
+.btn-primario, .btn.btn-primario {
+  background: linear-gradient(135deg, var(--g-400), var(--g-600) 70%);
+  border-color: rgba(255, 255, 255, .3);
+  color: #04241B;
+  font-weight: 600;
+  box-shadow: 0 14px 34px -14px rgba(16, 185, 129, .8), inset 0 1px 0 rgba(255, 255, 255, .45);
+}
+.btn-primario:hover, .btn.btn-primario:hover {
+  background: linear-gradient(135deg, var(--g-300), var(--g-500) 70%);
+  color: #04241B;
+  box-shadow: 0 18px 44px -14px rgba(52, 211, 153, .9), inset 0 1px 0 rgba(255, 255, 255, .55);
+}
+.hero-cta .btn:not(.btn-primario) { color: var(--g-200); border-color: rgba(110, 231, 183, .45); }
+.hero-cta .btn:not(.btn-primario):hover { color: #fff; }
+
+/* campos do corretor */
+textarea, input[type="text"], input[type="search"], select {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: var(--r-vidro-p);
+  color: var(--ink);
+}
+textarea::placeholder, input::placeholder { color: rgba(214, 240, 230, .5); }
+select option { background: var(--g-900); color: var(--ink); }
+
+/* ------------------------------------------------------- 9. chips e etiquetas */
+.chip, .m-tag, .selo, .tag, .niv, .badge {
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: var(--ink);
+}
+.chip, .tag { border-radius: 999px; }
+
+/* ------------------------------------------------------- 10. rodapé */
+.footer, footer { border-top: 1px solid rgba(255, 255, 255, .12); color: var(--muted); }
+.footer p, footer p, footer a { color: var(--muted); }
+
+/* ------------------------------------------- 11. estados de nota e de erro */
+.nota-grande, .rel-nota, .nota-num { color: #fff; }
+.perigo, .erro, .motivo-zero { color: var(--alert); }
+.lista-check li::before, .fortes-lista li::before { color: var(--g-200); }
+
+/* --------------------------------------------------- 12. ajustes de largura */
+.wrap { max-width: var(--largura); }
+main.wrap { padding-left: 40px; padding-right: 40px; }
+
+/* o painel principal ocupa a tela: colunas mais largas, respiro menor */
+.hero { gap: 64px; }
+.hero-folha .folha { padding: 28px; }
+
+/* ------------------------------------------------- 13. movimento e acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .brilho::after { display: none; }
+  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+@media (max-width: 1024px) {
+  .wrap { max-width: none; }
+  main.wrap { padding-left: 24px; padding-right: 24px; }
+}
+
+@media (max-width: 768px) {
+  main.wrap { padding-left: 18px; padding-right: 18px; }
+  .lista-redacoes, .tabela-redacoes { padding: 2px 14px; }
+  .folha, .card, .painel, .comp-bloco { border-radius: 16px; }
+}
+
+/* ------------------------------------------------- 14. correções de superfície */
+/* o índice da home era cartão branco; agora é linha de vidro */
+.indice-item {
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+.indice-item:hover {
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .16);
+  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, .8);
+}
+.indice-link { background: none; }
+.indice-link:hover { background: none; }
+.idx-num { color: var(--g-300); }
+.idx-tit { color: #fff; }
+.idx-desc { color: var(--muted); }
+.idx-go { color: var(--g-300); }
+
+/* a marca-texto do logo: fita esmeralda, letra escura */
+.topbar .marca-texto,
+.brand .marca-texto {
+  background: linear-gradient(120deg, var(--g-300), var(--g-200)) !important;
+  color: #04241B !important;
+  border-radius: 3px;
+}
+
+/* a pílula ativa não precisa da risca de baixo */
+.pill.ativo::after, .pill[aria-current="page"]::after, .pill.ativo::before { display: none; }
+.nav, .nav-pills { gap: 4px; }
+.pill { padding: 8px 14px; }
+
+/* zebra branca que sobrava nas tabelas */
+.tabela-redacoes tbody tr:nth-child(even),
+.tabela-niveis tbody tr:nth-child(even),
+table tbody tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
+
+/* blocos que ainda recebiam papel branco */
+.secao-topo, .bloco-titulo, .comp-topo, .regra-geral, .grade-regra,
+.tl-corpo, .tl-acoes, .lista-num, .zero-lista, .rev-lista, .fortes-lista {
+  background: transparent;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   15. TONS POR SEÇÃO — do off-white ao verde claro
+   Cada seção ganha um tom próprio, andando do quase branco até o verde
+   claro. O tom aparece na faixa do título, no fio da esquerda e no número;
+   o corpo do texto continua em vidro escuro para o site não voltar a branco.
+   ========================================================================== */
+:root {
+  --tom1-faixa: #F4FBF7;  --tom1-luz: rgba(244, 251, 247, .12);  --tom1-fio: rgba(244, 251, 247, .55);
+  --tom2-faixa: #E7F8EF;  --tom2-luz: rgba(231, 248, 239, .12);  --tom2-fio: rgba(221, 247, 235, .58);
+  --tom3-faixa: #D9F4E5;  --tom3-luz: rgba(217, 244, 229, .13);  --tom3-fio: rgba(190, 240, 214, .6);
+  --tom4-faixa: #C6EFD9;  --tom4-luz: rgba(198, 239, 217, .14);  --tom4-fio: rgba(150, 232, 197, .62);
+  --tom5-faixa: #B2EACD;  --tom5-luz: rgba(178, 234, 205, .15);  --tom5-fio: rgba(110, 231, 183, .66);
+  --tinta-clara: #062A1F;
+  --tinta-clara-2: rgba(6, 42, 31, .68);
+}
+
+/* ---------- a) blocos de competência (#/competencias) ---------- */
+.regua { display: flex; flex-direction: column; gap: 26px; }
+.comp-bloco {
+  padding: 0 0 30px;
+  background: linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .06)), rgba(255, 255, 255, .025) 55%, rgba(3, 26, 19, .35));
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 24px;
+  overflow: hidden;
+}
+.comp-topo {                      /* faixa clara: é aqui que o tom aparece */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 26px;
+  background: linear-gradient(100deg, var(--tom-faixa, #F4FBF7), color-mix(in srgb, var(--tom-faixa, #F4FBF7) 55%, transparent));
+  border-bottom: 1px solid rgba(6, 42, 31, .12);
+}
+.comp-nome {
+  color: var(--tinta-clara);
+  letter-spacing: -.01em;
+}
+.comp-id { color: var(--tinta-clara-2); }
+.comp-nota {
+  background: rgba(6, 42, 31, .12);
+  border: 1px solid rgba(6, 42, 31, .22);
+  color: var(--tinta-clara);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-weight: 600;
+}
+.comp-bloco > .comp-resumo,
+.comp-bloco > .comp-regra,
+.comp-bloco > .tabela-niveis,
+.comp-bloco > .comp-colunas,
+.comp-bloco > .side-bloco,
+.comp-bloco > .oficial-det { margin-left: 26px; margin-right: 26px; }
+.comp-bloco > .comp-resumo { margin-top: 22px; color: var(--ink); }
+.comp-regra {
+  border-left: 3px solid var(--tom-fio, rgba(255, 255, 255, .3));
+  background: linear-gradient(90deg, var(--tom-luz, rgba(255,255,255,.05)), transparent 70%);
+  border-radius: 0 12px 12px 0;
+  padding: 12px 16px;
+  color: var(--muted);
+}
+
+/* tons em ciclo, cinco competências, cinco tons */
+.comp-bloco:nth-child(5n+1) { --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); --tom-fio: var(--tom1-fio); }
+.comp-bloco:nth-child(5n+2) { --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); --tom-fio: var(--tom2-fio); }
+.comp-bloco:nth-child(5n+3) { --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); --tom-fio: var(--tom3-fio); }
+.comp-bloco:nth-child(5n+4) { --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); --tom-fio: var(--tom4-fio); }
+.comp-bloco:nth-child(5n)   { --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); --tom-fio: var(--tom5-fio); }
+
+/* tabela dentro do bloco: cabeçalho com o tom da seção */
+.comp-bloco .tabela-niveis thead th {
+  background: color-mix(in srgb, var(--tom-faixa, #fff) 22%, transparent);
+  color: var(--tinta-clara);
+  border-bottom: 1px solid var(--tom-fio);
+}
+.comp-bloco .tabela-niveis th:first-child { border-radius: 10px 0 0 10px; }
+.comp-bloco .tabela-niveis th:last-child { border-radius: 0 10px 10px 0; }
+.comp-bloco .tabela-niveis tbody tr:hover { background: var(--tom-luz); }
+.comp-bloco .niv {
+  color: var(--tinta-clara);
+  background: var(--tom-faixa);
+  border-radius: 9px;
+  font-weight: 700;
+}
+.comp-bloco .side-bloco {
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-top: 2px solid var(--tom-fio);
+  border-radius: 16px;
+  box-shadow: none;
+}
+.comp-bloco .side-bloco h3 { color: var(--tom-faixa); }
+
+/* ---------- b) mesma ideia nas outras páginas ---------- */
+/* home: índice com fio do tom à esquerda */
+.indice-item { border-left: 3px solid transparent; }
+.indice-item:nth-child(5n+1) { --tom-fio: var(--tom1-fio); --tom-faixa: var(--tom1-faixa); }
+.indice-item:nth-child(5n+2) { --tom-fio: var(--tom2-fio); --tom-faixa: var(--tom2-faixa); }
+.indice-item:nth-child(5n+3) { --tom-fio: var(--tom3-fio); --tom-faixa: var(--tom3-faixa); }
+.indice-item:nth-child(5n+4) { --tom-fio: var(--tom4-fio); --tom-faixa: var(--tom4-faixa); }
+.indice-item:nth-child(5n)   { --tom-fio: var(--tom5-fio); --tom-faixa: var(--tom5-faixa); }
+.indice-item { border-left-color: var(--tom-fio, transparent); }
+.indice-item:nth-child(odd) { background: rgba(255, 255, 255, .028); }
+.idx-num { color: var(--tom-faixa, var(--g-300)); font-weight: 700; }
+
+/* estrutura: cada parte com faixa clara */
+.partes { display: flex; flex-direction: column; gap: 22px; }
+.parte {
+  padding: 0 0 24px;
+  background: linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .05)), rgba(255, 255, 255, .02));
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.parte > h3, .parte > .parte-topo {
+  margin: 0;
+  padding: 14px 24px;
+  background: linear-gradient(100deg, var(--tom-faixa, #F4FBF7), color-mix(in srgb, var(--tom-faixa, #F4FBF7) 50%, transparent));
+  color: var(--tinta-clara);
+  border-bottom: 1px solid rgba(6, 42, 31, .1);
+}
+.parte > *:not(h3):not(.parte-topo) { margin-left: 24px; margin-right: 24px; }
+.parte:nth-child(5n+1) { --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); --tom-fio: var(--tom1-fio); }
+.parte:nth-child(5n+2) { --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); --tom-fio: var(--tom2-fio); }
+.parte:nth-child(5n+3) { --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); --tom-fio: var(--tom3-fio); }
+.parte:nth-child(5n+4) { --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); --tom-fio: var(--tom4-fio); }
+.parte:nth-child(5n)   { --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); --tom-fio: var(--tom5-fio); }
+
+/* comandos: o resumo de cada item abre com o tom */
+.acordeao { display: flex; flex-direction: column; gap: 14px; }
+.ac-item {
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 18px;
+  background: linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .05)), rgba(255, 255, 255, .02));
+  overflow: hidden;
+}
+.ac-item > summary {
+  background: linear-gradient(100deg, var(--tom-faixa, #F4FBF7), color-mix(in srgb, var(--tom-faixa, #F4FBF7) 48%, transparent));
+  color: var(--tinta-clara);
+  padding: 12px 20px;
+  border-radius: 0;
+}
+.ac-item > summary * { color: var(--tinta-clara); }
+.ac-item:nth-child(5n+1) { --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); }
+.ac-item:nth-child(5n+2) { --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); }
+.ac-item:nth-child(5n+3) { --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); }
+.ac-item:nth-child(5n+4) { --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); }
+.ac-item:nth-child(5n)   { --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); }
+
+/* temas: fio do tom em cada linha */
+.lista-temas { display: flex; flex-direction: column; gap: 14px; }
+.tema-linha { border-left: 3px solid var(--tom-fio, transparent); }
+.tema-linha:nth-child(5n+1) { --tom-fio: var(--tom1-fio); --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); }
+.tema-linha:nth-child(5n+2) { --tom-fio: var(--tom2-fio); --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); }
+.tema-linha:nth-child(5n+3) { --tom-fio: var(--tom3-fio); --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); }
+.tema-linha:nth-child(5n+4) { --tom-fio: var(--tom4-fio); --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); }
+.tema-linha:nth-child(5n)   { --tom-fio: var(--tom5-fio); --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); }
+.tema-linha .tema-ano, .tema-linha .tema-selo { color: var(--tom-faixa, var(--g-300)); }
+
+/* conteúdos: cabeçalho da área com o tom */
+.hub { display: flex; flex-direction: column; gap: 26px; }
+.hub-area-topo {
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: linear-gradient(100deg, var(--tom-faixa, #F4FBF7), color-mix(in srgb, var(--tom-faixa, #F4FBF7) 45%, transparent));
+  color: var(--tinta-clara);
+}
+.hub-area-topo * { color: var(--tinta-clara); }
+.hub-area:nth-child(5n+1) { --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); --tom-fio: var(--tom1-fio); }
+.hub-area:nth-child(5n+2) { --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); --tom-fio: var(--tom2-fio); }
+.hub-area:nth-child(5n+3) { --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); --tom-fio: var(--tom3-fio); }
+.hub-area:nth-child(5n+4) { --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); --tom-fio: var(--tom4-fio); }
+.hub-area:nth-child(5n)   { --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); --tom-fio: var(--tom5-fio); }
+.hub-materia { border-top: 2px solid var(--tom-fio, transparent); }
+.hub-materia:hover { background: var(--tom-luz, rgba(255, 255, 255, .07)); }
+
+/* redações: zebra com o tom, nota em destaque */
+.tabela-redacoes tbody tr:nth-child(odd) { background: rgba(255, 255, 255, .028); }
+.tabela-redacoes tbody tr:nth-child(10n+1),
+.tabela-redacoes tbody tr:nth-child(10n+6) { box-shadow: inset 3px 0 0 var(--tom1-fio); }
+.tabela-redacoes tbody tr:nth-child(10n+2),
+.tabela-redacoes tbody tr:nth-child(10n+7) { box-shadow: inset 3px 0 0 var(--tom2-fio); }
+.tabela-redacoes tbody tr:nth-child(10n+3),
+.tabela-redacoes tbody tr:nth-child(10n+8) { box-shadow: inset 3px 0 0 var(--tom3-fio); }
+.tabela-redacoes tbody tr:nth-child(10n+4),
+.tabela-redacoes tbody tr:nth-child(10n+9) { box-shadow: inset 3px 0 0 var(--tom4-fio); }
+.tabela-redacoes tbody tr:nth-child(10n+5),
+.tabela-redacoes tbody tr:nth-child(10n)   { box-shadow: inset 3px 0 0 var(--tom5-fio); }
+
+/* ---------- c) campos de formulário: nunca brancos ---------- */
+textarea, input[type="text"], input[type="search"], input[type="number"],
+select, .campo input, .campo textarea, .campo select,
+.textarea, .select, .input {
+  background: rgba(255, 255, 255, .07) !important;
+  border: 1px solid rgba(255, 255, 255, .2) !important;
+  border-radius: var(--r-vidro-p);
+  color: var(--ink) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+textarea:focus, input:focus, select:focus, .textarea:focus, .select:focus {
+  outline: 2px solid rgba(52, 211, 153, .55);
+  outline-offset: 1px;
+  border-color: rgba(110, 231, 183, .6) !important;
+}
+
+/* ---------- d) fios entre seções ---------- */
+.secao-topo {
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  padding-bottom: 22px;
+  margin-bottom: 26px;
+}
+.bloco-titulo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+.bloco-titulo h2, .bloco-titulo span { color: var(--muted); }
+.bloco-titulo h2 { color: var(--ink); }
+
+/* ==========================================================================
+   16. ENDURECIMENTO
+   O editorial.css usa `.regua > *` com !important e um brilho branco em
+   `.secao-topo::after`; aqui os dois são reescritos para o tema de vidro.
+   ========================================================================== */
+
+/* fora o véu branco do topo de seção; no lugar, uma luz verde */
+.secao-topo::after {
+  background:
+    radial-gradient(46% 64% at 92% 0%, rgba(52, 211, 153, .20), transparent 72%),
+    radial-gradient(40% 60% at 4% 6%, rgba(110, 231, 183, .12), transparent 70%) !important;
+}
+
+/* a régua das competências: cartões de verdade, não linhas de 14px */
+main .regua { display: flex; flex-direction: column; gap: 26px; margin: 30px 0 8px; }
+main .regua > .comp-bloco {
+  padding: 0 0 30px !important;
+  border-top: 0 !important;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 24px;
+  background:
+    linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .06)), rgba(255, 255, 255, .022) 58%, rgba(3, 26, 19, .4)) !important;
+  box-shadow: 0 30px 70px -40px rgba(0, 0, 0, .85), inset 0 1px 0 rgba(255, 255, 255, .1);
+  overflow: hidden;
+}
+main .regua > .comp-bloco > * + * { margin-top: 16px; }
+main .regua > .comp-bloco > .comp-topo { margin-top: 0 !important; }
+
+/* a tabela respeita o recuo do cartão */
+main .comp-bloco > .tabela-niveis { width: calc(100% - 52px); }
+
+/* o número do nível: sem bloco branco, agora é número grande no tom da seção */
+main .comp-bloco .tabela-niveis td.niv {
+  background: transparent !important;
+  color: var(--tom-faixa, var(--g-200)) !important;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.1;
+  padding-top: 18px;
+  border-radius: 0;
+}
+main .comp-bloco .tabela-niveis thead th {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 10px 12px;
+}
+main .comp-bloco .tabela-niveis thead th:first-child { padding-left: 0; }
+main .comp-bloco .tabela-niveis tbody td { border-bottom: 1px solid rgba(255, 255, 255, .07); }
+main .comp-bloco .tabela-niveis tbody td.num,
+main .comp-bloco .tabela-niveis tbody th { color: var(--tom-faixa, var(--g-200)); }
+
+/* a faixa do título da competência fica mais verde que branca */
+main .regua > .comp-bloco > .comp-topo {
+  background:
+    linear-gradient(100deg,
+      color-mix(in srgb, var(--tom-faixa, #F4FBF7) 88%, var(--g-300)) 0%,
+      color-mix(in srgb, var(--tom-faixa, #F4FBF7) 42%, transparent) 68%,
+      transparent 100%) !important;
+}
+
+/* mesma proteção nas outras listas */
+main .partes > .parte {
+  padding: 0 0 24px !important;
+  border-top: 0 !important;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 22px;
+}
+main .acordeao > .ac-item { border-radius: 18px; }
+main .lista-temas > .tema-linha { border-radius: 16px; }
+
+/* fios entre as seções de texto longo */
+main .comp-resumo + .comp-regra { margin-top: 18px; }
+main .comp-colunas { margin-top: 22px; }
+
+/* ---------- 17. ajustes finos ---------- */
+.secao-topo::after {
+  background: radial-gradient(38% 62% at 96% 0%, rgba(52, 211, 153, .16), transparent 70%) !important;
+}
+main .comp-bloco > .comp-resumo,
+main .comp-bloco > .comp-regra { max-width: 980px; }
+main .comp-bloco > .comp-topo .comp-nota {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(6, 42, 31, .16) !important;
+  color: var(--tinta-clara) !important;
+  box-shadow: 0 2px 10px -4px rgba(6, 42, 31, .5);
+}
+main .comp-bloco > .comp-topo .comp-nome { font-weight: 400; }
+main .comp-bloco > .comp-topo .comp-id {
+  font-family: var(--sans, system-ui);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(6, 42, 31, .55) !important;
+}
+
+/* ---------- 18. corretor, estrutura e comandos: conserto de layout ---------- */
+/* o sticky do resumo do tema brigava com o overflow do vidro */
+main .ws-proposta { position: static !important; }
+main .workspace { align-items: start; gap: 24px; }
+main .ws-entrada,
+main .ws-saida {
+  display: flex !important;
+  flex-direction: column;
+  gap: 20px;
+  padding: 26px !important;
+  align-content: normal;
+}
+main .ws-proposta {
+  padding: 22px !important;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .12);
+}
+main .ws-saida { min-height: 240px; }
+main .ws-saida .vazio { border-radius: 14px; padding: 26px; }
+
+/* estrutura: faixa clara no título de cada parte */
+main .partes > .parte > .parte-tit {
+  margin: 0 !important;
+  padding: 16px 26px !important;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 82%, var(--g-300)) 0%,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 40%, transparent) 70%,
+    transparent 100%) !important;
+  color: var(--tinta-clara) !important;
+}
+main .partes > .parte > .parte-meta { color: var(--muted); margin: 16px 26px 0 !important; }
+main .partes > .parte > *:not(.parte-tit):not(.parte-topo) { margin-left: 26px !important; margin-right: 26px !important; }
+
+/* comandos: o sinal de abrir precisa de tinta escura na faixa clara */
+main .ac-item > summary .ac-mais,
+main .ac-item > summary .ac-palavra,
+main .ac-item > summary .ac-temas,
+main .ac-item > summary .ac-sum { color: var(--tinta-clara) !important; }
+main .ac-item > summary .ac-palavra { font-weight: 600; }
+main .ac-item > summary .ac-temas { color: var(--tinta-clara-2) !important; }
+main .regra-geral {
+  padding: 26px 28px !important;
+  border-radius: 20px;
+  background: linear-gradient(140deg, rgba(244, 251, 247, .10), rgba(52, 211, 153, .06) 60%, transparent) !important;
+  border: 1px solid rgba(255, 255, 255, .12);
+}
+main .regra-geral p:last-child { margin-bottom: 0; }
+
+/* temas: o ano pega o tom da linha */
+main .tema-linha .tl-ano { color: var(--tom-faixa, var(--g-200)); }
+
+/* topo de seção vira uma faixa de vidro assumida */
+main .secao-topo {
+  position: relative;
+  padding: 34px 38px 30px !important;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-bottom: 1px solid rgba(255, 255, 255, .13) !important;
+  background:
+    linear-gradient(122deg, rgba(244, 251, 247, .13) 0%, rgba(167, 243, 208, .08) 38%, rgba(4, 36, 27, .1) 78%) !important;
+  box-shadow: 0 30px 80px -50px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .16);
+  overflow: hidden;
+  margin-bottom: 34px;
+}
+main .secao-topo h1 { margin-top: 0; }
+
+/* faixa do título da competência: mais verde */
+main .regua > .comp-bloco > .comp-topo {
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 74%, var(--g-300)) 0%,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 38%, transparent) 64%,
+    transparent 100%) !important;
+}
+
+/* ==========================================================================
+   19. o que ainda estava chapado no papel
+   O editorial.css zera fundo de hub, índice e tabelas com !important; aqui
+   essas peças voltam a ter superfície, tom e fio.
+   ========================================================================== */
+
+/* home: cada item do índice é uma linha de vidro com o fio do tom */
+main .indice-item {
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 14px;
+  box-shadow: inset 3px 0 0 var(--tom-fio, rgba(255, 255, 255, .4));
+  margin-bottom: 10px !important;
+  overflow: hidden;
+  transition: background-color 180ms ease, transform 180ms ease, border-color 180ms ease;
+}
+main .indice-item:nth-child(odd) { background: rgba(255, 255, 255, .065); }
+main .indice-item:hover {
+  background: var(--tom-luz, rgba(255, 255, 255, .09));
+  border-color: var(--tom-fio, rgba(255, 255, 255, .3));
+  transform: translateY(-2px);
+}
+main .indice-item .idx-num { color: var(--tom-faixa, var(--g-200)) !important; }
+main .indice-item .idx-go { color: var(--tom-faixa, var(--g-200)) !important; }
+
+/* estrutura: a tabela de distribuição e o esqueleto também são superfícies */
+main .bloco-tabela,
+main .bloco-titulo + .esqueleto,
+main .esqueleto {
+  background: linear-gradient(158deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .022)) !important;
+  border: 1px solid rgba(255, 255, 255, .12) !important;
+  border-radius: 20px !important;
+  padding: 22px 26px !important;
+  box-shadow: 0 26px 60px -46px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+main .bloco-tabela .tabela { margin-bottom: 0; }
+main .partes { margin-top: 30px !important; }
+main .bloco-titulo { margin-top: 34px !important; }
+
+/* comandos: o bloco de abertura ocupa a largura toda e o sinal herda a tinta */
+main .regra-geral { max-width: none !important; }
+main .ac-item > summary { cursor: pointer; }
+main .ac-item > summary .ac-mais,
+main .ac-item > summary::after,
+main .ac-item > summary::marker { color: var(--tinta-clara) !important; }
+
+/* conteúdos: área e matéria voltam a ser cartões com faixa clara */
+main .hub-area {
+  background: linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .06)), rgba(255, 255, 255, .02) 62%, rgba(3, 26, 19, .32)) !important;
+  border: 1px solid rgba(255, 255, 255, .12) !important;
+  border-top: 1px solid rgba(255, 255, 255, .12) !important;
+  border-radius: 22px !important;
+  margin: 24px 0 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -50px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+main .hub-area-topo {
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 76%, var(--g-300)) 0%,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 34%, transparent) 66%,
+    transparent 100%) !important;
+  padding: 16px 24px !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .1) !important;
+  align-items: center !important;
+}
+main .hub-area-topo h2 { color: var(--tinta-clara) !important; }
+main .hub-area-topo p,
+main .hub-area-topo span,
+main .hub-area-topo .hub-conta { color: var(--tinta-clara-2) !important; }
+main .hub-materias {
+  border-top: 0 !important;
+  gap: 10px !important;
+  padding: 16px 18px 20px !important;
+}
+main .hub-materia {
+  background: rgba(255, 255, 255, .05) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 14px !important;
+  padding: 14px 16px !important;
+  box-shadow: inset 0 2px 0 var(--tom-fio, rgba(255, 255, 255, .3));
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+main .hub-materia:hover { background: rgba(255, 255, 255, .09) !important; transform: translateY(-2px); }
+main .hub-materia:hover .hm-nome { text-decoration: none !important; }
+main .hub-nota {
+  background: rgba(255, 255, 255, .045) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 16px !important;
+  padding: 18px 22px !important;
+  color: var(--muted) !important;
+}
+
+/* ==========================================================================
+   20. barra fixa e leitura da redação
+   ========================================================================== */
+
+/* a barra de cima ficava branca ao rolar */
+.topbar.rolado {
+  background: rgba(4, 36, 27, .84) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(160%);
+  backdrop-filter: blur(26px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 24px 60px -46px #000;
+}
+.topbar.rolado .pill { color: var(--ink); }
+.nav-abre-risco { background: var(--ink); }
+
+/* a redação: texto à esquerda, análise à direita, nas duas colunas da tela */
+main .red-doc { width: 100% !important; max-width: none !important; }
+
+main .doc-cabeca {
+  padding: 30px 34px !important;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, .13);
+  background: linear-gradient(122deg, rgba(244, 251, 247, .13) 0%, rgba(167, 243, 208, .08) 42%, rgba(4, 36, 27, .12) 82%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16);
+  margin-bottom: 22px;
+}
+main .doc-cabeca h1 { margin: 6px 0 10px; }
+main .doc-cabeca .eyebrow { color: var(--g-200); }
+
+main .red-doc > section {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 372px;
+  column-gap: 36px;
+  padding: 26px 30px !important;
+  margin: 0 0 20px !important;
+  border: 1px solid rgba(255, 255, 255, .11);
+  border-radius: 20px;
+  background: linear-gradient(158deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .022));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+main .red-doc > section > .num-parag { grid-column: 1 / -1; }
+main .red-doc > section > .par-texto { grid-column: 1; max-width: 74ch; }
+main .red-doc > section > .par-analise {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-left: 3px solid var(--g-300);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .05);
+  padding: 16px 18px;
+  margin: 0 !important;
+}
+main .red-doc > section > .par-analise * { color: var(--muted); }
+main .red-doc > section > .num-parag .n {
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .2);
+  color: var(--g-200);
+  border-radius: 10px;
+}
+main .red-doc > section > .num-parag .funcao { color: var(--muted) !important; }
+
+/* blocos soltos da página da redação ganham superfície */
+main .red-doc > .porque,
+main .red-doc > .comp-notas,
+main .regra-geral {
+  border-radius: 18px !important;
+}
+main .red-doc > .porque {
+  background: linear-gradient(140deg, rgba(244, 251, 247, .10), rgba(52, 211, 153, .06) 62%, transparent) !important;
+  border: 1px solid rgba(255, 255, 255, .12) !important;
+  padding: 24px 26px !important;
+  margin-bottom: 20px !important;
+}
+main .red-doc > .porque h2 { color: var(--g-100); }
+main .red-doc > .marcas { margin: 6px 0 22px !important; }
+main .red-doc > .comp-notas {
+  background: rgba(255, 255, 255, .045) !important;
+  border: 1px solid rgba(255, 255, 255, .11) !important;
+  padding: 22px !important;
+}
+main .red-doc > p { color: var(--muted); }
+
+@media (max-width: 1100px) {
+  main .red-doc > section { grid-template-columns: minmax(0, 1fr) !important; }
+  main .red-doc > section > .par-analise { grid-column: 1 !important; grid-row: auto !important; margin-top: 14px !important; }
+}
+
+/* ==========================================================================
+   21. matéria e conteúdo: as duas páginas que ainda ficavam estreitas
+   ========================================================================== */
+
+/* lista de conteúdos de uma matéria: linha de vidro com colunas previsíveis */
+main .conteudo-lista {
+  border-top: 0 !important;
+  margin: 26px 0 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+main .conteudo-btn {
+  display: grid !important;
+  grid-template-columns: 54px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px !important;
+  background: rgba(255, 255, 255, .05) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 14px !important;
+  box-shadow: inset 3px 0 0 var(--g-400) !important;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+main .conteudo-btn:hover {
+  background: rgba(255, 255, 255, .09) !important;
+  transform: translateX(3px);
+}
+main .conteudo-btn .cb-num { color: var(--g-200) !important; font-variant-numeric: tabular-nums; }
+main .conteudo-btn .cb-nome { color: var(--ink) !important; font-size: 1.02rem; }
+main .conteudo-btn .cb-acoes { justify-self: end; }
+
+/* página de conteúdo: resumo à esquerda, apoio à direita, vídeo na largura toda */
+main .conteudo-pag {
+  width: 100% !important;
+  max-width: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 20px 26px;
+  align-items: start;
+  margin-top: 8px;
+}
+main .conteudo-pag > .cp-topo { grid-column: 1 / -1; }
+main .conteudo-pag > .cp-resumo { grid-column: 1; }
+main .conteudo-pag > .cp-bloco { grid-column: 2; }
+main .conteudo-pag > .cp-bloco:has(.video-caixa) { grid-column: 1 / -1; }
+main .conteudo-pag > .cp-nav { grid-column: 1 / -1; }
+
+main .cp-bloco {
+  background: linear-gradient(158deg, rgba(255, 255, 255, .062), rgba(255, 255, 255, .022)) !important;
+  border: 1px solid rgba(255, 255, 255, .11) !important;
+  border-radius: 18px !important;
+  padding: 22px 24px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+main .cp-resumo { padding: 28px 30px !important; }
+main .cp-resumo p { max-width: 78ch; }
+main .cp-rot {
+  color: var(--g-200) !important;
+  font-family: var(--sans, system-ui) !important;
+  font-size: 11px !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  opacity: .9;
+}
+main .cp-aviso {
+  background: rgba(52, 211, 153, .1) !important;
+  border-left: 3px solid var(--g-300);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 16px !important;
+  color: var(--ink) !important;
+}
+main .chave-lista li { color: var(--ink); }
+main .chave-lista li::marker { color: var(--g-300); }
+main .video-caixa {
+  border-radius: 16px !important;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .04) !important;
+}
+main .cp-nav-btn {
+  background: rgba(255, 255, 255, .05) !important;
+  border: 1px solid rgba(255, 255, 255, .12) !important;
+  border-radius: 14px !important;
+  padding: 14px 18px !important;
+}
+main .migalha, main .migalha a, main .migalha b { color: var(--muted); }
+main .migalha a:hover { color: var(--g-200); }
+main .migalha { padding: 6px 0 14px; }
+
+@media (max-width: 1100px) {
+  main .conteudo-pag { grid-template-columns: minmax(0, 1fr); }
+  main .conteudo-pag > .cp-resumo,
+  main .conteudo-pag > .cp-bloco { grid-column: 1; }
+}
+
+/* ---------- 22. últimos detalhes ---------- */
+.topbar.rolado { background: rgba(4, 36, 27, .92) !important; }
+main .red-doc > .comp-notas + p { margin-top: 14px !important; }
+main .red-doc > p + p { margin-top: 6px !important; }
+main .hub-area-topo .hub-conta { color: var(--tinta-clara-2) !important; }
+
+/* a ordem das colunas: o resumo fica na coluna larga da esquerda */
+main .conteudo-pag > .cp-bloco.cp-resumo { grid-column: 1 !important; }
+main .conteudo-pag > .cp-bloco:not(.cp-resumo):not(:has(.video-caixa)) { grid-column: 2 !important; }
+main .conteudo-pag > .cp-bloco:has(.video-caixa) { grid-column: 1 / -1 !important; }
+
+/* ==========================================================================
+   23. competência: o cartão passa a ter respiro próprio
+   O bloco ganha padding e a faixa do título sai para fora dele; assim os
+   blocos internos com margem negativa (side-bloco, exemplo-par) param de
+   bater na borda.
+   ========================================================================== */
+main .regua > .comp-bloco {
+  padding: 0 26px 28px !important;
+}
+main .regua > .comp-bloco > .comp-topo {
+  margin: -0px -26px 20px !important;
+  padding: 16px 26px !important;
+  border-radius: 23px 23px 0 0;
+  border-bottom: 1px solid rgba(6, 42, 31, .14) !important;
+}
+main .regua > .comp-bloco > .comp-resumo,
+main .regua > .comp-bloco > .comp-regra,
+main .regua > .comp-bloco > .tabela-niveis,
+main .regua > .comp-bloco > .comp-colunas,
+main .regua > .comp-bloco > .side-bloco,
+main .regua > .comp-bloco > .oficial-det,
+main .regua > .comp-bloco > .exemplo-par {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+main .regua > .comp-bloco > .tabela-niveis { width: 100% !important; }
+main .comp-bloco .side-bloco { padding: 18px 20px !important; }
+main .comp-bloco .side-bloco h3:first-child { margin-top: 0 !important; }
+main .comp-bloco .exemplo-par { border-radius: 14px; overflow: hidden; }
+main .comp-bloco .oficial-det { background: rgba(255, 255, 255, .04); border-radius: 14px; padding: 4px 16px; }
+main .comp-bloco .oficial-det summary { color: var(--g-200); }
+
+/* ---------- 24. mobile: o botão do menu e os cartões ---------- */
+.nav-abre {
+  background: rgba(255, 255, 255, .1) !important;
+  border: 1px solid rgba(255, 255, 255, .22) !important;
+  border-radius: 12px;
+}
+.nav-abre-risco { background: var(--ink) !important; }
+.nav.aberto, .nav-pills.aberto { background: rgba(4, 36, 27, .96) !important; border: 1px solid rgba(255, 255, 255, .14); border-radius: 16px; }
+@media (max-width: 720px) {
+  main .regua > .comp-bloco { padding: 0 16px 22px !important; border-radius: 18px; }
+  main .regua > .comp-bloco > .comp-topo { margin: 0 -16px 16px !important; padding: 14px 16px !important; border-radius: 17px 17px 0 0; }
+  main .secao-topo { padding: 24px 20px 22px !important; border-radius: 20px; }
+  main .comp-bloco .side-bloco { padding: 14px 16px !important; }
+  main .red-doc > section { padding: 18px 18px !important; }
+  main .conteudo-btn { grid-template-columns: 40px minmax(0, 1fr) auto !important; padding: 12px 14px !important; }
+  main .conteudo-btn .cb-acoes { display: none; }
+  main .doc-cabeca { padding: 22px 20px !important; border-radius: 20px; }
+  main .hub-area-topo { padding: 12px 16px !important; }
+  main .ws-entrada, main .ws-saida { padding: 16px !important; }
+}
+
+</style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%274%27%20fill%3D%27%23047857%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2717%27%20fill%3D%27%23fff%27%20text-anchor%3D%27middle%27%3ER%3C%2Ftext%3E%3C%2Fsvg%3E" />
 </head>
 <body>
@@ -4654,7 +5769,7 @@ main.wrap { padding-top: 0; }
 
     <nav class="nav" id="nav" aria-label="Seções do site">
       <div class="nav-pills" id="tabs">
-        <a class="pill" href="#/criterios">Critérios</a>
+        <a class="pill" href="#/competencias">Competências</a>
         <a class="pill" href="#/estrutura">Estrutura</a>
         <a class="pill" href="#/comandos">Ler o tema</a>
         <a class="pill" href="#/temas">Temas</a>
@@ -13767,7 +14882,7 @@ const ico = (nome, cls = '') =>
 
 function viewHome() {
   const indice = [
-    ['#/criterios', 'Critérios', 'As 5 competências, os 6 níveis de cada uma e por que o mesmo erro repetido pesa mais.', 'regua'],
+    ['#/competencias', 'Competências', 'As 5 competências, os 6 níveis de cada uma e por que o mesmo erro repetido pesa mais.', 'regua'],
     ['#/estrutura', 'Estrutura', 'Anatomia parte por parte, os 5 elementos da proposta e o esqueleto de 30 linhas.', 'camada'],
     ['#/comandos', 'Ler o tema', 'O substantivo que abre a proposta é um pedido. 11 comandos, com armadilha e roteiro.', 'mira'],
     ['#/temas', 'Temas', `${TEMAS.length} temas com recorte, núcleo, vocabulário de apoio e repertórios.`, 'tema'],
@@ -13799,7 +14914,7 @@ function viewHome() {
   <section class="hero">
     <div class="hero-copy">
       <h1 data-entrada>Como chegar à nota 1000 na redação do Enem</h1>
-      <p class="hero-sub" data-entrada>Critérios oficiais explicados linha por linha, ${TOTAL_NOTA_MIL} redações nota 1000 abertas parágrafo por parágrafo e um corretor que mostra onde a nota escapa.</p>
+      <p class="hero-sub" data-entrada>As 5 competências oficiais explicadas linha por linha, ${TOTAL_NOTA_MIL} redações nota 1000 abertas parágrafo por parágrafo e um corretor que mostra onde a nota escapa.</p>
       <div class="hero-cta" data-entrada>
         <a class="btn btn-primario" href="#/corrigir">Corrigir minha redação</a>
         <a class="btn" href="#/redacoes">Ver as redações analisadas</a>
@@ -13836,7 +14951,7 @@ function viewHome() {
     <p class="comp-lead">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, e dois avaliadores nunca fecham o mesmo número, o relatório publica sempre uma faixa (nota entre X e Y), nunca um número exato.</p>
     <div class="faixa-comp" data-entrada>
       ${CRITERIOS.map(c => `
-        <a class="rc-item" href="#/criterios">
+        <a class="rc-item" href="#/competencias">
           <span class="rc-num">${c.id}</span>
           <span class="rc-nome">${esc(c.nome)}</span>
           <span class="rc-nota">6 níveis</span>
@@ -14645,7 +15760,8 @@ function render() {
   let aba = caminho;
 
   if (partes.length === 0) { html = viewHome(); aba = '/'; }
-  else if (partes[0] === 'criterios') html = viewCriterios();
+  else if (partes[0] === 'competencias') html = viewCriterios();
+  else if (partes[0] === 'criterios') { location.replace('#/competencias'); return; }
   else if (partes[0] === 'estrutura') html = viewEstrutura();
   else if (partes[0] === 'comandos') html = viewComandos();
   else if (partes[0] === 'temas') html = viewTemas();
@@ -14681,8 +15797,8 @@ function render() {
 
 function tituloDa(partes = []) {
   const mapa = {
-    '': 'Redação com João, critérios, estrutura, temas e redações analisadas',
-    criterios: 'Critérios das 5 competências, Redação com João',
+    '': 'Redação com João, competências, estrutura, temas e redações analisadas',
+    competencias: 'Competências da redação do Enem, Redação com João',
     estrutura: 'Estrutura da redação, Redação com João',
     comandos: 'Ler o comando do tema, Redação com João',
     temas: 'Temas do ENEM e de treino, Redação com João',

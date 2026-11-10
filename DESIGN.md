@@ -82,3 +82,36 @@ vermelho no ponto de melhoria, com a anotação na margem direita. No celular a
 anotação desce para baixo do parágrafo. O bloco é uma caixa branca de borda
 1 px, raio 6 px, sem sombra e sem animação. Duas colunas no desktop, uma no
 resto, dentro de 1120 px, com 44 px entre o cabeçalho e o título.
+
+## 11. Camada de vidro (2026-11)
+O site passou de folha branca para **vidro sobre esmeralda profundo**, sem
+tocar no motor de correção: `css/glass.css` entra por cima de `style.css` e
+`editorial.css` e `js/glass.js` cuida do brilho e da inclinação.
+
+| Papel | Cor | Uso |
+|---|---|---|
+| fundo | `#031A13` | esmeralda mais fundo, base do `body` |
+| fundo 2 | `#04241B` | meio do gradiente |
+| vidro | `rgba(255,255,255,.11) → .035` | superfície padrão, com `backdrop-filter: blur(20px)` |
+| fio | `rgba(255,255,255,.16)` | 1px de borda clara |
+| tom 1 | `#F4FBF7` | faixa da C1: o off-white da escala |
+| tom 2 | `#E7F8EF` | faixa da C2 |
+| tom 3 | `#D9F4E5` | faixa da C3 |
+| tom 4 | `#C6EFD9` | faixa da C4 |
+| tom 5 | `#B2EACD` | faixa da C5: o verde mais claro da escala |
+
+**Escala de tons.** Cada seção (competência, parte da estrutura, comando,
+área de conteúdo, item de índice, tema) recebe um dos cinco tons por
+`:nth-child`, do off-white ao verde claro. O tom aparece na faixa do título,
+no fio da esquerda e no número; o corpo do texto continua em vidro escuro,
+para a página não voltar a ser branca.
+
+**Interação.** `js/glass.js` aplica `.brilho` (spotlight que segue o ponteiro,
+desenhado em `::after` com `--mx`/`--my`) e `.inclina` (tilt 3D de até 3,2°,
+`perspective(1000px)`), só em blocos grandes, nunca em linha de tabela, e
+desligado em `prefers-reduced-motion`.
+
+**Largura.** `--largura: 1400px` e `main.wrap` com 40px de respiro lateral: o
+conteúdo ocupa a tela no desktop. Páginas de leitura longa usam duas colunas
+(redação: texto à esquerda, análise à direita; conteúdo: resumo à esquerda,
+apoio à direita, vídeo na largura toda).
