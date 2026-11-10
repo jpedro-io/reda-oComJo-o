@@ -79,11 +79,19 @@ export function animarNumeros(raiz = document) {
   });
 }
 
-/** Aneis de nota: preenche com transição de stroke-dashoffset. */
+/**
+ * Anéis de nota. A nota é uma FAIXA: o arco sólido vai até o mínimo e o arco
+ * claro cobre a margem até o máximo. Dois dados, duas variáveis CSS.
+ */
 export function pintarAneis(raiz = document) {
-  [...raiz.querySelectorAll('[data-anel]')].forEach(el => {
-    const pct = Math.max(0, Math.min(100, Number(el.dataset.anel) || 0));
-    requestAnimationFrame(() => el.style.setProperty('--pct', pct));
+  const limitar = v => Math.max(0, Math.min(100, Number(v) || 0));
+  [...raiz.querySelectorAll('[data-anel-min], [data-anel-max]')].forEach(el => {
+    const min = limitar(el.dataset.anelMin);
+    const max = Math.max(min, limitar(el.dataset.anelMax ?? min));
+    requestAnimationFrame(() => {
+      el.style.setProperty('--pct-min', min);
+      el.style.setProperty('--pct-max', max);
+    });
   });
 }
 

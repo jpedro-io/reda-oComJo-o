@@ -107,16 +107,14 @@ for (const [nome, { texto, teto, espelho }] of Object.entries(ensaios)) {
   console.log(`${nome.padEnd(26)} ${String(r.notaTotal).padStart(4)} de 1000 · ${r.faixa.nome.padEnd(13)} ${String(r.metricas.palavras).padStart(3)} palavras | ${comps}`);
 
   t(`${nome}: total dentro do teto`, r.notaTotal <= teto, `${r.notaTotal} > ${teto}`);
-  t(`${nome}: cada competência é múltiplo de 20 (40 ou meia-faixa)`,
-    r.competencias.every(c => c.nota % 20 === 0), r.competencias.map(c => c.nota).join(' · '));
-  t(`${nome}: meia-faixa só com motivos leves (20 é a meia-faixa abaixo do nível 1)`,
-    r.competencias.every(c => c.nota % 40 === 0 || c.nota === 20 ||
-      (c.explicacao?.motivos || []).every(m => m.gravidade === 'baixa')),
-    r.competencias.filter(c => c.nota % 40 === 20 &&
-      (c.explicacao?.motivos || []).some(m => m.gravidade !== 'baixa')).map(c => c.id).join(' · ') || '—');
-  t(`${nome}: meia-faixa só sem defeito objetivo`,
-    r.competencias.every(c => c.nota % 40 === 0 || c.sinais.meiaFaixa === true),
-    r.competencias.filter(c => c.nota % 40 !== 0 && !c.sinais.meiaFaixa).map(c => c.id).join(' · ') || '—');
+  t(`${nome}: cada competência é uma das seis notas oficiais`,
+    r.competencias.every(c => c.nota % 40 === 0), r.competencias.map(c => c.nota).join(' · '));
+  t(`${nome}: ninguém publica nota exata — toda competência tem faixa`,
+    r.competencias.every(c => c.faixaNota && c.faixaNota.min === c.nota && c.faixaNota.max >= c.nota),
+    r.competencias.map(c => `${c.id}:${c.faixaNota?.min}-${c.faixaNota?.max}`).join(' '));
+  t(`${nome}: faixa de competência abre no máximo um nível (40)`,
+    r.competencias.every(c => c.faixaNota.max - c.faixaNota.min <= 40),
+    r.competencias.filter(c => c.faixaNota.max - c.faixaNota.min > 40).map(c => c.id).join(' · ') || '—');
   t(`${nome}: nenhuma competência em 200`, r.competencias.every(c => c.nota < 200),
     r.competencias.filter(c => c.nota === 200).map(c => c.id).join(' · ') || '—');
   t(`${nome}: total é a soma das competências`,
@@ -131,11 +129,15 @@ for (const [nome, { texto, teto, espelho }] of Object.entries(ensaios)) {
 const rSolido = corrigir(solido, { temaId: 'enem-2026' });
 console.log(`\n${'texto sólido (referência)'.padEnd(26)} ${String(rSolido.notaTotal).padStart(4)} de 1000 · ${rSolido.faixa.nome.padEnd(13)} ${String(rSolido.metricas.palavras).padStart(3)} palavras | ${rSolido.competencias.map(c => `${c.id}=${c.nota}`).join(' ')}`);
 t('texto sólido fica entre 720 e 880', rSolido.notaTotal >= 720 && rSolido.notaTotal <= 880, String(rSolido.notaTotal));
-t('texto sólido recebe ao menos uma meia-faixa',
-  rSolido.competencias.some(c => c.nota % 40 === 20),
-  rSolido.competencias.map(c => c.nota).join(' · '));
-t('texto sólido: nota 20 só como meia-faixa autorizada',
-  rSolido.competencias.every(c => c.nota % 40 === 0 || c.sinais.meiaFaixa === true),
+t('texto sólido: a nota final é publicada como faixa',
+  rSolido.notaFaixa.max >= rSolido.notaFaixa.min && rSolido.notaFaixa.max - rSolido.notaFaixa.min <= 100,
+  JSON.stringify(rSolido.notaFaixa));
+t('texto sólido: ao menos uma competência abre faixa de 40 (mostra o nível seguinte)',
+  rSolido.competencias.some(c => c.faixaNota.max - c.faixaNota.min === 40) ||
+  rSolido.notaTotal === 1000,
+  rSolido.competencias.map(c => `${c.id}:${c.faixaNota.min}-${c.faixaNota.max}`).join(' '));
+t('texto sólido: toda nota publicada é oficial',
+  rSolido.competencias.every(c => c.nota % 40 === 0),
   rSolido.competencias.map(c => c.id + ':' + c.nota).join(' '));
 t('texto sólido não zera nenhuma competência', rSolido.competencias.every(c => c.nota >= 120),
   rSolido.competencias.map(c => c.nota).join(' · '));

@@ -66,7 +66,7 @@ void main() {
   vec3 ouro = u_ouro;
   vec3 cor = mix(base, ouro, smoothstep(0.55, 1.0, v_prof) * v_ton);
 
-  gl_FragColor = vec4(cor, alfa * (0.10 + 0.55 * v_prof));
+  gl_FragColor = vec4(cor, alfa * (0.05 + 0.28 * v_prof));
 }
 `;
 
@@ -141,13 +141,13 @@ function iniciar() {
   buf(esc, 'a_scale', 1);
   buf(ton, 'a_ton', 1);
 
-  // marinho/areia no tema claro; marinho profundo/dourado no escuro
-  const escuro = typeof window.matchMedia === 'function' &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
+  /* Paleta da marca: azul royal (#1A3EC8) e um azul de realce (#4C6BF7).
+     Sobre o fundo branco, as partículas são tênues — o campo 3D aqui é um
+     brilho de profundidade, não um céu noturno. */
   const uBase = gl.getUniformLocation(prog, 'u_base');
   const uOuro = gl.getUniformLocation(prog, 'u_ouro');
-  gl.uniform3f(uBase, ...(escuro ? [0.42, 0.62, 0.86] : [0.16, 0.32, 0.52]));
-  gl.uniform3f(uOuro, ...(escuro ? [0.90, 0.76, 0.42] : [0.72, 0.54, 0.16]));
+  gl.uniform3f(uBase, 0.10, 0.24, 0.78);   // azul royal
+  gl.uniform3f(uOuro, 0.30, 0.42, 0.97);   // azul de realce
 
   const uTime = gl.getUniformLocation(prog, 'u_time');
   const uRes = gl.getUniformLocation(prog, 'u_res');

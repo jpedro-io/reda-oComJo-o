@@ -54,6 +54,8 @@ def embutir_fontes(css: str) -> str:
 css_fontes = embutir_fontes((raiz / 'css/fontes.css').read_text(encoding='utf-8'))
 css = (raiz / 'css/style.css').read_text(encoding='utf-8')
 
+# o index.html carrega os assets com ?v=... (cache-busting); o build ignora a query
+html = re.sub(r'\?v=[\w.-]+', '', html)
 html = re.sub(r'<link rel="preload"[^>]*/>\s*', '', html)
 html = re.sub(r'<link rel="stylesheet" href="css/fontes\.css" />',
               lambda m: '<style>\n' + css_fontes + '\n</style>', html)

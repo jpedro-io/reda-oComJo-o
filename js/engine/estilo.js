@@ -46,7 +46,12 @@ export function repeticaoLexical(texto, termosDoTema = []) {
   const contagem = new Map();
   ws.forEach(w => {
     if (w.length < 4 || STOP.has(w) || TOLERADAS.has(w)) return;
-    if ([...tema].some(t => t === w || (t.length > 5 && w.startsWith(t.slice(0, 5))))) return;
+    /* fora da conta: a palavra do tema (igual, radical igual) e também a
+       palavra que é PARTE de um termo composto do tema — quem escreve sobre
+       “saúde mental” vai dizer “saúde” muitas vezes, e isso não é desvio */
+    if ([...tema].some(t => t === w
+      || (t.length > 5 && w.startsWith(t.slice(0, 5)))
+      || (w.length >= 4 && t.startsWith(w)))) return;
     contagem.set(w, (contagem.get(w) || 0) + 1);
   });
 
@@ -68,15 +73,36 @@ export function repeticaoLexical(texto, termosDoTema = []) {
      - palavra de recheio (GENERICAS) volta 4× → já é repetição;
      - palavra de conteúdo que não é do tema: só a partir de 8×, porque 5 ou 6
        ocorrências de um termo técnico citado pelo texto é normal. */
-  const achados = [...contagem.entries()]
-    .map(([termo, n]) => ({
-      termo,
-      n,
-      generica: GENERICAS.has(termo),
-      densidade: +((n / Math.max(1, ws.length)) * 100).toFixed(2),
-      noMesmoParagrafo: (porParagrafo.get(termo) || []).filter(p => GENERICAS.has(termo) || p.n >= 3)
-    }))
-    .filter(a => (a.generica && a.n >= 4) || a.n >= 8)
+  /* A cartilha trata como repetição o mesmo desvio em palavras de mesmo
+     radical (§3.5.3 da Competência I): “desigualdade/desigualdades”,
+     “jovem/jovens”, “educar/educação” contam juntos. Agrupamos pelo radical
+     quando a palavra é longa o bastante para o radical ser confiável. */
+  const radicalDe = w => (w.length >= 6 ? w.slice(0, 6) : w);
+  const grupos = new Map();
+  contagem.forEach((n, termo) => {
+    const k = GENERICAS.has(termo) ? 'g:' + termo : 'r:' + radicalDe(termo);
+    const atual = grupos.get(k) || { termos: [], n: 0, generica: GENERICAS.has(termo) };
+    atual.termos.push(termo);
+    atual.n = Math.max(atual.n, n);
+    grupos.set(k, atual);
+  });
+
+  const achados = [...grupos.values()]
+    .map(g => {
+      const termo = g.termos.sort((a, b) => contagem.get(b) - contagem.get(a))[0];
+      const totalGrupo = g.termos.reduce((a, t) => a + contagem.get(t), 0);
+      return {
+        termo,
+        n: g.generica ? g.n : totalGrupo,
+        variantes: g.termos.length > 1 ? g.termos : undefined,
+        generica: g.generica,
+        densidade: +(((g.generica ? g.n : totalGrupo) / Math.max(1, ws.length)) * 100).toFixed(2),
+        noMesmoParagrafo: (porParagrafo.get(termo) || [])
+          .filter(p => g.generica || p.n >= 3)
+      };
+    })
+    .filter(a => (a.generica && a.n >= 3)
+      || (a.variantes ? a.n >= 7 : a.n >= 8))
     .sort((a, b) => (b.n - a.n) || (a.generica ? -1 : 1));
 
   return achados;
@@ -122,7 +148,7 @@ export function frasesRepetidas(texto) {
       let inter = 0;
       a.forEach(w => { if (b.has(w)) inter++; });
       const jac = inter / (a.size + b.size - inter);
-      if (jac >= 0.78) { iguais.push({ frase: fs[j], indice: j }); usadas.add(j); }
+      if (jac >= 0.74) { iguais.push({ frase: fs[j], indice: j }); usadas.add(j); }
     }
     if (iguais.length > 1) {
       usadas.add(i);
@@ -145,7 +171,7 @@ export function expressoesRepetidas(texto, termosDoTema = []) {
     conta.set(k, (conta.get(k) || 0) + 1);
   }
   return [...conta.entries()]
-    .filter(([, n]) => n >= 2)
+    .filter(([, n]) => n >= 3)
     .map(([expressao, n]) => ({ expressao, n }))
     .sort((a, b) => b.n - a.n)
     .slice(0, 6);

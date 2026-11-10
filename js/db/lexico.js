@@ -44,7 +44,8 @@ export const ERROS_ACENTUACAO = [
   ['processo', 'processo'], ['proprio', 'próprio'], ['propria', 'própria'],
   ['sera', 'será'], ['terao', 'terão'], ['poderao', 'poderão'],
   ['governo', 'governo'], ['emprego', 'emprego'], ['relatorio', 'relatório'],
-  ['obrigatorio', 'obrigatório'], ['previlegio', 'privilégio']
+  ['obrigatorio', 'obrigatório'], ['previlegio', 'privilégio'],
+  ['ambito', 'âmbito'], ['area', 'área'], ['areas', 'áreas'], ['audiencia', 'audiência'], ['ausencia', 'ausência'], ['beneficio', 'benefício'], ['beneficios', 'benefícios'], ['carater', 'caráter'], ['codigo', 'código'], ['comercio', 'comércio'], ['condicao', 'condição'], ['condicoes', 'condições'], ['conteudo', 'conteúdo'], ['contribuicao', 'contribuição'], ['decada', 'década'], ['decadas', 'décadas'], ['deficiencia', 'deficiência'], ['dificil', 'difícil'], ['distancia', 'distância'], ['economico', 'econômico'], ['economica', 'econômica'], ['emergencia', 'emergência'], ['epoca', 'época'], ['estatistico', 'estatístico'], ['exclusao', 'exclusão'], ['fenomeno', 'fenômeno'], ['fisico', 'físico'], ['fisica', 'física'], ['formacao', 'formação'], ['frequencia', 'frequência'], ['genero', 'gênero'], ['geografico', 'geográfico'], ['hipotese', 'hipótese'], ['impossivel', 'impossível'], ['indice', 'índice'], ['industria', 'indústria'], ['infancia', 'infância'], ['influencia', 'influência'], ['inicio', 'início'], ['insercao', 'inserção'], ['instituicao', 'instituição'], ['instituicoes', 'instituições'], ['legislacao', 'legislação'], ['lingua', 'língua'], ['logica', 'lógica'], ['medico', 'médico'], ['medicos', 'médicos'], ['mencao', 'menção'], ['municipio', 'município'], ['municipios', 'municípios'], ['negocio', 'negócio'], ['obrigacao', 'obrigação'], ['opiniao', 'opinião'], ['opinioes', 'opiniões'], ['organizacao', 'organização'], ['participacao', 'participação'], ['periodo', 'período'], ['precario', 'precário'], ['prevencao', 'prevenção'], ['principio', 'princípio'], ['principios', 'princípios'], ['producao', 'produção'], ['profissao', 'profissão'], ['proibicao', 'proibição'], ['protecao', 'proteção'], ['publica', 'pública'], ['publicas', 'públicas'], ['publicos', 'públicos'], ['questao', 'questão'], ['questoes', 'questões'], ['reducao', 'redução'], ['regiao', 'região'], ['regioes', 'regiões'], ['relacao', 'relação'], ['relacoes', 'relações'], ['religiao', 'religião'], ['representacao', 'representação'], ['restricao', 'restrição'], ['resolucao', 'resolução'], ['revolucao', 'revolução'], ['seguranca', 'segurança'], ['serie', 'série'], ['situacao', 'situação'], ['sobrevivencia', 'sobrevivência'], ['solucao', 'solução'], ['solucoes', 'soluções'], ['tendencia', 'tendência'], ['teorico', 'teórico'], ['tradicao', 'tradição'], ['transicao', 'transição'], ['visao', 'visão'], ['vivencia', 'vivência'], ['vulneravel', 'vulnerável'], ['indigena', 'indígena'], ['indigenas', 'indígenas'], ['adocao', 'adoção'], ['agressao', 'agressão'], ['anciao', 'ancião'], ['cidadão', 'cidadão'], ['comunhao', 'comunhão'], ['consorcio', 'consórcio'], ['escolaridade', 'escolaridade'],
 ];
 
 /** Trocas e construções típicas de desvio (texto normalizado). */
@@ -53,13 +54,13 @@ export const DESVIOS_CONSTRUCAO = [
   { padrao: 'ao inves de', sugestao: 'em vez de', tipo: 'locução' },
   { padrao: 'a nivel de', sugestao: 'em nível de / no âmbito de', tipo: 'barbarismo' },
   { padrao: 'atras de', sugestao: 'atrás de', tipo: 'acentuação' },
-  { padrao: 'atráves', sugestao: 'através', tipo: 'ortografia' },
+  { padrao: 'atráves', sugestao: 'através', tipo: 'ortografia', bruto: true },
   { padrao: 'derrepente', sugestao: 'de repente', tipo: 'ortografia' },
   { padrao: 'concerteza', sugestao: 'com certeza', tipo: 'ortografia' },
   { padrao: 'ha anos atras', sugestao: 'há anos', tipo: 'ortografia' },
   { padrao: 'fazem anos', sugestao: 'faz anos', tipo: 'concordância' },
   { padrao: 'houveram', sugestao: 'houve (haver = impessoal)', tipo: 'concordância' },
-  { padrao: 'haverão', sugestao: 'haverá (haver = impessoal)', tipo: 'concordância' },
+  { padrao: 'haverão', sugestao: 'haverá (haver = impessoal)', tipo: 'concordância', bruto: true },
   { padrao: 'menas', sugestao: 'menos', tipo: 'flexão' },
   { padrao: 'seje', sugestao: 'seja', tipo: 'flexão' },
   { padrao: 'ponhei', sugestao: 'pus', tipo: 'flexão' },
@@ -71,7 +72,23 @@ export const DESVIOS_CONSTRUCAO = [
   { padrao: 'chegar em', sugestao: 'chegar a', tipo: 'regência' },
   { padrao: 'ir em', sugestao: 'ir a', tipo: 'regência' },
   { padrao: 'obedecer as', sugestao: 'obedecer às', tipo: 'regência' },
-  { padrao: 'fazer com que', sugestao: '(aceitável, mas prefira "levar a")', tipo: 'estilo', peso: 0.3 }
+  { padrao: 'fazer com que', sugestao: '(aceitável, mas prefira "levar a")', tipo: 'estilo', peso: 0.3 },
+  { padrao: 'as vezes', sugestao: 'às vezes', tipo: 'crase', bruto: true },
+  { padrao: 'a medida que', sugestao: 'à medida que', tipo: 'crase', bruto: true },
+  { padrao: 'a vista de', sugestao: 'à vista de', tipo: 'crase', bruto: true },
+  { padrao: 'as custas de', sugestao: 'às custas de', tipo: 'crase', bruto: true },
+  { padrao: 'por causa que', sugestao: 'porque / por causa de', tipo: 'locução' },
+  { padrao: 'se trata de', sugestao: 'trata-se de', tipo: 'colocação' },
+  { padrao: 'enquanto que', sugestao: 'enquanto', tipo: 'redundância' },
+  { padrao: 'mas contudo', sugestao: 'contudo', tipo: 'redundância' },
+  { padrao: 'mas porém', sugestao: 'porém', tipo: 'redundância' },
+  { padrao: 'existe muitas', sugestao: 'existem muitas', tipo: 'concordância' },
+  { padrao: 'existe vários', sugestao: 'existem vários', tipo: 'concordância' },
+  { padrao: 'onde que', sugestao: 'onde', tipo: 'redundância' },
+  { padrao: 'como por exemplo', sugestao: 'por exemplo', tipo: 'redundância', peso: 0.5 },
+  { padrao: 'por conta de', sugestao: 'por causa de', tipo: 'estilo', peso: 0.4 },
+  { padrao: 'de certa forma', sugestao: '(evite o vazio argumentativo)', tipo: 'estilo', peso: 0.3 },
+  { padrao: 'vem crescendo', sugestao: '(aceitável; comprove com dado)', tipo: 'estilo', peso: 0.3 }
 ];
 
 /** Registro informal — prejudica C1 e, às vezes, C3. */

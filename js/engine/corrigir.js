@@ -86,7 +86,11 @@ export function corrigir(textoBruto, opts = {}) {
     comps.forEach(c => {
       c.notaOriginal = c.nota;
       c.pontosOriginal = c.pontos;
-      c.nota = 0; c.pontos = 0; c.nivel = 0; c.nivelOficial = 0; c.entreDegraus = null;
+      c.faixaOriginal = c.faixaNota;
+      c.nota = 0; c.pontos = 0; c.nivel = 0; c.nivelOficial = 0;
+      /* nota zero não tem divergência: os dois avaliadores chegam ao mesmo 0 */
+      c.faixaNota = { min: 0, max: 0 };
+      c.abertura = 0;
     });
   }
 
@@ -104,42 +108,29 @@ export function corrigir(textoBruto, opts = {}) {
         c.pontos = Math.min(c.pontos, 40);
         c.nivel = nivel(c.pontos);
         c.nivelOficial = 1;
-        c.entreDegraus = null;
+        c.faixaNota = { min: 40, max: 60 };
+        c.abertura = 20;
         c.tetoAplicado = 'tangenciamento';
         c.melhorias.unshift('Tangenciamento do tema: a cartilha limita as Competências II, III e V a 40 pontos quando o texto fala do assunto sem chegar ao recorte pedido.');
       }
     });
   }
 
-  /* ---------- meia-faixa: só quando não há impedimento ----------
-     A nota de 20 em 20 existe para o texto que cumpre um nível inteiro e já
-     mostra parte do seguinte SEM defeito objetivo. Se qualquer cartão do
-     relatório aponta um problema que "impede o 200" ou "pesa na nota", a
-     meia-faixa não vale: a nota volta para o nível inferior, como manda a
-     cartilha. É a trava que mantém o rigor. */
-  let explicadas = explicarCompetencias(comps);
-  const rebaixar = new Set();
-  comps.forEach((c, i) => {
-    /* nota 20 é a meia-faixa abaixo do nível 1 (tangenciamento, um elemento
-       vago): ela não desce para 0 — zero é reservado a fuga e anulação. */
-    if (c.nota % 40 !== 20 || c.nota <= 20) return;
-    const motivos = explicadas[i].explicacao?.motivos || explicadas[i].motivos || [];
-    if (motivos.some(m => m.gravidade === 'alta' || m.gravidade === 'media')) rebaixar.add(c.id);
-  });
-  if (rebaixar.size) {
-    comps.forEach(c => {
-      if (!rebaixar.has(c.id)) return;
-      c.nota -= 20;
-      c.sinais.meiaFaixa = false;
-      c.sinais.meiaFaixaNegada = true;
-      if (c.entreDegraus) c.entreDegraus.aplicado = false;
-      c.melhorias.unshift('A meia-faixa não foi aplicada: havia um defeito objetivo nesta competência, e a cartilha manda ficar no nível inferior.');
-    });
-    explicadas = explicarCompetencias(comps);
-  }
-
+  /* ---------- nota final como FAIXA ----------
+     Cada avaliador do Enem dá de 0 a 200 por competência e a nota final é a
+     média das duas notas totais. Dois avaliadores nunca fecham exatamente o
+     mesmo número — a cartilha só chama um terceiro quando a diferença passa de
+     100 pontos no total (ou 80 numa competência). Por isso o relatório publica
+     um intervalo: o mínimo é a soma das notas oficiais; o máximo soma, em cada
+     competência, a abertura que o texto ainda comporta, limitado pela própria
+     regra de divergência. */
+  const explicadas = explicarCompetencias(comps);
   const notaTotal = comps.reduce((a, c) => a + c.nota, 0);
-  const faixa = faixaDe(notaTotal);
+  const somaMax = comps.reduce((a, c) => a + (c.faixaNota?.max ?? c.nota), 0);
+  /* redação zerada não tem faixa: a nota é 0, sem divergência possível */
+  const notaTotalMax = zerada ? 0
+    : Math.min(1000, Math.max(notaTotal + 40, Math.min(notaTotal + 100, somaMax)));
+  const faixa = faixaDe(Math.round((notaTotal + notaTotalMax) / 2));
 
   /* ---------- alertas pedagógicos ---------- */
   if (ctx.metricas.linhas > 30) {
@@ -206,6 +197,8 @@ export function corrigir(textoBruto, opts = {}) {
     texto,
     tema,
     notaTotal,
+    notaTotalMax,
+    notaFaixa: { min: notaTotal, max: notaTotalMax },
     faixa,
     zerada,
     motivosZero,

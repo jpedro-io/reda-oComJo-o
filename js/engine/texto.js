@@ -130,41 +130,40 @@ export function nivel(nota) {
 }
 
 /**
- * NOTA CHEIA e MEIA-FAIXA.
+ * NOTA OFICIAL (40 em 40) e FAIXA (o intervalo em que dois avaliadores cairiam).
  *
- * A grade oficial pontua de 40 em 40 (0, 40, 80, 120, 160, 200). Existe um caso,
- * porém, em que a redação não cabe em nenhum dos dois níveis vizinhos: cumpre
- * INTEGRALMENTE o descritor de baixo e já mostra parte do descritor de cima.
- * Aí a nota fica na metade do caminho — 20 pontos acima do nível inferior.
+ * A cartilha é explícita: cada avaliador atribui de 0 a 200 por competência e a
+ * nota final é a MÉDIA das duas notas totais. Como os dois avaliadores divergem,
+ * a nota de uma competência pode perfeitamente ser 160, 180 ou 200 — por isso o
+ * corretor nunca publica um número exato, e sim uma FAIXA.
  *
- *   oficializar(160)                       → 160   (nível cheio)
- *   oficializar(180, { intermediario:false }) → 160   (fica no inferior, regra da cartilha)
- *   oficializar(180, { intermediario:true })  → 180   (meia-faixa: entre 160 e 200)
- *   oficializar(20)                        → 20    (abaixo do nível 1 existe meia-faixa, não zero)
- *
- * Quem decide `intermediario` é a competência: só vale quando o texto não tem
- * defeito objetivo nenhum e o único motivo de não subir é a falta de prova do
- * descritor seguinte. Defeito encontrado, teto aplicado → fica no inferior.
+ * Aqui:
+ *   - `nota` é sempre a nota oficial da grade: 0, 40, 80, 120, 160 ou 200;
+ *   - `abertura` é quanto o texto ainda comporta de divergência para cima:
+ *       20 pontos quando o texto está firme no nível alcançado;
+ *       40 pontos quando a leitura interna mostra que ele já traz parte do
+ *       descritor seguinte (o segundo avaliador poderia subir um nível);
+ *   - `faixa` é [nota, nota + abertura], limitada a 200.
  */
-export function oficializar(pontos, opts = {}) {
+export function oficializar(pontos) {
   const p = Math.max(0, Math.min(200, Math.round((Number(pontos) || 0) / 20) * 20));
-  const intermediario = opts.intermediario === true;
-  const meio = p % 40 === 20;
-
-  let nota;
-  if (p === 0) nota = 0;
-  else if (!meio) nota = p;                 // nível cheio da grade
-  else if (p === 20) nota = 20;             // meia-faixa abaixo do nível 1
-  else nota = intermediario ? p : p - 20;   // meia-faixa só com autorização da competência
-
-  const entre = meio
-    ? { de: Math.max(0, p - 20), para: Math.min(200, p + 20), degrau: p, aplicado: nota === p }
-    : null;
-  return { nota, pontos: p, entre, intermediario: nota === p && meio };
+  const nota = Math.max(0, Math.min(200, Math.floor(p / 40) * 40));
+  const abertura = nota >= 200 ? 0 : (p % 40 === 20 ? 40 : 20);
+  return {
+    nota,
+    pontos: p,
+    abertura,
+    faixa: { min: nota, max: Math.min(200, nota + abertura) }
+  };
 }
 
-/** Nível oficial correspondente (0-5), para citar a cartilha.
-    Nota de meia-faixa (180) fica no nível de baixo: 4. */
+/**
+ * Nível oficial correspondente (0–5), para citar a cartilha.
+ *
+ * A conta é sempre `floor(nota / 40)`: a leitura interna de 180 não é uma nota
+ * publicada — ela é o diagnóstico de um texto que cumpre o nível 4 e já mostra
+ * parte do 5. O nível citado ao estudante é o de baixo, como manda a grade.
+ */
 export function nivelOficial(nota) {
   return Math.max(0, Math.min(5, Math.floor((Number(nota) || 0) / 40)));
 }

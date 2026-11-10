@@ -40,9 +40,10 @@ for (const caso of casos) {
     t(`${caso.nome}/${c.id}: tem explicação`, !!ex);
     if (!ex) continue;
 
-    t(`${caso.nome}/${c.id}: nível coerente`,
-      ex.nivel.n === Math.round(c.pontos / 20) && ex.nivel.pontos === c.pontos,
-      `nivel=${ex.nivel.n}/${c.pontos / 20} pontos=${ex.nivel.pontos}/${c.pontos}`);
+    /* a régua da explicação é a OFICIAL (0–5), não a interna de 20 em 20 */
+    t(`${caso.nome}/${c.id}: nível coerente com a nota oficial`,
+      ex.nivel.n === Math.floor(c.nota / 40) && ex.nivel.pontos === c.nota,
+      `nivel=${ex.nivel.n}/${Math.floor(c.nota / 40)} pontos=${ex.nivel.pontos}/${c.nota}`);
     t(`${caso.nome}/${c.id}: cita a regra da grade`, ex.regra === GRADES[c.id].regra);
     t(`${caso.nome}/${c.id}: fonte da cartilha`, /Competencia_|cartilha/.test(ex.fonte || ''));
     t(`${caso.nome}/${c.id}: sí­ntese`, typeof ex.sintese === 'string' && ex.sintese.length > 20);
@@ -71,26 +72,28 @@ for (const caso of casos) {
     });
 
     if (ex.proximo) {
-      t(`${caso.nome}/${c.id}: próximo degrau coerente`,
-        ex.proximo.pontos === Math.min(200, c.pontos + 20),
-        `${ex.proximo.pontos} vs ${c.pontos + 20}`);
-      t(`${caso.nome}/${c.id}: degrau intermediário tem descritor`,
-        typeof ex.proximo.exige === 'string' && ex.proximo.exige.length > 20);
+      t(`${caso.nome}/${c.id}: próximo nível é o seguinte da grade`,
+        ex.proximo.pontos === Math.min(200, c.nota + 40),
+        `${ex.proximo.pontos} vs ${Math.min(200, c.nota + 40)}`);
+      t(`${caso.nome}/${c.id}: próximo nível tem descritor`,
+        typeof ex.proximo.exige === 'string' && ex.proximo.exige.length > 8 &&
+        typeof ex.nivelTextoProximo === 'string' && ex.nivelTextoProximo.length > 8);
     }
 
-    // a régua intermediária e a oficial têm de andar juntas
-    t(`${caso.nome}/${c.id}: nota em degrau de 20`, c.nota % 20 === 0, String(c.nota));
-    t(`${caso.nome}/${c.id}: diagnóstico em degrau de 20`, c.pontos % 20 === 0, String(c.pontos));
-    t(`${caso.nome}/${c.id}: nota e diagnóstico combinam`,
+    // a nota publicada é oficial e vem sempre com a faixa
+    t(`${caso.nome}/${c.id}: nota em degrau de 40`, c.nota % 40 === 0, String(c.nota));
+    t(`${caso.nome}/${c.id}: diagnóstico interno em passo de 20`, c.pontos % 20 === 0, String(c.pontos));
+    t(`${caso.nome}/${c.id}: diagnóstico nunca abaixo da nota publicada`,
       c.pontos >= c.nota, `${c.pontos} vs ${c.nota}`);
-    t(`${caso.nome}/${c.id}: degrau = pontos/20`, ex.nivel.n === c.pontos / 20,
-      `${ex.nivel.n} vs ${c.pontos / 20}`);
-    t(`${caso.nome}/${c.id}: nível oficial = nota/40 (meia-faixa no nível de baixo)`,
+    t(`${caso.nome}/${c.id}: nível oficial = floor(nota/40)`,
       ex.nivel.oficial === Math.floor(c.nota / 40), `${ex.nivel.oficial} vs ${c.nota}`);
-    t(`${caso.nome}/${c.id}: "entre níveis" coerente`,
-      !c.entreDegraus || (c.pontos === c.entreDegraus.degrau &&
-        c.entreDegraus.para === Math.min(200, (c.entreDegraus.aplicado ? c.entreDegraus.degrau : c.entreDegraus.de) + 40)),
-      JSON.stringify(c.entreDegraus));
+    t(`${caso.nome}/${c.id}: explicação carrega a faixa`,
+      ex.nivel.faixa && ex.nivel.faixa.min === c.nota && ex.nivel.faixa.max >= c.nota,
+      JSON.stringify(ex.nivel.faixa));
+    t(`${caso.nome}/${c.id}: síntese fala em faixa ou em 200`,
+      /faixa|200/i.test(ex.sintese), ex.sintese.slice(0, 60));
+    t(`${caso.nome}/${c.id}: sem "entre degraus"`,
+      c.entreDegraus === undefined || c.entreDegraus === null, JSON.stringify(c.entreDegraus));
     t(`${caso.nome}/${c.id}: descritor oficial citado`,
       typeof ex.nivel.exigeOficial === 'string' && ex.nivel.exigeOficial.length > 15);
   }

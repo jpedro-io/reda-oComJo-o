@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Redação com João">
+  <defs>
+    <linearGradient id="marca-azul" x1="6" y1="0" x2="42" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4C6BF7"/>
+      <stop offset=".42" stop-color="#1A3EC8"/>
+      <stop offset="1" stop-color="#0C2078"/>
+    </linearGradient>
+    <linearGradient id="marca-brilho" x1="10" y1="4" x2="30" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- corpo de vidro: azul royal com cantos generosos -->
+  <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="url(#marca-azul)"/>
+  <!-- realce especular do vidro -->
+  <path d="M6 17C7.6 9.4 14 4.4 22.5 3.6" fill="none" stroke="url(#marca-brilho)" stroke-width="2.6" stroke-linecap="round"/>
+  <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="none"
+        stroke="#FFFFFF" stroke-opacity=".42" stroke-width="1.2"/>
+
+  <!-- pena (nib): o instrumento da redação -->
+  <path d="M24 9.6 33.2 20.2 24 38.4 14.8 20.2Z" fill="#FFFFFF"/>
+  <path d="M24 15.4V28.6" stroke="#1A3EC8" stroke-width="2.1" stroke-linecap="round"/>
+  <circle cx="24" cy="32.4" r="2.15" fill="#1A3EC8"/>
+</svg>
