@@ -74,7 +74,7 @@ test/                         testes do motor (node) — engine, casos, redaçõ
 | Tema | **um só**, claro, com tokens em `:root`. O `prefers-color-scheme: dark` foi retirado do CSS, do `bg.js` e do `index.html` — fundo branco é decisão de marca, não preferência do sistema |
 | Celular | alvo de projeto, não sobra: topo em duas linhas com o CTA "Corrigir" fixo, navegação rolável, toque ≥ 44 px, tabelas e réguas reflowadas, editor acima do relatório e rolagem automática até a nota |
 | 3D | campo de profundidade em WebGL puro (~4 KB), lazy, só em telas ≥ 900 px; fallback de aurora em CSS. **Sem Three.js**: 2,1 MB por um fundo decorativo |
-| Marca | `assets/logo.svg`: pena (nib) branca sobre squircle de vidro azul royal com realce especular. O mesmo desenho é o favicon (data-URI) e o cabeçalho — o quadrado "RJ" foi aposentado |
+| Marca | `assets/logo.svg`: duas aspas de abertura brancas sobre fio de citação, dentro de squircle de vidro azul royal. Legível a 16 px; o mesmo desenho é o favicon (data-URI) e o cabeçalho — o quadrado "RJ" e o bico de pena foram aposentados |
 | Seções | cada uma com formato derivado do conteúdo (régua, linha do tempo, acordeão, lista densa, crônica por ano, workspace) |
 
 Contraste: todo texto ≥ 4,5:1 no pior ponto do fundo; onde há vidro, existe camada de escurecimento atrás do texto.
