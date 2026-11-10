@@ -56,7 +56,7 @@ js/db/redacoes-2020-2026.js   análises de 2020 a 2026 (+ diagnóstico)
 js/db/redacoes.js             índice das análises, cores dos destaques
 js/db/exemplos.js             textos dos botões de exemplo do corretor
 tools/build-standalone.py     gera standalone.html (embute CSS, JS e fontes em data URI)
-test/                         testes do motor (node) — engine, casos, redações, explicações, escala e acentos
+test/                         testes do motor (node) — engine, casos, redações, explicações, escala, acentos e gramática
 ../uploads/                   cartilhas de capacitação (PDF) e o texto extraído em uploads/txt/
 ```
 
@@ -121,6 +121,24 @@ Além de acentuação, concordância e repertório, o motor mede o que um avalia
 Cada achado chega ao relatório como um cartão **“impede o 200”** (ou “pesa na nota”), com o título do problema, a regra da grade que ele viola, o trecho do próprio texto e a correção concreta. É a mesma lógica da cartilha: o nível 5 admite no máximo uma falha de estrutura e no máximo dois desvios no texto inteiro — e repetição e falta de pontuação contam nessa conta.
 
 **Calibragem** (`node test/calibragem.js`): texto fraco de dez linhas fica entre **280 e 480**; redação repetitiva, **280**; texto com frases repetidas, **320**; texto sem pontuação, **280**; redação sólida com repertório explicado e proposta completa, **800**; as treze redações modelo, **960–1000**.
+
+## Crase, concordância e pontuação — regras de contexto
+
+A Competência I não se corrige com lista de palavras. `DESVIOS_CONSTRUCAO` (`js/db/lexico.js`) pega forma fixa — “as vezes”, “houveram”, “menas”. O resto é **relação entre duas palavras**, e isso está em `REGRAS_CONTEXTO`, no mesmo arquivo: vinte regras com expressão regular que enxergam contexto.
+
+| Grupo | Exemplos que a regra pega |
+|---|---|
+| crase | “à partir”, “à ser cobrados”, “à todos”, “a aquela questão”, “devido a falta”, “à nível de” |
+| concordância verbal | “os jovens precisa”, “as pessoas que não tem”, “houveram muitos casos”, “fazem dez anos”, “existe pessoas”, “falta recursos”, “se tratam de” |
+| concordância nominal | “os mesmo direitos”, “as políticas pública”, “duas vez”, “meia cansada” |
+| pontuação | vírgula entre sujeito e verbo: “A sociedade, é responsável” |
+
+Duas decisões valem registro:
+
+1. **Falso positivo custa mais caro que omissão.** Uma regra que acusa redação boa estraga a ferramenta; uma regra que não existe só deixa passar. Por isso toda regra nova passa por `node test/gramatica.js`, que exige três coisas: zero acusações nas 14 redações modelo, 19 defeitos plantados encontrados e 8 frases corretas intocadas.
+2. **`\b` não serve em português.** O `\b` do JavaScript só conhece `[A-Za-z0-9_]` — para ele, “à” e “é” não são letras, e `\bà\b` nunca casa. As regras usam lookarounds Unicode (`(?<![\p{L}\p{N}])`). Esse detalhe foi o que fez a primeira versão das regras de crase passar em branco.
+
+Regras deliberadamente ausentes estão documentadas no fim de `lexico.js`, com o motivo — crase antes de nome de lugar, vírgula antes de “que” (não dá para distinguir restritiva de explicativa) e a concordância com “a maioria” (as duas formas são aceitas).
 
 ## Como a explicação da nota é construída
 
@@ -204,6 +222,7 @@ node test/explicacoes.test.js # 1374 checagens: toda competência < 200 tem moti
 node test/niveis.js           # 796 checagens: as seis notas oficiais, a faixa por competência e a faixa total
 node test/acentos.js          # 832 checagens: mapa de acentos e todo o vocabulário dos temas
 node test/calibragem.js       # 64 checagens: repetição, pontuação, teto do texto fraco e faixa sem nota exata
+node test/gramatica.js        # crase, concordância verbal/nominal e pontuação: 19 defeitos plantados, 8 textos corretos, 14 redações modelo
 ```
 
 Estado atual: 1374/1374 (explicações), 796/796 (notas e faixas), 832/832 (acentos), 64/64 (calibragem), 13 redações nota 1000 na faixa alta (920–1000), casos 1000 / 360 / 0 / 0 / 600.

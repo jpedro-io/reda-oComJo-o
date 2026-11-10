@@ -12,7 +12,7 @@ Paleta refeita por decisão do cliente: **fundo branco, azul royal nos botões e
 
 | Papel | Token | Valor | Uso |
 |---|---|---|---|
-| Royal | `--azul` | `#1A3EC8` | botão primário, barra, anel da nota, faixa de seção |
+| Royal | `--azul` | `#1A3EC8` | botão primário, barra, trilho da nota, faixa de seção |
 | Royal (texto) | `--azul-txt` | `#14309B` | links e palavras-âncora sobre branco (AA) |
 | Royal realce | `--azul-alto` | `#2F55F0` | topo do gradiente dos botões, hover |
 | Véu azul | `--azul-fundo` | `#E9EEFF` | chips, badges, blocos de apoio |

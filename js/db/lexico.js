@@ -239,3 +239,141 @@ export const VERBOS_ACAO_PROVA = ['deve', 'devem', 'deveria', 'deveriam', 'e nec
   'e preciso', 'e fundamental', 'urge', 'cabe ao', 'cabe a', 'e imprescindivel'];
 
 export const PALAVRAS_MONOSSILABICAS_OK = new Set(['a', 'e', 'o', 'as', 'os', 'em', 'de', 'da', 'do', 'se', 'que', 'com', 'por', 'ja', 'ha', 'mais', 'mas', 'nao', 'si', 'ou', 'ao', 'aos', 'so', 'ja']);
+
+/* ------------------------------------------------------------------ */
+/* REGRAS DE CONTEXTO — gramática que lista de palavras não alcança    */
+/* ------------------------------------------------------------------ */
+/*
+ * DESVIOS_CONSTRUCAO casa forma fixa ("as vezes"). Só que a maior parte dos
+ * desvios de norma não é forma fixa: é RELAÇÃO entre duas palavras — um "à"
+ * que não devia existir, um sujeito plural com verbo no singular. Isso exige
+ * contexto, e contexto aqui é expressão regular sobre o texto original em
+ * minúsculas (com acento: sem o acento não há como enxergar crase).
+ *
+ * Cada regra é conservadora de propósito. Uma regra que só acerta em 60% dos
+ * casos desconta nota de redação boa — pior do que não ter a regra. As que
+ * ficaram de fora estão anotadas no fim do arquivo.
+ *
+ * Campos:
+ *   re       — regex global sobre o texto em minúsculas
+ *   tipo     — 'crase' | 'concordância verbal' | 'concordância nominal' | 'pontuação' | 'regência'
+ *   sugestao — o que escrever no lugar
+ *   peso     — multiplicador do desconto (padrão 1)
+ */
+
+const INFINITIVOS = 'ser|estar|ter|haver|fazer|dizer|dar|ver|ir|vir|poder|dever|combater|garantir|buscar|evitar|promover|reduzir|ampliar|construir|manter|permitir|possibilitar|contribuir|fiscalizar|investir|criar|ofertar|assegurar|respeitar|valorizar|enfrentar|superar|incluir|proteger|acessar|cuidar|pensar|agir|mudar|transformar|reverter|mitigar|conter|frear|punir|educar|conscientizar|debater|discutir';
+
+/*
+ * Fronteira de palavra para o português: `\b` do JavaScript só conhece
+ * [A-Za-z0-9_] — e para ele "à", "é" e "política" NÃO são letras. Por isso
+ * `\bà\b` nunca casa, e regra de crase escrita com `\b` passa em branco no
+ * texto inteiro. Usamos lookarounds Unicode em vez de `\b`.
+ */
+const L = '[\\p{L}\\p{N}]';
+const iniW = `(?<!${L})`;
+const fimW = `(?!${L})`;
+const regra = (id, tipo, corpo, sugestao, peso) => ({
+  id, tipo, sugestao,
+  ...(peso ? { peso } : {}),
+  re: new RegExp(`${iniW}(?:${corpo})${fimW}`, 'gu'),
+});
+
+export const REGRAS_CONTEXTO = [
+  /* ---------------- crase ---------------- */
+  regra('crase-locucao-masculina', 'crase',
+    'à\\s+(?:partir|fim|respeito|menos|princ[íi]pio|dist[âa]ncia|exemplo|rigor|contento|salvo|caminho|olho\\s+nu|tempo)\\b',
+    'sem crase: “a partir de”, “a fim de”, “a respeito de”, “a menos que”, “a princípio”'),
+
+  regra('crase-antes-de-verbo', 'crase',
+    `à\\s+(?:se\\s+)?(?:${INFINITIVOS})`,
+    'antes de verbo não há crase: “a ser”, “a fazer”, “a combater”'),
+
+  regra('crase-antes-de-masculino', 'crase',
+    'à\\s+(?:o|os|um|uns|uma|umas|ao|aos|dois|três|quatro|todos|todo|alguns|algum|muitos|muitas|algumas|v[áa]rios|v[áa]rias|cada|nenhum)',
+    'crase só antes de palavra feminina: “a todos”, “a um”, “a muitos”'),
+
+  regra('crase-aquela', 'crase',
+    'a\\s+(?:aquela|aquele|aquilo|aquelas|aqueles)',
+    '“àquela”, “àquele”, “àquilo” (crase antes de aquele/aquela)'),
+
+  regra('crase-faltando-regencia', 'crase',
+    '(?:devido|graças|em\\s+relação|quanto|referente|frente|obedecendo|contrário|paralelo|semelhante)\\s+a\\s+(?:falta|educação|saúde|sociedade|população|violência|desigualdade|família|escola|mulher|mulheres|necessidade|possibilidade|lei|constituição|mídia|internet|tecnologia|realidade|situação|questão|prática)',
+    'falta crase: “devido à falta”, “em relação à educação”, “graças à lei”'),
+
+  regra('crase-nivel', 'crase',
+    '(?:à|a)\\s+n[íi]vel\\s+de',
+    '“em nível de”; “à nível” acumula dois erros', 0.8),
+
+  regra('crase-antes-de-que', 'crase',
+    '(?:devido|graças|em\\s+relação|quanto)\\s+à\\s+que',
+    '“devido a que” / “em relação ao que”'),
+
+  /* ---------------- concordância verbal ---------------- */
+  regra('cv-sujeito-plural-verbo-singular', 'concordância verbal',
+    '(?:os|as)\\s+[\\p{L}]+(?:s|es|is)\\s+(?:que\\s+)?(?:não\\s+)?(?:é|era|foi|tem|há|faz|deve|pode|precisa|existe|falta|consiste|visa|busca|necessita|contribui|provoca|causa|atinge|afeta|enfrenta|apresenta|representa|constitui|sofre|recebe|merece|ocorre|cresce|aumenta|diminui|permanece|deixa)',
+    'sujeito no plural pede verbo no plural: “os jovens precisam”, “as pessoas têm”'),
+
+  regra('cv-haver-existencial', 'concordância verbal',
+    '(?:houveram|haviam|haveriam|houveriam)\\s+(?:muitos|muitas|vários|várias|pessoas|casos|problemas|formas|maneiras|fatores|desafios|dados|estudos|indivíduos|jovens|crianças|alunos|brasileiros|cidadãos|razões|motivos|projetos|leis|políticas|medidas|ações|iniciativas|registros|relatos|exemplos)',
+    '“haver” no sentido de existir é impessoal: “houve muitos casos”, “havia pessoas”'),
+
+  regra('cv-fazer-tempo', 'concordância verbal',
+    'fazem\\s+(?:\\p{L}+\\s+)?(?:anos|décadas|séculos|meses|dias)',
+    '“fazer” indicando tempo é impessoal: “faz dez anos”, “faz décadas”'),
+
+  regra('cv-existe-plural', 'concordância verbal',
+    'existe\\s+(?:pessoas|jovens|crianças|casos|problemas|formas|maneiras|fatores|desafios|indivíduos|homens|mulheres|alunos|estudantes|brasileiros|cidadãos|dados|estudos|razões|motivos|projetos|leis|políticas|medidas|ações|iniciativas|recursos|investimentos|profissionais|oportunidades|informações|relações)',
+    '“existem pessoas”, “existem casos” (o verbo concorda com o que vem depois)'),
+
+  regra('cv-falta-plural', 'concordância verbal',
+    'falta\\s+(?:recursos|investimentos|políticas|medidas|ações|dados|estudos|incentivos|profissionais|leis|projetos|oportunidades|informações|verbas|equipamentos|médicos|professores|empregos|moradias)',
+    '“faltam recursos”, “faltam políticas”'),
+
+  regra('cv-se-tratam-de', 'concordância verbal',
+    'se\\s+tratam\\s+de',
+    '“trata-se de” (a partícula se indetermina o sujeito; verbo no singular)'),
+
+  regra('cv-coletivo-singular', 'concordância verbal',
+    '(?:a\\s+maioria|a\\s+maior\\s+parte|o\\s+conjunto|a\\s+população|o\\s+público)\\s+(?:dos|das|de)?\\s*\\p{L}*\\s*(?:precisam|têm|fazem|podem|devem|sofrem|enfrentam|buscam|querem)',
+    'com coletivo no singular + “de”, a norma prefere o singular: “a maioria dos jovens precisa”', 0.5),
+
+  /* ---------------- concordância nominal ---------------- */
+  regra('cn-artigo-plural-adjetivo-singular', 'concordância nominal',
+    '(?:os|as)\\s+(?:mesmo|próprio|primeiro|último|único|público|pública|social|humano|humana|cultural|político|política|econômico|econômica|ambiental|educacional|básico|básica|fundamental|digital|urbano|urbana|rural|racial|étnico|étnica|mental|físico|física|brasileiro|brasileira|profissional|mundial|nacional|coletivo|coletiva|individual)',
+    'artigo no plural pede adjetivo no plural: “os mesmos direitos”, “as políticas públicas”'),
+
+  regra('cn-substantivo-plural-adjetivo-singular', 'concordância nominal',
+    '(?:os|as|muitos|muitas|vários|várias|diversos|diversas)\\s+[\\p{L}]+(?:ões|ães|ais|eis|os|as|es)\\s+(?:público|pública|social|humano|humana|cultural|político|política|econômico|econômica|ambiental|educacional|digital|urbano|urbana|rural|racial|étnico|étnica|mental|físico|física)',
+    'o adjetivo acompanha o substantivo: “direitos sociais”, “políticas públicas”'),
+
+  regra('cn-numeral-substantivo-singular', 'concordância nominal',
+    '(?:dois|duas|três|quatro|cinco|seis|sete|oito|nove|dez|vinte|cem)\\s+(?:vez|ano|década|mês|dia|pessoa|caso|projeto|lei|política|medida|ação|forma|maneira|exemplo|motivo|grupo)',
+    'depois de numeral maior que um, o substantivo vai ao plural: “três vezes”, “cinco anos”'),
+
+  regra('cn-meio-invariavel', 'concordância nominal',
+    'meia\\s+(?:cansad[oa]|preocupad[oa]|exaust[oa]|perdid[oa]|atrasad[oa]|desmotivad[oa]|sozinh[oa])',
+    '“meio” como advérbio não flexiona: “meio cansada”'),
+
+  regra('cn-menos-invariavel', 'concordância nominal',
+    'menas',
+    '“menos” é invariável', 0.4),
+
+  /* ---------------- pontuação ---------------- */
+  regra('pont-virgula-sujeito-verbo', 'pontuação',
+    '(?:^|[.;:!?]\\s+|\\n)\\s*(?:o|a|os|as)\\s+[\\p{L}]+\\s*,\\s*(?:é|são|foi|foram|era|eram|tem|têm|há|deve|devem|pode|podem|está|estão|representa|representam|constitui|constituem|consiste|consistem|significa|significam|exige|exigem)',
+    'não se separa o sujeito do verbo por vírgula'),
+
+];
+
+/*
+ * Regras deliberadamente NÃO implementadas (e por quê):
+ *  - crase antes de nome de lugar ("vou à escola"): depende de saber se o
+ *    lugar aceita artigo — heurística cara e errada com frequência.
+ *  - vírgula antes de "e" / "mas": depende da estrutura da oração.
+ *  - vírgula antes de "que": não há como distinguir oração restritiva de
+ *    explicativa sem análise sintática — "A educação, que é um direito, falha"
+ *    é correta e seria acusada de erro.
+ *  - "a maioria ... são": as duas formas são aceitas pela norma culta.
+ *  - regência de "assistir/visar/implicar" fora das formas fixas: exige
+ *    distinguir sentido (assistir o doente ≠ assistir ao filme).
+ */

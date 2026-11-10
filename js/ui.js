@@ -693,18 +693,19 @@ function viewCorrigir(params) {
   </div>`;
 }
 
-function motivoHTML(m) {
-  const etiqueta = m.gravidade === 'alta' ? 'impede o 200'
-    : m.gravidade === 'media' ? 'pesa na nota' : 'observação';
+function motivoHTML(m, i, zerado) {
+  const etiqueta = zerado ? 'observação'
+    : m.gravidade === 'alta' ? 'impede o 200'
+    : m.gravidade === 'media' ? 'segura a nota' : 'observação';
   return `
     <li class="motivo g-${m.gravidade}">
-      <span class="m-tag">${etiqueta}</span>
-      <h4>${esc(m.titulo)}</h4>
+      <span class="m-tag"><i>${i + 1}</i>${etiqueta}</span>
+      <h5 class="m-titulo">${esc(m.titulo)}</h5>
       <p class="m-porque">${esc(m.porque)}</p>
       ${m.evidencia ? `<blockquote>${esc(m.evidencia)}</blockquote>` : ''}
       ${m.exemplos && m.exemplos.length
         ? `<ul class="m-ex">${m.exemplos.map(e => `<li>${esc(e)}</li>`).join('')}</ul>` : ''}
-      ${m.comoResolver ? `<p class="m-como"><b>Como resolver:</b> ${esc(m.comoResolver)}</p>` : ''}
+      ${m.comoResolver ? `<p class="m-como"><b>Como resolver.</b> ${esc(m.comoResolver)}</p>` : ''}
     </li>`;
 }
 
@@ -714,12 +715,37 @@ export function faixaDaComp(c) {
   return { min: f.min, max: f.max, exata: f.min === f.max };
 }
 
+/* bloco de leitura do relatório: um rótulo curto e o texto. Sem caixa alta aos
+   berros, sem chip dentro de chip — o olho desce uma coluna só. */
+function bloco(rotulo, corpo, classe = '') {
+  return `
+    <section class="cc-bloco ${classe}">
+      <h5 class="cc-rot">${rotulo}</h5>
+      ${corpo}
+    </section>`;
+}
+
 function compCard(c, aberto) {
   const ex = c.explicacao || {};
   const nivel = ex.nivel || { n: c.nivel, pontos: c.nota, exige: '' };
   const classeNota = c.nota < 120 ? 'baixa' : c.nota < 200 ? 'media' : '';
   const f = faixaDaComp(c);
   const rotuloFaixa = f.exata ? `${f.min}` : `${f.min}<i>–</i>${f.max}`;
+  const oficial = nivel.oficial ?? nivel.n ?? c.nivel;
+  const descritor = nivel.exigeOficial || nivel.exige || '';
+
+  const porque = f.exata
+    ? (oficial >= 5
+        ? `O texto cumpre integralmente o descritor do nível máximo, e não existe nível acima dele: os dois avaliadores tendem a fechar em ${f.min}.`
+        : `O texto cumpre o descritor do nível ${oficial} e não mostra o do nível seguinte: os dois avaliadores tendem a fechar em ${f.min}.`)
+    : `A nota oficial desta competência é ${f.min}, nível ${oficial}. ${f.max - f.min >= 40
+        ? `Como o texto já mostra parte do descritor de ${f.max}, o segundo avaliador pode subir um nível inteiro — por isso a faixa vai até ${f.max}.`
+        : `O texto está firme no nível ${oficial}; os 20 pontos de margem são a divergência previsível entre os dois avaliadores.`}`;
+
+  const motivos = ex.motivos && ex.motivos.length
+    ? `<ol class="motivos">${ex.motivos.map((m, i) => motivoHTML(m, i, !!ex.zero)).join('')}</ol>`
+    : '<p class="cc-txt">Nenhum impedimento identificado nesta amostra para o nível máximo.</p>';
+
   return `
   <details class="comp-card" ${aberto ? 'open' : ''}>
     <summary class="cc-sum">
@@ -729,32 +755,23 @@ function compCard(c, aberto) {
       <span class="cc-nota ${classeNota}" title="Faixa de nota desta competência">${rotuloFaixa}<small>/200</small></span>
     </summary>
     <div class="cc-body">
-      <p class="cc-sintese">${esc(ex.sintese || '')}</p>
-      <div class="cc-niveis">
-        <span class="badge">Nível ${nivel.oficial} de 5 · ${f.exata ? `nota ${f.min}` : `nota entre ${f.min} e ${f.max}`}</span>
-        ${f.exata
-          ? `<span class="badge faixa"><b>Nota firme:</b> ${nivel.oficial >= 5
-              ? `o texto cumpre integralmente o descritor do nível máximo — não há nível acima, e os dois avaliadores tendem a fechar em ${f.min}.`
-              : `o texto cumpre o descritor do nível ${nivel.oficial} e não mostra o do nível seguinte — os dois avaliadores tendem a fechar em ${f.min}.`}</span>`
-          : `<span class="badge faixa"><b>Por que a faixa:</b> a nota oficial desta competência é ${f.min} (nível ${nivel.oficial}). ${f.max - f.min >= 40
-            ? `Como o texto já mostra parte do descritor de ${f.max}, o segundo avaliador pode subir um nível inteiro — por isso a faixa vai até ${f.max}.`
-            : `O texto está firme no nível ${nivel.oficial}; os 20 pontos de margem são a divergência previsível entre os dois avaliadores — o teto da faixa é ${f.max}.`}</span>`}
-
-        <span><b>O nível exige:</b> ${esc(nivel.exigeOficial || nivel.exige)}</span>
-        ${ex.fonte ? `<span class="fonte">Grade: ${esc(ex.fonte)}</span>` : ''}
-      </div>
-      ${ex.motivos && ex.motivos.length
-        ? `<ol class="motivos">${ex.motivos.map(motivoHTML).join('')}</ol>`
-        : '<p class="m-porque">Nenhum impedimento identificado nesta amostra para o nível máximo.</p>'}
-      ${ex.proximo ? `
-        <div class="proximo-degrau">
-          <span class="rot">Para subir · ${Math.min(200, (nivel.oficial + 1) * 40)}</span>
-          <span><b>Exige:</b> ${esc(ex.nivelTextoProximo || ex.proximo.exige)}</span>
-          ${ex.proximo.faltou ? `<span><b>Falta:</b> ${esc(ex.proximo.faltou)}</span>` : ''}
-        </div>` : ''}
-      ${c.fortes && c.fortes.length ? `
-        <span class="sub-rot">o que já está certo</span>
-        <ul class="fortes-lista">${c.fortes.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}
+      <p class="cc-dx">${esc(ex.sintese || '')}</p>
+      ${ex.zero
+        ? bloco('nota 0 · texto zerado',
+            `<ul class="zero-lista">${ex.zero.map(z => `<li><b>${esc(z.titulo)}.</b> ${esc(z.detalhe)}</li>`).join('')}</ul>`)
+        : bloco(`nota ${f.exata ? f.min : `${f.min}–${f.max}`} · nível ${oficial} de 5`,
+            `<p class="cc-txt">${porque}</p>`)}
+      ${ex.zero ? '' : bloco(`o que o nível ${oficial} exige`,
+        `<p class="cc-txt">${esc(descritor)}</p>
+         ${ex.fonte ? `<p class="cc-fonte">Grade: ${esc(ex.fonte)}</p>` : ''}`)}
+      ${bloco(ex.zero ? 'o que a escrita mostra' : 'o que segurou a nota', motivos)}
+      ${ex.proximo && !ex.zero ? bloco(`para subir até ${Math.min(200, (oficial + 1) * 40)}`,
+        `<p class="cc-txt"><b>Exige.</b> ${esc(ex.nivelTextoProximo || ex.proximo.exige)}</p>
+         ${ex.proximo.faltou ? `<p class="cc-txt"><b>Falta.</b> ${esc(ex.proximo.faltou)}</p>` : ''}`) : ''}
+      ${c.melhorias && c.melhorias.length ? bloco('o que revisar na próxima versão',
+        `<ul class="rev-lista">${c.melhorias.slice(0, 6).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`) : ''}
+      ${c.fortes && c.fortes.length ? bloco('o que já está certo',
+        `<ul class="fortes-lista">${c.fortes.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`) : ''}
     </div>
   </details>`;
 }
@@ -789,20 +806,24 @@ function relatorio(r) {
 
   return `
     <div class="rel-topo">
-      <div class="score-ring" data-anel-min="${fTotal.min / 10}" data-anel-max="${fTotal.max / 10}"
-           style="--pct-min:0;--pct-max:0">
-        <div class="score-num">
+      <div class="score-faixa" data-faixa-min="${fTotal.min}" data-faixa-max="${fTotal.max}"
+           ${entre ? '' : 'data-exata="true"'} style="--min:0;--max:0" role="img"
+           aria-label="${entre ? `nota final entre ${fTotal.min} e ${fTotal.max} de 1000` : `nota final ${fTotal.min} de 1000`}">
+        <span class="sf-rot">nota final</span>
+        <span class="sf-num">
           ${entre
-            ? `<span class="score-faixa-m">entre</span>
-               <span class="score-par"><b data-conta="${fTotal.min}">0</b><i>–</i><b data-conta="${fTotal.max}">0</b></span>
-               <small>de 1000</small>`
-            : `<span data-conta="${fTotal.min}">0</span><small>de 1000</small>`}
-        </div>
+            ? `<b data-conta="${fTotal.min}">0</b><i>–</i><b data-conta="${fTotal.max}">0</b>`
+            : `<b data-conta="${fTotal.min}">0</b>`}
+        </span>
+        <span class="sf-trilho" aria-hidden="true"><i></i></span>
+        <span class="sf-escala" aria-hidden="true"><i>0</i><i>500</i><i>1000</i></span>
       </div>
       <div class="rel-faixa">
-        <strong>${entre ? `Nota entre ${fTotal.min} e ${fTotal.max}` : `Nota ${fTotal.min}`}</strong>
+        <strong>${esc(r.faixa.nome)}</strong>
         <p>${esc(r.faixa.texto)}</p>
-        <p class="rel-faixa-nota">Dois avaliadores corrigem a mesma redação e não fecham o mesmo número: o mínimo é a soma das notas oficiais das cinco competências, o máximo soma o que cada uma ainda comporta. ${esc(r.faixa.nome)}.</p>
+        <p class="rel-faixa-nota">${entre
+          ? `Faixa de <b>${fTotal.min}</b> a <b>${fTotal.max}</b>: o mínimo é a soma das notas oficiais das cinco competências; o máximo soma o que cada uma ainda comporta. Dois avaliadores corrigem a mesma redação e não fecham o mesmo número.`
+          : `Nota <b>${fTotal.min}</b>: nesta amostra o texto fecha no teto em todas as competências e não há margem para o segundo avaliador subir.`}</p>
         <span class="confianca">${ico('check')} ${rotuloConfianca}</span>
       </div>
     </div>
