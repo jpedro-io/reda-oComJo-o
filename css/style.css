@@ -1,60 +1,73 @@
 /* ==========================================================================
    REDAÇÃO COM JOÃO — folha de estilo única
-   Paleta: marinho/petróleo + neutro quente (areia) + dourado para conquistas.
-   Dois temas: claro (padrão) e chumbo escuro (prefers-color-scheme: dark).
-   Decisões de arte e movimento em DESIGN.md.
+   Paleta: fundo BRANCO, AZUL ROYAL (#1A3EC8) nos botões e barras, títulos
+   em preto (sobre o branco) e em branco (sobre as faixas azuis). Material:
+   vidro líquido — véu translúcido + desfoque + realce especular.
+   Tema único (claro). Decisões de arte e movimento em DESIGN.md.
    ========================================================================== */
 
-/* ------------------------------------------------------------------ 1. tokens — tema claro */
+/* ------------------------------------------------------------------ 1. tokens */
 :root {
   color-scheme: light;
 
-  /* marca */
-  --marinho: #17395C;          /* cor principal: seriedade, credibilidade */
-  --marinho-txt: #1B4B78;      /* versão para texto (AA) */
-  --petroleo: #1F5A63;         /* apoio frio */
-  --petroleo-txt: #1A5058;
-  --dourado: #B8891F;          /* conquistas, notas, medalhas */
-  --dourado-txt: #8A6714;      /* dourado legível em texto */
-  --dourado-suave: #F4E8C8;
-  --areia: #EFE6D6;            /* neutro quente de apoio */
-  --areia-2: #F7F2E8;
+  /* ----------------------------------------------------------------
+     marca — BRANCO + AZUL ROYAL
+     Fundo branco, azul royal nos botões e barras, títulos em preto
+     (sobre o branco) e em branco (sobre as faixas azuis). O vidro
+     líquido é o material das superfícies: nada de cartão opaco.
+     ---------------------------------------------------------------- */
+  --azul: #1A3EC8;             /* royal — cor principal */
+  --azul-txt: #14309B;         /* royal legível em texto pequeno (AA) */
+  --azul-alto: #2F55F0;        /* realce/hover */
+  --azul-fundo: #E9EEFF;       /* véu azul claríssimo */
+  --azul-linha: rgba(26, 62, 200, .18);
 
-  /* neutros */
-  --tinta: #132A43;
-  --tinta-2: rgba(19, 42, 67, .74);
-  --tinta-3: rgba(19, 42, 67, .56);
-  --fundo-0: #F6F4EF;          /* cinza-gelo quente */
+  /* apelidos históricos — o resto da folha fala esta língua */
+  --marinho: var(--azul);
+  --marinho-txt: var(--azul-txt);
+  --petroleo: var(--azul-txt);
+  --petroleo-txt: var(--azul-txt);
+  --dourado: var(--azul);      /* conquistas agora são azuis */
+  --dourado-txt: #14309B;
+  --dourado-suave: #E4EAFF;
+  --areia: #EEF2FF;
+  --areia-2: #F6F8FF;
+
+  /* neutros — preto de tinta sobre branco puro */
+  --tinta: #080D1C;
+  --tinta-2: rgba(8, 13, 28, .76);
+  --tinta-3: rgba(8, 13, 28, .54);
+  --fundo-0: #FFFFFF;
   --fundo-1: #FFFFFF;
-  --fundo-2: #FBF8F2;
-  --fundo-3: #EFE6D6;
+  --fundo-2: #F7F9FF;
+  --fundo-3: #EDF1FF;
 
-  --borda: rgba(19, 42, 67, .12);
-  --borda-forte: rgba(19, 42, 67, .24);
-  --veu: rgba(19, 42, 67, .04);
-  --veu-forte: rgba(19, 42, 67, .08);
+  --borda: rgba(8, 13, 28, .1);
+  --borda-forte: rgba(8, 13, 28, .2);
+  --veu: rgba(26, 62, 200, .05);
+  --veu-forte: rgba(26, 62, 200, .1);
 
   /* estados */
-  --erro: #A63A32;
-  --erro-bg: rgba(166, 58, 50, .08);
-  --erro-borda: rgba(166, 58, 50, .26);
+  --erro: #B3261E;
+  --erro-bg: rgba(179, 38, 30, .07);
+  --erro-borda: rgba(179, 38, 30, .24);
   --alerta: #8A5A0B;
   --alerta-bg: rgba(184, 137, 31, .12);
   --alerta-borda: rgba(184, 137, 31, .3);
-  --ok: #1F6B50;
-  --ok-bg: rgba(31, 107, 80, .09);
-  --ok-borda: rgba(31, 107, 80, .26);
-  --info: #1B4B78;
-  --info-bg: rgba(27, 75, 120, .07);
-  --info-borda: rgba(27, 75, 120, .2);
-  --roxo: #6B4C9E;
+  --ok: #0A7A55;
+  --ok-bg: rgba(10, 122, 85, .08);
+  --ok-borda: rgba(10, 122, 85, .24);
+  --info: var(--azul-txt);
+  --info-bg: rgba(26, 62, 200, .06);
+  --info-borda: rgba(26, 62, 200, .2);
+  --roxo: #5B3FD1;
 
   /* destaques da análise de redação */
-  --tipo-repertorio: #6B5BD2;
-  --tipo-tese: #8A6714;
-  --tipo-problema: #A63A32;
-  --tipo-argumento: #1F6B5E;
-  --tipo-conectivo: #1B4B78;
+  --tipo-repertorio: #5B3FD1;
+  --tipo-tese: #14309B;
+  --tipo-problema: #B3261E;
+  --tipo-argumento: #0A7A55;
+  --tipo-conectivo: #1A3EC8;
   --tipo-proposta: #7A3E8F;
 
   /* espaço — escala única */
@@ -69,10 +82,10 @@
   --s9: 104px;
 
   /* raio — cresce com a elevação */
-  --r1: 4px;
-  --r2: 10px;
-  --r3: 16px;
-  --r4: 22px;
+  --r1: 6px;
+  --r2: 12px;
+  --r3: 18px;
+  --r4: 26px;
   --rp: 999px;
 
   /* movimento */
@@ -88,75 +101,25 @@
   --f-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
   --f-texto: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* vidro — só nas 4 superfícies de função clara */
-  --vidro: rgba(255, 255, 255, .74);
-  --vidro-forte: rgba(255, 255, 255, .9);
-  --borda-vidro: rgba(19, 42, 67, .1);
-  --desfoque: blur(18px) saturate(150%);
-  --realce-borda: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -1px 0 rgba(19, 42, 67, .05);
-  --sombra-flut: 0 24px 60px -30px rgba(19, 42, 67, .34), 0 2px 8px rgba(19, 42, 67, .06);
-  --sombra-card: 0 1px 2px rgba(19, 42, 67, .05);
+  /* ----------------------------------------------------------------
+     VIDRO LÍQUIDO — o material do site.
+     Três camadas, sempre nesta ordem: véu translúcido + desfoque que
+     carrega a cor do que está atrás + realce especular na borda de
+     cima. É o que separa "caixa com transparência" de vidro.
+     ---------------------------------------------------------------- */
+  --vidro: rgba(255, 255, 255, .58);
+  --vidro-forte: rgba(255, 255, 255, .82);
+  --vidro-azul: rgba(255, 255, 255, .16);
+  --borda-vidro: rgba(255, 255, 255, .7);
+  --desfoque: blur(26px) saturate(190%);
+  --realce-borda: inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -1px 0 rgba(8, 13, 28, .04);
+  --realce-escuro: inset 0 1px 0 rgba(255, 255, 255, .38), inset 0 -1px 0 rgba(0, 0, 0, .14);
+  --sombra-flut: 0 30px 70px -34px rgba(16, 34, 120, .38), 0 2px 10px rgba(8, 13, 28, .05);
+  --sombra-card: 0 1px 2px rgba(8, 13, 28, .04), 0 12px 30px -24px rgba(16, 34, 120, .25);
+  --brilho-azul: 0 0 0 1px rgba(255, 255, 255, .22) inset, 0 18px 40px -22px rgba(26, 62, 200, .55);
 
   --largura: 1120px;
-  --topo: 72px;
-}
-
-/* ------------------------------------------------------------------ 1b. tema escuro (chumbo) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-
-    --marinho: #3E6E9E;
-    --marinho-txt: #A8C9E8;
-    --petroleo: #2F7B85;
-    --petroleo-txt: #7FC6CC;
-    --dourado: #D9B75F;
-    --dourado-txt: #E4C877;
-    --dourado-suave: rgba(217, 183, 95, .16);
-    --areia: #2A2B2C;
-    --areia-2: #232527;
-
-    --tinta: #F1EDE4;
-    --tinta-2: rgba(241, 237, 228, .76);
-    --tinta-3: rgba(241, 237, 228, .56);
-    --fundo-0: #14181D;          /* chumbo escuro */
-    --fundo-1: #1A1F26;
-    --fundo-2: #222A33;
-    --fundo-3: #2A333D;
-
-    --borda: rgba(241, 237, 228, .13);
-    --borda-forte: rgba(241, 237, 228, .26);
-    --veu: rgba(241, 237, 228, .05);
-    --veu-forte: rgba(241, 237, 228, .1);
-
-    --erro: #F09A92;
-    --erro-bg: rgba(240, 154, 146, .1);
-    --erro-borda: rgba(240, 154, 146, .3);
-    --alerta: #E0B661;
-    --alerta-bg: rgba(224, 182, 97, .1);
-    --alerta-borda: rgba(224, 182, 97, .28);
-    --ok: #7FCFB0;
-    --ok-bg: rgba(127, 207, 176, .1);
-    --ok-borda: rgba(127, 207, 176, .28);
-    --info: #A8C9E8;
-    --info-bg: rgba(168, 201, 232, .09);
-    --info-borda: rgba(168, 201, 232, .22);
-    --roxo: #B79CE0;
-
-    --tipo-repertorio: #B0A2F0;
-    --tipo-tese: #E4C877;
-    --tipo-problema: #F09A92;
-    --tipo-argumento: #7FCFB0;
-    --tipo-conectivo: #A8C9E8;
-    --tipo-proposta: #D2A8E8;
-
-    --vidro: rgba(26, 31, 38, .62);
-    --vidro-forte: rgba(22, 26, 32, .86);
-    --borda-vidro: rgba(241, 237, 228, .16);
-    --realce-borda: inset 0 1px 0 rgba(241, 237, 228, .14), inset 0 -1px 0 rgba(0, 0, 0, .4);
-    --sombra-flut: 0 26px 64px -30px rgba(0, 0, 0, .8), 0 2px 8px rgba(0, 0, 0, .4);
-    --sombra-card: 0 1px 2px rgba(0, 0, 0, .3);
-  }
+  --topo: 76px;
 }
 
 /* ------------------------------------------------------------------ 2. base */
@@ -247,7 +210,9 @@ main:focus { outline: none; }
   inset: 0;
   z-index: -2;
   overflow: hidden;
-  background: var(--fundo-0);
+  background:
+    radial-gradient(120% 80% at 50% -10%, #F2F5FF 0%, #FFFFFF 52%),
+    #FFFFFF;
   pointer-events: none;
 }
 
@@ -255,22 +220,12 @@ main:focus { outline: none; }
   position: absolute;
   inset: -25%;
   background:
-    radial-gradient(42% 38% at 14% 8%, rgba(23, 57, 92, .16), transparent 66%),
-    radial-gradient(34% 30% at 86% 16%, rgba(184, 137, 31, .12), transparent 70%),
-    radial-gradient(46% 42% at 64% 98%, rgba(31, 90, 99, .1), transparent 72%),
-    radial-gradient(30% 26% at 30% 76%, rgba(239, 230, 214, .8), transparent 72%);
-  filter: blur(30px);
-  animation: deriva 28s var(--e-inout) infinite alternate;
-}
-
-@media (prefers-color-scheme: dark) {
-  .ceu-aurora {
-    background:
-      radial-gradient(42% 38% at 14% 8%, rgba(62, 110, 158, .3), transparent 66%),
-      radial-gradient(34% 30% at 86% 16%, rgba(217, 183, 95, .12), transparent 70%),
-      radial-gradient(46% 42% at 64% 98%, rgba(47, 123, 133, .2), transparent 72%),
-      radial-gradient(30% 26% at 30% 76%, rgba(20, 24, 29, .6), transparent 72%);
-  }
+    radial-gradient(38% 34% at 12% 6%, rgba(26, 62, 200, .18), transparent 68%),
+    radial-gradient(30% 26% at 88% 12%, rgba(47, 85, 240, .14), transparent 70%),
+    radial-gradient(44% 40% at 68% 96%, rgba(26, 62, 200, .1), transparent 72%),
+    radial-gradient(26% 22% at 34% 74%, rgba(233, 238, 255, .9), transparent 74%);
+  filter: blur(46px);
+  animation: deriva 30s var(--e-inout) infinite alternate;
 }
 
 @keyframes deriva {
@@ -293,14 +248,10 @@ main:focus { outline: none; }
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: .022;
+  opacity: .014;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-@media (prefers-color-scheme: dark) {
-  .grao { opacity: .035; mix-blend-mode: overlay; }
-}
-
 .progresso {
   position: fixed;
   top: 0;
@@ -310,7 +261,7 @@ main:focus { outline: none; }
   z-index: 120;
   transform: scaleX(0);
   transform-origin: 0 50%;
-  background: linear-gradient(90deg, var(--marinho), var(--dourado));
+  background: linear-gradient(90deg, var(--azul), var(--azul-alto));
   will-change: transform;
 }
 
@@ -322,7 +273,7 @@ main:focus { outline: none; }
   right: 0;
   z-index: 100;
   height: var(--topo);
-  background: var(--vidro);
+  background: rgba(255, 255, 255, .93);
   -webkit-backdrop-filter: var(--desfoque);
   backdrop-filter: var(--desfoque);
   border-bottom: 1px solid var(--borda-vidro);
@@ -330,8 +281,9 @@ main:focus { outline: none; }
   transition: background var(--t-hover) var(--e-out), border-color var(--t-hover) var(--e-out);
 }
 .topbar.rolado {
-  background: var(--vidro-forte);
-  border-bottom-color: var(--borda-forte);
+  background: rgba(255, 255, 255, .94);
+  border-bottom-color: var(--azul-linha);
+  box-shadow: var(--realce-borda), 0 12px 30px -26px rgba(16, 34, 120, .5);
 }
 
 .topbar-inner {
@@ -356,19 +308,11 @@ main:focus { outline: none; }
   height: 38px;
   display: grid;
   place-items: center;
-  border-radius: var(--r2);
-  background: linear-gradient(155deg, var(--marinho), var(--petroleo));
-  color: #fff;
-  font-family: var(--f-display);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -.02em;
-  box-shadow: 0 6px 16px -8px rgba(23, 57, 92, .6);
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: 0 8px 18px -10px rgba(16, 34, 120, .7);
 }
-@media (prefers-color-scheme: dark) {
-  .brand-mark { background: linear-gradient(155deg, var(--dourado), #8A6714); color: #14181D; }
-}
-
+.brand-mark svg { width: 100%; height: 100%; display: block; border-radius: 12px; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-text strong {
   font-family: var(--f-display);
@@ -417,25 +361,26 @@ main:focus { outline: none; }
   transition: color var(--t-micro) var(--e-out), background var(--t-micro) var(--e-out);
 }
 .pill:hover { color: var(--tinta); background: var(--veu); text-decoration: none; }
-.pill[aria-current='page'] { color: #fff; background: var(--marinho); }
-@media (prefers-color-scheme: dark) {
-  .pill[aria-current='page'] { color: #14181D; background: var(--dourado); }
+.pill[aria-current='page'] {
+  color: #fff;
+  background: linear-gradient(180deg, var(--azul-alto), var(--azul));
+  box-shadow: var(--brilho-azul);
 }
-
 .pill-cta {
   margin-left: var(--s2);
   flex: 0 0 auto;
-  color: var(--marinho-txt);
-  border: 1px solid var(--borda-forte);
-  background: var(--dourado-suave);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .5);
+  background: linear-gradient(180deg, var(--azul-alto), var(--azul));
+  box-shadow: var(--brilho-azul);
 }
-.pill-cta:hover { color: #fff; background: var(--marinho); border-color: var(--marinho); }
-.pill-cta[aria-current='page'] { background: var(--marinho); color: #fff; border-color: var(--marinho); }
-@media (prefers-color-scheme: dark) {
-  .pill-cta { color: var(--dourado-txt); background: transparent; }
-  .pill-cta:hover, .pill-cta[aria-current='page'] { color: #14181D; background: var(--dourado); border-color: var(--dourado); }
+.pill-cta:hover {
+  color: #fff;
+  background: linear-gradient(180deg, #4A6BF7, var(--azul-alto));
+  border-color: rgba(255, 255, 255, .6);
+  text-decoration: none;
 }
-
+.pill-cta[aria-current='page'] { background: var(--azul); color: #fff; border-color: rgba(255, 255, 255, .5); }
 /* ------------------------------------------------------------------ 5. tipografia de seção */
 .eyebrow {
   display: inline-flex;
@@ -497,7 +442,10 @@ main:focus { outline: none; }
   padding: var(--s3) var(--s5);
   border-radius: var(--r2);
   border: 1px solid var(--borda-forte);
-  background: var(--fundo-1);
+  background: var(--vidro-forte);
+  -webkit-backdrop-filter: var(--desfoque);
+  backdrop-filter: var(--desfoque);
+  box-shadow: var(--realce-borda), 0 1px 2px rgba(8, 13, 28, .04);
   color: var(--tinta);
   font-size: .92rem;
   font-weight: 700;
@@ -506,27 +454,37 @@ main:focus { outline: none; }
               border-color var(--t-hover) var(--e-out), box-shadow var(--t-hover) var(--e-out);
 }
 .btn:hover {
-  background: var(--areia-2);
-  border-color: var(--marinho);
-  color: var(--tinta);
+  background: rgba(255, 255, 255, .95);
+  border-color: var(--azul);
+  color: var(--azul-txt);
   text-decoration: none;
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px -12px rgba(19, 42, 67, .4);
+  box-shadow: var(--realce-borda), 0 14px 28px -18px rgba(26, 62, 200, .5);
 }
 .btn:active { transform: translateY(0) scale(.99); }
 
 .btn-primario {
-  background: var(--marinho);
+  position: relative;
+  background: linear-gradient(180deg, #3257F2 0%, var(--azul) 62%, #14309B 100%);
   color: #fff;
-  border-color: transparent;
-  box-shadow: 0 10px 24px -14px rgba(23, 57, 92, .8);
+  border-color: rgba(255, 255, 255, .34);
+  box-shadow: var(--brilho-azul), inset 0 1px 0 rgba(255, 255, 255, .42);
 }
-.btn-primario:hover { background: #0F2C49; color: #fff; }
-@media (prefers-color-scheme: dark) {
-  .btn-primario { background: var(--dourado); color: #14181D; box-shadow: 0 10px 24px -14px rgba(217, 183, 95, .5); }
-  .btn-primario:hover { background: #E4C877; color: #14181D; }
+.btn-primario::after {
+  /* reflexo especular do vidro: uma faixa clara que atravessa o topo */
+  content: '';
+  position: absolute;
+  inset: 1px 1px auto;
+  height: 46%;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .34), rgba(255, 255, 255, 0));
+  pointer-events: none;
 }
-
+.btn-primario:hover {
+  background: linear-gradient(180deg, #4A6BF7 0%, #2447D8 62%, var(--azul) 100%);
+  color: #fff;
+  box-shadow: var(--brilho-azul), 0 18px 34px -20px rgba(26, 62, 200, .75);
+}
 .btn-fantasma { background: transparent; }
 .btn-pequeno { min-height: 38px; padding: var(--s2) var(--s3); font-size: .82rem; }
 .btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; }
@@ -594,9 +552,6 @@ main:focus { outline: none; }
   border-radius: inherit;
   background: linear-gradient(140deg, rgba(255, 255, 255, .5), transparent 44%);
   pointer-events: none;
-}
-@media (prefers-color-scheme: dark) {
-  .hero-painel::before { background: linear-gradient(140deg, rgba(241, 237, 228, .1), transparent 44%); }
 }
 .hero-painel > * { position: relative; }
 
@@ -828,8 +783,19 @@ main:focus { outline: none; }
 .oficial-lista b { display: block; color: var(--dourado-txt); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; }
 .oficial-fonte { margin-top: var(--s3); font-size: .7rem; color: var(--tinta-3); font-style: italic; }
 .cc-niveis .oficial { color: var(--tinta-3); }
-.badge.meia { border-color: rgba(176,138,52,.55); color: var(--dourado-txt, #8a6a1f); background: rgba(214,178,86,.12); }
-.badge.meia b { font-weight: 800; }
+/* o chip da faixa é um parágrafo de explicação: caixa alta atrapalharia a leitura */
+.badge.faixa {
+  border-color: var(--azul-linha);
+  color: var(--azul-txt);
+  background: var(--azul-fundo);
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.55;
+  padding: var(--s2) var(--s3);
+}
+.badge.faixa b { font-weight: 800; }
 
 .tick-fino { display: block; margin-top: .25rem; font-size: .86em; opacity: .7; }
 
@@ -1156,10 +1122,6 @@ main:focus { outline: none; }
 }
 .filtro:hover { color: var(--tinta); border-color: var(--marinho); }
 .filtro[aria-pressed='true'] { background: var(--marinho); border-color: var(--marinho); color: #fff; }
-@media (prefers-color-scheme: dark) {
-  .filtro[aria-pressed='true'] { background: var(--dourado); border-color: var(--dourado); color: #14181D; }
-}
-
 .lista-temas { border-top: 1px solid var(--borda-forte); }
 
 .tema-linha {
@@ -1292,14 +1254,10 @@ main:focus { outline: none; }
   font-family: var(--f-display);
   font-size: 2.2rem;
   line-height: .9;
-  color: var(--areia);
+  color: transparent;
   font-variant-numeric: tabular-nums;
-  -webkit-text-stroke: 1px var(--borda-forte);
+  -webkit-text-stroke: 1.2px rgba(26, 62, 200, .45);
 }
-@media (prefers-color-scheme: dark) {
-  .cron-num { color: rgba(241, 237, 228, .07); }
-}
-
 .cron-lista { display: grid; gap: var(--s3); }
 
 .red-linha {
@@ -1551,9 +1509,6 @@ mark.mk {
   border-radius: inherit;
   background: linear-gradient(140deg, rgba(255, 255, 255, .4), transparent 40%);
   pointer-events: none;
-}
-@media (prefers-color-scheme: dark) {
-  .ws-saida::before { background: linear-gradient(140deg, rgba(241, 237, 228, .08), transparent 40%); }
 }
 .ws-saida > * { position: relative; }
 
@@ -2043,4 +1998,215 @@ mark.mk {
   details { display: block; }
   details > summary { list-style: none; }
   details:not([open]) > *:not(summary) { display: block; }
+}
+
+
+/* ==========================================================================
+   RETEMA — BRANCO + AZUL ROYAL + VIDRO LÍQUIDO
+   Esta seção fecha a folha: é o que dá ao site o desenho novo sem reescrever
+   as 1.900 linhas de layout acima. Ordem de leitura: faixas azuis (títulos em
+   branco) → superfícies de vidro → barras e anéis em azul royal → ajustes de
+   contraste.
+   ========================================================================== */
+
+/* ---------------------------------------------------- A. faixas azuis (título branco) */
+.secao-topo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: var(--s7);
+  border-radius: var(--r4);
+  color: #fff;
+  background:
+    radial-gradient(120% 160% at 8% -20%, rgba(255, 255, 255, .3), transparent 58%),
+    linear-gradient(150deg, #2B4FEC 0%, var(--azul) 46%, #102A96 100%);
+  box-shadow: 0 34px 70px -44px rgba(16, 34, 120, .75), inset 0 1px 0 rgba(255, 255, 255, .3);
+}
+.secao-topo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(40% 60% at 92% 8%, rgba(255, 255, 255, .22), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 40%);
+  pointer-events: none;
+}
+.secao-topo h1,
+.secao-topo h2 { color: #fff; }
+.secao-topo .sub,
+.secao-topo .sub b { color: rgba(255, 255, 255, .9); }
+.secao-topo .sub b { font-weight: 800; color: #fff; }
+.secao-topo .eyebrow { color: rgba(255, 255, 255, .78); }
+.secao-topo a { color: #fff; text-decoration-color: rgba(255, 255, 255, .5); }
+
+/* o hero da home também abre em faixa azul */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: var(--s7);
+  border-radius: var(--r4);
+  color: #fff;
+  background:
+    radial-gradient(110% 150% at 4% -30%, rgba(255, 255, 255, .26), transparent 56%),
+    linear-gradient(150deg, #2B4FEC 0%, var(--azul) 48%, #102A96 100%);
+  box-shadow: 0 40px 80px -48px rgba(16, 34, 120, .8), inset 0 1px 0 rgba(255, 255, 255, .3);
+}
+.hero h1,
+.hero h1 em { color: #fff; }
+.hero-sub { color: rgba(255, 255, 255, .88); }
+.hero-stats { border-top-color: rgba(255, 255, 255, .28); }
+.hero-stats dd { color: #fff; }
+.hero-stats dd span { color: #C9D6FF; }
+.hero-stats dt { color: rgba(255, 255, 255, .7); }
+.hero .eyebrow { color: rgba(255, 255, 255, .8); }
+.hero .btn:not(.btn-primario) {
+  color: #fff;
+  background: rgba(255, 255, 255, .14);
+  border-color: rgba(255, 255, 255, .45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4);
+}
+.hero .btn:not(.btn-primario):hover { background: rgba(255, 255, 255, .24); color: #fff; }
+.hero .btn-primario {
+  background: #fff;
+  color: var(--azul);
+  border-color: #fff;
+  box-shadow: 0 16px 34px -20px rgba(0, 0, 0, .5);
+}
+.hero .btn-primario::after { background: none; }
+.hero .btn-primario:hover { background: #F2F5FF; color: var(--azul-txt); }
+
+/* hero-painel dentro da faixa: vidro escuro, não branco */
+.hero-painel {
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .34);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .36), 0 30px 60px -40px rgba(0, 0, 0, .6);
+  color: #fff;
+}
+.hero-painel::before { background: linear-gradient(140deg, rgba(255, 255, 255, .24), transparent 46%); }
+.hero-painel strong,
+.hero-painel b { color: #fff; }
+.hero-painel .hp-pe { color: rgba(255, 255, 255, .84); }
+.hero-painel .hp-pe b { color: #fff; }
+.hero-painel .hp-selo { background: rgba(255, 255, 255, .18); color: #fff; border-color: rgba(255, 255, 255, .4); }
+.hero .hp-lista li,
+.hero .hp-lista span { color: rgba(255, 255, 255, .9); }
+
+/* ---------------------------------------------------- B. superfícies de vidro */
+.card,
+.cartao,
+.comp-card,
+.indice-item,
+.aviso,
+.metricas,
+.rel-topo,
+.painel,
+.proposta,
+.tema-card,
+.red-card,
+.destaque,
+.motivo,
+.proximo-degrau,
+.motivo-zero {
+  -webkit-backdrop-filter: var(--desfoque);
+  backdrop-filter: var(--desfoque);
+}
+
+.comp-card,
+.aviso,
+.proposta,
+.metricas,
+.motivo,
+.proximo-degrau {
+  background: rgba(255, 255, 255, .72);
+  border: 1px solid rgba(8, 13, 28, .08);
+  box-shadow: var(--realce-borda), var(--sombra-card);
+}
+
+/* ------------------------------------------- C. barras e anéis em AZUL ROYAL */
+.cc-bar,
+.barra,
+.regua-barra,
+.progresso-linha {
+  background: rgba(26, 62, 200, .1);
+}
+.cc-bar i,
+.barra i {
+  background: linear-gradient(90deg, var(--azul), var(--azul-alto));
+  box-shadow: 0 0 0 1px rgba(26, 62, 200, .08);
+}
+
+/* anel da nota: arco sólido até o mínimo da faixa, arco claro até o máximo */
+.score-ring {
+  background: conic-gradient(
+    var(--azul) calc(var(--pct-min, 0) * 1%),
+    rgba(26, 62, 200, .3) calc(var(--pct-min, 0) * 1%),
+    rgba(26, 62, 200, .3) calc(var(--pct-max, 0) * 1%),
+    rgba(26, 62, 200, .1) 0
+  );
+  box-shadow: 0 18px 40px -28px rgba(26, 62, 200, .75);
+}
+.score-num { font-size: 1.9rem; }
+.score-num .score-faixa-m {
+  display: block;
+  font-family: var(--f-texto);
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta-3);
+  text-align: center;
+}
+.score-num .score-par { display: inline-flex; align-items: baseline; gap: 2px; font-size: 1.5rem; }
+.score-num .score-par i { font-style: normal; font-weight: 500; color: var(--tinta-3); }
+.score-num .score-par b { font-weight: 500; }
+
+/* nota da competência como faixa */
+.cc-nota i { font-style: normal; font-weight: 600; color: var(--tinta-3); margin: 0 .06em; }
+
+/* ------------------------------------------- D. ajustes de contraste e tato */
+.rel-faixa-nota { font-size: .82rem; color: var(--tinta-3); }
+.badge { border-color: var(--azul-linha); }
+.footer { border-top: 1px solid var(--borda); background: #fff; }
+.footer p { color: var(--tinta-3); }
+::selection { background: rgba(26, 62, 200, .16); color: var(--tinta); }
+
+/* no celular a faixa azul não pode comer a tela */
+@media (max-width: 720px) {
+  .secao-topo,
+  .hero { padding: var(--s6) var(--s5); border-radius: var(--r3); }
+}
+
+/* ---------------------------------------------------- E. números grandes em contorno */
+/* anos da crônica de redações e demais numerais vazados: contorno azul legível */
+.cron-num,
+.num-vazado {
+  color: transparent;
+  -webkit-text-stroke: 1.2px rgba(26, 62, 200, .45);
+}
+@supports not (-webkit-text-stroke: 1px #000) {
+  .cron-num,
+  .num-vazado { color: rgba(26, 62, 200, .35); }
+}
+
+/* a faixa azul do hero não deve engolir os botões de vidro no celular */
+@media (max-width: 640px) {
+  .hero .btn { width: 100%; }
+}
+
+/* ---------------------------------------------------- F. anel da nota em telas pequenas */
+/* "entre 800 – 900" tem 11 caracteres: o anel precisa de diâmetro e de corpo menor */
+@media (max-width: 560px) {
+  .score-ring { --tam: 136px; }
+  .score-num { font-size: 1.7rem; }
+  .score-num .score-par { font-size: 1.15rem; gap: 1px; }
+  .score-num .score-faixa-m { font-size: .52rem; letter-spacing: .12em; }
+}
+
+/* o topo do relatório empilha no celular: anel centralizado, texto embaixo */
+@media (max-width: 720px) {
+  .rel-topo { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
+  .rel-topo .score-ring { justify-self: center; }
+  .rel-faixa { justify-items: center; }
 }

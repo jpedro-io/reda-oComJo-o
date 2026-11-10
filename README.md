@@ -39,12 +39,12 @@ js/engine/estilo.js           repetição (palavra, expressão, frase) e pontua�
 js/engine/competencias.js     avaliadores C1..C5
 js/engine/corrigir.js         orquestração, nota zero, alertas, prioridades
 js/engine/explicar.js         por que a competência não chegou a 200 (regra + evidência + ação)
-js/db/lexico.js               léxicos: desvios, conectivos, repertório, verbos de proposta
+js/db/lexico.js               léxicos: 166 formas com erro de acentuação, 40 construções/regências, informalidades, conectivos, repertório
 js/db/criterios.js            critérios + descritores oficiais de nível
 js/db/estrutura.js            partes da redação, esqueleto, elementos da proposta
 js/db/comandos.js             como ler o comando do tema
 js/db/cartilhas.js            grades específicas C1–C5 (destiladas das cartilhas FGV/Inep)
-js/db/niveis.js               leitura interna de cada competência e a conversão para a nota de 40 em 40
+js/db/niveis.js               escala INTERNA de diagnóstico (20 em 20) — nunca publicada; a nota publicada é convertida em texto.js
 js/db/temas.js                banco de temas oficiais (núcleo + repertórios + eixo)
 js/db/temas-extra.js          segundo bloco de temas (treino-10..19), anexado a TEMAS
 js/db/motivadores-oficiais.js textos motivadores dos 13 temas oficiais
@@ -64,37 +64,42 @@ test/                         testes do motor (node) — engine, casos, redaçõ
 
 | Item | Decisão |
 |---|---|
-| Cores | principal `#17395C` (marinho), apoio `#1F5A63` (petróleo), neutro quente `#EFE6D6` (areia), destaque `#B8891F` (dourado, ≤ 10% da área, só para conquista); fundo `#F6F4EF` com superfícies brancas; tema escuro em chumbo `#14181D`. Nunca `#000` em área grande |
+| Cores | **fundo branco** `#FFFFFF`; **azul royal** `#1A3EC8` nos botões, barras, anéis e faixas (realce `#2F55F0`, véu `#E9EEFF`); tinta quase preta `#080D1C`. Títulos em **preto sobre o branco** e em **branco sobre as faixas azuis**. Tema único (claro) — o escuro foi removido |
 | Fontes | **Fraunces** (display, serifada editorial) + **Manrope** (interface e texto). Sem Inter, Geist, Space Grotesk. Self-hosted, 163 KB |
 | Ícones | família própria em SVG inline (traço 1,75, grade 24). Sem Lucide nem biblioteca de ícones |
 | Espaçamento | escala única 4 · 8 · 12 · 16 · 24 · 32 · 48 · 72 · 112 |
-| Raio | cresce com a elevação: 4 (etiqueta) · 10 (controle) · 16 (conteúdo) · 22 (vidro) · pílula |
+| Raio | cresce com a elevação: 6 (etiqueta) · 12 (controle) · 18 (conteúdo) · 26 (faixa e vidro) · pílula |
 | Movimento | micro 150 ms, hover 220 ms, entrada 600 ms, hero 800 ms; só `transform`/`opacity`; `prefers-reduced-motion` desliga tudo |
-| Vidro | navegação, painel do hero, painel da correção e toast — sempre sobre o fundo animado; fallback sólido sem `backdrop-filter` e com `prefers-reduced-transparency` |
-| Temas | claro e escuro pelo mesmo conjunto de tokens: `prefers-color-scheme: dark` troca os valores, nenhum componente precisa saber qual tema está ativo |
+| Vidro | **vidro líquido** em todas as superfícies de função: véu translúcido (`rgba(255,255,255,.58)`) + `backdrop-filter: blur(26px) saturate(190%)` + realce especular na borda de cima (`inset 0 1px 0`) + reflexo no topo dos botões primários. Sobre as faixas azuis o vidro é o inverso: véu branco a 12–16% com realce claro. Fallback sólido sem `backdrop-filter` |
+| Tema | **um só**, claro, com tokens em `:root`. O `prefers-color-scheme: dark` foi retirado do CSS, do `bg.js` e do `index.html` — fundo branco é decisão de marca, não preferência do sistema |
 | Celular | alvo de projeto, não sobra: topo em duas linhas com o CTA "Corrigir" fixo, navegação rolável, toque ≥ 44 px, tabelas e réguas reflowadas, editor acima do relatório e rolagem automática até a nota |
 | 3D | campo de profundidade em WebGL puro (~4 KB), lazy, só em telas ≥ 900 px; fallback de aurora em CSS. **Sem Three.js**: 2,1 MB por um fundo decorativo |
+| Marca | `assets/logo.svg`: pena (nib) branca sobre squircle de vidro azul royal com realce especular. O mesmo desenho é o favicon (data-URI) e o cabeçalho — o quadrado "RJ" foi aposentado |
 | Seções | cada uma com formato derivado do conteúdo (régua, linha do tempo, acordeão, lista densa, crônica por ano, workspace) |
 
 Contraste: todo texto ≥ 4,5:1 no pior ponto do fundo; onde há vidro, existe camada de escurecimento atrás do texto.
 
-## A nota: 40 em 40 — e a meia-faixa de 20 quando o texto fica entre os dois níveis
+## A nota: só as seis oficiais — e sempre publicada como faixa
 
-Cada competência vale **0, 40, 80, 120, 160 ou 200**, como na grade oficial, e é isso que soma até 1000.
+Cada competência vale **0, 40, 80, 120, 160 ou 200**, como na grade oficial, e é isso que soma até 1000. **Não existe nota de 20 em 20**: 180 não é uma nota da grade, e o relatório nunca mostra 180.
 
-**A exceção é a meia-faixa.** Existe um caso que a grade de 40 não descreve bem: o texto **cumpre integralmente o descritor de um nível**, **já mostra parte do descritor seguinte** e **não tem nenhum defeito objetivo** que o derrube. Aí a nota fica na metade do caminho — **20, 60, 100, 140 ou 180** — e não no nível de baixo.
+**O que o relatório mostra é uma faixa.** A cartilha é explícita: "a nota final do(a) participante será a média aritmética das notas totais atribuídas pelos dois avaliadores". Dois avaliadores não fecham o mesmo número — por isso publicar um valor exato seria inventar uma precisão que o exame não tem. O corretor publica **"nota entre X e Y"**, da mínima à máxima:
 
 ```
-nível cheio     0     40     80     120     160     200
-meia-faixa        20     60     100     140     180
+competência:  nota oficial 160  →  "nota entre 160 e 200"
+nota final:   soma das oficiais →  "nota entre 800 e 900"
 ```
 
-- Quem decide é o relatório, não o entusiasmo do motor: `js/engine/corrigir.js` só mantém a meia-faixa quando **nenhum cartão** da competência tem gravidade alta ou média. Achado qualquer defeito — desvio de norma, repetição, período sem pontuação, repertório solto, proposta incompleta — a nota **volta para o nível inferior**, como manda a cartilha, e o relatório diz isso por escrito ("a meia-faixa não foi aplicada").
-- `20` é a meia-faixa abaixo do nível 1 (tangenciamento em C2, um elemento vago em C5). Zero continua reservado a **fuga ao tema, anulação e ausência** do elemento.
-- **Teto por amostra** (`tetoPorAmostra`): nenhuma competência passa de **120** com menos de 150 palavras, de **160** abaixo de 200 e de **180** abaixo de 240.
-- A conversão fica em `oficializar()` (`js/engine/texto.js`): nível cheio → a própria nota; meia-faixa autorizada → a própria nota; meia-faixa negada → a nota de baixo.
+- **Abertura de 20** quando o texto está firme no nível alcançado: é a divergência previsível entre dois avaliadores.
+- **Abertura de 40** quando o texto cumpre o nível e já mostra parte do descritor seguinte: o segundo avaliador poderia subir um nível inteiro.
+- **A faixa total nunca passa de 100 pontos** — é exatamente o limite em que a cartilha manda chamar um terceiro avaliador (diferença > 100 no total, > 80 numa competência, ou um avaliador zera e o outro não). Nesse caso a nota final é a média das duas notas mais próximas.
+- **Redação zerada não tem faixa**: os dois avaliadores chegam ao mesmo 0.
+- **Teto por amostra** (`tetoPorAmostra`): nenhuma competência passa de **120** com menos de 150 palavras, de **160** abaixo de 200 e de **180** abaixo de 240 — e 180 é leitura interna, publicada como "160 com faixa até 200".
+- A conversão fica em `oficializar()` (`js/engine/texto.js`): degrau interno → `nota = floor(pontos/40)*40` + `abertura` (0, 20 ou 40).
 
-**Calibragem** (`node test/calibragem.js`): texto fraco de dez linhas fica entre **260 e 480**; redação repetitiva, **260**; frases repetidas, **300**; sem pontuação, **260**; redação sólida (cumpre os níveis, ainda sem a prova do topo), **840**; as treze redações modelo, **960–1000**.
+**Régua interna.** O motor continua medindo de 20 em 20 (`js/db/niveis.js`) porque precisa de resolução para decidir; essa escala **não é publicada** e existe só para o diagnóstico. A regra de ouro: `js/db/niveis.js` alimenta o motor, `oficializar()` decide o que o estudante lê.
+
+**Calibragem** (`node test/calibragem.js`): texto fraco de dez linhas fica entre **240 e 480**; redação repetitiva, **240**; frases repetidas, **280**; sem pontuação, **240**; redação sólida (cumpre os níveis, ainda sem a prova do topo), **800** com faixa até 1000; as treze redações modelo, **920–1000**.
 
 ## O que o corretor marca — como um professor com a cartilha na mão
 
@@ -102,10 +107,10 @@ Além de acentuação, concordância e repertório, o motor mede o que um avalia
 
 | Achado | Como é medido | Onde pesa |
 |---|---|---|
-| **Palavra repetida** | palavra de recheio (“problema”, “pessoas”, “questão”) a partir de 4 ocorrências; qualquer outra a partir de 8 | C4: 8+ ocorrências travam em 120; 6–7 em 160 |
+| **Palavra repetida** | palavra de recheio (“problema”, “pessoas”, “questão”) a partir de **3** ocorrências; palavra de conteúdo a partir de **8** — ou **7** quando o grupo soma variantes de mesmo radical (“jovem/jovens”, “desigualdade/desigualdades”) | C4: 8+ travam em 120; 3–7 em 160. C1: desconto, com a mesma régua da C4 |
 | **Termo repetido no mesmo parágrafo** | 3+ ocorrências no mesmo parágrafo | C4: teto 160 |
-| **Frase repetida** | duas frases com 78% ou mais de palavras em comum | C4: teto 120 · C3: teto 120 (repetir não é progressão) |
-| **Expressão repetida** | o mesmo bloco de três palavras duas vezes ou mais | C4: teto 160 |
+| **Frase repetida** | duas frases com **74%** ou mais de palavras em comum | C4: teto 120 · C3: teto 120 (repetir não é progressão) |
+| **Expressão repetida** | o mesmo bloco de três palavras **três** vezes ou mais | C4: teto 160 |
 | **Abertura de período repetida** | mesmas duas primeiras palavras em 3+ frases | C4: teto 160 |
 | **Período sem pausa** | 30+ palavras sem vírgula, travessão, dois-pontos ou ponto e vírgula | C1: desconto por ocorrência, e nenhum 200 |
 | **Parágrafo sem ponto final** | último período do parágrafo em aberto | C1: desconto por parágrafo |
@@ -195,18 +200,18 @@ Depois de qualquer mudança: `python3 tools/build-standalone.py`.
 node test/engine.test.js      # exemplos do corretor
 node test/casos.js            # casos-limite: fuga ao tema, texto curto, tema livre
 node test/redacoes.test.js    # confere que as 13 redações nota 1000 pontuam na faixa alta
-node test/explicacoes.test.js # 1290 checagens: toda competência < 200 tem motivo, regra e evidência
-node test/niveis.js           # 628 checagens: a escada da C5, a nota cheia e a meia-faixa
+node test/explicacoes.test.js # 1374 checagens: toda competência < 200 tem motivo, regra e evidência
+node test/niveis.js           # 796 checagens: as seis notas oficiais, a faixa por competência e a faixa total
 node test/acentos.js          # 832 checagens: mapa de acentos e todo o vocabulário dos temas
-node test/calibragem.js       # 63 checagens: repetição, pontuação, teto do texto fraco e meia-faixa sem impedimento
+node test/calibragem.js       # 64 checagens: repetição, pontuação, teto do texto fraco e faixa sem nota exata
 ```
 
-Estado atual: 1290/1290 (explicações), 628/628 (escala), 832/832 (acentos), 63/63 (calibragem), 13 redações nota 1000 na faixa alta (960–1000), casos 1000 / 360 / 0 / 0 / 600.
+Estado atual: 1374/1374 (explicações), 796/796 (notas e faixas), 832/832 (acentos), 64/64 (calibragem), 13 redações nota 1000 na faixa alta (920–1000), casos 1000 / 360 / 0 / 0 / 600.
 
 ## Notas importantes
 
 - As redações analisadas são **modelos didáticos** que reconstroem o padrão nota 1000. Não são transcrições de redações oficiais de participantes.
 - Os descritores de nível são os do guia oficial da redação do Enem; os campos didáticos (o que derruba, o que levanta, exemplos) foram escritos para este material.
 - Os **textos motivadores** são adaptações didáticas (ver seção acima), não reproduções oficiais.
-- A **nota é a da grade (40 em 40)**, com a meia-faixa de 20 apenas no caso previsto: texto sem defeito objetivo que cumpre um nível inteiro e já mostra parte do seguinte.
+- A **nota publicada é sempre uma das seis da grade (0, 40, 80, 120, 160, 200)** e vem sempre como **faixa** ("nota entre X e Y"): a nota do Enem é a média de dois avaliadores, e dois avaliadores divergem. Nenhum relatório mostra nota exata.
 - O motor de correção é **heurístico**: mede desvios de grafia, aderência ao vocabulário do tema, tese e sustentação, variedade de conectivos e os cinco elementos da proposta. Não interpreta sentido. A correção oficial é humana, com dois avaliadores independentes.

@@ -70,19 +70,29 @@ export function avaliarC1(ctx) {
   // "acesso", "sociedade" etc. são invariáveis: removemos falsos positivos
   const errosReais = erros.filter(e => e.forma !== e.correto);
   const totalOcorr = errosReais.reduce((a, e) => a + e.n, 0);
+  /* Cartilha da Competência I, §3.5.3: desvio de convenção da escrita conta
+     UMA vez por vocábulo, ainda que a palavra se repita no texto (“brasil”
+     minúsculo três vezes = 1 desvio). Repetir o mesmo erro não multiplica a
+     contagem — mas mostra falta de revisão, e é isso que entra na conta. */
+  const vocabulos = errosReais.length;
   sinais.desviosOrtograficos = totalOcorr;
-  if (totalOcorr > 0) {
-    desconto += Math.min(90, totalOcorr * 10);
+  sinais.vocabulosComDesvio = vocabulos;
+  if (vocabulos > 0) {
+    desconto += Math.min(90, vocabulos * 14 + Math.min(2, totalOcorr - vocabulos) * 4);
     const top = errosReais.slice(0, 4)
       .map(e => `“${e.forma}” → “${e.correto}”${e.n > 1 ? ` (${e.n}×)` : ''}`)
       .join(' · ');
-    melhorias.push(`Grafia a revisar: ${top}. ${totalOcorr > 4 ? 'Como o desvio se repete, o impacto na nota é maior.' : ''}`);
+    melhorias.push(`Grafia a revisar: ${top}. ` + (totalOcorr > vocabulos
+      ? 'O mesmo desvio volta em outras ocorrências: pela cartilha conta um desvio por vocábulo, mas a repetição do erro mostra que faltou revisão.'
+      : ''));
   }
 
   // 2. construções e regências
   const construcoes = [];
   for (const d of DESVIOS_CONSTRUCAO) {
-    const n = contarTermo(ctx.norm, d.padrao);
+    const n = d.bruto
+      ? contarTermo(ctx.texto.toLowerCase().replace(/\s+/g, ' '), d.padrao)
+      : contarTermo(ctx.norm, d.padrao);
     if (n > 0) {
       construcoes.push({ ...d, n });
       desconto += Math.max(4, Math.round(12 * (d.peso ?? 1))) * Math.min(n, 3);
@@ -110,21 +120,21 @@ export function avaliarC1(ctx) {
     melhorias.push('Excesso de sinais de exclamação/interrogação ou pontuação repetida — prefira a pontuação própria do texto argumentativo.');
   }
 
-  // 5. repetição de palavras (ignora termos que são o próprio núcleo do tema)
-  const contagem = {};
-  for (const w of ctx.palavras) {
-    if (w.length < 4 || STOPWORDS.has(w)) continue;
-    contagem[w] = (contagem[w] || 0) + 1;
-  }
-  const termosDoTema = new Set([...(ctx.nucleo || []), ...(ctx.apoio || [])].map(normalizar));
-  const repetidas = Object.entries(contagem)
-    .filter(([w, n]) => n >= 8 && !termosDoTema.has(normalizar(w)))
-    .sort((a, b) => b[1] - a[1]).slice(0, 3);
+  /* 5. repetição de palavras — mesma régua da Competência IV (estilo.js), para
+     que o mesmo texto não receba dois veredictos sobre repetição: palavra de
+     recheio (GENÉRICAS) a partir de 3 ocorrências, palavra de conteúdo a
+     partir de 7, agrupando radical. Termos do tema ficam fora: repetir o
+     assunto é obrigatório, não é desvio. */
+  const repetidas = (ctx.estilo?.repeticao || []).slice(0, 3);
   sinais.repeticoes = repetidas.length;
   if (repetidas.length) {
-    desconto += Math.min(25, repetidas.length * 8);
-    melhorias.push('Repetição de termos: ' + repetidas.map(([w, n]) => `“${w}” (${n}×)`).join(', ') +
-      '. Use retomadas por sinônimo ou pronome.');
+    const grave = repetidas.some(r => r.n >= 7);
+    desconto += Math.min(45, repetidas.reduce((a, r) => a + (r.n >= 7 ? 16 : 8), 0));
+    melhorias.push('Repetição de termos: ' + repetidas
+      .map(r => `“${r.termo}” (${r.n}×)` + (r.variantes ? ` [${r.variantes.join(', ')}]` : ''))
+      .join(', ') + (grave
+        ? '. A cartilha cobra retomada por sinônimo, pronome ou elipse; com esse número de voltas, a repetição é um desvio de norma, não uma escolha de estilo.'
+        : '. Troque a segunda e a terceira ocorrências por sinônimo ou pronome.'));
   }
 
   // 6. frases muito longas
@@ -153,7 +163,7 @@ export function avaliarC1(ctx) {
     informalidade: informalidades.slice(0, 4).map(t => ({ termo: t, contexto: trecho(ctx.texto, t) })),
     frasesLongas: ctx.fras.filter(f => palavras(f).length > 45).slice(0, 2)
       .map(f => f.trim().slice(0, 160)),
-    repeticoes: repetidas.map(([w, n]) => ({ termo: w, n }))
+    repeticoes: repetidas.map(r => ({ termo: r.termo, n: r.n }))
   };
   /* ---- pontuação e estrutura do período (cartilha, Competência I) -----
      A grade cobra "pontuação" como parte do domínio da norma escrita: período
@@ -284,7 +294,7 @@ export function avaliarC1(ctx) {
     melhorias.push('Não há desvio de norma, mas a estrutura ainda é simples: para chegar a 200 o texto precisa mostrar subordinação variada (causa, concessão, condição, consequência) e pontuação que organize essas relações (vírgula, dois-pontos, ponto e vírgula).');
   }
 
-  /* meia-faixa: nenhum desvio, pontuação limpa, mas sem prova de estrutura
+  /* degrau interno 180: nenhum desvio, pontuação limpa, mas sem prova de estrutura
      exemplar (subordinação + pontuação rica). O texto cumpre o 160 inteiro e
      já mostra parte do 200 — vale 180, não 160. */
   sinais.intermediario = totalDesvios === 0 && pontuacaoLimpa && !estruturaExemplar;
@@ -311,30 +321,35 @@ export function tetoPorAmostra(pontos, palavras) {
   return pontos;
 }
 
-/** Fecha a competência: nota oficial (40 em 40) + degrau diagnóstico (20 em 20). */
+/**
+ * Fecha a competência.
+ *
+ * A nota publicada é SEMPRE a oficial da grade (0, 40, 80, 120, 160, 200).
+ * Junto dela vai a FAIXA: quanto o segundo avaliador ainda poderia subir nesta
+ * competência. É a faixa que aparece no site — nunca um número exato, porque a
+ * nota final do Enem é a média aritmética de dois avaliadores que divergem.
+ */
 function fechar(id, nota20, fortes, melhorias, sinais, nome, resumo, ctx) {
   const brutos = degrau(nota20, 0, 200);
   const comTeto = tetoPorAmostra(brutos, ctx.metricas.palavras);
-  const cortadoPorAmostra = comTeto < brutos;
 
-  /* MEIA-FAIXA: a competência só autoriza a nota de 20 em 20 quando não achou
-     defeito nenhum e o único motivo de não subir é a falta de prova do
-     descritor seguinte (`sinais.intermediario`). Com defeito ou teto, fica no
-     nível inferior, como manda a cartilha. O teto de amostra também vale como
-     meia-faixa (180 em texto de 220 palavras é o próprio teto). */
-  const autorizaMeiaFaixa = cortadoPorAmostra || sinais.intermediario === true;
-  const oficial = oficializar(comTeto, { intermediario: autorizaMeiaFaixa });
-  const { nota, entre, pontos } = oficial;
-  sinais.meiaFaixa = oficial.intermediario === true;
+  const oficial = oficializar(comTeto);
+  const { nota, pontos, abertura, faixa } = oficial;
+
   sinais.tetoAmostra = comTeto < brutos ? brutos - comTeto : 0;
   sinais.pontosDiagnostico = pontos;
+  sinais.abertura = abertura;
+  sinais.faixaNota = faixa;
+  /* o texto "já mostra parte do descritor seguinte": é o que abre a faixa em 40 */
+  sinais.proximoNivel = pontos % 40 === 20;
+
   return {
     id, nome, resumo,
-    nota,                    // nota oficial: 0, 40, 80, 120, 160 ou 200
-    pontos,                  // degrau de diagnóstico: 0, 20, …, 200
-    entreDegraus: entre,     // preenchido só quando o texto está ENTRE dois níveis
+    nota,                        // nota oficial: 0, 40, 80, 120, 160 ou 200
+    pontos,                      // leitura interna da mesma nota (uso do motor)
+    faixaNota: faixa,            // { min, max } — o intervalo publicado
     nivel: nivel(pontos),
-    nivelOficial: Math.floor(pontos / 40),
+    nivelOficial: Math.floor(nota / 40),
     fortes, melhorias, sinais
   };
 }
@@ -535,7 +550,7 @@ export function avaliarC2(ctx) {
   })();
   sinais.exemploParagrafoTema = ctx.paras[0] ? ctx.paras[0].trim().slice(0, 200) : null;
 
-  /* meia-faixa: repertório legitimado e articulado, partes no lugar, e a única
+  /* degrau interno 180: repertório legitimado e articulado, partes no lugar, e a única
      quebra é a transição de um argumento (ou a quantidade de parágrafos com
      tema). Cumpre o 160 e encosta no 200 — 180. */
   sinais.intermediario = nota === 180 && ctx.metricas.palavras >= 175;
@@ -651,7 +666,7 @@ export function avaliarC3(ctx) {
   }));
   sinais.paragrafosComTema = parasComTemaC3;
 
-  /* meia-faixa: tese + dois argumentos desenvolvidos, sem clichê e sem 1ª
+  /* degrau interno 180: tese + dois argumentos desenvolvidos, sem clichê e sem 1ª
      pessoa; a única ponta solta é a progressão não atravessar o texto todo. */
   sinais.intermediario = nota === 180 && cliches.length === 0 && primeiraPessoa.length === 0;
 
@@ -792,10 +807,10 @@ export function avaliarC4(ctx) {
   const est = ctx.estilo;
   const repeticaoGrave = est.repeticao.filter(a => a.n >= 8);
   const repeticaoMedia = est.repeticao.filter(a => a.n >= 6 && a.n < 8);
-  const repeticaoLeve = est.repeticao.filter(a => a.n >= 4 && a.n < 6);
+  const repeticaoLeve = est.repeticao.filter(a => a.n >= 3 && a.n < 6);
   const noMesmoParagrafo = est.repeticao.filter(a => a.noMesmoParagrafo.some(p => p.n >= 3));
   const frasesRepetidas = est.frasesRepetidas;
-  const expressoes = est.expressoes.filter(o => o.n >= 2);
+  const expressoes = est.expressoes.filter(o => o.n >= 3);
   const aberturas = est.aberturasRepetidas;
 
   let tetoEstilo = 200;
@@ -1011,7 +1026,7 @@ export function avaliarC5(ctx) {
     melhorias.push('Os cinco elementos aparecem, mas comprimidos em poucas palavras. Desenvolva a proposta em duas ou três frases: detalhamento raso não sustenta o nível máximo.');
   }
 
-  /* meia-faixa: quatro elementos válidos + um vago, ou os cinco presentes mas
+  /* degrau interno 180: quatro elementos válidos + um vago, ou os cinco presentes mas
      comprimidos numa frase. Cumpre o 160 e encosta no 200 — 180. */
   sinais.intermediario = nota === 180;
 

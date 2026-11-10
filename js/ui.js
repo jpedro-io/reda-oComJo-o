@@ -102,7 +102,7 @@ function viewHome() {
         <span class="hp-selo">${ico('check')} 1000 pontos</span>
       </div>
       <div class="hp-lista">${comps}</div>
-      <p class="hp-pe">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial — e, quando o texto cumpre um nível inteiro e já mostra parte do seguinte, a <b>meia-faixa</b>: 20, 60, 100, 140, 180.</p>
+      <p class="hp-pe">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, e dois avaliadores nunca fecham o mesmo número, o relatório publica sempre uma <b>faixa</b> — “nota entre X e Y” — nunca um número exato.</p>
     </aside>
   </section>
 
@@ -212,7 +212,7 @@ function viewCriterios() {
       <span class="eyebrow" data-entrada>Critérios</span>
       <h1 data-entrada>Cinco competências, seis níveis cada.</h1>
     </div>
-    <p class="sub" data-entrada>A nota é a da grade oficial: <b>0, 40, 80, 120, 160 ou 200</b> por competência. Quem reúne características de dois níveis fica no inferior — mas há um caso em que o texto <b>cumpre o nível inteiro e já mostra parte do seguinte</b>, sem nenhum defeito objetivo: aí a nota é a <b>meia-faixa</b> (20, 60, 100, 140, 180). Cada nível traz o descritor da cartilha e, abaixo dele, o que o avaliador procura no texto. À esquerda, a régua; à direita, o que isso significa na prática.</p>
+    <p class="sub" data-entrada>A nota de cada competência é uma das <b>seis notas oficiais</b>: 0, 40, 80, 120, 160 ou 200. Quem reúne características de dois níveis fica no inferior — é a regra da grade. O que o relatório mostra é a <b>faixa</b> em que essa nota cai, porque a nota final do Enem é a média de dois avaliadores e os dois divergem: por isso você lê “nota entre 160 e 200”, e não “180”. Cada nível traz o descritor da cartilha e, abaixo dele, o que o avaliador procura no texto.</p>
   </div>
 
   <div class="regua">${regua}</div>
@@ -708,26 +708,37 @@ function motivoHTML(m) {
     </li>`;
 }
 
+/* faixa publicada de uma competência: {min,max} — com os 40 oficiais nas pontas */
+export function faixaDaComp(c) {
+  const f = c.faixaNota || { min: c.nota, max: c.nota };
+  return { min: f.min, max: f.max, exata: f.min === f.max };
+}
+
 function compCard(c, aberto) {
   const ex = c.explicacao || {};
   const nivel = ex.nivel || { n: c.nivel, pontos: c.nota, exige: '' };
   const classeNota = c.nota < 120 ? 'baixa' : c.nota < 200 ? 'media' : '';
-  const meia = c.nota % 40 === 20;
+  const f = faixaDaComp(c);
+  const rotuloFaixa = f.exata ? `${f.min}` : `${f.min}<i>–</i>${f.max}`;
   return `
   <details class="comp-card" ${aberto ? 'open' : ''}>
     <summary class="cc-sum">
       <span class="cc-id">${c.id}</span>
       <span class="cc-nome">${esc(c.nome)}</span>
-      <span class="cc-bar"><i style="--v:${(c.nota || 0) / 200}"></i></span>
-      <span class="cc-nota ${classeNota}">${c.nota}<small>/200</small></span>
+      <span class="cc-bar"><i style="--v:${(f.max || 0) / 200}"></i></span>
+      <span class="cc-nota ${classeNota}" title="Faixa de nota desta competência">${rotuloFaixa}<small>/200</small></span>
     </summary>
     <div class="cc-body">
       <p class="cc-sintese">${esc(ex.sintese || '')}</p>
       <div class="cc-niveis">
-        <span class="badge">Nível ${meia ? `${nivel.oficial}–${nivel.oficial + 1}` : nivel.oficial} de 5 · ${c.nota} de 200</span>
-        ${meia
-          ? `<span class="badge meia"><b>Meia-faixa:</b> o texto cumpre o descritor de ${c.nota - 20} e já mostra parte do de ${c.nota + 20} — pela regra, sem defeito objetivo, fica no meio.</span>`
-          : ''}
+        <span class="badge">Nível ${nivel.oficial} de 5 · ${f.exata ? `nota ${f.min}` : `nota entre ${f.min} e ${f.max}`}</span>
+        ${f.exata
+          ? `<span class="badge faixa"><b>Nota firme:</b> ${nivel.oficial >= 5
+              ? `o texto cumpre integralmente o descritor do nível máximo — não há nível acima, e os dois avaliadores tendem a fechar em ${f.min}.`
+              : `o texto cumpre o descritor do nível ${nivel.oficial} e não mostra o do nível seguinte — os dois avaliadores tendem a fechar em ${f.min}.`}</span>`
+          : `<span class="badge faixa"><b>Por que a faixa:</b> a nota oficial desta competência é ${f.min} (nível ${nivel.oficial}). ${f.max - f.min >= 40
+            ? `Como o texto já mostra parte do descritor de ${f.max}, o segundo avaliador pode subir um nível inteiro — por isso a faixa vai até ${f.max}.`
+            : `O texto está firme no nível ${nivel.oficial}; os 20 pontos de margem são a divergência previsível entre os dois avaliadores — o teto da faixa é ${f.max}.`}</span>`}
 
         <span><b>O nível exige:</b> ${esc(nivel.exigeOficial || nivel.exige)}</span>
         ${ex.fonte ? `<span class="fonte">Grade: ${esc(ex.fonte)}</span>` : ''}
@@ -753,7 +764,9 @@ function relatorio(r) {
     return `<div class="vazio">${ico('alerta', 'ico-g')}<p>${esc(r.erro)}</p></div>`;
   }
 
-  const pct = r.notaTotal / 10;
+  /* a nota publicada é uma FAIXA: o anel mostra do mínimo ao máximo */
+  const fTotal = r.notaFaixa || { min: r.notaTotal, max: r.notaTotal };
+  const entre = fTotal.max > fTotal.min;
 
   // abrimos as duas competências que mais seguram a nota
   const maisFracas = [...r.competencias].sort((a, b) => a.nota - b.nota).slice(0, 2).map(c => c.id);
@@ -776,12 +789,20 @@ function relatorio(r) {
 
   return `
     <div class="rel-topo">
-      <div class="score-ring" data-anel="${pct}" style="--pct:0">
-        <div class="score-num"><span data-conta="${r.notaTotal}">0</span><small>de 1000</small></div>
+      <div class="score-ring" data-anel-min="${fTotal.min / 10}" data-anel-max="${fTotal.max / 10}"
+           style="--pct-min:0;--pct-max:0">
+        <div class="score-num">
+          ${entre
+            ? `<span class="score-faixa-m">entre</span>
+               <span class="score-par"><b data-conta="${fTotal.min}">0</b><i>–</i><b data-conta="${fTotal.max}">0</b></span>
+               <small>de 1000</small>`
+            : `<span data-conta="${fTotal.min}">0</span><small>de 1000</small>`}
+        </div>
       </div>
       <div class="rel-faixa">
-        <strong>${esc(r.faixa.nome)}</strong>
+        <strong>${entre ? `Nota entre ${fTotal.min} e ${fTotal.max}` : `Nota ${fTotal.min}`}</strong>
         <p>${esc(r.faixa.texto)}</p>
+        <p class="rel-faixa-nota">Dois avaliadores corrigem a mesma redação e não fecham o mesmo número: o mínimo é a soma das notas oficiais das cinco competências, o máximo soma o que cada uma ainda comporta. ${esc(r.faixa.nome)}.</p>
         <span class="confianca">${ico('check')} ${rotuloConfianca}</span>
       </div>
     </div>

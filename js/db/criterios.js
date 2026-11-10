@@ -19,15 +19,15 @@ export const CRITERIOS = [
       'Recorrência dos desvios — o mesmo erro repetido pesa mais que o erro isolado'
     ],
     niveis: [
-      { n: 5, texto: 'Demonstra excelente domínio da modalidade escrita formal da língua portuguesa e de escolha de registro. Desvios gramaticais ou de convenções da escrita serão aceitos somente como excepcionalidade e quando não caracterizarem recidência.' },
-      { n: 4, texto: 'Demonstra bom domínio da modalidade escrita formal da língua portuguesa e de escolha de registro, com poucos desvios gramaticais e de convenções da escrita.' },
-      { n: 3, texto: 'Demonstra domínio mediano da modalidade escrita formal da língua portuguesa e de escolha de registro, com alguns desvios gramaticais e de convenções da escrita.' },
-      { n: 2, texto: 'Demonstra domínio insuficiente da modalidade escrita formal da língua portuguesa, com muitos desvios gramaticais, de escolha de registro e de convenções da escrita.' },
-      { n: 1, texto: 'Demonstra domínio precário da modalidade escrita formal da língua portuguesa, de forma sistemática, com diversificados e frequentes desvios gramaticais, de escolha de registro e de convenções da escrita.' },
-      { n: 0, texto: 'Demonstra desconhecimento da modalidade escrita formal da língua portuguesa.' }
+      { n: 5, texto: "Demonstra excelente domínio da modalidade escrita formal da língua portuguesa e de escolha de registro. Desvios gramaticais ou de convenções da escrita serão aceitos somente como excepcionalidade e quando não caracterizarem reincidência." },
+      { n: 4, texto: "Demonstra bom domínio da modalidade escrita formal da língua portuguesa e de escolha de registro, com poucos desvios gramaticais e de convenções da escrita." },
+      { n: 3, texto: "Demonstra domínio mediano da modalidade escrita formal da língua portuguesa e de escolha de registro, com alguns desvios gramaticais e de convenções da escrita." },
+      { n: 2, texto: "Demonstra domínio insuficiente da modalidade escrita formal da língua portuguesa, com muitos desvios gramaticais, de escolha de registro e de convenções da escrita." },
+      { n: 1, texto: "Demonstra domínio precário da modalidade escrita formal da língua portuguesa, de forma sistemática, com diversificados e frequentes desvios gramaticais, de escolha de registro e de convenções da escrita." },
+      { n: 0, texto: "Demonstra desconhecimento da modalidade escrita formal da língua portuguesa." }
     ],
     derrubam: [
-      'O mesmo desvio repetido: “recidência” é o que separa 160 de 120 na descrição oficial.',
+      'O mesmo desvio repetido: “reincidência” é o que separa 160 de 120 na descrição oficial.',
       'Trocas clássicas: “mais” por “mas”, “a cerca de” por “acerca de”, “ao invés de” por “em vez de”.',
       'Vírgula entre sujeito e verbo ou antes de complemento direto.',
       'Marcas de fala: “pra”, “aí”, “tipo”, “coisa”, “né” — a escolha de registro está na descrição do nível.',
@@ -59,12 +59,12 @@ export const CRITERIOS = [
       'Atenção: copiar trechos dos textos motivadores derruba para 80'
     ],
     niveis: [
-      { n: 5, texto: 'Desenvolve o tema por meio de argumentação consistente, a partir de um repertório sociocultural produtivo, e apresenta excelente domínio do texto dissertativo-argumentativo.' },
-      { n: 4, texto: 'Desenvolve o tema por meio de argumentação consistente e apresenta bom domínio do texto dissertativo-argumentativo, com proposição, argumentação e conclusão.' },
-      { n: 3, texto: 'Desenvolve o tema por meio de argumentação previsível e apresenta domínio mediano do texto dissertativo-argumentativo, com proposição, argumentação e conclusão.' },
-      { n: 2, texto: 'Desenvolve o tema recorrendo à cópia de trechos dos textos motivadores ou apresenta domínio insuficiente do texto dissertativo-argumentativo, não atendendo à estrutura com proposição, argumentação e conclusão.' },
-      { n: 1, texto: 'Apresenta o assunto, tangenciando o tema, ou demonstra domínio precário do texto dissertativo-argumentativo, com traços constantes de outros tipos textuais.' },
-      { n: 0, texto: 'Fuga ao tema/não atendimento à estrutura dissertativo-argumentativa. Nestes casos a redação recebe nota zero e é anulada.' }
+      { n: 5, texto: "Desenvolve o tema por meio de argumentação consistente, a partir de um repertório sociocultural produtivo, e apresenta excelente domínio do texto dissertativo-argumentativo." },
+      { n: 4, texto: "Desenvolve o tema por meio de argumentação consistente e apresenta bom domínio do texto dissertativo-argumentativo, com proposição, argumentação e conclusão." },
+      { n: 3, texto: "Desenvolve o tema por meio de argumentação previsível e apresenta domínio mediano do texto dissertativo-argumentativo, com proposição, argumentação e conclusão." },
+      { n: 2, texto: "Desenvolve o tema recorrendo à cópia de trechos dos textos motivadores ou apresenta domínio insuficiente do texto dissertativo-argumentativo, não atendendo à estrutura com proposição, argumentação e conclusão." },
+      { n: 1, texto: "Apresenta o assunto, tangenciando o tema, ou demonstra domínio precário do texto dissertativo-argumentativo, com traços constantes de outros tipos textuais." },
+      { n: 0, texto: "Fuga ao tema ou não atendimento à estrutura dissertativo-argumentativa. Nestes casos a redação recebe nota 0 (zero) e é anulada." }
     ],
     derrubam: [
       'Tangenciar: falar do assunto amplo e não do recorte. Em C2 isso trava a nota em 40 — e o mesmo limite se aplica a C3 e C5.',
@@ -95,12 +95,12 @@ export const CRITERIOS = [
       'Projeto de texto: cada parágrafo cumpre a função prevista'
     ],
     niveis: [
-      { n: 5, texto: 'Apresenta informações, fatos e opiniões relacionados ao tema proposto, de forma consistente e organizada, configurando autoria, em defesa de um ponto de vista.' },
-      { n: 4, texto: 'Apresenta informações, fatos e opiniões relacionados ao tema, de forma organizada, com indícios de autoria, em defesa de um ponto de vista.' },
-      { n: 3, texto: 'Apresenta informações, fatos e opiniões relacionados ao tema, limitados aos argumentos dos textos motivadores e pouco organizados, em defesa de um ponto de vista.' },
-      { n: 2, texto: 'Apresenta informações, fatos e opiniões relacionados ao tema, mas desorganizados ou contraditórios e limitados aos argumentos dos textos motivadores, em defesa de um ponto de vista.' },
-      { n: 1, texto: 'Apresenta informações, fatos e opiniões pouco relacionados ao tema ou incoerentes e sem defesa de um ponto de vista.' },
-      { n: 0, texto: 'Apresenta informações, fatos e opiniões não relacionados ao tema e sem defesa de um ponto de vista.' }
+      { n: 5, texto: "Apresenta informações, fatos e opiniões relacionados ao tema proposto, de forma consistente e organizada, configurando autoria, em defesa de um ponto de vista." },
+      { n: 4, texto: "Apresenta informações, fatos e opiniões relacionados ao tema, de forma organizada, com indícios de autoria, em defesa de um ponto de vista." },
+      { n: 3, texto: "Apresenta informações, fatos e opiniões relacionados ao tema, limitados aos argumentos dos textos motivadores e pouco organizados, em defesa de um ponto de vista." },
+      { n: 2, texto: "Apresenta informações, fatos e opiniões relacionados ao tema, mas desorganizados ou contraditórios e limitados aos argumentos dos textos motivadores, em defesa de um ponto de vista." },
+      { n: 1, texto: "Apresenta informações, fatos e opiniões pouco relacionados ao tema ou incoerentes e sem defesa de um ponto de vista." },
+      { n: 0, texto: "Apresenta informações, fatos e opiniões não relacionados ao tema e sem defesa de um ponto de vista." }
     ],
     derrubam: [
       'Repetir exatamente os argumentos dos textos motivadores: a descrição do nível 120 diz isso com todas as letras.',
@@ -132,12 +132,12 @@ export const CRITERIOS = [
       'Pontuação usada como organizadora do raciocínio'
     ],
     niveis: [
-      { n: 5, texto: 'Articula bem as partes do texto e apresenta repertório diversificado de recursos coesivos.' },
-      { n: 4, texto: 'Articula as partes do texto, com poucas inadequações, e apresenta repertório diversificado de recursos coesivos.' },
-      { n: 3, texto: 'Articula as partes do texto, de forma mediana, com inadequações, e apresenta repertório pouco diversificado de recursos coesivos.' },
-      { n: 2, texto: 'Articula as partes do texto, de forma insuficiente, com muitas inadequações, e apresenta repertório limitado de recursos coesivos.' },
-      { n: 1, texto: 'Articula as partes do texto de forma precária.' },
-      { n: 0, texto: 'Não articula as informações.' }
+      { n: 5, texto: "Articula bem as partes do texto e apresenta repertório diversificado de recursos coesivos." },
+      { n: 4, texto: "Articula as partes do texto, com poucas inadequações, e apresenta repertório diversificado de recursos coesivos." },
+      { n: 3, texto: "Articula as partes do texto, de forma mediana, com inadequações, e apresenta repertório pouco diversificado de recursos coesivos." },
+      { n: 2, texto: "Articula as partes do texto, de forma insuficiente, com muitas inadequações, e apresenta repertório limitado de recursos coesivos." },
+      { n: 1, texto: "Articula as partes do texto de forma precária." },
+      { n: 0, texto: "Não articula as informações." }
     ],
     derrubam: [
       'Parágrafos empilhados, sem transição.',
@@ -172,12 +172,12 @@ export const CRITERIOS = [
       'Respeito aos direitos humanos — condição eliminatória'
     ],
     niveis: [
-      { n: 5, texto: 'Elabora muito bem proposta de intervenção, detalhada, relacionada ao tema e articulada à discussão desenvolvida no texto.' },
-      { n: 4, texto: 'Elabora bem proposta de intervenção relacionada ao tema e articulada à discussão desenvolvida no texto.' },
-      { n: 3, texto: 'Elabora, de forma mediana, proposta de intervenção relacionada ao tema e articulada à discussão desenvolvida no texto.' },
-      { n: 2, texto: 'Elabora, de forma insuficiente, proposta de intervenção relacionada ao tema, ou não articulada com a discussão desenvolvida no texto.' },
-      { n: 1, texto: 'Apresenta proposta de intervenção vaga, precária ou relacionada apenas ao assunto.' },
-      { n: 0, texto: 'Não apresenta proposta de intervenção ou apresenta proposta não relacionada ao tema ou ao assunto.' }
+      { n: 5, texto: "Elabora muito bem proposta de intervenção, detalhada, relacionada ao tema e articulada à discussão desenvolvida no texto." },
+      { n: 4, texto: "Elabora bem proposta de intervenção relacionada ao tema e articulada à discussão desenvolvida no texto." },
+      { n: 3, texto: "Elabora, de forma mediana, proposta de intervenção relacionada ao tema e articulada à discussão desenvolvida no texto." },
+      { n: 2, texto: "Elabora, de forma insuficiente, proposta de intervenção relacionada ao tema, ou não articulada com a discussão desenvolvida no texto." },
+      { n: 1, texto: "Apresenta proposta de intervenção vaga, precária ou relacionada apenas ao assunto." },
+      { n: 0, texto: "Não apresenta proposta de intervenção ou apresenta proposta não relacionada ao tema ou ao assunto." }
     ],
     derrubam: [
       'Proposta vaga: “é preciso conscientizar a sociedade” — sem quem, como e para quê.',
@@ -215,11 +215,12 @@ export const AVISO_TANGENCIAMENTO = {
 
 export const CALCULO_NOTA = [
   { titulo: 'Dois avaliadores, às cegas', texto: 'Cada redação é corrigida por dois avaliadores independentes, sem acesso ao nome do participante e sem ver a nota do outro.' },
-  { titulo: 'Nota por competência', texto: 'Cada avaliador atribui 0, 40, 80, 120, 160 ou 200 em cada uma das cinco competências — os níveis do guia oficial.' },
-  { titulo: 'Média das duas notas', texto: 'A nota final é a média aritmética das notas totais dos dois avaliadores, somando até 1.000 pontos.' },
-  { titulo: 'Quando entra um terceiro', texto: 'Há discrepância se a diferença total passar de 100 pontos, se passar de 80 pontos em qualquer competência, ou se um avaliador zerar e o outro não. Nesse caso, um terceiro avaliador corrige o texto.' },
-  { titulo: 'A nota é de 40 em 40 — com uma exceção', texto: 'Como na grade oficial, cada competência vale 0, 40, 80, 120, 160 ou 200. Um texto que reúne características de dois níveis é avaliado no inferior, como manda a cartilha. A exceção é o caso abaixo.' },
-  { titulo: 'A meia-faixa (20 em 20): entre dois níveis, sem defeito', texto: 'Quando o texto cumpre INTEGRALMENTE o descritor de um nível, já mostra parte do descritor seguinte e não tem nenhum defeito objetivo que o derrube, a nota fica na metade do caminho: 20, 60, 100, 140 ou 180. É o caso do texto que não erra nada e ainda não sustenta o nível de cima. Com qualquer defeito encontrado — desvio de norma, repetição, período sem pontuação, falta de repertório, proposta incompleta — vale a regra geral: fica no nível inferior.' },
+  { titulo: 'Nota por competência', texto: 'Cada avaliador atribui 0, 40, 80, 120, 160 ou 200 em cada uma das cinco competências — as seis notas da grade oficial. Não existe nota intermediária: 180 não é uma nota da grade.' },
+  { titulo: 'Média das duas notas', texto: 'A nota final do participante é a média aritmética das notas totais atribuídas pelos dois avaliadores, somando até 1.000 pontos. É por isso que a nota final nunca é um número “redondo”: ela nasce de duas leituras que divergem.' },
+  { titulo: 'Quando entra um terceiro', texto: 'Há discrepância se a diferença total passar de 100 pontos, se passar de 80 pontos em qualquer competência, ou se um avaliador zerar e o outro não. Nesse caso, um terceiro avaliador corrige o texto e a nota final passa a ser a média das duas notas mais próximas entre si.' },
+  { titulo: 'Por que o relatório mostra uma faixa', texto: 'Se a nota final é uma média de duas leituras possíveis, publicar “180” seria inventar uma precisão que o exame não tem. O corretor mostra a nota oficial mínima (0, 40, 80, 120, 160 ou 200) e o teto que o texto ainda comporta — daí a leitura “nota entre 160 e 200”.' },
+  { titulo: 'A faixa tem duas larguras', texto: 'Quando o texto está firme no nível, a faixa abre 20 pontos: é a divergência previsível entre dois avaliadores diante do mesmo texto. Quando o texto cumpre o nível e já mostra parte do descritor seguinte, a faixa abre 40 — o segundo avaliador poderia subir um nível inteiro. No total, a faixa nunca passa de 100 pontos, o limite em que a cartilha manda chamar um terceiro avaliador.' },
+  { titulo: 'Característica de dois níveis', texto: 'Texto que reúne características de dois níveis recebe a nota do nível inferior. Isso vale para o avaliador humano e para o corretor: não se arredonda para cima por entusiasmo, e a nota máxima exige prova do descritor completo.' },
   { titulo: 'Amostra curta tem teto', texto: 'Nenhuma competência passa de 120 em texto com menos de 150 palavras, de 160 abaixo de 200 e de 180 abaixo de 240. O descritor exige prova — parágrafos, repertório desenvolvido, proposta completa — e amostra curta não tem espaço para essa prova; por isso não sai 200 de um texto de dez linhas.' },
   { titulo: 'Controle de qualidade', texto: 'A cada 50 redações, o avaliador recebe 2 redações de controle já pontuadas pela comissão. Serve para medir calibragem e pode gerar recapacitação.' }
 ];

@@ -6,33 +6,45 @@ Documento de decisão fechado **antes** do visual. Tudo abaixo vale para o site 
 
 ## 1. Cores
 
-A paleta foi trocada por decisão do cliente: **seriedade, credibilidade e foco no estudo**. A instrução anterior (azul + menta) está revogada. O que rege a escolha: um azul institucional escuro como cor de estrutura, um neutro quente (papel, areia) para tirar o ar de "painel de TI", e o dourado **só** onde há conquista — nunca como cor de interface comum.
+Paleta refeita por decisão do cliente: **fundo branco, azul royal nos botões e barras, títulos em branco e preto, liquid glass**. A instrução anterior (marinho + areia + dourado, com tema escuro) está revogada — inclusive o dourado, que era cor de "conquista".
 
-**Dois temas, um conjunto de tokens.** O claro é o padrão; `prefers-color-scheme: dark` troca os valores e nenhum componente precisa saber qual está ativo.
+**Um tema só.** O site é branco. `prefers-color-scheme: dark` foi removido do CSS, do `index.html` e do `js/bg.js`: fundo branco aqui é decisão de marca, não preferência do sistema. Manter um tema escuro "de cortesia" obrigaria a manter duas paletas para sempre e a testar tudo duas vezes.
 
-| Papel | Token | Claro | Escuro (chumbo) | Uso |
-|---|---|---|---|---|
-| Principal | `--marinho` | `#17395C` | `#3E6E9E` | botão primário, barra ativa, estrutura |
-| Principal (texto) | `--marinho-txt` | `#1B4B78` | `#A8C9E8` | links e palavras-âncora |
-| Apoio frio | `--petroleo` | `#1F5A63` | `#2F7B85` | marcações de vocabulário, "eyebrow" |
-| Apoio frio (texto) | `--petroleo-txt` | `#1A5058` | `#7FC6CC` | legendas de seção |
-| Conquista | `--dourado` | `#B8891F` | `#D9B75F` | anel da nota, medalha, barra de progresso |
-| Conquista (texto) | `--dourado-txt` | `#8A6714` | `#E4C877` | números de nota, "1000 pontos" |
-| Neutro quente | `--areia` / `--areia-2` | `#EFE6D6` / `#F7F2E8` | `#2A2B2C` / `#232527` | faixas, blocos de apoio, hover |
-| Tinta | `--tinta` | `#132A43` | `#F1EDE4` | texto principal |
-| Tinta 2 / 3 | `--tinta-2` / `--tinta-3` | `rgba(19,42,67,.74)` / `.56` | `rgba(241,237,228,.76)` / `.56` | texto secundário, legenda |
-| Fundo 0 | `--fundo-0` | `#F6F4EF` | `#14181D` | base da página (cinza-gelo quente) |
-| Fundo 1 | `--fundo-1` | `#FFFFFF` | `#1A1F26` | cartões e superfícies |
-| Fundo 2 / 3 | `--fundo-2` / `--fundo-3` | `#FBF8F2` / `#EFE6D6` | `#222A33` / `#2A333D` | camadas internas |
-| Erro | `--erro` | `#A63A32` | `#F09A92` | nota zero, "impede o 200" |
-| Alerta | `--alerta` | `#8A5A0B` | `#E0B661` | atenção, "pesa na nota" |
-| Sucesso | `--ok` | `#1F6B50` | `#7FCFB0` | "o que já está certo" |
+| Papel | Token | Valor | Uso |
+|---|---|---|---|
+| Royal | `--azul` | `#1A3EC8` | botão primário, barra, anel da nota, faixa de seção |
+| Royal (texto) | `--azul-txt` | `#14309B` | links e palavras-âncora sobre branco (AA) |
+| Royal realce | `--azul-alto` | `#2F55F0` | topo do gradiente dos botões, hover |
+| Véu azul | `--azul-fundo` | `#E9EEFF` | chips, badges, blocos de apoio |
+| Tinta | `--tinta` | `#080D1C` | texto principal e **títulos sobre o branco** |
+| Tinta 2 / 3 | `--tinta-2` / `--tinta-3` | `rgba(8,13,28,.76)` / `.54` | texto secundário, legenda |
+| Fundo | `--fundo-0` / `--fundo-1` | `#FFFFFF` / `#FFFFFF` | base e superfícies |
+| Apoio | `--fundo-2` / `--fundo-3` | `#F7F9FF` / `#EDF1FF` | camadas internas, tabelas, hover |
+| Erro | `--erro` | `#B3261E` | nota zero, "impede o 200" |
+| Alerta | `--alerta` | `#8A5A0B` | atenção, "pesa na nota" |
+| Sucesso | `--ok` | `#0A7A55` | "o que já está certo" |
 
-**Regra de contraste (AA):** texto ≥ 4,5:1 no pior ponto do fundo — inclusive nos tons mais claros do dourado, que por isso tem um token próprio para texto (`--dourado-txt` `#8A6714` em vez de `#B8891F`). Onde há vidro, o painel tem fundo branco a 74% (ou chumbo a 62% no escuro) *antes* do blur — nunca texto direto sobre gradiente claro.
+**Onde o título é branco.** Em duas superfícies, e só nelas: a faixa do hero da home e a faixa de abertura de cada página (`.secao-topo`), ambas em gradiente royal `#2B4FEC → #1A3EC8 → #102A96` com brilho radial no canto. Fora da faixa, todo título é preto sobre branco. Isso dá o contraste preto/branco pedido sem inverter a página inteira: a mancha azul fica concentrada no alto, e o conteúdo respira em fundo branco.
 
-**Vidro por tema:** `--vidro: rgba(255,255,255,.74)` no claro, `rgba(26,31,38,.62)` no escuro; `--borda-vidro` e `--realce-borda` acompanham. Os painéis de vidro são os mesmos quatro de sempre.
+**Contraste (AA):** texto ≥ 4,5:1 no pior ponto do fundo, incluindo o branco sobre a faixa azul (13:1 no trecho escuro, 7:1 no mais claro) e o `--azul-txt` sobre branco (9:1). Onde há vidro, existe véu branco antes do desfoque — nunca texto direto sobre gradiente.
 
-**Cor por função, não por gosto:** dourado = conquista; vermelho = risco; azul = estrutura e navegação; areia = apoio neutro. Se um elemento é dourado, ele precisa estar comemorando algo.
+**Cor por função:** azul = estrutura, ação e nota; vermelho = risco; verde = acerto; véu azul claro = apoio. Não existe cor decorativa.
+
+## 1b. Vidro líquido — o material do site
+
+Não é "caixa com transparência": são **três camadas** obrigatórias, sempre nesta ordem.
+
+| # | Camada | Implementação |
+|---|---|---|
+| 1 | Véu translúcido | `--vidro: rgba(255,255,255,.58)` (`.82` quando o conteúdo exige leitura densa) |
+| 2 | Desfoque que carrega a cor de trás | `backdrop-filter: blur(26px) saturate(190%)` |
+| 3 | Realce especular | `inset 0 1px 0 rgba(255,255,255,.9)` em cima, `inset 0 -1px 0 rgba(8,13,28,.04)` embaixo, mais `--sombra-flut` azulada |
+
+Sobre as **faixas azuis** o vidro se inverte: véu branco a 12–16%, borda a 34%, realce claro — é o painel "Como a nota se forma" do hero. Nos **botões primários**, um pseudo-elemento `::after` desenha a faixa de luz do topo, como reflexo em superfície curva.
+
+Requisitos que continuam valendo: algo interessante atrás do vidro (aurora royal em CSS + campo 3D), no máximo 3 camadas com blur simultâneas, `@supports not (backdrop-filter)` cai para fundo sólido, `prefers-reduced-transparency` idem, e `prefers-reduced-motion` desliga as animações.
+
+**Marca:** `assets/logo.svg` — pena (nib) branca sobre squircle de vidro azul royal, com realce especular e contorno claro. O mesmo desenho é o favicon (data-URI) e a marca do cabeçalho. O quadrado de letras "RJ" foi aposentado: inicial em caixa dentro de quadrado é assinatura de placeholder, não de marca.
 
 ## 2. Tipografia — 1 par, justificado
 
@@ -97,14 +109,13 @@ O glassmorphism é usado em **4 superfícies**, e apenas elas:
 3. painel de resultado da correção (superfície flutuante sobre o fundo);
 4. toast/modal.
 
-Todo o resto é **superfície sólida** com tom da marca. Construção em camadas: `backdrop-filter: blur(20px) saturate(160%)` + fundo semitransparente + borda de 1px com highlight superior e sombra inferior + reflexo interno.
+Todo o resto é **superfície sólida** com tom da marca. Construção em camadas: `backdrop-filter: blur(26px) saturate(190%)` + fundo semitransparente + borda de 1px com highlight superior e sombra inferior + reflexo interno.
 
 **Requisitos atendidos:**
 - O vidro tem **algo interessante atrás**: campo 3D em WebGL com a paleta da marca.
 - `@supports not (backdrop-filter: blur(1px))` → fundo sólido `#0B2438`.
 - `prefers-reduced-transparency: reduce` → fundo sólido, sem blur.
 - Máximo de 3 camadas com blur simultâneas; no celular o fundo vira gradiente CSS, sem canvas.
-- No tema claro o vidro é branco translúcido; no escuro, chumbo translúcido — os mesmos quatro lugares, nenhum a mais.
 - Refração real com `feDisplacementMap` fica como melhoria progressiva opcional — o fallback é blur simples.
 
 ## 7. 3D — decisão de dependência
@@ -115,21 +126,23 @@ Todo o resto é **superfície sólida** com tom da marca. Construção em camada
 
 **Sobre Framer Motion:** as regras de animação (só `transform`/`opacity`, 150–250 ms em micro-interações, 600–800 ms em entradas, hierarquia e `reduced-motion`) foram implementadas com Web Animations API + tokens de CSS — o site é estático, sem React, e a API nativa cobre o mesmo escopo com 0 KB. Se o projeto migrar para React, o lugar de trocar é `js/motion.js`, mantendo os mesmos tokens.
 
-## 8. Escala de nota — como o número aparece
+## 8. Escala de nota — o número nunca aparece sozinho
 
-A nota de cada competência é a da cartilha — **0, 40, 80, 120, 160, 200** — com uma exceção: a **meia-faixa** (20, 60, 100, 140, 180), reservada ao texto que cumpre um nível inteiro, já mostra parte do seguinte e não tem defeito objetivo.
+A nota de cada competência é uma das **seis oficiais** — 0, 40, 80, 120, 160, 200 — e o relatório **nunca publica um número exato**: publica uma **faixa**, "nota entre X e Y". Motivo de cartilha: a nota final do Enem é a média aritmética das notas totais de dois avaliadores, e dois avaliadores divergem. 180 não é nota: é leitura interna do motor, e vira "160 com faixa até 200".
 
 | Onde | O que aparece |
 |---|---|
 | Critérios | a **régua dos seis níveis** (200 → 0), com o descritor oficial do nível e, abaixo dele, o que o avaliador procura no texto |
-| Cartão do relatório | `180` em destaque, com `/200` em corpo menor; `Nível 4–5 de 5 · 180 de 200` quando é meia-faixa (nível `4` quando é cheio); chip dourado explicando a regra |
-| Motivos | cartões `IMPEDE O 200` / `PESA NA NOTA` / `OBSERVAÇÃO`. **Só existe meia-faixa quando todos os cartões são observação** — qualquer cartão de gravidade alta ou média devolve a nota ao nível inferior, e o relatório escreve "a meia-faixa não foi aplicada" |
+| Cartão do relatório | a faixa em destaque — `160–200` — com `/200` em corpo menor; selo `Nível 4 de 5 · nota entre 160 e 200`; chip azul explicando **por que** a faixa abre 20 ou 40 |
+| Motivos | cartões `IMPEDE O 200` / `PESA NA NOTA` / `OBSERVAÇÃO`, cada um com regra, trecho e ação |
 | Próximo passo | `Para subir · 200`, com o descritor oficial do nível seguinte |
-| Anel da nota final | 0–1000, com `--pct` animado; a soma usa as notas cheias e as meias-faixas aplicadas |
+| Anel da nota final | **dois arcos**: azul sólido até o mínimo da faixa, azul claro cobrindo a margem até o máximo; dentro, `entre 800 – 900` e `de 1000` |
 
-Hierarquia visual: o **número** é sempre o protagonista; a meia-faixa se identifica por um chip dourado discreto logo abaixo do selo de nível, nunca por cor de alerta.
+Hierarquia: a **faixa** é o protagonista, e a cor nunca é de alerta — a faixa aparece em azul mesmo quando a nota é baixa (o vermelho fica reservado à nota em si, no cartão).
 
-Regra em um lugar só (`oficializar()`, em `js/engine/texto.js`): nível cheio → a própria nota; meia-faixa autorizada pela competência **e** pelo relatório → a própria nota; nos demais casos → a nota de baixo. `tetoPorAmostra()` corta em 120/160/180 para textos com menos de 150/200/240 palavras.
+**Por que a faixa não vira ruído:** ela tem duas larguras e ambas dizem algo. 20 = "o texto está firme no nível; é a divergência previsível". 40 = "o texto já mostra parte do descritor seguinte; o segundo avaliador poderia subir um nível". A faixa total nunca passa de 100 pontos, o limite em que a cartilha manda chamar o terceiro avaliador.
+
+Regra em um lugar só (`oficializar()`, em `js/engine/texto.js`): `nota = floor(pontos/40)*40`; `abertura = 20` (firme) ou `40` (mostra o seguinte); `faixa = [nota, nota+abertura]`. `tetoPorAmostra()` corta em 120/160/180 pontos internos para textos com menos de 150/200/240 palavras. Redação zerada não tem faixa: os dois avaliadores chegam ao mesmo 0.
 
 ## 9. Celular — decisões, não sobras
 
@@ -148,8 +161,8 @@ O celular é alvo de projeto. O que muda de fato (≤ 860 px):
 | Redações | crônica sem espinha fixa, nota alinhada à esquerda |
 | Hover | `@media (hover: none)` desliga elevações e deslocamentos que só fazem sentido com mouse |
 
-**Testado em** Chromium 390×844 e 360×800, claro e escuro: nenhuma rolagem horizontal em nenhuma das 6 rotas.
+**Testado em** Chromium 390×844 e 360×800: nenhuma rolagem horizontal em nenhuma das 6 rotas. A faixa azul do hero e das seções reduz o padding no celular (24 px) para não comer a tela.
 
 ## 10. Sombras
 
-Sombra só em quem flutua de verdade: navegação fixa, painel de vidro, toast e o botão primário. Blocos de conteúdo usam **borda** em vez de sombra.
+Sombra só em quem flutua de verdade: navegação fixa, painel de vidro, toast, o botão primário e as faixas azuis. Todas são **azuis** (`rgba(16,34,120,…)`), nunca cinza — sombra cinza sobre branco suja a cor. Blocos de conteúdo usam borda (`rgba(8,13,28,.08)`) em vez de sombra.

@@ -10,67 +10,63 @@
  * As regras vêm de js/db/cartilhas.js (destilado das cartilhas da FGV/Inep).
  */
 
+/* sem alias de import: o build offline remove as linhas de import e deixa um
+escopo só — nomes aliasados quebrariam o standalone ("EXIGES is not defined"). */
 import { GRADES, EXIGE, PARA_SUBIR } from '../db/cartilhas.js';
-import { NIVEIS, pontosDe, nivelDe } from '../db/niveis.js';
+import { NIVEIS, nivelDe } from '../db/niveis.js';
 
 const motivo = (gravidade, titulo, porque, evidencia, comoResolver, exemplos = []) =>
   ({ gravidade, titulo, porque, evidencia, comoResolver, exemplos });
 
 /**
- * Monta o bloco de nível da explicação em DUAS réguas:
- *   - a intermediária (0–10), que dá o degrau exato e o que falta para +20;
- *   - a oficial (0–5), de onde vem a regra e o texto da cartilha.
- * O degrau intermediário nunca substitui a régua oficial: ele a detalha.
+ * Bloco de nível da explicação, agora em uma régua só: a da cartilha (0 a 5).
+ * O motor continua lendo o texto em passos de 20 internamente, mas o que o
+ * estudante vê é o nível oficial, a nota oficial e a FAIXA em que dois
+ * avaliadores poderiam fechar a mesma competência.
  */
 function base(id, comp) {
   const g = GRADES[id];
-  // `pontos` é o degrau diagnóstico (20 em 20); `nota` é a nota oficial (40 em 40)
-  const n = Math.max(0, Math.min(10, Math.round((comp.pontos ?? comp.nota) / 20)));
-  /* nível oficial = nota/40 (a nota já trata o diagnóstico 20 como 40: zero é
-     reservado a fuga e anulação, nunca a "texto fraco") */
-  const oficial = Math.max(0, Math.min(5, Math.floor((comp.nota ?? 0) / 40)));
-  const prox = n >= 10 ? null : n + 1;
-  const niveis = NIVEIS[id].niveis;
+  const nota = Math.max(0, Math.min(200, comp.nota ?? 0));
+  const oficial = Math.max(0, Math.min(5, Math.floor(nota / 40)));
+  const prox = Math.min(5, oficial + 1);
+  const faixa = comp.faixaNota || { min: nota, max: Math.min(200, nota + 40) };
   return {
     eixo: g.eixo,
     regra: g.regra,
     fonte: g.fonte,
     nivel: {
-      n,
-      pontos: pontosDe(n),
-      nota: comp.nota,
-      entre: comp.entreDegraus || null,
+      n: oficial,
+      pontos: nota,
+      nota,
       oficial,
-      exige: niveis[n].texto,
+      faixa,
+      exige: g.niveis[oficial],
       exigeOficial: g.niveis[oficial],
       exigeCurto: EXIGE[id][oficial] || ''
     },
     nivelTexto: g.niveis[oficial],
-    nivelTextoProximo: g.niveis[Math.min(5, oficial + 1)],
-    proximo: prox === null ? null : {
+    nivelTextoProximo: g.niveis[prox],
+    proximo: oficial >= 5 ? null : {
       n: prox,
-      pontos: pontosDe(prox),
-      oficial: Math.max(0, Math.min(5, Math.floor(prox / 2))),
-      exige: niveis[prox].texto,
+      pontos: prox * 40,
+      oficial: prox,
+      exige: g.niveis[prox],
       faltou: (PARA_SUBIR[id] || {})[oficial] || null
     }
   };
 }
 
 function sintese(comp, motivos) {
+  const faixa = comp.faixaNota || { min: comp.nota, max: comp.nota };
+  const intervalo = faixa.max > faixa.min ? `${faixa.min} e ${faixa.max}` : `${faixa.min}`;
   if (comp.nota === 200) {
     return 'Chegou a 200/200: nesta amostra o texto cumpre integralmente o descritor do nível máximo. O que aparece abaixo são observações de refinamento, não impedimentos.';
   }
   if (!motivos.length) {
-    return `A competência chegou a ${comp.nota}/200: nesta amostra o texto cumpre o descritor do nível mais alto que o motor consegue verificar.`;
+    return `Faixa de ${intervalo}/200: nesta amostra o texto cumpre o descritor do nível alcançado, e a diferença para o nível seguinte é o que o segundo avaliador poderia reconhecer.`;
   }
   const primeiro = motivos[0];
-  const meia = comp.nota % 40 === 20;
-  const nivel = Math.max(0, Math.min(5, Math.floor((comp.nota ?? 0) / 40)));
-  const onde = meia
-    ? `${comp.nota}/200 — meia-faixa entre ${comp.nota - 20} e ${comp.nota + 20}`
-    : `${comp.nota}/200 (nível ${nivel} de 5)`;
-  return `Ficou em ${onde} porque ${primeiro.titulo.charAt(0).toLowerCase()}${primeiro.titulo.slice(1).replace(/\.$/, '')}.`;
+  return `Faixa de ${intervalo}/200 porque ${primeiro.titulo.charAt(0).toLowerCase()}${primeiro.titulo.slice(1).replace(/\.$/, '')}.`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -578,22 +574,17 @@ export function explicarCompetencias(comps = []) {
     }
 
     // toda nota abaixo de 200 precisa de um motivo explícito, mesmo quando o
-    // avaliador não achou nada de errado além de não ter cumprido o próximo degrau
+    // motor não achou defeito além de o descritor seguinte não estar cumprido
     if (c.nota < 200 && !explicacao.motivos.length) {
       const alvo = explicacao.proximo;
-      const meia = c.nota % 40 === 20;
       explicacao.motivos.push(motivo(
         'baixa',
-        meia
-          ? `Meia-faixa: o descritor de ${c.nota - 20} está cumprido, o de ${Math.min(200, c.nota + 20)} ainda não`
-          : (alvo ? `Faltou o degrau de ${alvo.pontos}: ${alvo.exige}` : 'Faltou cumprir integralmente o descritor de 200'),
-        meia
-          ? `Nenhum defeito objetivo foi encontrado nesta amostra, e o texto já mostra parte do descritor seguinte. Por isso a nota não fica no nível ${c.nota - 20} nem no ${Math.min(200, c.nota + 20)}: fica na meia-faixa de ${c.nota}. Para valer o nível de cima, o descritor precisa aparecer inteiro — não por amostragem.`
-          : `Nesta amostra o motor não encontrou defeito objetivo até ${c.nota} — mas o 200 exige o descritor inteiro do último nível, e o texto ainda não o cumpre por completo. A nota ${c.nota} registra exatamente essa diferença entre “sem erro visível” e “descritor cumprido”.`,
+        alvo ? `Falta cumprir o descritor de ${alvo.pontos}: ${alvo.exige}` : 'Falta cumprir integralmente o descritor de 200',
+        `Nesta amostra nenhum defeito objetivo foi encontrado, e o texto cumpre o descritor de ${c.nota}. A nota não sobe porque o nível seguinte exige o descritor inteiro, por escrito — e é aí que o segundo avaliador também não subiria sozinho. A faixa do relatório mostra até onde a dupla de avaliadores poderia chegar.`,
         null,
-        meia
-          ? `Cumpra por escrito o que falta do descritor de ${Math.min(200, c.nota + 20)} — é essa a diferença entre ${c.nota} e o nível cheio.`
-          : 'Volte ao descritor do próximo degrau e cumpra-o por escrito; a diferença entre ele e o seu texto é o que falta.'
+        alvo
+          ? `Cumpra por escrito o que o descritor de ${alvo.pontos} pede; a diferença entre ele e o seu texto é o que falta.`
+          : 'Volte ao descritor de 200 e cumpra-o por escrito.'
       ));
       explicacao.sintese = sintese(c, explicacao.motivos);
     }

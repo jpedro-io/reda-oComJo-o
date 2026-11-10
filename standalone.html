@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Redação com João — critérios, estrutura, temas e redações analisadas</title>
 <meta name="description" content="Guia completo da redação do ENEM: critérios oficiais das 5 competências, estrutura parte por parte, como ler o comando do tema, banco de temas com repertórios, 13 redações nota 1000 analisadas (2014–2026) e correção com nota e pontos de melhoria." />
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F6F4EF" />
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14181D" />
-<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#FFFFFF" />
+<meta name="color-scheme" content="light" />
 <style>
 /* Fontes self-hosted (subset latin + latin-ext) */
 
@@ -35,61 +34,74 @@
 <style>
 /* ==========================================================================
    REDAÇÃO COM JOÃO — folha de estilo única
-   Paleta: marinho/petróleo + neutro quente (areia) + dourado para conquistas.
-   Dois temas: claro (padrão) e chumbo escuro (prefers-color-scheme: dark).
-   Decisões de arte e movimento em DESIGN.md.
+   Paleta: fundo BRANCO, AZUL ROYAL (#1A3EC8) nos botões e barras, títulos
+   em preto (sobre o branco) e em branco (sobre as faixas azuis). Material:
+   vidro líquido — véu translúcido + desfoque + realce especular.
+   Tema único (claro). Decisões de arte e movimento em DESIGN.md.
    ========================================================================== */
 
-/* ------------------------------------------------------------------ 1. tokens — tema claro */
+/* ------------------------------------------------------------------ 1. tokens */
 :root {
   color-scheme: light;
 
-  /* marca */
-  --marinho: #17395C;          /* cor principal: seriedade, credibilidade */
-  --marinho-txt: #1B4B78;      /* versão para texto (AA) */
-  --petroleo: #1F5A63;         /* apoio frio */
-  --petroleo-txt: #1A5058;
-  --dourado: #B8891F;          /* conquistas, notas, medalhas */
-  --dourado-txt: #8A6714;      /* dourado legível em texto */
-  --dourado-suave: #F4E8C8;
-  --areia: #EFE6D6;            /* neutro quente de apoio */
-  --areia-2: #F7F2E8;
+  /* ----------------------------------------------------------------
+     marca — BRANCO + AZUL ROYAL
+     Fundo branco, azul royal nos botões e barras, títulos em preto
+     (sobre o branco) e em branco (sobre as faixas azuis). O vidro
+     líquido é o material das superfícies: nada de cartão opaco.
+     ---------------------------------------------------------------- */
+  --azul: #1A3EC8;             /* royal — cor principal */
+  --azul-txt: #14309B;         /* royal legível em texto pequeno (AA) */
+  --azul-alto: #2F55F0;        /* realce/hover */
+  --azul-fundo: #E9EEFF;       /* véu azul claríssimo */
+  --azul-linha: rgba(26, 62, 200, .18);
 
-  /* neutros */
-  --tinta: #132A43;
-  --tinta-2: rgba(19, 42, 67, .74);
-  --tinta-3: rgba(19, 42, 67, .56);
-  --fundo-0: #F6F4EF;          /* cinza-gelo quente */
+  /* apelidos históricos — o resto da folha fala esta língua */
+  --marinho: var(--azul);
+  --marinho-txt: var(--azul-txt);
+  --petroleo: var(--azul-txt);
+  --petroleo-txt: var(--azul-txt);
+  --dourado: var(--azul);      /* conquistas agora são azuis */
+  --dourado-txt: #14309B;
+  --dourado-suave: #E4EAFF;
+  --areia: #EEF2FF;
+  --areia-2: #F6F8FF;
+
+  /* neutros — preto de tinta sobre branco puro */
+  --tinta: #080D1C;
+  --tinta-2: rgba(8, 13, 28, .76);
+  --tinta-3: rgba(8, 13, 28, .54);
+  --fundo-0: #FFFFFF;
   --fundo-1: #FFFFFF;
-  --fundo-2: #FBF8F2;
-  --fundo-3: #EFE6D6;
+  --fundo-2: #F7F9FF;
+  --fundo-3: #EDF1FF;
 
-  --borda: rgba(19, 42, 67, .12);
-  --borda-forte: rgba(19, 42, 67, .24);
-  --veu: rgba(19, 42, 67, .04);
-  --veu-forte: rgba(19, 42, 67, .08);
+  --borda: rgba(8, 13, 28, .1);
+  --borda-forte: rgba(8, 13, 28, .2);
+  --veu: rgba(26, 62, 200, .05);
+  --veu-forte: rgba(26, 62, 200, .1);
 
   /* estados */
-  --erro: #A63A32;
-  --erro-bg: rgba(166, 58, 50, .08);
-  --erro-borda: rgba(166, 58, 50, .26);
+  --erro: #B3261E;
+  --erro-bg: rgba(179, 38, 30, .07);
+  --erro-borda: rgba(179, 38, 30, .24);
   --alerta: #8A5A0B;
   --alerta-bg: rgba(184, 137, 31, .12);
   --alerta-borda: rgba(184, 137, 31, .3);
-  --ok: #1F6B50;
-  --ok-bg: rgba(31, 107, 80, .09);
-  --ok-borda: rgba(31, 107, 80, .26);
-  --info: #1B4B78;
-  --info-bg: rgba(27, 75, 120, .07);
-  --info-borda: rgba(27, 75, 120, .2);
-  --roxo: #6B4C9E;
+  --ok: #0A7A55;
+  --ok-bg: rgba(10, 122, 85, .08);
+  --ok-borda: rgba(10, 122, 85, .24);
+  --info: var(--azul-txt);
+  --info-bg: rgba(26, 62, 200, .06);
+  --info-borda: rgba(26, 62, 200, .2);
+  --roxo: #5B3FD1;
 
   /* destaques da análise de redação */
-  --tipo-repertorio: #6B5BD2;
-  --tipo-tese: #8A6714;
-  --tipo-problema: #A63A32;
-  --tipo-argumento: #1F6B5E;
-  --tipo-conectivo: #1B4B78;
+  --tipo-repertorio: #5B3FD1;
+  --tipo-tese: #14309B;
+  --tipo-problema: #B3261E;
+  --tipo-argumento: #0A7A55;
+  --tipo-conectivo: #1A3EC8;
   --tipo-proposta: #7A3E8F;
 
   /* espaço — escala única */
@@ -104,10 +116,10 @@
   --s9: 104px;
 
   /* raio — cresce com a elevação */
-  --r1: 4px;
-  --r2: 10px;
-  --r3: 16px;
-  --r4: 22px;
+  --r1: 6px;
+  --r2: 12px;
+  --r3: 18px;
+  --r4: 26px;
   --rp: 999px;
 
   /* movimento */
@@ -123,75 +135,25 @@
   --f-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
   --f-texto: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* vidro — só nas 4 superfícies de função clara */
-  --vidro: rgba(255, 255, 255, .74);
-  --vidro-forte: rgba(255, 255, 255, .9);
-  --borda-vidro: rgba(19, 42, 67, .1);
-  --desfoque: blur(18px) saturate(150%);
-  --realce-borda: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -1px 0 rgba(19, 42, 67, .05);
-  --sombra-flut: 0 24px 60px -30px rgba(19, 42, 67, .34), 0 2px 8px rgba(19, 42, 67, .06);
-  --sombra-card: 0 1px 2px rgba(19, 42, 67, .05);
+  /* ----------------------------------------------------------------
+     VIDRO LÍQUIDO — o material do site.
+     Três camadas, sempre nesta ordem: véu translúcido + desfoque que
+     carrega a cor do que está atrás + realce especular na borda de
+     cima. É o que separa "caixa com transparência" de vidro.
+     ---------------------------------------------------------------- */
+  --vidro: rgba(255, 255, 255, .58);
+  --vidro-forte: rgba(255, 255, 255, .82);
+  --vidro-azul: rgba(255, 255, 255, .16);
+  --borda-vidro: rgba(255, 255, 255, .7);
+  --desfoque: blur(26px) saturate(190%);
+  --realce-borda: inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -1px 0 rgba(8, 13, 28, .04);
+  --realce-escuro: inset 0 1px 0 rgba(255, 255, 255, .38), inset 0 -1px 0 rgba(0, 0, 0, .14);
+  --sombra-flut: 0 30px 70px -34px rgba(16, 34, 120, .38), 0 2px 10px rgba(8, 13, 28, .05);
+  --sombra-card: 0 1px 2px rgba(8, 13, 28, .04), 0 12px 30px -24px rgba(16, 34, 120, .25);
+  --brilho-azul: 0 0 0 1px rgba(255, 255, 255, .22) inset, 0 18px 40px -22px rgba(26, 62, 200, .55);
 
   --largura: 1120px;
-  --topo: 72px;
-}
-
-/* ------------------------------------------------------------------ 1b. tema escuro (chumbo) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-
-    --marinho: #3E6E9E;
-    --marinho-txt: #A8C9E8;
-    --petroleo: #2F7B85;
-    --petroleo-txt: #7FC6CC;
-    --dourado: #D9B75F;
-    --dourado-txt: #E4C877;
-    --dourado-suave: rgba(217, 183, 95, .16);
-    --areia: #2A2B2C;
-    --areia-2: #232527;
-
-    --tinta: #F1EDE4;
-    --tinta-2: rgba(241, 237, 228, .76);
-    --tinta-3: rgba(241, 237, 228, .56);
-    --fundo-0: #14181D;          /* chumbo escuro */
-    --fundo-1: #1A1F26;
-    --fundo-2: #222A33;
-    --fundo-3: #2A333D;
-
-    --borda: rgba(241, 237, 228, .13);
-    --borda-forte: rgba(241, 237, 228, .26);
-    --veu: rgba(241, 237, 228, .05);
-    --veu-forte: rgba(241, 237, 228, .1);
-
-    --erro: #F09A92;
-    --erro-bg: rgba(240, 154, 146, .1);
-    --erro-borda: rgba(240, 154, 146, .3);
-    --alerta: #E0B661;
-    --alerta-bg: rgba(224, 182, 97, .1);
-    --alerta-borda: rgba(224, 182, 97, .28);
-    --ok: #7FCFB0;
-    --ok-bg: rgba(127, 207, 176, .1);
-    --ok-borda: rgba(127, 207, 176, .28);
-    --info: #A8C9E8;
-    --info-bg: rgba(168, 201, 232, .09);
-    --info-borda: rgba(168, 201, 232, .22);
-    --roxo: #B79CE0;
-
-    --tipo-repertorio: #B0A2F0;
-    --tipo-tese: #E4C877;
-    --tipo-problema: #F09A92;
-    --tipo-argumento: #7FCFB0;
-    --tipo-conectivo: #A8C9E8;
-    --tipo-proposta: #D2A8E8;
-
-    --vidro: rgba(26, 31, 38, .62);
-    --vidro-forte: rgba(22, 26, 32, .86);
-    --borda-vidro: rgba(241, 237, 228, .16);
-    --realce-borda: inset 0 1px 0 rgba(241, 237, 228, .14), inset 0 -1px 0 rgba(0, 0, 0, .4);
-    --sombra-flut: 0 26px 64px -30px rgba(0, 0, 0, .8), 0 2px 8px rgba(0, 0, 0, .4);
-    --sombra-card: 0 1px 2px rgba(0, 0, 0, .3);
-  }
+  --topo: 76px;
 }
 
 /* ------------------------------------------------------------------ 2. base */
@@ -282,7 +244,9 @@ main:focus { outline: none; }
   inset: 0;
   z-index: -2;
   overflow: hidden;
-  background: var(--fundo-0);
+  background:
+    radial-gradient(120% 80% at 50% -10%, #F2F5FF 0%, #FFFFFF 52%),
+    #FFFFFF;
   pointer-events: none;
 }
 
@@ -290,22 +254,12 @@ main:focus { outline: none; }
   position: absolute;
   inset: -25%;
   background:
-    radial-gradient(42% 38% at 14% 8%, rgba(23, 57, 92, .16), transparent 66%),
-    radial-gradient(34% 30% at 86% 16%, rgba(184, 137, 31, .12), transparent 70%),
-    radial-gradient(46% 42% at 64% 98%, rgba(31, 90, 99, .1), transparent 72%),
-    radial-gradient(30% 26% at 30% 76%, rgba(239, 230, 214, .8), transparent 72%);
-  filter: blur(30px);
-  animation: deriva 28s var(--e-inout) infinite alternate;
-}
-
-@media (prefers-color-scheme: dark) {
-  .ceu-aurora {
-    background:
-      radial-gradient(42% 38% at 14% 8%, rgba(62, 110, 158, .3), transparent 66%),
-      radial-gradient(34% 30% at 86% 16%, rgba(217, 183, 95, .12), transparent 70%),
-      radial-gradient(46% 42% at 64% 98%, rgba(47, 123, 133, .2), transparent 72%),
-      radial-gradient(30% 26% at 30% 76%, rgba(20, 24, 29, .6), transparent 72%);
-  }
+    radial-gradient(38% 34% at 12% 6%, rgba(26, 62, 200, .18), transparent 68%),
+    radial-gradient(30% 26% at 88% 12%, rgba(47, 85, 240, .14), transparent 70%),
+    radial-gradient(44% 40% at 68% 96%, rgba(26, 62, 200, .1), transparent 72%),
+    radial-gradient(26% 22% at 34% 74%, rgba(233, 238, 255, .9), transparent 74%);
+  filter: blur(46px);
+  animation: deriva 30s var(--e-inout) infinite alternate;
 }
 
 @keyframes deriva {
@@ -328,14 +282,10 @@ main:focus { outline: none; }
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: .022;
+  opacity: .014;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-@media (prefers-color-scheme: dark) {
-  .grao { opacity: .035; mix-blend-mode: overlay; }
-}
-
 .progresso {
   position: fixed;
   top: 0;
@@ -345,7 +295,7 @@ main:focus { outline: none; }
   z-index: 120;
   transform: scaleX(0);
   transform-origin: 0 50%;
-  background: linear-gradient(90deg, var(--marinho), var(--dourado));
+  background: linear-gradient(90deg, var(--azul), var(--azul-alto));
   will-change: transform;
 }
 
@@ -357,7 +307,7 @@ main:focus { outline: none; }
   right: 0;
   z-index: 100;
   height: var(--topo);
-  background: var(--vidro);
+  background: rgba(255, 255, 255, .93);
   -webkit-backdrop-filter: var(--desfoque);
   backdrop-filter: var(--desfoque);
   border-bottom: 1px solid var(--borda-vidro);
@@ -365,8 +315,9 @@ main:focus { outline: none; }
   transition: background var(--t-hover) var(--e-out), border-color var(--t-hover) var(--e-out);
 }
 .topbar.rolado {
-  background: var(--vidro-forte);
-  border-bottom-color: var(--borda-forte);
+  background: rgba(255, 255, 255, .94);
+  border-bottom-color: var(--azul-linha);
+  box-shadow: var(--realce-borda), 0 12px 30px -26px rgba(16, 34, 120, .5);
 }
 
 .topbar-inner {
@@ -391,19 +342,11 @@ main:focus { outline: none; }
   height: 38px;
   display: grid;
   place-items: center;
-  border-radius: var(--r2);
-  background: linear-gradient(155deg, var(--marinho), var(--petroleo));
-  color: #fff;
-  font-family: var(--f-display);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -.02em;
-  box-shadow: 0 6px 16px -8px rgba(23, 57, 92, .6);
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: 0 8px 18px -10px rgba(16, 34, 120, .7);
 }
-@media (prefers-color-scheme: dark) {
-  .brand-mark { background: linear-gradient(155deg, var(--dourado), #8A6714); color: #14181D; }
-}
-
+.brand-mark svg { width: 100%; height: 100%; display: block; border-radius: 12px; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-text strong {
   font-family: var(--f-display);
@@ -452,25 +395,26 @@ main:focus { outline: none; }
   transition: color var(--t-micro) var(--e-out), background var(--t-micro) var(--e-out);
 }
 .pill:hover { color: var(--tinta); background: var(--veu); text-decoration: none; }
-.pill[aria-current='page'] { color: #fff; background: var(--marinho); }
-@media (prefers-color-scheme: dark) {
-  .pill[aria-current='page'] { color: #14181D; background: var(--dourado); }
+.pill[aria-current='page'] {
+  color: #fff;
+  background: linear-gradient(180deg, var(--azul-alto), var(--azul));
+  box-shadow: var(--brilho-azul);
 }
-
 .pill-cta {
   margin-left: var(--s2);
   flex: 0 0 auto;
-  color: var(--marinho-txt);
-  border: 1px solid var(--borda-forte);
-  background: var(--dourado-suave);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .5);
+  background: linear-gradient(180deg, var(--azul-alto), var(--azul));
+  box-shadow: var(--brilho-azul);
 }
-.pill-cta:hover { color: #fff; background: var(--marinho); border-color: var(--marinho); }
-.pill-cta[aria-current='page'] { background: var(--marinho); color: #fff; border-color: var(--marinho); }
-@media (prefers-color-scheme: dark) {
-  .pill-cta { color: var(--dourado-txt); background: transparent; }
-  .pill-cta:hover, .pill-cta[aria-current='page'] { color: #14181D; background: var(--dourado); border-color: var(--dourado); }
+.pill-cta:hover {
+  color: #fff;
+  background: linear-gradient(180deg, #4A6BF7, var(--azul-alto));
+  border-color: rgba(255, 255, 255, .6);
+  text-decoration: none;
 }
-
+.pill-cta[aria-current='page'] { background: var(--azul); color: #fff; border-color: rgba(255, 255, 255, .5); }
 /* ------------------------------------------------------------------ 5. tipografia de seção */
 .eyebrow {
   display: inline-flex;
@@ -532,7 +476,10 @@ main:focus { outline: none; }
   padding: var(--s3) var(--s5);
   border-radius: var(--r2);
   border: 1px solid var(--borda-forte);
-  background: var(--fundo-1);
+  background: var(--vidro-forte);
+  -webkit-backdrop-filter: var(--desfoque);
+  backdrop-filter: var(--desfoque);
+  box-shadow: var(--realce-borda), 0 1px 2px rgba(8, 13, 28, .04);
   color: var(--tinta);
   font-size: .92rem;
   font-weight: 700;
@@ -541,27 +488,37 @@ main:focus { outline: none; }
               border-color var(--t-hover) var(--e-out), box-shadow var(--t-hover) var(--e-out);
 }
 .btn:hover {
-  background: var(--areia-2);
-  border-color: var(--marinho);
-  color: var(--tinta);
+  background: rgba(255, 255, 255, .95);
+  border-color: var(--azul);
+  color: var(--azul-txt);
   text-decoration: none;
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px -12px rgba(19, 42, 67, .4);
+  box-shadow: var(--realce-borda), 0 14px 28px -18px rgba(26, 62, 200, .5);
 }
 .btn:active { transform: translateY(0) scale(.99); }
 
 .btn-primario {
-  background: var(--marinho);
+  position: relative;
+  background: linear-gradient(180deg, #3257F2 0%, var(--azul) 62%, #14309B 100%);
   color: #fff;
-  border-color: transparent;
-  box-shadow: 0 10px 24px -14px rgba(23, 57, 92, .8);
+  border-color: rgba(255, 255, 255, .34);
+  box-shadow: var(--brilho-azul), inset 0 1px 0 rgba(255, 255, 255, .42);
 }
-.btn-primario:hover { background: #0F2C49; color: #fff; }
-@media (prefers-color-scheme: dark) {
-  .btn-primario { background: var(--dourado); color: #14181D; box-shadow: 0 10px 24px -14px rgba(217, 183, 95, .5); }
-  .btn-primario:hover { background: #E4C877; color: #14181D; }
+.btn-primario::after {
+  /* reflexo especular do vidro: uma faixa clara que atravessa o topo */
+  content: '';
+  position: absolute;
+  inset: 1px 1px auto;
+  height: 46%;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .34), rgba(255, 255, 255, 0));
+  pointer-events: none;
 }
-
+.btn-primario:hover {
+  background: linear-gradient(180deg, #4A6BF7 0%, #2447D8 62%, var(--azul) 100%);
+  color: #fff;
+  box-shadow: var(--brilho-azul), 0 18px 34px -20px rgba(26, 62, 200, .75);
+}
 .btn-fantasma { background: transparent; }
 .btn-pequeno { min-height: 38px; padding: var(--s2) var(--s3); font-size: .82rem; }
 .btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; }
@@ -629,9 +586,6 @@ main:focus { outline: none; }
   border-radius: inherit;
   background: linear-gradient(140deg, rgba(255, 255, 255, .5), transparent 44%);
   pointer-events: none;
-}
-@media (prefers-color-scheme: dark) {
-  .hero-painel::before { background: linear-gradient(140deg, rgba(241, 237, 228, .1), transparent 44%); }
 }
 .hero-painel > * { position: relative; }
 
@@ -863,8 +817,19 @@ main:focus { outline: none; }
 .oficial-lista b { display: block; color: var(--dourado-txt); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; }
 .oficial-fonte { margin-top: var(--s3); font-size: .7rem; color: var(--tinta-3); font-style: italic; }
 .cc-niveis .oficial { color: var(--tinta-3); }
-.badge.meia { border-color: rgba(176,138,52,.55); color: var(--dourado-txt, #8a6a1f); background: rgba(214,178,86,.12); }
-.badge.meia b { font-weight: 800; }
+/* o chip da faixa é um parágrafo de explicação: caixa alta atrapalharia a leitura */
+.badge.faixa {
+  border-color: var(--azul-linha);
+  color: var(--azul-txt);
+  background: var(--azul-fundo);
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.55;
+  padding: var(--s2) var(--s3);
+}
+.badge.faixa b { font-weight: 800; }
 
 .tick-fino { display: block; margin-top: .25rem; font-size: .86em; opacity: .7; }
 
@@ -1191,10 +1156,6 @@ main:focus { outline: none; }
 }
 .filtro:hover { color: var(--tinta); border-color: var(--marinho); }
 .filtro[aria-pressed='true'] { background: var(--marinho); border-color: var(--marinho); color: #fff; }
-@media (prefers-color-scheme: dark) {
-  .filtro[aria-pressed='true'] { background: var(--dourado); border-color: var(--dourado); color: #14181D; }
-}
-
 .lista-temas { border-top: 1px solid var(--borda-forte); }
 
 .tema-linha {
@@ -1327,14 +1288,10 @@ main:focus { outline: none; }
   font-family: var(--f-display);
   font-size: 2.2rem;
   line-height: .9;
-  color: var(--areia);
+  color: transparent;
   font-variant-numeric: tabular-nums;
-  -webkit-text-stroke: 1px var(--borda-forte);
+  -webkit-text-stroke: 1.2px rgba(26, 62, 200, .45);
 }
-@media (prefers-color-scheme: dark) {
-  .cron-num { color: rgba(241, 237, 228, .07); }
-}
-
 .cron-lista { display: grid; gap: var(--s3); }
 
 .red-linha {
@@ -1586,9 +1543,6 @@ mark.mk {
   border-radius: inherit;
   background: linear-gradient(140deg, rgba(255, 255, 255, .4), transparent 40%);
   pointer-events: none;
-}
-@media (prefers-color-scheme: dark) {
-  .ws-saida::before { background: linear-gradient(140deg, rgba(241, 237, 228, .08), transparent 40%); }
 }
 .ws-saida > * { position: relative; }
 
@@ -2080,8 +2034,219 @@ mark.mk {
   details:not([open]) > *:not(summary) { display: block; }
 }
 
+
+/* ==========================================================================
+   RETEMA — BRANCO + AZUL ROYAL + VIDRO LÍQUIDO
+   Esta seção fecha a folha: é o que dá ao site o desenho novo sem reescrever
+   as 1.900 linhas de layout acima. Ordem de leitura: faixas azuis (títulos em
+   branco) → superfícies de vidro → barras e anéis em azul royal → ajustes de
+   contraste.
+   ========================================================================== */
+
+/* ---------------------------------------------------- A. faixas azuis (título branco) */
+.secao-topo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: var(--s7);
+  border-radius: var(--r4);
+  color: #fff;
+  background:
+    radial-gradient(120% 160% at 8% -20%, rgba(255, 255, 255, .3), transparent 58%),
+    linear-gradient(150deg, #2B4FEC 0%, var(--azul) 46%, #102A96 100%);
+  box-shadow: 0 34px 70px -44px rgba(16, 34, 120, .75), inset 0 1px 0 rgba(255, 255, 255, .3);
+}
+.secao-topo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(40% 60% at 92% 8%, rgba(255, 255, 255, .22), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 40%);
+  pointer-events: none;
+}
+.secao-topo h1,
+.secao-topo h2 { color: #fff; }
+.secao-topo .sub,
+.secao-topo .sub b { color: rgba(255, 255, 255, .9); }
+.secao-topo .sub b { font-weight: 800; color: #fff; }
+.secao-topo .eyebrow { color: rgba(255, 255, 255, .78); }
+.secao-topo a { color: #fff; text-decoration-color: rgba(255, 255, 255, .5); }
+
+/* o hero da home também abre em faixa azul */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: var(--s7);
+  border-radius: var(--r4);
+  color: #fff;
+  background:
+    radial-gradient(110% 150% at 4% -30%, rgba(255, 255, 255, .26), transparent 56%),
+    linear-gradient(150deg, #2B4FEC 0%, var(--azul) 48%, #102A96 100%);
+  box-shadow: 0 40px 80px -48px rgba(16, 34, 120, .8), inset 0 1px 0 rgba(255, 255, 255, .3);
+}
+.hero h1,
+.hero h1 em { color: #fff; }
+.hero-sub { color: rgba(255, 255, 255, .88); }
+.hero-stats { border-top-color: rgba(255, 255, 255, .28); }
+.hero-stats dd { color: #fff; }
+.hero-stats dd span { color: #C9D6FF; }
+.hero-stats dt { color: rgba(255, 255, 255, .7); }
+.hero .eyebrow { color: rgba(255, 255, 255, .8); }
+.hero .btn:not(.btn-primario) {
+  color: #fff;
+  background: rgba(255, 255, 255, .14);
+  border-color: rgba(255, 255, 255, .45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4);
+}
+.hero .btn:not(.btn-primario):hover { background: rgba(255, 255, 255, .24); color: #fff; }
+.hero .btn-primario {
+  background: #fff;
+  color: var(--azul);
+  border-color: #fff;
+  box-shadow: 0 16px 34px -20px rgba(0, 0, 0, .5);
+}
+.hero .btn-primario::after { background: none; }
+.hero .btn-primario:hover { background: #F2F5FF; color: var(--azul-txt); }
+
+/* hero-painel dentro da faixa: vidro escuro, não branco */
+.hero-painel {
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .34);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .36), 0 30px 60px -40px rgba(0, 0, 0, .6);
+  color: #fff;
+}
+.hero-painel::before { background: linear-gradient(140deg, rgba(255, 255, 255, .24), transparent 46%); }
+.hero-painel strong,
+.hero-painel b { color: #fff; }
+.hero-painel .hp-pe { color: rgba(255, 255, 255, .84); }
+.hero-painel .hp-pe b { color: #fff; }
+.hero-painel .hp-selo { background: rgba(255, 255, 255, .18); color: #fff; border-color: rgba(255, 255, 255, .4); }
+.hero .hp-lista li,
+.hero .hp-lista span { color: rgba(255, 255, 255, .9); }
+
+/* ---------------------------------------------------- B. superfícies de vidro */
+.card,
+.cartao,
+.comp-card,
+.indice-item,
+.aviso,
+.metricas,
+.rel-topo,
+.painel,
+.proposta,
+.tema-card,
+.red-card,
+.destaque,
+.motivo,
+.proximo-degrau,
+.motivo-zero {
+  -webkit-backdrop-filter: var(--desfoque);
+  backdrop-filter: var(--desfoque);
+}
+
+.comp-card,
+.aviso,
+.proposta,
+.metricas,
+.motivo,
+.proximo-degrau {
+  background: rgba(255, 255, 255, .72);
+  border: 1px solid rgba(8, 13, 28, .08);
+  box-shadow: var(--realce-borda), var(--sombra-card);
+}
+
+/* ------------------------------------------- C. barras e anéis em AZUL ROYAL */
+.cc-bar,
+.barra,
+.regua-barra,
+.progresso-linha {
+  background: rgba(26, 62, 200, .1);
+}
+.cc-bar i,
+.barra i {
+  background: linear-gradient(90deg, var(--azul), var(--azul-alto));
+  box-shadow: 0 0 0 1px rgba(26, 62, 200, .08);
+}
+
+/* anel da nota: arco sólido até o mínimo da faixa, arco claro até o máximo */
+.score-ring {
+  background: conic-gradient(
+    var(--azul) calc(var(--pct-min, 0) * 1%),
+    rgba(26, 62, 200, .3) calc(var(--pct-min, 0) * 1%),
+    rgba(26, 62, 200, .3) calc(var(--pct-max, 0) * 1%),
+    rgba(26, 62, 200, .1) 0
+  );
+  box-shadow: 0 18px 40px -28px rgba(26, 62, 200, .75);
+}
+.score-num { font-size: 1.9rem; }
+.score-num .score-faixa-m {
+  display: block;
+  font-family: var(--f-texto);
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta-3);
+  text-align: center;
+}
+.score-num .score-par { display: inline-flex; align-items: baseline; gap: 2px; font-size: 1.5rem; }
+.score-num .score-par i { font-style: normal; font-weight: 500; color: var(--tinta-3); }
+.score-num .score-par b { font-weight: 500; }
+
+/* nota da competência como faixa */
+.cc-nota i { font-style: normal; font-weight: 600; color: var(--tinta-3); margin: 0 .06em; }
+
+/* ------------------------------------------- D. ajustes de contraste e tato */
+.rel-faixa-nota { font-size: .82rem; color: var(--tinta-3); }
+.badge { border-color: var(--azul-linha); }
+.footer { border-top: 1px solid var(--borda); background: #fff; }
+.footer p { color: var(--tinta-3); }
+::selection { background: rgba(26, 62, 200, .16); color: var(--tinta); }
+
+/* no celular a faixa azul não pode comer a tela */
+@media (max-width: 720px) {
+  .secao-topo,
+  .hero { padding: var(--s6) var(--s5); border-radius: var(--r3); }
+}
+
+/* ---------------------------------------------------- E. números grandes em contorno */
+/* anos da crônica de redações e demais numerais vazados: contorno azul legível */
+.cron-num,
+.num-vazado {
+  color: transparent;
+  -webkit-text-stroke: 1.2px rgba(26, 62, 200, .45);
+}
+@supports not (-webkit-text-stroke: 1px #000) {
+  .cron-num,
+  .num-vazado { color: rgba(26, 62, 200, .35); }
+}
+
+/* a faixa azul do hero não deve engolir os botões de vidro no celular */
+@media (max-width: 640px) {
+  .hero .btn { width: 100%; }
+}
+
+/* ---------------------------------------------------- F. anel da nota em telas pequenas */
+/* "entre 800 – 900" tem 11 caracteres: o anel precisa de diâmetro e de corpo menor */
+@media (max-width: 560px) {
+  .score-ring { --tam: 136px; }
+  .score-num { font-size: 1.7rem; }
+  .score-num .score-par { font-size: 1.15rem; gap: 1px; }
+  .score-num .score-faixa-m { font-size: .52rem; letter-spacing: .12em; }
+}
+
+/* o topo do relatório empilha no celular: anel centralizado, texto embaixo */
+@media (max-width: 720px) {
+  .rel-topo { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
+  .rel-topo .score-ring { justify-self: center; }
+  .rel-faixa { justify-items: center; }
+}
+
 </style>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23C8A24A'/><stop offset='1' stop-color='%2317395C'/></linearGradient></defs><rect width='100' height='100' rx='26' fill='url(%23g)'/><text x='50' y='68' font-size='42' font-family='Georgia,serif' font-weight='bold' fill='%23FFFFFF' text-anchor='middle'>RJ</text></svg>" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Cdefs%3E%3ClinearGradient%20id='m'%20x1='6'%20y1='0'%20x2='42'%20y2='48'%20gradientUnits='userSpaceOnUse'%3E%3Cstop%20offset='0'%20stop-color='%234C6BF7'/%3E%3Cstop%20offset='.42'%20stop-color='%231A3EC8'/%3E%3Cstop%20offset='1'%20stop-color='%230C2078'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x='1.5'%20y='1.5'%20width='45'%20height='45'%20rx='14'%20fill='url(%23m)'/%3E%3Cpath%20d='M24%209.6%2033.2%2020.2%2024%2038.4%2014.8%2020.2Z'%20fill='%23fff'/%3E%3Cpath%20d='M24%2015.4V28.6'%20stroke='%231A3EC8'%20stroke-width='2.1'%20stroke-linecap='round'/%3E%3Ccircle%20cx='24'%20cy='32.4'%20r='2.15'%20fill='%231A3EC8'/%3E%3C/svg%3E" />
 </head>
 <body>
 
@@ -2098,7 +2263,23 @@ mark.mk {
 <header class="topbar">
   <div class="wrap topbar-inner">
     <a class="brand" href="#/">
-      <span class="brand-mark">RJ</span>
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="38" height="38" focusable="false">
+          <defs>
+            <linearGradient id="marca-azul" x1="6" y1="0" x2="42" y2="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#4C6BF7" />
+              <stop offset=".42" stop-color="#1A3EC8" />
+              <stop offset="1" stop-color="#0C2078" />
+            </linearGradient>
+          </defs>
+          <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="url(#marca-azul)" />
+          <path d="M6 17C7.6 9.4 14 4.4 22.5 3.6" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" />
+          <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="none" stroke="#FFFFFF" stroke-opacity=".42" stroke-width="1.2" />
+          <path d="M24 9.6 33.2 20.2 24 38.4 14.8 20.2Z" fill="#FFFFFF" />
+          <path d="M24 15.4V28.6" stroke="#1A3EC8" stroke-width="2.1" stroke-linecap="round" />
+          <circle cx="24" cy="32.4" r="2.15" fill="#1A3EC8" />
+        </svg>
+      </span>
       <span class="brand-text">
         <strong>Redação com João</strong>
         <small>critérios · estrutura · análise</small>
@@ -2178,7 +2359,8 @@ const ERROS_ACENTUACAO = [
   ['processo', 'processo'], ['proprio', 'próprio'], ['propria', 'própria'],
   ['sera', 'será'], ['terao', 'terão'], ['poderao', 'poderão'],
   ['governo', 'governo'], ['emprego', 'emprego'], ['relatorio', 'relatório'],
-  ['obrigatorio', 'obrigatório'], ['previlegio', 'privilégio']
+  ['obrigatorio', 'obrigatório'], ['previlegio', 'privilégio'],
+  ['ambito', 'âmbito'], ['area', 'área'], ['areas', 'áreas'], ['audiencia', 'audiência'], ['ausencia', 'ausência'], ['beneficio', 'benefício'], ['beneficios', 'benefícios'], ['carater', 'caráter'], ['codigo', 'código'], ['comercio', 'comércio'], ['condicao', 'condição'], ['condicoes', 'condições'], ['conteudo', 'conteúdo'], ['contribuicao', 'contribuição'], ['decada', 'década'], ['decadas', 'décadas'], ['deficiencia', 'deficiência'], ['dificil', 'difícil'], ['distancia', 'distância'], ['economico', 'econômico'], ['economica', 'econômica'], ['emergencia', 'emergência'], ['epoca', 'época'], ['estatistico', 'estatístico'], ['exclusao', 'exclusão'], ['fenomeno', 'fenômeno'], ['fisico', 'físico'], ['fisica', 'física'], ['formacao', 'formação'], ['frequencia', 'frequência'], ['genero', 'gênero'], ['geografico', 'geográfico'], ['hipotese', 'hipótese'], ['impossivel', 'impossível'], ['indice', 'índice'], ['industria', 'indústria'], ['infancia', 'infância'], ['influencia', 'influência'], ['inicio', 'início'], ['insercao', 'inserção'], ['instituicao', 'instituição'], ['instituicoes', 'instituições'], ['legislacao', 'legislação'], ['lingua', 'língua'], ['logica', 'lógica'], ['medico', 'médico'], ['medicos', 'médicos'], ['mencao', 'menção'], ['municipio', 'município'], ['municipios', 'municípios'], ['negocio', 'negócio'], ['obrigacao', 'obrigação'], ['opiniao', 'opinião'], ['opinioes', 'opiniões'], ['organizacao', 'organização'], ['participacao', 'participação'], ['periodo', 'período'], ['precario', 'precário'], ['prevencao', 'prevenção'], ['principio', 'princípio'], ['principios', 'princípios'], ['producao', 'produção'], ['profissao', 'profissão'], ['proibicao', 'proibição'], ['protecao', 'proteção'], ['publica', 'pública'], ['publicas', 'públicas'], ['publicos', 'públicos'], ['questao', 'questão'], ['questoes', 'questões'], ['reducao', 'redução'], ['regiao', 'região'], ['regioes', 'regiões'], ['relacao', 'relação'], ['relacoes', 'relações'], ['religiao', 'religião'], ['representacao', 'representação'], ['restricao', 'restrição'], ['resolucao', 'resolução'], ['revolucao', 'revolução'], ['seguranca', 'segurança'], ['serie', 'série'], ['situacao', 'situação'], ['sobrevivencia', 'sobrevivência'], ['solucao', 'solução'], ['solucoes', 'soluções'], ['tendencia', 'tendência'], ['teorico', 'teórico'], ['tradicao', 'tradição'], ['transicao', 'transição'], ['visao', 'visão'], ['vivencia', 'vivência'], ['vulneravel', 'vulnerável'], ['indigena', 'indígena'], ['indigenas', 'indígenas'], ['adocao', 'adoção'], ['agressao', 'agressão'], ['anciao', 'ancião'], ['cidadão', 'cidadão'], ['comunhao', 'comunhão'], ['consorcio', 'consórcio'], ['escolaridade', 'escolaridade'],
 ];
 
 /** Trocas e construções típicas de desvio (texto normalizado). */
@@ -2187,13 +2369,13 @@ const DESVIOS_CONSTRUCAO = [
   { padrao: 'ao inves de', sugestao: 'em vez de', tipo: 'locução' },
   { padrao: 'a nivel de', sugestao: 'em nível de / no âmbito de', tipo: 'barbarismo' },
   { padrao: 'atras de', sugestao: 'atrás de', tipo: 'acentuação' },
-  { padrao: 'atráves', sugestao: 'através', tipo: 'ortografia' },
+  { padrao: 'atráves', sugestao: 'através', tipo: 'ortografia', bruto: true },
   { padrao: 'derrepente', sugestao: 'de repente', tipo: 'ortografia' },
   { padrao: 'concerteza', sugestao: 'com certeza', tipo: 'ortografia' },
   { padrao: 'ha anos atras', sugestao: 'há anos', tipo: 'ortografia' },
   { padrao: 'fazem anos', sugestao: 'faz anos', tipo: 'concordância' },
   { padrao: 'houveram', sugestao: 'houve (haver = impessoal)', tipo: 'concordância' },
-  { padrao: 'haverão', sugestao: 'haverá (haver = impessoal)', tipo: 'concordância' },
+  { padrao: 'haverão', sugestao: 'haverá (haver = impessoal)', tipo: 'concordância', bruto: true },
   { padrao: 'menas', sugestao: 'menos', tipo: 'flexão' },
   { padrao: 'seje', sugestao: 'seja', tipo: 'flexão' },
   { padrao: 'ponhei', sugestao: 'pus', tipo: 'flexão' },
@@ -2205,7 +2387,23 @@ const DESVIOS_CONSTRUCAO = [
   { padrao: 'chegar em', sugestao: 'chegar a', tipo: 'regência' },
   { padrao: 'ir em', sugestao: 'ir a', tipo: 'regência' },
   { padrao: 'obedecer as', sugestao: 'obedecer às', tipo: 'regência' },
-  { padrao: 'fazer com que', sugestao: '(aceitável, mas prefira "levar a")', tipo: 'estilo', peso: 0.3 }
+  { padrao: 'fazer com que', sugestao: '(aceitável, mas prefira "levar a")', tipo: 'estilo', peso: 0.3 },
+  { padrao: 'as vezes', sugestao: 'às vezes', tipo: 'crase', bruto: true },
+  { padrao: 'a medida que', sugestao: 'à medida que', tipo: 'crase', bruto: true },
+  { padrao: 'a vista de', sugestao: 'à vista de', tipo: 'crase', bruto: true },
+  { padrao: 'as custas de', sugestao: 'às custas de', tipo: 'crase', bruto: true },
+  { padrao: 'por causa que', sugestao: 'porque / por causa de', tipo: 'locução' },
+  { padrao: 'se trata de', sugestao: 'trata-se de', tipo: 'colocação' },
+  { padrao: 'enquanto que', sugestao: 'enquanto', tipo: 'redundância' },
+  { padrao: 'mas contudo', sugestao: 'contudo', tipo: 'redundância' },
+  { padrao: 'mas porém', sugestao: 'porém', tipo: 'redundância' },
+  { padrao: 'existe muitas', sugestao: 'existem muitas', tipo: 'concordância' },
+  { padrao: 'existe vários', sugestao: 'existem vários', tipo: 'concordância' },
+  { padrao: 'onde que', sugestao: 'onde', tipo: 'redundância' },
+  { padrao: 'como por exemplo', sugestao: 'por exemplo', tipo: 'redundância', peso: 0.5 },
+  { padrao: 'por conta de', sugestao: 'por causa de', tipo: 'estilo', peso: 0.4 },
+  { padrao: 'de certa forma', sugestao: '(evite o vazio argumentativo)', tipo: 'estilo', peso: 0.3 },
+  { padrao: 'vem crescendo', sugestao: '(aceitável; comprove com dado)', tipo: 'estilo', peso: 0.3 }
 ];
 
 /** Registro informal — prejudica C1 e, às vezes, C3. */
@@ -2490,41 +2688,40 @@ function nivel(nota) {
 }
 
 /**
- * NOTA CHEIA e MEIA-FAIXA.
+ * NOTA OFICIAL (40 em 40) e FAIXA (o intervalo em que dois avaliadores cairiam).
  *
- * A grade oficial pontua de 40 em 40 (0, 40, 80, 120, 160, 200). Existe um caso,
- * porém, em que a redação não cabe em nenhum dos dois níveis vizinhos: cumpre
- * INTEGRALMENTE o descritor de baixo e já mostra parte do descritor de cima.
- * Aí a nota fica na metade do caminho — 20 pontos acima do nível inferior.
+ * A cartilha é explícita: cada avaliador atribui de 0 a 200 por competência e a
+ * nota final é a MÉDIA das duas notas totais. Como os dois avaliadores divergem,
+ * a nota de uma competência pode perfeitamente ser 160, 180 ou 200 — por isso o
+ * corretor nunca publica um número exato, e sim uma FAIXA.
  *
- *   oficializar(160)                       → 160   (nível cheio)
- *   oficializar(180, { intermediario:false }) → 160   (fica no inferior, regra da cartilha)
- *   oficializar(180, { intermediario:true })  → 180   (meia-faixa: entre 160 e 200)
- *   oficializar(20)                        → 20    (abaixo do nível 1 existe meia-faixa, não zero)
- *
- * Quem decide `intermediario` é a competência: só vale quando o texto não tem
- * defeito objetivo nenhum e o único motivo de não subir é a falta de prova do
- * descritor seguinte. Defeito encontrado, teto aplicado → fica no inferior.
+ * Aqui:
+ *   - `nota` é sempre a nota oficial da grade: 0, 40, 80, 120, 160 ou 200;
+ *   - `abertura` é quanto o texto ainda comporta de divergência para cima:
+ *       20 pontos quando o texto está firme no nível alcançado;
+ *       40 pontos quando a leitura interna mostra que ele já traz parte do
+ *       descritor seguinte (o segundo avaliador poderia subir um nível);
+ *   - `faixa` é [nota, nota + abertura], limitada a 200.
  */
-function oficializar(pontos, opts = {}) {
+function oficializar(pontos) {
   const p = Math.max(0, Math.min(200, Math.round((Number(pontos) || 0) / 20) * 20));
-  const intermediario = opts.intermediario === true;
-  const meio = p % 40 === 20;
-
-  let nota;
-  if (p === 0) nota = 0;
-  else if (!meio) nota = p;                 // nível cheio da grade
-  else if (p === 20) nota = 20;             // meia-faixa abaixo do nível 1
-  else nota = intermediario ? p : p - 20;   // meia-faixa só com autorização da competência
-
-  const entre = meio
-    ? { de: Math.max(0, p - 20), para: Math.min(200, p + 20), degrau: p, aplicado: nota === p }
-    : null;
-  return { nota, pontos: p, entre, intermediario: nota === p && meio };
+  const nota = Math.max(0, Math.min(200, Math.floor(p / 40) * 40));
+  const abertura = nota >= 200 ? 0 : (p % 40 === 20 ? 40 : 20);
+  return {
+    nota,
+    pontos: p,
+    abertura,
+    faixa: { min: nota, max: Math.min(200, nota + abertura) }
+  };
 }
 
-/** Nível oficial correspondente (0-5), para citar a cartilha.
-    Nota de meia-faixa (180) fica no nível de baixo: 4. */
+/**
+ * Nível oficial correspondente (0–5), para citar a cartilha.
+ *
+ * A conta é sempre `floor(nota / 40)`: a leitura interna de 180 não é uma nota
+ * publicada — ela é o diagnóstico de um texto que cumpre o nível 4 e já mostra
+ * parte do 5. O nível citado ao estudante é o de baixo, como manda a grade.
+ */
 function nivelOficial(nota) {
   return Math.max(0, Math.min(5, Math.floor((Number(nota) || 0) / 40)));
 }
@@ -4039,15 +4236,15 @@ const CRITERIOS = [
       'Recorrência dos desvios — o mesmo erro repetido pesa mais que o erro isolado'
     ],
     niveis: [
-      { n: 5, texto: 'Demonstra excelente domínio da modalidade escrita formal da língua portuguesa e de escolha de registro. Desvios gramaticais ou de convenções da escrita serão aceitos somente como excepcionalidade e quando não caracterizarem recidência.' },
-      { n: 4, texto: 'Demonstra bom domínio da modalidade escrita formal da língua portuguesa e de escolha de registro, com poucos desvios gramaticais e de convenções da escrita.' },
-      { n: 3, texto: 'Demonstra domínio mediano da modalidade escrita formal da língua portuguesa e de escolha de registro, com alguns desvios gramaticais e de convenções da escrita.' },
-      { n: 2, texto: 'Demonstra domínio insuficiente da modalidade escrita formal da língua portuguesa, com muitos desvios gramaticais, de escolha de registro e de convenções da escrita.' },
-      { n: 1, texto: 'Demonstra domínio precário da modalidade escrita formal da língua portuguesa, de forma sistemática, com diversificados e frequentes desvios gramaticais, de escolha de registro e de convenções da escrita.' },
-      { n: 0, texto: 'Demonstra desconhecimento da modalidade escrita formal da língua portuguesa.' }
+      { n: 5, texto: "Demonstra excelente domínio da modalidade escrita formal da língua portuguesa e de escolha de registro. Desvios gramaticais ou de convenções da escrita serão aceitos somente como excepcionalidade e quando não caracterizarem reincidência." },
+      { n: 4, texto: "Demonstra bom domínio da modalidade escrita formal da língua portuguesa e de escolha de registro, com poucos desvios gramaticais e de convenções da escrita." },
+      { n: 3, texto: "Demonstra domínio mediano da modalidade escrita formal da língua portuguesa e de escolha de registro, com alguns desvios gramaticais e de convenções da escrita." },
+      { n: 2, texto: "Demonstra domínio insuficiente da modalidade escrita formal da língua portuguesa, com muitos desvios gramaticais, de escolha de registro e de convenções da escrita." },
+      { n: 1, texto: "Demonstra domínio precário da modalidade escrita formal da língua portuguesa, de forma sistemática, com diversificados e frequentes desvios gramaticais, de escolha de registro e de convenções da escrita." },
+      { n: 0, texto: "Demonstra desconhecimento da modalidade escrita formal da língua portuguesa." }
     ],
     derrubam: [
-      'O mesmo desvio repetido: “recidência” é o que separa 160 de 120 na descrição oficial.',
+      'O mesmo desvio repetido: “reincidência” é o que separa 160 de 120 na descrição oficial.',
       'Trocas clássicas: “mais” por “mas”, “a cerca de” por “acerca de”, “ao invés de” por “em vez de”.',
       'Vírgula entre sujeito e verbo ou antes de complemento direto.',
       'Marcas de fala: “pra”, “aí”, “tipo”, “coisa”, “né” — a escolha de registro está na descrição do nível.',
@@ -4079,12 +4276,12 @@ const CRITERIOS = [
       'Atenção: copiar trechos dos textos motivadores derruba para 80'
     ],
     niveis: [
-      { n: 5, texto: 'Desenvolve o tema por meio de argumentação consistente, a partir de um repertório sociocultural produtivo, e apresenta excelente domínio do texto dissertativo-argumentativo.' },
-      { n: 4, texto: 'Desenvolve o tema por meio de argumentação consistente e apresenta bom domínio do texto dissertativo-argumentativo, com proposição, argumentação e conclusão.' },
-      { n: 3, texto: 'Desenvolve o tema por meio de argumentação previsível e apresenta domínio mediano do texto dissertativo-argumentativo, com proposição, argumentação e conclusão.' },
-      { n: 2, texto: 'Desenvolve o tema recorrendo à cópia de trechos dos textos motivadores ou apresenta domínio insuficiente do texto dissertativo-argumentativo, não atendendo à estrutura com proposição, argumentação e conclusão.' },
-      { n: 1, texto: 'Apresenta o assunto, tangenciando o tema, ou demonstra domínio precário do texto dissertativo-argumentativo, com traços constantes de outros tipos textuais.' },
-      { n: 0, texto: 'Fuga ao tema/não atendimento à estrutura dissertativo-argumentativa. Nestes casos a redação recebe nota zero e é anulada.' }
+      { n: 5, texto: "Desenvolve o tema por meio de argumentação consistente, a partir de um repertório sociocultural produtivo, e apresenta excelente domínio do texto dissertativo-argumentativo." },
+      { n: 4, texto: "Desenvolve o tema por meio de argumentação consistente e apresenta bom domínio do texto dissertativo-argumentativo, com proposição, argumentação e conclusão." },
+      { n: 3, texto: "Desenvolve o tema por meio de argumentação previsível e apresenta domínio mediano do texto dissertativo-argumentativo, com proposição, argumentação e conclusão." },
+      { n: 2, texto: "Desenvolve o tema recorrendo à cópia de trechos dos textos motivadores ou apresenta domínio insuficiente do texto dissertativo-argumentativo, não atendendo à estrutura com proposição, argumentação e conclusão." },
+      { n: 1, texto: "Apresenta o assunto, tangenciando o tema, ou demonstra domínio precário do texto dissertativo-argumentativo, com traços constantes de outros tipos textuais." },
+      { n: 0, texto: "Fuga ao tema ou não atendimento à estrutura dissertativo-argumentativa. Nestes casos a redação recebe nota 0 (zero) e é anulada." }
     ],
     derrubam: [
       'Tangenciar: falar do assunto amplo e não do recorte. Em C2 isso trava a nota em 40 — e o mesmo limite se aplica a C3 e C5.',
@@ -4115,12 +4312,12 @@ const CRITERIOS = [
       'Projeto de texto: cada parágrafo cumpre a função prevista'
     ],
     niveis: [
-      { n: 5, texto: 'Apresenta informações, fatos e opiniões relacionados ao tema proposto, de forma consistente e organizada, configurando autoria, em defesa de um ponto de vista.' },
-      { n: 4, texto: 'Apresenta informações, fatos e opiniões relacionados ao tema, de forma organizada, com indícios de autoria, em defesa de um ponto de vista.' },
-      { n: 3, texto: 'Apresenta informações, fatos e opiniões relacionados ao tema, limitados aos argumentos dos textos motivadores e pouco organizados, em defesa de um ponto de vista.' },
-      { n: 2, texto: 'Apresenta informações, fatos e opiniões relacionados ao tema, mas desorganizados ou contraditórios e limitados aos argumentos dos textos motivadores, em defesa de um ponto de vista.' },
-      { n: 1, texto: 'Apresenta informações, fatos e opiniões pouco relacionados ao tema ou incoerentes e sem defesa de um ponto de vista.' },
-      { n: 0, texto: 'Apresenta informações, fatos e opiniões não relacionados ao tema e sem defesa de um ponto de vista.' }
+      { n: 5, texto: "Apresenta informações, fatos e opiniões relacionados ao tema proposto, de forma consistente e organizada, configurando autoria, em defesa de um ponto de vista." },
+      { n: 4, texto: "Apresenta informações, fatos e opiniões relacionados ao tema, de forma organizada, com indícios de autoria, em defesa de um ponto de vista." },
+      { n: 3, texto: "Apresenta informações, fatos e opiniões relacionados ao tema, limitados aos argumentos dos textos motivadores e pouco organizados, em defesa de um ponto de vista." },
+      { n: 2, texto: "Apresenta informações, fatos e opiniões relacionados ao tema, mas desorganizados ou contraditórios e limitados aos argumentos dos textos motivadores, em defesa de um ponto de vista." },
+      { n: 1, texto: "Apresenta informações, fatos e opiniões pouco relacionados ao tema ou incoerentes e sem defesa de um ponto de vista." },
+      { n: 0, texto: "Apresenta informações, fatos e opiniões não relacionados ao tema e sem defesa de um ponto de vista." }
     ],
     derrubam: [
       'Repetir exatamente os argumentos dos textos motivadores: a descrição do nível 120 diz isso com todas as letras.',
@@ -4152,12 +4349,12 @@ const CRITERIOS = [
       'Pontuação usada como organizadora do raciocínio'
     ],
     niveis: [
-      { n: 5, texto: 'Articula bem as partes do texto e apresenta repertório diversificado de recursos coesivos.' },
-      { n: 4, texto: 'Articula as partes do texto, com poucas inadequações, e apresenta repertório diversificado de recursos coesivos.' },
-      { n: 3, texto: 'Articula as partes do texto, de forma mediana, com inadequações, e apresenta repertório pouco diversificado de recursos coesivos.' },
-      { n: 2, texto: 'Articula as partes do texto, de forma insuficiente, com muitas inadequações, e apresenta repertório limitado de recursos coesivos.' },
-      { n: 1, texto: 'Articula as partes do texto de forma precária.' },
-      { n: 0, texto: 'Não articula as informações.' }
+      { n: 5, texto: "Articula bem as partes do texto e apresenta repertório diversificado de recursos coesivos." },
+      { n: 4, texto: "Articula as partes do texto, com poucas inadequações, e apresenta repertório diversificado de recursos coesivos." },
+      { n: 3, texto: "Articula as partes do texto, de forma mediana, com inadequações, e apresenta repertório pouco diversificado de recursos coesivos." },
+      { n: 2, texto: "Articula as partes do texto, de forma insuficiente, com muitas inadequações, e apresenta repertório limitado de recursos coesivos." },
+      { n: 1, texto: "Articula as partes do texto de forma precária." },
+      { n: 0, texto: "Não articula as informações." }
     ],
     derrubam: [
       'Parágrafos empilhados, sem transição.',
@@ -4192,12 +4389,12 @@ const CRITERIOS = [
       'Respeito aos direitos humanos — condição eliminatória'
     ],
     niveis: [
-      { n: 5, texto: 'Elabora muito bem proposta de intervenção, detalhada, relacionada ao tema e articulada à discussão desenvolvida no texto.' },
-      { n: 4, texto: 'Elabora bem proposta de intervenção relacionada ao tema e articulada à discussão desenvolvida no texto.' },
-      { n: 3, texto: 'Elabora, de forma mediana, proposta de intervenção relacionada ao tema e articulada à discussão desenvolvida no texto.' },
-      { n: 2, texto: 'Elabora, de forma insuficiente, proposta de intervenção relacionada ao tema, ou não articulada com a discussão desenvolvida no texto.' },
-      { n: 1, texto: 'Apresenta proposta de intervenção vaga, precária ou relacionada apenas ao assunto.' },
-      { n: 0, texto: 'Não apresenta proposta de intervenção ou apresenta proposta não relacionada ao tema ou ao assunto.' }
+      { n: 5, texto: "Elabora muito bem proposta de intervenção, detalhada, relacionada ao tema e articulada à discussão desenvolvida no texto." },
+      { n: 4, texto: "Elabora bem proposta de intervenção relacionada ao tema e articulada à discussão desenvolvida no texto." },
+      { n: 3, texto: "Elabora, de forma mediana, proposta de intervenção relacionada ao tema e articulada à discussão desenvolvida no texto." },
+      { n: 2, texto: "Elabora, de forma insuficiente, proposta de intervenção relacionada ao tema, ou não articulada com a discussão desenvolvida no texto." },
+      { n: 1, texto: "Apresenta proposta de intervenção vaga, precária ou relacionada apenas ao assunto." },
+      { n: 0, texto: "Não apresenta proposta de intervenção ou apresenta proposta não relacionada ao tema ou ao assunto." }
     ],
     derrubam: [
       'Proposta vaga: “é preciso conscientizar a sociedade” — sem quem, como e para quê.',
@@ -4235,11 +4432,12 @@ const AVISO_TANGENCIAMENTO = {
 
 const CALCULO_NOTA = [
   { titulo: 'Dois avaliadores, às cegas', texto: 'Cada redação é corrigida por dois avaliadores independentes, sem acesso ao nome do participante e sem ver a nota do outro.' },
-  { titulo: 'Nota por competência', texto: 'Cada avaliador atribui 0, 40, 80, 120, 160 ou 200 em cada uma das cinco competências — os níveis do guia oficial.' },
-  { titulo: 'Média das duas notas', texto: 'A nota final é a média aritmética das notas totais dos dois avaliadores, somando até 1.000 pontos.' },
-  { titulo: 'Quando entra um terceiro', texto: 'Há discrepância se a diferença total passar de 100 pontos, se passar de 80 pontos em qualquer competência, ou se um avaliador zerar e o outro não. Nesse caso, um terceiro avaliador corrige o texto.' },
-  { titulo: 'A nota é de 40 em 40 — com uma exceção', texto: 'Como na grade oficial, cada competência vale 0, 40, 80, 120, 160 ou 200. Um texto que reúne características de dois níveis é avaliado no inferior, como manda a cartilha. A exceção é o caso abaixo.' },
-  { titulo: 'A meia-faixa (20 em 20): entre dois níveis, sem defeito', texto: 'Quando o texto cumpre INTEGRALMENTE o descritor de um nível, já mostra parte do descritor seguinte e não tem nenhum defeito objetivo que o derrube, a nota fica na metade do caminho: 20, 60, 100, 140 ou 180. É o caso do texto que não erra nada e ainda não sustenta o nível de cima. Com qualquer defeito encontrado — desvio de norma, repetição, período sem pontuação, falta de repertório, proposta incompleta — vale a regra geral: fica no nível inferior.' },
+  { titulo: 'Nota por competência', texto: 'Cada avaliador atribui 0, 40, 80, 120, 160 ou 200 em cada uma das cinco competências — as seis notas da grade oficial. Não existe nota intermediária: 180 não é uma nota da grade.' },
+  { titulo: 'Média das duas notas', texto: 'A nota final do participante é a média aritmética das notas totais atribuídas pelos dois avaliadores, somando até 1.000 pontos. É por isso que a nota final nunca é um número “redondo”: ela nasce de duas leituras que divergem.' },
+  { titulo: 'Quando entra um terceiro', texto: 'Há discrepância se a diferença total passar de 100 pontos, se passar de 80 pontos em qualquer competência, ou se um avaliador zerar e o outro não. Nesse caso, um terceiro avaliador corrige o texto e a nota final passa a ser a média das duas notas mais próximas entre si.' },
+  { titulo: 'Por que o relatório mostra uma faixa', texto: 'Se a nota final é uma média de duas leituras possíveis, publicar “180” seria inventar uma precisão que o exame não tem. O corretor mostra a nota oficial mínima (0, 40, 80, 120, 160 ou 200) e o teto que o texto ainda comporta — daí a leitura “nota entre 160 e 200”.' },
+  { titulo: 'A faixa tem duas larguras', texto: 'Quando o texto está firme no nível, a faixa abre 20 pontos: é a divergência previsível entre dois avaliadores diante do mesmo texto. Quando o texto cumpre o nível e já mostra parte do descritor seguinte, a faixa abre 40 — o segundo avaliador poderia subir um nível inteiro. No total, a faixa nunca passa de 100 pontos, o limite em que a cartilha manda chamar um terceiro avaliador.' },
+  { titulo: 'Característica de dois níveis', texto: 'Texto que reúne características de dois níveis recebe a nota do nível inferior. Isso vale para o avaliador humano e para o corretor: não se arredonda para cima por entusiasmo, e a nota máxima exige prova do descritor completo.' },
   { titulo: 'Amostra curta tem teto', texto: 'Nenhuma competência passa de 120 em texto com menos de 150 palavras, de 160 abaixo de 200 e de 180 abaixo de 240. O descritor exige prova — parágrafos, repertório desenvolvido, proposta completa — e amostra curta não tem espaço para essa prova; por isso não sai 200 de um texto de dez linhas.' },
   { titulo: 'Controle de qualidade', texto: 'A cada 50 redações, o avaliador recebe 2 redações de controle já pontuadas pela comissão. Serve para medir calibragem e pode gerar recapacitação.' }
 ];
@@ -4697,22 +4895,28 @@ const PARA_SUBIR = {
 
 /* ===== js/db/niveis.js ===== */
 /**
- * ESCALA INTERMEDIÁRIA — 11 degraus por competência (0 a 200, de 20 em 20).
+ * ESCALA INTERNA DE DIAGNÓSTICO — 11 degraus por competência (0 a 200, de 20 em 20).
  *
- * A escala oficial do Enem pontua de 40 em 40 (0, 40, 80, 120, 160, 200). Ela
- * é boa para classificar, mas grosseira para explicar: entre "domínio mediano"
- * e "bom domínio" existe um texto que o participante reconhece como seu.
+ * ATENÇÃO: nada aqui é publicado. A nota que o estudante lê é sempre uma das
+ * seis da grade oficial (0, 40, 80, 120, 160, 200) e vem acompanhada de uma
+ * FAIXA — porque a nota do Enem é a média de dois avaliadores que divergem.
  *
- * Esta escala insere um degrau entre cada nível oficial e mantém os seis pontos
- * oficiais nas posições pares (0, 40, 80, 120, 160, 200). Serve para duas coisas:
- *   1. dar nota intermediária quando o texto fica entre dois descritores;
- *   2. permitir que a explicação diga exatamente o que falta para os próximos
- *      20 pontos, e não para os próximos 40.
+ * Esta escala serve apenas ao motor, para medir com mais resolução o que o
+ * texto entrega. Ela mantém os seis pontos oficiais nas posições pares:
  *
- * A régua oficial não é abandonada: ela continua sendo a régua-mãe. O texto
- * só sobe de nível oficial quando cumpre integralmente o descritor daquele
- * nível (ver PRINCIPIO em js/db/cartilhas.js) — o degrau intermediário é o
- * reconhecimento de que ele já reúne parte do descritor seguinte.
+ *   degrau   0   1   2   3   4   5   6   7   8   9  10
+ *   pontos   0  20  40  60  80 100 120 140 160 180 200
+ *   oficial  0   –   1   –   2   –   3   –   4   –   5
+ *
+ * O degrau ímpar é leitura interna: significa "cumpre o nível de baixo e já
+ * mostra parte do descritor do nível seguinte". Ao publicar, `oficializar()`
+ * (js/engine/texto.js) converte o degrau ímpar na nota oficial de baixo e ABRE
+ * a faixa em 40 pontos — é assim que o texto que já mostra o nível seguinte
+ * aparece no relatório: "nota entre 160 e 200".
+ *
+ * A régua oficial continua sendo a régua-mãe: o texto só sobe de nível quando
+ * cumpre integralmente o descritor daquele nível (ver PRINCIPIO em
+ * js/db/cartilhas.js).
  */
 
 /** Os 11 pontos possíveis, do menor ao maior. */
@@ -5885,7 +6089,12 @@ function repeticaoLexical(texto, termosDoTema = []) {
   const contagem = new Map();
   ws.forEach(w => {
     if (w.length < 4 || STOP.has(w) || TOLERADAS.has(w)) return;
-    if ([...tema].some(t => t === w || (t.length > 5 && w.startsWith(t.slice(0, 5))))) return;
+    /* fora da conta: a palavra do tema (igual, radical igual) e também a
+       palavra que é PARTE de um termo composto do tema — quem escreve sobre
+       “saúde mental” vai dizer “saúde” muitas vezes, e isso não é desvio */
+    if ([...tema].some(t => t === w
+      || (t.length > 5 && w.startsWith(t.slice(0, 5)))
+      || (w.length >= 4 && t.startsWith(w)))) return;
     contagem.set(w, (contagem.get(w) || 0) + 1);
   });
 
@@ -5907,15 +6116,36 @@ function repeticaoLexical(texto, termosDoTema = []) {
      - palavra de recheio (GENERICAS) volta 4× → já é repetição;
      - palavra de conteúdo que não é do tema: só a partir de 8×, porque 5 ou 6
        ocorrências de um termo técnico citado pelo texto é normal. */
-  const achados = [...contagem.entries()]
-    .map(([termo, n]) => ({
-      termo,
-      n,
-      generica: GENERICAS.has(termo),
-      densidade: +((n / Math.max(1, ws.length)) * 100).toFixed(2),
-      noMesmoParagrafo: (porParagrafo.get(termo) || []).filter(p => GENERICAS.has(termo) || p.n >= 3)
-    }))
-    .filter(a => (a.generica && a.n >= 4) || a.n >= 8)
+  /* A cartilha trata como repetição o mesmo desvio em palavras de mesmo
+     radical (§3.5.3 da Competência I): “desigualdade/desigualdades”,
+     “jovem/jovens”, “educar/educação” contam juntos. Agrupamos pelo radical
+     quando a palavra é longa o bastante para o radical ser confiável. */
+  const radicalDe = w => (w.length >= 6 ? w.slice(0, 6) : w);
+  const grupos = new Map();
+  contagem.forEach((n, termo) => {
+    const k = GENERICAS.has(termo) ? 'g:' + termo : 'r:' + radicalDe(termo);
+    const atual = grupos.get(k) || { termos: [], n: 0, generica: GENERICAS.has(termo) };
+    atual.termos.push(termo);
+    atual.n = Math.max(atual.n, n);
+    grupos.set(k, atual);
+  });
+
+  const achados = [...grupos.values()]
+    .map(g => {
+      const termo = g.termos.sort((a, b) => contagem.get(b) - contagem.get(a))[0];
+      const totalGrupo = g.termos.reduce((a, t) => a + contagem.get(t), 0);
+      return {
+        termo,
+        n: g.generica ? g.n : totalGrupo,
+        variantes: g.termos.length > 1 ? g.termos : undefined,
+        generica: g.generica,
+        densidade: +(((g.generica ? g.n : totalGrupo) / Math.max(1, ws.length)) * 100).toFixed(2),
+        noMesmoParagrafo: (porParagrafo.get(termo) || [])
+          .filter(p => g.generica || p.n >= 3)
+      };
+    })
+    .filter(a => (a.generica && a.n >= 3)
+      || (a.variantes ? a.n >= 7 : a.n >= 8))
     .sort((a, b) => (b.n - a.n) || (a.generica ? -1 : 1));
 
   return achados;
@@ -5961,7 +6191,7 @@ function frasesRepetidas(texto) {
       let inter = 0;
       a.forEach(w => { if (b.has(w)) inter++; });
       const jac = inter / (a.size + b.size - inter);
-      if (jac >= 0.78) { iguais.push({ frase: fs[j], indice: j }); usadas.add(j); }
+      if (jac >= 0.74) { iguais.push({ frase: fs[j], indice: j }); usadas.add(j); }
     }
     if (iguais.length > 1) {
       usadas.add(i);
@@ -5984,7 +6214,7 @@ function expressoesRepetidas(texto, termosDoTema = []) {
     conta.set(k, (conta.get(k) || 0) + 1);
   }
   return [...conta.entries()]
-    .filter(([, n]) => n >= 2)
+    .filter(([, n]) => n >= 3)
     .map(([expressao, n]) => ({ expressao, n }))
     .sort((a, b) => b.n - a.n)
     .slice(0, 6);
@@ -6161,19 +6391,29 @@ function avaliarC1(ctx) {
   // "acesso", "sociedade" etc. são invariáveis: removemos falsos positivos
   const errosReais = erros.filter(e => e.forma !== e.correto);
   const totalOcorr = errosReais.reduce((a, e) => a + e.n, 0);
+  /* Cartilha da Competência I, §3.5.3: desvio de convenção da escrita conta
+     UMA vez por vocábulo, ainda que a palavra se repita no texto (“brasil”
+     minúsculo três vezes = 1 desvio). Repetir o mesmo erro não multiplica a
+     contagem — mas mostra falta de revisão, e é isso que entra na conta. */
+  const vocabulos = errosReais.length;
   sinais.desviosOrtograficos = totalOcorr;
-  if (totalOcorr > 0) {
-    desconto += Math.min(90, totalOcorr * 10);
+  sinais.vocabulosComDesvio = vocabulos;
+  if (vocabulos > 0) {
+    desconto += Math.min(90, vocabulos * 14 + Math.min(2, totalOcorr - vocabulos) * 4);
     const top = errosReais.slice(0, 4)
       .map(e => `“${e.forma}” → “${e.correto}”${e.n > 1 ? ` (${e.n}×)` : ''}`)
       .join(' · ');
-    melhorias.push(`Grafia a revisar: ${top}. ${totalOcorr > 4 ? 'Como o desvio se repete, o impacto na nota é maior.' : ''}`);
+    melhorias.push(`Grafia a revisar: ${top}. ` + (totalOcorr > vocabulos
+      ? 'O mesmo desvio volta em outras ocorrências: pela cartilha conta um desvio por vocábulo, mas a repetição do erro mostra que faltou revisão.'
+      : ''));
   }
 
   // 2. construções e regências
   const construcoes = [];
   for (const d of DESVIOS_CONSTRUCAO) {
-    const n = contarTermo(ctx.norm, d.padrao);
+    const n = d.bruto
+      ? contarTermo(ctx.texto.toLowerCase().replace(/\s+/g, ' '), d.padrao)
+      : contarTermo(ctx.norm, d.padrao);
     if (n > 0) {
       construcoes.push({ ...d, n });
       desconto += Math.max(4, Math.round(12 * (d.peso ?? 1))) * Math.min(n, 3);
@@ -6201,21 +6441,21 @@ function avaliarC1(ctx) {
     melhorias.push('Excesso de sinais de exclamação/interrogação ou pontuação repetida — prefira a pontuação própria do texto argumentativo.');
   }
 
-  // 5. repetição de palavras (ignora termos que são o próprio núcleo do tema)
-  const contagem = {};
-  for (const w of ctx.palavras) {
-    if (w.length < 4 || STOPWORDS.has(w)) continue;
-    contagem[w] = (contagem[w] || 0) + 1;
-  }
-  const termosDoTema = new Set([...(ctx.nucleo || []), ...(ctx.apoio || [])].map(normalizar));
-  const repetidas = Object.entries(contagem)
-    .filter(([w, n]) => n >= 8 && !termosDoTema.has(normalizar(w)))
-    .sort((a, b) => b[1] - a[1]).slice(0, 3);
+  /* 5. repetição de palavras — mesma régua da Competência IV (estilo.js), para
+     que o mesmo texto não receba dois veredictos sobre repetição: palavra de
+     recheio (GENÉRICAS) a partir de 3 ocorrências, palavra de conteúdo a
+     partir de 7, agrupando radical. Termos do tema ficam fora: repetir o
+     assunto é obrigatório, não é desvio. */
+  const repetidas = (ctx.estilo?.repeticao || []).slice(0, 3);
   sinais.repeticoes = repetidas.length;
   if (repetidas.length) {
-    desconto += Math.min(25, repetidas.length * 8);
-    melhorias.push('Repetição de termos: ' + repetidas.map(([w, n]) => `“${w}” (${n}×)`).join(', ') +
-      '. Use retomadas por sinônimo ou pronome.');
+    const grave = repetidas.some(r => r.n >= 7);
+    desconto += Math.min(45, repetidas.reduce((a, r) => a + (r.n >= 7 ? 16 : 8), 0));
+    melhorias.push('Repetição de termos: ' + repetidas
+      .map(r => `“${r.termo}” (${r.n}×)` + (r.variantes ? ` [${r.variantes.join(', ')}]` : ''))
+      .join(', ') + (grave
+        ? '. A cartilha cobra retomada por sinônimo, pronome ou elipse; com esse número de voltas, a repetição é um desvio de norma, não uma escolha de estilo.'
+        : '. Troque a segunda e a terceira ocorrências por sinônimo ou pronome.'));
   }
 
   // 6. frases muito longas
@@ -6244,7 +6484,7 @@ function avaliarC1(ctx) {
     informalidade: informalidades.slice(0, 4).map(t => ({ termo: t, contexto: trecho(ctx.texto, t) })),
     frasesLongas: ctx.fras.filter(f => palavras(f).length > 45).slice(0, 2)
       .map(f => f.trim().slice(0, 160)),
-    repeticoes: repetidas.map(([w, n]) => ({ termo: w, n }))
+    repeticoes: repetidas.map(r => ({ termo: r.termo, n: r.n }))
   };
   /* ---- pontuação e estrutura do período (cartilha, Competência I) -----
      A grade cobra "pontuação" como parte do domínio da norma escrita: período
@@ -6375,7 +6615,7 @@ function avaliarC1(ctx) {
     melhorias.push('Não há desvio de norma, mas a estrutura ainda é simples: para chegar a 200 o texto precisa mostrar subordinação variada (causa, concessão, condição, consequência) e pontuação que organize essas relações (vírgula, dois-pontos, ponto e vírgula).');
   }
 
-  /* meia-faixa: nenhum desvio, pontuação limpa, mas sem prova de estrutura
+  /* degrau interno 180: nenhum desvio, pontuação limpa, mas sem prova de estrutura
      exemplar (subordinação + pontuação rica). O texto cumpre o 160 inteiro e
      já mostra parte do 200 — vale 180, não 160. */
   sinais.intermediario = totalDesvios === 0 && pontuacaoLimpa && !estruturaExemplar;
@@ -6402,30 +6642,35 @@ function tetoPorAmostra(pontos, palavras) {
   return pontos;
 }
 
-/** Fecha a competência: nota oficial (40 em 40) + degrau diagnóstico (20 em 20). */
+/**
+ * Fecha a competência.
+ *
+ * A nota publicada é SEMPRE a oficial da grade (0, 40, 80, 120, 160, 200).
+ * Junto dela vai a FAIXA: quanto o segundo avaliador ainda poderia subir nesta
+ * competência. É a faixa que aparece no site — nunca um número exato, porque a
+ * nota final do Enem é a média aritmética de dois avaliadores que divergem.
+ */
 function fechar(id, nota20, fortes, melhorias, sinais, nome, resumo, ctx) {
   const brutos = degrau(nota20, 0, 200);
   const comTeto = tetoPorAmostra(brutos, ctx.metricas.palavras);
-  const cortadoPorAmostra = comTeto < brutos;
 
-  /* MEIA-FAIXA: a competência só autoriza a nota de 20 em 20 quando não achou
-     defeito nenhum e o único motivo de não subir é a falta de prova do
-     descritor seguinte (`sinais.intermediario`). Com defeito ou teto, fica no
-     nível inferior, como manda a cartilha. O teto de amostra também vale como
-     meia-faixa (180 em texto de 220 palavras é o próprio teto). */
-  const autorizaMeiaFaixa = cortadoPorAmostra || sinais.intermediario === true;
-  const oficial = oficializar(comTeto, { intermediario: autorizaMeiaFaixa });
-  const { nota, entre, pontos } = oficial;
-  sinais.meiaFaixa = oficial.intermediario === true;
+  const oficial = oficializar(comTeto);
+  const { nota, pontos, abertura, faixa } = oficial;
+
   sinais.tetoAmostra = comTeto < brutos ? brutos - comTeto : 0;
   sinais.pontosDiagnostico = pontos;
+  sinais.abertura = abertura;
+  sinais.faixaNota = faixa;
+  /* o texto "já mostra parte do descritor seguinte": é o que abre a faixa em 40 */
+  sinais.proximoNivel = pontos % 40 === 20;
+
   return {
     id, nome, resumo,
-    nota,                    // nota oficial: 0, 40, 80, 120, 160 ou 200
-    pontos,                  // degrau de diagnóstico: 0, 20, …, 200
-    entreDegraus: entre,     // preenchido só quando o texto está ENTRE dois níveis
+    nota,                        // nota oficial: 0, 40, 80, 120, 160 ou 200
+    pontos,                      // leitura interna da mesma nota (uso do motor)
+    faixaNota: faixa,            // { min, max } — o intervalo publicado
     nivel: nivel(pontos),
-    nivelOficial: Math.floor(pontos / 40),
+    nivelOficial: Math.floor(nota / 40),
     fortes, melhorias, sinais
   };
 }
@@ -6626,7 +6871,7 @@ function avaliarC2(ctx) {
   })();
   sinais.exemploParagrafoTema = ctx.paras[0] ? ctx.paras[0].trim().slice(0, 200) : null;
 
-  /* meia-faixa: repertório legitimado e articulado, partes no lugar, e a única
+  /* degrau interno 180: repertório legitimado e articulado, partes no lugar, e a única
      quebra é a transição de um argumento (ou a quantidade de parágrafos com
      tema). Cumpre o 160 e encosta no 200 — 180. */
   sinais.intermediario = nota === 180 && ctx.metricas.palavras >= 175;
@@ -6742,7 +6987,7 @@ function avaliarC3(ctx) {
   }));
   sinais.paragrafosComTema = parasComTemaC3;
 
-  /* meia-faixa: tese + dois argumentos desenvolvidos, sem clichê e sem 1ª
+  /* degrau interno 180: tese + dois argumentos desenvolvidos, sem clichê e sem 1ª
      pessoa; a única ponta solta é a progressão não atravessar o texto todo. */
   sinais.intermediario = nota === 180 && cliches.length === 0 && primeiraPessoa.length === 0;
 
@@ -6883,10 +7128,10 @@ function avaliarC4(ctx) {
   const est = ctx.estilo;
   const repeticaoGrave = est.repeticao.filter(a => a.n >= 8);
   const repeticaoMedia = est.repeticao.filter(a => a.n >= 6 && a.n < 8);
-  const repeticaoLeve = est.repeticao.filter(a => a.n >= 4 && a.n < 6);
+  const repeticaoLeve = est.repeticao.filter(a => a.n >= 3 && a.n < 6);
   const noMesmoParagrafo = est.repeticao.filter(a => a.noMesmoParagrafo.some(p => p.n >= 3));
   const frasesRepetidas = est.frasesRepetidas;
-  const expressoes = est.expressoes.filter(o => o.n >= 2);
+  const expressoes = est.expressoes.filter(o => o.n >= 3);
   const aberturas = est.aberturasRepetidas;
 
   let tetoEstilo = 200;
@@ -7102,7 +7347,7 @@ function avaliarC5(ctx) {
     melhorias.push('Os cinco elementos aparecem, mas comprimidos em poucas palavras. Desenvolva a proposta em duas ou três frases: detalhamento raso não sustenta o nível máximo.');
   }
 
-  /* meia-faixa: quatro elementos válidos + um vago, ou os cinco presentes mas
+  /* degrau interno 180: quatro elementos válidos + um vago, ou os cinco presentes mas
      comprimidos numa frase. Cumpre o 160 e encosta no 200 — 180. */
   sinais.intermediario = nota === 180;
 
@@ -7124,6 +7369,8 @@ function avaliarC5(ctx) {
  * As regras vêm de js/db/cartilhas.js (destilado das cartilhas da FGV/Inep).
  */
 
+/* sem alias de import: o build offline remove as linhas de import e deixa um
+escopo só — nomes aliasados quebrariam o standalone ("EXIGES is not defined"). */
 
 
 
@@ -7131,60 +7378,54 @@ const motivo = (gravidade, titulo, porque, evidencia, comoResolver, exemplos = [
   ({ gravidade, titulo, porque, evidencia, comoResolver, exemplos });
 
 /**
- * Monta o bloco de nível da explicação em DUAS réguas:
- *   - a intermediária (0–10), que dá o degrau exato e o que falta para +20;
- *   - a oficial (0–5), de onde vem a regra e o texto da cartilha.
- * O degrau intermediário nunca substitui a régua oficial: ele a detalha.
+ * Bloco de nível da explicação, agora em uma régua só: a da cartilha (0 a 5).
+ * O motor continua lendo o texto em passos de 20 internamente, mas o que o
+ * estudante vê é o nível oficial, a nota oficial e a FAIXA em que dois
+ * avaliadores poderiam fechar a mesma competência.
  */
 function base(id, comp) {
   const g = GRADES[id];
-  // `pontos` é o degrau diagnóstico (20 em 20); `nota` é a nota oficial (40 em 40)
-  const n = Math.max(0, Math.min(10, Math.round((comp.pontos ?? comp.nota) / 20)));
-  /* nível oficial = nota/40 (a nota já trata o diagnóstico 20 como 40: zero é
-     reservado a fuga e anulação, nunca a "texto fraco") */
-  const oficial = Math.max(0, Math.min(5, Math.floor((comp.nota ?? 0) / 40)));
-  const prox = n >= 10 ? null : n + 1;
-  const niveis = NIVEIS[id].niveis;
+  const nota = Math.max(0, Math.min(200, comp.nota ?? 0));
+  const oficial = Math.max(0, Math.min(5, Math.floor(nota / 40)));
+  const prox = Math.min(5, oficial + 1);
+  const faixa = comp.faixaNota || { min: nota, max: Math.min(200, nota + 40) };
   return {
     eixo: g.eixo,
     regra: g.regra,
     fonte: g.fonte,
     nivel: {
-      n,
-      pontos: pontosDe(n),
-      nota: comp.nota,
-      entre: comp.entreDegraus || null,
+      n: oficial,
+      pontos: nota,
+      nota,
       oficial,
-      exige: niveis[n].texto,
+      faixa,
+      exige: g.niveis[oficial],
       exigeOficial: g.niveis[oficial],
       exigeCurto: EXIGE[id][oficial] || ''
     },
     nivelTexto: g.niveis[oficial],
-    nivelTextoProximo: g.niveis[Math.min(5, oficial + 1)],
-    proximo: prox === null ? null : {
+    nivelTextoProximo: g.niveis[prox],
+    proximo: oficial >= 5 ? null : {
       n: prox,
-      pontos: pontosDe(prox),
-      oficial: Math.max(0, Math.min(5, Math.floor(prox / 2))),
-      exige: niveis[prox].texto,
+      pontos: prox * 40,
+      oficial: prox,
+      exige: g.niveis[prox],
       faltou: (PARA_SUBIR[id] || {})[oficial] || null
     }
   };
 }
 
 function sintese(comp, motivos) {
+  const faixa = comp.faixaNota || { min: comp.nota, max: comp.nota };
+  const intervalo = faixa.max > faixa.min ? `${faixa.min} e ${faixa.max}` : `${faixa.min}`;
   if (comp.nota === 200) {
     return 'Chegou a 200/200: nesta amostra o texto cumpre integralmente o descritor do nível máximo. O que aparece abaixo são observações de refinamento, não impedimentos.';
   }
   if (!motivos.length) {
-    return `A competência chegou a ${comp.nota}/200: nesta amostra o texto cumpre o descritor do nível mais alto que o motor consegue verificar.`;
+    return `Faixa de ${intervalo}/200: nesta amostra o texto cumpre o descritor do nível alcançado, e a diferença para o nível seguinte é o que o segundo avaliador poderia reconhecer.`;
   }
   const primeiro = motivos[0];
-  const meia = comp.nota % 40 === 20;
-  const nivel = Math.max(0, Math.min(5, Math.floor((comp.nota ?? 0) / 40)));
-  const onde = meia
-    ? `${comp.nota}/200 — meia-faixa entre ${comp.nota - 20} e ${comp.nota + 20}`
-    : `${comp.nota}/200 (nível ${nivel} de 5)`;
-  return `Ficou em ${onde} porque ${primeiro.titulo.charAt(0).toLowerCase()}${primeiro.titulo.slice(1).replace(/\.$/, '')}.`;
+  return `Faixa de ${intervalo}/200 porque ${primeiro.titulo.charAt(0).toLowerCase()}${primeiro.titulo.slice(1).replace(/\.$/, '')}.`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -7692,22 +7933,17 @@ function explicarCompetencias(comps = []) {
     }
 
     // toda nota abaixo de 200 precisa de um motivo explícito, mesmo quando o
-    // avaliador não achou nada de errado além de não ter cumprido o próximo degrau
+    // motor não achou defeito além de o descritor seguinte não estar cumprido
     if (c.nota < 200 && !explicacao.motivos.length) {
       const alvo = explicacao.proximo;
-      const meia = c.nota % 40 === 20;
       explicacao.motivos.push(motivo(
         'baixa',
-        meia
-          ? `Meia-faixa: o descritor de ${c.nota - 20} está cumprido, o de ${Math.min(200, c.nota + 20)} ainda não`
-          : (alvo ? `Faltou o degrau de ${alvo.pontos}: ${alvo.exige}` : 'Faltou cumprir integralmente o descritor de 200'),
-        meia
-          ? `Nenhum defeito objetivo foi encontrado nesta amostra, e o texto já mostra parte do descritor seguinte. Por isso a nota não fica no nível ${c.nota - 20} nem no ${Math.min(200, c.nota + 20)}: fica na meia-faixa de ${c.nota}. Para valer o nível de cima, o descritor precisa aparecer inteiro — não por amostragem.`
-          : `Nesta amostra o motor não encontrou defeito objetivo até ${c.nota} — mas o 200 exige o descritor inteiro do último nível, e o texto ainda não o cumpre por completo. A nota ${c.nota} registra exatamente essa diferença entre “sem erro visível” e “descritor cumprido”.`,
+        alvo ? `Falta cumprir o descritor de ${alvo.pontos}: ${alvo.exige}` : 'Falta cumprir integralmente o descritor de 200',
+        `Nesta amostra nenhum defeito objetivo foi encontrado, e o texto cumpre o descritor de ${c.nota}. A nota não sobe porque o nível seguinte exige o descritor inteiro, por escrito — e é aí que o segundo avaliador também não subiria sozinho. A faixa do relatório mostra até onde a dupla de avaliadores poderia chegar.`,
         null,
-        meia
-          ? `Cumpra por escrito o que falta do descritor de ${Math.min(200, c.nota + 20)} — é essa a diferença entre ${c.nota} e o nível cheio.`
-          : 'Volte ao descritor do próximo degrau e cumpra-o por escrito; a diferença entre ele e o seu texto é o que falta.'
+        alvo
+          ? `Cumpra por escrito o que o descritor de ${alvo.pontos} pede; a diferença entre ele e o seu texto é o que falta.`
+          : 'Volte ao descritor de 200 e cumpra-o por escrito.'
       ));
       explicacao.sintese = sintese(c, explicacao.motivos);
     }
@@ -7805,7 +8041,11 @@ function corrigir(textoBruto, opts = {}) {
     comps.forEach(c => {
       c.notaOriginal = c.nota;
       c.pontosOriginal = c.pontos;
-      c.nota = 0; c.pontos = 0; c.nivel = 0; c.nivelOficial = 0; c.entreDegraus = null;
+      c.faixaOriginal = c.faixaNota;
+      c.nota = 0; c.pontos = 0; c.nivel = 0; c.nivelOficial = 0;
+      /* nota zero não tem divergência: os dois avaliadores chegam ao mesmo 0 */
+      c.faixaNota = { min: 0, max: 0 };
+      c.abertura = 0;
     });
   }
 
@@ -7823,42 +8063,29 @@ function corrigir(textoBruto, opts = {}) {
         c.pontos = Math.min(c.pontos, 40);
         c.nivel = nivel(c.pontos);
         c.nivelOficial = 1;
-        c.entreDegraus = null;
+        c.faixaNota = { min: 40, max: 60 };
+        c.abertura = 20;
         c.tetoAplicado = 'tangenciamento';
         c.melhorias.unshift('Tangenciamento do tema: a cartilha limita as Competências II, III e V a 40 pontos quando o texto fala do assunto sem chegar ao recorte pedido.');
       }
     });
   }
 
-  /* ---------- meia-faixa: só quando não há impedimento ----------
-     A nota de 20 em 20 existe para o texto que cumpre um nível inteiro e já
-     mostra parte do seguinte SEM defeito objetivo. Se qualquer cartão do
-     relatório aponta um problema que "impede o 200" ou "pesa na nota", a
-     meia-faixa não vale: a nota volta para o nível inferior, como manda a
-     cartilha. É a trava que mantém o rigor. */
-  let explicadas = explicarCompetencias(comps);
-  const rebaixar = new Set();
-  comps.forEach((c, i) => {
-    /* nota 20 é a meia-faixa abaixo do nível 1 (tangenciamento, um elemento
-       vago): ela não desce para 0 — zero é reservado a fuga e anulação. */
-    if (c.nota % 40 !== 20 || c.nota <= 20) return;
-    const motivos = explicadas[i].explicacao?.motivos || explicadas[i].motivos || [];
-    if (motivos.some(m => m.gravidade === 'alta' || m.gravidade === 'media')) rebaixar.add(c.id);
-  });
-  if (rebaixar.size) {
-    comps.forEach(c => {
-      if (!rebaixar.has(c.id)) return;
-      c.nota -= 20;
-      c.sinais.meiaFaixa = false;
-      c.sinais.meiaFaixaNegada = true;
-      if (c.entreDegraus) c.entreDegraus.aplicado = false;
-      c.melhorias.unshift('A meia-faixa não foi aplicada: havia um defeito objetivo nesta competência, e a cartilha manda ficar no nível inferior.');
-    });
-    explicadas = explicarCompetencias(comps);
-  }
-
+  /* ---------- nota final como FAIXA ----------
+     Cada avaliador do Enem dá de 0 a 200 por competência e a nota final é a
+     média das duas notas totais. Dois avaliadores nunca fecham exatamente o
+     mesmo número — a cartilha só chama um terceiro quando a diferença passa de
+     100 pontos no total (ou 80 numa competência). Por isso o relatório publica
+     um intervalo: o mínimo é a soma das notas oficiais; o máximo soma, em cada
+     competência, a abertura que o texto ainda comporta, limitado pela própria
+     regra de divergência. */
+  const explicadas = explicarCompetencias(comps);
   const notaTotal = comps.reduce((a, c) => a + c.nota, 0);
-  const faixa = faixaDe(notaTotal);
+  const somaMax = comps.reduce((a, c) => a + (c.faixaNota?.max ?? c.nota), 0);
+  /* redação zerada não tem faixa: a nota é 0, sem divergência possível */
+  const notaTotalMax = zerada ? 0
+    : Math.min(1000, Math.max(notaTotal + 40, Math.min(notaTotal + 100, somaMax)));
+  const faixa = faixaDe(Math.round((notaTotal + notaTotalMax) / 2));
 
   /* ---------- alertas pedagógicos ---------- */
   if (ctx.metricas.linhas > 30) {
@@ -7925,6 +8152,8 @@ function corrigir(textoBruto, opts = {}) {
     texto,
     tema,
     notaTotal,
+    notaTotalMax,
+    notaFaixa: { min: notaTotal, max: notaTotalMax },
     faixa,
     zerada,
     motivosZero,
@@ -8022,11 +8251,19 @@ function animarNumeros(raiz = document) {
   });
 }
 
-/** Aneis de nota: preenche com transição de stroke-dashoffset. */
+/**
+ * Anéis de nota. A nota é uma FAIXA: o arco sólido vai até o mínimo e o arco
+ * claro cobre a margem até o máximo. Dois dados, duas variáveis CSS.
+ */
 function pintarAneis(raiz = document) {
-  [...raiz.querySelectorAll('[data-anel]')].forEach(el => {
-    const pct = Math.max(0, Math.min(100, Number(el.dataset.anel) || 0));
-    requestAnimationFrame(() => el.style.setProperty('--pct', pct));
+  const limitar = v => Math.max(0, Math.min(100, Number(v) || 0));
+  [...raiz.querySelectorAll('[data-anel-min], [data-anel-max]')].forEach(el => {
+    const min = limitar(el.dataset.anelMin);
+    const max = Math.max(min, limitar(el.dataset.anelMax ?? min));
+    requestAnimationFrame(() => {
+      el.style.setProperty('--pct-min', min);
+      el.style.setProperty('--pct-max', max);
+    });
   });
 }
 
@@ -8162,7 +8399,7 @@ function viewHome() {
         <span class="hp-selo">${ico('check')} 1000 pontos</span>
       </div>
       <div class="hp-lista">${comps}</div>
-      <p class="hp-pe">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial — e, quando o texto cumpre um nível inteiro e já mostra parte do seguinte, a <b>meia-faixa</b>: 20, 60, 100, 140, 180.</p>
+      <p class="hp-pe">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, e dois avaliadores nunca fecham o mesmo número, o relatório publica sempre uma <b>faixa</b> — “nota entre X e Y” — nunca um número exato.</p>
     </aside>
   </section>
 
@@ -8272,7 +8509,7 @@ function viewCriterios() {
       <span class="eyebrow" data-entrada>Critérios</span>
       <h1 data-entrada>Cinco competências, seis níveis cada.</h1>
     </div>
-    <p class="sub" data-entrada>A nota é a da grade oficial: <b>0, 40, 80, 120, 160 ou 200</b> por competência. Quem reúne características de dois níveis fica no inferior — mas há um caso em que o texto <b>cumpre o nível inteiro e já mostra parte do seguinte</b>, sem nenhum defeito objetivo: aí a nota é a <b>meia-faixa</b> (20, 60, 100, 140, 180). Cada nível traz o descritor da cartilha e, abaixo dele, o que o avaliador procura no texto. À esquerda, a régua; à direita, o que isso significa na prática.</p>
+    <p class="sub" data-entrada>A nota de cada competência é uma das <b>seis notas oficiais</b>: 0, 40, 80, 120, 160 ou 200. Quem reúne características de dois níveis fica no inferior — é a regra da grade. O que o relatório mostra é a <b>faixa</b> em que essa nota cai, porque a nota final do Enem é a média de dois avaliadores e os dois divergem: por isso você lê “nota entre 160 e 200”, e não “180”. Cada nível traz o descritor da cartilha e, abaixo dele, o que o avaliador procura no texto.</p>
   </div>
 
   <div class="regua">${regua}</div>
@@ -8768,26 +9005,37 @@ function motivoHTML(m) {
     </li>`;
 }
 
+/* faixa publicada de uma competência: {min,max} — com os 40 oficiais nas pontas */
+function faixaDaComp(c) {
+  const f = c.faixaNota || { min: c.nota, max: c.nota };
+  return { min: f.min, max: f.max, exata: f.min === f.max };
+}
+
 function compCard(c, aberto) {
   const ex = c.explicacao || {};
   const nivel = ex.nivel || { n: c.nivel, pontos: c.nota, exige: '' };
   const classeNota = c.nota < 120 ? 'baixa' : c.nota < 200 ? 'media' : '';
-  const meia = c.nota % 40 === 20;
+  const f = faixaDaComp(c);
+  const rotuloFaixa = f.exata ? `${f.min}` : `${f.min}<i>–</i>${f.max}`;
   return `
   <details class="comp-card" ${aberto ? 'open' : ''}>
     <summary class="cc-sum">
       <span class="cc-id">${c.id}</span>
       <span class="cc-nome">${esc(c.nome)}</span>
-      <span class="cc-bar"><i style="--v:${(c.nota || 0) / 200}"></i></span>
-      <span class="cc-nota ${classeNota}">${c.nota}<small>/200</small></span>
+      <span class="cc-bar"><i style="--v:${(f.max || 0) / 200}"></i></span>
+      <span class="cc-nota ${classeNota}" title="Faixa de nota desta competência">${rotuloFaixa}<small>/200</small></span>
     </summary>
     <div class="cc-body">
       <p class="cc-sintese">${esc(ex.sintese || '')}</p>
       <div class="cc-niveis">
-        <span class="badge">Nível ${meia ? `${nivel.oficial}–${nivel.oficial + 1}` : nivel.oficial} de 5 · ${c.nota} de 200</span>
-        ${meia
-          ? `<span class="badge meia"><b>Meia-faixa:</b> o texto cumpre o descritor de ${c.nota - 20} e já mostra parte do de ${c.nota + 20} — pela regra, sem defeito objetivo, fica no meio.</span>`
-          : ''}
+        <span class="badge">Nível ${nivel.oficial} de 5 · ${f.exata ? `nota ${f.min}` : `nota entre ${f.min} e ${f.max}`}</span>
+        ${f.exata
+          ? `<span class="badge faixa"><b>Nota firme:</b> ${nivel.oficial >= 5
+              ? `o texto cumpre integralmente o descritor do nível máximo — não há nível acima, e os dois avaliadores tendem a fechar em ${f.min}.`
+              : `o texto cumpre o descritor do nível ${nivel.oficial} e não mostra o do nível seguinte — os dois avaliadores tendem a fechar em ${f.min}.`}</span>`
+          : `<span class="badge faixa"><b>Por que a faixa:</b> a nota oficial desta competência é ${f.min} (nível ${nivel.oficial}). ${f.max - f.min >= 40
+            ? `Como o texto já mostra parte do descritor de ${f.max}, o segundo avaliador pode subir um nível inteiro — por isso a faixa vai até ${f.max}.`
+            : `O texto está firme no nível ${nivel.oficial}; os 20 pontos de margem são a divergência previsível entre os dois avaliadores — o teto da faixa é ${f.max}.`}</span>`}
 
         <span><b>O nível exige:</b> ${esc(nivel.exigeOficial || nivel.exige)}</span>
         ${ex.fonte ? `<span class="fonte">Grade: ${esc(ex.fonte)}</span>` : ''}
@@ -8813,7 +9061,9 @@ function relatorio(r) {
     return `<div class="vazio">${ico('alerta', 'ico-g')}<p>${esc(r.erro)}</p></div>`;
   }
 
-  const pct = r.notaTotal / 10;
+  /* a nota publicada é uma FAIXA: o anel mostra do mínimo ao máximo */
+  const fTotal = r.notaFaixa || { min: r.notaTotal, max: r.notaTotal };
+  const entre = fTotal.max > fTotal.min;
 
   // abrimos as duas competências que mais seguram a nota
   const maisFracas = [...r.competencias].sort((a, b) => a.nota - b.nota).slice(0, 2).map(c => c.id);
@@ -8836,12 +9086,20 @@ function relatorio(r) {
 
   return `
     <div class="rel-topo">
-      <div class="score-ring" data-anel="${pct}" style="--pct:0">
-        <div class="score-num"><span data-conta="${r.notaTotal}">0</span><small>de 1000</small></div>
+      <div class="score-ring" data-anel-min="${fTotal.min / 10}" data-anel-max="${fTotal.max / 10}"
+           style="--pct-min:0;--pct-max:0">
+        <div class="score-num">
+          ${entre
+            ? `<span class="score-faixa-m">entre</span>
+               <span class="score-par"><b data-conta="${fTotal.min}">0</b><i>–</i><b data-conta="${fTotal.max}">0</b></span>
+               <small>de 1000</small>`
+            : `<span data-conta="${fTotal.min}">0</span><small>de 1000</small>`}
+        </div>
       </div>
       <div class="rel-faixa">
-        <strong>${esc(r.faixa.nome)}</strong>
+        <strong>${entre ? `Nota entre ${fTotal.min} e ${fTotal.max}` : `Nota ${fTotal.min}`}</strong>
         <p>${esc(r.faixa.texto)}</p>
+        <p class="rel-faixa-nota">Dois avaliadores corrigem a mesma redação e não fecham o mesmo número: o mínimo é a soma das notas oficiais das cinco competências, o máximo soma o que cada uma ainda comporta. ${esc(r.faixa.nome)}.</p>
         <span class="confianca">${ico('check')} ${rotuloConfianca}</span>
       </div>
     </div>
@@ -9110,7 +9368,7 @@ void main() {
   vec3 ouro = u_ouro;
   vec3 cor = mix(base, ouro, smoothstep(0.55, 1.0, v_prof) * v_ton);
 
-  gl_FragColor = vec4(cor, alfa * (0.10 + 0.55 * v_prof));
+  gl_FragColor = vec4(cor, alfa * (0.05 + 0.28 * v_prof));
 }
 `;
 
@@ -9185,13 +9443,13 @@ function iniciar() {
   buf(esc, 'a_scale', 1);
   buf(ton, 'a_ton', 1);
 
-  // marinho/areia no tema claro; marinho profundo/dourado no escuro
-  const escuro = typeof window.matchMedia === 'function' &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
+  /* Paleta da marca: azul royal (#1A3EC8) e um azul de realce (#4C6BF7).
+     Sobre o fundo branco, as partículas são tênues — o campo 3D aqui é um
+     brilho de profundidade, não um céu noturno. */
   const uBase = gl.getUniformLocation(prog, 'u_base');
   const uOuro = gl.getUniformLocation(prog, 'u_ouro');
-  gl.uniform3f(uBase, ...(escuro ? [0.42, 0.62, 0.86] : [0.16, 0.32, 0.52]));
-  gl.uniform3f(uOuro, ...(escuro ? [0.90, 0.76, 0.42] : [0.72, 0.54, 0.16]));
+  gl.uniform3f(uBase, 0.10, 0.24, 0.78);   // azul royal
+  gl.uniform3f(uOuro, 0.30, 0.42, 0.97);   // azul de realce
 
   const uTime = gl.getUniformLocation(prog, 'u_time');
   const uRes = gl.getUniformLocation(prog, 'u_res');

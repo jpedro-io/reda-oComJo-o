@@ -1,20 +1,26 @@
 /**
- * ESCALA INTERMEDIÁRIA — 11 degraus por competência (0 a 200, de 20 em 20).
+ * ESCALA INTERNA DE DIAGNÓSTICO — 11 degraus por competência (0 a 200, de 20 em 20).
  *
- * A escala oficial do Enem pontua de 40 em 40 (0, 40, 80, 120, 160, 200). Ela
- * é boa para classificar, mas grosseira para explicar: entre "domínio mediano"
- * e "bom domínio" existe um texto que o participante reconhece como seu.
+ * ATENÇÃO: nada aqui é publicado. A nota que o estudante lê é sempre uma das
+ * seis da grade oficial (0, 40, 80, 120, 160, 200) e vem acompanhada de uma
+ * FAIXA — porque a nota do Enem é a média de dois avaliadores que divergem.
  *
- * Esta escala insere um degrau entre cada nível oficial e mantém os seis pontos
- * oficiais nas posições pares (0, 40, 80, 120, 160, 200). Serve para duas coisas:
- *   1. dar nota intermediária quando o texto fica entre dois descritores;
- *   2. permitir que a explicação diga exatamente o que falta para os próximos
- *      20 pontos, e não para os próximos 40.
+ * Esta escala serve apenas ao motor, para medir com mais resolução o que o
+ * texto entrega. Ela mantém os seis pontos oficiais nas posições pares:
  *
- * A régua oficial não é abandonada: ela continua sendo a régua-mãe. O texto
- * só sobe de nível oficial quando cumpre integralmente o descritor daquele
- * nível (ver PRINCIPIO em js/db/cartilhas.js) — o degrau intermediário é o
- * reconhecimento de que ele já reúne parte do descritor seguinte.
+ *   degrau   0   1   2   3   4   5   6   7   8   9  10
+ *   pontos   0  20  40  60  80 100 120 140 160 180 200
+ *   oficial  0   –   1   –   2   –   3   –   4   –   5
+ *
+ * O degrau ímpar é leitura interna: significa "cumpre o nível de baixo e já
+ * mostra parte do descritor do nível seguinte". Ao publicar, `oficializar()`
+ * (js/engine/texto.js) converte o degrau ímpar na nota oficial de baixo e ABRE
+ * a faixa em 40 pontos — é assim que o texto que já mostra o nível seguinte
+ * aparece no relatório: "nota entre 160 e 200".
+ *
+ * A régua oficial continua sendo a régua-mãe: o texto só sobe de nível quando
+ * cumpre integralmente o descritor daquele nível (ver PRINCIPIO em
+ * js/db/cartilhas.js).
  */
 
 /** Os 11 pontos possíveis, do menor ao maior. */
