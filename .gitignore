@@ -1,0 +1,14 @@
+# dependências e caches
+node_modules/
+.pytest_cache/
+__pycache__/
+*.log
+
+# sistema
+.DS_Store
+Thumbs.db
+
+# editores
+.vscode/
+.idea/
+*.swp

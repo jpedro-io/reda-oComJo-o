@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+"""Gera standalone.html: HTML + CSS + JS + fontes em um único arquivo (offline).
+
+As fontes entram como data URI para o arquivo funcionar sem servidor e sem rede.
+O fundo 3D (bg.js) também é embutido — se o WebGL não existir, a aurora em CSS
+continua sendo o fallback.
+"""
+import base64
+import pathlib
+import re
+
+raiz = pathlib.Path(__file__).resolve().parent.parent
+
+ordem = [
+    'js/db/lexico.js', 'js/engine/texto.js',
+    'js/db/motivadores-oficiais.js', 'js/db/motivadores-treino.js', 'js/db/motivadores.js',
+    'js/db/temas-extra.js', 'js/db/temas.js', 'js/db/acentos.js', 'js/db/exemplos.js',
+    'js/db/criterios.js', 'js/db/estrutura.js', 'js/db/comandos.js', 'js/db/cartilhas.js',
+    'js/db/niveis.js',
+    'js/db/redacoes-2014-2019.js', 'js/db/redacoes-2020-2026.js', 'js/db/redacoes.js',
+    'js/engine/estilo.js',
+    'js/engine/competencias.js', 'js/engine/explicar.js', 'js/engine/corrigir.js',
+    'js/motion.js', 'js/ui.js',
+]
+
+
+def sem_modulos(src: str) -> str:
+    src = re.sub(r"import\s*\{[^}]*\}\s*from\s*['\"][^'\"]+['\"];?", '', src)
+    src = re.sub(r"import\s+[\w*,\s]+\s*from\s*['\"][^'\"]+['\"];?", '', src)
+    src = re.sub(r"^export\s+", '', src, flags=re.M)
+    return src
+
+
+partes = []
+for rel in ordem:
+    partes.append(f"/* ===== {rel} ===== */\n{sem_modulos((raiz / rel).read_text(encoding='utf-8')).strip()}\n")
+
+js = "(function(){\n'use strict';\n" + "\n".join(partes) + "})();"
+js_bg = "(function(){\n'use strict';\n" + sem_modulos((raiz / 'js/bg.js').read_text(encoding='utf-8')) + "\n})();"
+
+html = (raiz / 'index.html').read_text(encoding='utf-8')
+
+
+def embutir_fontes(css: str) -> str:
+    # o subset latin-ext não é usado em português (Latin-1 cobre á, ç, ã, õ, ê...)
+    css = re.sub(r"@font-face\s*\{[^}]*latin-ext[^}]*\}\n?", '', css)
+    def troca(m):
+        caminho = raiz / 'fonts' / m.group(1)
+        dados = base64.b64encode(caminho.read_bytes()).decode('ascii')
+        return f"url('data:font/woff2;base64,{dados}') format('woff2')"
+    return re.sub(r"url\('\.\./fonts/([^']+)'\)\s*format\('woff2'\)", troca, css)
+
+
+css_fontes = embutir_fontes((raiz / 'css/fontes.css').read_text(encoding='utf-8'))
+css = (raiz / 'css/style.css').read_text(encoding='utf-8')
+
+html = re.sub(r'<link rel="preload"[^>]*/>\s*', '', html)
+html = re.sub(r'<link rel="stylesheet" href="css/fontes\.css" />',
+              lambda m: '<style>\n' + css_fontes + '\n</style>', html)
+html = re.sub(r'<link rel="stylesheet" href="css/style\.css" />',
+              lambda m: '<style>\n' + css + '\n</style>', html)
+html = re.sub(r'<script type="module" src="js/ui\.js"></script>',
+              lambda m: '<script>\n' + js + '\n</script>', html)
+html = re.sub(r'<script type="module" src="js/bg\.js"></script>',
+              lambda m: '<script>\n' + js_bg + '\n</script>', html)
+
+saida = raiz / 'standalone.html'
+saida.write_text(html, encoding='utf-8')
+print(f'{saida} gerado — {len(html.encode("utf-8"))/1024:.1f} KB')
