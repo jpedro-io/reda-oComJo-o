@@ -20,11 +20,19 @@ ordem = [
     'js/db/redacoes-2014-2019.js', 'js/db/redacoes-2020-2026.js', 'js/db/redacoes.js',
     'js/engine/estilo.js',
     'js/engine/competencias.js', 'js/engine/explicar.js', 'js/engine/corrigir.js',
+    'js/db/conteudos/estrutura.js', 'js/db/conteudos/videos.js',
+    'js/db/conteudos/paginas-linguagens.js', 'js/db/conteudos/paginas-humanas.js',
+    'js/db/conteudos/paginas-natureza.js', 'js/db/conteudos/paginas-matematica.js',
+    'js/db/conteudos/index.js', 'js/ui-conteudos.js',
     'js/motion.js', 'js/ui.js',
 ]
 
 
 def sem_modulos(src: str) -> str:
+    # re-export (`export { x } from './y.js'`) precisa sair inteiro: sem isso
+    # sobra um `export ... from` que o navegador recusa e a página inteira
+    # morre com "Unexpected token '}'".
+    src = re.sub(r"export\s*\{[^}]*\}\s*from\s*['\"][^'\"]+['\"];?", '', src)
     src = re.sub(r"import\s*\{[^}]*\}\s*from\s*['\"][^'\"]+['\"];?", '', src)
     src = re.sub(r"import\s+[\w*,\s]+\s*from\s*['\"][^'\"]+['\"];?", '', src)
     src = re.sub(r"^export\s+", '', src, flags=re.M)

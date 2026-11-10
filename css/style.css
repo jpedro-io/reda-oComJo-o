@@ -392,6 +392,17 @@ main:focus { outline: none; }
   border-color: rgba(255, 255, 255, .6);
   text-decoration: none;
 }
+/* Conteúdos fica encostado no Corrigir: com os dois cheios de verde, o olho
+   não sabe qual é a ação. O guia é navegação, então vai de contorno. */
+.pill-guia,
+.pill-guia[aria-current='page'] {
+  color: var(--azul);
+  border: 1px solid var(--azul-linha);
+  background: var(--azul-fundo);
+  box-shadow: none;
+}
+.pill-guia:hover { color: var(--azul-alto); background: #D3F6E6; }
+.pill-guia[aria-current='page'] { border-color: var(--azul); }
 .pill-cta[aria-current='page'] { background: var(--azul); color: #fff; border-color: rgba(255, 255, 255, .5); }
 /* ------------------------------------------------------------------ 5. tipografia de seção */
 .eyebrow {

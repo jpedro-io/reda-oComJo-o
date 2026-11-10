@@ -14,11 +14,11 @@ import {
   paginaDe, temTexto,
 } from './db/conteudos/index.js';
 
-const esc = (s = '') => String(s)
+const escQ = (s = '') => String(s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
-const IC = {
+const ICO_Q = {
   seta: '<path d="M4 12h15M13 6l6 6-6 6"/>',
   voltar: '<path d="M20 12H5M11 6l-6 6 6 6"/>',
   livro: '<path d="M4 5.5h6.5A2 2 0 0 1 13 7.5V20a2 2 0 0 0-2-2H4z"/><path d="M20 5.5h-6.5A2 2 0 0 0 11 7.5V20a2 2 0 0 1 2-2h7z"/>',
@@ -28,8 +28,8 @@ const IC = {
   alvo: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/>',
   formula: '<path d="M6 5h6M6 12h4M6 19h5"/><path d="M14 5l5 14M19 5l-5 14"/>',
 };
-const ic = (nome, cls = '') =>
-  `<svg class="ico ${cls}" viewBox="0 0 24 24" aria-hidden="true">${IC[nome] || ''}</svg>`;
+const icQ = (nome, cls = '') =>
+  `<svg class="ico ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICO_Q[nome] || ''}</svg>`;
 
 const contagemDaMateria = m => m.conteudos.length;
 const contagemDaArea = a => a.materias.reduce((t, m) => t + m.conteudos.length, 0);
@@ -40,19 +40,19 @@ export function viewConteudos() {
   const blocos = AREAS.map(area => `
     <section class="hub-area" data-entrada>
       <header class="hub-area-topo">
-        <span class="hub-sigla">${esc(area.sigla)}</span>
+        <span class="hub-sigla">${escQ(area.sigla)}</span>
         <div>
-          <h2>${esc(area.nome)}</h2>
-          <p>${esc(area.resumo)}</p>
+          <h2>${escQ(area.nome)}</h2>
+          <p>${escQ(area.resumo)}</p>
         </div>
         <span class="hub-conta">${contagemDaArea(area)} conteúdos</span>
       </header>
       <div class="hub-materias">
         ${area.materias.map(m => `
           <a class="hub-materia" href="#/conteudos/materia/${m.id}">
-            <span class="hm-nome">${esc(m.nome)}</span>
+            <span class="hm-nome">${escQ(m.nome)}</span>
             <span class="hm-conta">${contagemDaMateria(m)} ${contagemDaMateria(m) === 1 ? 'conteúdo' : 'conteúdos'}</span>
-            ${ic('seta', 'hm-seta')}
+            ${icQ('seta', 'hm-seta')}
           </a>`).join('')}
       </div>
     </section>`).join('');
@@ -86,27 +86,27 @@ export function viewMateria(id) {
   const botoes = materia.conteudos.map((c, i) => `
     <a class="conteudo-btn" href="#/conteudos/c/${c.id}" data-entrada>
       <span class="cb-num">${String(i + 1).padStart(2, '0')}</span>
-      <span class="cb-nome">${esc(c.titulo)}</span>
+      <span class="cb-nome">${escQ(c.titulo)}</span>
       <span class="cb-acoes">
         ${temTexto(c.id) ? '<span class="cb-tag">resumo</span>' : ''}
-        ${ic('seta', 'cb-seta')}
+        ${icQ('seta', 'cb-seta')}
       </span>
     </a>`).join('');
 
   const canais = (materia.canais || []).length
-    ? `<p class="mat-canais"><b>Canais indicados:</b> ${materia.canais.map(esc).join(' · ')}</p>` : '';
+    ? `<p class="mat-canais"><b>Canais indicados:</b> ${materia.canais.map(escQ).join(' · ')}</p>` : '';
 
   return `
   <nav class="migalha" aria-label="Caminho">
     <a href="#/conteudos">Conteúdos</a> <span aria-hidden="true">/</span>
-    <span>${esc(materia.area.nome.split(' e suas')[0])}</span> <span aria-hidden="true">/</span>
-    <b>${esc(materia.nome)}</b>
+    <span>${escQ(materia.area.nome.split(' e suas')[0])}</span> <span aria-hidden="true">/</span>
+    <b>${escQ(materia.nome)}</b>
   </nav>
 
   <div class="secao-topo">
     <div>
-      <span class="eyebrow" data-entrada>${esc(materia.area.sigla)} · ${esc(materia.area.nome.split(' e suas')[0])}</span>
-      <h1 data-entrada>${esc(materia.nome)}</h1>
+      <span class="eyebrow" data-entrada>${escQ(materia.area.sigla)} · ${escQ(materia.area.nome.split(' e suas')[0])}</span>
+      <h1 data-entrada>${escQ(materia.nome)}</h1>
     </div>
     <p class="sub" data-entrada>${materia.conteudos.length} conteúdos nesta matéria. Clique em um para abrir o resumo, as fórmulas, o vídeo e as questões resolvidas.</p>
   </div>
@@ -123,53 +123,53 @@ export function viewConteudo(id) {
   const p = paginaDe(id, base);
 
   const resumo = p.resumo.length
-    ? p.resumo.map(par => `<p>${esc(par)}</p>`).join('')
+    ? p.resumo.map(par => `<p>${escQ(par)}</p>`).join('')
     : '<p class="vazio-txt">O resumo deste conteúdo ainda está sendo escrito.</p>';
 
   const chave = p.chave.length ? `
     <section class="cp-bloco">
-      <h2 class="cp-rot">${ic('alvo')} o que mais cai</h2>
-      <ul class="chave-lista">${p.chave.map(c => `<li>${esc(c)}</li>`).join('')}</ul>
+      <h2 class="cp-rot">${icQ('alvo')} o que mais cai</h2>
+      <ul class="chave-lista">${p.chave.map(c => `<li>${escQ(c)}</li>`).join('')}</ul>
     </section>` : '';
 
   const formulas = p.formulas.length ? `
     <section class="cp-bloco">
-      <h2 class="cp-rot">${ic('formula')} fórmulas e relações</h2>
+      <h2 class="cp-rot">${icQ('formula')} fórmulas e relações</h2>
       <div class="formula-grade">
         ${p.formulas.map(f => `
           <div class="formula-card">
-            <span class="fc-rot">${esc(f.titulo)}</span>
-            <code class="fc-expr">${esc(f.expr)}</code>
+            <span class="fc-rot">${escQ(f.titulo)}</span>
+            <code class="fc-expr">${escQ(f.expr)}</code>
           </div>`).join('')}
       </div>
     </section>` : '';
 
   const questoes = p.questoes.length ? `
     <section class="cp-bloco" id="questoes">
-      <h2 class="cp-rot">${ic('check')} ${p.questoes.length} ${p.questoes.length === 1 ? 'questão resolvida' : 'questões resolvidas'}</h2>
+      <h2 class="cp-rot">${icQ('check')} ${p.questoes.length} ${p.questoes.length === 1 ? 'questão resolvida' : 'questões resolvidas'}</h2>
       ${p.questoes.map((q, i) => questaoHTML(q, i)).join('')}
     </section>` : `
     <section class="cp-bloco" id="questoes">
-      <h2 class="cp-rot">${ic('check')} questões de edições passadas</h2>
+      <h2 class="cp-rot">${icQ('check')} questões de edições passadas</h2>
       <p class="cp-aviso">As questões deste conteúdo estão sendo transcritas e resolvidas — cada uma passa por conferência do enunciado e do gabarito oficial antes de entrar no site. O resumo acima já cobre o que a prova cobra.</p>
     </section>`;
 
   const video = p.video ? `
     <section class="cp-bloco" id="video">
-      <h2 class="cp-rot">${ic('video')} aula em vídeo</h2>
+      <h2 class="cp-rot">${icQ('video')} aula em vídeo</h2>
       <div class="video-caixa">
         <div class="video-moldura">
           <iframe
-            src="https://www.youtube-nocookie.com/embed/${esc(p.video.id)}?rel=0&modestbranding=1"
-            title="${esc(p.video.titulo || 'Aula em vídeo')}"
+            src="https://www.youtube-nocookie.com/embed/${escQ(p.video.id)}?rel=0&modestbranding=1"
+            title="${escQ(p.video.titulo || 'Aula em vídeo')}"
             loading="lazy" allowfullscreen
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
         <p class="video-legenda">
-          <b>${esc(p.video.titulo || 'Aula em vídeo')}</b>
-          ${p.video.canal ? `<span class="video-canal">${esc(p.video.canal)}</span>` : ''}
-          <a class="video-link" href="https://www.youtube.com/watch?v=${esc(p.video.id)}" target="_blank" rel="noopener">abrir no YouTube</a>
+          <b>${escQ(p.video.titulo || 'Aula em vídeo')}</b>
+          ${p.video.canal ? `<span class="video-canal">${escQ(p.video.canal)}</span>` : ''}
+          <a class="video-link" href="https://www.youtube.com/watch?v=${escQ(p.video.id)}" target="_blank" rel="noopener">abrir no YouTube</a>
         </p>
       </div>
     </section>` : '';
@@ -183,18 +183,18 @@ export function viewConteudo(id) {
   return `
   <nav class="migalha" aria-label="Caminho">
     <a href="#/conteudos">Conteúdos</a> <span aria-hidden="true">/</span>
-    <a href="#/conteudos/materia/${base.materia.id}">${esc(base.materia.nome)}</a> <span aria-hidden="true">/</span>
-    <b>${esc(base.titulo)}</b>
+    <a href="#/conteudos/materia/${base.materia.id}">${escQ(base.materia.nome)}</a> <span aria-hidden="true">/</span>
+    <b>${escQ(base.titulo)}</b>
   </nav>
 
   <article class="conteudo-pag">
     <header class="cp-topo" data-entrada>
-      <span class="eyebrow">${esc(base.area.sigla)} · ${esc(base.materia.nome)}</span>
-      <h1>${esc(base.titulo)}</h1>
+      <span class="eyebrow">${escQ(base.area.sigla)} · ${escQ(base.materia.nome)}</span>
+      <h1>${escQ(base.titulo)}</h1>
     </header>
 
     <section class="cp-bloco cp-resumo" data-entrada>
-      <h2 class="cp-rot">${ic('livro')} resumo</h2>
+      <h2 class="cp-rot">${icQ('livro')} resumo</h2>
       ${resumo}
     </section>
 
@@ -204,8 +204,8 @@ export function viewConteudo(id) {
     ${video}
 
     <nav class="cp-nav" aria-label="Outros conteúdos da matéria">
-      ${ant ? `<a class="cp-nav-btn" href="#/conteudos/c/${ant.id}">${ic('voltar')}<span><small>anterior</small>${esc(ant.titulo)}</span></a>` : '<span></span>'}
-      ${prox ? `<a class="cp-nav-btn prox" href="#/conteudos/c/${prox.id}"><span><small>próximo</small>${esc(prox.titulo)}</span>${ic('seta')}</a>` : '<span></span>'}
+      ${ant ? `<a class="cp-nav-btn" href="#/conteudos/c/${ant.id}">${icQ('voltar')}<span><small>anterior</small>${escQ(ant.titulo)}</span></a>` : '<span></span>'}
+      ${prox ? `<a class="cp-nav-btn prox" href="#/conteudos/c/${prox.id}"><span><small>próximo</small>${escQ(prox.titulo)}</span>${icQ('seta')}</a>` : '<span></span>'}
     </nav>
   </article>`;
 }
@@ -217,24 +217,24 @@ function questaoHTML(q, i) {
   const alternativas = (q.alternativas || []).map((alt, k) => `
     <li class="${letras[k] === q.correta ? 'correta' : ''}">
       <span class="alt-letra">${letras[k]}</span>
-      <span class="alt-txt">${esc(alt)}</span>
+      <span class="alt-txt">${escQ(alt)}</span>
     </li>`).join('');
 
   return `
   <details class="questao">
     <summary class="q-topo">
       <span class="q-num">${i + 1}</span>
-      <span class="q-fonte">${esc(fonte || 'Enem')}</span>
+      <span class="q-fonte">${escQ(fonte || 'Enem')}</span>
       <span class="q-abre">ver resolução</span>
     </summary>
     <div class="q-corpo">
-      ${(q.textoApoio || []).map(t => `<p class="q-apoio">${esc(t)}</p>`).join('')}
-      <p class="q-enunciado">${esc(q.enunciado || '')}</p>
+      ${(q.textoApoio || []).map(t => `<p class="q-apoio">${escQ(t)}</p>`).join('')}
+      <p class="q-enunciado">${escQ(q.enunciado || '')}</p>
       <ol class="q-alts">${alternativas}</ol>
       <div class="q-resolucao">
         <span class="q-rot">Resolução</span>
-        ${(q.resolucao || []).map(r => `<p>${esc(r)}</p>`).join('')}
-        ${q.gabaritoOficial ? `<p class="q-gab"><b>Gabarito oficial:</b> ${esc(q.gabaritoOficial)}</p>` : ''}
+        ${(q.resolucao || []).map(r => `<p>${escQ(r)}</p>`).join('')}
+        ${q.gabaritoOficial ? `<p class="q-gab"><b>Gabarito oficial:</b> ${escQ(q.gabaritoOficial)}</p>` : ''}
       </div>
     </div>
   </details>`;
@@ -242,8 +242,8 @@ function questaoHTML(q, i) {
 
 function naoEncontrado(msg) {
   return `<div class="vazio" style="padding:var(--s9) 0">
-    ${ic('alerta')}
-    <p>${esc(msg)}</p>
+    ${icQ('alerta')}
+    <p>${escQ(msg)}</p>
     <a class="btn btn-pequeno" href="#/conteudos">Ver todos os conteúdos</a>
   </div>`;
 }
