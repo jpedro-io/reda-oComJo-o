@@ -57,6 +57,7 @@ js/db/redacoes.js             índice das análises, cores dos destaques
 js/db/exemplos.js             textos dos botões de exemplo do corretor
 tools/build-standalone.py     gera standalone.html (embute CSS, JS e fontes em data URI)
 test/                         testes do motor (node) — engine, casos, redações, explicações, escala, acentos e gramática
+js/db/conteudos/              guia do Enem: estrutura, páginas por área e vídeos
 ../uploads/                   cartilhas de capacitação (PDF) e o texto extraído em uploads/txt/
 ```
 
@@ -121,6 +122,24 @@ Além de acentuação, concordância e repertório, o motor mede o que um avalia
 Cada achado chega ao relatório como um cartão **“impede o 200”** (ou “pesa na nota”), com o título do problema, a regra da grade que ele viola, o trecho do próprio texto e a correção concreta. É a mesma lógica da cartilha: o nível 5 admite no máximo uma falha de estrutura e no máximo dois desvios no texto inteiro — e repetição e falta de pontuação contam nessa conta.
 
 **Calibragem** (`node test/calibragem.js`): texto fraco de dez linhas fica entre **280 e 480**; redação repetitiva, **280**; texto com frases repetidas, **320**; texto sem pontuação, **280**; redação sólida com repertório explicado e proposta completa, **800**; as treze redações modelo, **960–1000**.
+
+## Guia de conteúdos (áreas → matérias → conteúdo)
+
+Além do guia de redação, o site tem um guia das quatro áreas da prova:
+
+| Rota | Tela |
+|---|---|
+| `#/conteudos` | sumário: as 4 áreas, cada uma com suas matérias e a contagem de conteúdos |
+| `#/conteudos/materia/:id` | lista de botões, um por conteúdo da matéria |
+| `#/conteudos/c/:id` | resumo, "o que mais cai", fórmulas, questões resolvidas e aula em vídeo |
+
+**Dados.** `js/db/conteudos/estrutura.js` guarda a hierarquia (80 conteúdos em 17 matérias). O texto de cada conteúdo mora em `paginas-<area>.js`, procurado pelo mesmo `id`. O `id` é global e estável: link salvo no celular de um aluno não pode virar 404 porque o título mudou.
+
+**Vídeos.** `js/db/conteudos/videos.js` é gerado por `node tools/buscar-videos.mjs`, que busca no YouTube o assunto + o canal indicado da matéria e grava `id`, título e canal. O título fica visível embaixo do player justamente para você conferir se a busca trouxe a aula certa; para trocar, mude o `id` no arquivo (11 caracteres, o trecho depois de `watch?v=`).
+
+**Questões.** Cada página traz questões de edições anteriores com resolução comentada passo a passo e gabarito oficial. As que aparecem hoje foram transcritas das provas oficiais do Inep (PDF), não de sites de resumo — inclusive os distratores, que são parte do ensino. Onde a questão original depende de figura, ela não entra sem a imagem: a página avisa que as resoluções daquele assunto ainda estão sendo transcritas, em vez de inventar questão.
+
+**Regra editorial:** nenhuma questão entra sem enunciado conferido na prova original e sem resolução escrita que explique também por que as outras alternativas erram.
 
 ## Crase, concordância e pontuação — regras de contexto
 

@@ -23,6 +23,7 @@ import { REDACOES, TIPOS_DESTAQUE, buscarRedacao, redacoesPorAno, TOTAL_NOTA_MIL
 import { EXEMPLOS } from './db/exemplos.js';
 import { corrigir } from './engine/corrigir.js';
 import { ativarMovimento } from './motion.js';
+import { viewConteudos, viewMateria, viewConteudo, tituloDeConteudos } from './ui-conteudos.js';
 
 const app = document.getElementById('app');
 const toastEl = document.getElementById('toast');
@@ -977,6 +978,12 @@ function render() {
   else if (partes[0] === 'redacoes') {
     html = partes[1] ? viewRedacao(decodeURIComponent(partes[1])) : viewRedacoes();
   }
+  else if (partes[0] === 'conteudos') {
+    /* sumário → matéria → conteúdo */
+    if (partes[1] === 'materia') html = viewMateria(decodeURIComponent(partes[2] || ''));
+    else if (partes[1] === 'c') html = viewConteudo(decodeURIComponent(partes[2] || ''));
+    else html = viewConteudos();
+  }
   else if (partes[0] === 'corrigir') html = viewCorrigir(params);
   else html = viewNaoEncontrado('Página não encontrada.');
 
@@ -1008,6 +1015,8 @@ function tituloDa(partes = []) {
     redacoes: 'Redações nota 1000 analisadas — Redação com João',
     corrigir: 'Corrigir redação — Redação com João'
   };
+  const doGuia = tituloDeConteudos(partes);
+  if (doGuia) return doGuia;
   return mapa[partes[0] || ''] || 'Redação com João';
 }
 

@@ -12,7 +12,7 @@ Paleta refeita por decisão do cliente: **fundo branco, azul royal nos botões e
 
 | Papel | Token | Valor | Uso |
 |---|---|---|---|
-| Royal | `--azul` | `#1A3EC8` | botão primário, barra, trilho da nota, faixa de seção |
+| Esmeralda | `--azul` | `#026842` | botão primário, barra, trilho da nota, faixa de seção |
 | Royal (texto) | `--azul-txt` | `#14309B` | links e palavras-âncora sobre branco (AA) |
 | Royal realce | `--azul-alto` | `#2F55F0` | topo do gradiente dos botões, hover |
 | Véu azul | `--azul-fundo` | `#E9EEFF` | chips, badges, blocos de apoio |
@@ -168,3 +168,18 @@ O celular é alvo de projeto. O que muda de fato (≤ 860 px):
 ## 10. Sombras
 
 Sombra só em quem flutua de verdade: navegação fixa, painel de vidro, toast, o botão primário e as faixas azuis. Todas são **azuis** (`rgba(16,34,120,…)`), nunca cinza — sombra cinza sobre branco suja a cor. Blocos de conteúdo usam borda (`rgba(8,13,28,.08)`) em vez de sombra.
+
+
+## 12. Guia de conteúdos — três telas, um material
+
+O guia das quatro áreas usa o mesmo vocabulário visual do resto do site, com uma diferença: a faixa verde passa a ser o cabeçalho de cada área no sumário, não o hero. Cada área é um bloco de vidro com cabeçalho esmeralda cheio (`#026842 → #003817`) e as matérias em cartões brancos por baixo — a hierarquia fica visível sem precisar de título de seção.
+
+| Tela | Componente | Por quê |
+|---|---|---|
+| sumário `#/conteudos` | `.hub-area` + `.hub-materia` | a área é o bloco, a matéria é o alvo do clique — dois níveis, sem menu lateral |
+| matéria | `.conteudo-btn` | botão de linha inteira, número à esquerda: o aluno varre a lista, não caça link |
+| conteúdo | `.cp-bloco` | mesma lógica do relatório da redação: seções com rótulo em caixa alta pequena e fio de separação |
+
+**Questão fechada por padrão.** O destaque verde da alternativa correta só aparece em `.questao[open]`. Antes disso, a questão é só pergunta: se o gabarito vem pintado, o aluno não tenta — e questão que não se tenta não ensina.
+
+**Vídeo com legenda de procedência.** O player é `youtube-nocookie` (sem cookie de rastreio antes do play) em moldura 16:9 escura (`#05130E`), e embaixo aparecem título do vídeo, canal e link direto. O título é o da busca, não uma suposição: se o vídeo estiver errado, você vê na hora.

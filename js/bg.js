@@ -141,7 +141,7 @@ function iniciar() {
   buf(esc, 'a_scale', 1);
   buf(ton, 'a_ton', 1);
 
-  /* Paleta da marca: azul royal (#1A3EC8) e um azul de realce (#4C6BF7).
+  /* Paleta da marca: azul royal (#026842) e um azul de realce (#5CCDA7).
      Sobre o fundo branco, as partículas são tênues — o campo 3D aqui é um
      brilho de profundidade, não um céu noturno. */
   const uBase = gl.getUniformLocation(prog, 'u_base');
