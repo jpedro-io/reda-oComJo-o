@@ -73,3 +73,11 @@ questão que não se tenta não ensina.
 Contraste mínimo AA (o cinza `#5B6B64` sobre branco dá 5,1:1), foco visível
 com contorno de 2px em esmeralda, alvos de toque de 40px, tabelas que
 empilham no celular e menu por botão anunciado com `aria-expanded`.
+
+## 10. Vida na página
+A capa leva uma fotografia de mesa de estudo atrás do texto: a faixa ocupa a
+largura toda, a imagem fica no fundo com foco macio e um véu branco em
+diagonal protege a coluna de leitura, então o contraste do texto não cai.
+No celular e no tablet a foto vira uma faixa no alto, dissolvida no branco,
+e o texto fica sempre sobre papel limpo. O espaço entre o cabeçalho e o
+conteúdo foi reduzido para 44 px, sem faixa vazia.

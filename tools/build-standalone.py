@@ -59,8 +59,29 @@ def embutir_fontes(css: str) -> str:
     return re.sub(r"url\('\.\./fonts/([^']+)'\)\s*format\('woff2'\)", troca, css)
 
 
+def embutir_imagens(css: str) -> str:
+    # cada foto entra uma única vez, como custom property; o resto do CSS usa var()
+    vistos = {}
+
+    def troca(m):
+        nome = m.group(1)
+        if nome not in vistos:
+            dados = base64.b64encode((raiz / 'assets' / nome).read_bytes()).decode('ascii')
+            vistos[nome] = 'hero' if nome.startswith('hero') else re.sub(r'[^a-z0-9]+', '-', nome.lower())
+        return f"var(--foto-{vistos[nome]})"
+
+    css = re.sub(r"""url\(['"]\.\./assets/([^'"]+)['"]\)""", troca, css)
+    if not vistos:
+        return css
+    raiz_vars = ':root {\n' + ''.join(
+        f"  --foto-{apelido}: url('data:image/jpeg;base64,{base64.b64encode((raiz / 'assets' / nome).read_bytes()).decode('ascii')}');\n"
+        for nome, apelido in vistos.items()) + '}\n'
+    return raiz_vars + css
+
+
 css_fontes = embutir_fontes((raiz / 'css/fontes.css').read_text(encoding='utf-8'))
 css = (raiz / 'css/style.css').read_text(encoding='utf-8')
+css_edit = embutir_imagens((raiz / 'css/editorial.css').read_text(encoding='utf-8'))
 
 # o index.html carrega os assets com ?v=... (cache-busting); o build ignora a query
 html = re.sub(r'\?v=[\w.-]+', '', html)
@@ -69,6 +90,8 @@ html = re.sub(r'<link rel="stylesheet" href="css/fontes\.css" />',
               lambda m: '<style>\n' + css_fontes + '\n</style>', html)
 html = re.sub(r'<link rel="stylesheet" href="css/style\.css" />',
               lambda m: '<style>\n' + css + '\n</style>', html)
+html = re.sub(r'<link rel="stylesheet" href="css/editorial\.css" />',
+              lambda m: '<style>\n' + css_edit + '\n</style>', html)
 html = re.sub(r'<script type="module" src="js/ui\.js"></script>',
               lambda m: '<script>\n' + js + '\n</script>', html)
 html = re.sub(r'<script type="module" src="js/bg\.js"></script>',

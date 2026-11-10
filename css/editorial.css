@@ -1826,3 +1826,224 @@ mark, .marca-ok, .trecho-ok {
 .rev-lista li::before { content: '☐\00a0\00a0'; color: var(--muted); }
 .fortes-lista li::before { content: '✓\00a0\00a0'; color: var(--brand); }
 .fortes-lista li::after, .rev-lista li::after { content: none !important; }
+
+/* ==========================================================================
+   23. VIDA NA PÁGINA
+   O papel continua branco, mas não é mais uma folha vazia: textura de grão
+   muito leve no fundo e uma fotografia de mesa de estudo atrás do hero,
+   sempre atrás de um véu branco para o texto seguir legível.
+   ========================================================================== */
+
+body {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='.022'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+/* o respiro entre o header e o conteúdo estava grande demais */
+main.wrap { padding-top: 0 !important; }
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding: 44px 0 40px !important;
+  margin: 0 0 12px !important;
+  border-bottom: 1px solid var(--line);
+  background-color: #fff;
+  background-image:
+    linear-gradient(100deg,
+      rgba(255, 255, 255, .99) 0%,
+      rgba(255, 255, 255, .97) 34%,
+      rgba(255, 255, 255, .84) 52%,
+      rgba(255, 255, 255, .46) 74%,
+      rgba(255, 255, 255, .30) 100%),
+    url("../assets/hero-redacao.jpg");
+  background-size: cover, cover;
+  background-position: center, 62% center;
+  background-repeat: no-repeat, no-repeat;
+}
+
+/* o painel da nota fica sobre a foto: opaco, com um fio de sombra no lugar
+   do vidro antigo */
+.hero-painel {
+  background: #fff !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 24px 48px -36px rgba(16, 32, 26, .5) !important;
+}
+
+/* no celular a foto sairia atrás do texto: fica só o papel */
+@media (max-width: 900px) {
+  .hero {
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, .995) 0%, rgba(255, 255, 255, .97) 60%, rgba(255, 255, 255, .86) 100%),
+      url("../assets/hero-redacao.jpg");
+    background-position: center, 70% 40%;
+    padding: 32px 0 28px !important;
+  }
+  .hero-painel { box-shadow: none !important; }
+}
+
+/* linhas de lista ganham vida no ponteiro, sem virar botão */
+.indice-item,
+.tema-linha,
+.tabela-redacoes tbody tr,
+.hub-materia,
+.conteudo-btn,
+.cc-item {
+  transition: background-color 160ms ease, padding-left 160ms ease;
+}
+.indice-item:hover,
+.tema-linha:hover,
+.tabela-redacoes tbody tr:hover,
+.hub-materia:hover,
+.conteudo-btn:hover {
+  background-color: var(--surface);
+}
+.conteudo-btn:hover, .hub-materia:hover { padding-left: 10px !important; }
+
+/* a foto do hero em duas camadas: imagem com filtro próprio e véu por cima,
+   para dar para regular a presença sem apagar o texto */
+.hero { background-image: none !important; background-color: #fff; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url("../assets/hero-redacao.jpg");
+  background-size: cover;
+  background-position: 66% 46%;
+  background-repeat: no-repeat;
+  filter: saturate(.92) contrast(1.03);
+  transform: scale(1.02);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, .985) 30%,
+    rgba(255, 255, 255, .9) 46%,
+    rgba(255, 255, 255, .55) 62%,
+    rgba(255, 255, 255, .18) 82%,
+    rgba(255, 255, 255, .08) 100%);
+}
+.hero-copy, .hero-painel { position: relative; z-index: 1; }
+
+@media (max-width: 900px) {
+  .hero::before { background-position: 72% 30%; opacity: .9; }
+  .hero::after {
+    background: linear-gradient(180deg,
+      rgba(255, 255, 255, .99) 0%,
+      rgba(255, 255, 255, .96) 46%,
+      rgba(255, 255, 255, .86) 74%,
+      rgba(255, 255, 255, .62) 100%);
+  }
+}
+
+/* hero em faixa cheia: a foto respira na borda direita da janela e o texto
+   continua na coluna de leitura */
+.hero {
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  padding-left: calc(50vw - 50% + 24px) !important;
+  padding-right: calc(50vw - 50% + 24px) !important;
+  padding-top: 52px !important;
+  padding-bottom: 52px !important;
+  border-bottom: 1px solid var(--line);
+}
+.hero::before {
+  background-position: 78% 42%;
+  filter: saturate(1.02) contrast(1.04) brightness(.99);
+}
+.hero::after {
+  background: linear-gradient(95deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, .99) 26%,
+    rgba(255, 255, 255, .93) 40%,
+    rgba(255, 255, 255, .62) 54%,
+    rgba(255, 255, 255, .22) 70%,
+    rgba(255, 255, 255, .06) 88%,
+    rgba(255, 255, 255, 0) 100%);
+}
+.hero-copy { max-width: 620px; }
+
+@media (max-width: 900px) {
+  .hero {
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+  .hero-copy { max-width: none; }
+}
+
+.hero::after {
+  background: linear-gradient(96deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 30%,
+    rgba(255, 255, 255, .98) 46%,
+    rgba(255, 255, 255, .9) 56%,
+    rgba(255, 255, 255, .68) 65%,
+    rgba(255, 255, 255, .32) 76%,
+    rgba(255, 255, 255, .08) 89%,
+    rgba(255, 255, 255, 0) 100%);
+}
+.hero::before { background-position: 70% 44%; }
+
+/* espelha a foto: o papel com as marcações fica do lado da leitura, a madeira
+   some atrás do véu */
+.hero::before { transform: scale(1.02) scaleX(-1); background-position: 34% 44%; }
+
+/* enquadramento fechado na folha: a foto deixa de mostrar a mesa inteira e
+   passa a mostrar a redação corrigida, que é o assunto da página */
+.hero::before {
+  transform: none;
+  background-size: 156% auto;
+  background-position: 54% 46%;
+  filter: saturate(1.05) contrast(1.06);
+}
+@media (max-width: 900px) {
+  .hero::before { background-size: cover; background-position: 60% 42%; }
+}
+
+/* foco macio: a foto vira textura, sem que se leia o texto de rascunho */
+.hero::before {
+  background-size: cover;
+  background-position: 68% 44%;
+  filter: saturate(1.03) contrast(1.03) blur(1.2px);
+}
+
+/* no celular o véu é vertical e mais fechado: a foto aparece no rodapé da
+   faixa, longe do texto */
+@media (max-width: 900px) {
+  .hero::before { background-position: 62% 38%; filter: saturate(1.02) blur(1.2px); }
+  .hero::after {
+    background: linear-gradient(180deg,
+      rgba(255, 255, 255, .995) 0%,
+      rgba(255, 255, 255, .99) 40%,
+      rgba(255, 255, 255, .95) 62%,
+      rgba(255, 255, 255, .78) 84%,
+      rgba(255, 255, 255, .58) 100%);
+  }
+}
+
+/* no celular e no tablet a foto vira uma faixa de abertura acima do título,
+   que se dissolve no branco; o texto fica sempre sobre papel */
+@media (max-width: 900px) {
+  .hero { padding-top: 208px !important; }
+  .hero::before {
+    inset: 0 0 auto 0;
+    height: 200px;
+    background-size: cover;
+    background-position: 50% 34%;
+    filter: saturate(1.03) blur(.8px);
+    opacity: 1;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 52%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 52%, rgba(0,0,0,0) 100%);
+  }
+  .hero::after { background: none; }
+}
