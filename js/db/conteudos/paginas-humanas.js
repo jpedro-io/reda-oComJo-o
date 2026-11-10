@@ -272,9 +272,13 @@ export const PAGINAS_HUMANAS = {
 
   'geo-urbanizacao': {
     resumo: [
-      'Urbanização brasileira foi acelerada a partir da industrialização de 1930–60 e feita sem planejamento: periferização, favelização e uma metrópole que cresce na borda. Hoje, mais de 84% da população vive em cidades.',
-      'Conceitos que a prova usa: conurbação, metrópole, megalópole, região metropolitana, especulação imobiliária e segregação socioespacial. A renda define onde se mora, e o transporte define quanto tempo se perde, e é isso que a questão cobra em contexto de mobilidade.',
-      'Problemas urbanos: enchente por impermeabilização, ilha de calor, coleta de lixo irregular, favela em área de risco. Políticas públicas: Estatuto da Cidade (2001), plano diretor, IPTU progressivo e zoneamento são as respostas que o Enem espera ver citadas.',
+      'Urbanização é o processo de crescimento da população urbana em relação à rural, e no Brasil ele aconteceu rápido e sem planejamento. A prova cobra o encadeamento: industrialização atrai gente, a cidade cresce mais depressa que a infraestrutura, e o resultado aparece como periferização, favela, enchente e trânsito.',
+      'A urbanização brasileira é tardia e concentrada. Até 1940 o país era majoritariamente rural; em poucas décadas a proporção se inverteu, empurrada pela industrialização do Sudeste e pela mecanização do campo, que expulsou trabalhadores. Como a oferta de emprego e de moradia não acompanhou, a ocupação se deu em áreas periféricas e em encostas, margens de rio e beiras de córrego.',
+      'Daí vem o conceito de macrocefalia urbana: concentração excessiva de atividades e de população em poucas metrópoles, com fluxo migratório convergindo para elas, déficit de emprego, ocupação desordenada e estigmatização de grupos sociais. É um conceito de Milton Santos, e o Enem gosta de cobrar o fator que o estimula, que é o êxodo da população do campo, e não as suas consequências.',
+      'A estrutura das cidades repete um padrão: centro com infraestrutura completa e valorização imobiliária, periferia com serviços precários e longos deslocamentos. A especulação imobiliária mantém terrenos vazios na área central, enquanto a população pobre ocupa áreas distantes ou de risco. Segregação socioespacial é o nome desse resultado.',
+      'Mobilidade é o problema que mais aparece em questão de gráfico e de texto. Quanto mais longe a moradia, mais tempo e mais custo no deslocamento, o que reduz a renda disponível de quem já ganha pouco. O transporte público de baixa frequência amplia a desigualdade de acesso ao trabalho e à escola.',
+      'Impactos ambientais urbanos têm relação direta com a impermeabilização do solo. Sem vegetação e sem drenagem, a água da chuva escoa rápido, o volume nos canais aumenta e a enchente acontece. Ilha de calor, inversão térmica e poluição do ar completam o quadro, e a solução proposta costuma envolver planejamento, drenagem e transporte coletivo.',
+      'Em questão de texto, cuidado com a confusão entre causa e consequência. Êxodo rural, crescimento da fecundidade urbana, risco habitacional e deficiência de transporte aparecem juntos, e só o primeiro explica o início do processo. Ler o comando com atenção separa uma alternativa da outra.',
     ],
     chave: [
       'Urbanização acelerada e periferização',
@@ -283,7 +287,31 @@ export const PAGINAS_HUMANAS = {
       'Estatuto da Cidade, plano diretor e mobilidade urbana',
     ],
     formulas: [],
-    questoes: [],
+    questoes: [
+      {
+        ano: 2022,
+        fonte: 'Dia 1 · caderno 5 (amarelo) · questão 87',
+        textoApoio: [
+          'Macrocefalia urbana pode ser entendida como a massiva concentração das atividades econômicas em algumas metrópoles que propicia o desencadeamento de processos descompassados: redirecionamento e convergência de fluxos migratórios, déficit no número de empregos, ocupação desordenada de determinadas regiões da cidade e estigmatização de estratos sociais, que comprometem substancialmente a segurança pública urbana.',
+          'SANTOS, M. O espaço dividido: os dois circuitos da economia urbana dos países subdesenvolvidos. São Paulo: Edusp, 2004.',
+        ],
+        enunciado: 'O processo de concentração espacial apresentado foi estimulado por qual fator geográfico?',
+        alternativas: [
+          'Limitação da área ocupada.',
+          'Êxodo da população do campo.',
+          'Ampliação do risco habitacional.',
+          'Deficiência do transporte alternativo.',
+          'Crescimento da taxa de fecundidade.',
+        ],
+        correta: 'B',
+        resolucao: [
+          'O comando pede o fator que estimulou a concentração, ou seja, a causa do movimento de gente para as metrópoles.',
+          'A industrialização concentrada no Sudeste e a mecanização agrícola expulsaram trabalhadores do campo. Esse êxodo rural é o combustível demográfico da metrópole.',
+          'As outras alternativas descrevem consequências do próprio processo: risco habitacional, transporte insuficiente e ocupação limitada aparecem depois que a cidade já inchou. Taxa de fecundidade, além de não explicar migração, caiu no período urbano.',
+          'Resposta: B.',
+        ],
+      },
+    ],
   },
 
   'geo-demografia': {
@@ -338,9 +366,13 @@ export const PAGINAS_HUMANAS = {
 
   'fil-antiga': {
     resumo: [
-      'Filosofia antiga é a virada do mito para o logos: explicação racional da natureza (physis). Sócrates desloca a pergunta da física para a ética, "conhece-te a ti mesmo" e o método da maiêutica, com a ironia como ferramenta para expor a contradição.',
-      'Platão responde com o mundo das ideias: o sensível é cópia imperfeita do inteligível, e conhecer é lembrar (reminiscência). A alegoria da caverna é a imagem da educação e da saída da ilusão, e o Enem cobra a sua leitura aplicada a mídia, opinião e liberdade.',
-      'Aristóteles traz o empirismo possível na Antiguidade: conhecer parte da experiência, a virtude é hábito (excelência), e a felicidade é a atualização das potencialidades. A distinção entre potência e ato, causa material/formal/eficiente/final, aparece em questões de lógica e de ética.',
+      'Filosofia antiga no Enem aparece como texto curto de um autor e uma pergunta sobre o conceito que ele defende. Não se pede história da filosofia em ordem cronológica: pede-se leitura. O aluno precisa reconhecer a tese no fragmento e identificar a corrente a que ela pertence.',
+      'Os pré-socráticos buscam a arché, o princípio de todas as coisas. Tales aponta a água, Anaximandro o indefinido, Heráclito o devir e o fogo, Parmênides o ser imóvel. Empédocles combina quatro elementos, fogo, ar, água e terra, movidos por duas forças, Amor e Ódio, que ora unem, ora separam. A pergunta que eles inauguram é a passagem do mito ao logos: explicar a natureza por causas naturais, não por vontade de deuses.',
+      'Sócrates desloca a pergunta do cosmos para o homem: o que é a virtude, o que é a justiça. Seu método é a maiêutica, perguntas que desmontam a certeza inicial e obrigam a reformular. Não escreveu nada, e o que sabemos vem de Platão, que registra as conversas e cria a teoria das ideias: o mundo sensível é cópia imperfeita do mundo inteligível.',
+      'Aristóteles sistematiza. Para ele, a forma está nas próprias coisas, e o conhecimento começa na experiência. Distingue potência e ato, causa material, formal, eficiente e final, e define a virtude como meio-termo entre excessos, adquirida pelo hábito. Sua ética não é regra, é formação de caráter.',
+      'O helenismo traz a pergunta prática: como viver bem. O epicurismo busca o prazer entendido como ausência de dor e de perturbação, e não como excesso. O estoicismo, de Zenão a Sêneca e Epicteto, ensina a distinguir o que depende de nós, a nossa opinião e a nossa escolha, do que não depende, e a manter a serenidade diante do que não controlamos. É por isso que Sêneca fala de ânimo alegre diante da morte: a filosofia moderaria as paixões e daria firmeza.',
+      'O ceticismo suspende o juízo e recomenda a tranquilidade de quem não afirma o que não pode provar. O neoplatonismo, com Plotino, volta à metafísica e influencia o cristianismo, que vai dominar o pensamento medieval com a síntese de fé e razão em Tomás de Aquino.',
+      'Na prova, a dica prática é procurar no texto a palavra que revela a corrente: arché indica pré-socrático; ideia, Platão; virtude como hábito, Aristóteles; prazer moderado, epicurismo; aceitação do destino, estoicismo. Localizada a corrente, a alternativa correta costuma ser a que traduz a tese sem exagero.',
     ],
     chave: [
       'Sócrates: ironia, maiêutica, virtude como saber',
@@ -349,7 +381,31 @@ export const PAGINAS_HUMANAS = {
       'Do mito ao logos na origem da filosofia',
     ],
     formulas: [],
-    questoes: [],
+    questoes: [
+      {
+        ano: 2022,
+        fonte: 'Dia 1 · caderno 5 (amarelo) · questão 88',
+        textoApoio: [
+          'Entretanto, nosso amigo Basso tem o ânimo alegre. Isso resulta da filosofia: estar alegre diante da morte, forte e contente qualquer que seja o estado do corpo, sem desfalecer, ainda que desfaleça.',
+          'SÊNECA, L. Cartas morais. Lisboa: Calouste Gulbenkian, 1990.',
+        ],
+        enunciado: 'O excerto refere-se a uma carta de Sêneca na qual se apresenta como um bem fundamental da filosofia promover a',
+        alternativas: [
+          'valorização de disputas dialógicas.',
+          'rejeição das convenções sociais.',
+          'inspiração de natureza religiosa.',
+          'exaltação do sofrimento.',
+          'moderação das paixões.',
+        ],
+        correta: 'E',
+        resolucao: [
+          'Sêneca é estóico. Para o estoicismo, a filosofia serve para conduzir a vida, e o caminho é controlar o que está ao nosso alcance, as opiniões e as paixões, e aceitar com serenidade o que não está.',
+          'O texto mostra o resultado: ânimo alegre diante da morte e do corpo debilitado. Essa firmeza vem da moderação das paixões, não da insensibilidade nem do sofrimento desejado.',
+          'A exaltação do sofrimento (D) é o contrário: o estóico não busca a dor, busca não ser dominado por ela. As demais alternativas trazem bandeiras de outras correntes ou de outro período.',
+          'Resposta: E.',
+        ],
+      },
+    ],
   },
 
   'fil-etica': {

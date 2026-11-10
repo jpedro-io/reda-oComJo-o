@@ -47,9 +47,13 @@ export const PAGINAS_NATUREZA = {
 
   'bio-genetica': {
     resumo: [
-      'Genética no Enem é quase sempre primeira lei de Mendel e probabilidade aplicada: cruzamento de heterozigotos Aa × Aa gera 3:1 fenotípica e 1:2:1 genotípica. Herança sem dominância produz fenótipos intermediários; codominância mostra os dois caracteres ao mesmo tempo (AB).',
-      'Genética humana e biotecnologia entram por problemas de saúde pública e ética: herança ligada ao X (daltonismo, hemofilia) afeta mais homens, porque eles têm um único X. Em heredograma, procure primeiro quem é afetado e quem é portador.',
-      'Biotecnologia cobra transgenia, clonagem, terapia gênica, PCR e CRISPR, sempre com uma pergunta sobre implicação ética ou ambiental. A resposta certa costuma distinguir o que a técnica faz do que ela promete fazer.',
+      'Genética no Enem aparece em três roupas: heredograma de família, doença hereditária e tecnologia aplicada (transgênico, terapia gênica, teste de DNA). Em todas, o raciocínio é o mesmo: descobrir genótipos a partir de fenótipos, aplicar as leis de Mendel e calcular proporções.',
+      'Gene é trecho de DNA que codifica uma característica; alelos são as versões desse gene. Homozigoto tem dois alelos iguais, heterozigoto tem alelos diferentes. Dominante se manifesta mesmo em dose única; recessivo só aparece em dose dupla. Genótipo é a constituição, fenótipo é o que se vê, e o ambiente participa do fenótipo.',
+      'A primeira lei de Mendel trata de um par de genes: na formação dos gametas os alelos se separam, e cada gameta leva apenas um. Do cruzamento de dois heterozigotos nasce a proporção 3:1 no fenótipo e 1:2:1 no genótipo. A segunda lei trata de dois pares em cromossomos diferentes: eles se combinam de forma independente, e a proporção fenotípica é 9:3:3:1.',
+      'Heredograma se resolve por dedução. Comece pelo indivíduo afetado cujos pais não são afetados: se existir um assim, a característica é recessiva, porque os pais precisam ser portadores. Depois distribua os genótipos conhecidos e use os filhos para confirmar. Quadro de Punnett resolve o resto e mostra a probabilidade de cada filho nascer afetado.',
+      'Grupos sanguíneos são o heredograma de sempre com três alelos. No sistema ABO, A e B são dominantes sobre O e codominantes entre si; no fator Rh, positivo é dominante sobre negativo. A eritroblastose fetal aparece quando mãe Rh negativa gera filho Rh positivo, e é prevenida com soro anti-Rh na primeira gestação.',
+      'Alterações cromossômicas numéricas entram com frequência. A síndrome de Down é trissomia do 21 e nasce de um gameta com dois cromossomos 21 em vez de um. Se os dois pais têm a síndrome, cada um produz gametas com um ou com dois cromossomos 21, e o cruzamento pode gerar descendente normal, trissômico ou com quatro cópias do cromossomo. É a lógica que a questão dos pais com Down cobra.',
+      'Tecnologia gênica é cobrada por conceito. Transgenia transfere gene entre espécies; clonagem copia um indivíduo; terapia gênica insere gene funcional em células do paciente; teste de DNA compara marcadores. Em ética e ambiente, a discussão costuma ser sobre risco, patente e diversidade, e não sobre a técnica em si.',
     ],
     chave: [
       'Probabilidade em cruzamentos (Aa × Aa, Aa × aa, diibridismo)',
@@ -61,14 +65,43 @@ export const PAGINAS_NATUREZA = {
       { titulo: '1ª lei (heterozigotos)', expr: 'Aa × Aa → 1 AA : 2 Aa : 1 aa' },
       { titulo: 'Probabilidade', expr: 'P(A e B) = P(A) · P(B), se independentes' },
     ],
-    questoes: [],
+    questoes: [
+      {
+        ano: 2023,
+        fonte: 'Dia 2 · caderno 5 (amarelo) · questão 120',
+        textoApoio: [
+          'A síndrome de Down é uma alteração genética associada à trissomia do cromossomo 21, ou seja, o indivíduo possui três cromossomos 21 e não um par, como é normal. Isso ocorre pela união de um gameta contendo um cromossomo 21 com um gameta possuidor de dois cromossomos 21.',
+          'Sabendo disso, um jovem casal, ambos com essa síndrome, procura um médico especialista para aconselhamento genético porque querem ter um bebê.',
+        ],
+        enunciado: 'O médico informa ao casal que, com relação ao cromossomo 21, os zigotos formados serão',
+        alternativas: [
+          'todos normais.',
+          'todos tetrassômicos.',
+          'apenas normais ou tetrassômicos.',
+          'apenas trissômicos ou tetrassômicos.',
+          'normais, trissômicos ou tetrassômicos.',
+        ],
+        correta: 'E',
+        resolucao: [
+          'Uma pessoa com síndrome de Down tem três cromossomos 21. Na meiose, esses três cromossomos se distribuem de forma irregular, e os gametas produzidos podem levar um ou dois cromossomos 21.',
+          'Cada pai, então, forma dois tipos de gameta: com 1 cromossomo 21 e com 2 cromossomos 21, em proporções iguais.',
+          'No cruzamento dos quatro tipos possíveis: 1 + 1 dá dois cromossomos, ou seja, normal; 1 + 2 e 2 + 1 dão três, ou seja, trissômico; 2 + 2 dá quatro, ou seja, tetrassômico.',
+          'Como os três resultados são possíveis, os zigotos podem ser normais, trissômicos ou tetrassômicos.',
+          'Resposta: E. As alternativas que excluem uma das possibilidades nascem de considerar apenas um tipo de gameta, e o enunciado deixa claro que o gameta pode levar dois cromossomos 21.',
+        ],
+      },
+    ],
   },
 
   'bio-citologia': {
     resumo: [
-      'Citologia cobra a célula como fábrica: membrana (transporte), núcleo (DNA), mitocôndria (respiração e ATP), cloroplasto (fotossíntese), ribossomo (síntese de proteína). Saber qual organela faz o quê resolve a maior parte das questões.',
-      'Transporte pela membrana é campeão de incidência: difusão (a favor do gradiente, sem gasto), osmose (água), difusão facilitada (com proteína), transporte ativo (contra o gradiente, com ATP) e endocitose/exocitose. Meio hipertônico faz a célula perder água; hipotônico, ganhar.',
-      'Divisão celular: mitose mantém o número de cromossomos (crescimento e reparo); meiose reduz à metade e gera variabilidade pelo crossing-over. Em questão de câncer, a chave é a perda de controle do ciclo celular.',
+      'Citologia é o estudo da célula, e o Enem cobra quase sempre a relação entre estrutura e função: qual organela faz o quê e o que acontece quando algo falha. A questão costuma dar uma situação experimental ou clínica e pedir a consequência do bloqueio de uma etapa.',
+      'A célula é delimitada pela membrana plasmática, que é bicamada de fosfolipídios com proteínas embutidas e controla o que entra e o que sai. Transporte passivo (difusão e osmose) ocorre a favor do gradiente, sem gasto de energia. Transporte ativo vai contra o gradiente e gasta ATP. Osmose é a passagem de água do meio menos concentrado para o mais concentrado, e explica por que célula em meio hipotônico incha e em hipertônico murcha.',
+      'Mitocôndria é a usina: nela ocorre a respiração celular, que transforma glicose e oxigênio em gás carbônico, água e ATP. São três etapas: glicólise, no citosol; ciclo de Krebs, na matriz mitocondrial; cadeia respiratória, na membrana interna. É na cadeia que o oxigênio participa, como aceptor final de elétrons, e é ali que se forma a maior parte do ATP.',
+      'Cloroplasto é o oposto complementar: captura luz e produz glicose a partir de CO₂ e água, liberando oxigênio. Núcleo guarda o DNA e comanda a síntese de proteínas por meio do RNA. Ribossomo é o local da síntese proteica. Retículo endoplasmático rugoso participa da produção e do transporte de proteínas; o liso, da síntese de lipídios e da desintoxicação. Complexo golgiense embala e secreta. Lisossomo digere, com enzimas, material capturado ou organela velha.',
+      'Procarionte e eucarionte se distinguem pela presença de carioteca e organelas membranosas. Bactéria é procarionte: tem DNA circular, ribossomo e parede celular, mas não tem núcleo nem mitocôndria. É por isso que antibiótico que age no ribossomo bacteriano funciona sem prejudicar a célula humana, e é por isso que a mitocôndria e o cloroplasto carregam DNA próprio, indício da teoria endossimbiótica.',
+      'Quando uma etapa é bloqueada, o raciocínio é seguir o fluxo. Se a cadeia respiratória para, o oxigênio deixa de ser consumido e o NADH, que deveria ser oxidado, acumula; o ATP cai, a célula passa a produzir energia por fermentação e o piruvato vira lactato. É exatamente esse encadeamento que questão de veneno e de cianeto pede, e não a simples memorização de nomes.',
+      'Em questão de microscopia e de célula vegetal, lembre das três estruturas exclusivas da planta: parede celular de celulose, cloroplasto e vacúolo grande. A parede dá sustentação e resiste à entrada de água, o que permite à célula vegetal viver em meio hipotônico sem estourar.',
     ],
     chave: [
       'Osmose em célula animal e vegetal (plasmólise, turgescência)',
@@ -80,7 +113,25 @@ export const PAGINAS_NATUREZA = {
       { titulo: 'Respiração aeróbica', expr: 'C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + energia' },
       { titulo: 'Fotossíntese', expr: '6CO₂ + 6H₂O + luz → C₆H₁₂O₆ + 6O₂' },
     ],
-    questoes: [],
+    questoes: [
+      {
+        ano: 2023,
+        fonte: 'Dia 2 · caderno 5 (amarelo) · questão 122',
+        textoApoio: [
+          'A produção de ATP depende do gradiente de prótons gerado pela cadeia respiratória. Nessas reações, os elétrons provenientes da oxidação do NADH em NAD+ percorrem a cadeia até chegarem à citocromo c oxidase, reduzindo o Fe3+ a Fe2+. O oxigênio atua como aceptor final desses elétrons formando água.',
+          'O cianeto é uma espécie química altamente tóxica que tem grande afinidade pelo Fe3+. Quando células são expostas ao cianeto, ele se liga ao sítio de Fe3+ da citocromo c oxidase, impedindo a sua conversão em Fe2+ e bloqueando a cadeia respiratória.',
+        ],
+        enunciado: 'Esse bloqueio aumenta a concentração celular de',
+        alternativas: ['ATP.', 'água.', 'NADH.', 'dióxido de carbono.', 'citocromo c oxidase.'],
+        correta: 'C',
+        resolucao: [
+          'O NADH só deixa de existir quando é oxidado a NAD+ na cadeia respiratória, entregando elétrons.',
+          'Com a cadeia bloqueada, ninguém aceita esses elétrons. O NADH continua sendo produzido na glicólise e no ciclo de Krebs, mas não tem para onde ir, então se acumula.',
+          'O ATP cai, e não sobe: sem cadeia, a célula perde a principal fonte de energia. A água também não aumenta, porque ela só se forma no final da cadeia, quando o oxigênio recebe os elétrons. O CO2 depende do ciclo de Krebs, que também tende a parar pelo acúmulo de NADH.',
+          'Resposta: C. A lógica da questão é seguir o fluxo da via metabólica e ver onde o material se acumula quando a torneira fecha.',
+        ],
+      },
+    ],
   },
 
   'bio-fisiologia': {
@@ -265,9 +316,13 @@ export const PAGINAS_NATUREZA = {
 
   'fis-optica': {
     resumo: [
-      'Óptica no Enem é óptica geométrica aplicada: espelhos, lentes, olho humano e instrumentos. A lei da reflexão (ângulo de incidência = de reflexão) resolve espelho plano; equação de Gauss (1/f = 1/p + 1/p′) resolve imagem em espelho esférico e lente.',
-      'Espelho côncavo converge e forma imagem real e invertida quando o objeto está além do foco; convexo diverge e forma imagem virtual, direita e menor, é o espelho de segurança e do retrovisor. Lente convergente funciona como a do olho; divergente, como a usada para miopia.',
-      'Miopia corrige-se com lente divergente (a imagem se formava antes da retina); hipermetropia, com convergente. E os defeitos da visão são presença constante em questão sobre saúde ocular e uso de telas.',
+      'Óptica no Enem é a parte da Física em que a figura faz o trabalho: espelho, lente, sombra, arco-íris, fibra óptica, miragem. O aluno precisa reconhecer o fenômeno e, quando há número, aplicar as relações de reflexão e refração. Quase nunca se pede demonstração.',
+      'Luz é onda eletromagnética e se propaga em linha reta nos meios homogêneos. É por isso que existe sombra: um obstáculo bloqueia a passagem e forma a umbra, onde não chega luz, e a penumbra, onde chega parte. Sombra e penumbra explicam eclipse solar e lunar sem nenhuma conta.',
+      'Reflexão é o retorno da luz ao meio de origem. Em espelho plano, o ângulo de incidência é igual ao de reflexão e a imagem tem o mesmo tamanho do objeto, com direita e esquerda trocadas. Espelho côncavo converge e pode formar imagem real e invertida; convexo diverge, forma imagem virtual e menor, e é o do retrovisor, justamente por ampliar o campo de visão.',
+      'Refração é a mudança de velocidade da luz ao passar de um meio para outro, com desvio da trajetória quando a incidência é oblíqua. É o fenômeno da caneta quebrada no copo, do fundo da piscina que parece mais raso e do arco-íris, que separa as cores porque cada uma refrata com índice diferente. A lei de Snell relaciona os índices e os ângulos.',
+      'Dispersão, difração, polarização e absorção se confundem com facilidade. Difração é o desvio da onda ao contornar obstáculo ou passar por fenda estreita. Polarização alinha a vibração em um plano e está nas lentes de sol e na tela de cristal líquido. Absorção é a energia da luz convertida em calor, e é o que aquece o corpo escuro. Quando a questão fala de garrafa PET com água no telhado iluminando a casa, o fenômeno é refração: a água e o plástico formam uma lente que espalha a luz do sol pelo interior.',
+      'Instrumentos ópticos aparecem com o olho humano. Miopia é olho longo ou lente convergente demais, corrigida com lente divergente; hipermetropia é o contrário, corrigida com convergente. Presbiopia é a perda de acomodação com a idade. Fibra óptica funciona por reflexão total interna, fenômeno que só ocorre quando a luz vai do meio mais refringente para o menos refringente acima do ângulo limite.',
+      'Em questão de espelho e lente, vale conferir o sinal e o tipo de imagem. Imagem real é formada pelo encontro efetivo dos raios e pode ser projetada; virtual é formada pelo prolongamento dos raios e não se projeta. Espelho convexo e lente divergente formam sempre imagem virtual, direita e menor, e é isso que o Enem cobra em situação de segurança no trânsito.',
     ],
     chave: [
       'Espelho plano: imagem virtual, mesmo tamanho, distância simétrica',
@@ -280,7 +335,25 @@ export const PAGINAS_NATUREZA = {
       { titulo: 'Aumento', expr: 'A = −p′/p = i/o' },
       { titulo: 'Snell-Descartes', expr: 'n₁ sen θ₁ = n₂ sen θ₂' },
     ],
-    questoes: [],
+    questoes: [
+      {
+        ano: 2022,
+        fonte: 'Dia 2 · caderno 5 (amarelo) · questão 96',
+        textoApoio: [
+          'Em 2002, um mecânico da cidade mineira de Uberaba (MG) teve uma ideia para economizar o consumo de energia elétrica e iluminar a própria casa num dia de sol. Para isso, ele utilizou garrafas plásticas PET com água e cloro. Cada garrafa foi fixada ao telhado de sua casa em um buraco com diâmetro igual ao da garrafa, muito maior que o comprimento de onda da luz. Nos últimos dois anos, sua ideia já alcançou diversas partes do mundo e deve atingir a marca de 1 milhão de casas utilizando a "luz engarrafada".',
+          'ZOBEL, G. Brasileiro inventor de "luz engarrafada" tem ideia espalhada pelo mundo. Disponível em: www.bbc.com. Acesso em: 23 jun. 2022 (adaptado).',
+        ],
+        enunciado: 'Que fenômeno óptico explica o funcionamento da "luz engarrafada"?',
+        alternativas: ['Difração.', 'Absorção.', 'Polarização.', 'Reflexão.', 'Refração.'],
+        correta: 'E',
+        resolucao: [
+          'A garrafa com água funciona como uma lente. A luz do sol entra, atravessa o plástico e a água, e muda de velocidade e de direção ao passar de um meio para outro.',
+          'Mudança de velocidade com desvio de trajetória ao trocar de meio é refração. É o mesmo fenômeno da lente de óculos e do copo com água que parece partir a caneta.',
+          'A difração exigiria fenda ou obstáculo da ordem do comprimento de onda da luz, e o enunciado descarta isso ao dizer que o orifício é muito maior que esse comprimento. Absorção esquentaria a água sem iluminar o ambiente. Polarização não altera a quantidade de luz que entra. Reflexão sozinha não distribuiria a luz pelo cômodo.',
+          'Resposta: E.',
+        ],
+      },
+    ],
   },
 
   'qui-ligacoes': {
