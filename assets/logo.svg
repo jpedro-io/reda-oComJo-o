@@ -18,8 +18,9 @@
   <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="none"
         stroke="#FFFFFF" stroke-opacity=".42" stroke-width="1.2"/>
 
-  <!-- pena (nib): o instrumento da redação -->
-  <path d="M24 9.6 33.2 20.2 24 38.4 14.8 20.2Z" fill="#FFFFFF"/>
-  <path d="M24 15.4V28.6" stroke="#1A3EC8" stroke-width="2.1" stroke-linecap="round"/>
-  <circle cx="24" cy="32.4" r="2.15" fill="#1A3EC8"/>
+  <!-- duas aspas de abertura: o gesto de citar repertório -->
+  <path d="M13.4 18.6c0-3.2 2.3-5.4 5.4-5.9v3.1c-1.5.4-2.4 1.4-2.4 2.8h2.4v7.8h-5.4z" fill="#FFFFFF"/>
+  <path d="M27.4 18.6c0-3.2 2.3-5.4 5.4-5.9v3.1c-1.5.4-2.4 1.4-2.4 2.8h2.4v7.8h-5.4z" fill="#FFFFFF"/>
+  <!-- fio de citação embaixo -->
+  <path d="M14 33.6h20" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round"/>
 </svg>

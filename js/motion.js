@@ -80,17 +80,22 @@ export function animarNumeros(raiz = document) {
 }
 
 /**
- * Anéis de nota. A nota é uma FAIXA: o arco sólido vai até o mínimo e o arco
- * claro cobre a margem até o máximo. Dois dados, duas variáveis CSS.
+ * Painel da nota final. A nota é uma FAIXA: o trilho de 0 a 1000 é desenhado
+ * com dois números (mínimo e máximo) convertidos em porcentagem. Nada de arco
+ * que estoura quando o intervalo é largo — o trilho aceita qualquer largura.
  */
 export function pintarAneis(raiz = document) {
-  const limitar = v => Math.max(0, Math.min(100, Number(v) || 0));
-  [...raiz.querySelectorAll('[data-anel-min], [data-anel-max]')].forEach(el => {
-    const min = limitar(el.dataset.anelMin);
-    const max = Math.max(min, limitar(el.dataset.anelMax ?? min));
+  /* os números do painel são pontos de 0 a 1000, não porcentagem: o trilho
+     recebe a fração (360 → 36%). Sem isso o clamp cortava tudo em 100%. */
+  const escala = el => Number(el.dataset.faixaEscala) || 1000;
+  const pct = (v, max) => Math.max(0, Math.min(100, (Number(v) || 0) / max * 100));
+  [...raiz.querySelectorAll('[data-faixa-min]')].forEach(el => {
+    const max = escala(el);
+    const min = pct(el.dataset.faixaMin, max);
+    const topo = Math.max(min, pct(el.dataset.faixaMax ?? el.dataset.faixaMin, max));
     requestAnimationFrame(() => {
-      el.style.setProperty('--pct-min', min);
-      el.style.setProperty('--pct-max', max);
+      el.style.setProperty('--min', min.toFixed(2));
+      el.style.setProperty('--max', topo.toFixed(2));
     });
   });
 }

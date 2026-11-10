@@ -4,7 +4,7 @@ import {
 } from './texto.js';
 import { analisarEstilo } from './estilo.js';
 import {
-  ERROS_ACENTUACAO, DESVIOS_CONSTRUCAO, INFORMALIDADES, PRIMEIRA_PESSOA,
+  ERROS_ACENTUACAO, DESVIOS_CONSTRUCAO, REGRAS_CONTEXTO, INFORMALIDADES, PRIMEIRA_PESSOA,
   CONECTIVOS, REPERTORIO, CLICHES, MARCADORES_TESE, MARCADORES_SUSTENTACAO,
   INTERVENCAO, VIOLACAO_DH, STOPWORDS
 } from '../db/lexico.js';
@@ -102,6 +102,40 @@ export function avaliarC1(ctx) {
   if (construcoes.length) {
     melhorias.push('Construções a ajustar: ' + construcoes.slice(0, 3)
       .map(c => `“${c.padrao}” → “${c.sugestao}”`).join(' · ') + '.');
+  }
+
+  /* 2b. crase, concordância verbal e nominal, pontuação — dependem de contexto
+     (relação entre duas palavras), não de forma fixa. Ver REGRAS_CONTEXTO. */
+  const achados = [];
+  for (const regra of REGRAS_CONTEXTO) {
+    const ms = original.match(regra.re);
+    if (!ms || !ms.length) continue;
+    // o mesmo trecho pode ser pego por duas regras; conta uma vez
+    const trechos = [...new Set(ms.map(m => m.trim().replace(/^[.;:!?\s]+/, '')))];
+    achados.push({ id: regra.id, tipo: regra.tipo, sugestao: regra.sugestao,
+      n: trechos.length, trechos, peso: regra.peso ?? 1 });
+    desconto += Math.max(4, Math.round(12 * (regra.peso ?? 1))) * Math.min(trechos.length, 3);
+  }
+  sinais.desviosContexto = achados.reduce((a, c) => a + c.n, 0);
+  sinais.porTipo = achados.reduce((acc, c) => {
+    acc[c.tipo] = (acc[c.tipo] || 0) + c.n;
+    return acc;
+  }, {});
+  if (achados.length) {
+    /* agrupado por tipo, e com o trecho do aluno entre aspas: sem o trecho o
+       aluno sabe a regra, mas não sabe onde ela foi quebrada. */
+    const porTipo = new Map();
+    for (const c of achados) {
+      if (!porTipo.has(c.tipo)) porTipo.set(c.tipo, []);
+      porTipo.get(c.tipo).push(c);
+    }
+    for (const [tipo, lista] of porTipo) {
+      const total = lista.reduce((a, c) => a + c.n, 0);
+      const amostra = lista.slice(0, 2)
+        .map(c => `“${c.trechos[0]}” → ${c.sugestao}`).join(' · ');
+      melhorias.push(`${tipo.charAt(0).toUpperCase()}${tipo.slice(1)}`
+        + ` — ${total} ${total === 1 ? 'ocorrência' : 'ocorrências'}: ${amostra}`);
+    }
   }
 
   // 3. registro informal
@@ -222,7 +256,10 @@ export function avaliarC1(ctx) {
     !pt.encadeamentoComE;
   sinais.pontuacaoLimpa = pontuacaoLimpa;
 
-  sinais.totalDesvios = totalOcorr + sinais.desviosConstrucao + informalidades.length;
+  /* crase, concordância e pontuação de contexto contam como desvio de norma:
+     entram na mesma conta da grafia e das construções, não numa caixa à parte */
+  const contextuais = sinais.desviosContexto || 0;
+  sinais.totalDesvios = totalOcorr + sinais.desviosConstrucao + informalidades.length + contextuais;
 
   /* ---- degrau na escala de 20 em 20 (js/db/niveis.js) ----------------
      A escala intermediária mede duas coisas ao mesmo tempo: GRAVIDADE e
@@ -230,7 +267,7 @@ export function avaliarC1(ctx) {
      regência truncada) pesa o dobro do desvio de convenção, e tudo é lido em
      densidade — desvios por 100 palavras — para que um texto de 30 linhas não
      seja punido pelo tamanho nem um texto curto esconda o problema. */
-  const leves = totalOcorr + informalidades.length + pontuacaoRuim;
+  const leves = totalOcorr + informalidades.length + pontuacaoRuim + contextuais;
   const falhas = sinais.desviosConstrucao;
   const totalDesvios = leves + falhas;
   /* a pontuação entra na densidade em peso próprio: são desvios que o avaliador

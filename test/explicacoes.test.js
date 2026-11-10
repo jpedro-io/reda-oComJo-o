@@ -90,8 +90,11 @@ for (const caso of casos) {
     t(`${caso.nome}/${c.id}: explicação carrega a faixa`,
       ex.nivel.faixa && ex.nivel.faixa.min === c.nota && ex.nivel.faixa.max >= c.nota,
       JSON.stringify(ex.nivel.faixa));
-    t(`${caso.nome}/${c.id}: síntese fala em faixa ou em 200`,
-      /faixa|200/i.test(ex.sintese), ex.sintese.slice(0, 60));
+    /* texto zerado tem causa declarada em vez de faixa: "nota zero: fuga ao
+       tema". A síntese precisa dizer o motivo, não repetir a faixa. */
+    t(`${caso.nome}/${c.id}: síntese fala em faixa, em 200 ou na causa do zero`,
+      ex.zero ? /nota zero/i.test(ex.sintese) && ex.zero.length > 0
+        : /faixa|200/i.test(ex.sintese), ex.sintese.slice(0, 60));
     t(`${caso.nome}/${c.id}: sem "entre degraus"`,
       c.entreDegraus === undefined || c.entreDegraus === null, JSON.stringify(c.entreDegraus));
     t(`${caso.nome}/${c.id}: descritor oficial citado`,

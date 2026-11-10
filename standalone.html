@@ -816,7 +816,6 @@ main:focus { outline: none; }
 .oficial-lista li { color: var(--tinta-2); line-height: 1.55; padding-left: var(--s3); border-left: 2px solid var(--borda-forte); }
 .oficial-lista b { display: block; color: var(--dourado-txt); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; }
 .oficial-fonte { margin-top: var(--s3); font-size: .7rem; color: var(--tinta-3); font-style: italic; }
-.cc-niveis .oficial { color: var(--tinta-3); }
 /* o chip da faixa é um parágrafo de explicação: caixa alta atrapalharia a leitura */
 .badge.faixa {
   border-color: var(--azul-linha);
@@ -833,14 +832,6 @@ main:focus { outline: none; }
 
 .tick-fino { display: block; margin-top: .25rem; font-size: .86em; opacity: .7; }
 
-.cc-niveis .entre {
-  color: var(--tinta-2);
-  border-left: 2px solid var(--dourado);
-  padding-left: var(--s2);
-  background: var(--dourado-suave);
-  border-radius: 0 var(--r1) var(--r1) 0;
-  padding: var(--s2) var(--s2) var(--s2) var(--s3);
-}
 .tick:hover .tick-txt { color: var(--tinta); }
 
 .cb-side {
@@ -1468,7 +1459,11 @@ mark.mk {
   align-items: start;
 }
 
-.ws-entrada { display: grid; gap: var(--s4); position: sticky; top: calc(var(--topo) + var(--s4)); }
+/* A coluna da esquerda é mais alta que a tela (proposta + editor). `sticky` ali
+   travaria a leitura: a página só voltaria a rolar no fim do container, e o
+   relatório passaria por cima. Aqui as duas colunas rolam juntas, como uma
+   página só — que é o que o leitor espera ao girar a roda do mouse. */
+.ws-entrada { display: grid; gap: var(--s4); align-content: start; }
 
 /* proposta com textos motivadores */
 .proposta {
@@ -1526,6 +1521,7 @@ mark.mk {
 
 .ws-saida {
   position: relative;
+  overflow: visible;          /* nada de rolagem interna: quem rola é a página */
   scroll-margin-top: calc(var(--topo) + var(--s4));
   border-radius: var(--r4);
   border: 1px solid var(--borda-vidro);
@@ -1555,33 +1551,67 @@ mark.mk {
   border-bottom: 1px solid var(--borda);
 }
 
-.score-ring {
-  --tam: 118px;
-  width: var(--tam);
-  height: var(--tam);
-  position: relative;
+.score-faixa {
   display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: conic-gradient(var(--dourado) calc(var(--pct, 0) * 1%), var(--veu-forte) 0);
-  transition: --pct 900ms var(--e-out);
+  gap: 6px;
+  min-width: 13.5rem;
+  padding: var(--s4) var(--s4) var(--s3);
+  border-radius: var(--r3);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .6));
+  border: 1px solid var(--azul-linha);
+  box-shadow: var(--realce-borda), var(--sombra-card);
 }
-.score-ring::after {
-  content: '';
-  position: absolute;
-  inset: 9px;
-  border-radius: 50%;
-  background: var(--fundo-1);
+.sf-rot {
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--tinta-3);
 }
-.score-num {
-  position: relative;
-  z-index: 1;
+.sf-num {
+  display: flex;
+  align-items: baseline;
+  gap: .18em;
   font-family: var(--f-display);
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 3.4vw, 2.15rem);
   line-height: 1;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--tinta);
 }
-.score-num small { display: block; font-family: var(--f-texto); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-3); text-align: center; margin-top: var(--s1); }
+.sf-num b { font-weight: 500; }
+.sf-num i { font-style: normal; font-size: .78em; color: var(--tinta-3); }
+.sf-trilho {
+  position: relative;
+  height: 8px;
+  margin-top: var(--s2);
+  border-radius: var(--rp);
+  background:
+    repeating-linear-gradient(90deg, rgba(26, 62, 200, .16) 0 1px, transparent 1px 10%),
+    rgba(26, 62, 200, .08);
+}
+.sf-trilho i {
+  position: absolute;
+  inset-block: 0;
+  left: calc(var(--min, 0) * 1%);
+  right: calc(100% - var(--max, 0) * 1%);
+  border-radius: var(--rp);
+  background: linear-gradient(90deg, var(--azul), var(--azul-alto));
+  box-shadow: 0 2px 8px -3px rgba(16, 34, 120, .5);
+  transition: left 700ms var(--e-out), right 700ms var(--e-out);
+}
+/* nota exata (teto fechado): o trilho mostra a nota alcançada, não um ponto */
+.score-faixa[data-exata] .sf-trilho i { left: 0; }
+.sf-escala {
+  display: flex;
+  justify-content: space-between;
+  font-size: .56rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--tinta-3);
+  font-variant-numeric: tabular-nums;
+}
+.sf-escala i { font-style: normal; }
 
 .rel-faixa { display: grid; gap: var(--s1); }
 .rel-faixa strong { font-family: var(--f-display); font-size: 1.3rem; font-weight: 500; }
@@ -1623,7 +1653,8 @@ mark.mk {
 
 .cc-sum {
   display: grid;
-  grid-template-columns: 2.2rem minmax(0, 1fr) 3.2rem 2.6rem;
+  /* a última coluna é `auto`: "80–120/200" não cabe em 2,6rem e era cortado */
+  grid-template-columns: 2.2rem minmax(0, 1fr) minmax(2.4rem, 3.2rem) auto;
   gap: var(--s3);
   align-items: center;
   padding: var(--s3) var(--s4);
@@ -1645,53 +1676,99 @@ mark.mk {
   transform-origin: 0 50%;
   transition: transform var(--t-entrada) var(--e-out);
 }
-.cc-nota { font-variant-numeric: tabular-nums; font-weight: 800; font-size: .86rem; text-align: right; white-space: nowrap; }
+.cc-nota { font-variant-numeric: tabular-nums; font-weight: 800; font-size: .84rem; text-align: right; white-space: nowrap; }
+.cc-nota i { font-style: normal; margin: 0 .04em; font-weight: 600; opacity: .5; }
 .cc-nota small { font-size: .72em; font-weight: 600; opacity: .55; margin-left: .1em; }
 .cc-nota.baixa { color: var(--erro); }
 .cc-nota.media { color: var(--alerta); }
 
-.cc-body { padding: 0 var(--s4) var(--s4); display: grid; gap: var(--s3); }
+/* ---------------------------------------------------------------------
+   Corpo do cartão de competência — uma coluna só.
+   Cada assunto é uma seção com rótulo curto e fio de separação. Nada de
+   chip dentro de cartão dentro de chip: era isso que embolava a leitura.
+   --------------------------------------------------------------------- */
+.cc-body { padding: 0 var(--s4) var(--s4); display: grid; }
 
-.cc-sintese {
-  font-size: .86rem;
+/* diagnóstico: uma frase, marcada por fio azul — não é caixa de aviso */
+.cc-dx {
+  font-size: .95rem;
+  line-height: 1.6;
   color: var(--tinta);
-  padding: var(--s3);
-  border-left: 3px solid var(--dourado);
-  background: var(--dourado-suave);
-  border-radius: 0 var(--r1) var(--r1) 0;
+  padding-left: var(--s3);
+  border-left: 2px solid var(--azul);
+  margin-bottom: var(--s2);
 }
-.cc-niveis { display: grid; gap: var(--s1); font-size: .78rem; color: var(--tinta-2); }
-.cc-niveis .badge {
-  justify-self: start;
+
+.cc-bloco {
+  display: grid;
+  gap: var(--s2);
+  padding: var(--s4) 0;
+  border-top: 1px solid var(--borda);
+}
+.cc-bloco:first-of-type { padding-top: var(--s3); }
+.cc-rot {
+  margin: 0;
+  font-family: var(--f-texto);
   font-size: .66rem;
   font-weight: 800;
-  letter-spacing: .08em;
+  letter-spacing: .13em;
   text-transform: uppercase;
-  color: var(--marinho-txt);
-  padding: 2px var(--s2);
-  border: 1px solid var(--borda-forte);
-  border-radius: var(--r1);
-  background: var(--fundo-2);
+  color: var(--azul-txt);
 }
-.cc-niveis .fonte { color: var(--tinta-3); font-size: .7rem; }
+.cc-txt { font-size: .9rem; line-height: 1.62; color: var(--tinta-2); }
+.cc-txt b { color: var(--tinta); font-weight: 700; }
+.cc-fonte { font-size: .74rem; line-height: 1.5; color: var(--tinta-3); }
 
 .motivos { list-style: none; display: grid; gap: var(--s3); }
 .motivo {
   display: grid;
   gap: var(--s2);
-  padding: var(--s3);
+  padding: var(--s3) var(--s4) var(--s3) var(--s3);
   border-radius: var(--r2);
-  background: var(--fundo-2);
+  background: #fff;
   border: 1px solid var(--borda);
-  border-left: 3px solid var(--alerta);
-  font-size: .82rem;
+  border-left: 2px solid var(--alerta);
+  font-size: .84rem;
+  box-shadow: 0 1px 2px rgba(8, 13, 28, .03);
 }
 .motivo.g-alta { border-left-color: var(--erro); }
 .motivo.g-baixa { border-left-color: var(--marinho); }
-.motivo h4 { font-family: var(--f-texto); font-size: .86rem; font-weight: 800; line-height: 1.35; color: var(--tinta); }
-.motivo .m-tag { justify-self: start; font-size: .6rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--alerta); }
+.motivo h4,
+.motivo .m-titulo {
+  font-family: var(--f-texto);
+  font-size: .95rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--tinta);
+  margin: 0;
+}
+.motivo .m-tag {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--alerta);
+}
+.motivo .m-tag i {
+  font-style: normal;
+  display: grid;
+  place-items: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--alerta);
+  color: #fff;
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
 .motivo.g-alta .m-tag { color: var(--erro); }
-.motivo.g-baixa .m-tag { color: var(--marinho-txt); }
+.motivo.g-alta .m-tag i { background: var(--erro); }
+.motivo.g-baixa .m-tag { color: var(--azul-txt); }
+.motivo.g-baixa .m-tag i { background: var(--azul); }
 .motivo .m-porque { color: var(--tinta-2); line-height: 1.55; }
 .motivo blockquote {
   margin: 0;
@@ -1710,20 +1787,31 @@ mark.mk {
 .motivo .m-como { color: var(--tinta); font-size: .8rem; white-space: pre-line; }
 .motivo .m-como b { color: var(--marinho-txt); }
 
-.proximo-degrau {
-  display: grid;
-  gap: var(--s1);
-  padding: var(--s3);
-  border-radius: var(--r2);
-  border: 1px dashed var(--dourado);
-  background: var(--dourado-suave);
-  font-size: .8rem;
+.zero-lista { display: grid; gap: var(--s2); list-style: none; }
+.zero-lista li { font-size: .9rem; line-height: 1.6; color: var(--tinta-2); }
+.zero-lista b { color: var(--erro); }
+
+/* checklist de revisão: caixa com marcador de ação, não de "já está pronto" */
+.rev-lista { list-style: none; display: grid; gap: var(--s2); }
+.rev-lista li {
+  position: relative;
+  padding-left: var(--s5);
+  font-size: .88rem;
+  line-height: 1.58;
   color: var(--tinta-2);
 }
-.proximo-degrau .rot { font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--dourado-txt); }
-.proximo-degrau b { color: var(--tinta); }
+.rev-lista li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: .34em;
+  width: .78rem;
+  height: .78rem;
+  border: 1.5px solid rgba(26, 62, 200, .45);
+  border-radius: 3px;
+}
 
-.fortes-lista { list-style: none; display: grid; gap: var(--s1); font-size: .78rem; color: var(--tinta-2); }
+.fortes-lista { list-style: none; display: grid; gap: var(--s1); font-size: .84rem; line-height: 1.55; color: var(--tinta-2); }
 .fortes-lista li { padding-left: var(--s4); position: relative; }
 .fortes-lista li::before {
   content: '';
@@ -1736,7 +1824,6 @@ mark.mk {
   border-bottom: 1.5px solid var(--ok);
   transform: rotate(-45deg);
 }
-.sub-rot { font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-3); }
 
 .alerta {
   display: grid;
@@ -1959,9 +2046,8 @@ mark.mk {
 
   /* corrigir */
   .rel-topo { grid-template-columns: 1fr; justify-items: start; gap: var(--s4); }
-  .score-ring { --tam: 104px; }
   .ws-saida { padding: var(--s4); border-radius: var(--r3); }
-  .cc-sum { grid-template-columns: 2.2rem minmax(0, 1fr) 2.6rem; row-gap: var(--s2); padding: var(--s3); }
+  .cc-sum { grid-template-columns: 2.2rem minmax(0, 1fr) auto; row-gap: var(--s2); padding: var(--s3); }
   .cc-bar { grid-column: 1 / -1; grid-row: 2; }
   .btn-linha .btn { flex: 1 1 46%; }
   .textarea { min-height: 220px; }
@@ -2141,7 +2227,6 @@ mark.mk {
 .red-card,
 .destaque,
 .motivo,
-.proximo-degrau,
 .motivo-zero {
   -webkit-backdrop-filter: var(--desfoque);
   backdrop-filter: var(--desfoque);
@@ -2152,11 +2237,6 @@ mark.mk {
 .proposta,
 .metricas,
 .motivo,
-.proximo-degrau {
-  background: rgba(255, 255, 255, .72);
-  border: 1px solid rgba(8, 13, 28, .08);
-  box-shadow: var(--realce-borda), var(--sombra-card);
-}
 
 /* ------------------------------------------- C. barras e anéis em AZUL ROYAL */
 .cc-bar,
@@ -2170,31 +2250,6 @@ mark.mk {
   background: linear-gradient(90deg, var(--azul), var(--azul-alto));
   box-shadow: 0 0 0 1px rgba(26, 62, 200, .08);
 }
-
-/* anel da nota: arco sólido até o mínimo da faixa, arco claro até o máximo */
-.score-ring {
-  background: conic-gradient(
-    var(--azul) calc(var(--pct-min, 0) * 1%),
-    rgba(26, 62, 200, .3) calc(var(--pct-min, 0) * 1%),
-    rgba(26, 62, 200, .3) calc(var(--pct-max, 0) * 1%),
-    rgba(26, 62, 200, .1) 0
-  );
-  box-shadow: 0 18px 40px -28px rgba(26, 62, 200, .75);
-}
-.score-num { font-size: 1.9rem; }
-.score-num .score-faixa-m {
-  display: block;
-  font-family: var(--f-texto);
-  font-size: .58rem;
-  font-weight: 800;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--tinta-3);
-  text-align: center;
-}
-.score-num .score-par { display: inline-flex; align-items: baseline; gap: 2px; font-size: 1.5rem; }
-.score-num .score-par i { font-style: normal; font-weight: 500; color: var(--tinta-3); }
-.score-num .score-par b { font-weight: 500; }
 
 /* nota da competência como faixa */
 .cc-nota i { font-style: normal; font-weight: 600; color: var(--tinta-3); margin: 0 .06em; }
@@ -2229,24 +2284,18 @@ mark.mk {
   .hero .btn { width: 100%; }
 }
 
-/* ---------------------------------------------------- F. anel da nota em telas pequenas */
-/* "entre 800 – 900" tem 11 caracteres: o anel precisa de diâmetro e de corpo menor */
-@media (max-width: 560px) {
-  .score-ring { --tam: 136px; }
-  .score-num { font-size: 1.7rem; }
-  .score-num .score-par { font-size: 1.15rem; gap: 1px; }
-  .score-num .score-faixa-m { font-size: .52rem; letter-spacing: .12em; }
 }
 
-/* o topo do relatório empilha no celular: anel centralizado, texto embaixo */
+/* o topo do relatório empilha no celular: painel da nota em cima, texto embaixo */
 @media (max-width: 720px) {
-  .rel-topo { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
-  .rel-topo .score-ring { justify-self: center; }
-  .rel-faixa { justify-items: center; }
+  .rel-topo { grid-template-columns: minmax(0, 1fr); justify-items: stretch; }
+  .score-faixa { min-width: 0; }
+  .rel-faixa { text-align: left; }
+}
 }
 
 </style>
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Cdefs%3E%3ClinearGradient%20id='m'%20x1='6'%20y1='0'%20x2='42'%20y2='48'%20gradientUnits='userSpaceOnUse'%3E%3Cstop%20offset='0'%20stop-color='%234C6BF7'/%3E%3Cstop%20offset='.42'%20stop-color='%231A3EC8'/%3E%3Cstop%20offset='1'%20stop-color='%230C2078'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x='1.5'%20y='1.5'%20width='45'%20height='45'%20rx='14'%20fill='url(%23m)'/%3E%3Cpath%20d='M24%209.6%2033.2%2020.2%2024%2038.4%2014.8%2020.2Z'%20fill='%23fff'/%3E%3Cpath%20d='M24%2015.4V28.6'%20stroke='%231A3EC8'%20stroke-width='2.1'%20stroke-linecap='round'/%3E%3Ccircle%20cx='24'%20cy='32.4'%20r='2.15'%20fill='%231A3EC8'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2048%2048%27%3E%3Crect%20width%3D%2748%27%20height%3D%2748%27%20rx%3D%2714%27%20fill%3D%27%231A3EC8%27%2F%3E%3Cpath%20d%3D%27M13.4%2018.6c0-3.2%202.3-5.4%205.4-5.9v3.1c-1.5.4-2.4%201.4-2.4%202.8h2.4v7.8h-5.4z%27%20fill%3D%27%2523FFFFFF%27%2F%3E%3Cpath%20d%3D%27M27.4%2018.6c0-3.2%202.3-5.4%205.4-5.9v3.1c-1.5.4-2.4%201.4-2.4%202.8h2.4v7.8h-5.4z%27%20fill%3D%27%2523FFFFFF%27%2F%3E%3Cpath%20d%3D%27M14%2033.6h20%27%20stroke%3D%27%2523FFFFFF%27%20stroke-opacity%3D%27.6%27%20stroke-width%3D%272.6%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E" />
 </head>
 <body>
 
@@ -2275,9 +2324,9 @@ mark.mk {
           <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="url(#marca-azul)" />
           <path d="M6 17C7.6 9.4 14 4.4 22.5 3.6" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" />
           <rect x="1.5" y="1.5" width="45" height="45" rx="14" fill="none" stroke="#FFFFFF" stroke-opacity=".42" stroke-width="1.2" />
-          <path d="M24 9.6 33.2 20.2 24 38.4 14.8 20.2Z" fill="#FFFFFF" />
-          <path d="M24 15.4V28.6" stroke="#1A3EC8" stroke-width="2.1" stroke-linecap="round" />
-          <circle cx="24" cy="32.4" r="2.15" fill="#1A3EC8" />
+          <path d="M13.4 18.6c0-3.2 2.3-5.4 5.4-5.9v3.1c-1.5.4-2.4 1.4-2.4 2.8h2.4v7.8h-5.4z" fill="#FFFFFF" />
+          <path d="M27.4 18.6c0-3.2 2.3-5.4 5.4-5.9v3.1c-1.5.4-2.4 1.4-2.4 2.8h2.4v7.8h-5.4z" fill="#FFFFFF" />
+          <path d="M14 33.6h20" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round" />
         </svg>
       </span>
       <span class="brand-text">
@@ -2554,6 +2603,144 @@ const VERBOS_ACAO_PROVA = ['deve', 'devem', 'deveria', 'deveriam', 'e necessario
   'e preciso', 'e fundamental', 'urge', 'cabe ao', 'cabe a', 'e imprescindivel'];
 
 const PALAVRAS_MONOSSILABICAS_OK = new Set(['a', 'e', 'o', 'as', 'os', 'em', 'de', 'da', 'do', 'se', 'que', 'com', 'por', 'ja', 'ha', 'mais', 'mas', 'nao', 'si', 'ou', 'ao', 'aos', 'so', 'ja']);
+
+/* ------------------------------------------------------------------ */
+/* REGRAS DE CONTEXTO — gramática que lista de palavras não alcança    */
+/* ------------------------------------------------------------------ */
+/*
+ * DESVIOS_CONSTRUCAO casa forma fixa ("as vezes"). Só que a maior parte dos
+ * desvios de norma não é forma fixa: é RELAÇÃO entre duas palavras — um "à"
+ * que não devia existir, um sujeito plural com verbo no singular. Isso exige
+ * contexto, e contexto aqui é expressão regular sobre o texto original em
+ * minúsculas (com acento: sem o acento não há como enxergar crase).
+ *
+ * Cada regra é conservadora de propósito. Uma regra que só acerta em 60% dos
+ * casos desconta nota de redação boa — pior do que não ter a regra. As que
+ * ficaram de fora estão anotadas no fim do arquivo.
+ *
+ * Campos:
+ *   re       — regex global sobre o texto em minúsculas
+ *   tipo     — 'crase' | 'concordância verbal' | 'concordância nominal' | 'pontuação' | 'regência'
+ *   sugestao — o que escrever no lugar
+ *   peso     — multiplicador do desconto (padrão 1)
+ */
+
+const INFINITIVOS = 'ser|estar|ter|haver|fazer|dizer|dar|ver|ir|vir|poder|dever|combater|garantir|buscar|evitar|promover|reduzir|ampliar|construir|manter|permitir|possibilitar|contribuir|fiscalizar|investir|criar|ofertar|assegurar|respeitar|valorizar|enfrentar|superar|incluir|proteger|acessar|cuidar|pensar|agir|mudar|transformar|reverter|mitigar|conter|frear|punir|educar|conscientizar|debater|discutir';
+
+/*
+ * Fronteira de palavra para o português: `\b` do JavaScript só conhece
+ * [A-Za-z0-9_] — e para ele "à", "é" e "política" NÃO são letras. Por isso
+ * `\bà\b` nunca casa, e regra de crase escrita com `\b` passa em branco no
+ * texto inteiro. Usamos lookarounds Unicode em vez de `\b`.
+ */
+const L = '[\\p{L}\\p{N}]';
+const iniW = `(?<!${L})`;
+const fimW = `(?!${L})`;
+const regra = (id, tipo, corpo, sugestao, peso) => ({
+  id, tipo, sugestao,
+  ...(peso ? { peso } : {}),
+  re: new RegExp(`${iniW}(?:${corpo})${fimW}`, 'gu'),
+});
+
+const REGRAS_CONTEXTO = [
+  /* ---------------- crase ---------------- */
+  regra('crase-locucao-masculina', 'crase',
+    'à\\s+(?:partir|fim|respeito|menos|princ[íi]pio|dist[âa]ncia|exemplo|rigor|contento|salvo|caminho|olho\\s+nu|tempo)\\b',
+    'sem crase: “a partir de”, “a fim de”, “a respeito de”, “a menos que”, “a princípio”'),
+
+  regra('crase-antes-de-verbo', 'crase',
+    `à\\s+(?:se\\s+)?(?:${INFINITIVOS})`,
+    'antes de verbo não há crase: “a ser”, “a fazer”, “a combater”'),
+
+  regra('crase-antes-de-masculino', 'crase',
+    'à\\s+(?:o|os|um|uns|uma|umas|ao|aos|dois|três|quatro|todos|todo|alguns|algum|muitos|muitas|algumas|v[áa]rios|v[áa]rias|cada|nenhum)',
+    'crase só antes de palavra feminina: “a todos”, “a um”, “a muitos”'),
+
+  regra('crase-aquela', 'crase',
+    'a\\s+(?:aquela|aquele|aquilo|aquelas|aqueles)',
+    '“àquela”, “àquele”, “àquilo” (crase antes de aquele/aquela)'),
+
+  regra('crase-faltando-regencia', 'crase',
+    '(?:devido|graças|em\\s+relação|quanto|referente|frente|obedecendo|contrário|paralelo|semelhante)\\s+a\\s+(?:falta|educação|saúde|sociedade|população|violência|desigualdade|família|escola|mulher|mulheres|necessidade|possibilidade|lei|constituição|mídia|internet|tecnologia|realidade|situação|questão|prática)',
+    'falta crase: “devido à falta”, “em relação à educação”, “graças à lei”'),
+
+  regra('crase-nivel', 'crase',
+    '(?:à|a)\\s+n[íi]vel\\s+de',
+    '“em nível de”; “à nível” acumula dois erros', 0.8),
+
+  regra('crase-antes-de-que', 'crase',
+    '(?:devido|graças|em\\s+relação|quanto)\\s+à\\s+que',
+    '“devido a que” / “em relação ao que”'),
+
+  /* ---------------- concordância verbal ---------------- */
+  regra('cv-sujeito-plural-verbo-singular', 'concordância verbal',
+    '(?:os|as)\\s+[\\p{L}]+(?:s|es|is)\\s+(?:que\\s+)?(?:não\\s+)?(?:é|era|foi|tem|há|faz|deve|pode|precisa|existe|falta|consiste|visa|busca|necessita|contribui|provoca|causa|atinge|afeta|enfrenta|apresenta|representa|constitui|sofre|recebe|merece|ocorre|cresce|aumenta|diminui|permanece|deixa)',
+    'sujeito no plural pede verbo no plural: “os jovens precisam”, “as pessoas têm”'),
+
+  regra('cv-haver-existencial', 'concordância verbal',
+    '(?:houveram|haviam|haveriam|houveriam)\\s+(?:muitos|muitas|vários|várias|pessoas|casos|problemas|formas|maneiras|fatores|desafios|dados|estudos|indivíduos|jovens|crianças|alunos|brasileiros|cidadãos|razões|motivos|projetos|leis|políticas|medidas|ações|iniciativas|registros|relatos|exemplos)',
+    '“haver” no sentido de existir é impessoal: “houve muitos casos”, “havia pessoas”'),
+
+  regra('cv-fazer-tempo', 'concordância verbal',
+    'fazem\\s+(?:\\p{L}+\\s+)?(?:anos|décadas|séculos|meses|dias)',
+    '“fazer” indicando tempo é impessoal: “faz dez anos”, “faz décadas”'),
+
+  regra('cv-existe-plural', 'concordância verbal',
+    'existe\\s+(?:pessoas|jovens|crianças|casos|problemas|formas|maneiras|fatores|desafios|indivíduos|homens|mulheres|alunos|estudantes|brasileiros|cidadãos|dados|estudos|razões|motivos|projetos|leis|políticas|medidas|ações|iniciativas|recursos|investimentos|profissionais|oportunidades|informações|relações)',
+    '“existem pessoas”, “existem casos” (o verbo concorda com o que vem depois)'),
+
+  regra('cv-falta-plural', 'concordância verbal',
+    'falta\\s+(?:recursos|investimentos|políticas|medidas|ações|dados|estudos|incentivos|profissionais|leis|projetos|oportunidades|informações|verbas|equipamentos|médicos|professores|empregos|moradias)',
+    '“faltam recursos”, “faltam políticas”'),
+
+  regra('cv-se-tratam-de', 'concordância verbal',
+    'se\\s+tratam\\s+de',
+    '“trata-se de” (a partícula se indetermina o sujeito; verbo no singular)'),
+
+  regra('cv-coletivo-singular', 'concordância verbal',
+    '(?:a\\s+maioria|a\\s+maior\\s+parte|o\\s+conjunto|a\\s+população|o\\s+público)\\s+(?:dos|das|de)?\\s*\\p{L}*\\s*(?:precisam|têm|fazem|podem|devem|sofrem|enfrentam|buscam|querem)',
+    'com coletivo no singular + “de”, a norma prefere o singular: “a maioria dos jovens precisa”', 0.5),
+
+  /* ---------------- concordância nominal ---------------- */
+  regra('cn-artigo-plural-adjetivo-singular', 'concordância nominal',
+    '(?:os|as)\\s+(?:mesmo|próprio|primeiro|último|único|público|pública|social|humano|humana|cultural|político|política|econômico|econômica|ambiental|educacional|básico|básica|fundamental|digital|urbano|urbana|rural|racial|étnico|étnica|mental|físico|física|brasileiro|brasileira|profissional|mundial|nacional|coletivo|coletiva|individual)',
+    'artigo no plural pede adjetivo no plural: “os mesmos direitos”, “as políticas públicas”'),
+
+  regra('cn-substantivo-plural-adjetivo-singular', 'concordância nominal',
+    '(?:os|as|muitos|muitas|vários|várias|diversos|diversas)\\s+[\\p{L}]+(?:ões|ães|ais|eis|os|as|es)\\s+(?:público|pública|social|humano|humana|cultural|político|política|econômico|econômica|ambiental|educacional|digital|urbano|urbana|rural|racial|étnico|étnica|mental|físico|física)',
+    'o adjetivo acompanha o substantivo: “direitos sociais”, “políticas públicas”'),
+
+  regra('cn-numeral-substantivo-singular', 'concordância nominal',
+    '(?:dois|duas|três|quatro|cinco|seis|sete|oito|nove|dez|vinte|cem)\\s+(?:vez|ano|década|mês|dia|pessoa|caso|projeto|lei|política|medida|ação|forma|maneira|exemplo|motivo|grupo)',
+    'depois de numeral maior que um, o substantivo vai ao plural: “três vezes”, “cinco anos”'),
+
+  regra('cn-meio-invariavel', 'concordância nominal',
+    'meia\\s+(?:cansad[oa]|preocupad[oa]|exaust[oa]|perdid[oa]|atrasad[oa]|desmotivad[oa]|sozinh[oa])',
+    '“meio” como advérbio não flexiona: “meio cansada”'),
+
+  regra('cn-menos-invariavel', 'concordância nominal',
+    'menas',
+    '“menos” é invariável', 0.4),
+
+  /* ---------------- pontuação ---------------- */
+  regra('pont-virgula-sujeito-verbo', 'pontuação',
+    '(?:^|[.;:!?]\\s+|\\n)\\s*(?:o|a|os|as)\\s+[\\p{L}]+\\s*,\\s*(?:é|são|foi|foram|era|eram|tem|têm|há|deve|devem|pode|podem|está|estão|representa|representam|constitui|constituem|consiste|consistem|significa|significam|exige|exigem)',
+    'não se separa o sujeito do verbo por vírgula'),
+
+];
+
+/*
+ * Regras deliberadamente NÃO implementadas (e por quê):
+ *  - crase antes de nome de lugar ("vou à escola"): depende de saber se o
+ *    lugar aceita artigo — heurística cara e errada com frequência.
+ *  - vírgula antes de "e" / "mas": depende da estrutura da oração.
+ *  - vírgula antes de "que": não há como distinguir oração restritiva de
+ *    explicativa sem análise sintática — "A educação, que é um direito, falha"
+ *    é correta e seria acusada de erro.
+ *  - "a maioria ... são": as duas formas são aceitas pela norma culta.
+ *  - regência de "assistir/visar/implicar" fora das formas fixas: exige
+ *    distinguir sentido (assistir o doente ≠ assistir ao filme).
+ */
 
 /* ===== js/engine/texto.js ===== */
 /**
@@ -6425,6 +6612,40 @@ function avaliarC1(ctx) {
       .map(c => `“${c.padrao}” → “${c.sugestao}”`).join(' · ') + '.');
   }
 
+  /* 2b. crase, concordância verbal e nominal, pontuação — dependem de contexto
+     (relação entre duas palavras), não de forma fixa. Ver REGRAS_CONTEXTO. */
+  const achados = [];
+  for (const regra of REGRAS_CONTEXTO) {
+    const ms = original.match(regra.re);
+    if (!ms || !ms.length) continue;
+    // o mesmo trecho pode ser pego por duas regras; conta uma vez
+    const trechos = [...new Set(ms.map(m => m.trim().replace(/^[.;:!?\s]+/, '')))];
+    achados.push({ id: regra.id, tipo: regra.tipo, sugestao: regra.sugestao,
+      n: trechos.length, trechos, peso: regra.peso ?? 1 });
+    desconto += Math.max(4, Math.round(12 * (regra.peso ?? 1))) * Math.min(trechos.length, 3);
+  }
+  sinais.desviosContexto = achados.reduce((a, c) => a + c.n, 0);
+  sinais.porTipo = achados.reduce((acc, c) => {
+    acc[c.tipo] = (acc[c.tipo] || 0) + c.n;
+    return acc;
+  }, {});
+  if (achados.length) {
+    /* agrupado por tipo, e com o trecho do aluno entre aspas: sem o trecho o
+       aluno sabe a regra, mas não sabe onde ela foi quebrada. */
+    const porTipo = new Map();
+    for (const c of achados) {
+      if (!porTipo.has(c.tipo)) porTipo.set(c.tipo, []);
+      porTipo.get(c.tipo).push(c);
+    }
+    for (const [tipo, lista] of porTipo) {
+      const total = lista.reduce((a, c) => a + c.n, 0);
+      const amostra = lista.slice(0, 2)
+        .map(c => `“${c.trechos[0]}” → ${c.sugestao}`).join(' · ');
+      melhorias.push(`${tipo.charAt(0).toUpperCase()}${tipo.slice(1)}`
+        + ` — ${total} ${total === 1 ? 'ocorrência' : 'ocorrências'}: ${amostra}`);
+    }
+  }
+
   // 3. registro informal
   const informalidades = termosEncontrados(ctx.norm, INFORMALIDADES);
   sinais.informalidades = informalidades.length;
@@ -6543,7 +6764,10 @@ function avaliarC1(ctx) {
     !pt.encadeamentoComE;
   sinais.pontuacaoLimpa = pontuacaoLimpa;
 
-  sinais.totalDesvios = totalOcorr + sinais.desviosConstrucao + informalidades.length;
+  /* crase, concordância e pontuação de contexto contam como desvio de norma:
+     entram na mesma conta da grafia e das construções, não numa caixa à parte */
+  const contextuais = sinais.desviosContexto || 0;
+  sinais.totalDesvios = totalOcorr + sinais.desviosConstrucao + informalidades.length + contextuais;
 
   /* ---- degrau na escala de 20 em 20 (js/db/niveis.js) ----------------
      A escala intermediária mede duas coisas ao mesmo tempo: GRAVIDADE e
@@ -6551,7 +6775,7 @@ function avaliarC1(ctx) {
      regência truncada) pesa o dobro do desvio de convenção, e tudo é lido em
      densidade — desvios por 100 palavras — para que um texto de 30 linhas não
      seja punido pelo tamanho nem um texto curto esconda o problema. */
-  const leves = totalOcorr + informalidades.length + pontuacaoRuim;
+  const leves = totalOcorr + informalidades.length + pontuacaoRuim + contextuais;
   const falhas = sinais.desviosConstrucao;
   const totalDesvios = leves + falhas;
   /* a pontuação entra na densidade em peso próprio: são desvios que o avaliador
@@ -8080,6 +8304,20 @@ function corrigir(textoBruto, opts = {}) {
      competência, a abertura que o texto ainda comporta, limitado pela própria
      regra de divergência. */
   const explicadas = explicarCompetencias(comps);
+
+  /* A explicação de cada competência fala da nota que o TEXTO merecia. Numa
+     redação zerada isso vira mentira: o aluno leria "faixa de 0 por 11
+     desvios" quando o zero vem de fuga ao tema. Aqui o zero ganha causa
+     declarada, e o resto passa a ser observação sobre a escrita. */
+  if (zerada) {
+    for (const c of explicadas) {
+      c.explicacao = c.explicacao || {};
+      c.explicacao.zero = motivosZero.map(m => ({ titulo: m.titulo, detalhe: m.detalhe }));
+      c.explicacao.sintese = `Nota zero: ${motivosZero.map(m => m.titulo.toLowerCase()).join('; ')}. `
+        + 'A cartilha zera o texto por esse motivo antes de avaliar a escrita — o que aparece '
+        + 'abaixo são observações sobre o texto, não a causa da nota.';
+    }
+  }
   const notaTotal = comps.reduce((a, c) => a + c.nota, 0);
   const somaMax = comps.reduce((a, c) => a + (c.faixaNota?.max ?? c.nota), 0);
   /* redação zerada não tem faixa: a nota é 0, sem divergência possível */
@@ -8252,17 +8490,22 @@ function animarNumeros(raiz = document) {
 }
 
 /**
- * Anéis de nota. A nota é uma FAIXA: o arco sólido vai até o mínimo e o arco
- * claro cobre a margem até o máximo. Dois dados, duas variáveis CSS.
+ * Painel da nota final. A nota é uma FAIXA: o trilho de 0 a 1000 é desenhado
+ * com dois números (mínimo e máximo) convertidos em porcentagem. Nada de arco
+ * que estoura quando o intervalo é largo — o trilho aceita qualquer largura.
  */
 function pintarAneis(raiz = document) {
-  const limitar = v => Math.max(0, Math.min(100, Number(v) || 0));
-  [...raiz.querySelectorAll('[data-anel-min], [data-anel-max]')].forEach(el => {
-    const min = limitar(el.dataset.anelMin);
-    const max = Math.max(min, limitar(el.dataset.anelMax ?? min));
+  /* os números do painel são pontos de 0 a 1000, não porcentagem: o trilho
+     recebe a fração (360 → 36%). Sem isso o clamp cortava tudo em 100%. */
+  const escala = el => Number(el.dataset.faixaEscala) || 1000;
+  const pct = (v, max) => Math.max(0, Math.min(100, (Number(v) || 0) / max * 100));
+  [...raiz.querySelectorAll('[data-faixa-min]')].forEach(el => {
+    const max = escala(el);
+    const min = pct(el.dataset.faixaMin, max);
+    const topo = Math.max(min, pct(el.dataset.faixaMax ?? el.dataset.faixaMin, max));
     requestAnimationFrame(() => {
-      el.style.setProperty('--pct-min', min);
-      el.style.setProperty('--pct-max', max);
+      el.style.setProperty('--min', min.toFixed(2));
+      el.style.setProperty('--max', topo.toFixed(2));
     });
   });
 }
@@ -8990,18 +9233,19 @@ function viewCorrigir(params) {
   </div>`;
 }
 
-function motivoHTML(m) {
-  const etiqueta = m.gravidade === 'alta' ? 'impede o 200'
-    : m.gravidade === 'media' ? 'pesa na nota' : 'observação';
+function motivoHTML(m, i, zerado) {
+  const etiqueta = zerado ? 'observação'
+    : m.gravidade === 'alta' ? 'impede o 200'
+    : m.gravidade === 'media' ? 'segura a nota' : 'observação';
   return `
     <li class="motivo g-${m.gravidade}">
-      <span class="m-tag">${etiqueta}</span>
-      <h4>${esc(m.titulo)}</h4>
+      <span class="m-tag"><i>${i + 1}</i>${etiqueta}</span>
+      <h5 class="m-titulo">${esc(m.titulo)}</h5>
       <p class="m-porque">${esc(m.porque)}</p>
       ${m.evidencia ? `<blockquote>${esc(m.evidencia)}</blockquote>` : ''}
       ${m.exemplos && m.exemplos.length
         ? `<ul class="m-ex">${m.exemplos.map(e => `<li>${esc(e)}</li>`).join('')}</ul>` : ''}
-      ${m.comoResolver ? `<p class="m-como"><b>Como resolver:</b> ${esc(m.comoResolver)}</p>` : ''}
+      ${m.comoResolver ? `<p class="m-como"><b>Como resolver.</b> ${esc(m.comoResolver)}</p>` : ''}
     </li>`;
 }
 
@@ -9011,12 +9255,37 @@ function faixaDaComp(c) {
   return { min: f.min, max: f.max, exata: f.min === f.max };
 }
 
+/* bloco de leitura do relatório: um rótulo curto e o texto. Sem caixa alta aos
+   berros, sem chip dentro de chip — o olho desce uma coluna só. */
+function bloco(rotulo, corpo, classe = '') {
+  return `
+    <section class="cc-bloco ${classe}">
+      <h5 class="cc-rot">${rotulo}</h5>
+      ${corpo}
+    </section>`;
+}
+
 function compCard(c, aberto) {
   const ex = c.explicacao || {};
   const nivel = ex.nivel || { n: c.nivel, pontos: c.nota, exige: '' };
   const classeNota = c.nota < 120 ? 'baixa' : c.nota < 200 ? 'media' : '';
   const f = faixaDaComp(c);
   const rotuloFaixa = f.exata ? `${f.min}` : `${f.min}<i>–</i>${f.max}`;
+  const oficial = nivel.oficial ?? nivel.n ?? c.nivel;
+  const descritor = nivel.exigeOficial || nivel.exige || '';
+
+  const porque = f.exata
+    ? (oficial >= 5
+        ? `O texto cumpre integralmente o descritor do nível máximo, e não existe nível acima dele: os dois avaliadores tendem a fechar em ${f.min}.`
+        : `O texto cumpre o descritor do nível ${oficial} e não mostra o do nível seguinte: os dois avaliadores tendem a fechar em ${f.min}.`)
+    : `A nota oficial desta competência é ${f.min}, nível ${oficial}. ${f.max - f.min >= 40
+        ? `Como o texto já mostra parte do descritor de ${f.max}, o segundo avaliador pode subir um nível inteiro — por isso a faixa vai até ${f.max}.`
+        : `O texto está firme no nível ${oficial}; os 20 pontos de margem são a divergência previsível entre os dois avaliadores.`}`;
+
+  const motivos = ex.motivos && ex.motivos.length
+    ? `<ol class="motivos">${ex.motivos.map((m, i) => motivoHTML(m, i, !!ex.zero)).join('')}</ol>`
+    : '<p class="cc-txt">Nenhum impedimento identificado nesta amostra para o nível máximo.</p>';
+
   return `
   <details class="comp-card" ${aberto ? 'open' : ''}>
     <summary class="cc-sum">
@@ -9026,32 +9295,23 @@ function compCard(c, aberto) {
       <span class="cc-nota ${classeNota}" title="Faixa de nota desta competência">${rotuloFaixa}<small>/200</small></span>
     </summary>
     <div class="cc-body">
-      <p class="cc-sintese">${esc(ex.sintese || '')}</p>
-      <div class="cc-niveis">
-        <span class="badge">Nível ${nivel.oficial} de 5 · ${f.exata ? `nota ${f.min}` : `nota entre ${f.min} e ${f.max}`}</span>
-        ${f.exata
-          ? `<span class="badge faixa"><b>Nota firme:</b> ${nivel.oficial >= 5
-              ? `o texto cumpre integralmente o descritor do nível máximo — não há nível acima, e os dois avaliadores tendem a fechar em ${f.min}.`
-              : `o texto cumpre o descritor do nível ${nivel.oficial} e não mostra o do nível seguinte — os dois avaliadores tendem a fechar em ${f.min}.`}</span>`
-          : `<span class="badge faixa"><b>Por que a faixa:</b> a nota oficial desta competência é ${f.min} (nível ${nivel.oficial}). ${f.max - f.min >= 40
-            ? `Como o texto já mostra parte do descritor de ${f.max}, o segundo avaliador pode subir um nível inteiro — por isso a faixa vai até ${f.max}.`
-            : `O texto está firme no nível ${nivel.oficial}; os 20 pontos de margem são a divergência previsível entre os dois avaliadores — o teto da faixa é ${f.max}.`}</span>`}
-
-        <span><b>O nível exige:</b> ${esc(nivel.exigeOficial || nivel.exige)}</span>
-        ${ex.fonte ? `<span class="fonte">Grade: ${esc(ex.fonte)}</span>` : ''}
-      </div>
-      ${ex.motivos && ex.motivos.length
-        ? `<ol class="motivos">${ex.motivos.map(motivoHTML).join('')}</ol>`
-        : '<p class="m-porque">Nenhum impedimento identificado nesta amostra para o nível máximo.</p>'}
-      ${ex.proximo ? `
-        <div class="proximo-degrau">
-          <span class="rot">Para subir · ${Math.min(200, (nivel.oficial + 1) * 40)}</span>
-          <span><b>Exige:</b> ${esc(ex.nivelTextoProximo || ex.proximo.exige)}</span>
-          ${ex.proximo.faltou ? `<span><b>Falta:</b> ${esc(ex.proximo.faltou)}</span>` : ''}
-        </div>` : ''}
-      ${c.fortes && c.fortes.length ? `
-        <span class="sub-rot">o que já está certo</span>
-        <ul class="fortes-lista">${c.fortes.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}
+      <p class="cc-dx">${esc(ex.sintese || '')}</p>
+      ${ex.zero
+        ? bloco('nota 0 · texto zerado',
+            `<ul class="zero-lista">${ex.zero.map(z => `<li><b>${esc(z.titulo)}.</b> ${esc(z.detalhe)}</li>`).join('')}</ul>`)
+        : bloco(`nota ${f.exata ? f.min : `${f.min}–${f.max}`} · nível ${oficial} de 5`,
+            `<p class="cc-txt">${porque}</p>`)}
+      ${ex.zero ? '' : bloco(`o que o nível ${oficial} exige`,
+        `<p class="cc-txt">${esc(descritor)}</p>
+         ${ex.fonte ? `<p class="cc-fonte">Grade: ${esc(ex.fonte)}</p>` : ''}`)}
+      ${bloco(ex.zero ? 'o que a escrita mostra' : 'o que segurou a nota', motivos)}
+      ${ex.proximo && !ex.zero ? bloco(`para subir até ${Math.min(200, (oficial + 1) * 40)}`,
+        `<p class="cc-txt"><b>Exige.</b> ${esc(ex.nivelTextoProximo || ex.proximo.exige)}</p>
+         ${ex.proximo.faltou ? `<p class="cc-txt"><b>Falta.</b> ${esc(ex.proximo.faltou)}</p>` : ''}`) : ''}
+      ${c.melhorias && c.melhorias.length ? bloco('o que revisar na próxima versão',
+        `<ul class="rev-lista">${c.melhorias.slice(0, 6).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`) : ''}
+      ${c.fortes && c.fortes.length ? bloco('o que já está certo',
+        `<ul class="fortes-lista">${c.fortes.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`) : ''}
     </div>
   </details>`;
 }
@@ -9086,20 +9346,24 @@ function relatorio(r) {
 
   return `
     <div class="rel-topo">
-      <div class="score-ring" data-anel-min="${fTotal.min / 10}" data-anel-max="${fTotal.max / 10}"
-           style="--pct-min:0;--pct-max:0">
-        <div class="score-num">
+      <div class="score-faixa" data-faixa-min="${fTotal.min}" data-faixa-max="${fTotal.max}"
+           ${entre ? '' : 'data-exata="true"'} style="--min:0;--max:0" role="img"
+           aria-label="${entre ? `nota final entre ${fTotal.min} e ${fTotal.max} de 1000` : `nota final ${fTotal.min} de 1000`}">
+        <span class="sf-rot">nota final</span>
+        <span class="sf-num">
           ${entre
-            ? `<span class="score-faixa-m">entre</span>
-               <span class="score-par"><b data-conta="${fTotal.min}">0</b><i>–</i><b data-conta="${fTotal.max}">0</b></span>
-               <small>de 1000</small>`
-            : `<span data-conta="${fTotal.min}">0</span><small>de 1000</small>`}
-        </div>
+            ? `<b data-conta="${fTotal.min}">0</b><i>–</i><b data-conta="${fTotal.max}">0</b>`
+            : `<b data-conta="${fTotal.min}">0</b>`}
+        </span>
+        <span class="sf-trilho" aria-hidden="true"><i></i></span>
+        <span class="sf-escala" aria-hidden="true"><i>0</i><i>500</i><i>1000</i></span>
       </div>
       <div class="rel-faixa">
-        <strong>${entre ? `Nota entre ${fTotal.min} e ${fTotal.max}` : `Nota ${fTotal.min}`}</strong>
+        <strong>${esc(r.faixa.nome)}</strong>
         <p>${esc(r.faixa.texto)}</p>
-        <p class="rel-faixa-nota">Dois avaliadores corrigem a mesma redação e não fecham o mesmo número: o mínimo é a soma das notas oficiais das cinco competências, o máximo soma o que cada uma ainda comporta. ${esc(r.faixa.nome)}.</p>
+        <p class="rel-faixa-nota">${entre
+          ? `Faixa de <b>${fTotal.min}</b> a <b>${fTotal.max}</b>: o mínimo é a soma das notas oficiais das cinco competências; o máximo soma o que cada uma ainda comporta. Dois avaliadores corrigem a mesma redação e não fecham o mesmo número.`
+          : `Nota <b>${fTotal.min}</b>: nesta amostra o texto fecha no teto em todas as competências e não há margem para o segundo avaliador subir.`}</p>
         <span class="confianca">${ico('check')} ${rotuloConfianca}</span>
       </div>
     </div>

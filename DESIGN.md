@@ -12,7 +12,7 @@ Paleta refeita por decisão do cliente: **fundo branco, azul royal nos botões e
 
 | Papel | Token | Valor | Uso |
 |---|---|---|---|
-| Royal | `--azul` | `#1A3EC8` | botão primário, barra, anel da nota, faixa de seção |
+| Royal | `--azul` | `#1A3EC8` | botão primário, barra, trilho da nota, faixa de seção |
 | Royal (texto) | `--azul-txt` | `#14309B` | links e palavras-âncora sobre branco (AA) |
 | Royal realce | `--azul-alto` | `#2F55F0` | topo do gradiente dos botões, hover |
 | Véu azul | `--azul-fundo` | `#E9EEFF` | chips, badges, blocos de apoio |
@@ -44,7 +44,9 @@ Sobre as **faixas azuis** o vidro se inverte: véu branco a 12–16%, borda a 34
 
 Requisitos que continuam valendo: algo interessante atrás do vidro (aurora royal em CSS + campo 3D), no máximo 3 camadas com blur simultâneas, `@supports not (backdrop-filter)` cai para fundo sólido, `prefers-reduced-transparency` idem, e `prefers-reduced-motion` desliga as animações.
 
-**Marca:** `assets/logo.svg` — pena (nib) branca sobre squircle de vidro azul royal, com realce especular e contorno claro. O mesmo desenho é o favicon (data-URI) e a marca do cabeçalho. O quadrado de letras "RJ" foi aposentado: inicial em caixa dentro de quadrado é assinatura de placeholder, não de marca.
+**Marca:** `assets/logo.svg` — **duas aspas de abertura** brancas sobre um fio de citação, dentro do squircle de vidro azul royal com realce especular e contorno claro. O desenho diz o que o site faz: aspas são o gesto de citar repertório, que é o coração da Competência II e o que separa a redação nota 1000 da redação correta e vazia. O mesmo desenho é o favicon (data-URI) e a marca do cabeçalho, e continua legível a 16 px.
+
+Duas marcas anteriores foram aposentadas: o quadrado de letras "RJ" (inicial em caixa dentro de quadrado é assinatura de placeholder) e o **bico de pena** — a pena é o clichê visual de qualquer coisa ligada a escrita, e o traço fino do bico desaparecia no tamanho da topbar.
 
 ## 2. Tipografia — 1 par, justificado
 

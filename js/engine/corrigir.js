@@ -125,6 +125,20 @@ export function corrigir(textoBruto, opts = {}) {
      competência, a abertura que o texto ainda comporta, limitado pela própria
      regra de divergência. */
   const explicadas = explicarCompetencias(comps);
+
+  /* A explicação de cada competência fala da nota que o TEXTO merecia. Numa
+     redação zerada isso vira mentira: o aluno leria "faixa de 0 por 11
+     desvios" quando o zero vem de fuga ao tema. Aqui o zero ganha causa
+     declarada, e o resto passa a ser observação sobre a escrita. */
+  if (zerada) {
+    for (const c of explicadas) {
+      c.explicacao = c.explicacao || {};
+      c.explicacao.zero = motivosZero.map(m => ({ titulo: m.titulo, detalhe: m.detalhe }));
+      c.explicacao.sintese = `Nota zero: ${motivosZero.map(m => m.titulo.toLowerCase()).join('; ')}. `
+        + 'A cartilha zera o texto por esse motivo antes de avaliar a escrita — o que aparece '
+        + 'abaixo são observações sobre o texto, não a causa da nota.';
+    }
+  }
   const notaTotal = comps.reduce((a, c) => a + c.nota, 0);
   const somaMax = comps.reduce((a, c) => a + (c.faixaNota?.max ?? c.nota), 0);
   /* redação zerada não tem faixa: a nota é 0, sem divergência possível */
