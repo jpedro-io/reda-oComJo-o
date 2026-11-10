@@ -1332,3 +1332,78 @@ main #questoes .questao { margin-bottom: 14px; }
 main .questao[open] > .q-topo { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 main .questao .q-abre { color: rgba(226, 244, 236, .72); }
 main .questao[open] .q-abre { color: var(--tinta-3); }
+
+/* 27. Uma plataforma de estudos própria: índigo, menta e luz de vidro. */
+:root {
+  --g-950:#0a1222; --g-900:#111d31; --g-800:#1b2b42; --g-700:#28505a;
+  --g-600:#358075; --g-500:#5cb6a5; --g-400:#80d8c3; --g-300:#a6ead7;
+  --g-200:#bcefdc; --g-100:#dcf5e8;
+  --ink:#f3f8fa; --muted:#c9d9e1; --tinta-3:#c2d4dd;
+  --tinta-clara:#14282b; --tinta-clara-2:#23423f;
+  --tom1-faixa:#d6efe8; --tom2-faixa:#d9e3f4; --tom3-faixa:#d5eede;
+  --tom4-faixa:#e7e2f3; --tom5-faixa:#e8eacf;
+}
+html { background:#0a1222; }
+body {
+  background-color:#0a1222;
+  background-image: radial-gradient(ellipse at 8% 0%,rgba(67,123,117,.32),transparent 42%),
+    radial-gradient(ellipse at 91% 6%,rgba(94,93,153,.34),transparent 38%),
+    radial-gradient(ellipse at 80% 90%,rgba(29,106,91,.28),transparent 46%),
+    linear-gradient(160deg,#132638 0%,#10182c 48%,#102a2c 100%);
+}
+.topbar, .topbar.rolado { background:rgba(12,24,40,.9) !important; }
+.marca-texto { background:#a6ead7; color:#132b29 !important; }
+main .novo-hero {
+  position:relative; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(340px,.8fr);
+  align-items:center; gap:clamp(35px,6vw,90px); padding:clamp(36px,5vw,72px);
+  margin:18px 0 82px; border:1px solid rgba(219,242,239,.18); border-radius:30px;
+  background:linear-gradient(135deg,rgba(58,102,107,.23),rgba(62,58,107,.22) 58%,rgba(10,24,39,.52));
+  box-shadow:0 30px 90px rgba(3,10,20,.3), inset 0 1px 0 rgba(240,255,250,.12);
+  overflow:hidden;
+}
+main .novo-hero:before { content:''; pointer-events:none; position:absolute; width:470px; height:470px; right:-100px; top:-180px; background:radial-gradient(circle,rgba(170,151,234,.16),transparent 68%); }
+main .novo-hero-copy, main .novo-painel { position:relative; z-index:1; }
+main .novo-kicker { display:inline-flex; align-items:center; gap:9px; color:#b8eadb; font:700 .73rem/1.4 var(--sans); letter-spacing:.13em; }
+main .novo-kicker span { font-size:1.15rem; color:#ddbe8c; }
+main .novo-hero h1 { max-width:760px; margin:24px 0 22px; color:#f2f8f5; font-size:clamp(2.6rem,4.7vw,5rem); line-height:1.06; letter-spacing:-.035em; }
+main .novo-hero h1 em { color:#a9dfd0; font-weight:400; }
+main .novo-hero-copy > p { color:#d4e4e7; max-width:530px; font-size:1.12rem; line-height:1.7; }
+main .novo-acoes { display:flex; flex-wrap:wrap; gap:12px; margin:30px 0 36px; }
+main .novo-btn { display:inline-flex; align-items:center; justify-content:center; gap:24px; min-height:52px; padding:14px 20px; border-radius:12px; font-weight:700; text-decoration:none; transition:transform .2s, box-shadow .2s; }
+main .novo-btn:hover, main .novo-passo:hover { transform:translateY(-3px); }
+main .novo-btn.principal { color:#102d29; background:#a6ead7; box-shadow:0 5px 0 #5ea99c; }
+main .novo-btn.secundario { color:#e1f4f0; border:1px solid rgba(208,242,234,.42); background:rgba(15,37,46,.45); }
+main .novo-etapas { display:flex; flex-wrap:wrap; gap:24px; color:#91b8b4; font-size:.79rem; letter-spacing:.04em; }
+main .novo-etapas b { color:#daeae9; letter-spacing:0; font-weight:600; margin-left:4px; }
+main .novo-painel { transform:rotate(1deg); padding:26px; border-radius:24px; background:linear-gradient(155deg,rgba(79,99,119,.62),rgba(27,44,60,.88)); border:1px solid rgba(223,247,238,.23); box-shadow:0 25px 60px rgba(3,12,25,.38), inset 0 1px 0 rgba(255,255,255,.15); }
+main .novo-painel-top, main .novo-painel-rodape { display:flex; justify-content:space-between; align-items:center; color:#b5e6d6; font-size:.7rem; letter-spacing:.15em; font-weight:700; }
+main .novo-painel-top span:last-child { font-size:1.6rem; color:#d4bfee; }
+main .novo-painel-titulo { margin:24px 0 4px; color:#f1f8f5; font:400 clamp(1.55rem,2.2vw,2.05rem)/1.1 var(--serif); }
+main .novo-painel-sub { margin:0 0 24px; color:#c4d6d9; font-size:.9rem; }
+main .novo-passo { display:grid; grid-template-columns:42px 1fr auto; gap:14px; align-items:center; margin:9px 0; padding:12px; border-radius:14px; border:1px solid rgba(222,242,237,.13); background:rgba(12,25,42,.48); text-decoration:none; color:#f1f8f5; transition:transform .2s, background .2s; }
+main .novo-passo strong, main .novo-passo small { display:block; }
+main .novo-passo small { color:#c4d9da; margin-top:2px; font-size:.78rem; }
+main .novo-passo > b { color:#c4e6de; }
+main .novo-icon { width:42px; height:42px; display:grid; place-items:center; border-radius:11px; font-size:1.2rem; font-weight:700; color:#28304a; }
+main .novo-icon.roxo { background:#cbbce7; } main .novo-icon.menta { background:#a6dfcc; } main .novo-icon.coral { background:#e9c6a9; }
+main .novo-painel-rodape { padding-top:20px; color:#bfd6d4; }
+main .hub { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+main .hub-area { margin:0 !important; min-width:0; }
+main .hub-area-topo { background:var(--tom-faixa,#d6efe8) !important; }
+main .hub-area-topo h2 { color:#152f2d !important; }
+main .hub-area-topo p, main .hub-area-topo span, main .hub-area-topo .hub-conta { color:#21413d !important; opacity:1 !important; }
+main .hub-materias { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+main .hub-materia { background:rgba(28,50,61,.82) !important; }
+main .hub-materia:hover { background:rgba(68,105,102,.8) !important; }
+main .hm-nome, main .hm-conta { color:#e6f4f1 !important; }
+main .q-fontes { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 18px; }
+main .q-fontes a { display:inline-flex; padding:7px 11px; border-radius:8px; background:#234d4c; color:#e8faf2; border:1px solid #6aa49d; font-size:.86rem; }
+@media (max-width:800px) { main .novo-hero { grid-template-columns:minmax(0,1fr); gap:34px; padding:30px 24px; margin:12px 0 56px; } main .novo-painel { transform:none; } main .hub { grid-template-columns:minmax(0,1fr); } }
+@media (max-width:430px) { main .novo-hero h1 { font-size:2.55rem; } main .novo-acoes { flex-direction:column; align-items:stretch; } main .novo-btn { justify-content:space-between; } main .novo-etapas { gap:12px; } main .hub-materias { grid-template-columns:minmax(0,1fr) !important; } }
+.topbar .pill-cta { color:#102d29 !important; background:#a6ead7 !important; }
+.topbar .pill-cta:hover, .topbar .pill-cta:focus-visible { color:#102d29 !important; background:#c7f0e4 !important; }
+main .novo-painel .novo-painel-titulo { font-family:Georgia,serif; font-size:clamp(1.55rem,2.2vw,2.05rem); line-height:1.2; color:#f1f8f5; }
+main .comp-bloco .comp-topo { background:var(--tom-faixa,#d6efe8) !important; }
+main .comp-bloco .comp-topo .comp-nota { background:#b8e4d5 !important; color:#163b34 !important; border:1px solid #8abcae !important; }
+main .comp-bloco .tabela-niveis thead, main .comp-bloco .tabela-niveis thead tr { background:#274d50 !important; }
+main .comp-bloco .tabela-niveis thead th { color:#ecfaf4 !important; opacity:1 !important; }

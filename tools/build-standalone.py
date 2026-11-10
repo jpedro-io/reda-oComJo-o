@@ -25,7 +25,8 @@ ordem = [
     'js/db/conteudos/paginas-natureza.js', 'js/db/conteudos/paginas-matematica.js',
     'js/db/conteudos/expansao-linguagens.js', 'js/db/conteudos/expansao-humanas.js',
     'js/db/conteudos/expansao-natureza.js', 'js/db/conteudos/expansao-matematica.js',
-    'js/db/conteudos/expansoes.js', 'js/db/conteudos/index.js', 'js/ui-conteudos.js',
+    'js/db/conteudos/expansoes.js', 'js/db/conteudos/questoes-enem.js',
+    'js/db/conteudos/index.js', 'js/ui-conteudos.js',
     'js/motion.js', 'js/ui.js',
 ]
 

@@ -68,7 +68,7 @@ export function viewConteudos() {
     </div>
     <p class="sub" data-entrada>
       ${TOTAL_CONTEUDOS} conteúdos das quatro áreas da prova. Cada página traz o resumo do assunto,
-      as fórmulas quando existem, uma aula em vídeo e questões resolvidas passo a passo, identificadas por fonte.
+      esquemas e questões resolvidas conforme o material já preparado. Novos textos e questões oficiais estão sendo acrescentados por assunto.
     </p>
   </div>
 
@@ -91,7 +91,7 @@ export function viewMateria(id) {
       <span class="cb-num">${String(i + 1).padStart(2, '0')}</span>
       <span class="cb-nome">${escQ(c.titulo)}</span>
       <span class="cb-acoes">
-        ${paginaCompleta(c.id) ? '<span class="cb-tag completo">completo</span>' : (temTexto(c.id) ? '<span class="cb-tag">resumo</span>' : '')}
+        ${paginaCompleta(c.id) ? '<span class="cb-tag completo">resumo ampliado</span>' : (temTexto(c.id) ? '<span class="cb-tag">resumo</span>' : '')}
         ${icQ('seta', 'cb-seta')}
       </span>
     </a>`).join('');
@@ -239,7 +239,7 @@ export function viewConteudo(id) {
 
     <div class="cp-duas">
       <section class="cp-bloco cp-resumo" id="resumo" data-entrada>
-        <h2 class="cp-rot">${icQ('livro')} ${paginaCompleta(id) ? 'texto completo' : 'resumo'}</h2>
+        <h2 class="cp-rot">${icQ('livro')} ${paginaCompleta(id) ? 'resumo ampliado' : 'resumo'}</h2>
         ${resumo}
       </section>
       ${chave ? `<aside class="cp-lado">${chave}</aside>` : ''}
@@ -308,6 +308,7 @@ function questaoHTML(q, i) {
       <span class="q-abre">resolução escrita</span>
     </summary>
     <div class="q-corpo">
+      ${q.urlProva && /^https:\/\/download\.inep\.gov\.br\//.test(q.urlProva) ? `<p class="q-fontes"><a href="${escQ(q.urlProva)}" target="_blank" rel="noopener noreferrer">Abrir caderno oficial ↗</a>${q.urlGabarito && /^https:\/\/download\.inep\.gov\.br\//.test(q.urlGabarito) ? ` <a href="${escQ(q.urlGabarito)}" target="_blank" rel="noopener noreferrer">Ver gabarito oficial ↗</a>` : ''}</p>` : ''}
       ${(q.textoApoio || []).map(t => `<p class="q-apoio">${escQ(t)}</p>`).join('')}
       <p class="q-enunciado">${escQ(q.enunciado || '')}</p>
       <ol class="q-alts">${alternativas}</ol>

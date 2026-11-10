@@ -70,6 +70,7 @@ function viewHome() {
     ['#/comandos', 'Ler o tema', 'O substantivo que abre a proposta é um pedido. 11 comandos, com armadilha e roteiro.', 'mira'],
     ['#/temas', 'Temas', `${TEMAS.length} temas com recorte, núcleo, vocabulário de apoio e repertórios.`, 'tema'],
     ['#/redacoes', 'Redações analisadas', `${TOTAL_NOTA_MIL} redações nota 1000, de 2014 a 2026, com cada parágrafo comentado.`, 'doc'],
+    ['#/conteudos', 'Estudar conteúdos', 'Encontre os assuntos das quatro áreas e pratique com resoluções escritas.', 'regua'],
     ['#/corrigir', 'Corrigir', 'Cole seu texto: nota por competência, o que segura a nota e o que fazer primeiro.', 'analise']
   ];
 
@@ -94,18 +95,26 @@ function viewHome() {
     </div>`).join('');
 
   return `
-  <section class="hero">
-    <div class="hero-copy">
-      <h1 data-entrada>Como chegar à nota 1000 na redação do Enem</h1>
-      <p class="hero-sub" data-entrada>As 5 competências oficiais explicadas linha por linha, ${TOTAL_NOTA_MIL} redações nota 1000 abertas parágrafo por parágrafo e um corretor que mostra onde a nota escapa.</p>
-      <div class="hero-cta" data-entrada>
-        <a class="btn btn-primario" href="#/corrigir">Corrigir minha redação</a>
-        <a class="btn" href="#/redacoes">Ver as redações analisadas</a>
+  <section class="novo-hero" aria-labelledby="inicio-titulo">
+    <div class="novo-hero-copy" data-entrada>
+      <span class="novo-kicker"><span aria-hidden="true">✦</span> SEU ESPAÇO DE ESTUDO PARA O ENEM</span>
+      <h1 id="inicio-titulo">Estudar faz mais sentido quando você <em>entende o caminho.</em></h1>
+      <p>Explore os conteúdos da prova, pratique com questões resolvidas e desenvolva sua redação no seu ritmo.</p>
+      <div class="novo-acoes">
+        <a class="novo-btn principal" href="#/conteudos">Explorar conteúdos <span aria-hidden="true">↗</span></a>
+        <a class="novo-btn secundario" href="#/corrigir">Corrigir redação <span aria-hidden="true">→</span></a>
       </div>
-      <p class="frase">${TOTAL_NOTA_MIL} redações nota 1000 analisadas, ${TEMAS.length} temas mapeados, ${COMANDOS.length} comandos de tema.</p>
+      <div class="novo-etapas"><span>01 <b>Aprenda</b></span><span>02 <b>Pratique</b></span><span>03 <b>Evolua</b></span></div>
     </div>
-
-    <div class="hero-folha">${folha}</div>
+    <div class="novo-painel" data-entrada aria-label="Seu caminho de estudos">
+      <div class="novo-painel-top"><span>SEU CAMINHO</span><span aria-hidden="true">✳</span></div>
+      <p class="novo-painel-titulo">Um passo de cada vez.</p>
+      <p class="novo-painel-sub">Escolha por onde começar.</p>
+      <a href="#/conteudos" class="novo-passo"><span class="novo-icon roxo">✦</span><span><strong>Conteúdos</strong><small>As quatro áreas do Enem</small></span><b aria-hidden="true">↗</b></a>
+      <a href="#/redacoes" class="novo-passo"><span class="novo-icon menta">▤</span><span><strong>Redação</strong><small>Modelos e competências</small></span><b aria-hidden="true">↗</b></a>
+      <a href="#/corrigir" class="novo-passo"><span class="novo-icon coral">✓</span><span><strong>Correção</strong><small>Diagnóstico para melhorar</small></span><b aria-hidden="true">↗</b></a>
+      <div class="novo-painel-rodape"><span>ESTUDE COM PROPÓSITO</span><span>↗</span></div>
+    </div>
   </section>
 
   <section aria-labelledby="h-indice">

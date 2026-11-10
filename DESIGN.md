@@ -125,3 +125,13 @@ links do índice rolam até a seção sem alterar a rota baseada em hash. O esta
 real de cobertura e os pendentes estão em `tools/PROGRESSO-QUESTOES.md`;
 “ampliado” é um critério estrutural, não uma garantia de revisão factual nem
 comprovação de que todos os vídeos são aulas integrais.
+
+## Direção visual de estudos
+
+A plataforma de referência serviu para observar a entrada orientada a estudo,
+a clareza das ações e a organização das disciplinas, sem reutilizar imagens,
+marcas ou layout literal. A identidade própria combina índigo escuro, menta,
+lavanda e vidro translúcido; os cabeçalhos preservam tons claros diferentes,
+com texto escuro e contraste. A capa oferece caminhos para conteúdos, modelos
+e correção. Questões oficiais parafraseadas apontam para prova e gabarito Inep;
+as demais continuam explicitamente identificadas, sem parecerem oficiais.

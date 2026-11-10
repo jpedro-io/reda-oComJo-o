@@ -13,6 +13,7 @@ import { PAGINAS_LINGUAGENS } from './paginas-linguagens.js';
 import { VIDEOS } from './videos.js';
 import { AREAS } from './estrutura.js';
 import { EXPANSOES } from './expansoes.js';
+import { QUESTOES_ENEM } from './questoes-enem.js';
 
 export const PAGINAS = {
   ...PAGINAS_LINGUAGENS,
@@ -34,7 +35,7 @@ export function paginaDe(id, conteudo) {
     figuras: extra.figuras || [],
     chave: extra.chave || pagina.chave || [],
     formulas: extra.formulas || pagina.formulas || [],
-    questoes: extra.questoes?.length ? extra.questoes : (pagina.questoes || []),
+    questoes: QUESTOES_ENEM[id]?.length ? [...QUESTOES_ENEM[id], ...(extra.questoes?.length ? extra.questoes : (pagina.questoes || [])).slice(0, Math.max(0, 3 - QUESTOES_ENEM[id].length))] : (extra.questoes?.length ? extra.questoes : (pagina.questoes || [])),
     video: VIDEOS[id] || null,
     conteudo: conteudo || null,
   };

@@ -9,7 +9,7 @@ export const EXP_MATEMATICA = {
   'mat-porcentagem': {
     chave: [
       'Fator multiplicador em vez de regra de três',
-      'Aumentos e descontos sucessivos (nunca somar as taxas)',
+      'Aumentos e descontos sucessivos: atenção às bases diferentes',
       'Porcentagem de porcentagem',
       'Pontos percentuais × variação relativa',
       'Base de cálculo: porcentagem de quê?',
@@ -26,7 +26,7 @@ export const EXP_MATEMATICA = {
         h: 'O fator multiplicador: aumentos e descontos',
         ps: [
           'Aumento de 17% multiplica por 1,17; desconto de 17% multiplica por 0,83. Aumento de 100% dobra (fator 2), desconto de 100% zera (fator 0). Escrever o fator é o método mais seguro quando a questão encadeia operações.',
-          'Descontos e aumentos sucessivos nunca se somam. Aumentar 20% e depois descontar 20% não devolve o valor original: 1,20 × 0,80 = 0,96, ou seja, o preço final fica 4% abaixo do inicial. Quanto maior a taxa, maior a perda, porque o segundo percentual incide sobre um valor já alterado.',
+          'Descontos e aumentos sucessivos, em geral, não podem ser somados diretamente, pois incidem sobre bases diferentes. Aumentar 20% e depois descontar 20% não devolve o valor original: 1,20 × 0,80 = 0,96, ou seja, o preço final fica 4% abaixo do inicial. Quanto maior a taxa, maior a perda, porque o segundo percentual incide sobre um valor já alterado.',
         ],
       },
       {
