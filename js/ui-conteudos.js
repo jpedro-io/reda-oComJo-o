@@ -13,6 +13,7 @@ import {
   AREAS, TOTAL_CONTEUDOS, areaPorId, materiaPorId, conteudoPorId,
   paginaDe, temTexto, paginaCompleta,
 } from './db/conteudos/index.js';
+import { lerProgressoLocal } from './progresso-local.js';
 
 const escQ = (s = '') => String(s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -86,11 +87,14 @@ export function viewMateria(id) {
   const materia = materiaPorId(id);
   if (!materia) return naoEncontrado('Matéria não encontrada.');
 
+  const progresso = lerProgressoLocal();
+  const acessados = progresso.ok ? progresso.dados.acessados : {};
   const botoes = materia.conteudos.map((c, i) => `
     <a class="conteudo-btn" href="#/conteudos/c/${c.id}" data-entrada>
       <span class="cb-num">${String(i + 1).padStart(2, '0')}</span>
       <span class="cb-nome">${escQ(c.titulo)}</span>
       <span class="cb-acoes">
+        ${Object.prototype.hasOwnProperty.call(acessados, c.id) ? '<span class="cb-visitado" aria-label="Conteúdo acessado">✓ <span>Acessado</span></span>' : ''}
         ${paginaCompleta(c.id) ? '<span class="cb-tag completo">resumo ampliado</span>' : (temTexto(c.id) ? '<span class="cb-tag">resumo</span>' : '')}
         ${icQ('seta', 'cb-seta')}
       </span>
@@ -111,7 +115,7 @@ export function viewMateria(id) {
       <span class="eyebrow" data-entrada>${escQ(materia.area.sigla)} · ${escQ(materia.area.nome.split(' e suas')[0])}</span>
       <h1 data-entrada>${escQ(materia.nome)}</h1>
     </div>
-    <p class="sub" data-entrada>${materia.conteudos.length} conteúdos nesta matéria. Clique em um para abrir o resumo, os exemplos, os esquemas, as questões resolvidas e o vídeo.</p>
+    <p class="sub" data-entrada>${materia.conteudos.length} conteúdos nesta matéria. O ✓ indica página acessada neste navegador, não conclusão do estudo.${progresso.ok ? '' : ' Não foi possível ler o progresso local neste navegador.'}</p>
   </div>
 
   <div class="conteudo-lista">${botoes}</div>

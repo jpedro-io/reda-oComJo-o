@@ -6344,6 +6344,23 @@ main .subtema .cp-bloco { min-width:0; }
 main .subtema .video-caixa { margin:0 0 18px; }
 main .subtema .video-caixa + p, main .subtema .video-caixa ~ p { margin:10px 0; }
 
+/* Progresso e histórico: os dados ficam apenas neste navegador. */
+main .cb-visitado { display:inline-flex; align-items:center; gap:5px; color:#a9f2c5; font-size:.77rem; font-weight:700; white-space:nowrap; }
+main .historico-local { margin:2rem 0; padding:clamp(1rem,3vw,2rem); border:1px solid #416c50; border-radius:16px; background:#102b1c; color:#e8f4ec; }
+main .historico-local h2 { margin:0 0 .5rem; font-size:1.4rem; }
+main .historico-local p,main .historico-privacidade,main .historico-status { color:#d3e8da; font-size:.88rem; line-height:1.5; }
+main .historico-privacidade { margin:.3rem 0 .7rem; }
+main .historico-status:empty { display:none; }
+main .historico-status { margin:.8rem 0 0; color:#a9f2c5; font-weight:600; }
+main .historico-lista { list-style:none; padding:0; margin:1rem 0; display:grid; gap:.7rem; }
+main .historico-item { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem; border:1px solid #436d52; border-radius:10px; background:#163923; }
+main .historico-item p { margin:.25rem 0; }
+main .historico-trecho { overflow-wrap:anywhere; }
+main .historico-botoes,main .historico-acoes { display:flex; flex-wrap:wrap; gap:.5rem; }
+main .historico-acoes { margin-top:1rem; }
+main .historico-aviso { margin:.8rem 0 0; }
+@media (max-width:600px) { main .historico-item { align-items:flex-start; flex-direction:column; } main .historico-botoes,main .historico-acoes { width:100%; } main .historico-botoes .btn,main .historico-acoes .btn { flex:1 1 auto; } }
+
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%274%27%20fill%3D%27%2325e88c%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2717%27%20fill%3D%27%2307130c%27%20text-anchor%3D%27middle%27%3ER%3C%2Ftext%3E%3C%2Fsvg%3E" />
 </head>
@@ -22035,6 +22052,68 @@ function temTexto(id) { return Array.isArray(PAGINAS[id]?.resumo) && PAGINAS[id]
 const TOTAL_QUESTOES = AREAS.flatMap(a => a.materias.flatMap(m => m.conteudos))
   .reduce((t, c) => { const p = paginaDe(c.id); return t + p.questoes.length + (p.subtemas || []).reduce((n, s) => n + s.questoes.length, 0); }, 0);
 
+/* ===== js/progresso-local.js ===== */
+/** Dados privados ao navegador: nenhuma redação é enviada a servidor. */
+const CHAVE_PROGRESSO_LOCAL = 'redacao-com-joao.progresso.v1';
+const VAZIO_PROGRESSO_LOCAL = () => ({ versao: 1, acessados: {}, redacoes: [] });
+
+function validarRelatorioLocal(r) {
+  const numero = x => typeof x === 'number' && Number.isFinite(x);
+  const faixa = x => x && numero(x.min) && numero(x.max);
+  const lista = x => x == null || Array.isArray(x);
+  const explicacaoValida = e => !e || (typeof e === 'object' && lista(e.zero) && lista(e.motivos) && (!e.motivos || e.motivos.every(m => m && typeof m === 'object' && lista(m.exemplos))) && (!e.nivel || (typeof e.nivel === 'object' && numero(e.nivel.oficial ?? e.nivel.n))) && (!e.proximo || typeof e.proximo === 'object'));
+  return !!(r && r.ok === true && numero(r.notaTotal) && (!r.notaFaixa || faixa(r.notaFaixa)) && r.faixa && typeof r.faixa.nome === 'string' && typeof r.faixa.texto === 'string' && Array.isArray(r.competencias) && r.competencias.length === 5 && r.competencias.every(c => c && /^C[1-5]$/.test(c.id) && numero(c.nota) && numero(c.nivel) && (!c.faixaNota || faixa(c.faixaNota)) && explicacaoValida(c.explicacao) && lista(c.melhorias) && lista(c.fortes)) && lista(r.alertas) && lista(r.motivosZero) && (!r.zerada || Array.isArray(r.motivosZero)) && (!r.metricas || ['paragrafos','palavras','linhas'].every(k => r.metricas[k] == null || numero(r.metricas[k]))));
+}
+function validarProgressoLocal(d) {
+  return d && d.versao === 1 && d.acessados && typeof d.acessados === 'object' && !Array.isArray(d.acessados) && Object.keys(d.acessados).every(k => /^[a-z0-9-]{1,100}$/.test(k) && typeof d.acessados[k] === 'string' && !Number.isNaN(Date.parse(d.acessados[k]))) && Array.isArray(d.redacoes) && d.redacoes.every(e => e && typeof e.id === 'string' && /^[a-zA-Z0-9-]{1,100}$/.test(e.id) && typeof e.data === 'string' && !Number.isNaN(Date.parse(e.data)) && typeof e.texto === 'string' && e.texto.length <= 100000 && typeof e.temaId === 'string' && e.temaId.length <= 200 && typeof e.temaLivre === 'string' && e.temaLivre.length <= 1000 && validarRelatorioLocal(e.relatorio));
+}
+function lerProgressoLocal() {
+  try {
+    const bruto = globalThis.localStorage.getItem(CHAVE_PROGRESSO_LOCAL);
+    if (bruto === null) return { ok:true, dados:VAZIO_PROGRESSO_LOCAL() };
+    const dados = JSON.parse(bruto);
+    if (!validarProgressoLocal(dados)) return { ok:false, erro:'Os dados locais não puderam ser lidos; não foram substituídos.' };
+    return { ok:true, dados };
+  } catch { return { ok:false, erro:'O armazenamento do navegador está indisponível ou os dados não puderam ser lidos.' }; }
+}
+function gravarProgressoLocal(dados) {
+  try { globalThis.localStorage.setItem(CHAVE_PROGRESSO_LOCAL, JSON.stringify(dados)); return {ok:true}; }
+  catch { return {ok:false, erro:'Não foi possível salvar neste navegador. Verifique o espaço disponível e as permissões de armazenamento.'}; }
+}
+function marcarAcessoLocal(id) {
+  if (!/^[a-z0-9-]{1,100}$/.test(id)) return {ok:false, erro:'Conteúdo inválido.'};
+  const l = lerProgressoLocal(); if (!l.ok) return l;
+  if (Object.prototype.hasOwnProperty.call(l.dados.acessados,id)) return {ok:true};
+  l.dados.acessados[id] = new Date().toISOString(); return gravarProgressoLocal(l.dados);
+}
+function salvarRedacaoLocal(texto, temaId, temaLivre, relatorio) {
+  const l = lerProgressoLocal(); if (!l.ok) return l;
+  const id = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  const item = {id, data:new Date().toISOString(), texto, temaId, temaLivre, relatorio};
+  if (!validarProgressoLocal({versao:1, acessados:{}, redacoes:[item]})) return {ok:false,erro:'Não foi possível salvar esta correção.'};
+  l.dados.redacoes.unshift(item);
+  return gravarProgressoLocal(l.dados);
+}
+function excluirRedacaoLocal(id) {
+  const l = lerProgressoLocal(); if (!l.ok) return l;
+  l.dados.redacoes = l.dados.redacoes.filter(e => e.id !== id); return gravarProgressoLocal(l.dados);
+}
+function limparAcessosLocal() {
+  const l = lerProgressoLocal(); if (!l.ok) return l;
+  l.dados.acessados = {}; return gravarProgressoLocal(l.dados);
+}
+/** Importação mescla e não substitui redações existentes com mesmo ID. */
+function importarProgressoLocal(bruto) {
+  let importado; try { importado = JSON.parse(bruto); } catch { return {ok:false,erro:'Arquivo de backup inválido.'}; }
+  if (!validarProgressoLocal(importado)) return {ok:false,erro:'Arquivo de backup inválido ou de versão não suportada. Nada foi alterado.'};
+  const l = lerProgressoLocal(); if (!l.ok) return l;
+  const ids = new Set(l.dados.redacoes.map(e=>e.id));
+  for (const item of importado.redacoes) { if (!ids.has(item.id)) { l.dados.redacoes.push(item); ids.add(item.id); } }
+  l.dados.redacoes.sort((a,b)=>b.data.localeCompare(a.data));
+  l.dados.acessados = {...importado.acessados,...l.dados.acessados};
+  return gravarProgressoLocal(l.dados);
+}
+
 /* ===== js/ui-conteudos.js ===== */
 /**
  * Views do guia de conteúdos: sumário → matéria → página do conteúdo.
@@ -22047,6 +22126,7 @@ const TOTAL_QUESTOES = AREAS.flatMap(a => a.materias.flatMap(m => m.conteudos))
  * Este arquivo não importa ui.js (que importa este) para não criar ciclo:
  * as duas utilidades que usa — escapar texto e desenhar ícone — estão aqui.
  */
+
 
 
 const escQ = (s = '') => String(s)
@@ -22121,11 +22201,14 @@ function viewMateria(id) {
   const materia = materiaPorId(id);
   if (!materia) return naoEncontrado('Matéria não encontrada.');
 
+  const progresso = lerProgressoLocal();
+  const acessados = progresso.ok ? progresso.dados.acessados : {};
   const botoes = materia.conteudos.map((c, i) => `
     <a class="conteudo-btn" href="#/conteudos/c/${c.id}" data-entrada>
       <span class="cb-num">${String(i + 1).padStart(2, '0')}</span>
       <span class="cb-nome">${escQ(c.titulo)}</span>
       <span class="cb-acoes">
+        ${Object.prototype.hasOwnProperty.call(acessados, c.id) ? '<span class="cb-visitado" aria-label="Conteúdo acessado">✓ <span>Acessado</span></span>' : ''}
         ${paginaCompleta(c.id) ? '<span class="cb-tag completo">resumo ampliado</span>' : (temTexto(c.id) ? '<span class="cb-tag">resumo</span>' : '')}
         ${icQ('seta', 'cb-seta')}
       </span>
@@ -22146,7 +22229,7 @@ function viewMateria(id) {
       <span class="eyebrow" data-entrada>${escQ(materia.area.sigla)} · ${escQ(materia.area.nome.split(' e suas')[0])}</span>
       <h1 data-entrada>${escQ(materia.nome)}</h1>
     </div>
-    <p class="sub" data-entrada>${materia.conteudos.length} conteúdos nesta matéria. Clique em um para abrir o resumo, os exemplos, os esquemas, as questões resolvidas e o vídeo.</p>
+    <p class="sub" data-entrada>${materia.conteudos.length} conteúdos nesta matéria. O ✓ indica página acessada neste navegador, não conclusão do estudo.${progresso.ok ? '' : ' Não foi possível ler o progresso local neste navegador.'}</p>
   </div>
 
   <div class="conteudo-lista">${botoes}</div>
@@ -22564,6 +22647,8 @@ function ativarMovimento(raiz = document) {
  *   #/redacoes/:id            documento comentado
  *   #/corrigir?tema=&texto=   workspace de correção
  */
+
+
 
 
 
@@ -23170,7 +23255,7 @@ function viewRedacao(id) {
 /* ------------------------------------------------------------------ 7. CORRIGIR */
 /* molde: workspace em duas colunas; painel de resultado é o vidro nº 3 */
 
-let estado = { temaId: 'enem-2026', texto: '' };
+let estado = { temaId: 'enem-2026', temaLivre: '', texto: '' };
 let ultimoRelatorio = null;
 
 function viewCorrigir(params) {
@@ -23211,7 +23296,7 @@ function viewCorrigir(params) {
 
       <div class="campo" id="campo-livre" style="display:none">
         <label class="label" for="tema-livre">Qual é o tema?</label>
-        <input class="input" id="tema-livre" placeholder="Ex.: os desafios da inclusão digital de idosos no Brasil" />
+        <input class="input" id="tema-livre" value="${esc(estado.temaLivre)}" placeholder="Ex.: os desafios da inclusão digital de idosos no Brasil" />
       </div>
 
       <div id="proposta-tema"></div>
@@ -23219,6 +23304,7 @@ function viewCorrigir(params) {
 
       <div class="campo">
         <label class="label" for="texto">Sua redação</label>
+        <p class="historico-privacidade">Ao clicar em Corrigir, o texto e o resultado serão salvos neste navegador, sem conta. Em dispositivos compartilhados, outras pessoas poderão acessá-los.</p>
         <textarea class="textarea" id="texto" placeholder="Cole aqui a sua redação (ou carregue um exemplo abaixo).">${esc(estado.texto)}</textarea>
         <div class="contador">
           <span id="conta-linhas">0 linhas</span>
@@ -23232,6 +23318,7 @@ function viewCorrigir(params) {
         <button class="btn btn-fantasma btn-pequeno" data-exemplo="boa">Exemplo: alto desempenho</button>
         <button class="btn btn-fantasma btn-pequeno" data-exemplo="problemas">Exemplo: problemas típicos</button>
       </div>
+      <p id="salvamento-status" class="historico-status" role="status" aria-live="polite"></p>
     </div>
 
     <aside class="ws-saida" aria-live="polite" id="saida">
@@ -23239,7 +23326,17 @@ function viewCorrigir(params) {
         <p>Cole o texto e clique em <b>Corrigir</b>.<br />O relatório aparece aqui, competência por competência.</p>
       </div>
     </aside>
-  </div>`;
+  </div>
+  <section class="historico-local" aria-labelledby="historico-titulo">
+    <div class="historico-cabecalho"><div><h2 id="historico-titulo">Suas redações neste navegador</h2>
+    <p>As correções são salvas somente neste navegador, sem conta. Em um dispositivo compartilhado, outras pessoas com acesso ao navegador podem lê-las. Ao limpar os dados do navegador, elas podem ser apagadas.</p></div></div>
+    <div id="lista-historico"></div>
+    <div class="historico-acoes"><button class="btn btn-pequeno" id="exportar-progresso" type="button">Exportar backup</button>
+    <button class="btn btn-pequeno" id="importar-progresso" type="button">Importar backup</button>
+    <input type="file" id="arquivo-progresso" accept="application/json,.json" hidden>
+    <button class="btn btn-pequeno" id="limpar-acessos" type="button">Apagar marcações de acesso</button></div>
+    <p class="historico-aviso">O backup contém suas redações e os conteúdos acessados. Guarde-o em local privado. Importar combina os dados sem apagar o histórico atual.</p>
+  </section>`;
 }
 
 function motivoHTML(m, i, zerado) {
@@ -23247,7 +23344,7 @@ function motivoHTML(m, i, zerado) {
     : m.gravidade === 'alta' ? 'impede o 200'
     : m.gravidade === 'media' ? 'segura a nota' : 'observação';
   return `
-    <li class="motivo g-${m.gravidade}">
+    <li class="motivo g-${['alta','media','baixa'].includes(m.gravidade) ? m.gravidade : 'baixa'}">
       <span class="m-tag"><i>${i + 1}</i>${etiqueta}</span>
       <h5 class="m-titulo">${esc(m.titulo)}</h5>
       <p class="m-porque">${esc(m.porque)}</p>
@@ -23436,13 +23533,77 @@ function ligarCorrigir() {
     if (campoLivre) campoLivre.style.display = sel.value === 'livre' ? 'grid' : 'none';
   }
 
-  const rodar = () => {
-    const temaLivre = document.getElementById('tema-livre')?.value || '';
+  const livre = document.getElementById('tema-livre');
+  livre?.addEventListener('input', () => { estado.temaLivre = livre.value; });
+  const statusLocal = document.getElementById('salvamento-status');
+  const informarLocal = (mensagem) => { if (statusLocal) statusLocal.textContent = mensagem; };
+  const atualizarHistorico = () => {
+    const lista = document.getElementById('lista-historico');
+    const l = lerProgressoLocal();
+    if (!l.ok) { lista.innerHTML = ''; informarLocal(l.erro); return; }
+    if (!l.dados.redacoes.length) { lista.innerHTML = '<p class="historico-vazio">Nenhuma redação salva ainda. Corrija seu texto para guardá-lo aqui.</p>'; return; }
+    lista.innerHTML = `<ul class="historico-lista">${l.dados.redacoes.map(e => {
+      const data = new Date(e.data).toLocaleString('pt-BR', {dateStyle:'short',timeStyle:'short'});
+      const tema = e.relatorio.tema?.titulo || e.temaLivre || 'Tema não identificado';
+      const f = e.relatorio.notaFaixa || {min:e.relatorio.notaTotal,max:e.relatorio.notaTotal};
+      const nota = f.min === f.max ? `${f.min}` : `${f.min}–${f.max}`;
+      return `<li class="historico-item"><div><b>${esc(tema)}</b><p>${esc(data)} · nota ${esc(nota)} / 1000</p><p class="historico-trecho">${esc(e.texto.slice(0,130))}${e.texto.length>130?'…':''}</p></div><div class="historico-botoes"><button type="button" class="btn btn-pequeno" data-abrir-redacao="${esc(e.id)}">Abrir</button><button type="button" class="btn btn-pequeno" data-excluir-redacao="${esc(e.id)}">Excluir</button></div></li>`;
+    }).join('')}</ul>`;
+  };
+  atualizarHistorico();
+  document.getElementById('lista-historico')?.addEventListener('click', event => {
+    const abrir = event.target.closest('[data-abrir-redacao]');
+    const excluir = event.target.closest('[data-excluir-redacao]');
+    const l = lerProgressoLocal(); if (!l.ok) { informarLocal(l.erro); return; }
+    if (abrir) {
+      const e = l.dados.redacoes.find(item => item.id === abrir.dataset.abrirRedacao); if (!e) return;
+      estado.texto = e.texto; estado.temaId = e.temaId; estado.temaLivre = e.temaLivre;
+      textarea.value = e.texto; if (sel) sel.value = e.temaId; if (livre) livre.value = e.temaLivre;
+      if (campoLivre) campoLivre.style.display = e.temaId === 'livre' ? 'grid' : 'none';
+      pintarProposta(e.temaId); contar(); ultimoRelatorio = e.relatorio;
+      try { saida.innerHTML = relatorio(e.relatorio); } catch { informarLocal('Não foi possível exibir esta correção salva.'); return; }
+      ativarMovimento(saida); informarLocal('Correção original aberta. Para gerar uma nova avaliação, clique em Corrigir.');
+      saida.scrollIntoView({behavior:'auto',block:'start'});
+    } else if (excluir && window.confirm('Excluir esta redação e sua correção deste navegador?')) {
+      const resultado = excluirRedacaoLocal(excluir.dataset.excluirRedacao);
+      informarLocal(resultado.ok ? 'Redação excluída deste navegador.' : resultado.erro); atualizarHistorico();
+    }
+  });
+  document.getElementById('exportar-progresso')?.addEventListener('click', () => {
+    const l = lerProgressoLocal(); if (!l.ok) { informarLocal(l.erro); return; }
+    const arquivo = new Blob([JSON.stringify(l.dados, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(arquivo); const a = document.createElement('a'); a.href=url; a.download='redacao-com-joao-backup.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(url), 1000);
+    informarLocal('Backup criado. Guarde o arquivo em local privado.');
+  });
+  const arquivoProgresso = document.getElementById('arquivo-progresso');
+  document.getElementById('importar-progresso')?.addEventListener('click',()=>arquivoProgresso?.click());
+  arquivoProgresso?.addEventListener('change', async () => {
+    const arquivo=arquivoProgresso.files?.[0]; if (!arquivo) return;
+    try {
+      if (arquivo.size > 10 * 1024 * 1024) { informarLocal('Arquivo muito grande; nada foi importado.'); return; }
+      const r=importarProgressoLocal(await arquivo.text()); informarLocal(r.ok?'Backup importado e combinado com os dados locais.':r.erro); atualizarHistorico();
+    } catch { informarLocal('Não foi possível ler o arquivo; nada foi importado.'); }
+    finally { arquivoProgresso.value=''; }
+  });
+  document.getElementById('limpar-acessos')?.addEventListener('click',()=>{
+    if (!window.confirm('Apagar as marcações de conteúdos acessados neste navegador? As redações serão mantidas.')) return;
+    const r=limparAcessosLocal(); informarLocal(r.ok?'Marcações de acesso apagadas.':r.erro);
+  });
+
+  const rodar = (salvar = false) => {
+    const temaLivre = livre?.value || '';
+    estado.temaLivre = temaLivre;
     const r = corrigir(textarea.value, { temaId: estado.temaId, temaLivre });
     ultimoRelatorio = r;
     saida.innerHTML = relatorio(r);
     ativarMovimento(saida);
     if (!r.ok) { toast(r.erro); return; }
+    if (salvar) {
+      const salvo = salvarRedacaoLocal(textarea.value, estado.temaId, temaLivre, r);
+      informarLocal(salvo.ok ? 'Correção salva neste navegador.' : salvo.erro);
+      atualizarHistorico();
+      if (!salvo.ok) toast(salvo.erro);
+    }
 
     // no celular a coluna do relatório fica abaixo: levamos o leitor até ela
     if (window.innerWidth < 1080) {
@@ -23454,7 +23615,7 @@ function ligarCorrigir() {
     }
   };
 
-  document.getElementById('bt-corrigir')?.addEventListener('click', rodar);
+  document.getElementById('bt-corrigir')?.addEventListener('click', () => rodar(true));
 
   document.getElementById('bt-limpar')?.addEventListener('click', () => {
     textarea.value = '';
@@ -23521,7 +23682,14 @@ function render() {
   else if (partes[0] === 'conteudos') {
     /* sumário → matéria → conteúdo */
     if (partes[1] === 'materia') html = viewMateria(decodeURIComponent(partes[2] || ''));
-    else if (partes[1] === 'c') html = viewConteudo(decodeURIComponent(partes[2] || ''));
+    else if (partes[1] === 'c') {
+      const id = decodeURIComponent(partes[2] || '');
+      if (conteudoPorId(id)) {
+        const marcado = marcarAcessoLocal(id);
+        if (!marcado.ok) toast('Não foi possível salvar o acesso neste navegador.');
+      }
+      html = viewConteudo(id);
+    }
     else html = viewConteudos();
   }
   else if (partes[0] === 'corrigir') html = viewCorrigir(params);

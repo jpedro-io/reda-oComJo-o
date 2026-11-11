@@ -175,3 +175,20 @@ main .subtema .cp-secao h4::before { content:'◆'; font-size:.7em; color:var(--
 main .subtema .cp-bloco { min-width:0; }
 main .subtema .video-caixa { margin:0 0 18px; }
 main .subtema .video-caixa + p, main .subtema .video-caixa ~ p { margin:10px 0; }
+
+/* Progresso e histórico: os dados ficam apenas neste navegador. */
+main .cb-visitado { display:inline-flex; align-items:center; gap:5px; color:#a9f2c5; font-size:.77rem; font-weight:700; white-space:nowrap; }
+main .historico-local { margin:2rem 0; padding:clamp(1rem,3vw,2rem); border:1px solid #416c50; border-radius:16px; background:#102b1c; color:#e8f4ec; }
+main .historico-local h2 { margin:0 0 .5rem; font-size:1.4rem; }
+main .historico-local p,main .historico-privacidade,main .historico-status { color:#d3e8da; font-size:.88rem; line-height:1.5; }
+main .historico-privacidade { margin:.3rem 0 .7rem; }
+main .historico-status:empty { display:none; }
+main .historico-status { margin:.8rem 0 0; color:#a9f2c5; font-weight:600; }
+main .historico-lista { list-style:none; padding:0; margin:1rem 0; display:grid; gap:.7rem; }
+main .historico-item { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem; border:1px solid #436d52; border-radius:10px; background:#163923; }
+main .historico-item p { margin:.25rem 0; }
+main .historico-trecho { overflow-wrap:anywhere; }
+main .historico-botoes,main .historico-acoes { display:flex; flex-wrap:wrap; gap:.5rem; }
+main .historico-acoes { margin-top:1rem; }
+main .historico-aviso { margin:.8rem 0 0; }
+@media (max-width:600px) { main .historico-item { align-items:flex-start; flex-direction:column; } main .historico-botoes,main .historico-acoes { width:100%; } main .historico-botoes .btn,main .historico-acoes .btn { flex:1 1 auto; } }

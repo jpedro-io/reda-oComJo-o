@@ -260,3 +260,21 @@ Estado atual: 1374/1374 (explicações), 796/796 (notas e faixas), 832/832 (acen
 - Os **textos motivadores** são adaptações didáticas (ver seção acima), não reproduções oficiais.
 - A **nota publicada é sempre uma das seis da grade (0, 40, 80, 120, 160, 200)** e vem sempre como **faixa** ("nota entre X e Y"): a nota do Enem é a média de dois avaliadores, e dois avaliadores divergem. Nenhum relatório mostra nota exata.
 - O motor de correção é **heurístico**: mede desvios de grafia, aderência ao vocabulário do tema, tese e sustentação, variedade de conectivos e os cinco elementos da proposta. Não interpreta sentido. A correção oficial é humana, com dois avaliadores independentes.
+
+### Histórico local e conteúdos acessados
+
+Ao clicar em **Corrigir**, a redação, o tema, a data e o relatório original são
+salvos no armazenamento local do navegador, sem criar conta nem enviar esses
+dados a um servidor de histórico. Abra ou exclua cada redação na seção
+“Suas redações neste navegador”. Os exemplos corrigidos automaticamente não
+são adicionados ao histórico até o usuário clicar em **Corrigir**.
+
+Nas listas das matérias, ✓ **Acessado** indica que a página do conteúdo foi
+aberta naquele navegador, não que o estudo foi concluído. É possível apagar as
+marcações sem apagar as redações. O histórico e as marcações não sincronizam
+entre navegadores ou dispositivos e podem desaparecer quando seus dados são
+limpos; navegação privada também pode descartá-los. Se não houver espaço ou o
+armazenamento estiver bloqueado, o site avisa que não foi possível salvar.
+Em dispositivos compartilhados, outras pessoas com acesso ao navegador podem
+ler os dados. O backup JSON exportável contém redações e acessos e deve ser
+mantido em local privado; a importação combina os dados, sem apagar os atuais.

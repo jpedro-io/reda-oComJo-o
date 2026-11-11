@@ -30,7 +30,7 @@ ordem = [
     'js/db/conteudos/expansao-linguagens.js', 'js/db/conteudos/expansao-humanas.js',
     'js/db/conteudos/expansao-natureza.js', 'js/db/conteudos/expansao-matematica.js',
     'js/db/conteudos/expansoes.js', 'js/db/conteudos/questoes-enem.js', 'js/db/conteudos/questoes-inep-dia1.js', 'js/db/conteudos/questoes-inep-reaplicacao.js', 'js/db/conteudos/questoes-autorais-complementares.js', 'js/db/conteudos/questoes-autorais-reforco.js',
-    'js/db/conteudos/index.js', 'js/ui-conteudos.js',
+    'js/db/conteudos/index.js', 'js/progresso-local.js', 'js/ui-conteudos.js',
     'js/motion.js', 'js/ui.js',
 ]
 
