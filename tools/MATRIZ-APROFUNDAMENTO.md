@@ -118,14 +118,14 @@ continuam disponíveis no link de material anterior.
 - [x] 3.3 Separação de misturas
 - [x] 3.4 Estequiometria
 - [x] 3.5 Soluções e concentrações
-- [ ] 3.6 Termoquímica
-- [ ] 3.7 Cinética química
-- [ ] 3.8 Equilíbrio químico
-- [ ] 3.9 Eletroquímica
-- [ ] 3.10 Química orgânica
-- [ ] 3.11 Isomeria
-- [ ] 3.12 Reações orgânicas
-- [ ] 3.13 Química ambiental
+- [x] 3.6 Termoquímica
+- [x] 3.7 Cinética química
+- [x] 3.8 Equilíbrio químico
+- [x] 3.9 Eletroquímica
+- [x] 3.10 Química orgânica
+- [x] 3.11 Isomeria
+- [x] 3.12 Reações orgânicas
+- [x] 3.13 Química ambiental
 
 ## Matemática
 - [x] 1.1 Razão, proporção e regra de três

@@ -176,3 +176,22 @@ em Chromium no site modular e no standalone passaram; o roteiro específico
 está em test/visual_biologia_quimica.py. Estado: **57/106 incorporados,
 49 pendentes**, 227 questões exibidas contando grupos e autorais, das quais
 23 são referências oficiais do Inep. Nenhum deploy foi realizado.
+
+
+## Química — termoquímica, cinética, equilíbrio, eletroquímica e orgânica
+
+Os oito tópicos restantes de Química foram incorporados: termoquímica,
+cinética, equilíbrio, eletroquímica, funções orgânicas, isomeria, reações
+orgânicas e química ambiental. Cada um tem três blocos de dois parágrafos,
+cinco pontos de revisão, dois exemplos, um roteiro de cinco passos e duas
+questões autorais com comentários dos distratores. As aulas tiveram título,
+canal, descrição e permissão de incorporação verificados; indicações de
+escopo parcial e aulas complementares foram incluídas quando necessário.
+Isso não garante disponibilidade futura nem substitui revisão pedagógica externa.
+
+O primeiro teste do standalone identificou colisão de nome entre módulos
+concatenados; a função foi renomeada e os testes de Chromium passaram no
+site modular e no standalone. Também passaram as suítes JS, as auditorias de
+layout em 120 rotas e as regressões dos lotes anteriores. Estado: **65/106
+incorporados, 41 pendentes**, com 243 questões exibidas, incluindo 23
+referências oficiais do Inep. Não houve deploy.
