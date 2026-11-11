@@ -84,9 +84,9 @@ continuam disponíveis no link de material anterior.
 ## Ciências da Natureza
 
 ### Biologia
-- [ ] 1.1 Ecologia: cadeias, fluxo de energia, pirâmides e teias
-- [ ] 1.2 Relações ecológicas e ciclos biogeoquímicos
-- [ ] 1.3 Impactos ambientais
+- [x] 1.1 Ecologia: cadeias, fluxo de energia, pirâmides e teias
+- [x] 1.2 Relações ecológicas e ciclos biogeoquímicos
+- [x] 1.3 Impactos ambientais
 - [x] 1.4 Citologia: membrana plasmática, transportes e parede celular
 - [x] 1.5 Organelas celulares e funções fisiológicas
 - [x] 1.6 Bioenergética

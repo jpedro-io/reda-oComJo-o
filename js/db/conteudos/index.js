@@ -20,6 +20,7 @@ import { SUBTEMA_BIOENERGETICA } from './subtema-bioenergetica.js';
 import { SUBTEMAS_PORTUGUES } from './subtemas-portugues.js';
 import { SUBTEMA_MAT_FINANCEIRA } from './subtema-matematica-financeira.js';
 import { SUBTEMA_BRASIL_COLONIA } from './subtema-brasil-colonia.js';
+import { SUBTEMAS_ECOLOGIA } from './subtemas-ecologia.js';
 import { EXPANSOES } from './expansoes.js';
 import { QUESTOES_ENEM } from './questoes-enem.js';
 import { QUESTOES_DIA1 } from './questoes-inep-dia1.js';
@@ -85,7 +86,7 @@ export function paginaDe(id, conteudo) {
       materiaisRelacionados:[{id:'bio-citologia-anterior', titulo:'Citologia: material e questões anteriores, incluindo questão do Enem', video:VIDEOS[id] || null}]
     };
   }
-  const subtemasPorGrupo = {'lin-interpretacao':[SUBTEMAS_PORTUGUES[0]], 'lin-variacao':[SUBTEMAS_PORTUGUES[1]], 'mat-porcentagem':[SUBTEMA_MAT_FINANCEIRA], 'his-colonia':[SUBTEMA_BRASIL_COLONIA]};
+  const subtemasPorGrupo = {'bio-ecologia':SUBTEMAS_ECOLOGIA, 'lin-interpretacao':[SUBTEMAS_PORTUGUES[0]], 'lin-variacao':[SUBTEMAS_PORTUGUES[1]], 'mat-porcentagem':[SUBTEMA_MAT_FINANCEIRA], 'his-colonia':[SUBTEMA_BRASIL_COLONIA]};
   const subtemas = subtemasPorGrupo[id] || [];
   return {...principal, secoes, resumo:[], subtemas,
     exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],

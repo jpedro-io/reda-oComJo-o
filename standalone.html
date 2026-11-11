@@ -13052,6 +13052,114 @@ const SUBTEMA_BRASIL_COLONIA = {
  fontes:[{titulo:'Matriz de referência do Enem — Inep',url:'https://download.inep.gov.br/download/enem/matriz_referencia.pdf'}]
 };
 
+/* ===== js/db/conteudos/subtemas-ecologia.js ===== */
+/** Aprofundamentos autorais de Ecologia; exercícios inéditos, não oficiais. */
+const SUBTEMAS_ECOLOGIA = [
+{
+ id:'bio-ecologia-fluxos', codigo:'Biologia 1.1', titulo:'Cadeias, teias, fluxo de energia e pirâmides ecológicas',
+ secoes:[
+  {h:'Níveis tróficos e setas',ps:[
+   'Uma cadeia alimentar representa uma sequência de transferências de matéria e energia por alimentação. Produtores, como plantas, algas e algumas bactérias, produzem matéria orgânica a partir de substâncias inorgânicas usando energia luminosa ou química. Consumidores obtêm matéria orgânica alimentando-se de outros organismos; decompositores degradam restos e excretas, liberando nutrientes para o ambiente.',
+   'A seta aponta do alimento para quem o consome: capim → gafanhoto → sapo indica transferência para o gafanhoto e depois para o sapo. Produtores ocupam o primeiro nível; herbívoros, o segundo. Decompositores atuam sobre matéria proveniente de vários níveis, não apenas sobre o último.'
+  ]},
+  {h:'Teias e efeitos indiretos',ps:[
+   'Uma teia reúne cadeias interligadas. Uma espécie pode ocupar níveis diferentes conforme a dieta: um peixe que come algas atua como consumidor primário; ao comer um herbívoro, como consumidor secundário. A posição trófica descreve uma relação alimentar específica, não um rótulo fixo para qualquer situação.',
+   'A retirada de um predador pode alterar populações direta e indiretamente, mas o resultado depende de outras presas, competidores e condições ambientais. No Enem, use apenas as relações fornecidas pela figura antes de prever uma consequência; uma cadeia isolada simplifica a rede real.'
+  ]},
+  {h:'Energia não é reciclada',ps:[
+   'A energia incorporada pelos produtores pode ser transferida pela alimentação. Em cada nível, parte é dissipada como calor no metabolismo e parte da biomassa não é consumida ou assimilada. Assim, apenas uma fração da energia chega ao nível seguinte; a matéria, ao contrário, pode circular em ciclos biogeoquímicos.',
+   'A regra de 10% é uma aproximação útil em exercícios quando explicitada, não uma lei universal. Se o enunciado fornece 10% e os produtores acumulam 20 000 kJ, a energia transferida ao nível seguinte é 2 000 kJ e ao posterior, 200 kJ, no mesmo período considerado.'
+  ]},
+  {h:'Três tipos de pirâmide',ps:[
+   'Pirâmides de energia representam energia disponível ou produtividade por área e tempo; ao longo de uma cadeia, são decrescentes porque as transferências não são integralmente eficientes. Pirâmides de números comparam quantidades de indivíduos e podem ser invertidas, por exemplo quando uma árvore sustenta muitos insetos.',
+   'Pirâmides de biomassa comparam massa de organismos por área ou volume em um momento. Em ambientes aquáticos, a biomassa instantânea do fitoplâncton pode ser menor que a do zooplâncton porque o produtor se reproduz e é consumido rapidamente. Isso não significa que a energia flua do consumidor para o produtor.'
+  ]}
+ ],
+ chave:['Interpretar o sentido das setas como transferência do alimento ao consumidor.','Reconhecer produtores, consumidores e decompositores.','Distinguir cadeia linear de teia com múltiplas conexões.','Calcular energia com a eficiência fornecida no enunciado.','Comparar pirâmides de energia, número e biomassa e seus limites.'],
+ exemplos:[
+  {titulo:'Transferência de energia',texto:'“Produtores: 20 000 kJ; transferência de 10% por nível.” Herbívoros recebem 2 000 kJ e consumidores seguintes, 200 kJ.',comentario:'A eficiência deve ser aplicada sucessivamente, e a regra de 10% depende do dado oferecido.'},
+  {titulo:'Árvore e insetos',texto:'“Uma árvore sustenta 500 lagartas.” Uma pirâmide de números pode ter base menor que o nível de consumidores.',comentario:'A contagem de indivíduos é diferente de energia e biomassa; a inversão numérica não inverte o fluxo energético.'}
+ ],
+ roteiro:['Identifique organismos e leia a direção de cada seta.','Classifique produtor e consumidores conforme a relação mostrada.','Se houver teia, examine cada caminho sem inventar relações.','Confira se a pirâmide expressa números, biomassa ou energia e em quais unidades.','Quando fornecida eficiência, multiplique a energia disponível em cada passagem.','Verifique se a conclusão respeita as condições e o intervalo de tempo informados.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em um campo, a cadeia simplificada é capim → gafanhoto → sapo → serpente.'],enunciado:'Nessa representação, a seta entre o gafanhoto e o sapo indica que',alternativas:['o sapo transfere energia para o gafanhoto.','o gafanhoto transfere matéria e energia ao ser consumido pelo sapo.','o gafanhoto produz matéria orgânica por fotossíntese para o sapo.','o sapo decompõe os sais minerais produzidos pelo gafanhoto.','a serpente ocupa o segundo nível trófico.'],correta:'B',resolucao:['A seta parte do organismo que serve de alimento e chega ao consumidor.','O sapo ingere o gafanhoto e obtém parte da matéria e da energia nele contidas.','Logo, a alternativa correta é B.'],porqueErram:['A: inverte o sentido da relação indicada.','C: o produtor representado é o capim; o gafanhoto é consumidor.','D: o sapo atua como consumidor, não como decompositor nessa cadeia.','E: a serpente ocupa o quarto nível, após produtor e dois consumidores.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em uma cadeia, a produção incorporada pelos produtores é 50 000 kJ. Considere que 20% da energia de cada nível passa ao próximo.'],enunciado:'Quanto estará disponível aos consumidores secundários, nessa aproximação?',alternativas:['10 kJ.','100 kJ.','2 000 kJ.','10 000 kJ.','40 000 kJ.'],correta:'C',resolucao:['Consumidores primários recebem 0,20 × 50 000 = 10 000 kJ.','Consumidores secundários recebem 0,20 × 10 000 = 2 000 kJ.','A resposta é C; a taxa é aplicada duas vezes.'],porqueErram:['A: não corresponde às duas transferências de 20%.','B: subestima o resultado usando uma redução que não foi informada.','D: representa a energia disponível aos consumidores primários.','E: corresponde a 80% da energia inicial, não ao que chega ao terceiro nível.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Pesquisadores observam em um lago, em uma data, menor biomassa de fitoplâncton do que de zooplâncton herbívoro. O fitoplâncton se reproduz e é consumido rapidamente.'],enunciado:'A observação é compatível com',alternativas:['uma pirâmide instantânea de biomassa invertida, apesar do fluxo energético do produtor ao consumidor.','uma pirâmide de energia invertida, pois consumidores produzem toda a energia dos produtores.','a ausência de fotossíntese no lago.','a transformação dos herbívoros em produtores.','a impossibilidade de transferência de matéria entre os organismos.'],correta:'A',resolucao:['O dado compara estoques de biomassa em um instante, não energia produzida ao longo do tempo.','A rápida renovação do fitoplâncton pode sustentar consumidores com estoque instantâneo maior.','A é correta: essa inversão não contraria a dissipação energética.'],porqueErram:['B: a energia não é criada pelos consumidores para sustentar produtores.','C: o fitoplâncton citado pode realizar fotossíntese.','D: alimentar-se de produtores não transforma herbívoros em produtores.','E: a alimentação transfere matéria entre os níveis.']}
+ ],
+ video:{busca:'Ecologia 2/5 Fluxo de matéria e energia Cadeias e Teias tróficas e as Pirâmides ecológicas Vinicius Marcilio-Silva',canal:'Vinicius Marcilio-Silva',titulo:'Ecologia (2/5) - Fluxo de matéria e energia, Cadeias e Teias tróficas e as Pirâmides ecológicas.',url:'https://www.youtube.com/watch?v=aM2BkaV8PBk'},
+ fontes:[{titulo:'OpenStax Biology 2e — fluxo de energia nos ecossistemas',url:'https://openstax.org/books/biology-2e/pages/46-2-energy-flow-through-ecosystems'}]
+},
+{
+ id:'bio-ecologia-relacoes-ciclos',codigo:'Biologia 1.2',titulo:'Relações ecológicas e ciclos biogeoquímicos',
+ secoes:[
+  {h:'Como classificar interações',ps:[
+   'Relações intraespecíficas envolvem indivíduos da mesma espécie; interespecíficas, de espécies diferentes. Em uma classificação didática, harmônicas não apresentam prejuízo detectável aos participantes, enquanto desarmônicas prejudicam ao menos um. A avaliação depende do contexto e da escala observada.',
+   'Na sociedade, indivíduos da mesma espécie cooperam sem união corporal, como em abelhas; na colônia há associação corporal, como em muitos corais. Competição intraespecífica por alimento prejudica o acesso de ambos os competidores, embora seus efeitos possam variar.'
+  ]},
+  {h:'Interações entre espécies',ps:[
+   'No mutualismo, ambas as espécies se beneficiam, como bactérias fixadoras associadas a raízes de leguminosas. Dependendo do caso, a associação pode ser obrigatória ou facultativa. No comensalismo, uma espécie se beneficia e a outra não apresenta efeito relevante; na competição, ambas enfrentam custo ao explorar um recurso limitado.',
+   'Na predação, um organismo mata e consome outro; no parasitismo, o parasita se beneficia e o hospedeiro é prejudicado, geralmente sem morte imediata. Ao interpretar casos no Enem, descreva quem se beneficia, quem é prejudicado e se as espécies são diferentes antes de escolher o nome.'
+  ]},
+  {h:'Água e carbono',ps:[
+   'Na circulação da água, evaporação e transpiração contribuem para o vapor atmosférico; condensação, precipitação, infiltração e escoamento participam dos trajetos entre reservatórios. Alterações na cobertura do solo podem modificar infiltração, erosão e disponibilidade hídrica, a depender das condições locais.',
+   'Na fotossíntese, organismos incorporam carbono do CO₂ em matéria orgânica; respiração e decomposição transferem parte desse carbono novamente ao ambiente. A combustão de combustíveis fósseis libera carbono armazenado por longos períodos e contribui para elevar a concentração atmosférica de CO₂.'
+  ]},
+  {h:'Transformações do nitrogênio',ps:[
+   'A fixação biológica transforma N₂ atmosférico em formas reduzidas de nitrogênio por certos microrganismos. Na nitrificação, microrganismos oxidam amônia ou amônio a nitrito e depois a nitrato. Plantas podem assimilar nitrato e amônio, dependendo da espécie e das condições; animais obtêm nitrogênio sobretudo pela alimentação.',
+   'Na amonificação, decompositores convertem compostos orgânicos nitrogenados em amônia ou amônio. Na desnitrificação, certos microrganismos reduzem nitrato e liberam formas gasosas, inclusive N₂, frequentemente em ambientes pouco oxigenados. O ciclo envolve transformações mediadas por organismos e processos físicos, não uma simples sequência única.'
+  ]}
+ ],
+ chave:['Distinguir relações intra e interespecíficas.','Associar mutualismo, competição, predação e parasitismo aos efeitos sobre cada participante.','Reconhecer fotossíntese, respiração, decomposição e combustão no ciclo do carbono.','Diferenciar fixação, nitrificação, amonificação e desnitrificação.','Relacionar infiltração e escoamento às condições de uso do solo.'],
+ exemplos:[
+  {titulo:'Leguminosas e bactérias',texto:'“Bactérias em nódulos obtêm compostos orgânicos da planta e fornecem nitrogênio em formas aproveitáveis.” Ambos se beneficiam.',comentario:'O exemplo conecta mutualismo a transformações do nitrogênio e à fertilidade do solo.'},
+  {titulo:'Combustíveis fósseis',texto:'“A queima de carvão libera CO₂ para a atmosfera.” O carbono passa de um reservatório geológico ao atmosférico.',comentario:'A combustão altera o balanço de carbono; não deve ser confundida com fixação fotossintética.'}
+ ],
+ roteiro:['Identifique as espécies ou os reservatórios envolvidos.','Nas relações ecológicas, indique benefício, prejuízo ou efeito não detectável para cada participante.','Nos ciclos, identifique a substância inicial e a substância final.','Associe cada transformação ao processo e aos organismos que podem realizá-la.','Verifique se a conclusão exige condições específicas, como baixo oxigênio.','Compare a alternativa com as evidências, sem confundir fluxo de energia com reciclagem da matéria.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Um produtor cultiva leguminosas com bactérias em nódulos das raízes. As bactérias recebem compostos orgânicos da planta e contribuem para o fornecimento de nitrogênio assimilável.'],enunciado:'A interação descrita é um exemplo de',alternativas:['parasitismo, pois a planta necessariamente perde nutrientes.','mutualismo, pois ambas as espécies se beneficiam.','competição, pois ambas disputam o mesmo alimento.','predação, pois a bactéria mata e consome a planta.','sociedade, pois os organismos são da mesma espécie.'],correta:'B',resolucao:['O enunciado atribui benefício nutricional às bactérias e à planta.','Como são espécies diferentes e ambas se beneficiam, a relação descrita é mutualística.','Logo, B é correta.'],porqueErram:['A: não foi relatado prejuízo à planta; ela recebe benefício.','C: o texto descreve troca, não prejuízo mútuo por competição.','D: não há morte e consumo da planta.','E: sociedade é relação intraespecífica, e aqui são espécies distintas.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em um solo encharcado e pobre em oxigênio, certos microrganismos usam nitrato em seu metabolismo e liberam nitrogênio gasoso.'],enunciado:'A transformação descrita corresponde à',alternativas:['fotossíntese.','nitrificação.','fixação biológica do N₂.','desnitrificação.','evapotranspiração.'],correta:'D',resolucao:['O reagente apresentado é nitrato, e o produto é nitrogênio gasoso.','Essa redução pode ser realizada por microrganismos em condições pouco oxigenadas.','O processo é desnitrificação: alternativa D.'],porqueErram:['A: fotossíntese não é a conversão descrita de nitrato em N₂.','B: nitrificação oxida formas reduzidas até nitrito e nitrato.','C: fixação parte de N₂, em direção oposta à descrita.','E: evapotranspiração se relaciona ao ciclo da água.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Uma área vegetada é substituída por uma extensa superfície impermeável. Após chuva intensa, a infiltração diminui e o escoamento superficial aumenta.'],enunciado:'Qual alteração explica diretamente essa resposta?',alternativas:['Maior passagem de água da superfície para o solo.','Bloqueio parcial da entrada de água no solo pela cobertura impermeável.','Conversão de toda a água da chuva em carbono.','Cessação da gravidade sobre a água.','Aumento obrigatório da fixação de nitrogênio.'],correta:'B',resolucao:['A superfície impermeável dificulta a entrada da água no solo.','Com menos infiltração, mais água pode seguir pela superfície durante a chuva.','A descrição corresponde à alternativa B.'],porqueErram:['A: descreve aumento, não redução, da infiltração.','C: água não é convertida integralmente em carbono.','D: a gravidade continua atuando.','E: o enunciado não demonstra aumento de fixação de nitrogênio.']}
+ ],
+ video:{busca:'RELAÇÕES ECOLÓGICAS Harmônicas e Desarmônicas Biologia com Samuel Cunha',canal:'Biologia com Samuel Cunha',titulo:'RELAÇÕES ECOLÓGICAS - Harmônicas e Desarmônicas | Biologia com Samuel Cunha',url:'https://www.youtube.com/watch?v=cpmcIciaIWc'},
+ aulasComplementares:[{titulo:'CICLO DO NITROGÊNIO - CICLOS BIOGEOQUÍMICOS | Biologia com Samuel Cunha',url:'https://www.youtube.com/watch?v=WNtCkBjJ7EI'}],
+ fontes:[{titulo:'OpenStax Biology 2e — ciclos biogeoquímicos',url:'https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles'},{titulo:'Matriz de referência do Enem — Inep',url:'https://download.inep.gov.br/download/enem/matriz_referencia.pdf'}]
+},
+{
+ id:'bio-ecologia-impactos',codigo:'Biologia 1.3',titulo:'Impactos ambientais e conservação',
+ secoes:[
+  {h:'Eutrofização e oxigênio dissolvido',ps:[
+   'Eutrofização é o enriquecimento de um corpo d’água por nutrientes, como compostos de nitrogênio e fósforo. Esgoto sem tratamento e fertilizantes carreados pela chuva podem acelerar o processo, favorecendo florações de algas e cianobactérias; algumas florações podem produzir toxinas.',
+   'Quando parte dessa biomassa morre, sua decomposição por microrganismos aeróbios pode consumir oxigênio dissolvido. Em condições intensas, a queda de oxigênio pode causar mortandade de organismos aquáticos. A sequência depende das condições locais: nem toda floração causa necessariamente o mesmo efeito.'
+  ]},
+  {h:'Bioacumulação e magnificação trófica',ps:[
+   'Bioacumulação é o aumento de uma substância em um organismo quando sua entrada supera a eliminação. Biomagnificação é o aumento da concentração ao longo de níveis tróficos em certas cadeias, especialmente para contaminantes persistentes e pouco eliminados. Nem toda substância apresenta biomagnificação.',
+   'Um poluente persistente absorvido por organismos aquáticos pode chegar a peixes predadores por ingestão repetida de presas contaminadas. Para analisar tabelas no Enem, compare concentrações e unidades, diferencie a concentração no indivíduo da quantidade total no ecossistema e observe a dieta.'
+  ]},
+  {h:'Atmosfera e mudanças globais',ps:[
+   'O efeito estufa natural retém parte da radiação infravermelha e contribui para a temperatura da Terra; seu agravamento está associado ao aumento antrópico de gases como CO₂ e metano. A queima de combustíveis fósseis e mudanças de uso da terra estão entre as fontes importantes.',
+   'A redução do ozônio estratosférico e a chuva ácida são problemas distintos do aquecimento global, embora todos envolvam a atmosfera. A camada de ozônio absorve parte da radiação ultravioleta; certos compostos liberam substâncias que aceleram sua destruição. Óxidos de enxofre e nitrogênio podem contribuir para precipitação ácida.'
+  ]},
+  {h:'Desmatamento e respostas',ps:[
+   'O desmatamento e a fragmentação reduzem ou dividem habitats e podem limitar deslocamento e fluxo gênico. Também podem alterar erosão, infiltração, estoques de carbono e padrões locais de água. Os efeitos concretos dependem do bioma, da paisagem e da intensidade da intervenção.',
+   'Medidas incluem tratamento de esgoto, proteção e recuperação de habitats, redução de emissões e gestão adequada de resíduos. Sua eficácia depende da fonte do impacto: filtrar sólidos, por exemplo, não garante remoção de todos os contaminantes dissolvidos ou patógenos.'
+  ]}
+ ],
+ chave:['Ordenar entrada de nutrientes, floração, decomposição e queda de oxigênio.','Distinguir bioacumulação individual de biomagnificação na cadeia.','Diferenciar intensificação do efeito estufa, ozônio estratosférico e chuva ácida.','Relacionar fragmentação à perda de habitat e à conectividade.','Selecionar medidas coerentes com a fonte e o tipo de poluente.'],
+ exemplos:[
+  {titulo:'Esgoto em lago',texto:'“A entrada de esgoto rico em nutrientes favoreceu floração; depois, o oxigênio dissolvido caiu.” A decomposição da biomassa pode contribuir para essa queda.',comentario:'A mortandade de peixes pode decorrer da falta de oxigênio, e o controle deve reduzir a entrada de nutrientes.'},
+  {titulo:'Contaminante persistente',texto:'“Um pesticida persistente aparece em maior concentração em predadores do que nas presas.” Isso é compatível com biomagnificação.',comentario:'É preciso comparar concentrações em níveis tróficos e considerar propriedades do contaminante.'}
+ ],
+ roteiro:['Identifique a fonte do impacto e a substância ou alteração considerada.','Monte uma sequência de causas e efeitos com as condições fornecidas.','Em gráficos, confira unidades, escala, períodos e níveis tróficos.','Separe fenômenos semelhantes, como efeito estufa e redução de ozônio.','Associe cada medida de prevenção ou mitigação ao mecanismo que enfrenta.','Escolha a conclusão sustentada pelos dados, sem universalizar casos específicos.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Após o lançamento contínuo de esgoto rico em nutrientes, um lago apresenta intensa floração de algas. Mais tarde, há acúmulo de biomassa morta e queda do oxigênio dissolvido.'],enunciado:'Qual processo contribui diretamente para a queda do oxigênio?',alternativas:['Decomposição aeróbia da biomassa por microrganismos.','Diminuição da quantidade de decompositores a zero.','Transformação de todo o nitrogênio do lago em oxigênio.','Ausência completa de entrada de matéria orgânica.','Eliminação da respiração celular dos organismos.'],correta:'A',resolucao:['A matéria orgânica morta serve de substrato a decompositores.','Na decomposição aeróbia, esses organismos consomem oxigênio dissolvido.','Portanto, A explica diretamente a queda observada.'],porqueErram:['B: eliminar decompositores não explica o consumo descrito.','C: não ocorre conversão integral de nitrogênio em oxigênio.','D: há biomassa morta disponível para decomposição.','E: a eliminação da respiração não explicaria o consumo de oxigênio.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em amostras de uma cadeia aquática, a concentração de um contaminante persistente aumenta do plâncton para peixes pequenos e destes para peixes predadores. As medidas usam a mesma unidade e base de comparação.'],enunciado:'O padrão é compatível com',alternativas:['fixação de nitrogênio atmosférico.','biomagnificação ao longo da cadeia.','desaparecimento do contaminante na alimentação.','fluxo de energia do predador para o produtor.','redução obrigatória da concentração em todos os consumidores.'],correta:'B',resolucao:['A tabela compara concentrações ao longo de níveis alimentares.','O aumento nos predadores é compatível com biomagnificação de contaminante persistente.','A alternativa B descreve o padrão.'],porqueErram:['A: fixação de N₂ é outro processo ecológico.','C: as concentrações observadas não indicam desaparecimento.','D: o sentido da energia não é demonstrado pela concentração e não se inverte.','E: os dados mostram aumento, não redução em todos os níveis.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Uma prefeitura quer reduzir a intensificação do efeito estufa associada ao transporte urbano.'],enunciado:'Qual medida atua mais diretamente sobre essa fonte?',alternativas:['Ampliar a queima de diesel sem controle.','Substituir integralmente áreas verdes por estacionamentos.','Incentivar transporte coletivo eficiente e modos ativos para reduzir emissões por deslocamento.','Liberar mais esgoto sem tratamento em rios.','Aumentar o uso de compostos que destroem ozônio como forma de retirar CO₂.'],correta:'C',resolucao:['A fonte considerada é a emissão associada a deslocamentos urbanos.','Transporte coletivo eficiente e modos ativos podem reduzir o uso de combustíveis por deslocamento.','Logo, a medida mais diretamente relacionada é C.'],porqueErram:['A: mais queima de diesel tende a aumentar emissões.','B: estacionamentos não reduzem diretamente a fonte indicada e podem suprimir vegetação.','D: esgoto é outro problema e não é medida direta para emissões do transporte.','E: destruição de ozônio é outro problema e não constitui solução de retirada de CO₂.']}
+ ],
+ video:{busca:'IMPACTOS AMBIENTAIS NO ENEM - REVISÃO COMPLETA Me Gusta Bio',canal:'Me Gusta Bio',titulo:'IMPACTOS AMBIENTAIS NO ENEM - REVISÃO COMPLETA',url:'https://www.youtube.com/watch?v=-p62to6qUYk'},
+ fontes:[{titulo:'OpenStax Biology 2e — ciclos biogeoquímicos',url:'https://openstax.org/books/biology-2e/pages/46-3-biogeochemical-cycles'}]
+}
+];
+
 /* ===== js/db/conteudos/estrutura.js ===== */
 /**
  * Mapa dos conteúdos: 4 áreas → matérias → conteúdos.
@@ -20265,6 +20373,7 @@ const QUESTOES_REFORCO = {
 
 
 
+
 const PAGINAS = {
   ...PAGINAS_LINGUAGENS,
   'red-competencias': MATERIAL_REDACAO,
@@ -20323,7 +20432,7 @@ function paginaDe(id, conteudo) {
       materiaisRelacionados:[{id:'bio-citologia-anterior', titulo:'Citologia: material e questões anteriores, incluindo questão do Enem', video:VIDEOS[id] || null}]
     };
   }
-  const subtemasPorGrupo = {'lin-interpretacao':[SUBTEMAS_PORTUGUES[0]], 'lin-variacao':[SUBTEMAS_PORTUGUES[1]], 'mat-porcentagem':[SUBTEMA_MAT_FINANCEIRA], 'his-colonia':[SUBTEMA_BRASIL_COLONIA]};
+  const subtemasPorGrupo = {'bio-ecologia':SUBTEMAS_ECOLOGIA, 'lin-interpretacao':[SUBTEMAS_PORTUGUES[0]], 'lin-variacao':[SUBTEMAS_PORTUGUES[1]], 'mat-porcentagem':[SUBTEMA_MAT_FINANCEIRA], 'his-colonia':[SUBTEMA_BRASIL_COLONIA]};
   const subtemas = subtemasPorGrupo[id] || [];
   return {...principal, secoes, resumo:[], subtemas,
     exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],
@@ -20616,7 +20725,7 @@ function viewConteudo(id) {
 
 /** Tópico completo, dentro da página do grupo, com questões próprias. */
 function subtemaHTML(t) {
-  const linkSeguro = u => /^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|mundoeducacao\.uol\.com\.br|professor\.ufrgs\.br|ensina\.rtp\.pt|download\.inep\.gov\.br)\//.test(u);
+  const linkSeguro = u => /^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|mundoeducacao\.uol\.com\.br|professor\.ufrgs\.br|ensina\.rtp\.pt|download\.inep\.gov\.br|openstax\.org)\//.test(u);
   const recomendacao = t.video;
   const videoId = new URL(recomendacao.url).searchParams.get('v');
   return `
@@ -20636,6 +20745,7 @@ function subtemaHTML(t) {
     <p><b>Busca sugerida:</b> <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(recomendacao.busca)}" target="_blank" rel="noopener noreferrer">${escQ(recomendacao.busca)}</a></p>
     <p><b>Canal:</b> ${escQ(recomendacao.canal)} · ${linkSeguro(recomendacao.url) ? `<a href="${escQ(recomendacao.url)}" target="_blank" rel="noopener noreferrer">${escQ(recomendacao.titulo)}</a>` : escQ(recomendacao.titulo)}</p>
     <p>A aula recomendada pode não esgotar todos os detalhes; confira também as fontes de aprofundamento.</p>
+    ${(t.aulasComplementares || []).filter(a=>linkSeguro(a.url)).length ? `<p><b>Aula complementar:</b> ${t.aulasComplementares.filter(a=>linkSeguro(a.url)).map(a=>`<a href="${escQ(a.url)}" target="_blank" rel="noopener noreferrer">${escQ(a.titulo)}</a>`).join(' · ')}</p>` : ''}
     <p><b>Fonte de apoio:</b> ${(t.fontes||[]).filter(f=>linkSeguro(f.url)).map(f=>`<a href="${escQ(f.url)}" target="_blank" rel="noopener noreferrer">${escQ(f.titulo)}</a>`).join(' · ')}</p></section>
   </section>`;
 }

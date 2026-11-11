@@ -265,7 +265,7 @@ export function viewConteudo(id) {
 
 /** Tópico completo, dentro da página do grupo, com questões próprias. */
 function subtemaHTML(t) {
-  const linkSeguro = u => /^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|mundoeducacao\.uol\.com\.br|professor\.ufrgs\.br|ensina\.rtp\.pt|download\.inep\.gov\.br)\//.test(u);
+  const linkSeguro = u => /^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|mundoeducacao\.uol\.com\.br|professor\.ufrgs\.br|ensina\.rtp\.pt|download\.inep\.gov\.br|openstax\.org)\//.test(u);
   const recomendacao = t.video;
   const videoId = new URL(recomendacao.url).searchParams.get('v');
   return `
@@ -285,6 +285,7 @@ function subtemaHTML(t) {
     <p><b>Busca sugerida:</b> <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(recomendacao.busca)}" target="_blank" rel="noopener noreferrer">${escQ(recomendacao.busca)}</a></p>
     <p><b>Canal:</b> ${escQ(recomendacao.canal)} · ${linkSeguro(recomendacao.url) ? `<a href="${escQ(recomendacao.url)}" target="_blank" rel="noopener noreferrer">${escQ(recomendacao.titulo)}</a>` : escQ(recomendacao.titulo)}</p>
     <p>A aula recomendada pode não esgotar todos os detalhes; confira também as fontes de aprofundamento.</p>
+    ${(t.aulasComplementares || []).filter(a=>linkSeguro(a.url)).length ? `<p><b>Aula complementar:</b> ${t.aulasComplementares.filter(a=>linkSeguro(a.url)).map(a=>`<a href="${escQ(a.url)}" target="_blank" rel="noopener noreferrer">${escQ(a.titulo)}</a>`).join(' · ')}</p>` : ''}
     <p><b>Fonte de apoio:</b> ${(t.fontes||[]).filter(f=>linkSeguro(f.url)).map(f=>`<a href="${escQ(f.url)}" target="_blank" rel="noopener noreferrer">${escQ(f.titulo)}</a>`).join(' · ')}</p></section>
   </section>`;
 }

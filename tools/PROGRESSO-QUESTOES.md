@@ -91,3 +91,15 @@ semântica integral; os itens devem ser verificados e corrigidos individualmente
 antes de publicação. Não usar `buscar-videos.mjs --tudo` sem revisão: ele pode
 sobrescrever as correções e escolhe automaticamente um resultado sem avaliar
 seu conteúdo.
+
+## Ecologia — aprofundamento local subsequente
+
+Acrescentados os tópicos Biologia 1.1, 1.2 e 1.3, com resumo, revisão,
+exemplos, roteiro, três questões autorais comentadas e aulas pertinentes. As
+páginas e descrições das quatro recomendações foram consultadas e o YouTube
+informava permitir incorporação; isso não garante reprodução em todos os
+navegadores. A aula principal do tópico 1.2 aborda relações ecológicas e a
+aula complementar cobre o ciclo do nitrogênio; não esgotam todos os ciclos.
+Estes três tópicos somam-se aos oito anteriores: 11/106 incorporados, 95
+pendentes. Os números anteriores deste documento registram estados históricos.
+Sem deploy; outros vídeos anteriores ainda exigem revisão individual.

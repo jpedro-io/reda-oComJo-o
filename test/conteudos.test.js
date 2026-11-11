@@ -131,3 +131,24 @@ for (const id of ['lin-interpretacao','lin-variacao','mat-porcentagem','his-colo
   }
 }
 console.log('Interpretação e variação linguística: subtemas com questões inéditas.');
+
+const ecologia = paginaDe('bio-ecologia').subtemas;
+assert.equal(ecologia.length, 3);
+for (const t of ecologia) {
+  assert.ok(t.secoes.length>=3 && t.secoes.length<=5 && t.secoes.every(s=>s.h && s.ps.length>=2));
+  assert.ok(t.chave.length>=4 && t.chave.length<=6);
+  assert.equal(t.exemplos.length,2);
+  assert.ok(t.exemplos.every(e=>e.titulo && e.texto && e.comentario));
+  assert.ok(t.roteiro.length>=4 && t.roteiro.length<=6);
+  assert.equal(t.questoes.length,3);
+  for (const q of t.questoes) {
+    assert.equal(q.ano,null);
+    assert.equal(q.alternativas.length,5);
+    assert.ok(q.resolucao.length>=3 && q.fonte.includes('autoral'));
+    assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(), 'ABCDE'.split('').filter(x=>x!==q.correta).sort());
+  }
+  assert.ok(t.video.busca && t.video.titulo && t.video.canal && t.video.url);
+  assert.ok(viewConteudo('bio-ecologia').includes(`id="${t.id}"`));
+}
+assert.ok(viewConteudo('bio-ecologia').includes('WNtCkBjJ7EI'));
+console.log('Ecologia: três subtemas com questões autorais e aulas específicas.');
