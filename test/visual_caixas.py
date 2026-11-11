@@ -15,7 +15,7 @@ rotas += ['#/conteudos/c/'+i for i in ids]+['#/redacoes/'+i for i in redacoes]+[
 rotas = list(dict.fromkeys(rotas))
 verificar = r'''() => {
  const erros=[];
- for(const e of document.querySelectorAll('main .ac-bloco, main .rel-topo, main .metricas, main .painel-solido, main .indice-item, main .video-caixa')) {
+ for(const e of document.querySelectorAll('main .ac-bloco, main .rel-topo, main .metricas, main .painel-solido, main .indice-item, main .video-caixa, main .tabela-redacoes')) {
    const rect=e.getBoundingClientRect(), w=document.createTreeWalker(e,NodeFilter.SHOW_TEXT); let n;
    while(n=w.nextNode()) {
      if(!n.textContent.trim() || n.parentElement.closest('details:not([open])')) continue;

@@ -218,3 +218,18 @@ main .comp-bloco .tabela-niveis thead th:first-child { padding-left:12px; }
   main .painel-solido { padding:18px !important; }
   main .indice-item > .indice-link { padding:14px 16px !important; }
 }
+
+/* A tabela usa células para o recuo: padding na própria tabela não afasta
+   o conteúdo quando border-collapse está ativo. */
+main .tabela-redacoes { padding:0; }
+main .tabela-redacoes thead th { padding-top:14px; padding-bottom:12px; }
+main .tabela-redacoes thead th:first-child,
+main .tabela-redacoes tbody td.ano { padding-left:20px; }
+main .tabela-redacoes thead th:last-child,
+main .tabela-redacoes tbody td.nota { padding-right:20px; }
+@media (max-width:768px) {
+  main .tabela-redacoes tbody tr { padding:16px; }
+  main .tabela-redacoes tbody td { border:0; }
+  main .tabela-redacoes tbody td.ano { width:auto; padding-left:0; }
+  main .tabela-redacoes tbody td.nota { width:auto; padding-right:0; }
+}
