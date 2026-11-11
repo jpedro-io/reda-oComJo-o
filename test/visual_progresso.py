@@ -14,7 +14,7 @@ with sync_playwright() as p:
     assert 'salva' in page.locator('#salvamento-status').inner_text().lower()
     assert page.locator('.historico-item').count()==1
     nota=page.locator('.nf-num').inner_text()
-    page.goto(base+'/#/conteudos/c/his-colonia');page.goto(base+'/#/conteudos/materia/historia')
+    page.goto(base+'/#/conteudos/c/his-colonia');page.locator('#his-brasil-imperio').wait_for();page.goto(base+'/#/conteudos/materia/historia')
     page.locator('a[href="#/conteudos/c/his-colonia"] .cb-visitado').wait_for()
     page.reload();page.locator('a[href="#/conteudos/c/his-colonia"] .cb-visitado').wait_for()
     page.goto(base+'/#/corrigir');page.reload();page.locator('.historico-item').wait_for();assert page.locator('.historico-item').count()==1
