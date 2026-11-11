@@ -69,7 +69,7 @@ function viewHome() {
     ['#/estrutura', 'Estrutura', 'Anatomia parte por parte, os 5 elementos da proposta e o esqueleto de 30 linhas.', 'camada'],
     ['#/comandos', 'Ler o tema', 'O substantivo que abre a proposta é um pedido. 11 comandos, com armadilha e roteiro.', 'mira'],
     ['#/temas', 'Temas', `${TEMAS.length} temas com recorte, núcleo, vocabulário de apoio e repertórios.`, 'tema'],
-    ['#/redacoes', 'Redações analisadas', `${TOTAL_NOTA_MIL} redações nota 1000, de 2014 a 2026, com cada parágrafo comentado.`, 'doc'],
+    ['#/redacoes', 'Redações analisadas', `${TOTAL_NOTA_MIL} modelos didáticos, de 2014 a 2026, com cada parágrafo comentado.`, 'doc'],
     ['#/conteudos', 'Estudar conteúdos', 'Encontre os assuntos das quatro áreas e pratique com resoluções escritas.', 'regua'],
     ['#/corrigir', 'Corrigir', 'Cole seu texto: nota por competência, o que segura a nota e o que fazer primeiro.', 'analise']
   ];
@@ -97,16 +97,18 @@ function viewHome() {
   return `
   <section class="novo-hero" aria-labelledby="inicio-titulo">
     <div class="novo-hero-copy" data-entrada>
-      <span class="novo-kicker"><span aria-hidden="true">✦</span> SEU ESPAÇO DE ESTUDO PARA O ENEM</span>
-      <h1 id="inicio-titulo">Estudar faz mais sentido quando você <em>entende o caminho.</em></h1>
+      <span class="novo-kicker"><span>GUIA</span> UM PASSO DE CADA VEZ</span>
+      <h1 id="inicio-titulo">Seu caminho para o Enem começa <em>aqui.</em></h1>
       <p>Explore os conteúdos da prova, pratique com questões resolvidas e desenvolva sua redação no seu ritmo.</p>
       <div class="novo-acoes">
         <a class="novo-btn principal" href="#/conteudos">Explorar conteúdos <span aria-hidden="true">↗</span></a>
         <a class="novo-btn secundario" href="#/corrigir">Corrigir redação <span aria-hidden="true">→</span></a>
       </div>
-      <div class="novo-etapas"><span>01 <b>Aprenda</b></span><span>02 <b>Pratique</b></span><span>03 <b>Evolua</b></span></div>
+      <div class="novo-etapas"><span>Aprenda</span><span aria-hidden="true">·</span><span>Pratique</span><span aria-hidden="true">·</span><span>Evolua</span></div>
     </div>
-    <div class="novo-painel" data-entrada aria-label="Seu caminho de estudos">
+  </section>
+
+  <section class="novo-painel" data-entrada aria-label="Seu caminho de estudos">
       <div class="novo-painel-top"><span>SEU CAMINHO</span><span aria-hidden="true">✳</span></div>
       <p class="novo-painel-titulo">Um passo de cada vez.</p>
       <p class="novo-painel-sub">Escolha por onde começar.</p>
@@ -114,7 +116,6 @@ function viewHome() {
       <a href="#/redacoes" class="novo-passo"><span class="novo-icon menta">▤</span><span><strong>Redação</strong><small>Modelos e competências</small></span><b aria-hidden="true">↗</b></a>
       <a href="#/corrigir" class="novo-passo"><span class="novo-icon coral">✓</span><span><strong>Correção</strong><small>Diagnóstico para melhorar</small></span><b aria-hidden="true">↗</b></a>
       <div class="novo-painel-rodape"><span>ESTUDE COM PROPÓSITO</span><span>↗</span></div>
-    </div>
   </section>
 
   <section aria-labelledby="h-indice">
@@ -140,7 +141,7 @@ function viewHome() {
       <h2 id="h-comp">As cinco competências</h2>
       <span>0 a 200 cada</span>
     </div>
-    <p class="comp-lead">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, e dois avaliadores nunca fecham o mesmo número, o relatório publica sempre uma faixa (nota entre X e Y), nunca um número exato.</p>
+    <p class="comp-lead">Cada competência vale <b>0, 40, 80, 120, 160 ou 200</b>, como na grade oficial. Como a nota do Enem é a <b>média de dois avaliadores</b>, que podem atribuir notas diferentes, o relatório apresenta uma faixa estimada (entre X e Y), e não uma nota oficial.</p>
     <div class="faixa-comp" data-entrada>
       ${CRITERIOS.map(c => `
         <a class="rc-item" href="#/competencias">
@@ -1012,14 +1013,9 @@ document.addEventListener('click', event => {
   const alvo = document.getElementById(link.getAttribute('href').slice(1));
   if (!alvo) return;
   event.preventDefault();
-  alvo.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  alvo.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce), (max-width: 767px), (pointer: coarse)').matches ? 'auto' : 'smooth', block: 'start' });
 });
 
 window.addEventListener('hashchange', render);
-
-window.addEventListener('scroll', () => {
-  const barra = document.querySelector('.topbar');
-  if (barra) barra.classList.toggle('rolado', window.scrollY > 12);
-}, { passive: true });
 
 render();

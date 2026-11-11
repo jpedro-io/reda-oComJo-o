@@ -146,3 +146,17 @@ superfície. Os marcadores dos comentários da correção possuem uma coluna pr�
 para não cobrir o início do texto, inclusive quando o texto quebra em linhas.
 Na C4, a orientação de revisão prioriza um sinal observado, em vez de afirmar
 que faltam classes de conectivos quando a própria análise identificou variedade.
+
+## Revisão visual — inspiração Skillgrove
+
+A interface usa uma direção própria inspirada na referência fornecida: abertura
+centralizada, tipografia sem serifa, verde vivo sobre fundos verde-escuros e
+superfícies discretas. Não utiliza marcas, depoimentos, imagens ou números do
+modelo. Elementos translúcidos, realce e leve profundidade permanecem no
+computador. Em telas estreitas e dispositivos de toque, a camada pesada de
+backdrop-filter, fundo fixo, animações de entrada e barra de progresso na
+rolagem são desativados para reduzir trabalho de pintura; a navegação continua
+funcional sem movimento. O teste automatizado não substitui teste em aparelho
+real. A tabela da estrutura apresenta linhas empilhadas em telas pequenas,
+sem remover seus cabeçalhos semânticos; caixas aninhadas no corretor têm
+espaçamento reduzido para preservar uma largura confortável de texto.

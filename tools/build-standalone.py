@@ -89,6 +89,7 @@ css_fontes = embutir_fontes((raiz / 'css/fontes.css').read_text(encoding='utf-8'
 css = (raiz / 'css/style.css').read_text(encoding='utf-8')
 css_edit = embutir_imagens((raiz / 'css/editorial.css').read_text(encoding='utf-8'))
 css_glass = embutir_imagens((raiz / 'css/glass.css').read_text(encoding='utf-8'))
+css_novo = embutir_imagens((raiz / 'css/novo-visual.css').read_text(encoding='utf-8'))
 
 # o index.html carrega os assets com ?v=... (cache-busting); o build ignora a query
 html = re.sub(r'\?v=[\w.-]+', '', html)
@@ -101,6 +102,8 @@ html = re.sub(r'<link rel="stylesheet" href="css/editorial\.css" />',
               lambda m: '<style>\n' + css_edit + '\n</style>', html)
 html = re.sub(r'<link rel="stylesheet" href="css/glass\.css" />',
               lambda m: '<style>\n' + css_glass + '\n</style>', html)
+html = re.sub(r'<link rel="stylesheet" href="css/novo-visual\.css" />',
+              lambda m: '<style>\n' + css_novo + '\n</style>', html)
 html = re.sub(r'<script src="js/glass\.js" defer></script>',
               lambda m: '<script>\n' + sem_modulos((raiz / 'js/glass.js').read_text(encoding='utf-8')) + '\n</script>', html)
 html = re.sub(r'<script type="module" src="js/ui\.js"></script>',

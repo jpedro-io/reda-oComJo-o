@@ -23,9 +23,10 @@ let io = null;
 /** Observa tudo que tem [data-entrada] e solta o stagger na primeira aparição. */
 export function observarEntradas(raiz = document) {
   const alvos = [...raiz.querySelectorAll('[data-entrada]:not(.entrou)')];
+  if (io) io.disconnect(); // Não manter páginas removidas no observador.
   if (!alvos.length) return;
 
-  if (reduzirMovimento() || !('IntersectionObserver' in window)) {
+  if (reduzirMovimento() || consulta('(max-width: 767px), (pointer: coarse)').matches || !('IntersectionObserver' in window)) {
     alvos.forEach(el => el.classList.add('entrou'));
     return;
   }
@@ -105,6 +106,7 @@ export function ligarProgresso() {
   const barra = document.getElementById('progresso');
   if (!barra) return;
   let travado = false;
+  const modoLeve = consulta('(max-width: 767px), (pointer: coarse)');
   const pintar = () => {
     const h = document.documentElement;
     const total = h.scrollHeight - h.clientHeight;
@@ -113,7 +115,7 @@ export function ligarProgresso() {
     travado = false;
   };
   window.addEventListener('scroll', () => {
-    if (travado) return;
+    if (modoLeve.matches || travado) return;
     travado = true;
     requestAnimationFrame(pintar);
   }, { passive: true });
