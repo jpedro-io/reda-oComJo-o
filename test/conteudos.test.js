@@ -242,3 +242,21 @@ assert.ok(distribuida.resolucao.every(x=>x.includes(distribuida.correta)));
 for(const comentario of distribuida.porqueErram){const antigo=originalAlternativas.porqueErram.find(x=>x.slice(2)===comentario.slice(2));assert.equal(distribuida.alternativas['ABCDE'.indexOf(comentario[0])],originalAlternativas.alternativas['ABCDE'.indexOf(antigo[0])]);}
 assert.deepEqual(distribuirAlternativas(originalAlternativas),distribuida);
 console.log('Distribuição de alternativas preserva resposta, resolução e comentários.');
+
+const bioVida={'bio-genetica':['Biologia 1.8','Biologia 1.9'],'bio-evolucao':['Biologia 1.10'],'bio-fisiologia':['Biologia 1.11','Biologia 1.12']};
+for(const [id,codigos] of Object.entries(bioVida)){
+ const temas=paginaDe(id).subtemas.filter(t=>codigos.includes(t.codigo));assert.equal(temas.length,codigos.length);
+ for(const t of temas){assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));assert.ok(t.chave.length>=4&&t.chave.length<=6);assert.equal(t.exemplos.length,2);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+ for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+ assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));}
+}
+console.log('Biologia: cinco subtemas adicionais com questões autorais e recomendações.');
+
+const quiInicial={'qui-ligacoes':['Química 3.1','Química 3.2','Química 3.3','Química 3.4'],'qui-solucoes':['Química 3.5']};
+for(const [id,codigos] of Object.entries(quiInicial)){
+ const temas=paginaDe(id).subtemas.filter(t=>codigos.includes(t.codigo));assert.equal(temas.length,codigos.length);
+ for(const t of temas){assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));assert.ok(t.chave.length>=4&&t.chave.length<=6);assert.equal(t.exemplos.length,2);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+ for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+ assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));}
+}
+console.log('Química: cinco subtemas adicionais com questões autorais e recomendações.');

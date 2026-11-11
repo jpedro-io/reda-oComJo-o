@@ -36,9 +36,10 @@ export const VIDEOS = {
     "canal": "Biologia Total com Prof. Jubilut"
   },
   "bio-evolucao": {
-    "id": "wrPcm5FseGo",
-    "titulo": "",
-    "canal": "Biologia Total com Prof. Jubilut"
+    "id": "piRSx5SvYv8",
+    "titulo": "EVOLUÇÃO - DARWIN E LAMARCK - TEORIAS EVOLUTIVAS | Biologia com Samuel Cunha",
+    "canal": "Biologia com Samuel Cunha",
+    "escopo": "Aula de teorias evolutivas; complete com os demais conteúdos de evolução e especiação."
   },
   "bio-fisiologia": {
     "id": "AotglnRfNOo",

@@ -91,11 +91,11 @@ continuam disponíveis no link de material anterior.
 - [x] 1.5 Organelas celulares e funções fisiológicas
 - [x] 1.6 Bioenergética
 - [x] 1.7 Divisão celular
-- [ ] 1.8 Genética mendeliana e herança ligada ao sexo
-- [ ] 1.9 Biotecnologia
-- [ ] 1.10 Evolução biológica
-- [ ] 1.11 Fisiologia humana e imunologia
-- [ ] 1.12 Parasitologia e saúde pública
+- [x] 1.8 Genética mendeliana e herança ligada ao sexo
+- [x] 1.9 Biotecnologia
+- [x] 1.10 Evolução biológica
+- [x] 1.11 Fisiologia humana e imunologia
+- [x] 1.12 Parasitologia e saúde pública
 
 ### Física
 - [ ] 2.1 Cinemática
@@ -113,11 +113,11 @@ continuam disponíveis no link de material anterior.
 - [ ] 2.13 Óptica geométrica e visão humana
 
 ### Química
-- [ ] 3.1 Ligações químicas e interações intermoleculares
-- [ ] 3.2 Funções inorgânicas
-- [ ] 3.3 Separação de misturas
-- [ ] 3.4 Estequiometria
-- [ ] 3.5 Soluções e concentrações
+- [x] 3.1 Ligações químicas e interações intermoleculares
+- [x] 3.2 Funções inorgânicas
+- [x] 3.3 Separação de misturas
+- [x] 3.4 Estequiometria
+- [x] 3.5 Soluções e concentrações
 - [ ] 3.6 Termoquímica
 - [ ] 3.7 Cinética química
 - [ ] 3.8 Equilíbrio químico

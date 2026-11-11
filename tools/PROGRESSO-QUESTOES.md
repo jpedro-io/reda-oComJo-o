@@ -156,3 +156,23 @@ rigor pedagógico completo. Regressões JavaScript, 120 rotas em 320/390 px e
 renderização dos 16 tópicos tanto no site modular quanto no standalone em
 Chromium passaram. Estado atual: **47/106 tópicos incorporados, 59 pendentes**;
 207 questões exibidas contando grupos e novos subtemas. Sem deploy.
+
+
+## Biologia complementar e primeiros tópicos de Química
+
+Foram incorporados cinco tópicos de Biologia (genética, biotecnologia,
+evolução, fisiologia/imunologia e parasitologia) e cinco de Química
+(ligações/interações, funções inorgânicas, separação, estequiometria e
+soluções), com duas questões autorais inéditas por tópico. O vídeo geral de
+evolução foi substituído por aula sobre Darwin e Lamarck e recebeu indicação
+de escopo; não foram corrigidas todas as demais recomendações antigas
+suspeitas. A seleção das novas aulas verificou título, canal, descrição e
+permissão de incorporação. Alguns vídeos cobrem apenas parte do conteúdo,
+com indicação de escopo e complementação. Esses testes não garantem
+reprodução futura, disponibilidade regional nem revisão pedagógica externa.
+
+Regressões JavaScript, auditorias móveis em 120 rotas e teste dos dez subtemas
+em Chromium no site modular e no standalone passaram; o roteiro específico
+está em test/visual_biologia_quimica.py. Estado: **57/106 incorporados,
+49 pendentes**, 227 questões exibidas contando grupos e autorais, das quais
+23 são referências oficiais do Inep. Nenhum deploy foi realizado.
