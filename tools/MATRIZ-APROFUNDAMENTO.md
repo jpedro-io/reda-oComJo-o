@@ -66,12 +66,12 @@ continuam disponíveis no link de material anterior.
 - [ ] 2.8 Matrizes energéticas e impactos ambientais
 
 ### Filosofia
-- [ ] 3.1 Filosofia Antiga
-- [ ] 3.2 Filosofia Medieval
-- [ ] 3.3 Epistemologia Moderna
-- [ ] 3.4 Filosofia Política e Contratualismo
-- [ ] 3.5 Ética e Iluminismo
-- [ ] 3.6 Filosofia Contemporânea
+- [x] 3.1 Filosofia Antiga
+- [x] 3.2 Filosofia Medieval
+- [x] 3.3 Epistemologia Moderna
+- [x] 3.4 Filosofia Política e Contratualismo
+- [x] 3.5 Ética e Iluminismo
+- [x] 3.6 Filosofia Contemporânea
 
 ### Sociologia
 - [x] 4.1 Teoria sociológica clássica

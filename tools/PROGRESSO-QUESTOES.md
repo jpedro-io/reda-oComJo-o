@@ -267,3 +267,22 @@ Suítes JS, auditorias móveis em 120 rotas e teste em Chromium dos seis
 subtemas no site e standalone passaram. Estado: **84/106 incorporados,
 22 pendentes**, com 281 questões exibidas, incluindo 23 referências oficiais
 do Inep. Não houve deploy nem revisão pedagógica externa.
+
+
+## Filosofia — Antiguidade à contemporaneidade
+
+Foram incorporados os seis tópicos de Filosofia: Antiga, Medieval,
+epistemologia moderna, política e contratualismo, ética e Iluminismo, e
+filosofia contemporânea. Cada um contém três blocos de estudo, cinco pontos,
+dois exemplos, roteiro e duas questões autorais com justificativas. As aulas
+foram conferidas por título, canal, descrição e permissão de incorporação;
+os escopos parciais foram identificados. Uma sugestão sobre filosofia antiga
+foi descartada por classificar Sócrates, Platão e Aristóteles como helenistas
+na descrição. Fontes da Stanford Encyclopedia of Philosophy responderam 200;
+isso não substitui revisão pedagógica externa nem assegura vídeos no futuro.
+
+Passaram todas as suítes JS, auditoria das 120 rotas em 320/390 px e testes
+em Chromium dos seis tópicos tanto no site modular quanto no standalone.
+Estado: **90/106 tópicos incorporados, 16 pendentes**; 293 questões exibidas,
+incluindo 23 referências oficiais do Inep. Pendentes são oito tópicos de
+História e oito de Geografia. Não houve deploy.
