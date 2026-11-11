@@ -281,9 +281,9 @@ export const VIDEOS = {
     "canal": "Equaciona com Paulo Pereira"
   },
   "mat-escalas": {
-    "id": "0CnUdzmpO8E",
-    "titulo": "",
-    "canal": "Professor Ferretto"
+    "id": "le36vtIZW-w",
+    "titulo": "Escalas Cartográficas no Enem - Brasil Escola",
+    "canal": "Brasil Escola Oficial"
   },
   "mat-exponencial": {
     "id": "m-N5aAiaM2Y",
@@ -291,9 +291,10 @@ export const VIDEOS = {
     "canal": "Equaciona com Paulo Pereira"
   },
   "mat-financeira": {
-    "id": "e78_5WIssSU",
-    "titulo": "",
-    "canal": "Professor Ferretto"
+    "id": "EwTOIMDitwQ",
+    "titulo": "Porcentagem e escala, razão e proporção",
+    "canal": "FTD Educação",
+    "escopo": "Revisão de porcentagem e matemática financeira, incluindo juros; consulte também exercícios e aulas específicas."
   },
   "mat-funcao-1": {
     "id": "R8UZRBFWJXY",
@@ -306,9 +307,10 @@ export const VIDEOS = {
     "canal": "Equaciona com Paulo Pereira"
   },
   "mat-geo-espacial": {
-    "id": "N0qYGevKmko",
-    "titulo": "Poliedros Regulares | Geometria Espacial",
-    "canal": "Professor Ferretto"
+    "id": "Jtntkxn0RtQ",
+    "titulo": "Prismas e Paralelepípedos (Geometria Espacial) | Matemática #25 | prof. Paulo Maximvs | Enem 2020",
+    "canal": "Não Perca a Cabeça",
+    "escopo": "Aula parcial sobre área e volume de prismas e paralelepípedos; consulte também os demais sólidos."
   },
   "mat-geo-plana": {
     "id": "0CnUdzmpO8E",
@@ -336,9 +338,9 @@ export const VIDEOS = {
     "canal": "Professor Ferretto"
   },
   "mat-probabilidade": {
-    "id": "zXtC6PgE9uc",
-    "titulo": "",
-    "canal": "Equaciona com Paulo Pereira"
+    "id": "WjonxRW7EBI",
+    "titulo": "PROBABILIDADE - AULA COMPLETA - ENEM - FABRÍCIO PESSOA",
+    "canal": "Fabrício Pessoa"
   },
   "mat-razao-proporcao": {
     "id": "MA_ZrgV2xws",

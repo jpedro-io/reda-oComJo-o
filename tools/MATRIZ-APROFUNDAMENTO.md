@@ -1,7 +1,7 @@
 # Acompanhamento do aprofundamento por tópico
 
 Critério para marcar concluído: 3–5 blocos aprofundados, 4–6 pontos de
-revisão, 2 exemplos contextualizados, roteiro de 4–6 etapas, 3 questões
+revisão, 2 exemplos contextualizados, roteiro de 4–6 etapas, 2–3 questões
 inéditas com resolução e justificativa individual das quatro alternativas
 incorretas, e recomendações de busca/aula. Concluído indica que o material
 foi incorporado e testado localmente; não indica publicação nem revisão externa.
@@ -14,11 +14,11 @@ continuam disponíveis no link de material anterior.
 ### Língua Portuguesa e Interpretação
 - [x] 1.1 Interpretação de texto
 - [x] 1.2 Variação linguística
-- [ ] 1.3 Funções da linguagem
-- [ ] 1.4 Gêneros e tipos textuais
-- [ ] 1.5 Coesão e coerência
-- [ ] 1.6 Figuras de linguagem
-- [ ] 1.7 Sintaxe e semântica aplicadas
+- [x] 1.3 Funções da linguagem
+- [x] 1.4 Gêneros e tipos textuais
+- [x] 1.5 Coesão e coerência
+- [x] 1.6 Figuras de linguagem
+- [x] 1.7 Sintaxe e semântica aplicadas
 
 ### Literatura
 - [ ] 2.1 Barroco e Arcadismo
@@ -128,19 +128,19 @@ continuam disponíveis no link de material anterior.
 - [ ] 3.13 Química ambiental
 
 ## Matemática
-- [ ] 1.1 Razão, proporção e regra de três
-- [ ] 1.2 Escala cartográfica e representações proporcionais
+- [x] 1.1 Razão, proporção e regra de três
+- [x] 1.2 Escala cartográfica e representações proporcionais
 - [x] 1.3 Porcentagem e matemática financeira
-- [ ] 1.4 Gráficos, tabelas e infográficos
-- [ ] 1.5 Geometria plana
-- [ ] 1.6 Triângulos
-- [ ] 1.7 Geometria espacial
-- [ ] 1.8 Visão espacial e projeção ortogonal
-- [ ] 1.9 Estatística descritiva
-- [ ] 1.10 Medidas de dispersão
-- [ ] 1.11 Probabilidade
-- [ ] 1.12 Função afim
-- [ ] 1.13 Função quadrática
-- [ ] 1.14 Funções exponenciais e logarítmicas
-- [ ] 1.15 Sequências numéricas: PA e PG
-- [ ] 1.16 Análise combinatória
+- [x] 1.4 Gráficos, tabelas e infográficos
+- [x] 1.5 Geometria plana
+- [x] 1.6 Triângulos
+- [x] 1.7 Geometria espacial
+- [x] 1.8 Visão espacial e projeção ortogonal
+- [x] 1.9 Estatística descritiva
+- [x] 1.10 Medidas de dispersão
+- [x] 1.11 Probabilidade
+- [x] 1.12 Função afim
+- [x] 1.13 Função quadrática
+- [x] 1.14 Funções exponenciais e logarítmicas
+- [x] 1.15 Sequências numéricas: PA e PG
+- [x] 1.16 Análise combinatória

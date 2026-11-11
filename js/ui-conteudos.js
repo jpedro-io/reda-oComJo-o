@@ -279,7 +279,7 @@ function subtemaHTML(t) {
     <section class="cp-bloco"><h3 class="cp-rot">${icQ('exemplo')} exemplos práticos</h3><div class="cp-exemplos">
     ${t.exemplos.map((e,i)=>`<article class="cp-exemplo"><span class="cp-ex-num">${i+1}</span><div><h4>${escQ(e.titulo)}</h4><p class="cp-ex-texto">${escQ(e.texto)}</p><p class="cp-ex-coment"><b>Por que importa:</b> ${escQ(e.comentario)}</p></div></article>`).join('')}</div></section>
     <section class="cp-bloco"><h3 class="cp-rot">${icQ('imagem')} imagens, esquemas e fórmulas</h3>${figuraHTML({tipo:'fluxo',titulo:'Roteiro de leitura e resolução',itens:t.roteiro})}</section>
-    <section class="cp-bloco"><h3 class="cp-rot">${icQ('check')} 3 questões inéditas resolvidas</h3>${t.questoes.map((q,i)=>questaoHTML(q,i)).join('')}</section>
+    <section class="cp-bloco"><h3 class="cp-rot">${icQ('check')} ${t.questoes.length} questões inéditas resolvidas</h3>${t.questoes.map((q,i)=>questaoHTML(q,i)).join('')}</section>
     <section class="cp-bloco"><h3 class="cp-rot">${icQ('video')} aula em vídeo</h3>
     ${videoId && /^[A-Za-z0-9_-]{11}$/.test(videoId) ? `<div class="video-caixa"><div class="video-moldura"><iframe src="https://www.youtube-nocookie.com/embed/${escQ(videoId)}?rel=0" title="${escQ(recomendacao.titulo)}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></div>` : ''}
     <p><b>Busca sugerida:</b> <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(recomendacao.busca)}" target="_blank" rel="noopener noreferrer">${escQ(recomendacao.busca)}</a></p>

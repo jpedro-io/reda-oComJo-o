@@ -21,6 +21,9 @@ import { SUBTEMAS_PORTUGUES } from './subtemas-portugues.js';
 import { SUBTEMA_MAT_FINANCEIRA } from './subtema-matematica-financeira.js';
 import { SUBTEMA_BRASIL_COLONIA } from './subtema-brasil-colonia.js';
 import { SUBTEMAS_ECOLOGIA } from './subtemas-ecologia.js';
+import { SUBTEMAS_MATEMATICA } from './subtemas-matematica.js';
+import { SUBTEMAS_GEOMETRIA_FUNCOES } from './subtemas-geometria-funcoes.js';
+import { SUBTEMAS_PORT_APLICADO } from './subtemas-portugues-aplicado.js';
 import { EXPANSOES } from './expansoes.js';
 import { QUESTOES_ENEM } from './questoes-enem.js';
 import { QUESTOES_DIA1 } from './questoes-inep-dia1.js';
@@ -87,7 +90,8 @@ export function paginaDe(id, conteudo) {
     };
   }
   const subtemasPorGrupo = {'bio-ecologia':SUBTEMAS_ECOLOGIA, 'lin-interpretacao':[SUBTEMAS_PORTUGUES[0]], 'lin-variacao':[SUBTEMAS_PORTUGUES[1]], 'mat-porcentagem':[SUBTEMA_MAT_FINANCEIRA], 'his-colonia':[SUBTEMA_BRASIL_COLONIA]};
-  const subtemas = subtemasPorGrupo[id] || [];
+  const subtemas = [...(subtemasPorGrupo[id] || []), ...(SUBTEMAS_MATEMATICA[id] || []), ...(SUBTEMAS_GEOMETRIA_FUNCOES[id] || []), ...(SUBTEMAS_PORT_APLICADO[id] || [])]
+    .sort((a,b) => a.codigo.localeCompare(b.codigo, 'pt-BR', {numeric:true}));
   return {...principal, secoes, resumo:[], subtemas,
     exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],
     figuras:[...textos.flatMap(({p}) => p.figuras), ...(apoio ? [{tipo:'fluxo', titulo:'Esquema de estudo', itens:apoio.esquema}] : [])],

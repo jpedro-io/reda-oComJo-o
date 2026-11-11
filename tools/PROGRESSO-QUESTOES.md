@@ -79,7 +79,7 @@ apenas parte do tópico. Isso não equivale a uma revisão pedagógica integral
 nem a testes de reprodução em todos os navegadores.
 
 Uma triagem adicional dos 74 IDs de `videos.js` por título, canal, descrição e
-duração revelou outros vínculos suspeitos ou inadequados, ainda não corrigidos:
+duração revelou os seguintes vínculos suspeitos ou inadequados naquele momento:
 `fis-ondulatoria` e `fis-optica` apontam para revisão de mecânica;
 `geo-agraria` para vegetação; `geo-clima` para live de agropecuária e história;
 `his-imperio` para Brasil Colônia; `mat-escalas` para ângulos;
@@ -103,3 +103,29 @@ aula complementar cobre o ciclo do nitrogênio; não esgotam todos os ciclos.
 Estes três tópicos somam-se aos oito anteriores: 11/106 incorporados, 95
 pendentes. Os números anteriores deste documento registram estados históricos.
 Sem deploy; outros vídeos anteriores ainda exigem revisão individual.
+
+## Complementos de Matemática e Português
+
+Foram integrados os 15 tópicos de Matemática que faltavam (1.1, 1.2 e 1.4–1.16)
+mais Português 1.3–1.7: 20 tópicos novos. Os materiais preservam 3 blocos,
+4–6 pontos de revisão, dois exemplos, roteiro de 5 etapas e duas questões
+autorais com alternativas e quatro distratores comentados. O pedido original
+permite duas ou três questões por tópico; o critério do checklist e o título
+renderizado foram corrigidos para refletir essa faixa. O material anterior e
+suas URLs permanecem acessíveis. Português 1.1–1.7 e Matemática 1.1–1.16
+estão incorporados ao novo padrão, sem alegar revisão pedagógica externa.
+
+Foram consultadas páginas, títulos, canais e descrições das aulas novas e o
+YouTube indicou permissão de incorporação, mas não se garante funcionamento em
+todas as regiões ou navegadores nem que cada aula cubra inteiramente o tópico.
+A aula de Geometria Espacial tem escopo parcial de prismas e paralelepípedos;
+a de sintaxe aborda pontuação. Substituídos os vídeos antigos inadequados de
+`mat-escalas`, `mat-financeira`, `mat-probabilidade` e `mat-geo-espacial`.
+A lista de vídeos suspeitos na seção anterior é registro histórico: os demais
+itens daquela lista continuam pendentes de avaliação ou correção.
+
+Estado atual do checklist: 31/106 incorporados e 75 pendentes. Exibem-se 175
+questões nos grupos e subtemas; o cálculo inclui as autorais. Executados testes
+JS, navegação dos novos grupos e standalone no Chromium, e auditoria de texto
+em 120 rotas nas larguras 320 e 390 px. Os testes não comprovam correção
+pedagógica exaustiva. Não houve deploy.

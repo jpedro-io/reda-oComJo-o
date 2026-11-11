@@ -18,7 +18,7 @@ for (const [id, p] of Object.entries(EXPANSOES)) {
     assert.ok(q.resolucao.length >= 2, `${id}: resolução insuficiente`);
   });
   const html = viewConteudo(id);
-  assert.equal((html.match(/<details class="questao" open>/g) || []).length, 3 + 3 * (paginaDe(id).subtemas || []).length, `${id}: questões renderizadas`);
+  assert.equal((html.match(/<details class="questao" open>/g) || []).length, 3 + (paginaDe(id).subtemas || []).reduce((n,t)=>n+t.questoes.length,0), `${id}: questões renderizadas`);
   const marcadores = ['id="resumo"','id="exemplos"','id="imagens"','id="questoes"','id="video"'];
   const pos = marcadores.map(m=>html.indexOf(m));
   assert.ok(pos.every(x=>x>=0) && pos.every((x,i)=>i===0 || x>pos[i-1]), `${id}: ordem das seções`);
@@ -42,7 +42,7 @@ for (const c of conteudos) {
   const html = viewConteudo(c.id);
   const questoes = paginaDe(c.id).questoes;
   assert.equal(questoes.length, 3, `${c.id}: requer três questões`);
-  assert.equal((html.match(/<details class="questao" open>/g) || []).length, 3 + 3 * (paginaDe(c.id).subtemas || []).length, `${c.id}: questões visíveis`);
+  assert.equal((html.match(/<details class="questao" open>/g) || []).length, 3 + (paginaDe(c.id).subtemas || []).reduce((n,t)=>n+t.questoes.length,0), `${c.id}: questões visíveis`);
   for (const q of questoes) {
     assert.ok(q.enunciado && q.fonte && /^[A-E]$/.test(q.correta), `${c.id}: questão incompleta`);
     assert.equal(q.alternativas.length, 5, `${c.id}: alternativas`);
@@ -114,7 +114,8 @@ for (const t of subtemasCitologia) {
 console.log('Três subtemas adicionais renderizados com três questões inéditas cada.');
 
 for (const id of ['lin-interpretacao','lin-variacao','mat-porcentagem','his-colonia']) {
-  const sub = paginaDe(id).subtemas;
+  const codigoOriginal = {'lin-interpretacao':'Língua Portuguesa 1.1','lin-variacao':'Língua Portuguesa 1.2','mat-porcentagem':'Matemática 1.3','his-colonia':'História 1.1'}[id];
+  const sub = paginaDe(id).subtemas.filter(t => t.codigo === codigoOriginal);
   assert.equal(sub.length,1);
   for (const t of sub) {
     assert.ok(t.secoes.length>=3 && t.secoes.length<=5 && t.secoes.every(s=>s.ps.length>=2));
@@ -152,3 +153,51 @@ for (const t of ecologia) {
 }
 assert.ok(viewConteudo('bio-ecologia').includes('WNtCkBjJ7EI'));
 console.log('Ecologia: três subtemas com questões autorais e aulas específicas.');
+
+const esperadosMat = {'mat-porcentagem':['Matemática 1.1','Matemática 1.2','Matemática 1.4'],'mat-medidas':['Matemática 1.9','Matemática 1.10','Matemática 1.11'],'mat-funcao-1':['Matemática 1.15'],'mat-combinatoria':['Matemática 1.16']};
+for (const [id,codigos] of Object.entries(esperadosMat)) {
+  const subtemas = paginaDe(id).subtemas.filter(t=>codigos.includes(t.codigo));
+  assert.equal(subtemas.length,codigos.length);
+  for (const t of subtemas) {
+    assert.ok(t.secoes.length>=3 && t.secoes.length<=5 && t.secoes.every(s=>s.h && s.ps.length>=2));
+    assert.ok(t.chave.length>=4 && t.chave.length<=6);
+    assert.equal(t.exemplos.length,2);
+    assert.ok(t.exemplos.every(e=>e.titulo && e.texto && e.comentario));
+    assert.ok(t.roteiro.length>=4 && t.roteiro.length<=6);
+    assert.ok(t.questoes.length>=2 && t.questoes.length<=3);
+    for (const q of t.questoes) {
+      assert.equal(q.ano,null); assert.ok(q.fonte.includes('autoral'));
+      assert.equal(q.alternativas.length,5); assert.ok(q.resolucao.length>=3);
+      assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());
+    }
+    assert.ok(t.video.busca && t.video.titulo && t.video.canal && t.video.url);
+    assert.ok(viewConteudo(id).includes(`id="${t.id}"`));
+  }
+}
+console.log('Matemática: oito subtemas aprofundados com questões autorais e aulas específicas.');
+const geometriaFuncoes = {'mat-geo-plana':['Matemática 1.5','Matemática 1.6'], 'mat-geo-espacial':['Matemática 1.7','Matemática 1.8'], 'mat-funcao-1':['Matemática 1.12','Matemática 1.13','Matemática 1.14']};
+for (const [id,codigos] of Object.entries(geometriaFuncoes)) {
+ const temas=paginaDe(id).subtemas.filter(t=>codigos.includes(t.codigo));
+ assert.equal(temas.length,codigos.length);
+ for(const t of temas) {
+  assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));
+  assert.ok(t.chave.length>=4&&t.chave.length<=6); assert.equal(t.exemplos.length,2);
+  assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));
+  assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6); assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+  for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+  assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));
+ }
+}
+console.log('Geometria e funções: sete subtemas com questões autorais e aulas.');
+const portAplicado = {'lin-interpretacao':['Língua Portuguesa 1.3','Língua Portuguesa 1.4','Língua Portuguesa 1.5','Língua Portuguesa 1.6'],'lin-variacao':['Língua Portuguesa 1.7']};
+for(const [id,codigos] of Object.entries(portAplicado)) {
+ const temas=paginaDe(id).subtemas.filter(t=>codigos.includes(t.codigo)); assert.equal(temas.length,codigos.length);
+ for(const t of temas) {
+  assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));
+  assert.ok(t.chave.length>=4&&t.chave.length<=6);assert.equal(t.exemplos.length,2);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));
+  assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+  for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+  assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));
+ }
+}
+console.log('Português: cinco subtemas com questões autorais e aulas específicas.');
