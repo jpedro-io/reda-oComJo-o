@@ -668,13 +668,14 @@ function viewCorrigir(params) {
       <div class="campo">
         <label class="label" for="texto">Sua redação</label>
         <p class="historico-privacidade">Ao clicar em Corrigir, o texto e o resultado serão salvos neste navegador, sem conta. Em dispositivos compartilhados, outras pessoas poderão acessá-los.</p>
-        <textarea class="textarea" id="texto" placeholder="Cole aqui a sua redação (ou carregue um exemplo abaixo).">${esc(estado.texto)}</textarea>
+        <textarea class="textarea" id="texto" aria-describedby="aviso-transcricao" placeholder="Cole aqui a sua redação (ou carregue um exemplo abaixo).">${esc(estado.texto)}</textarea>
         <div class="contador">
           <span id="conta-linhas">0 linhas</span>
           <span id="conta-palavras">0 palavras</span>
         </div>
       </div>
 
+      <p id="aviso-transcricao" class="aviso-transcricao">Para uma correção mais fiel, digite a redação exatamente como está no papel, mantendo os erros de escrita, a pontuação e os parágrafos.</p>
       <div class="btn-linha">
         <button class="btn btn-primario" id="bt-corrigir">${ico('analise')} Corrigir</button>
         <button class="btn" id="bt-limpar">Limpar</button>

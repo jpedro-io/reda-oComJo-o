@@ -233,3 +233,19 @@ main .tabela-redacoes tbody td.nota { padding-right:20px; }
   main .tabela-redacoes tbody td.ano { width:auto; padding-left:0; }
   main .tabela-redacoes tbody td.nota { width:auto; padding-right:0; }
 }
+
+/* Os cartões de temas também precisam de recuo depois da borda colorida. */
+main .lista-temas > .tema-linha { padding:24px !important; }
+@media (max-width:768px) {
+  main .lista-temas > .tema-linha { padding:18px !important; }
+}
+
+/* Tons verdes opacos substituem o cinza das superfícies de vidro sobrepostas. */
+main .ws-entrada { background:#10291b !important; }
+main .ws-proposta { background:#163d28 !important; border-color:#3e694e !important; box-shadow:none; }
+main .ws-proposta .proposta { background:#10311f !important; border-color:#3e694e !important; box-shadow:none !important; }
+main .ws-proposta .motivadores { background:#1c4930 !important; border-color:#548667 !important; }
+main .ws-entrada, main .ws-proposta, main .ws-proposta .proposta {
+  -webkit-backdrop-filter:none; backdrop-filter:none;
+}
+main .aviso-transcricao { margin:0; color:#d3e8da; font-size:.88rem; line-height:1.55; }
