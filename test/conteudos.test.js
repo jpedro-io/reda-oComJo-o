@@ -295,3 +295,13 @@ for(const [id,codigos] of Object.entries(fisEO)){
 }
 assert.equal(paginaDe('fis-optica').video.id,'pB6WAH7XQSc');
 console.log('Física: quatro tópicos finais de eletricidade e óptica com questões autorais.');
+
+const socAprof={'soc-classicos':['Sociologia 4.1','Sociologia 4.2'],'soc-trabalho':['Sociologia 4.3','Sociologia 4.4','Sociologia 4.5','Sociologia 4.6']};
+for(const [id,codigos] of Object.entries(socAprof)){
+ const temas=paginaDe(id).subtemas.filter(t=>codigos.includes(t.codigo));assert.equal(temas.length,codigos.length);
+ for(const t of temas){assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));assert.ok(t.chave.length>=4&&t.chave.length<=6);assert.equal(t.exemplos.length,2);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+ for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+ assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));for(const f of t.fontes)assert.ok(viewConteudo(id).includes(f.url));}
+}
+assert.equal(paginaDe('soc-trabalho').video.id,'FrrFhnoET7w');
+console.log('Sociologia: seis tópicos com questões autorais e recomendações específicas.');

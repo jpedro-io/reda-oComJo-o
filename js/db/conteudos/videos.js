@@ -396,9 +396,10 @@ export const VIDEOS = {
     "canal": "A Filosofia Explica (Prof. Filicio Mulinari)"
   },
   "soc-cultura": {
-    "id": "Kl9v0Ln2sNw",
-    "titulo": "O que é Filosofia?",
-    "canal": "A Filosofia Explica (Prof. Filicio Mulinari)"
+    "id": "sE2yNSsPuvc",
+    "titulo": "Indústria cultural (Mapa conceitual e questões do Enem)",
+    "canal": "Prof. Luana Passos",
+    "escopo": "A aula trata de indústria cultural e meios de comunicação; não cobre todas as dimensões de cultura."
   },
   "soc-movimentos": {
     "id": "ErVWenALYU4",
@@ -406,8 +407,9 @@ export const VIDEOS = {
     "canal": "A Filosofia Explica (Prof. Filicio Mulinari)"
   },
   "soc-trabalho": {
-    "id": "yhXhSH-UEGY",
-    "titulo": "",
-    "canal": "A Filosofia Explica (Prof. Filicio Mulinari)"
+    "id": "FrrFhnoET7w",
+    "titulo": "Taylorismo - Fordismo - Toyotismo",
+    "canal": "Socorro Professor",
+    "escopo": "A aula aborda modelos industriais; complemente com os demais subtemas sociológicos do grupo."
   }
 };

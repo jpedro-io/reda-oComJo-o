@@ -74,12 +74,12 @@ continuam disponíveis no link de material anterior.
 - [ ] 3.6 Filosofia Contemporânea
 
 ### Sociologia
-- [ ] 4.1 Teoria sociológica clássica
-- [ ] 4.2 Pensamento de Karl Marx
-- [ ] 4.3 Mundo do trabalho
-- [ ] 4.4 Indústria cultural, consumo e meios de comunicação
-- [ ] 4.5 Cidadania, direitos humanos e movimentos sociais
-- [ ] 4.6 Desigualdade social, estratificação e instituições sociais
+- [x] 4.1 Teoria sociológica clássica
+- [x] 4.2 Pensamento de Karl Marx
+- [x] 4.3 Mundo do trabalho
+- [x] 4.4 Indústria cultural, consumo e meios de comunicação
+- [x] 4.5 Cidadania, direitos humanos e movimentos sociais
+- [x] 4.6 Desigualdade social, estratificação e instituições sociais
 
 ## Ciências da Natureza
 

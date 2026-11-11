@@ -249,3 +249,21 @@ site modular e standalone em Chromium. Uma fonte que retornou 404 foi
 substituída pela seção correta. Estado: **78/106 incorporados, 28 pendentes**;
 269 questões exibidas, incluindo 23 referências oficiais do Inep. Os
 pendentes pertencem a Ciências Humanas. Não houve deploy.
+
+
+## Sociologia — clássicos e temas contemporâneos
+
+Foram incorporados os seis tópicos de Sociologia: teoria clássica, Marx,
+mundo do trabalho, indústria cultural e mídia, cidadania e movimentos,
+e desigualdade e instituições. Há resumos em 3–4 blocos, exemplos, roteiros e
+12 questões autorais resolvidas com comentários para as incorretas. Foram
+conferidos os títulos, canais, descrições e permissões de incorporação das
+recomendações; os escopos parciais foram indicados. Os vídeos gerais incorretos
+de cultura e trabalho foram substituídos. Fontes legais e estatísticas
+incluem Câmara, UNICEF e IBGE; o IBGE pode apresentar bloqueio automatizado
+em algumas conexões. Uma URL OpenStax incorreta foi substituída.
+
+Suítes JS, auditorias móveis em 120 rotas e teste em Chromium dos seis
+subtemas no site e standalone passaram. Estado: **84/106 incorporados,
+22 pendentes**, com 281 questões exibidas, incluindo 23 referências oficiais
+do Inep. Não houve deploy nem revisão pedagógica externa.
