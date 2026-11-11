@@ -230,3 +230,22 @@ Chromium do site modular e standalone passaram. Duas URLs de fontes que
 retornaram 404 foram substituídas por páginas conferidas. Estado: **74/106
 incorporados, 32 pendentes**, 261 questões exibidas, sendo 23 referências
 oficiais do Inep. Não houve deploy nem revisão pedagógica externa.
+
+
+## Física — eletricidade, magnetismo e óptica
+
+Os quatro tópicos finais de Física foram incorporados: eletrostática e
+circuitos, potência e consumo, magnetismo e indução, e óptica/visão. Cada um
+tem três blocos de dois parágrafos, cinco pontos, dois exemplos, roteiro e
+duas questões autorais com resolução e análise dos distratores. Conferidos
+título, canal, descrição e permissão de incorporação das aulas; complementos
+e escopo parcial aparecem nos tópicos. O vídeo geral de óptica, antes
+inadequado, foi substituído por aula de óptica e lentes; outros vídeos gerais
+suspeitos de Humanas continuam pendentes. Reprodução futura e revisão
+pedagógica externa não são garantidas.
+
+Passaram as suítes JS, auditorias móveis em 120 rotas e teste específico do
+site modular e standalone em Chromium. Uma fonte que retornou 404 foi
+substituída pela seção correta. Estado: **78/106 incorporados, 28 pendentes**;
+269 questões exibidas, incluindo 23 referências oficiais do Inep. Os
+pendentes pertencem a Ciências Humanas. Não houve deploy.

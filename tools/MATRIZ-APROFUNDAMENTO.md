@@ -107,10 +107,10 @@ continuam disponíveis no link de material anterior.
 - [x] 2.7 Transmissão de calor e termodinâmica
 - [x] 2.8 Ondulatória e fenômenos ondulatórios
 - [x] 2.9 Acústica e espectro eletromagnético
-- [ ] 2.10 Eletrostática e eletrodinâmica
-- [ ] 2.11 Potência elétrica e consumo de energia
-- [ ] 2.12 Magnetismo e indução eletromagnética
-- [ ] 2.13 Óptica geométrica e visão humana
+- [x] 2.10 Eletrostática e eletrodinâmica
+- [x] 2.11 Potência elétrica e consumo de energia
+- [x] 2.12 Magnetismo e indução eletromagnética
+- [x] 2.13 Óptica geométrica e visão humana
 
 ### Química
 - [x] 3.1 Ligações químicas e interações intermoleculares

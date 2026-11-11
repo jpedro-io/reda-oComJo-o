@@ -113,9 +113,10 @@ export const VIDEOS = {
     "escopo": "A aula aborda fenômenos ondulatórios; complemente com as aulas de acústica e espectro eletromagnético dos subtemas."
   },
   "fis-optica": {
-    "id": "MrIOoT4bL9I",
-    "titulo": "",
-    "canal": "Física com Prof. Boaro"
+    "id": "pB6WAH7XQSc",
+    "titulo": "Óptica Geométrica | reflexão e refração | espelhos e lentes | ENEM",
+    "canal": "FISICATOTAL",
+    "escopo": "A aula cobre reflexão, refração, espelhos e lentes; complemente com o subtema de visão humana."
   },
   "fis-termologia": {
     "id": "QUvmXOY2WvI",
