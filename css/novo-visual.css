@@ -256,3 +256,44 @@ main .aviso-transcricao { margin:0; color:#d3e8da; font-size:.88rem; line-height
 .footer .footer-contato { margin-top:14px; }
 .footer .footer-contato a { color:#a5efc9; text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
 .footer .footer-aviso { margin-top:12px; font-size:.8rem; }
+
+/* Após retirar o selo da abertura, o conteúdo sobe em vez de deixar um vão. */
+main .novo-hero { min-height:min(640px,calc(100vh - 200px)); padding-top:40px; }
+main .novo-hero h1 { margin-top:0; }
+@media (max-width:767px) {
+  main .novo-hero { min-height:0; padding-top:42px; }
+  main .novo-hero h1 { margin-top:0; }
+}
+
+/* Cada linha tem divisória simples e uma coluna larga para o nome da parte. */
+main .esqueleto { gap:0; }
+main .esqueleto .esk-linha {
+  grid-template-columns:190px minmax(0,1fr) 80px;
+  gap:18px; padding:16px 0; border:0; border-bottom:1px solid var(--line);
+  background:transparent; border-radius:0; align-items:start;
+}
+main .esqueleto .esk-linha:last-child { border-bottom:0; }
+main .esqueleto .esk-linha .bloco { white-space:nowrap; }
+@media (max-width:900px) {
+  main .esqueleto .esk-linha { grid-template-columns:minmax(0,1fr); gap:7px; }
+  main .esqueleto .esk-linha .n { text-align:left; }
+  main .esqueleto .esk-linha .bloco { white-space:normal; }
+}
+/* Preserva o cabeçalho Nível inteiro e a largura legível do descritor. */
+main .comp-bloco .tabela-niveis thead th:first-child {
+  min-width:72px; white-space:nowrap; overflow-wrap:normal;
+}
+@media (max-width:480px) {
+  main .comp-bloco .tabela-niveis thead th { padding-left:6px; padding-right:6px; letter-spacing:.06em; }
+  main .comp-bloco .tabela-niveis thead th:first-child { min-width:52px; padding-left:8px; }
+  main .comp-bloco .tabela-niveis .niv { width:52px; }
+  main .comp-bloco .tabela-niveis .num { width:42px; }
+}
+/* A navegação horizontal ainda precisa caber nas larguras intermediárias. */
+@media (min-width:769px) and (max-width:1024px) {
+  .topbar .topbar-inner { flex-direction:row; align-items:center; }
+  .topbar .brand { height:auto; padding-right:0; }
+  .topbar .brand-text { font-size:1.05rem; }
+  .topbar .nav-pills { gap:1px; }
+  .topbar .pill { padding:7px 6px; font-size:.8rem; white-space:nowrap; }
+}

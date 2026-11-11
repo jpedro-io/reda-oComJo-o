@@ -99,7 +99,6 @@ function viewHome() {
   return `
   <section class="novo-hero" aria-labelledby="inicio-titulo">
     <div class="novo-hero-copy" data-entrada>
-      <span class="novo-kicker"><span>GUIA</span> UM PASSO DE CADA VEZ</span>
       <h1 id="inicio-titulo">Seu caminho para o Enem começa <em>aqui.</em></h1>
       <p>Explore os conteúdos da prova, pratique com questões resolvidas e desenvolva sua redação no seu ritmo.</p>
       <div class="novo-acoes">
