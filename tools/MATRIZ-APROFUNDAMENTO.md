@@ -46,14 +46,14 @@ continuam disponíveis no link de material anterior.
 
 ### História
 - [x] 1.1 Brasil Colônia
-- [ ] 1.2 Brasil Império
-- [ ] 1.3 República Velha e coronelismo
-- [ ] 1.4 Era Vargas e Período Democrático
-- [ ] 1.5 Ditadura Militar e Redemocratização
-- [ ] 1.6 Antiguidade Clássica e Idade Média
-- [ ] 1.7 Idade Moderna
-- [ ] 1.8 Idade Contemporânea
-- [ ] 1.9 Conflitos do Século XX
+- [x] 1.2 Brasil Império
+- [x] 1.3 República Velha e coronelismo
+- [x] 1.4 Era Vargas e Período Democrático
+- [x] 1.5 Ditadura Militar e Redemocratização
+- [x] 1.6 Antiguidade Clássica e Idade Média
+- [x] 1.7 Idade Moderna
+- [x] 1.8 Idade Contemporânea
+- [x] 1.9 Conflitos do Século XX
 
 ### Geografia
 - [x] 2.1 Geomorfologia e estrutura da Terra

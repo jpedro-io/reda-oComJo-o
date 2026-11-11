@@ -324,3 +324,24 @@ for(const [id,codigos] of Object.entries(geoAprof)){
 }
 assert.equal(paginaDe('geo-biomas').video.id,'Q7EM3qCS0EE');
 console.log('Geografia: oito tópicos com questões autorais e recomendações específicas.');
+
+const hisAprof={'his-colonia':['História 1.2','História 1.3','História 1.4','História 1.5'],'his-revolucao-industrial':['História 1.6','História 1.7','História 1.8','História 1.9']};
+for(const [id,codigos] of Object.entries(hisAprof)){
+ const temas=paginaDe(id).subtemas.filter(t=>codigos.includes(t.codigo));assert.equal(temas.length,codigos.length);
+ for(const t of temas){assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));assert.ok(t.chave.length>=4&&t.chave.length<=6);assert.equal(t.exemplos.length,2);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+ for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+ assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));for(const f of t.fontes)assert.ok(viewConteudo(id).includes(f.url));}
+}
+console.log('História: oito tópicos com questões autorais e recomendações específicas.');
+
+// A membrana é o material principal da página de Citologia, não um subtema.
+// Somar ambas as representações evita contar 105 subtemas como 106 tópicos.
+const todosSubtemas=conteudos.flatMap(c=>paginaDe(c.id).subtemas||[]);
+const esperados={'Língua Portuguesa':[1,7],'Literatura':[2,7],'Artes e Educação Física':[3,5],'Língua Estrangeira':[4,4],'História':[1,9],'Geografia':[2,8],'Filosofia':[3,6],'Sociologia':[4,6],'Biologia':[1,12],'Física':[2,13],'Química':[3,13],'Matemática':[1,16]};
+const codigos=todosSubtemas.map(t=>t.codigo);codigos.push('Biologia 1.4');
+assert.equal(codigos.length,106);assert.equal(new Set(codigos).size,106);
+for(const [materia,[serie,quantidade]] of Object.entries(esperados)) for(let n=1;n<=quantidade;n++) assert.ok(codigos.includes(`${materia} ${serie}.${n}`),`Tópico ausente: ${materia} ${serie}.${n}`);
+for(const t of todosSubtemas){assert.ok(t.secoes?.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps?.length>=2),t.codigo);assert.ok(t.chave?.length>=4&&t.chave.length<=6,t.codigo);assert.equal(t.exemplos?.length,2,t.codigo);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario),t.codigo);assert.ok(t.roteiro?.length>=4&&t.roteiro.length<=6,t.codigo);assert.ok(t.questoes?.length>=2&&t.questoes.length<=3,t.codigo);for(const q of t.questoes){assert.equal(q.alternativas.length,5,t.codigo);assert.ok(q.resolucao.length>=3,t.codigo);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort(),t.codigo);}assert.ok(t.video?.busca&&t.video?.titulo&&t.video?.canal&&t.video?.url,t.codigo);}
+const { MATERIAL_MEMBRANA }=await import('../js/db/conteudos/material-membrana.js');
+assert.ok(MATERIAL_MEMBRANA.secoes.length>=3&&MATERIAL_MEMBRANA.secoes.length<=5);assert.ok(MATERIAL_MEMBRANA.chave.length>=4&&MATERIAL_MEMBRANA.chave.length<=6);assert.equal(MATERIAL_MEMBRANA.exemplos.length,2);assert.ok(MATERIAL_MEMBRANA.figuras[0].itens.length>=4&&MATERIAL_MEMBRANA.figuras[0].itens.length<=6);assert.ok(MATERIAL_MEMBRANA.questoes.length>=2&&MATERIAL_MEMBRANA.questoes.length<=3);assert.ok(MATERIAL_MEMBRANA.recomendacoes.aulas.length);
+console.log('Matriz integral: 105 subtemas + material principal de membrana = 106 tópicos.');

@@ -189,9 +189,9 @@ export const VIDEOS = {
     "canal": "Se Liga Nessa História"
   },
   "his-imperio": {
-    "id": "VofLIlRK6vI",
-    "titulo": "REVISÃO ENEM HISTÓRIA Brasil Colônia Economia Colonial, Escravidão e Revoltas!",
-    "canal": "Se Liga Nessa História"
+    "id": "G3s7id2myvo",
+    "titulo": "Aulão de Brasil Império para o ENEM",
+    "canal": "Parabólica"
   },
   "his-indigenas": {
     "id": "AwyKWc-Xqs4",

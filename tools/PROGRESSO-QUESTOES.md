@@ -298,3 +298,22 @@ referência datada, não um retrato automático do presente; sites do IBGE podem
 bloquear acesso automatizado. Passaram testes estruturais e verificação
 visual mobile e standalone. Estado: **98/106 tópicos**, 309 questões exibidas;
 restam oito de História. Não houve deploy ou revisão pedagógica externa.
+
+## História e conclusão estrutural da matriz
+
+Os oito tópicos restantes de História foram incorporados aos grupos de
+História do Brasil e História Geral, com 16 questões autorais adicionais e
+referências. As recomendações foram conferidas por metadados, descrição e
+permissão de incorporação; o vídeo geral de Brasil Império, que era sobre
+Colônia, foi substituído. Referências de História responderam 200 na consulta.
+Os escopos parciais são sinalizados, mas títulos, descrição e disponibilidade
+não equivalem à revisão integral do conteúdo audiovisual.
+
+A auditoria automatizada registra **106/106 tópicos**: 105 subtemas e o
+material principal de membrana em Citologia, com códigos de matriz únicos.
+Há **325 questões exibidas**, das quais 23 exibições trazem referência e
+gabarito do Inep; as novas questões são autorais, não oficiais. Os 35 grupos
+e 80 URLs anteriores seguem preservados. Passaram as suítes JS, auditoria
+mobile de 120 rotas em 320/390 px e teste visual de História nos formatos
+modular e standalone. Verificação estrutural não substitui revisão pedagógica
+especializada nem auditoria factual e audiovisual integral. Sem deploy.
