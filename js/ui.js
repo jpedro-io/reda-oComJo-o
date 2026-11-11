@@ -727,6 +727,9 @@ function compCard(c, aberto) {
   const rotuloFaixa = f.exata ? `${f.min}` : `${f.min}<i>–</i>${f.max}`;
   const oficial = nivel.oficial ?? nivel.n ?? c.nivel;
   const descritor = nivel.exigeOficial || nivel.exige || '';
+  // A orientação genérica da cartilha pode pedir variedade que já existe no
+  // texto. Na C4, dê prioridade ao diagnóstico observado nesta redação.
+  const faltouProximo = c.id === 'C4' ? (c.melhorias?.[0] || '') : ex.proximo?.faltou;
 
   const porque = f.exata
     ? (oficial >= 5
@@ -761,7 +764,7 @@ function compCard(c, aberto) {
       ${bloco(ex.zero ? 'o que a escrita mostra' : 'o que segurou a nota', motivos)}
       ${ex.proximo && !ex.zero ? bloco(`para subir até ${Math.min(200, (oficial + 1) * 40)}`,
         `<p class="cc-txt"><b>Exige.</b> ${esc(ex.nivelTextoProximo || ex.proximo.exige)}</p>
-         ${ex.proximo.faltou ? `<p class="cc-txt"><b>Falta.</b> ${esc(ex.proximo.faltou)}</p>` : ''}`) : ''}
+         ${faltouProximo ? `<p class="cc-txt"><b>Para revisar.</b> ${esc(faltouProximo)}</p>` : ''}`) : ''}
       ${c.melhorias && c.melhorias.length ? bloco('o que revisar na próxima versão',
         `<ul class="rev-lista">${c.melhorias.slice(0, 6).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`) : ''}
       ${c.fortes && c.fortes.length ? bloco('o que já está certo',

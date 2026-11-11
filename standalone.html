@@ -6053,8 +6053,119 @@ main .comp-bloco .tabela-niveis thead th { color:#ecfaf4 !important; opacity:1 !
   main .bloco-tabela .tabela th:nth-child(3) { width: 53%; }
 }
 
+/* 28. Azul céu: quatro cores de referência sobre vidro azul profundo.
+   O azul escuro de apoio preserva legibilidade nas superfícies translúcidas. */
+:root {
+  --g-950:#07162c; --g-900:#0b2444; --g-800:#103663; --g-700:#164c83;
+  --g-600:#0063c9; --g-500:#007fff; --g-400:#1e90ff; --g-300:#66ccff;
+  --g-200:#b8e7ff; --g-100:#f0f8ff;
+  --azure-royal:#007fff; --azure-sky:#66ccff; --azure-ice:#f0f8ff; --azure-dodger:#1e90ff;
+  --azul:#007fff; --azul-txt:#b8e7ff; --azul-alto:#66ccff;
+  --azul-fundo:#d3ecff; --azul-linha:rgba(102,204,255,.35);
+  --dourado-txt:#b8e7ff; --verde-agua:#66ccff; --menta:#b8e7ff;
+  --brand:#66ccff; --brand-dark:#b8e7ff; --brand-soft:rgba(0,127,255,.18);
+  --ink:#f0f8ff; --muted:#d0e7f8; --tinta-3:#bdd8ec;
+  --tinta-clara:#092747; --tinta-clara-2:#123b61;
+  --highlight:rgba(0,127,255,.42);
+  --tom1-faixa:#c9e9ff; --tom2-faixa:#b8ddfb; --tom3-faixa:#a9d6f9;
+  --tom4-faixa:#d9edfc; --tom5-faixa:#c3e2fa;
+  --tom1-luz:rgba(102,204,255,.13); --tom2-luz:rgba(30,144,255,.13);
+  --tom3-luz:rgba(0,127,255,.13); --tom4-luz:rgba(166,219,255,.13); --tom5-luz:rgba(80,177,247,.13);
+  --tom1-fio:rgba(102,204,255,.55); --tom2-fio:rgba(70,170,255,.6);
+  --tom3-fio:rgba(0,127,255,.65); --tom4-fio:rgba(166,219,255,.6); --tom5-fio:rgba(80,177,247,.6);
+}
+html { background:#07162c; }
+body {
+  background-color:#07162c;
+  background-image:radial-gradient(ellipse at 5% 0%,rgba(0,127,255,.28),transparent 43%),
+    radial-gradient(ellipse at 92% 6%,rgba(102,204,255,.20),transparent 40%),
+    radial-gradient(ellipse at 80% 90%,rgba(30,144,255,.20),transparent 47%),
+    linear-gradient(160deg,#0b2b50 0%,#0b1d39 48%,#082644 100%);
+}
+::selection { background:rgba(0,127,255,.55); color:#f0f8ff; }
+.topbar, .topbar.rolado { background:rgba(7,25,49,.95) !important; }
+.nav.aberto, .nav-pills.aberto { background:rgba(8,31,58,.98) !important; }
+.marca-texto { background:#66ccff !important; color:#092747 !important; }
+.pill.ativo, .pill[aria-current="page"] { background:#b8e7ff; color:#092747; }
+.topbar .pill-cta, main .novo-btn.principal {
+  background:#66ccff !important; color:#082845 !important;
+}
+.topbar .pill-cta:hover, .topbar .pill-cta:focus-visible { background:#b8e7ff !important; color:#082845 !important; }
+main .novo-btn.principal { box-shadow:0 5px 0 #0071d2; }
+.btn.btn-primario, .btn-primario {
+  background:linear-gradient(135deg,#66ccff,#1e90ff) !important;
+  color:#082747 !important; border-color:#9adfff !important;
+  box-shadow:0 14px 34px -14px rgba(0,127,255,.8),inset 0 1px 0 rgba(240,248,255,.5);
+}
+.btn.btn-primario:hover, .btn-primario:hover { background:linear-gradient(135deg,#b8e7ff,#66ccff) !important; color:#082747 !important; }
+main .novo-hero {
+  background:linear-gradient(135deg,rgba(0,127,255,.27),rgba(30,144,255,.16) 58%,rgba(8,30,56,.72));
+  border-color:rgba(166,220,255,.3);
+}
+main .novo-hero:before { background:radial-gradient(circle,rgba(102,204,255,.22),transparent 68%); }
+main .novo-kicker, main .novo-kicker span, main .novo-hero h1 em { color:#b8e7ff; }
+main .novo-hero-copy > p, main .novo-etapas, main .novo-etapas b { color:#d6edff; }
+main .novo-btn.secundario { color:#f0f8ff; background:rgba(9,45,81,.7); border-color:rgba(166,220,255,.55); }
+main .novo-painel { background:linear-gradient(155deg,rgba(31,103,164,.76),rgba(10,42,78,.95)); border-color:rgba(166,220,255,.35); }
+main .novo-painel-top, main .novo-painel-rodape, main .novo-painel-top span:last-child,
+main .novo-passo > b { color:#b8e7ff; }
+main .novo-painel-sub, main .novo-passo small { color:#d0e7f8; }
+main .novo-passo { background:rgba(5,32,65,.75); border-color:rgba(166,220,255,.22); }
+main .novo-icon.roxo { background:#b8e7ff; color:#092747; }
+main .novo-icon.menta { background:#66ccff; color:#092747; }
+main .novo-icon.coral { background:#a8d8ff; color:#092747; }
+main .hub-area-topo h2 { color:#092747 !important; }
+main .hub-area-topo p, main .hub-area-topo span, main .hub-area-topo .hub-conta { color:#123b61 !important; }
+main .hub-materia { background:rgba(13,55,97,.85) !important; }
+main .hub-materia:hover { background:rgba(22,85,145,.92) !important; }
+main .comp-bloco .comp-topo .comp-nota { background:#9cd5fb !important; color:#092747 !important; border-color:#579ccd !important; }
+main .comp-bloco .comp-topo .comp-id { color:#214d70 !important; }
+main .comp-bloco .tabela-niveis thead, main .comp-bloco .tabela-niveis thead tr { background:#174877 !important; }
+main .comp-bloco .tabela-niveis thead th { color:#f0f8ff !important; }
+main .q-fontes a { background:#145185; color:#f0f8ff; border-color:#79c8f4; }
+main .q-alts li.correta { background:rgba(0,127,255,.23); border-color:rgba(102,204,255,.7); }
+main .cb-tag.completo { background:rgba(30,144,255,.26); border-color:#66ccff; color:#f0f8ff; }
+main .fig-camadas li { background:linear-gradient(90deg,rgba(30,144,255,.30),rgba(30,144,255,.08)); border-color:rgba(102,204,255,.5); }
+textarea, input[type="text"], input[type="search"], input[type="number"], select,
+.campo input, .campo textarea, .campo select, .textarea, .select, .input {
+  background:rgba(9,45,81,.72) !important; color:#f0f8ff !important; border-color:rgba(166,220,255,.45) !important;
+}
+textarea::placeholder, input::placeholder { color:#bad4e9; opacity:1; }
+textarea:focus, input:focus, select:focus, .textarea:focus, .select:focus { outline-color:#66ccff; border-color:#66ccff !important; }
+
+/* Os estilos antigos posicionavam o marcador sobre a primeira letra e também
+   não reservavam espaço para as linhas seguintes. Um recuo único vale em toda
+   largura de tela; marcadores não participam do fluxo do texto. */
+main .cc-body .rev-lista, main .cc-body .fortes-lista { list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+main .cc-body .rev-lista li, main .cc-body .fortes-lista li {
+  position:relative; padding:0 0 0 1.8rem; margin:0; min-width:0; line-height:1.65; color:var(--ink);
+}
+main .cc-body .rev-lista li::before, main .cc-body .fortes-lista li::before {
+  position:absolute; left:0; top:0; display:block; width:1.3rem; height:auto;
+  padding:0; margin:0; border:0; transform:none; text-align:center; line-height:1.65;
+  color:#8ed7ff;
+}
+main .cc-body .rev-lista li::before { content:'☐'; }
+main .cc-body .fortes-lista li::before { content:'✓'; }
+
+/* A camada especular branca antiga clareava demais o relatório no celular. */
+main .ws-saida { background:rgba(5,31,61,.92) !important; }
+main .ws-saida::before { background:linear-gradient(145deg,rgba(102,204,255,.08),transparent 40%); }
+.toast {
+  left:16px; right:auto; bottom:16px; max-width:calc(100vw - 32px);
+  background:#d4edff !important; color:#092747 !important; border:1px solid #66ccff;
+  box-shadow:0 12px 32px rgba(0,15,35,.35); transform:translateY(12px);
+}
+.toast.visivel { transform:translateY(0); }
+
+/* Cabeçalhos claros têm tinta escura em toda a largura, sem fim transparente. */
+main .secao-topo { background:linear-gradient(122deg,rgba(30,144,255,.22),rgba(102,204,255,.10) 45%,rgba(8,37,70,.30)) !important; }
+main .secao-topo::after { background:radial-gradient(38% 62% at 96% 0%,rgba(102,204,255,.18),transparent 70%) !important; }
+main .regua > .comp-bloco > .comp-topo { background:var(--tom-faixa,#c9e9ff) !important; }
+main .questao[open] .q-alts li.correta .alt-letra { color:#f0f8ff !important; }
+
 </style>
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%274%27%20fill%3D%27%23047857%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2717%27%20fill%3D%27%23fff%27%20text-anchor%3D%27middle%27%3ER%3C%2Ftext%3E%3C%2Fsvg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%274%27%20fill%3D%27%23007fff%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2717%27%20fill%3D%27%23fff%27%20text-anchor%3D%27middle%27%3ER%3C%2Ftext%3E%3C%2Fsvg%3E" />
 </head>
 <body>
 
@@ -20616,6 +20727,9 @@ function compCard(c, aberto) {
   const rotuloFaixa = f.exata ? `${f.min}` : `${f.min}<i>–</i>${f.max}`;
   const oficial = nivel.oficial ?? nivel.n ?? c.nivel;
   const descritor = nivel.exigeOficial || nivel.exige || '';
+  // A orientação genérica da cartilha pode pedir variedade que já existe no
+  // texto. Na C4, dê prioridade ao diagnóstico observado nesta redação.
+  const faltouProximo = c.id === 'C4' ? (c.melhorias?.[0] || '') : ex.proximo?.faltou;
 
   const porque = f.exata
     ? (oficial >= 5
@@ -20650,7 +20764,7 @@ function compCard(c, aberto) {
       ${bloco(ex.zero ? 'o que a escrita mostra' : 'o que segurou a nota', motivos)}
       ${ex.proximo && !ex.zero ? bloco(`para subir até ${Math.min(200, (oficial + 1) * 40)}`,
         `<p class="cc-txt"><b>Exige.</b> ${esc(ex.nivelTextoProximo || ex.proximo.exige)}</p>
-         ${ex.proximo.faltou ? `<p class="cc-txt"><b>Falta.</b> ${esc(ex.proximo.faltou)}</p>` : ''}`) : ''}
+         ${faltouProximo ? `<p class="cc-txt"><b>Para revisar.</b> ${esc(faltouProximo)}</p>` : ''}`) : ''}
       ${c.melhorias && c.melhorias.length ? bloco('o que revisar na próxima versão',
         `<ul class="rev-lista">${c.melhorias.slice(0, 6).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`) : ''}
       ${c.fortes && c.fortes.length ? bloco('o que já está certo',

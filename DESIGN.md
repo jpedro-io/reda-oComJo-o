@@ -135,3 +135,14 @@ lavanda e vidro translúcido; os cabeçalhos preservam tons claros diferentes,
 com texto escuro e contraste. A capa oferece caminhos para conteúdos, modelos
 e correção. Questões oficiais parafraseadas apontam para prova e gabarito Inep;
 as demais continuam explicitamente identificadas, sem parecerem oficiais.
+
+## Atualização — Vibrant Azure
+
+A paleta de referência usa azul royal `#007FFF`, azul céu `#66CCFF`,
+azul-gelo `#F0F8FF` e azul `#1E90FF`. Para manter o vidro e o contraste,
+os fundos de leitura usam azul-marinho de apoio e as faixas claras usam tinta
+azul-escura. Entradas, botões, navegação e tabelas não usam branco puro como
+superfície. Os marcadores dos comentários da correção possuem uma coluna própria
+para não cobrir o início do texto, inclusive quando o texto quebra em linhas.
+Na C4, a orientação de revisão prioriza um sinal observado, em vez de afirmar
+que faltam classes de conectivos quando a própria análise identificou variedade.

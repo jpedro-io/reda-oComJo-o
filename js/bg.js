@@ -141,13 +141,11 @@ function iniciar() {
   buf(esc, 'a_scale', 1);
   buf(ton, 'a_ton', 1);
 
-  /* Paleta da marca: azul royal (#026842) e um azul de realce (#5CCDA7).
-     Sobre o fundo branco, as partículas são tênues — o campo 3D aqui é um
-     brilho de profundidade, não um céu noturno. */
+  /* Azul royal e azul céu da paleta Vibrant Azure. */
   const uBase = gl.getUniformLocation(prog, 'u_base');
   const uOuro = gl.getUniformLocation(prog, 'u_ouro');
-  gl.uniform3f(uBase, 0.10, 0.24, 0.78);   // azul royal
-  gl.uniform3f(uOuro, 0.30, 0.42, 0.97);   // azul de realce
+  gl.uniform3f(uBase, 0.0, 0.50, 1.0);
+  gl.uniform3f(uOuro, 0.40, 0.80, 1.0);
 
   const uTime = gl.getUniformLocation(prog, 'u_time');
   const uRes = gl.getUniformLocation(prog, 'u_res');
