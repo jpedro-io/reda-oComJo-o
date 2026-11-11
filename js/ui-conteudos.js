@@ -265,7 +265,7 @@ export function viewConteudo(id) {
 
 /** Tópico completo, dentro da página do grupo, com questões próprias. */
 function subtemaHTML(t) {
-  const linkSeguro = u => /^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|mundoeducacao\.uol\.com\.br|professor\.ufrgs\.br|ensina\.rtp\.pt|download\.inep\.gov\.br|openstax\.org|sedu\.es\.gov\.br|bcr\.iphan\.gov\.br|sme\.goiania\.go\.gov\.br|gov\.br|www2\.camara\.leg\.br|unicef\.org|educa\.ibge\.gov\.br|plato\.stanford\.edu)\//.test(u);
+  const linkSeguro = u => /^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|mundoeducacao\.uol\.com\.br|professor\.ufrgs\.br|ensina\.rtp\.pt|download\.inep\.gov\.br|openstax\.org|sedu\.es\.gov\.br|bcr\.iphan\.gov\.br|sme\.goiania\.go\.gov\.br|gov\.br|www2\.camara\.leg\.br|unicef\.org|educa\.ibge\.gov\.br|plato\.stanford\.edu|ibge\.gov\.br|censoagro2017\.ibge\.gov\.br|epe\.gov\.br)\//.test(u);
   const recomendacao = t.video;
   const videoId = new URL(recomendacao.url).searchParams.get('v');
   return `

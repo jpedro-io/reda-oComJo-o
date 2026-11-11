@@ -56,14 +56,14 @@ continuam disponíveis no link de material anterior.
 - [ ] 1.9 Conflitos do Século XX
 
 ### Geografia
-- [ ] 2.1 Geomorfologia e estrutura da Terra
-- [ ] 2.2 Climatologia e biomas
-- [ ] 2.3 Hidrografia e gestão de recursos hídricos
-- [ ] 2.4 Demografia e migrações
-- [ ] 2.5 Urbanização e dinâmica espacial
-- [ ] 2.6 Agropecuária e questão agrária
-- [ ] 2.7 Globalização, geopolítica e redes
-- [ ] 2.8 Matrizes energéticas e impactos ambientais
+- [x] 2.1 Geomorfologia e estrutura da Terra
+- [x] 2.2 Climatologia e biomas
+- [x] 2.3 Hidrografia e gestão de recursos hídricos
+- [x] 2.4 Demografia e migrações
+- [x] 2.5 Urbanização e dinâmica espacial
+- [x] 2.6 Agropecuária e questão agrária
+- [x] 2.7 Globalização, geopolítica e redes
+- [x] 2.8 Matrizes energéticas e impactos ambientais
 
 ### Filosofia
 - [x] 3.1 Filosofia Antiga

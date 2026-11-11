@@ -124,18 +124,18 @@ export const VIDEOS = {
     "canal": "Física com Prof. Boaro"
   },
   "geo-agraria": {
-    "id": "jMD5mdgjSo0",
-    "titulo": "",
-    "canal": "Terra Negra"
+    "id": "L7J8Ke8_gjs",
+    "titulo": "Agricultura do Brasil - Estrutura Fundiária (AULA COMPLETA)| Ricardo Marcílio",
+    "canal": "Professor Ricardo Marcílio"
   },
   "geo-biomas": {
-    "id": "MJk65EU-Xsg",
-    "titulo": "",
-    "canal": "Terra Negra"
+    "id": "Q7EM3qCS0EE",
+    "titulo": "Biomas brasileiros",
+    "canal": "Khan Academy Brasil"
   },
   "geo-clima": {
-    "id": "L_gyYFvOApo",
-    "titulo": "Live Pré-ENEM 2020 - Agropecuária (Geo) e História Temática (Hist)",
+    "id": "o2aTzbeunmE",
+    "titulo": "Aquecimento Global | Terra Negra",
     "canal": "Terra Negra"
   },
   "geo-climatologia": {

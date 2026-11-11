@@ -286,3 +286,15 @@ em Chromium dos seis tópicos tanto no site modular quanto no standalone.
 Estado: **90/106 tópicos incorporados, 16 pendentes**; 293 questões exibidas,
 incluindo 23 referências oficiais do Inep. Pendentes são oito tópicos de
 História e oito de Geografia. Não houve deploy.
+
+## Geografia — tópicos 2.1–2.8
+
+Os oito tópicos foram integrados aos grupos de Geografia Física e Humana,
+com 16 questões autorais, referências e aulas verificadas por metadados,
+descrição e possibilidade de incorporação. Substituídos vídeos gerais
+incompatíveis de biomas, clima e questão agrária. Onde a aula cobre apenas
+parte do tópico, o escopo é explicitado. O Censo Agropecuário de 2017 é uma
+referência datada, não um retrato automático do presente; sites do IBGE podem
+bloquear acesso automatizado. Passaram testes estruturais e verificação
+visual mobile e standalone. Estado: **98/106 tópicos**, 309 questões exibidas;
+restam oito de História. Não houve deploy ou revisão pedagógica externa.

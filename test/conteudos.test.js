@@ -314,3 +314,13 @@ for(const [id,codigos] of Object.entries(filAprof)){
  assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));for(const f of t.fontes)assert.ok(viewConteudo(id).includes(f.url));}
 }
 console.log('Filosofia: seis tópicos com questões autorais e recomendações específicas.');
+
+const geoAprof={'geo-biomas':['Geografia 2.1','Geografia 2.2','Geografia 2.3'],'geo-urbanizacao':['Geografia 2.4','Geografia 2.5','Geografia 2.6','Geografia 2.7','Geografia 2.8']};
+for(const [id,codigos] of Object.entries(geoAprof)){
+ const temas=paginaDe(id).subtemas.filter(t=>codigos.includes(t.codigo));assert.equal(temas.length,codigos.length);
+ for(const t of temas){assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));assert.ok(t.chave.length>=4&&t.chave.length<=6);assert.equal(t.exemplos.length,2);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+ for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+ assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));for(const f of t.fontes)assert.ok(viewConteudo(id).includes(f.url));}
+}
+assert.equal(paginaDe('geo-biomas').video.id,'Q7EM3qCS0EE');
+console.log('Geografia: oito tópicos com questões autorais e recomendações específicas.');
