@@ -103,10 +103,10 @@ continuam disponíveis no link de material anterior.
 - [x] 2.3 Trabalho, energia e conservação
 - [x] 2.4 Impulso, quantidade de movimento e colisões
 - [x] 2.5 Hidrostática
-- [ ] 2.6 Termologia e calorimetria
-- [ ] 2.7 Transmissão de calor e termodinâmica
-- [ ] 2.8 Ondulatória e fenômenos ondulatórios
-- [ ] 2.9 Acústica e espectro eletromagnético
+- [x] 2.6 Termologia e calorimetria
+- [x] 2.7 Transmissão de calor e termodinâmica
+- [x] 2.8 Ondulatória e fenômenos ondulatórios
+- [x] 2.9 Acústica e espectro eletromagnético
 - [ ] 2.10 Eletrostática e eletrodinâmica
 - [ ] 2.11 Potência elétrica e consumo de energia
 - [ ] 2.12 Magnetismo e indução eletromagnética

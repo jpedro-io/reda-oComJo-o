@@ -31,6 +31,7 @@ import { SUBTEMAS_BIOLOGIA_VIDA } from './subtemas-biologia-vida.js';
 import { SUBTEMAS_QUIMICA_INICIAL } from './subtemas-quimica-inicial.js';
 import { SUBTEMAS_QUIMICA_FINAL } from './subtemas-quimica-final.js';
 import { SUBTEMAS_FISICA_MECANICA } from './subtemas-fisica-mecanica.js';
+import { SUBTEMAS_FISICA_TERMICA_ONDAS } from './subtemas-fisica-termica-ondas.js';
 import { EXPANSOES } from './expansoes.js';
 import { QUESTOES_ENEM } from './questoes-enem.js';
 import { QUESTOES_DIA1 } from './questoes-inep-dia1.js';
@@ -97,7 +98,7 @@ export function paginaDe(id, conteudo) {
     };
   }
   const subtemasPorGrupo = {'bio-ecologia':SUBTEMAS_ECOLOGIA, 'lin-interpretacao':[SUBTEMAS_PORTUGUES[0]], 'lin-variacao':[SUBTEMAS_PORTUGUES[1]], 'mat-porcentagem':[SUBTEMA_MAT_FINANCEIRA], 'his-colonia':[SUBTEMA_BRASIL_COLONIA]};
-  const subtemas = [...(subtemasPorGrupo[id] || []), ...(SUBTEMAS_MATEMATICA[id] || []), ...(SUBTEMAS_GEOMETRIA_FUNCOES[id] || []), ...(SUBTEMAS_PORT_APLICADO[id] || []), ...(id === 'lit-modernismo' ? SUBTEMAS_LITERATURA : []), ...(SUBTEMAS_ARTES_CORPO[id] || []), ...(id === 'ing-interpretacao' ? SUBTEMAS_LINGUAS : []), ...(SUBTEMAS_BIOLOGIA_VIDA[id] || []), ...(SUBTEMAS_QUIMICA_INICIAL[id] || []), ...(SUBTEMAS_QUIMICA_FINAL[id] || []), ...(SUBTEMAS_FISICA_MECANICA[id] || [])]
+  const subtemas = [...(subtemasPorGrupo[id] || []), ...(SUBTEMAS_MATEMATICA[id] || []), ...(SUBTEMAS_GEOMETRIA_FUNCOES[id] || []), ...(SUBTEMAS_PORT_APLICADO[id] || []), ...(id === 'lit-modernismo' ? SUBTEMAS_LITERATURA : []), ...(SUBTEMAS_ARTES_CORPO[id] || []), ...(id === 'ing-interpretacao' ? SUBTEMAS_LINGUAS : []), ...(SUBTEMAS_BIOLOGIA_VIDA[id] || []), ...(SUBTEMAS_QUIMICA_INICIAL[id] || []), ...(SUBTEMAS_QUIMICA_FINAL[id] || []), ...(SUBTEMAS_FISICA_MECANICA[id] || []), ...(SUBTEMAS_FISICA_TERMICA_ONDAS[id] || [])]
     .sort((a,b) => a.codigo.localeCompare(b.codigo, 'pt-BR', {numeric:true}));
   return {...principal, secoes, resumo:[], subtemas,
     exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],

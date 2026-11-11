@@ -107,9 +107,10 @@ export const VIDEOS = {
     "canal": "Física com Prof. Boaro"
   },
   "fis-ondulatoria": {
-    "id": "MrIOoT4bL9I",
-    "titulo": "",
-    "canal": "Física com Prof. Boaro"
+    "id": "YDCDzP1wB7g",
+    "titulo": "Fenômenos ondulatórios | Ondas | TOP assuntos | Revisão ENEM 2020",
+    "canal": "FISICATOTAL",
+    "escopo": "A aula aborda fenômenos ondulatórios; complemente com as aulas de acústica e espectro eletromagnético dos subtemas."
   },
   "fis-optica": {
     "id": "MrIOoT4bL9I",

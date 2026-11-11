@@ -212,3 +212,21 @@ Todas as suítes JS, auditorias de 120 rotas e testes de Chromium nos novos
 tópicos, versão modular e standalone, passaram. A matriz está em **70/106
 incorporados, 36 pendentes**; 253 questões exibidas, incluindo 23 referências
 oficiais do Inep. Não houve deploy.
+
+
+## Física — termologia e ondas
+
+Foram incorporados termologia/calorimetria, transmissão de calor e
+termodinâmica, fenômenos ondulatórios, e acústica/espectro eletromagnético.
+Cada tópico recebeu três blocos de estudo, cinco pontos, dois exemplos,
+roteiro e duas questões autorais comentadas. Títulos, canais, descrições e
+permissão de incorporação das aulas foram conferidos; foram especificados
+escopos parciais e aula complementar quando pertinente. Também foi corrigido
+o vídeo geral de ondulatória, que antes apontava a mecânica. O vídeo geral de
+óptica e outros anteriormente suspeitos ainda precisam ser verificados.
+
+Suítes JavaScript, auditoria móvel das 120 rotas e testes de renderização em
+Chromium do site modular e standalone passaram. Duas URLs de fontes que
+retornaram 404 foram substituídas por páginas conferidas. Estado: **74/106
+incorporados, 32 pendentes**, 261 questões exibidas, sendo 23 referências
+oficiais do Inep. Não houve deploy nem revisão pedagógica externa.
