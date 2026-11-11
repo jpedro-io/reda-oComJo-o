@@ -250,5 +250,9 @@ main .ws-entrada, main .ws-proposta, main .ws-proposta .proposta {
 }
 main .aviso-transcricao { margin:0; color:#d3e8da; font-size:.88rem; line-height:1.55; }
 
-/* Mensagem do projeto e nota de transparência no rodapé. */
+/* Rodapé centralizado, com largura de leitura confortável em todas as telas. */
+.footer .wrap { max-width:1120px; margin-inline:auto; text-align:center; }
+.footer p { max-width:100%; margin-inline:auto; }
+.footer .footer-contato { margin-top:14px; }
+.footer .footer-contato a { color:#a5efc9; text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
 .footer .footer-aviso { margin-top:12px; font-size:.8rem; }
