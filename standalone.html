@@ -6361,6 +6361,32 @@ main .historico-acoes { margin-top:1rem; }
 main .historico-aviso { margin:.8rem 0 0; }
 @media (max-width:600px) { main .historico-item { align-items:flex-start; flex-direction:column; } main .historico-botoes,main .historico-acoes { width:100%; } main .historico-botoes .btn,main .historico-acoes .btn { flex:1 1 auto; } }
 
+/* Espaço interno para as superfícies que receberam borda na camada de vidro. */
+main .ac-item > .ac-body { padding:20px !important; gap:16px; }
+main .ac-bloco { min-width:0; padding:18px 20px; overflow-wrap:anywhere; }
+main .ac-item > summary { background:#173b27 !important; color:#e8f4ec !important; }
+main .ac-item > summary .ac-palavra,
+main .ac-item > summary .ac-temas,
+main .ac-item > summary .ac-mais { color:#e8f4ec !important; }
+main .ac-item > summary .ac-temas { color:#c4dfcd !important; }
+main .ac-item > summary::before { display:none; }
+main .rel-topo { padding:20px !important; }
+main .metricas { padding:16px 18px !important; }
+main .painel-solido { padding:22px !important; }
+main .indice-item > .indice-link { padding:16px 20px !important; }
+main .video-caixa > p, main .video-caixa > .cp-recomendacoes { margin:14px 18px; }
+/* Estes elementos são rótulos e células de tabela, não cartões. */
+main .esk-linha .bloco { background:none; border:0; border-radius:0; box-shadow:none; overflow:visible; backdrop-filter:none; -webkit-backdrop-filter:none; }
+main .comp-bloco .tabela-niveis td.niv { border-left:0; border-right:0; }
+main .comp-bloco .tabela-niveis thead th:first-child { padding-left:12px; }
+@media (max-width:767px) {
+  main .ac-item > .ac-body { padding:14px !important; gap:12px; }
+  main .ac-bloco { padding:16px; }
+  main .rel-topo { padding:16px !important; }
+  main .painel-solido { padding:18px !important; }
+  main .indice-item > .indice-link { padding:14px 16px !important; }
+}
+
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%274%27%20fill%3D%27%2325e88c%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2717%27%20fill%3D%27%2307130c%27%20text-anchor%3D%27middle%27%3ER%3C%2Ftext%3E%3C%2Fsvg%3E" />
 </head>
