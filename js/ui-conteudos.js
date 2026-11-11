@@ -76,7 +76,7 @@ export function viewConteudos() {
 
   <p class="hub-nota" data-entrada>
     Comece pela área em que você erra mais na prova, não pela que você gosta mais.
-    O guia de redação continua nas outras abas, aqui é o conteúdo das questões objetivas.
+    A redação também está organizada no guia; as outras abas oferecem ferramentas adicionais de prática.
   </p>`;
 }
 
@@ -203,6 +203,7 @@ export function viewConteudo(id) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
+        <p>Esta aula aborda o tema indicado no título; ela pode não cobrir todos os subtemas do grupo.</p>
         <p class="video-legenda">
           <b>${escQ(p.video.titulo || 'Aula em vídeo')}</b>
           ${p.video.canal ? `<span class="video-canal">${escQ(p.video.canal)}</span>` : ''}
@@ -249,6 +250,8 @@ export function viewConteudo(id) {
     ${imagens}
     ${questoes}
     ${video}
+    <section class="cp-bloco"><h2 class="cp-rot">Fontes para aprofundar</h2><p>Consulte a <a href="https://download.inep.gov.br/download/enem/matriz_referencia.pdf" target="_blank" rel="noopener noreferrer">matriz de referência do Enem</a> e os <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank" rel="noopener noreferrer">cadernos e gabaritos do Inep</a>. Para redação, confira também a cartilha oficial da edição vigente.</p></section>
+    ${(p.materiaisRelacionados || []).length ? `<section class="cp-bloco"><h2 class="cp-rot">Materiais anteriores e aulas adicionais</h2><p>Os links preservam as páginas anteriores, com suas questões e vídeos específicos.</p><ul class="chave-lista">${p.materiaisRelacionados.map(item => `<li><a href="#/conteudos/c/${escQ(item.id)}">${escQ(item.titulo)}</a>${item.video ? ` · <a href="https://www.youtube.com/watch?v=${escQ(item.video.id)}" target="_blank" rel="noopener noreferrer">aula no YouTube</a>` : ''}</li>`).join('')}</ul></section>` : ''}
 
     <nav class="cp-nav" aria-label="Outros conteúdos da matéria">
       ${ant ? `<a class="cp-nav-btn" href="#/conteudos/c/${ant.id}">${icQ('voltar')}<span><small>anterior</small>${escQ(ant.titulo)}</span></a>` : '<span></span>'}

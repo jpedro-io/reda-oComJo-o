@@ -12285,6 +12285,254 @@ function corrigir(textoBruto, opts = {}) {
   });
 }
 
+/* ===== js/db/conteudos/grupos-natureza.js ===== */
+/** Cada tópico é texto de estudo na própria página do grupo; fontes no rodapé. */
+const GRUPOS_NATUREZA = [
+{pagina:'bio-ecologia', materia:'biologia', titulo:'Ecologia', relacionados:[], topicos:[
+['Cadeias, teias, energia e pirâmides','Produtores transformam energia em matéria orgânica; consumidores alimentam-se de outros organismos e decompositores reciclam matéria. A energia flui e se dissipa em cada transferência, por isso a pirâmide de energia é sempre decrescente; as de número ou biomassa podem inverter-se. Teias representam cadeias interligadas.'],
+['Relações ecológicas','Intraespecíficas ocorrem entre indivíduos da mesma espécie; interespecíficas, entre espécies diferentes. Colônia e sociedade são harmônicas intraespecíficas; competição e canibalismo, desarmônicas. Mutualismo beneficia ambas as espécies; comensalismo beneficia uma sem prejuízo à outra; predação e parasitismo favorecem uma e prejudicam outra.'],
+['Ciclos de carbono, nitrogênio, água e oxigênio','Fotossíntese retira CO₂ e respiração, decomposição e combustão o devolvem. No nitrogênio, bactérias fixadoras convertem N₂ em formas assimiláveis, nitrificantes formam nitritos e nitratos, e desnitrificantes devolvem N₂ à atmosfera. Evaporação, condensação, precipitação e infiltração movimentam a água; fotossíntese e respiração participam do ciclo do oxigênio.'],
+['Impactos ambientais','Nutrientes em excesso podem causar eutrofização: proliferação de algas, decomposição e queda do oxigênio dissolvido, com morte de organismos. O aumento antrópico de gases intensifica o efeito estufa; desmatamento reduz habitats e altera ciclos. Reduzir, reutilizar e reciclar, além de saneamento e descarte adequado, diminuem impactos.']
+]},
+{pagina:'bio-citologia', materia:'biologia', titulo:'Citologia', relacionados:[], topicos:[
+['Membrana e transportes','A bicamada lipídica com proteínas é seletivamente permeável. Difusão simples e facilitada ocorrem a favor do gradiente sem gasto direto de ATP; a facilitada usa proteínas. Osmose é a passagem de água por membrana semipermeável em direção à solução de maior concentração efetiva de solutos. Transporte ativo usa energia para mover substâncias contra o gradiente.'],
+['Organelas celulares','Ribossomos sintetizam proteínas; retículo endoplasmático rugoso processa proteínas e o liso atua na síntese de lipídios e detoxificação. O complexo de Golgi modifica e encaminha produtos; lisossomos participam da digestão intracelular. Mitocôndrias atuam na respiração aeróbia e cloroplastos realizam fotossíntese em células vegetais e algas.'],
+['Bioenergética: respiração, fermentação e fotossíntese','Na respiração aeróbia, a glicose é oxidada e o oxigênio atua como aceptor final de elétrons, liberando energia para síntese de ATP. A fermentação regenera NAD⁺ sem cadeia respiratória e rende menos ATP por glicose; pode formar lactato ou etanol e CO₂. Fotossíntese usa luz para formar matéria orgânica a partir de CO₂ e água, liberando oxigênio.'],
+['Divisão celular: mitose e meiose','Após a duplicação do DNA, a mitose produz em geral duas células com o mesmo número de cromossomos da célula inicial e atua no crescimento e na renovação. A meiose tem duas divisões, reduz a ploidia e, por segregação e crossing-over, produz variabilidade genética; ocorre na formação de gametas em animais.']
+]},
+{pagina:'bio-genetica', materia:'biologia', titulo:'Genética e Biotecnologia', relacionados:[], topicos:[
+['Primeira e Segunda Lei de Mendel','A primeira lei descreve a segregação dos alelos de um gene na formação dos gametas. A segunda trata da distribuição independente de pares de genes quando não há ligação relevante entre eles, como genes em cromossomos diferentes; ligação gênica pode alterar proporções. Em Aa × Aa, a razão genotípica esperada é 1 AA : 2 Aa : 1 aa.'],
+['Herança ligada ao sexo e grupos sanguíneos','Genes no cromossomo X podem manifestar alelos recessivos com maior frequência em pessoas XY, que possuem apenas um X. No sistema ABO, Iᴬ e Iᴮ são codominantes e ambos dominam i; Rh positivo geralmente indica presença do antígeno D. Compatibilidade transfusional depende de antígenos, anticorpos e testes, não apenas de uma regra isolada.'],
+['Biotecnologia e DNA','Enzimas de restrição cortam DNA em sequências específicas; a ligação de fragmentos permite DNA recombinante. Transgênicos recebem material genético por técnicas de engenharia genética; PCR amplifica um trecho de DNA por ciclos térmicos. Clonagem produz cópias geneticamente semelhantes de moléculas, células ou organismos, sem garantir fenótipos idênticos.']
+]},
+{pagina:'bio-evolucao', materia:'biologia', titulo:'Evolução', relacionados:[], topicos:[
+['Lamarckismo, Darwinismo e teoria sintética','Lamarck associou mudanças ao uso e desuso e à herança de características adquiridas. Darwin e Wallace propuseram seleção natural: variações hereditárias que favorecem reprodução podem tornar-se mais frequentes. A teoria sintética integra seleção à genética, mutação, recombinação, fluxo gênico e deriva genética.'],
+['Seleção natural e especiação','Seleção depende de variação herdável e diferenças de sucesso reprodutivo, não de esforço individual. Deriva é mudança aleatória de frequências, especialmente relevante em populações pequenas. Isolamento geográfico ou reprodutivo pode levar à especiação quando o fluxo gênico é reduzido e as populações divergem.'],
+['Evidências evolutivas','Estruturas homólogas têm origem evolutiva comum, ainda que funções sejam diferentes; análogas têm funções semelhantes e origens distintas. Vestígios, fósseis, embriologia e semelhanças moleculares fornecem evidências complementares e devem ser interpretados em contexto.']
+]},
+{pagina:'bio-fisiologia', materia:'biologia', titulo:'Fisiologia Humana e Saúde', relacionados:['bio-reino'], topicos:[
+['Sistemas digestório, circulatório e respiratório','O digestório transforma alimentos e absorve nutrientes, sobretudo no intestino delgado; o circulatório distribui substâncias pelo sangue. Nos alvéolos, gases difundem-se: oxigênio entra no sangue e CO₂ sai. Coração, vasos, pulmões e tecidos funcionam de forma integrada.'],
+['Sistemas excretor e nervoso','Os rins filtram sangue, reabsorvem substâncias e regulam água, sais e pH; a urina segue pelos ureteres até a bexiga. Neurônios transmitem impulsos elétricos e comunicam-se em sinapses; o sistema nervoso central integra informações e respostas, enquanto o periférico conecta órgãos e tecidos.'],
+['Imunidade, vacinas e soros','A imunidade inata é uma resposta inicial; a adaptativa envolve linfócitos, especificidade e memória. Vacinas estimulam resposta imune e memória antes da exposição; soros fornecem anticorpos prontos para proteção imediata e temporária, sem induzir a mesma memória.'],
+['Doenças e prevenção','Bactérias, vírus, protozoários e helmintos têm ciclos e formas de transmissão distintos. Dengue é viral e transmitida por mosquitos; doença de Chagas envolve protozoário e barbeiro; esquistossomose é causada por verme em ciclo com caramujo. Vacinação quando disponível, saneamento, água segura e controle de vetores são medidas específicas, não universais.']
+]},
+{pagina:'fis-mecanica', materia:'fisica', titulo:'Mecânica', relacionados:['fis-energia'], topicos:[
+['Cinemática: movimentos e gráficos','No movimento uniforme, posição varia linearmente: s = s₀ + vt. No movimento uniformemente variado, v = v₀ + at e s = s₀ + v₀t + at²/2, para aceleração constante. A inclinação do gráfico posição × tempo representa velocidade; no gráfico velocidade × tempo, a inclinação é aceleração e a área corresponde ao deslocamento.'],
+['Leis de Newton, atrito e plano inclinado','A primeira lei descreve inércia; a segunda, força resultante F = ma em referencial inercial; a terceira relaciona forças de ação e reação em corpos diferentes. O atrito cinético pode ser modelado por f = μN; no plano inclinado sem outras forças, o peso tem componentes mg sen θ e mg cos θ paralela e perpendicular ao plano.'],
+['Centrípeta, trabalho e energia','A força centrípeta é a resultante radial necessária à mudança de direção, não uma força adicional: Fᶜ = mv²/r. Trabalho de força constante é W = Fd cos θ; Eᶜ = mv²/2, Eᵖ gravitacional = mgh próximo à superfície e Eᵖ elástica = kx²/2. Energia mecânica conserva-se quando somente forças conservativas realizam trabalho.'],
+['Impulso, quantidade de movimento e colisões','Quantidade de movimento é p = mv e impulso é a variação Δp; para força constante, I = FΔt. Em sistema isolado, a quantidade de movimento total se conserva em colisões elásticas e inelásticas; energia cinética só se conserva em colisão perfeitamente elástica.'],
+['Hidrostática','Densidade é massa por volume, ρ = m/V; pressão é força por área. Em fluido em repouso, a pressão aumenta com a profundidade segundo Δp = ρgh. Pascal relaciona transmissão de pressão em fluidos confinados; o empuxo iguala o peso do fluido deslocado e explica flutuação.']
+]},
+{pagina:'fis-termologia', materia:'fisica', titulo:'Termologia', relacionados:[], topicos:[
+['Calorimetria e trocas de calor','Calor sensível altera a temperatura: Q = mcΔT; calor latente associado a mudança de fase é Q = mL. Em sistema termicamente isolado, a soma algébrica das trocas de calor é zero, respeitando sinais e unidades. Temperatura mede estado térmico; calor é energia em trânsito por diferença de temperatura.'],
+['Condução, convecção e radiação','Condução ocorre por interações microscópicas sem transporte macroscópico de matéria; convecção envolve movimento de fluidos; radiação eletromagnética não precisa de meio material. Uma mesma situação pode envolver os três mecanismos.'],
+['Dilatação térmica','Para variações moderadas, uma barra pode ser aproximada por ΔL = L₀αΔT, com α coeficiente linear. Líquidos e recipientes dilatam-se; a dilatação aparente considera ambos. A água apresenta comportamento anômalo próximo de 4 °C.'],
+['Termodinâmica e máquinas térmicas','A primeira lei expressa conservação de energia: ΔU = Q − W, adotando W como trabalho realizado pelo sistema. A segunda lei limita a conversão integral de calor em trabalho em um ciclo. O rendimento de uma máquina térmica é W/Q da fonte quente e é inferior a 100% em máquinas cíclicas reais.']
+]},
+{pagina:'fis-ondulatoria', materia:'fisica', titulo:'Ondulatória', relacionados:[], topicos:[
+['Grandezas das ondas','Frequência f é número de oscilações por segundo, período T = 1/f e comprimento de onda λ é a distância entre pontos em mesma fase. Em um meio, v = λf. A frequência é determinada pela fonte; ao mudar de meio, a velocidade e o comprimento podem mudar.'],
+['Fenômenos ondulatórios','Reflexão devolve a onda; refração altera velocidade ao passar de meio; difração é a propagação em torno de obstáculos ou aberturas; interferência é a superposição de ondas. Ressonância ocorre quando excitação próxima de frequência natural amplia a resposta. No efeito Doppler, a frequência percebida muda com o movimento relativo entre fonte e observador.'],
+['Som e luz','O som é onda mecânica e precisa de meio material; altura relaciona-se à frequência e intensidade à energia transportada. Luz é onda eletromagnética e pode propagar-se no vácuo. O espectro inclui rádio, micro-ondas, infravermelho, visível, ultravioleta, raios X e gama, em ordem crescente de frequência.']
+]},
+{pagina:'fis-eletrodinamica', materia:'fisica', titulo:'Eletricidade', relacionados:[], topicos:[
+['Eletrostática e Lei de Coulomb','Cargas de sinais iguais se repelem e de sinais opostos se atraem. Eletrização pode ocorrer por atrito, contato ou indução, preservando a carga total do sistema isolado. Para cargas puntiformes, o módulo da força é F = k|q₁q₂|/r² no meio considerado.'],
+['Corrente e leis de Ohm','Corrente média é i = ΔQ/Δt. Para um resistor ôhmico sob condições constantes, U = Ri; a resistência de um fio uniforme é R = ρL/A, onde ρ é a resistividade do material. Nem todo componente obedece à proporcionalidade linear de Ohm.'],
+['Circuitos, potência e consumo','Em série, a corrente é a mesma e resistências somam; em paralelo, a tensão é a mesma e 1/R equivalente = Σ1/Rᵢ. Potência elétrica P = Ui e energia E = PΔt. Para conta de luz, converter potência em kW e tempo em horas fornece consumo em kWh.'],
+['Magnetismo e indução','Correntes elétricas produzem campo magnético; a variação do fluxo magnético pode induzir tensão, conforme Faraday e Lenz. Geradores transformam energia mecânica em elétrica; transformadores operam com corrente variável, alterando tensões de acordo com a razão entre espiras.']
+]},
+{pagina:'fis-optica', materia:'fisica', titulo:'Óptica', relacionados:[], topicos:[
+['Reflexão, refração e espelhos','Na reflexão, ângulos de incidência e reflexão são iguais em relação à normal. Na refração, a luz muda de velocidade entre meios e obedece a n₁ sen i = n₂ sen r. Espelho plano forma imagem virtual e de mesmo tamanho; espelhos esféricos podem formar imagens reais ou virtuais conforme a posição do objeto.'],
+['Lentes e visão','Lentes convergentes e divergentes desviam raios de maneiras distintas; imagens dependem da posição em relação ao foco. Na miopia, a correção usual usa lentes divergentes; na hipermetropia, convergentes. Astigmatismo decorre de curvatura óptica desigual e pode ser corrigido com lentes cilíndricas ou tóricas.']
+]},
+{pagina:'qui-ligacoes', materia:'quimica', titulo:'Química Geral e Inorgânica', relacionados:['qui-estequiometria'], topicos:[
+['Ligações e interações','Ligação iônica envolve atração entre íons; covalente, compartilhamento de elétrons; metálica, rede de cátions e elétrons deslocalizados. Interações intermoleculares incluem forças de dispersão, dipolo permanente e ligação de hidrogênio; ajudam a explicar solubilidade e temperaturas de mudança de estado.'],
+['Ácidos, bases, sais e óxidos','Pela definição de Arrhenius em água, ácidos aumentam H₃O⁺ e bases aumentam OH⁻; neutralização pode formar sal e água. Sais são compostos iônicos que, em solução, produzem íons; óxidos são compostos binários com oxigênio em geral. Classificação e comportamento dependem da composição e do meio.'],
+['Separação de misturas','Filtração separa sólido insolúvel de fluido; decantação explora diferenças de densidade; centrifugação acelera separação de fases. Destilação separa componentes por volatilidade e condensação, podendo ser simples ou fracionada. O método depende das fases e propriedades da mistura.'],
+['Estequiometria, pureza e rendimento','Balanceie a reação, converta dados em mol (n = m/M) e use a proporção dos coeficientes. Identifique o reagente limitante; massa efetiva de substância pura é massa da amostra vezes fração de pureza. Rendimento percentual = quantidade real/quantidade teórica × 100, na mesma unidade.']
+]},
+{pagina:'qui-solucoes', materia:'quimica', titulo:'Físico-Química', relacionados:['qui-termoquimica','qui-eletroquimica'], topicos:[
+['Soluções e concentrações','Concentração comum C = massa de soluto/volume da solução, frequentemente em g/L. Concentração em quantidade de matéria é n/volume, em mol/L. Na diluição sem perda de soluto, CᵢVᵢ = C𝒇V𝒇; ao misturar soluções, some quantidades de soluto e considere o volume final informado.'],
+['Termoquímica e Lei de Hess','Reações exotérmicas liberam calor e têm ΔH negativo; endotérmicas absorvem calor e têm ΔH positivo, sob pressão constante. Pela Lei de Hess, variações de entalpia são somadas ao combinar etapas; inverter uma etapa troca o sinal e multiplicar seus coeficientes multiplica ΔH.'],
+['Cinética química','Velocidade depende do mecanismo e pode variar com concentração, temperatura, superfície de contato e catalisadores. O catalisador fornece caminho de menor energia de ativação e acelera reações direta e inversa, sem deslocar a posição de equilíbrio nem ser consumido globalmente.'],
+['Equilíbrio químico, pH e pOH','Equilíbrio dinâmico ocorre quando velocidades direta e inversa se igualam. A constante K é escrita com atividades ou aproximações de concentrações, com expoentes dos coeficientes; sólidos puros não entram. Le Chatelier prevê a resposta a perturbações; pH = −log[H₃O⁺] e, a 25 °C em solução aquosa diluída, pH + pOH = 14.'],
+['Pilhas e eletrólise','Oxidação é perda de elétrons; redução é ganho. Na pilha espontânea, oxidação ocorre no ânodo e redução no cátodo; o potencial padrão da pilha é E°cátodo − E°ânodo. Eletrólise requer fonte externa para promover reação não espontânea; os sinais dos eletrodos diferem dos da pilha.']
+]},
+{pagina:'qui-organica', materia:'quimica', titulo:'Química Orgânica', relacionados:[], topicos:[
+['Cadeias carbônicas e hibridização','Cadeias podem ser abertas ou fechadas, normais ou ramificadas, saturadas ou insaturadas e homogêneas ou heterogêneas. Carbono sp³ geralmente faz quatro ligações simples; sp² está associado a dupla e sp a tripla ou duas duplas, com geometrias características.'],
+['Funções orgânicas','Hidrocarbonetos contêm carbono e hidrogênio; álcool tem hidroxila em carbono saturado, fenol em anel aromático. Aldeído tem carbonila terminal, cetona tem carbonila entre carbonos; ácido carboxílico possui –COOH, éster –COO– e amina deriva da substituição de hidrogênios da amônia por grupos orgânicos.'],
+['Isomeria plana, geométrica e óptica','Isômeros compartilham fórmula molecular e diferem na estrutura ou disposição espacial. Isomeria plana envolve conectividade; geométrica pode ocorrer em duplas ou ciclos com restrição de rotação; isomeria óptica relaciona-se à quiralidade, incluindo enantiômeros que não se sobrepõem às imagens no espelho.'],
+['Reações orgânicas','Combustão completa de hidrocarboneto forma CO₂ e água quando há oxigênio suficiente. Esterificação usual combina ácido carboxílico e álcool; saponificação é hidrólise básica de ésteres como óleos. Adição ocorre frequentemente em ligações múltiplas, enquanto substituição troca um átomo ou grupo por outro.']
+]},
+{pagina:'qui-ambiental', materia:'quimica', titulo:'Química Ambiental', relacionados:[], topicos:[
+['Poluição atmosférica','Óxidos de enxofre e nitrogênio podem formar ácidos na atmosfera e contribuir para chuva ácida. A intensificação do efeito estufa relaciona-se ao aumento de gases como CO₂ e CH₄; a destruição do ozônio estratosférico é outro fenômeno, associado entre outros aos CFCs. Não confunda aquecimento global com o buraco na camada de ozônio.'],
+['Tratamento de água e efluentes','O tratamento de água para consumo pode incluir coagulação, floculação, decantação, filtração e desinfecção, conforme a qualidade da água. Efluentes exigem processos físicos, químicos ou biológicos adequados ao poluente; retirar sólidos não equivale necessariamente a eliminar microrganismos ou contaminantes dissolvidos.']
+]}
+];
+
+/* ===== js/db/conteudos/grupos-matematica.js ===== */
+const GRUPOS_MATEMATICA = [
+{pagina:'mat-porcentagem', materia:'mat-basica', titulo:'Matemática Básica', relacionados:['mat-razao-proporcao','mat-regra-tres','mat-escalas','mat-financeira','mat-graficos'], topicos:[
+['Razão, proporção, escala e regra de três','Razão compara grandezas por quociente; uma proporção iguala razões. Em escala 1:n, 1 unidade no desenho representa n unidades reais na mesma unidade; áreas variam com o quadrado da escala. Na regra de três, identifique grandezas direta ou inversamente proporcionais antes de montar a igualdade; na composta, analise cada relação.'],
+['Porcentagem e juros','p% equivale a p/100. Aumento de p% multiplica por 1 + p/100; desconto, por 1 − p/100. Variações sucessivas são multiplicadas, não simplesmente somadas. Em juros simples, M = C(1 + it); em compostos, M = C(1 + i)ᵗ, com taxa e prazo na mesma unidade.'],
+['Gráficos, tabelas e infográficos','Leia título, eixos, unidade, fonte e período antes de comparar valores. Observe se o eixo começa em zero e se os dados são absolutos ou percentuais; uma variação em pontos percentuais não é a mesma coisa que uma variação percentual relativa.'],
+['Frações, decimais e conjuntos numéricos','Para somar frações, use denominador comum; para multiplicar, multiplique numeradores e denominadores. Números racionais admitem representação por fração de inteiros com denominador não nulo; inteiros incluem negativos e zero, e reais incluem racionais e irracionais. Compare decimais alinhando casas e respeite prioridades das operações.']
+]},
+{pagina:'mat-geo-plana', materia:'mat-geometria', titulo:'Geometria Plana', relacionados:['mat-escalas'], topicos:[
+['Áreas e perímetros','Perímetro é a soma dos lados. Áreas: retângulo b·h, triângulo b·h/2, paralelogramo b·h, trapézio (B+b)h/2 e círculo πr²; comprimento da circunferência é 2πr. Use unidades de comprimento para perímetro e quadradas para área.'],
+['Pitágoras e trigonometria','Em triângulo retângulo, a² = b² + c², com a hipotenusa. Para ângulo agudo θ, seno = cateto oposto/hipotenusa, cosseno = adjacente/hipotenusa e tangente = oposto/adjacente. Escolha a razão conforme o lado conhecido e o procurado.'],
+['Semelhança de triângulos e polígonos','Figuras semelhantes têm ângulos correspondentes iguais e lados proporcionais. Se a razão entre comprimentos é k, a razão entre áreas é k². Em triângulos, igualdade de dois ângulos correspondentes é critério suficiente de semelhança.']
+]},
+{pagina:'mat-geo-espacial', materia:'mat-geometria', titulo:'Geometria Espacial', relacionados:[], topicos:[
+['Prismas, cilindros, pirâmides, cones e esferas','Volume de prisma ou cilindro é área da base × altura; de pirâmide ou cone, um terço desse produto. Esfera: V = 4πr³/3 e área superficial A = 4πr². Calcule área total somando faces e bases necessárias; um cilindro fechado tem A = 2πr² + 2πrh.'],
+['Projeção ortogonal e visão espacial','Projeção ortogonal representa pontos por retas perpendiculares ao plano de projeção. Vistas frontal, lateral e superior podem ocultar profundidade ou elementos; identifique direção de observação, faces visíveis e medidas correspondentes antes de comparar objetos e planificações.']
+]},
+{pagina:'mat-medidas', materia:'mat-estatistica', titulo:'Estatística e Probabilidade', relacionados:['mat-probabilidade'], topicos:[
+['Média, moda e mediana','Média simples é soma dos valores dividida pelo número de observações; média ponderada divide a soma de valores × pesos pela soma dos pesos. Moda é o valor mais frequente. A mediana é o valor central após ordenar os dados, ou a média dos dois centrais quando a quantidade é par.'],
+['Variância e desvio padrão','Variância mede a dispersão por média dos quadrados dos desvios em relação à média; desvio padrão é a raiz quadrada da variância e mantém a unidade dos dados. Para amostras, usa-se com frequência divisor n−1, enquanto na variância populacional usa-se n: siga a definição solicitada.'],
+['Probabilidade simples, condicional e independência','Em espaço amostral equiprovável, P(A) = casos favoráveis/casos possíveis. A probabilidade condicional é P(A|B) = P(A∩B)/P(B), para P(B)>0. Eventos independentes satisfazem P(A∩B) = P(A)P(B); mutuamente exclusivos não são independentes quando ambos têm probabilidade positiva.']
+]},
+{pagina:'mat-funcao-1', materia:'mat-funcoes', titulo:'Funções e Álgebra', relacionados:['mat-funcao-2','mat-exponencial','mat-graficos-funcao'], topicos:[
+['Função afim','Em f(x) = ax + b, a é a taxa de variação e b o valor em x = 0. Quando a > 0, a função é crescente; quando a < 0, decrescente. A raiz, se a ≠ 0, é x = −b/a; interprete os coeficientes nas unidades do problema.'],
+['Função quadrática','Em f(x) = ax² + bx + c, com a ≠ 0, as raízes podem ser obtidas por Δ = b² − 4ac e x = (−b ± √Δ)/(2a), quando Δ ≥ 0. O vértice tem xᵥ = −b/(2a); se a > 0 fornece mínimo e, se a < 0, máximo.'],
+['Exponenciais e logaritmos','Na função exponencial f(x)=aᵡ, com a > 0 e a ≠ 1, a > 1 indica crescimento e 0 < a < 1, decrescimento. Logaritmo inverte a potência: logₐ b = c equivale a aᶜ = b, com a > 0, a ≠ 1 e b > 0. Modelos financeiros e populacionais exigem explicitar a taxa e o período.'],
+['Sequências, PA e PG','Uma progressão aritmética soma razão r a cada termo: aₙ = a₁ + (n−1)r. Uma progressão geométrica multiplica por q: aₙ = a₁qⁿ⁻¹. Para soma de n termos, Sₙ da PA = n(a₁+aₙ)/2 e da PG = a₁(qⁿ−1)/(q−1), quando q ≠ 1.']
+]},
+{pagina:'mat-combinatoria', materia:'mat-probabilidade', titulo:'Análise Combinatória', relacionados:[], topicos:[
+['Princípio Fundamental da Contagem','Se uma escolha tem m possibilidades e, para cada uma, outra tem n possibilidades, o total é m·n. Quando há restrições, conte as escolhas válidas em cada etapa ou subtraia casos proibidos, evitando contagem duplicada.'],
+['Arranjos, permutações e combinações','Permutação simples ordena n elementos distintos: n!. Arranjo de n elementos tomados p a p considera ordem: n!/(n−p)!. Combinação não considera ordem: n!/[p!(n−p)!]. Pergunte se trocar posições produz resultado diferente antes de escolher a fórmula.']
+]}
+];
+
+/* ===== js/db/conteudos/grupos-humanas.js ===== */
+const GRUPOS_HUMANAS = [
+{pagina:'his-colonia', materia:'historia', titulo:'História do Brasil', relacionados:['his-imperio','his-republica-velha','his-vargas','his-ditadura','his-redemocratizacao','his-indigenas'], topicos:[
+['Brasil Colônia: economia, trabalho e administração','A colonização portuguesa articulou ocupação territorial, exploração e controle metropolitano. A produção açucareira em grandes propriedades e a mineração do século XVIII utilizaram intensamente trabalho escravizado; havia também outras atividades e trabalho livre. Capitanias, governo-geral, câmaras, impostos e fiscalização integraram a administração.'],
+['Revoltas coloniais e resistências','Conflitos variaram de disputas locais a movimentos com projetos de emancipação, como Inconfidência Mineira e Conjuração Baiana, distintos em composição e propostas. Povos indígenas e africanos escravizados resistiram por múltiplas formas, incluindo fugas, revoltas, negociações e quilombos.'],
+['Independência, Primeiro Reinado e Regências','A independência de 1822 rompeu o vínculo político com Portugal, mas preservou a monarquia e a escravidão. O Primeiro Reinado teve Constituição de 1824 e Poder Moderador; após a abdicação de Pedro I em 1831, o período regencial reuniu disputas sobre centralização e revoltas regionais, como Cabanagem e Farroupilha.'],
+['Segundo Reinado e abolição','O reinado de Pedro II, de 1840 a 1889, articulou expansão cafeeira, participação em conflitos e transformações sociais. A Lei Áurea de 1888 aboliu legalmente a escravidão, resultado de lutas de escravizados e abolicionistas, sem assegurar automaticamente terra, reparação ou igualdade social.'],
+['República Velha, coronelismo e Era Vargas','Na Primeira República, federalismo e poder oligárquico se combinaram ao coronelismo e à coerção eleitoral em muitas localidades. A partir de 1930, Vargas centralizou o poder; o Estado Novo (1937–1945) foi ditadura com censura e propaganda. A CLT foi instituída em 1943, em contexto de direitos e controle sindical.'],
+['De 1945 à ditadura e à redemocratização','Entre 1945 e 1964 houve eleições e disputas sobre desenvolvimento e reformas, com restrições à participação política. O golpe de 1964 instaurou ditadura com censura e repressão; o AI-5 ampliou poderes autoritários em 1968. A abertura foi gradual, Diretas Já reivindicou eleições e a Constituição de 1988 ampliou direitos.']
+]},
+{pagina:'his-revolucao-industrial', materia:'historia', titulo:'História Geral', relacionados:['his-antiguidade','his-guerras-mundiais','his-guerra-fria'], topicos:[
+['Antiguidade Clássica: Grécia e Roma','A pólis grega articulou vida pública e cidadania restrita; em Atenas, mulheres, estrangeiros e escravizados não participavam dos direitos políticos de cidadãos. Roma atravessou monarquia, república e império, com conflitos sociais, expansão territorial e uso de trabalho escravizado.'],
+['Idade Média: feudalismo, Igreja e Cruzadas','Na Europa medieval, relações de dependência, domínio senhorial e trabalho camponês foram centrais, com variações regionais e temporais. A Igreja Católica teve influência religiosa e política. As Cruzadas envolveram expedições militares e interesses religiosos, políticos e econômicos; o período não se resume à Europa.'],
+['Idade Moderna: Renascimento e expansão marítima','O Renascimento valorizou humanismo e novas práticas artísticas e intelectuais sem eliminar a religião. Expansões marítimas europeias integraram comércio, conquista, colonização e tráfico transatlântico de escravizados, com violências e resistências.'],
+['Reforma Protestante e absolutismo','A Reforma do século XVI contestou práticas e autoridade da Igreja, produzindo diferentes igrejas e conflitos; a Reforma Católica também reorganizou instituições. Absolutismo é a concentração de poder monárquico, limitada na prática por instituições, elites e contextos históricos.'],
+['Iluminismo, revoluções e imperialismo','Iluministas criticaram autoridades e debateram razão, direitos e poder. A Revolução Francesa contestou o Antigo Regime e teve fases e conflitos internos; a Revolução Industrial transformou produção e trabalho. O imperialismo do século XIX ampliou domínio europeu na África e Ásia, associado à exploração e a justificativas racistas.'],
+['Guerras Mundiais e Guerra Fria','A Primeira Guerra (1914–1918) envolveu alianças, nacionalismos e rivalidades; a Segunda (1939–1945) incluiu nazifascismo, Holocausto e armas nucleares. Na Guerra Fria, EUA e URSS disputaram influência, com corrida nuclear e guerras indiretas; o período não foi ausência de conflitos.']
+]},
+{pagina:'geo-biomas', materia:'geografia', titulo:'Geografia Física', relacionados:['geo-climatologia','geo-clima'], topicos:[
+['Geomorfologia e relevo','Estruturas geológicas incluem escudos cristalinos, bacias sedimentares e dobramentos; suas formas resultam de histórias distintas. Tectonismo e vulcanismo são agentes internos; intemperismo, erosão, transporte e sedimentação são externos. Planaltos, planícies e depressões são classificados por processos e formas do relevo.'],
+['Clima, massas de ar, El Niño e La Niña','Elementos climáticos incluem temperatura, umidade, pressão, ventos e precipitação; fatores como latitude, altitude, maritimidade e relevo os influenciam. Massas de ar transportam características de origem. El Niño e La Niña são fases do ENOS no Pacífico tropical e alteram padrões de circulação e chuva, com efeitos regionais variáveis.'],
+['Biomas brasileiros e globais','Amazônia reúne extensas florestas úmidas; Cerrado, formações savânicas; Caatinga é adaptada à sazonalidade do semiárido; Mata Atlântica abriga florestas diversas; Pantanal é planície sujeita a inundações; Pampa apresenta campos. Globalmente, florestas, savanas, desertos, tundras e pradarias respondem a clima e outras condições ambientais.'],
+['Hidrografia e gestão da água','Uma bacia hidrográfica é a área drenada por um rio principal e seus afluentes, delimitada por divisores de água. Bacias amazônica, Paraná, São Francisco e Tocantins-Araguaia têm usos e conflitos distintos. Proteção de nascentes, saneamento, controle de poluição e gestão compartilhada favorecem disponibilidade e qualidade.']
+]},
+{pagina:'geo-urbanizacao', materia:'geografia', titulo:'Geografia Humana e Econômica', relacionados:['geo-demografia','geo-agraria','geo-geopolitica','geo-globalizacao'], topicos:[
+['Demografia e migrações','Transição demográfica descreve mudanças históricas nas taxas de mortalidade e natalidade; sua duração varia entre países. Pirâmides etárias mostram distribuição por idade e sexo. Migrações internas ou internacionais podem resultar de trabalho, conflitos, clima e redes familiares; movimento pendular não exige mudança de residência.'],
+['Urbanização, metropolização e segregação','A urbanização brasileira intensificou-se no século XX, com industrialização, serviços e transformações no campo. Metropolização reúne fluxos e funções em áreas metropolitanas; segregação socioespacial expressa distribuição desigual de moradia e oportunidades. Gentrificação envolve valorização e mudanças sociais em uma área, podendo deslocar moradores.'],
+['Agropecuária e conflitos no campo','Agronegócio articula produção, insumos, processamento e comércio; agricultura familiar é diversa e pode integrar mercados e abastecimento. Estrutura fundiária desigual e disputas por terra, água e território produzem conflitos que envolvem trabalhadores, comunidades tradicionais, empresas e Estado.'],
+['Globalização, transportes e geopolítica','Cadeias produtivas conectam territórios por redes de transporte, comunicação, capitais e informação. Blocos como Mercosul têm graus específicos de integração, sem eliminar soberania. Conflitos internacionais exigem analisar história, poder, território, recursos e atores, evitando explicações de causa única.'],
+['Matriz energética e matriz elétrica','Matriz energética inclui toda a energia usada em transporte, indústria e outros setores; matriz elétrica refere-se apenas à geração de eletricidade. Fontes renováveis incluem hídrica, solar, eólica e biomassa; fósseis são não renováveis. A matriz elétrica brasileira inclui fontes renováveis e térmicas, com composição variável ao longo do tempo.']
+]},
+{pagina:'fil-antiga', materia:'filosofia', titulo:'Filosofia Antiga e Medieval', relacionados:[], topicos:[
+['Pré-socráticos e Sócrates','Os pré-socráticos buscaram explicações racionais sobre a natureza e seus princípios, com propostas diversas. Sócrates usou diálogo e questionamento para examinar opiniões e conceitos éticos; a tradição socrática valoriza reconhecer limites do próprio saber.'],
+['Platão: Ideias e alegoria da caverna','Platão distingue o mundo sensível, mutável, e o inteligível das Ideias ou Formas. Na alegoria da caverna, a passagem das sombras à luz representa o difícil processo de educação e conhecimento, e o retorno à caverna coloca problemas políticos e pedagógicos.'],
+['Aristóteles: ética e política','Para Aristóteles, a virtude ética forma-se pelo hábito e busca o justo meio relativo à situação, guiado pela prudência; felicidade é atividade conforme a virtude, não prazer momentâneo. A pólis é comunidade política voltada ao bem viver, segundo seu contexto histórico e sua cidadania excludente.'],
+['Patrística e Escolástica','Agostinho articulou cristianismo e filosofia, refletindo sobre fé, interioridade e mal. Tomás de Aquino dialogou com Aristóteles e distinguiu, articulando-as, razão filosófica e fé teológica. Patrística e Escolástica reúnem pensadores diversos; não são doutrinas idênticas.']
+]},
+{pagina:'fil-racionalismo-empirismo', materia:'filosofia', titulo:'Filosofia Moderna e Contemporânea', relacionados:['fil-etica','fil-politica','fil-iluminismo'], topicos:[
+['Racionalismo e empirismo','Descartes usa dúvida metódica em busca de fundamentos seguros, atribuindo papel central à razão. Locke critica ideias inatas e destaca experiência; Hume relaciona a expectativa causal ao hábito construído pela observação de conjunções repetidas. Essas correntes não se reduzem a ignorar completamente razão ou sentidos.'],
+['Iluminismo e ética kantiana','O Iluminismo valorizou crítica, razão e debate sobre liberdade e poder, com divergências entre autores. Para Kant, o imperativo categórico exige agir segundo máxima que possa ser universalizada; outra formulação trata pessoas como fins em si mesmas, não apenas como meios.'],
+['Maquiavel e contratualistas','Maquiavel analisa o poder a partir da ação política e das condições concretas. Hobbes associa o contrato à formação de autoridade capaz de conter a guerra; Locke destaca direitos e governo limitado; Rousseau relaciona legitimidade à vontade geral. Seus modelos de estado de natureza e contrato diferem.'],
+['Frankfurt, existencialismo e biopolítica','A Escola de Frankfurt criticou formas de dominação e a indústria cultural. Existencialistas como Sartre discutem liberdade, responsabilidade e condição humana. Foucault investiga relações de poder, disciplina e biopolítica, incluindo técnicas de gestão da vida das populações, sem reduzir poder apenas ao Estado.']
+]},
+{pagina:'soc-classicos', materia:'sociologia', titulo:'Teoria Sociológica Clássica', relacionados:[], topicos:[
+['Durkheim: fato social, coesão e anomia','Fatos sociais são maneiras de agir, pensar e sentir exteriores ao indivíduo e dotadas de coerção. Durkheim analisou solidariedade mecânica, associada a semelhanças, e orgânica, relacionada à divisão do trabalho. Anomia designa enfraquecimento ou insuficiência de regulação social.'],
+['Weber: ação social e dominação','Para Weber, ação social é orientada por sentido atribuído pelo agente em relação a outros. Ele analisa tipos ideais de dominação tradicional, carismática e legal-racional; em A ética protestante e o espírito do capitalismo, investiga afinidades históricas entre valores religiosos e condutas econômicas.'],
+['Marx: classes, alienação e mais-valia','Marx analisa relações de produção e conflitos entre classes no materialismo histórico. Alienação envolve separação do trabalhador em relação ao produto e ao processo sob certas relações capitalistas. Mais-valia é a diferença entre o valor produzido pelo trabalho e o valor da força de trabalho, no modelo teórico marxiano.']
+]},
+{pagina:'soc-trabalho', materia:'sociologia', titulo:'Temas Sociológicos Contemporâneos', relacionados:['soc-cultura','soc-movimentos'], topicos:[
+['Trabalho: Taylorismo, Fordismo e Toyotismo','Taylorismo organiza e controla tarefas e tempos; Fordismo associa produção em massa, linha de montagem e padronização; Toyotismo enfatiza flexibilidade e produção ajustada à demanda. Na prática, modelos convivem e mudam. Plataformas e terceirização podem combinar autonomia aparente com insegurança e novas formas de controle.'],
+['Cultura, diversidade e indústria cultural','Cultura abrange práticas, valores e símbolos aprendidos socialmente e é dinâmica. Aculturação envolve contato e mudanças culturais, sem pressupor desaparecimento automático de uma cultura. A noção de indústria cultural critica a produção cultural padronizada para consumo de massa, mas públicos também interpretam e ressignificam conteúdos.'],
+['Cidadania, direitos humanos e movimentos','Cidadania envolve direitos civis, políticos e sociais, cuja efetivação é desigual. Movimentos feministas, antirracistas e ambientais articulam reivindicações, repertórios de ação e disputas por reconhecimento e políticas públicas. Direitos humanos são universais em princípio e exigem proteção institucional.'],
+['Desigualdade, estratificação e instituições','Estratificação descreve posições sociais desiguais segundo critérios como renda, ocupação, raça e gênero, que podem interagir. Família, escola, Estado e outras instituições organizam práticas e socialização, podendo tanto reproduzir desigualdades quanto favorecer mudanças.']
+]}
+];
+
+/* ===== js/db/conteudos/grupos-linguagens.js ===== */
+const GRUPOS_LINGUAGENS = [
+{pagina:'lin-interpretacao', materia:'portugues', titulo:'Interpretação e Análise de Texto', relacionados:['lin-generos','lin-funcoes','lin-coesao','lin-figuras'], topicos:[
+['Compreensão, inferência e contexto','Compreender é localizar e relacionar informações; inferir é chegar a conclusão sustentada por pistas, conhecimentos pertinentes e contexto, sem acrescentar hipótese não autorizada. Identifique assunto, tese, finalidade, interlocutor e situação de produção; em charges, anúncios e tirinhas, relacione palavras, imagens, ironia e contexto.'],
+['Gêneros, tipos e funções da linguagem','Gêneros são práticas sociais reconhecíveis, como notícia, artigo, receita e anúncio; tipos textuais incluem narração, descrição, exposição, argumentação e injunção e podem coexistir num gênero. Funções referencial, emotiva, conativa, fática, metalinguística e poética dependem do foco comunicativo e podem coexistir.'],
+['Coesão, coerência e argumentação','Coesão usa conectivos, pronomes, elipses e substituições para relacionar partes; coerência depende da construção de sentido no contexto. Distinga causa, consequência, oposição e conclusão. Avalie tese e argumentos, pressupostos, fatos e opiniões e a relação entre repertório e ponto de vista.'],
+['Figuras de linguagem e intertextualidade','Metáfora aproxima sentidos sem comparação explícita; metonímia substitui por relação de proximidade; ironia produz contraste entre enunciado e sentido pretendido. Intertextualidade retoma outro texto por citação, paródia, referência ou outros procedimentos; explique seu efeito no novo contexto.']
+]},
+{pagina:'lin-variacao', materia:'portugues', titulo:'Gramática Aplicada e Variabilidade', relacionados:[], topicos:[
+['Variação linguística e preconceito','A língua varia conforme região, grupo social, história e situação comunicativa. Não há variedade naturalmente inferior; preconceito linguístico confunde diferenças de uso com incapacidade. A norma-padrão é uma convenção valorizada em situações formais, e adequação depende de interlocutor e contexto.'],
+['Classes de palavras e efeitos de sentido','Substantivos, adjetivos, verbos, advérbios, pronomes e demais classes assumem funções no enunciado. Tempos e modos verbais situam ou modalizam ações; pronomes podem retomar referentes; advérbios e adjetivos orientam avaliações. Analise o sentido na frase, não apenas o nome da classe.'],
+['Sintaxe, concordância, regência e crase','Concordância verbal relaciona verbo e sujeito; nominal relaciona palavras ao substantivo. Regência descreve relações exigidas por verbos e nomes, inclusive preposições. Crase marca fusão de dois sons a, frequentemente preposição a e artigo feminino a; teste a exigência da preposição e a presença do artigo no contexto.'],
+['Pontuação e relações entre orações','Pontuação organiza relações de sentido e não é mera indicação de pausa. Em geral, não se separa sujeito de verbo por vírgula. Orações coordenadas ou subordinadas expressam, entre outras relações, adição, oposição, causa, condição e concessão; observe a construção efetiva.']
+]},
+{pagina:'lit-modernismo', materia:'literatura', titulo:'Escolas Literárias no Brasil', relacionados:['lit-romantismo','lit-realismo','lit-contemporanea','lit-intertexto'], topicos:[
+['Quinhentismo, Barroco e Arcadismo','Textos quinhentistas incluem relatos de colonização e literatura jesuítica. O Barroco trabalha contrastes, tensão espiritual e linguagem elaborada; o Arcadismo valoriza referências clássicas, idealização pastoral e linguagem mais contida. Essas características são tendências, não regras absolutas.'],
+['Romantismo, Realismo e Naturalismo','O Romantismo abrange indianismo, subjetividade e crítica social em gerações distintas. O Realismo examina relações sociais e ambiguidades psicológicas; o Naturalismo enfatiza determinismos e observação, frequentemente atravessados por teorias científicas e preconceitos de sua época.'],
+['Parnasianismo e Simbolismo','O Parnasianismo enfatiza trabalho formal e impessoalidade em parte da poesia; o Simbolismo privilegia sugestão, musicalidade, subjetividade e espiritualidade. Leia o poema como objeto singular, não apenas como lista de traços de escola.'],
+['Pré-Modernismo e Modernismo','O Pré-Modernismo reúne obras diversas que problematizam o Brasil da Primeira República. A Semana de 1922 tornou-se marco do Modernismo; a primeira fase experimentou formas e linguagem, a segunda ampliou a poesia e o romance social e regional, e produções posteriores diversificaram a estética.'],
+['Literatura contemporânea e diversidade','Produções contemporâneas exploram memória, cidade, identidade e desigualdade, com diversidade de formas e vozes, inclusive autores indígenas, negros e periféricos. Observe narrador, tempo, espaço, linguagem e relações com a história, sem reduzir o texto à biografia do autor.']
+]},
+{pagina:'art-vanguardas', materia:'artes', titulo:'Artes', relacionados:['art-contemporanea','art-plasticas','art-patrimonio'], topicos:[
+['Elementos e linguagens artísticas','Nas artes visuais, linha, cor, forma, textura e composição constroem sentidos. Música, dança, teatro, cinema e outras linguagens também mobilizam corpo, espaço, tempo e materiais; interprete técnica, contexto, circulação e público.'],
+['Vanguardas e arte brasileira','Cubismo fragmentou planos e pontos de vista; Expressionismo enfatizou deformação expressiva; Futurismo exaltou movimento e modernidade; Dadaísmo contestou convenções; Surrealismo explorou sonho e inconsciente. Modernistas brasileiros dialogaram criticamente com vanguardas e referências locais.'],
+['Arte contemporânea e patrimônio','Instalações, performances e intervenções ampliam suportes e participação do público. Patrimônio material inclui bens físicos; patrimônio imaterial envolve práticas e saberes reconhecidos por comunidades. Preservação deve considerar memória, diversidade e disputas de reconhecimento.']
+]},
+{pagina:'edf-corporal', materia:'artes', titulo:'Educação Física', relacionados:[], topicos:[
+['Cultura corporal de movimento','Esportes, jogos, danças, lutas, ginásticas e brincadeiras são práticas históricas e culturais, não apenas gasto de energia. Analise regras, sentidos, acesso, mídia e transformação das práticas em diferentes comunidades.'],
+['Corpo, saúde e inclusão','Saúde depende de condições sociais e ambientais, alimentação, descanso e atividade física, entre outros fatores. Padrões corporais e estereótipos podem excluir; práticas acessíveis e adaptadas respeitam diferenças, capacidades e direitos.']
+]},
+{pagina:'ing-interpretacao', materia:'estrangeira', titulo:'Leitura e Compreensão: Inglês e Espanhol', relacionados:['esp-interpretacao'], topicos:[
+['Estratégias de leitura','Leia título, fonte, imagem e enunciado para reconhecer gênero, contexto e objetivo; identifique ideias gerais antes de buscar detalhes. Cognatos ajudam, mas falsos cognatos podem induzir erro. Inferir vocabulário pelo contexto é mais seguro que traduzir palavra por palavra.'],
+['Recursos linguísticos','Observe pronomes e seus referentes, conectivos de contraste e causa, tempos verbais, modalidade, humor e ironia. Em inglês, but indica oposição e because causa; em espanhol, pero indica oposição e porque causa. A relação deve ser confirmada no texto concreto.'],
+['Textos multimodais e diversidade','Em anúncios, canções, notícias e tirinhas, relacione imagens, linguagem verbal, público e contexto. Inglês e espanhol apresentam variedades geográficas e sociais; use pistas do texto e não pressuponha uma cultura homogênea.']
+]},
+{pagina:'red-competencias', materia:'redacao', titulo:'Estrutura e Competências do ENEM', relacionados:[], topicos:[
+['Estrutura dissertativo-argumentativa','O texto deve defender um ponto de vista sobre o tema proposto, organizando introdução, desenvolvimento e conclusão de forma articulada. Na introdução, delimite o problema e apresente tese; no desenvolvimento, explique causas, consequências ou relações com evidências; na conclusão, formule intervenção coerente. Não existe número mágico de parágrafos obrigatório.'],
+['Competência 1: modalidade escrita formal','Avalia domínio da modalidade escrita formal da língua portuguesa, incluindo convenções de escrita e estrutura sintática. Revise concordância, regência, pontuação e construção das frases; desvios pontuais e recorrentes não têm necessariamente o mesmo impacto.'],
+['Competência 2: tema, tipo textual e repertório','Compreenda integralmente o tema e desenvolva texto dissertativo-argumentativo em prosa. Use repertório sociocultural pertinente, produtivo e relacionado à discussão, sem depender de citação decorativa. Fuga ao tema ou desobediência ao tipo textual são motivos previstos de nota zero.'],
+['Competência 3: projeto de texto e argumentação','Selecione, relacione e organize informações, fatos e opiniões em defesa da tese. Cada parágrafo deve avançar o raciocínio: apresente uma ideia, explique como ela se relaciona ao tema e fundamente-a. Evite contradições, generalizações sem apoio e enumeração de argumentos sem desenvolvimento.'],
+['Competência 4: coesão','Articule palavras, frases e parágrafos com conectivos e referências que expressem relações corretas. Varie recursos sem trocar sentido: portanto indica conclusão, enquanto porém marca oposição. Pronomes precisam ter referentes claros; coesão não é encher o texto de conectivos.'],
+['Competência 5: intervenção e direitos humanos','Proponha ação relacionada ao problema e à argumentação, indicando quem a executará, o que fará, como e para qual finalidade, com detalhamento pertinente. A proposta deve respeitar os direitos humanos. Não confunda responsabilização por políticas públicas com atribuir culpa coletiva a um grupo.'],
+['Planejamento, tempo e revisão','Analise o recorte temático e os textos motivadores; planeje tese, dois eixos argumentativos e uma intervenção pertinente. Reserve tempo para passar a limpo e revisar legibilidade e norma formal. Consulte a cartilha oficial vigente para regras e situações de nota zero.']
+]}
+];
+
+/* ===== js/db/conteudos/material-redacao.js ===== */
+const MATERIAL_REDACAO = {
+ secoes: [],
+ exemplos: [{titulo:'Planejamento de uma tese', texto:'Tema hipotético: acesso desigual à cultura. Tese: a falta de infraestrutura cultural e a desigualdade territorial dificultam o exercício desse direito.', comentario:'A tese antecipa dois eixos que podem ser explicados em parágrafos de desenvolvimento.'}, {titulo:'Intervenção articulada', texto:'Secretarias municipais de cultura podem ampliar bibliotecas e atividades itinerantes em bairros pouco atendidos, por meio de orçamento público e parcerias locais, para democratizar o acesso à cultura.', comentario:'O exemplo indica agente, ação, meio e finalidade, mas deve ser adaptado à argumentação da redação.'}],
+ figuras: [{tipo:'fluxo', titulo:'Projeto de texto', itens:['Tema e recorte','Tese','Argumentos desenvolvidos','Intervenção coerente','Revisão']}],
+ formulas: [], chave:['Atender ao recorte temático','Defender tese com argumentos desenvolvidos','Articular o texto','Propor intervenção que respeite direitos humanos'],
+ questoes: [
+ {ano:null,fonte:'Exercício autoral · redação',textoApoio:['Uma candidata discute desigualdade no acesso à cultura e apresenta um dado sobre distribuição de equipamentos culturais, explicando sua relação com a tese.'],enunciado:'O uso do dado contribui principalmente para:',alternativas:['Fundamentar a argumentação sobre o tema.','Substituir toda a argumentação.','Garantir nota máxima independentemente do texto.','Dispensar o atendimento ao tema.','Eliminar a necessidade de coerência.'],correta:'A',resolucao:['Identifique a tese: desigualdade de acesso à cultura.','O dado é relacionado à tese e funciona como evidência desenvolvida; portanto, fundamenta a argumentação.','A alternativa correta é A.']},
+ {ano:null,fonte:'Exercício autoral · redação',textoApoio:['Um estudante escreve: “Houve investimento em bibliotecas; portanto, o acesso melhorou.”'],enunciado:'O conectivo estabelece uma relação de:',alternativas:['Oposição.','Conclusão.','Condição.','Concessão.','Comparação.'],correta:'B',resolucao:['Observe a ligação entre o investimento e a afirmação que o segue.','“Portanto” apresenta a segunda oração como conclusão; a plausibilidade dessa conclusão depende do contexto e das evidências.','A alternativa correta é B.']},
+ {ano:null,fonte:'Exercício autoral · redação',textoApoio:['No encerramento de uma redação sobre acesso desigual à cultura, o autor sugere que secretarias municipais criem bibliotecas itinerantes com financiamento público, para ampliar o acesso em bairros periféricos.'],enunciado:'Essa proposta apresenta:',alternativas:['Apenas um desejo genérico sem ação.','Uma punição coletiva que viola direitos.','Agente, ação, meio e finalidade relacionados ao problema.','Uma citação sem vínculo com o tema.','Apenas uma descrição do passado.'],correta:'C',resolucao:['Identifique o agente: secretarias municipais; a ação: criar bibliotecas itinerantes.','O financiamento público é o meio e ampliar o acesso é a finalidade, ambos ligados ao problema discutido.','A alternativa correta é C.']}
+ ]
+};
+
+/* ===== js/db/conteudos/apoio-grupos.js ===== */
+/** Exemplos e esquemas autorais, complementares aos materiais já existentes. */
+const APOIO_GRUPOS = {
+ 'lit-modernismo': {exemplo:['Contextualizar uma obra','Um poema usa verso livre e linguagem cotidiana para questionar a solenidade acadêmica. Esses recursos podem ser relacionados à experimentação modernista, mas a interpretação precisa considerar o poema inteiro.'], esquema:['Quinhentismo','Barroco e Arcadismo','Romantismo','Realismo e Naturalismo','Vanguardas e Modernismo','Produções contemporâneas']},
+ 'art-vanguardas': {exemplo:['Analisar uma pintura','Uma tela fragmenta um instrumento musical em planos e mostra diferentes perspectivas. Essa decomposição se aproxima da linguagem cubista; para interpretar a obra, considere também autoria e contexto.'],esquema:['Material e técnica','Elementos visuais','Contexto e circulação','Sentidos e público']},
+ 'edf-corporal': {exemplo:['Esporte e inclusão','Uma escola adapta regras e equipamentos de um jogo para garantir participação de estudantes com diferentes capacidades. A adaptação amplia o acesso sem eliminar o caráter cultural da prática.'],esquema:['Prática corporal','Regras e contexto','Acesso e inclusão','Saúde e direitos']},
+ 'ing-interpretacao': {exemplo:['Inferir por contexto','Em uma campanha em inglês, “Save water” acompanha a imagem de uma torneira aberta. A imagem e o verbo no imperativo indicam um pedido de economia de água.'],esquema:['Fonte, título e imagem','Tema e público','Conectivos e palavras-chave','Inferência apoiada no texto']},
+ 'his-revolucao-industrial': {exemplo:['Comparar processos históricos','Uma fábrica no século XIX reúne trabalhadores assalariados e máquinas sob controle do proprietário. Isso evidencia mudanças na organização produtiva e nas relações de trabalho, sem significar que o artesanato tenha desaparecido.'],esquema:['Antiguidade','Idade Média','Idade Moderna','Revoluções e industrialização','Guerras mundiais','Guerra Fria']},
+ 'geo-biomas': {exemplo:['Relevo e erosão','O desmatamento em uma encosta pode aumentar o escoamento superficial e a erosão do solo. A intensidade também depende de chuva, declividade, solo e práticas de conservação.'],esquema:['Estrutura geológica','Agentes internos e externos','Formas de relevo','Clima, vegetação e águas']},
+ 'fil-antiga': {exemplo:['Ler a alegoria','Na caverna de Platão, tomar sombras por realidade ilustra uma condição de conhecimento limitado. A saída exige educação e reorientação do olhar, e não apenas receber uma informação isolada.'],esquema:['Pré-socráticos: natureza','Sócrates: diálogo','Platão: conhecimento','Aristóteles: virtude','Medievais: fé e razão']},
+ 'fil-racionalismo-empirismo': {exemplo:['Distinguir teorias','Diante da pergunta sobre a origem do conhecimento, compare o papel da razão em Descartes com o papel da experiência em Locke; não conclua que um deles desconhece completamente a outra dimensão.'],esquema:['Razão e experiência','Crítica e autonomia','Contrato e legitimidade','Poder e sociedade']},
+ 'soc-classicos': {exemplo:['Três olhares sobre o trabalho','Uma regra profissional pode ser examinada como fato social em Durkheim; o sentido dado à conduta, em Weber; e as relações entre classes e produção, em Marx. Cada abordagem responde a perguntas diferentes.'],esquema:['Durkheim: fatos sociais','Weber: ação social','Marx: relações de produção']},
+ 'soc-trabalho': {exemplo:['Comparar organização produtiva','Uma linha de montagem padronizada aproxima-se do Fordismo. Um sistema que ajusta produção à demanda aproxima-se de princípios do Toyotismo; fábricas reais podem combinar práticas de ambos.'],esquema:['Divisão do trabalho','Produção em massa','Flexibilidade produtiva','Plataformas e direitos']}
+};
+
 /* ===== js/db/conteudos/estrutura.js ===== */
 /**
  * Mapa dos conteúdos: 4 áreas → matérias → conteúdos.
@@ -12301,7 +12549,7 @@ function corrigir(textoBruto, opts = {}) {
  * tools/buscar-videos.mjs). Matéria sem canal indicado busca pelo título só.
  */
 
-const AREAS = [
+const AREAS_LEGADO = [
   {
     id: 'linguagens',
     nome: 'Linguagens, Códigos e suas Tecnologias',
@@ -12528,6 +12776,14 @@ const AREAS = [
   },
 ];
 
+const GRUPOS = [...GRUPOS_NATUREZA, ...GRUPOS_MATEMATICA, ...GRUPOS_HUMANAS, ...GRUPOS_LINGUAGENS];
+
+// O índice antigo permanece acessível para favoritos e referências anteriores.
+const AREAS = AREAS_LEGADO.map(a => ({ ...a, materias: [
+  ...a.materias.map(m => ({ ...m, conteudos: GRUPOS.filter(g => g.materia === m.id).map(g => ({id:g.pagina, titulo:g.titulo})) })),
+  ...(a.id === 'linguagens' ? [{id:'redacao', nome:'Redação', canais:[], conteudos:GRUPOS.filter(g => g.materia === 'redacao').map(g => ({id:g.pagina,titulo:g.titulo}))}] : [])
+] }));
+
 const TOTAL_CONTEUDOS = AREAS.reduce(
   (t, a) => t + a.materias.reduce((m, x) => m + x.conteudos.length, 0), 0);
 
@@ -12546,6 +12802,12 @@ function conteudoPorId(id) {
     for (const m of a.materias) {
       const c = m.conteudos.find(x => x.id === id);
       if (c) return { ...c, materia: m, area: a };
+    }
+  }
+  for (const a of AREAS_LEGADO) {
+    for (const m of a.materias) {
+      const c = m.conteudos.find(x => x.id === id);
+      if (c) return { ...c, materia: materiaPorId(m.id) || m, area: areaPorId(a.id) || a };
     }
   }
   return null;
@@ -19471,15 +19733,18 @@ const QUESTOES_REFORCO = {
 
 
 
+
+
 const PAGINAS = {
   ...PAGINAS_LINGUAGENS,
+  'red-competencias': MATERIAL_REDACAO,
   ...PAGINAS_HUMANAS,
   ...PAGINAS_NATUREZA,
   ...PAGINAS_MATEMATICA,
 };
 
 /** Conteúdo pronto para render: página + vídeo + hierarquia. */
-function paginaDe(id, conteudo) {
+function paginaOriginal(id, conteudo) {
   const pagina = PAGINAS[id] || {};
   const extra = EXPANSOES[id] || {};
   const oficiais = [...(QUESTOES_ENEM[id] || []), ...(QUESTOES_DIA1[id] || []), ...(QUESTOES_REAPLICACAO[id] || [])];
@@ -19489,25 +19754,50 @@ function paginaDe(id, conteudo) {
     ...extra,
     resumo: extra.secoes?.length ? [] : (pagina.resumo || []),
     secoes: extra.secoes || [],
-    exemplos: extra.exemplos || [],
-    figuras: extra.figuras || [],
+    exemplos: extra.exemplos || pagina.exemplos || [],
+    figuras: extra.figuras || pagina.figuras || [],
     chave: extra.chave || pagina.chave || [],
     formulas: extra.formulas || pagina.formulas || [],
     questoes: oficiais.length ? [...oficiais.slice(0, 3), ...anteriores.slice(0, Math.max(0, 3 - oficiais.length))] : anteriores.slice(0, 3),
-    video: VIDEOS[id] || null,
+    video: VIDEOS[id] || (id === 'red-competencias' ? {id:'TuMVDXpMKZI', titulo:'Redação ENEM: aula de redação', canal:''} : null),
     conteudo: conteudo || null,
+  };
+}
+
+
+/** As páginas agrupadas mantêm as seções dos materiais anteriores na mesma página.
+ * Exercícios e aulas adicionais permanecem disponíveis nos links históricos. */
+function paginaDe(id, conteudo) {
+  const principal = paginaOriginal(id, conteudo);
+  const grupo = GRUPOS.find(g => g.pagina === id);
+  if (!grupo) return principal;
+  const ids = [id, ...grupo.relacionados.filter(x => x !== id)];
+  const textos = ids.map(x => ({id:x, p:paginaOriginal(x)}));
+  const titulos = Object.fromEntries(AREAS_LEGADO.flatMap(a => a.materias.flatMap(m => m.conteudos.map(c => [c.id,c.titulo]))));
+  const secoes = grupo.topicos.map(([h, texto]) => ({h, ps:[texto]}));
+  for (const {id: antigo, p} of textos) {
+    const conteudoAntigo = p.secoes.length ? p.secoes : (p.resumo.length ? [{h:titulos[antigo] || grupo.titulo, ps:p.resumo}] : []);
+    secoes.push(...conteudoAntigo.map(sec => ({...sec, h:`${titulos[antigo] || grupo.titulo} · ${sec.h}`})));
+  }
+  const apoio = APOIO_GRUPOS[id];
+  return {...principal, secoes, resumo:[],
+    exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],
+    figuras:[...textos.flatMap(({p}) => p.figuras), ...(apoio ? [{tipo:'fluxo', titulo:'Esquema de estudo', itens:apoio.esquema}] : [])],
+    formulas:textos.flatMap(({p}) => p.formulas),
+    materiaisRelacionados: grupo.relacionados.filter(x => x !== id).map(x => ({id:x, titulo:titulos[x] || x, video:VIDEOS[x] || null}))
   };
 }
 
 /** Página completa: tem resumo longo escrito (não só o aviso). */
 function paginaCompleta(id) {
+  if (GRUPOS.some(g => g.pagina === id)) return false; // Não confundir texto introdutório com cobertura completa.
   const extra = EXPANSOES[id];
   return Boolean(extra && extra.secoes && extra.secoes.length >= 3 && (extra.questoes || []).length >= 3);
 }
 
 /** Quantos conteúdos já receberam o texto completo. */
-const TOTAL_COMPLETOS = Object.keys(EXPANSOES)
-  .filter(id => paginaCompleta(id)).length;
+const TOTAL_COMPLETOS = AREAS.flatMap(a => a.materias.flatMap(m => m.conteudos))
+  .filter(c => paginaCompleta(c.id)).length;
 
 /** Quantos conteúdos de uma matéria já têm texto escrito. */
 function temTexto(id) { return Array.isArray(PAGINAS[id]?.resumo) && PAGINAS[id].resumo.length > 0; }
@@ -19592,7 +19882,7 @@ function viewConteudos() {
 
   <p class="hub-nota" data-entrada>
     Comece pela área em que você erra mais na prova, não pela que você gosta mais.
-    O guia de redação continua nas outras abas, aqui é o conteúdo das questões objetivas.
+    A redação também está organizada no guia; as outras abas oferecem ferramentas adicionais de prática.
   </p>`;
 }
 
@@ -19719,6 +20009,7 @@ function viewConteudo(id) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
+        <p>Esta aula aborda o tema indicado no título; ela pode não cobrir todos os subtemas do grupo.</p>
         <p class="video-legenda">
           <b>${escQ(p.video.titulo || 'Aula em vídeo')}</b>
           ${p.video.canal ? `<span class="video-canal">${escQ(p.video.canal)}</span>` : ''}
@@ -19765,6 +20056,8 @@ function viewConteudo(id) {
     ${imagens}
     ${questoes}
     ${video}
+    <section class="cp-bloco"><h2 class="cp-rot">Fontes para aprofundar</h2><p>Consulte a <a href="https://download.inep.gov.br/download/enem/matriz_referencia.pdf" target="_blank" rel="noopener noreferrer">matriz de referência do Enem</a> e os <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank" rel="noopener noreferrer">cadernos e gabaritos do Inep</a>. Para redação, confira também a cartilha oficial da edição vigente.</p></section>
+    ${(p.materiaisRelacionados || []).length ? `<section class="cp-bloco"><h2 class="cp-rot">Materiais anteriores e aulas adicionais</h2><p>Os links preservam as páginas anteriores, com suas questões e vídeos específicos.</p><ul class="chave-lista">${p.materiaisRelacionados.map(item => `<li><a href="#/conteudos/c/${escQ(item.id)}">${escQ(item.titulo)}</a>${item.video ? ` · <a href="https://www.youtube.com/watch?v=${escQ(item.video.id)}" target="_blank" rel="noopener noreferrer">aula no YouTube</a>` : ''}</li>`).join('')}</ul></section>` : ''}
 
     <nav class="cp-nav" aria-label="Outros conteúdos da matéria">
       ${ant ? `<a class="cp-nav-btn" href="#/conteudos/c/${ant.id}">${icQ('voltar')}<span><small>anterior</small>${escQ(ant.titulo)}</span></a>` : '<span></span>'}

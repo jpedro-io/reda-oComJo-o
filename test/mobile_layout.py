@@ -50,4 +50,4 @@ with sync_playwright() as p:
     assert 'Varie as classes de conectivos e elimine as repetições' not in diagnostico
     assert not errors, errors
     page.close();browser.close()
-print('OK: 80 conteúdos em 320 px; rotas principais, marcadores da correção em seis larguras e versão standalone.')
+print(f'OK: {len(ids)} grupos em 320 px; rotas principais, marcadores da correção em seis larguras e versão standalone.')

@@ -1,12 +1,14 @@
 import assert from 'node:assert/strict';
 import { AREAS, TOTAL_CONTEUDOS, TOTAL_COMPLETOS, TOTAL_QUESTOES, paginaDe, paginaCompleta } from '../js/db/conteudos/index.js';
+import { AREAS_LEGADO, GRUPOS, conteudoPorId } from '../js/db/conteudos/estrutura.js';
 import { EXPANSOES } from '../js/db/conteudos/expansoes.js';
 import { viewConteudo } from '../js/ui-conteudos.js';
+const legados = AREAS_LEGADO.flatMap(a => a.materias.flatMap(m => m.conteudos));
 const conteudos = AREAS.flatMap(a => a.materias.flatMap(m => m.conteudos));
 assert.equal(conteudos.length, TOTAL_CONTEUDOS);
 assert.equal(new Set(conteudos.map(c => c.id)).size, TOTAL_CONTEUDOS);
 for (const [id, p] of Object.entries(EXPANSOES)) {
-  assert.ok(conteudos.some(c => c.id === id), `${id}: ID desconhecido`);
+  assert.ok(legados.some(c => c.id === id), `${id}: ID desconhecido`);
   assert.ok(p.secoes.length >= 3, `${id}: seções insuficientes`);
   assert.equal(p.questoes.length, 3, `${id}: requer exatamente três questões`);
   assert.ok(p.exemplos.length >= 2 && p.figuras.length >= 1, `${id}: faltam exemplos ou figura`);
@@ -53,3 +55,21 @@ for (const c of conteudos) {
   assert.ok(html.includes('id="questoes"'), `${c.id}: sem seção de questões`);
   assert.ok(html.includes('id="video"'), `${c.id}: sem vídeo vinculado`);
 }
+
+assert.equal(GRUPOS.length, conteudos.length);
+const agrupados = new Set(GRUPOS.flatMap(g => [g.pagina, ...g.relacionados]));
+for (const c of legados) {
+  assert.ok(conteudoPorId(c.id), `${c.id}: URL antiga perdida`);
+  assert.ok(agrupados.has(c.id), `${c.id}: material antigo não agrupado`);
+}
+for (const g of GRUPOS) {
+  const p = paginaDe(g.pagina);
+  assert.ok(g.topicos.length >= 2, `${g.pagina}: subtemas ausentes`);
+  for (const [titulo] of g.topicos) assert.ok(p.secoes.some(s=>s.h===titulo), `${g.pagina}: subtema ${titulo} ausente`);
+  assert.ok(p.exemplos.length && (p.figuras.length || p.formulas.length), `${g.pagina}: falta exemplo ou esquema`);
+  const html = viewConteudo(g.pagina);
+  const pos = ['id="resumo"','id="exemplos"','id="imagens"','id="questoes"','id="video"'].map(m=>html.indexOf(m));
+  assert.ok(pos.every(x=>x>=0) && pos.every((x,i)=>i===0 || x>pos[i-1]), `${g.pagina}: ordem das seções`);
+  for (const x of g.relacionados) assert.ok(legados.some(c=>c.id===x), `${g.pagina}: relacionado inválido ${x}`);
+}
+console.log(`Agrupamento: ${GRUPOS.length} grupos e ${legados.length} URLs anteriores preservadas.`);

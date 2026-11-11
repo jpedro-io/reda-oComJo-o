@@ -1,3 +1,8 @@
+import { GRUPOS_NATUREZA } from './grupos-natureza.js';
+import { GRUPOS_MATEMATICA } from './grupos-matematica.js';
+import { GRUPOS_HUMANAS } from './grupos-humanas.js';
+import { GRUPOS_LINGUAGENS } from './grupos-linguagens.js';
+
 /**
  * Mapa dos conteúdos: 4 áreas → matérias → conteúdos.
  *
@@ -13,7 +18,7 @@
  * tools/buscar-videos.mjs). Matéria sem canal indicado busca pelo título só.
  */
 
-export const AREAS = [
+export const AREAS_LEGADO = [
   {
     id: 'linguagens',
     nome: 'Linguagens, Códigos e suas Tecnologias',
@@ -240,6 +245,14 @@ export const AREAS = [
   },
 ];
 
+export const GRUPOS = [...GRUPOS_NATUREZA, ...GRUPOS_MATEMATICA, ...GRUPOS_HUMANAS, ...GRUPOS_LINGUAGENS];
+
+// O índice antigo permanece acessível para favoritos e referências anteriores.
+export const AREAS = AREAS_LEGADO.map(a => ({ ...a, materias: [
+  ...a.materias.map(m => ({ ...m, conteudos: GRUPOS.filter(g => g.materia === m.id).map(g => ({id:g.pagina, titulo:g.titulo})) })),
+  ...(a.id === 'linguagens' ? [{id:'redacao', nome:'Redação', canais:[], conteudos:GRUPOS.filter(g => g.materia === 'redacao').map(g => ({id:g.pagina,titulo:g.titulo}))}] : [])
+] }));
+
 export const TOTAL_CONTEUDOS = AREAS.reduce(
   (t, a) => t + a.materias.reduce((m, x) => m + x.conteudos.length, 0), 0);
 
@@ -258,6 +271,12 @@ export function conteudoPorId(id) {
     for (const m of a.materias) {
       const c = m.conteudos.find(x => x.id === id);
       if (c) return { ...c, materia: m, area: a };
+    }
+  }
+  for (const a of AREAS_LEGADO) {
+    for (const m of a.materias) {
+      const c = m.conteudos.find(x => x.id === id);
+      if (c) return { ...c, materia: materiaPorId(m.id) || m, area: areaPorId(a.id) || a };
     }
   }
   return null;

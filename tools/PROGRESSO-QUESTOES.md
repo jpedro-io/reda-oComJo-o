@@ -33,3 +33,15 @@ No celular, corrigida a tabela da página Estrutura; auditoria automatizada perc
 - Conferir os vídeos: aulas integrais, pertinentes e disponíveis; não usar cortes.
 - Manter ordem resumo → exemplos → esquemas/fórmulas → questões → vídeo.
 - Conferir contraste e navegação no celular e no desktop.
+
+## Reorganização em grupos (novembro de 2026)
+
+A navegação reúne 35 grupos, incluindo Redação. Os 80 IDs anteriores continuam
+válidos; o material textual dos IDs associados foi reunido no grupo e as
+páginas anteriores preservam exercícios e aulas específicas. Cada grupo exibe
+três exercícios resolvidos, sem classificar questões autorais como oficiais.
+Na contagem dos 35 grupos, 24 exibições têm referências a prova e gabarito do
+Inep, em 15 grupos; outros exercícios são autorais. Não se deve inferir que
+cada subtema tem três questões oficiais. Os textos novos são uma introdução e
+não uma auditoria de completude de todo o programa; vídeos vinculados podem
+cobrir apenas o subtema nomeado, e sua abrangência precisa de verificação.
