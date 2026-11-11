@@ -203,7 +203,7 @@ export function viewConteudo(id) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
-        <p>Esta aula aborda o tema indicado no título; ela pode não cobrir todos os subtemas do grupo.</p>
+        <p>${escQ(p.video.escopo || 'Esta aula pode não cobrir todos os subtemas do grupo.')}</p>
         ${p.recomendacoes ? `<div class="cp-recomendacoes"><p><b>Busca sugerida no YouTube:</b> <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(p.recomendacoes.busca)}" target="_blank" rel="noopener noreferrer">${escQ(p.recomendacoes.busca)}</a></p><p><b>Canais recomendados:</b> ${p.recomendacoes.canais.map(escQ).join(' · ')}.</p><p>Para aprofundar membrana e transportes: ${p.recomendacoes.aulas.map(a => `<a href="${escQ(a.url)}" target="_blank" rel="noopener noreferrer">${escQ(a.titulo)}</a>`).join(' · ')}. Confira também uma aula específica sobre parede celular.</p></div>` : ''}
         <p class="video-legenda">
           <b>${escQ(p.video.titulo || 'Aula em vídeo')}</b>

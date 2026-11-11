@@ -62,3 +62,32 @@ referência oficial em 14 grupos; o material anterior de Citologia, incluindo
 questões oficiais, continua acessível pelo link específico. Os novos exercícios
 são autorais, não questões oficiais do Enem. Permanecem 98 tópicos sem marcação
 nesse novo padrão e o site não foi publicado nesta rodada.
+
+## Revisão de vídeos após relato de Citologia
+
+A aula `d3yKgcDZPSg` era de Ecologia, apesar do título genérico de Biologia.
+Foi substituída localmente por `wvq6CVOmkm0`, “Aula #04 Citologia ENEM |
+Professor Gustavo Schmidt”, do canal Me Gusta Bio. Descrição e transcrição
+sustentam os temas organelas, ácidos nucleicos e metabolismo; foi sinalizada
+como revisão parcial, não como cobertura de toda a Citologia. YouTube indicou
+permissão de incorporação na consulta, não garantia de reprodução em todo
+navegador, região ou data. A mesma troca alcança o link de material anterior.
+
+As recomendações dos oito tópicos no novo padrão foram confrontadas com as
+páginas/descrições e transcrições: são pertinentes, embora algumas cubram
+apenas parte do tópico. Isso não equivale a uma revisão pedagógica integral
+nem a testes de reprodução em todos os navegadores.
+
+Uma triagem adicional dos 74 IDs de `videos.js` por título, canal, descrição e
+duração revelou outros vínculos suspeitos ou inadequados, ainda não corrigidos:
+`fis-ondulatoria` e `fis-optica` apontam para revisão de mecânica;
+`geo-agraria` para vegetação; `geo-clima` para live de agropecuária e história;
+`his-imperio` para Brasil Colônia; `mat-escalas` para ângulos;
+`mat-financeira` para adição e subtração; `mat-probabilidade` para razão e
+proporção; `soc-cultura` para introdução à filosofia; `soc-trabalho` para
+uma apresentação de 22 segundos. Outros, como biomas e guerras mundiais, são
+vídeos muito curtos ou têm escopo parcial. Essa triagem não é uma auditoria
+semântica integral; os itens devem ser verificados e corrigidos individualmente
+antes de publicação. Não usar `buscar-videos.mjs --tudo` sem revisão: ele pode
+sobrescrever as correções e escolhe automaticamente um resultado sem avaliar
+seu conteúdo.

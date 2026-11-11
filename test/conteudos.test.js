@@ -75,6 +75,11 @@ for (const g of GRUPOS) {
 console.log(`Agrupamento: ${GRUPOS.length} grupos e ${legados.length} URLs anteriores preservadas.`);
 
 const membrana = paginaDe('bio-citologia');
+assert.equal(membrana.video.id, 'wvq6CVOmkm0');
+assert.equal(membrana.video.canal, 'Me Gusta Bio');
+assert.ok(viewConteudo('bio-citologia').includes('Revisão parcial de Citologia'));
+assert.ok(!viewConteudo('bio-citologia').includes('d3yKgcDZPSg'));
+assert.equal(paginaDe('bio-citologia-anterior').video.id, 'wvq6CVOmkm0');
 assert.equal(membrana.questoes.length, 3);
 assert.equal(membrana.chave.length, 6);
 assert.ok(membrana.questoes.every(q => q.ano === null && q.porqueErram.length === 4 && q.resolucao.length >= 3));

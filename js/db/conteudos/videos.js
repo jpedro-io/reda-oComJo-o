@@ -1,7 +1,7 @@
 /**
- * Vídeo do YouTube por conteúdo — gerado por tools/buscar-videos.mjs.
- * Para trocar um vídeo, mude o `id` aqui (11 caracteres, o que vem depois de
- * watch?v=). Para refazer a busca: node tools/buscar-videos.mjs --tudo
+ * Vídeos do YouTube por conteúdo, com correções manuais.
+ * A busca automatizada não verifica o assunto; não execute --tudo sem revisar
+ * individualmente os resultados, pois isso pode substituir aulas corrigidas.
  */
 export const VIDEOS = {
   "art-contemporanea": {
@@ -25,9 +25,10 @@ export const VIDEOS = {
     "canal": ""
   },
   "bio-citologia": {
-    "id": "d3yKgcDZPSg",
-    "titulo": "Aulão ENEM 2026 | Biologia | Prof. Paulo Jubilut",
-    "canal": "Biologia Total com Prof. Jubilut"
+    "id": "wvq6CVOmkm0",
+    "titulo": "Aula #04 Citologia ENEM | Professor Gustavo Schmidt",
+    "canal": "Me Gusta Bio",
+    "escopo": "Revisão parcial de Citologia: organelas, ácidos nucleicos e metabolismo celular. Consulte também as aulas específicas de cada subtema."
   },
   "bio-ecologia": {
     "id": "KKELP-3_Dlk",
