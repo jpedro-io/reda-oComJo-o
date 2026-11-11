@@ -24,6 +24,9 @@ import { SUBTEMAS_ECOLOGIA } from './subtemas-ecologia.js';
 import { SUBTEMAS_MATEMATICA } from './subtemas-matematica.js';
 import { SUBTEMAS_GEOMETRIA_FUNCOES } from './subtemas-geometria-funcoes.js';
 import { SUBTEMAS_PORT_APLICADO } from './subtemas-portugues-aplicado.js';
+import { SUBTEMAS_LITERATURA } from './subtemas-literatura.js';
+import { SUBTEMAS_ARTES_CORPO } from './subtemas-artes-corpo.js';
+import { SUBTEMAS_LINGUAS } from './subtemas-linguas.js';
 import { EXPANSOES } from './expansoes.js';
 import { QUESTOES_ENEM } from './questoes-enem.js';
 import { QUESTOES_DIA1 } from './questoes-inep-dia1.js';
@@ -90,7 +93,7 @@ export function paginaDe(id, conteudo) {
     };
   }
   const subtemasPorGrupo = {'bio-ecologia':SUBTEMAS_ECOLOGIA, 'lin-interpretacao':[SUBTEMAS_PORTUGUES[0]], 'lin-variacao':[SUBTEMAS_PORTUGUES[1]], 'mat-porcentagem':[SUBTEMA_MAT_FINANCEIRA], 'his-colonia':[SUBTEMA_BRASIL_COLONIA]};
-  const subtemas = [...(subtemasPorGrupo[id] || []), ...(SUBTEMAS_MATEMATICA[id] || []), ...(SUBTEMAS_GEOMETRIA_FUNCOES[id] || []), ...(SUBTEMAS_PORT_APLICADO[id] || [])]
+  const subtemas = [...(subtemasPorGrupo[id] || []), ...(SUBTEMAS_MATEMATICA[id] || []), ...(SUBTEMAS_GEOMETRIA_FUNCOES[id] || []), ...(SUBTEMAS_PORT_APLICADO[id] || []), ...(id === 'lit-modernismo' ? SUBTEMAS_LITERATURA : []), ...(SUBTEMAS_ARTES_CORPO[id] || []), ...(id === 'ing-interpretacao' ? SUBTEMAS_LINGUAS : [])]
     .sort((a,b) => a.codigo.localeCompare(b.codigo, 'pt-BR', {numeric:true}));
   return {...principal, secoes, resumo:[], subtemas,
     exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],

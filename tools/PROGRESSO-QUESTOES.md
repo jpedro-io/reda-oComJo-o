@@ -129,3 +129,30 @@ questões nos grupos e subtemas; o cálculo inclui as autorais. Executados teste
 JS, navegação dos novos grupos e standalone no Chromium, e auditoria de texto
 em 120 rotas nas larguras 320 e 390 px. Os testes não comprovam correção
 pedagógica exaustiva. Não houve deploy.
+
+## Linguagens — Literatura, Artes, Educação Física e línguas estrangeiras
+
+Foram incorporados 16 tópicos: os sete de Literatura, os cinco de Artes e
+Educação Física e os quatro de Língua Estrangeira. Cada tópico tem três blocos
+com dois parágrafos, revisão, dois exemplos, roteiro de cinco passos e duas
+questões autorais com resolução e justificativa das demais alternativas. Nos
+quatro de Língua Estrangeira há uma questão de inglês e outra de espanhol,
+com aulas indicadas para ambas as línguas. Junto com os sete de Português já
+acrescentados, os 23 tópicos de Linguagens estão incorporados ao padrão; isso
+não substitui revisão pedagógica externa ou garantia de cobertura exaustiva.
+
+As recomendações foram selecionadas por tema e verificadas em título, canal,
+descrição e indicação de permissão de incorporação; algumas também tiveram
+transcrição consultada. As aulas de poesia romântica e de patrimônio têm escopo
+parcial identificado no site. A proposta inicial de vídeo sobre instalação
+artística foi retirada após uma transcrição atribuir a Tropicália à década de
+1970; a recomendação final é sobre patrimônio e informa a limitação. Sem teste
+de reprodução de todos os vídeos em todas as regiões ou navegadores.
+
+A posição das alternativas dos novos exercícios foi distribuída de forma
+determinística, preservando o texto correto e vinculando cada justificativa à
+alternativa correspondente. Os testes comparam a associação, mas não provam
+rigor pedagógico completo. Regressões JavaScript, 120 rotas em 320/390 px e
+renderização dos 16 tópicos tanto no site modular quanto no standalone em
+Chromium passaram. Estado atual: **47/106 tópicos incorporados, 59 pendentes**;
+207 questões exibidas contando grupos e novos subtemas. Sem deploy.

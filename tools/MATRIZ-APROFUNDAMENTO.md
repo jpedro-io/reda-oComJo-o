@@ -21,26 +21,26 @@ continuam disponíveis no link de material anterior.
 - [x] 1.7 Sintaxe e semântica aplicadas
 
 ### Literatura
-- [ ] 2.1 Barroco e Arcadismo
-- [ ] 2.2 Romantismo
-- [ ] 2.3 Realismo e Naturalismo
-- [ ] 2.4 Parnasianismo e Simbolismo
-- [ ] 2.5 Pré-Modernismo
-- [ ] 2.6 Modernismo
-- [ ] 2.7 Literatura contemporânea e manifestações periféricas
+- [x] 2.1 Barroco e Arcadismo
+- [x] 2.2 Romantismo
+- [x] 2.3 Realismo e Naturalismo
+- [x] 2.4 Parnasianismo e Simbolismo
+- [x] 2.5 Pré-Modernismo
+- [x] 2.6 Modernismo
+- [x] 2.7 Literatura contemporânea e manifestações periféricas
 
 ### Artes e Educação Física
-- [ ] 3.1 Vanguardas europeias
-- [ ] 3.2 Arte moderna brasileira e Semana de Arte Moderna
-- [ ] 3.3 Arte contemporânea, instalações, intervenções e patrimônio
-- [ ] 3.4 Cultura corporal do movimento
-- [ ] 3.5 Padrões corporais, saúde, estética e atividade física
+- [x] 3.1 Vanguardas europeias
+- [x] 3.2 Arte moderna brasileira e Semana de Arte Moderna
+- [x] 3.3 Arte contemporânea, instalações, intervenções e patrimônio
+- [x] 3.4 Cultura corporal do movimento
+- [x] 3.5 Padrões corporais, saúde, estética e atividade física
 
 ### Língua Estrangeira
-- [ ] 4.1 Estratégias de leitura e interpretação
-- [ ] 4.2 Vocabulário contextualizado e marcadores discursivos
-- [ ] 4.3 Conectivos, falsos cognatos e pronomes
-- [ ] 4.4 Textos midiáticos, tirinhas, poemas e músicas
+- [x] 4.1 Estratégias de leitura e interpretação
+- [x] 4.2 Vocabulário contextualizado e marcadores discursivos
+- [x] 4.3 Conectivos, falsos cognatos e pronomes
+- [x] 4.4 Textos midiáticos, tirinhas, poemas e músicas
 
 ## Ciências Humanas
 

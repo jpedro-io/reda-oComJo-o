@@ -201,3 +201,44 @@ for(const [id,codigos] of Object.entries(portAplicado)) {
  }
 }
 console.log('Português: cinco subtemas com questões autorais e aulas específicas.');
+
+const literatura = paginaDe('lit-modernismo').subtemas;
+assert.equal(literatura.length, 7);
+assert.deepEqual(literatura.map(t=>t.codigo),Array.from({length:7},(_,i)=>`Literatura 2.${i+1}`));
+for (const t of literatura) {
+ assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));
+ assert.ok(t.chave.length>=4&&t.chave.length<=6); assert.equal(t.exemplos.length,2);
+ assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));
+ assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+ for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+ assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo('lit-modernismo').includes(`id="${t.id}"`));
+}
+assert.ok(viewConteudo('lit-modernismo').includes('bC_SwIxKd5U'));
+console.log('Literatura: sete subtemas com questões autorais e aulas específicas.');
+
+const artesEcorpo = {'art-vanguardas':['Artes e Educação Física 3.1','Artes e Educação Física 3.2','Artes e Educação Física 3.3'],'edf-corporal':['Artes e Educação Física 3.4','Artes e Educação Física 3.5']};
+for(const [id,codigos] of Object.entries(artesEcorpo)){
+ const temas=paginaDe(id).subtemas.filter(t=>codigos.includes(t.codigo));assert.equal(temas.length,codigos.length);
+ for(const t of temas){assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));assert.ok(t.chave.length>=4&&t.chave.length<=6);assert.equal(t.exemplos.length,2);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+ for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+ assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));}
+}
+console.log('Artes e Educação Física: cinco tópicos com questões autorais e aulas.');
+
+const linguas=paginaDe('ing-interpretacao').subtemas;
+assert.equal(linguas.length,4);
+assert.deepEqual(linguas.map(t=>t.codigo),Array.from({length:4},(_,i)=>`Língua Estrangeira 4.${i+1}`));
+for(const t of linguas){assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));assert.ok(t.chave.length>=4&&t.chave.length<=6);assert.equal(t.exemplos.length,2);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+ for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+ assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo('ing-interpretacao').includes(`id="${t.id}"`));assert.ok(t.aulasComplementares?.length);
+}
+console.log('Língua estrangeira: quatro subtemas bilíngues com questões e aulas.');
+
+const { distribuirAlternativas } = await import('../js/db/conteudos/alternativas-autorais.js');
+const originalAlternativas = {textoApoio:['Exemplo'],alternativas:['A original','B original','C original','D original','E original'],correta:'A',resolucao:['A alternativa A é correta.','A é correta.','Logo, A.'],porqueErram:['B: comentário B','C: comentário C','D: comentário D','E: comentário E']};
+const distribuida = distribuirAlternativas(originalAlternativas);
+assert.equal(distribuida.alternativas['ABCDE'.indexOf(distribuida.correta)],'A original');
+assert.ok(distribuida.resolucao.every(x=>x.includes(distribuida.correta)));
+for(const comentario of distribuida.porqueErram){const antigo=originalAlternativas.porqueErram.find(x=>x.slice(2)===comentario.slice(2));assert.equal(distribuida.alternativas['ABCDE'.indexOf(comentario[0])],originalAlternativas.alternativas['ABCDE'.indexOf(antigo[0])]);}
+assert.deepEqual(distribuirAlternativas(originalAlternativas),distribuida);
+console.log('Distribuição de alternativas preserva resposta, resolução e comentários.');
