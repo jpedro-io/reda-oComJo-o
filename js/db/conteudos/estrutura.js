@@ -267,6 +267,10 @@ export function materiaPorId(id) {
 }
 
 export function conteudoPorId(id) {
+  if (id === 'bio-citologia-anterior') {
+    const area = areaPorId('natureza'), materia = materiaPorId('biologia');
+    return {id, titulo:'Citologia: material e questões anteriores', materia, area};
+  }
   for (const a of AREAS) {
     for (const m of a.materias) {
       const c = m.conteudos.find(x => x.id === id);

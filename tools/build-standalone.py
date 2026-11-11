@@ -22,7 +22,7 @@ ordem = [
     'js/engine/competencias.js', 'js/engine/explicar.js', 'js/engine/corrigir.js',
     'js/db/conteudos/grupos-natureza.js', 'js/db/conteudos/grupos-matematica.js',
     'js/db/conteudos/grupos-humanas.js', 'js/db/conteudos/grupos-linguagens.js',
-    'js/db/conteudos/material-redacao.js', 'js/db/conteudos/apoio-grupos.js',
+    'js/db/conteudos/material-redacao.js', 'js/db/conteudos/apoio-grupos.js', 'js/db/conteudos/material-membrana.js',
     'js/db/conteudos/estrutura.js', 'js/db/conteudos/videos.js',
     'js/db/conteudos/paginas-linguagens.js', 'js/db/conteudos/paginas-humanas.js',
     'js/db/conteudos/paginas-natureza.js', 'js/db/conteudos/paginas-matematica.js',

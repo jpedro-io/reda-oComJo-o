@@ -27,7 +27,7 @@ assert.equal(TOTAL_COMPLETOS, conteudos.filter(c => paginaCompleta(c.id)).length
 assert.equal(TOTAL_QUESTOES, conteudos.reduce((n,c)=>n+paginaDe(c.id).questoes.length,0));
 console.log(`Conteúdos: ${TOTAL_COMPLETOS}/${TOTAL_CONTEUDOS} ampliados; ${TOTAL_QUESTOES} questões exibidas.`);
 
-const reais = ['mat-porcentagem','mat-razao-proporcao','bio-fisiologia','fis-optica','bio-evolucao','bio-citologia'];
+const reais = ['mat-porcentagem','mat-razao-proporcao','bio-fisiologia','fis-optica','bio-evolucao','bio-citologia-anterior'];
 for (const id of reais) {
   const q = paginaDe(id).questoes.filter(q=>q.urlProva);
   assert.ok(q.length > 0, `${id}: questões oficiais não exibidas`);
@@ -73,3 +73,13 @@ for (const g of GRUPOS) {
   for (const x of g.relacionados) assert.ok(legados.some(c=>c.id===x), `${g.pagina}: relacionado inválido ${x}`);
 }
 console.log(`Agrupamento: ${GRUPOS.length} grupos e ${legados.length} URLs anteriores preservadas.`);
+
+const membrana = paginaDe('bio-citologia');
+assert.equal(membrana.questoes.length, 3);
+assert.equal(membrana.chave.length, 6);
+assert.ok(membrana.questoes.every(q => q.ano === null && q.porqueErram.length === 4 && q.resolucao.length >= 3));
+assert.ok(membrana.exemplos.slice(0,2).every(e=>e.comentario));
+assert.equal(membrana.figuras[0].itens.length,6);
+assert.ok(membrana.recomendacoes && membrana.materiaisRelacionados.some(m => m.id === 'bio-citologia-anterior'));
+assert.equal(paginaDe('bio-citologia-anterior').questoes.length,3);
+console.log('Citologia: tópico aprofundado e questões anteriores preservadas.');

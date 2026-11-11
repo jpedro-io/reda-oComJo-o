@@ -12704,6 +12704,64 @@ const APOIO_GRUPOS = {
  'soc-trabalho': {exemplo:['Comparar organização produtiva','Uma linha de montagem padronizada aproxima-se do Fordismo. Um sistema que ajusta produção à demanda aproxima-se de princípios do Toyotismo; fábricas reais podem combinar práticas de ambos.'],esquema:['Divisão do trabalho','Produção em massa','Flexibilidade produtiva','Plataformas e direitos']}
 };
 
+/* ===== js/db/conteudos/material-membrana.js ===== */
+/** Tópico 1.4 da matriz: material autoral, aprofundado e inédito. */
+const MATERIAL_MEMBRANA = {
+  secoes: [
+    {h:'Membrana plasmática: estrutura e permeabilidade seletiva',ps:[
+      'A membrana plasmática delimita a célula e participa da manutenção de suas condições internas. Seu modelo estrutural é conhecido como mosaico fluido: uma bicamada de fosfolipídios contém proteínas que podem atuar no transporte, na comunicação e no reconhecimento celular.',
+      'Os fosfolipídios possuem regiões que interagem com a água e regiões que a repelem. Na bicamada, as regiões hidrofóbicas ficam voltadas para o interior. Isso dificulta a passagem direta de íons e de muitas moléculas polares, embora algumas substâncias pequenas e apolares, como O₂ e CO₂, atravessem a bicamada com facilidade.',
+      'A membrana apresenta permeabilidade seletiva: a passagem depende da substância e dos mecanismos disponíveis. Em uma questão, não basta dizer que uma molécula é necessária à célula; é preciso verificar se ela atravessa a bicamada ou depende de uma proteína.'
+    ]},
+    {h:'Transporte passivo: difusão simples e facilitada',ps:[
+      'No transporte passivo, a substância se desloca espontaneamente a favor de seu gradiente, sem gasto direto de energia metabólica pelo mecanismo de transporte. Para uma molécula sem carga, isso geralmente significa deslocamento da região de maior para a de menor concentração.',
+      'Na difusão simples, a substância atravessa diretamente a bicamada, como ocorre com o oxigênio em muitas células. Na difusão facilitada, a passagem ocorre com auxílio de proteínas de canal ou transportadoras. A presença de proteína não torna o processo automaticamente ativo: se o movimento é a favor do gradiente, ele pode ser passivo.',
+      'Para íons, além da diferença de concentração, deve-se considerar a diferença de carga elétrica entre os lados da membrana. As duas componentes formam o gradiente eletroquímico.'
+    ]},
+    {h:'Osmose e tonicidade',ps:[
+      'Osmose é o movimento líquido de água através de uma membrana seletivamente permeável, em resposta a diferenças de potencial hídrico. Em situações simplificadas de prova, a água tende a se deslocar para o lado com maior concentração efetiva de solutos que não atravessam livremente a membrana.',
+      'Em meio hipotônico, a célula tende a receber água: uma hemácia pode inchar e sofrer hemólise, enquanto uma célula vegetal tende a ficar túrgida. Em meio hipertônico, ela tende a perder água: a hemácia murcha e a célula vegetal pode sofrer plasmólise, com retração do conteúdo celular e afastamento da membrana em relação à parede.',
+      'Em meio isotônico, não há movimento líquido de água, embora moléculas continuem atravessando a membrana nos dois sentidos. A referência é sempre a célula: chamar um meio de hipertônico pressupõe compará-lo com o interior celular. Em células vegetais, a pressão exercida pela parede também influencia o equilíbrio da água.'
+    ]},
+    {h:'Transporte ativo e transporte por vesículas',ps:[
+      'O transporte ativo movimenta uma substância contra seu gradiente e depende de uma fonte de energia. No transporte ativo primário, uma proteína usa diretamente energia de uma reação, como a hidrólise de ATP. A bomba de sódio e potássio contribui para manter diferenças de concentração desses íons entre o interior e o exterior celular.',
+      'No transporte ativo secundário, a passagem de uma substância a favor de seu gradiente fornece energia para transportar outra contra o próprio gradiente. Esse gradiente pode ter sido estabelecido anteriormente por uma bomba que consome ATP. Um exemplo é o cotransporte de sódio e glicose em células do intestino.',
+      'A endocitose e a exocitose envolvem vesículas: na endocitose, a célula internaliza materiais; na exocitose, vesículas se fundem à membrana e liberam conteúdo. São processos distintos da passagem de pequenas moléculas por canais ou proteínas transportadoras.'
+    ]},
+    {h:'Parede celular e suas diferenças em relação à membrana',ps:[
+      'A parede celular é uma estrutura externa à membrana plasmática, presente em plantas, fungos e na maioria das bactérias, entre outros organismos. Ela contribui para sustentação, forma e resistência mecânica. Sua composição varia: a parede vegetal contém celulose; a dos fungos contém quitina; e a da maioria das bactérias contém peptideoglicano.',
+      'Parede celular e membrana plasmática não são a mesma estrutura. A membrana está presente em todas as células e exerce controle seletivo sobre as trocas; a parede, quando presente, fica externamente e tem papel estrutural importante.',
+      'Em um vegetal colocado em meio hipotônico, a entrada de água aumenta a pressão interna contra a parede. A resistência da parede favorece a turgescência, importante para a sustentação de tecidos vegetais. Em meio hipertônico, a perda de água pode levar à plasmólise.'
+    ]}
+  ],
+  chave:[
+    'Efeitos de meios hipotônicos, hipertônicos e isotônicos sobre células animais e vegetais.',
+    'Diferenças entre difusão simples, difusão facilitada e transporte ativo.',
+    'Sentido do transporte em relação ao gradiente e necessidade de energia.',
+    'Papel de proteínas de membrana em canais, transportadores e bombas.',
+    'Relação entre parede celular, turgescência e plasmólise.',
+    'Entrada e saída de materiais por endocitose e exocitose.'
+  ],
+  exemplos:[
+    {titulo:'Sal em uma salada',texto:'“Após receber sal, folhas de alface liberam água e ficam menos firmes.” O sal torna o meio externo mais concentrado em solutos. A água tende a sair das células por osmose, reduzindo sua turgescência.',comentario:'A perda de firmeza permite identificar a saída de água sem confundi-la com a saída obrigatória de sal da célula.'},
+    {titulo:'Captação de glicose',texto:'“Uma célula recebe glicose por uma proteína transportadora, da região de maior concentração para a de menor concentração, sem uso direto de ATP.” Nesse caso, o transporte ocorre por difusão facilitada: há participação de proteína, mas o deslocamento é a favor do gradiente.',comentario:'A existência de uma proteína transportadora, por si só, não prova que há transporte ativo.'}
+  ],
+  figuras:[{tipo:'fluxo',titulo:'Roteiro de resolução: membrana e transportes',itens:[
+    'Identifique o que se desloca: água, íon, glicose, partícula grande ou outra substância.',
+    'Compare os meios: verifique as concentrações indicadas e, para íons, as condições elétricas informadas.',
+    'Determine o sentido do movimento em relação ao gradiente; se for água, identifique a tonicidade do meio externo.',
+    'Procure o mecanismo: bicamada, proteína de membrana ou formação de vesícula.',
+    'Verifique a energia: uso direto de ATP ou aproveitamento de gradiente criado anteriormente.',
+    'Relacione o resultado ao tipo celular: considere a parede vegetal ou o possível inchaço e murchamento das hemácias.'
+  ]}],
+  questoes:[
+    {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Uma pessoa prepara uma salada e adiciona grande quantidade de sal às folhas. Depois de algum tempo, observa água no recipiente e percebe que as folhas perderam parte de sua firmeza.'],enunciado:'Considerando as células vegetais das folhas, a alteração observada ocorre principalmente porque o sal:',alternativas:['torna o meio externo hipotônico, promovendo entrada de água e hemólise.','torna o meio externo hipertônico, favorecendo a saída de água e a redução da turgescência.','destrói imediatamente a parede celular, permitindo a saída de todo o citoplasma.','impede qualquer passagem de água pela membrana plasmática.','transforma a osmose em transporte ativo, com bombeamento obrigatório de água por ATP.'],correta:'B',resolucao:['O sal aumenta a concentração efetiva de solutos no meio ao redor das células.','Em relação ao interior celular, esse meio se torna hipertônico.','A água tende a sair das células por osmose. Com menor pressão interna, as células ficam menos túrgidas, contribuindo para a perda de firmeza das folhas.','A resposta é B.'],porqueErram:['A: o meio descrito é hipertônico, não hipotônico; hemólise é ruptura de hemácias, não o efeito nas folhas.','C: a situação não exige destruição imediata da parede celular.','D: a perda de água depende justamente de sua passagem através da membrana.','E: a osmose é passiva; não é necessário supor bombeamento obrigatório de água por ATP.']},
+    {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em uma investigação, uma substância atravessa a membrana celular com auxílio de uma proteína. Os pesquisadores observam que ela se desloca da região de maior concentração para a de menor concentração e que esse transporte não utiliza ATP diretamente.'],enunciado:'O mecanismo descrito é:',alternativas:['difusão simples.','difusão facilitada.','transporte ativo primário.','fagocitose.','exocitose.'],correta:'B',resolucao:['A substância se move a favor de seu gradiente de concentração.','A passagem depende de uma proteína de membrana e não usa ATP diretamente.','Essas características identificam a difusão facilitada. A resposta é B.'],porqueErram:['A: na difusão simples, a passagem ocorre diretamente pela bicamada, sem a proteína transportadora descrita.','C: o transporte ativo primário usa energia diretamente para movimentar substâncias contra um gradiente.','D: fagocitose é uma forma de endocitose de partículas grandes por vesículas.','E: exocitose envolve a fusão de vesículas com a membrana para liberar conteúdo.']},
+    {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em células do intestino, uma proteína pode transportar glicose para o interior celular contra o gradiente de concentração dessa molécula. Ao mesmo tempo, íons sódio entram na célula a favor de seu gradiente. A diferença de concentração de sódio é mantida, em parte, por uma bomba de membrana que utiliza ATP.'],enunciado:'A entrada de glicose pela proteína descrita exemplifica:',alternativas:['osmose, porque glicose e sódio entram juntos.','difusão simples, porque o sódio se move a favor do gradiente.','transporte ativo secundário, porque o gradiente de sódio fornece energia para o transporte da glicose.','difusão facilitada da glicose, porque toda passagem por proteína ocorre a favor do gradiente.','exocitose, porque a glicose é transportada para dentro da célula.'],correta:'C',resolucao:['A glicose entra contra seu gradiente; portanto, seu movimento não é explicado por difusão passiva.','O sódio entra a favor de seu gradiente. A energia associada a esse deslocamento é acoplada ao transporte da glicose.','A bomba que utiliza ATP ajuda a manter o gradiente de sódio, mas a proteína que transporta glicose e sódio aproveita esse gradiente.','O mecanismo é transporte ativo secundário. A resposta é C.'],porqueErram:['A: osmose é movimento de água, não o cotransporte descrito de glicose e sódio.','B: há uma proteína transportadora, e a glicose se move contra seu gradiente.','D: proteínas podem participar de transporte ativo; no caso, a glicose não segue a favor do gradiente.','E: exocitose libera conteúdo por fusão de vesículas com a membrana, não descrevendo a entrada indicada.']}
+  ],
+  recomendacoes:{busca:'Membrana plasmática, transporte celular, osmose e parede celular — Biologia para o Enem', canais:['Biologia com Samuel Cunha','Biologia Total com Prof. Jubilut'], aulas:[{titulo:'MEMBRANA PLASMÁTICA - CÉLULA - Citologia',url:'https://www.youtube.com/watch?v=9Nf0EJtwxn0'},{titulo:'TRANSPORTE ATRAVÉS DA MEMBRANA PLASMÁTICA - Mapa Mental',url:'https://www.youtube.com/watch?v=XJQrtPRKukk'}]}
+};
+
 /* ===== js/db/conteudos/estrutura.js ===== */
 /**
  * Mapa dos conteúdos: 4 áreas → matérias → conteúdos.
@@ -12969,6 +13027,10 @@ function materiaPorId(id) {
 }
 
 function conteudoPorId(id) {
+  if (id === 'bio-citologia-anterior') {
+    const area = areaPorId('natureza'), materia = materiaPorId('biologia');
+    return {id, titulo:'Citologia: material e questões anteriores', materia, area};
+  }
   for (const a of AREAS) {
     for (const m of a.materias) {
       const c = m.conteudos.find(x => x.id === id);
@@ -19906,6 +19968,7 @@ const QUESTOES_REFORCO = {
 
 
 
+
 const PAGINAS = {
   ...PAGINAS_LINGUAGENS,
   'red-competencias': MATERIAL_REDACAO,
@@ -19939,6 +20002,7 @@ function paginaOriginal(id, conteudo) {
 /** As páginas agrupadas mantêm as seções dos materiais anteriores na mesma página.
  * Exercícios e aulas adicionais permanecem disponíveis nos links históricos. */
 function paginaDe(id, conteudo) {
+  if (id === 'bio-citologia-anterior') return paginaOriginal('bio-citologia', conteudo);
   const principal = paginaOriginal(id, conteudo);
   const grupo = GRUPOS.find(g => g.pagina === id);
   if (!grupo) return principal;
@@ -19951,6 +20015,17 @@ function paginaDe(id, conteudo) {
     secoes.push(...conteudoAntigo.map(sec => ({...sec, h:`${titulos[antigo] || grupo.titulo} · ${sec.h}`})));
   }
   const apoio = APOIO_GRUPOS[id];
+  if (id === 'bio-citologia') {
+    return {...principal, secoes:[...MATERIAL_MEMBRANA.secoes, ...secoes], resumo:[],
+      chave:MATERIAL_MEMBRANA.chave,
+      exemplos:[...MATERIAL_MEMBRANA.exemplos, ...textos.flatMap(({p}) => p.exemplos)],
+      figuras:[...MATERIAL_MEMBRANA.figuras, ...textos.flatMap(({p}) => p.figuras)],
+      formulas:textos.flatMap(({p}) => p.formulas),
+      questoes:MATERIAL_MEMBRANA.questoes,
+      recomendacoes:MATERIAL_MEMBRANA.recomendacoes,
+      materiaisRelacionados:[{id:'bio-citologia-anterior', titulo:'Citologia: material e questões anteriores, incluindo questão do Enem', video:VIDEOS[id] || null}]
+    };
+  }
   return {...principal, secoes, resumo:[],
     exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],
     figuras:[...textos.flatMap(({p}) => p.figuras), ...(apoio ? [{tipo:'fluxo', titulo:'Esquema de estudo', itens:apoio.esquema}] : [])],
@@ -20181,6 +20256,7 @@ function viewConteudo(id) {
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
         <p>Esta aula aborda o tema indicado no título; ela pode não cobrir todos os subtemas do grupo.</p>
+        ${p.recomendacoes ? `<div class="cp-recomendacoes"><p><b>Busca sugerida no YouTube:</b> <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(p.recomendacoes.busca)}" target="_blank" rel="noopener noreferrer">${escQ(p.recomendacoes.busca)}</a></p><p><b>Canais recomendados:</b> ${p.recomendacoes.canais.map(escQ).join(' · ')}.</p><p>Para aprofundar membrana e transportes: ${p.recomendacoes.aulas.map(a => `<a href="${escQ(a.url)}" target="_blank" rel="noopener noreferrer">${escQ(a.titulo)}</a>`).join(' · ')}. Confira também uma aula específica sobre parede celular.</p></div>` : ''}
         <p class="video-legenda">
           <b>${escQ(p.video.titulo || 'Aula em vídeo')}</b>
           ${p.video.canal ? `<span class="video-canal">${escQ(p.video.canal)}</span>` : ''}

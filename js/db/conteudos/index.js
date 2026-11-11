@@ -14,6 +14,7 @@ import { VIDEOS } from './videos.js';
 import { AREAS, AREAS_LEGADO, GRUPOS } from './estrutura.js';
 import { MATERIAL_REDACAO } from './material-redacao.js';
 import { APOIO_GRUPOS } from './apoio-grupos.js';
+import { MATERIAL_MEMBRANA } from './material-membrana.js';
 import { EXPANSOES } from './expansoes.js';
 import { QUESTOES_ENEM } from './questoes-enem.js';
 import { QUESTOES_DIA1 } from './questoes-inep-dia1.js';
@@ -54,6 +55,7 @@ function paginaOriginal(id, conteudo) {
 /** As páginas agrupadas mantêm as seções dos materiais anteriores na mesma página.
  * Exercícios e aulas adicionais permanecem disponíveis nos links históricos. */
 export function paginaDe(id, conteudo) {
+  if (id === 'bio-citologia-anterior') return paginaOriginal('bio-citologia', conteudo);
   const principal = paginaOriginal(id, conteudo);
   const grupo = GRUPOS.find(g => g.pagina === id);
   if (!grupo) return principal;
@@ -66,6 +68,17 @@ export function paginaDe(id, conteudo) {
     secoes.push(...conteudoAntigo.map(sec => ({...sec, h:`${titulos[antigo] || grupo.titulo} · ${sec.h}`})));
   }
   const apoio = APOIO_GRUPOS[id];
+  if (id === 'bio-citologia') {
+    return {...principal, secoes:[...MATERIAL_MEMBRANA.secoes, ...secoes], resumo:[],
+      chave:MATERIAL_MEMBRANA.chave,
+      exemplos:[...MATERIAL_MEMBRANA.exemplos, ...textos.flatMap(({p}) => p.exemplos)],
+      figuras:[...MATERIAL_MEMBRANA.figuras, ...textos.flatMap(({p}) => p.figuras)],
+      formulas:textos.flatMap(({p}) => p.formulas),
+      questoes:MATERIAL_MEMBRANA.questoes,
+      recomendacoes:MATERIAL_MEMBRANA.recomendacoes,
+      materiaisRelacionados:[{id:'bio-citologia-anterior', titulo:'Citologia: material e questões anteriores, incluindo questão do Enem', video:VIDEOS[id] || null}]
+    };
+  }
   return {...principal, secoes, resumo:[],
     exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],
     figuras:[...textos.flatMap(({p}) => p.figuras), ...(apoio ? [{tipo:'fluxo', titulo:'Esquema de estudo', itens:apoio.esquema}] : [])],
