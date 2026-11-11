@@ -166,3 +166,12 @@ main .partes > .parte > .parte-tit { background:var(--tom-faixa,#c2ead2) !import
   main .motivadores .mot-lista { padding:8px 12px 12px !important; background:transparent !important; border:0 !important; }
   main .motivadores .mot-texto { font-family:var(--sans,system-ui); line-height:1.6; }
 }
+/* Cada tópico da matriz mantém suas seis seções dentro do mesmo grupo. */
+main .conteudo-pag > .subtema { grid-column:1/-1 !important; min-width:0; margin-top:32px; display:grid; gap:18px; }
+main .subtema-topo { border-top:1px solid #3a6549; padding:30px 0 4px; }
+main .subtema-topo h2 { margin:8px 0 0; font-size:clamp(1.75rem,3vw,2.65rem); line-height:1.12; }
+main .subtema .cp-secao h4 { font-size:1.15rem; margin:0 0 12px; color:var(--ink); }
+main .subtema .cp-secao h4::before { content:'◆'; font-size:.7em; color:var(--g-300); margin-right:.55em; }
+main .subtema .cp-bloco { min-width:0; }
+main .subtema .video-caixa { margin:0 0 18px; }
+main .subtema .video-caixa + p, main .subtema .video-caixa ~ p { margin:10px 0; }

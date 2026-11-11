@@ -45,3 +45,20 @@ Inep, em 15 grupos; outros exercícios são autorais. Não se deve inferir que
 cada subtema tem três questões oficiais. Os textos novos são uma introdução e
 não uma auditoria de completude de todo o programa; vídeos vinculados podem
 cobrir apenas o subtema nomeado, e sua abrangência precisa de verificação.
+
+## Aprofundamento por tópico da matriz
+
+Em andamento, antes de novo deploy. A lista e a situação de cada tópico estão
+em `tools/MATRIZ-APROFUNDAMENTO.md`. Foram acrescentados sete subtemas completos
+além do piloto de membrana: organelas, bioenergética, divisão celular,
+interpretação, variação linguística, porcentagem/juros e Brasil Colônia. Cada
+subtema novo reúne cinco blocos, exemplos, roteiro, três questões autorais com
+quatro distratores justificados e recomendação de vídeo. As aulas recomendadas
+podem não cobrir todos os detalhes; a marcação no acompanhamento não equivale a
+auditoria externa ou a garantia de abrangência integral de cada vídeo.
+
+A navegação exibe 126 questões nos grupos e subtemas abertos, 23 delas com
+referência oficial em 14 grupos; o material anterior de Citologia, incluindo
+questões oficiais, continua acessível pelo link específico. Os novos exercícios
+são autorais, não questões oficiais do Enem. Permanecem 98 tópicos sem marcação
+nesse novo padrão e o site não foi publicado nesta rodada.

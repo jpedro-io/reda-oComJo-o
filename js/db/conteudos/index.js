@@ -15,6 +15,11 @@ import { AREAS, AREAS_LEGADO, GRUPOS } from './estrutura.js';
 import { MATERIAL_REDACAO } from './material-redacao.js';
 import { APOIO_GRUPOS } from './apoio-grupos.js';
 import { MATERIAL_MEMBRANA } from './material-membrana.js';
+import { SUBTEMAS_CITOLOGIA } from './subtemas-citologia.js';
+import { SUBTEMA_BIOENERGETICA } from './subtema-bioenergetica.js';
+import { SUBTEMAS_PORTUGUES } from './subtemas-portugues.js';
+import { SUBTEMA_MAT_FINANCEIRA } from './subtema-matematica-financeira.js';
+import { SUBTEMA_BRASIL_COLONIA } from './subtema-brasil-colonia.js';
 import { EXPANSOES } from './expansoes.js';
 import { QUESTOES_ENEM } from './questoes-enem.js';
 import { QUESTOES_DIA1 } from './questoes-inep-dia1.js';
@@ -76,10 +81,13 @@ export function paginaDe(id, conteudo) {
       formulas:textos.flatMap(({p}) => p.formulas),
       questoes:MATERIAL_MEMBRANA.questoes,
       recomendacoes:MATERIAL_MEMBRANA.recomendacoes,
+      subtemas:[SUBTEMAS_CITOLOGIA[0], SUBTEMA_BIOENERGETICA, SUBTEMAS_CITOLOGIA[1]],
       materiaisRelacionados:[{id:'bio-citologia-anterior', titulo:'Citologia: material e questões anteriores, incluindo questão do Enem', video:VIDEOS[id] || null}]
     };
   }
-  return {...principal, secoes, resumo:[],
+  const subtemasPorGrupo = {'lin-interpretacao':[SUBTEMAS_PORTUGUES[0]], 'lin-variacao':[SUBTEMAS_PORTUGUES[1]], 'mat-porcentagem':[SUBTEMA_MAT_FINANCEIRA], 'his-colonia':[SUBTEMA_BRASIL_COLONIA]};
+  const subtemas = subtemasPorGrupo[id] || [];
+  return {...principal, secoes, resumo:[], subtemas,
     exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],
     figuras:[...textos.flatMap(({p}) => p.figuras), ...(apoio ? [{tipo:'fluxo', titulo:'Esquema de estudo', itens:apoio.esquema}] : [])],
     formulas:textos.flatMap(({p}) => p.formulas),
@@ -103,4 +111,4 @@ export function temTexto(id) { return Array.isArray(PAGINAS[id]?.resumo) && PAGI
 
 /** Quantas questões reais já foram resolvidas no guia inteiro. */
 export const TOTAL_QUESTOES = AREAS.flatMap(a => a.materias.flatMap(m => m.conteudos))
-  .reduce((t, c) => t + paginaDe(c.id).questoes.length, 0);
+  .reduce((t, c) => { const p = paginaDe(c.id); return t + p.questoes.length + (p.subtemas || []).reduce((n, s) => n + s.questoes.length, 0); }, 0);

@@ -6334,6 +6334,15 @@ main .partes > .parte > .parte-tit { background:var(--tom-faixa,#c2ead2) !import
   main .motivadores .mot-lista { padding:8px 12px 12px !important; background:transparent !important; border:0 !important; }
   main .motivadores .mot-texto { font-family:var(--sans,system-ui); line-height:1.6; }
 }
+/* Cada tópico da matriz mantém suas seis seções dentro do mesmo grupo. */
+main .conteudo-pag > .subtema { grid-column:1/-1 !important; min-width:0; margin-top:32px; display:grid; gap:18px; }
+main .subtema-topo { border-top:1px solid #3a6549; padding:30px 0 4px; }
+main .subtema-topo h2 { margin:8px 0 0; font-size:clamp(1.75rem,3vw,2.65rem); line-height:1.12; }
+main .subtema .cp-secao h4 { font-size:1.15rem; margin:0 0 12px; color:var(--ink); }
+main .subtema .cp-secao h4::before { content:'◆'; font-size:.7em; color:var(--g-300); margin-right:.55em; }
+main .subtema .cp-bloco { min-width:0; }
+main .subtema .video-caixa { margin:0 0 18px; }
+main .subtema .video-caixa + p, main .subtema .video-caixa ~ p { margin:10px 0; }
 
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%274%27%20fill%3D%27%2325e88c%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2717%27%20fill%3D%27%2307130c%27%20text-anchor%3D%27middle%27%3ER%3C%2Ftext%3E%3C%2Fsvg%3E" />
@@ -12760,6 +12769,287 @@ const MATERIAL_MEMBRANA = {
     {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em células do intestino, uma proteína pode transportar glicose para o interior celular contra o gradiente de concentração dessa molécula. Ao mesmo tempo, íons sódio entram na célula a favor de seu gradiente. A diferença de concentração de sódio é mantida, em parte, por uma bomba de membrana que utiliza ATP.'],enunciado:'A entrada de glicose pela proteína descrita exemplifica:',alternativas:['osmose, porque glicose e sódio entram juntos.','difusão simples, porque o sódio se move a favor do gradiente.','transporte ativo secundário, porque o gradiente de sódio fornece energia para o transporte da glicose.','difusão facilitada da glicose, porque toda passagem por proteína ocorre a favor do gradiente.','exocitose, porque a glicose é transportada para dentro da célula.'],correta:'C',resolucao:['A glicose entra contra seu gradiente; portanto, seu movimento não é explicado por difusão passiva.','O sódio entra a favor de seu gradiente. A energia associada a esse deslocamento é acoplada ao transporte da glicose.','A bomba que utiliza ATP ajuda a manter o gradiente de sódio, mas a proteína que transporta glicose e sódio aproveita esse gradiente.','O mecanismo é transporte ativo secundário. A resposta é C.'],porqueErram:['A: osmose é movimento de água, não o cotransporte descrito de glicose e sódio.','B: há uma proteína transportadora, e a glicose se move contra seu gradiente.','D: proteínas podem participar de transporte ativo; no caso, a glicose não segue a favor do gradiente.','E: exocitose libera conteúdo por fusão de vesículas com a membrana, não descrevendo a entrada indicada.']}
   ],
   recomendacoes:{busca:'Membrana plasmática, transporte celular, osmose e parede celular — Biologia para o Enem', canais:['Biologia com Samuel Cunha','Biologia Total com Prof. Jubilut'], aulas:[{titulo:'MEMBRANA PLASMÁTICA - CÉLULA - Citologia',url:'https://www.youtube.com/watch?v=9Nf0EJtwxn0'},{titulo:'TRANSPORTE ATRAVÉS DA MEMBRANA PLASMÁTICA - Mapa Mental',url:'https://www.youtube.com/watch?v=XJQrtPRKukk'}]}
+};
+
+/* ===== js/db/conteudos/subtemas-citologia.js ===== */
+/** Materiais autorais: cada objeto cobre um tópico específico da matriz. */
+const SUBTEMAS_CITOLOGIA = [
+{
+ id:'bio-organelas', codigo:'Biologia 1.5', titulo:'Organelas celulares e suas funções fisiológicas',
+ secoes:[
+  {h:'Compartimentação, núcleo e ribossomos',ps:[
+   'Em células eucarióticas, compartimentos delimitados por membranas permitem que reações diferentes ocorram em ambientes especializados. O núcleo abriga a maior parte do DNA nuclear; a informação de um gene pode ser transcrita em RNA e usada na produção de proteínas.',
+   'Ribossomos, presentes também em procariontes, não possuem membrana e traduzem RNA mensageiro em cadeias de aminoácidos. Ribossomos livres sintetizam muitas proteínas que atuam no citosol; ribossomos ligados ao retículo rugoso participam da produção de proteínas destinadas à secreção, às membranas ou ao sistema de endomembranas. Nem toda proteína passa pelo Golgi.'
+  ]},
+  {h:'Retículo endoplasmático e complexo de Golgi',ps:[
+   'O retículo endoplasmático rugoso apresenta ribossomos em sua face citosólica e participa da síntese e do processamento inicial de proteínas encaminhadas ao sistema de endomembranas. O retículo liso não tem ribossomos aderidos e participa da produção de lipídios, do armazenamento de cálcio em certas células e de processos de desintoxicação, conforme o tecido.',
+   'O complexo de Golgi modifica, seleciona e encaminha produtos recebidos em vesículas, além de participar da formação de vesículas com enzimas digestivas. Em uma célula secretora, uma rota frequente é ribossomo associado ao retículo rugoso → retículo → Golgi → vesícula → membrana plasmática. A rota específica depende do destino da molécula.'
+  ]},
+  {h:'Lisossomos, peroxissomos e vacúolos',ps:[
+   'Lisossomos são compartimentos ricos em enzimas hidrolíticas que atuam na digestão intracelular. Eles podem receber material vindo de endocitose e participar da autofagia, processo que encaminha componentes da própria célula para degradação e reciclagem.',
+   'Peroxissomos participam de reações de oxidação e contêm enzimas como a catalase, que decompõe o peróxido de hidrogênio. Não confunda essa função com a digestão lisossomal. Em muitas células vegetais, o vacúolo central acumula substâncias, participa do equilíbrio osmótico e pode exercer funções degradativas.'
+  ]},
+  {h:'Mitocôndrias, cloroplastos e energia',ps:[
+   'Nas mitocôndrias de eucariontes ocorre grande parte da respiração aeróbia: a matriz abriga etapas como o ciclo de Krebs, e a membrana interna abriga a cadeia transportadora de elétrons e a ATP sintase. A glicólise, porém, ocorre no citosol; portanto, nem toda etapa da respiração acontece na mitocôndria.',
+   'Cloroplastos de plantas e algas realizam fotossíntese: reações dependentes de luz ocorrem nas membranas dos tilacoides e o ciclo de Calvin no estroma. Mitocôndrias e cloroplastos possuem DNA próprio, ribossomos e dupla membrana, evidências compatíveis com a hipótese endossimbiótica; a maioria de suas proteínas é codificada pelo núcleo.'
+  ]},
+  {h:'Citoesqueleto e relação entre estrutura e função',ps:[
+   'O citoesqueleto é uma rede dinâmica de filamentos que participa da forma celular, do transporte intracelular e da movimentação. Microtúbulos integram o fuso de divisão e estruturas de cílios e flagelos eucarióticos; filamentos de actina participam, por exemplo, de movimentos celulares e da contração.',
+   'A abundância relativa de estruturas varia conforme a atividade: células que secretam muitas proteínas apresentam sistema de síntese e processamento desenvolvido; células com alta demanda aeróbia podem apresentar muitas mitocôndrias. Essas relações são tendências funcionais, não regras para identificar qualquer célula isoladamente.'
+  ]}
+ ],
+ chave:['Relação entre função celular e abundância de organelas.','Trajeto de uma proteína secretada: ribossomo, retículo, Golgi e vesícula.','Diferenças entre retículo liso e rugoso.','Digestão lisossomal, autofagia e função de peroxissomos.','Mitocôndrias, cloroplastos e hipótese endossimbiótica.','Distinção entre células procariontes e eucariontes.'],
+ exemplos:[
+  {titulo:'Célula secretora de enzimas',texto:'“Uma célula do pâncreas produz e libera enzimas digestivas para o meio extracelular.” As proteínas destinadas à secreção entram no retículo rugoso, seguem em vesículas ao Golgi e são encaminhadas à membrana.',comentario:'O destino da proteína permite identificar uma sequência de estruturas, em vez de atribuir todas as etapas a uma única organela.'},
+  {titulo:'Remoção de componentes danificados',texto:'“Uma organela defeituosa é envolvida e encaminhada a um compartimento com enzimas digestivas.” Na autofagia, seus componentes podem ser degradados e reciclados.',comentario:'O exemplo diferencia digestão de estruturas celulares pelo sistema lisossomal de reações oxidativas nos peroxissomos.'}
+ ],
+ roteiro:['Identifique a atividade descrita: síntese, processamento, transporte, digestão ou transformação de energia.','Determine a molécula ou estrutura envolvida e seu destino.','Associe a etapa à estrutura celular e considere se ela tem membrana.','Quando houver sequência, organize o trajeto sem presumir que todas as proteínas usam a mesma rota.','Compare as alternativas e elimine funções ou localizações incompatíveis.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Uma célula glandular produz uma proteína que será liberada no meio extracelular. Após a tradução, a proteína entra no sistema de endomembranas e passa por processamento antes da secreção.'],enunciado:'Qual sequência representa adequadamente esse trajeto?',alternativas:['Ribossomos associados ao retículo rugoso → retículo → Golgi → vesícula secretora.','Peroxissomo → centríolo → núcleo → parede celular.','Cloroplasto → lisossomo → ribossomo → núcleo.','Núcleo → mitocôndria → vacúolo → ribossomo.','Ribossomo livre → cromossomo → centríolo → membrana.'],correta:'A',resolucao:['A proteína tem destino extracelular e entra no retículo rugoso durante sua síntese.','Após processamento no retículo, vesículas a encaminham ao Golgi, que participa de sua modificação e distribuição.','Vesículas secretoras podem fundir-se à membrana e liberar o produto. Portanto, A.'],porqueErram:['B: peroxissomos e centríolos não constituem a rota secretora descrita.','C: cloroplastos e lisossomos não formam essa sequência de síntese e secreção.','D: a sequência não apresenta o retículo rugoso nem o Golgi e coloca o ribossomo depois das demais estruturas.','E: cromossomos e centríolos não são etapas de transporte secretor.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Uma célula acumula componentes desgastados que deveriam ser degradados para que suas moléculas possam ser reaproveitadas. A análise indica defeito em um compartimento rico em enzimas hidrolíticas.'],enunciado:'A estrutura mais diretamente relacionada ao defeito descrito é o:',alternativas:['lisossomo.','ribossomo.','centríolo.','cloroplasto.','nucléolo.'],correta:'A',resolucao:['O enunciado destaca degradação de componentes celulares por enzimas hidrolíticas.','Lisossomos participam da digestão intracelular e da autofagia.','Assim, a alternativa A é a mais adequada.'],porqueErram:['B: ribossomos atuam na tradução de proteínas, não na digestão por enzimas lisossomais.','C: centríolos relacionam-se à organização de microtúbulos em certas células.','D: cloroplastos são associados à fotossíntese.','E: o nucléolo participa da produção de RNA ribossômico e montagem de subunidades ribossomais.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Mitocôndrias e cloroplastos têm duas membranas e possuem DNA e ribossomos próprios. Estudos comparam essas características às de bactérias.'],enunciado:'Essas observações sustentam a hipótese de que essas organelas:',alternativas:['surgiram da associação evolutiva entre uma célula ancestral e bactérias.','são bactérias atuais independentes que nunca interagem com a célula.','têm todas as suas proteínas codificadas exclusivamente pelo próprio DNA.','existem em todas as células bacterianas atuais.','não participam de transformações energéticas.'],correta:'A',resolucao:['DNA e ribossomos próprios, além de outras evidências, aproximam essas organelas de ancestrais bacterianos.','A hipótese endossimbiótica propõe uma associação evolutiva incorporada à linhagem eucariótica.','Isso não significa independência completa nem origem exclusiva de todas as proteínas no DNA da organela. A resposta é A.'],porqueErram:['B: organelas atuais são integradas ao funcionamento celular e dependem de genes nucleares.','C: muitas proteínas das organelas são codificadas pelo núcleo.','D: bactérias não possuem mitocôndrias e cloroplastos eucarióticos.','E: ambas participam de processos de transformação energética.']}
+ ],
+ video:{busca:'Organelas celulares funções ribossomos retículo Golgi mitocôndria lisossomos Enem',canal:'Biologia com Samuel Cunha',titulo:'ORGANELAS CITOPLASMÁTICAS - Resumo',url:'https://www.youtube.com/watch?v=qw0nCGTXEOM'},
+ fontes:[{titulo:'Organelas celulares — Mundo Educação',url:'https://mundoeducacao.uol.com.br/biologia/organelas-celulares.htm'}]
+},
+{
+ id:'bio-divisao', codigo:'Biologia 1.7', titulo:'Divisão celular: ciclo celular, mitose e meiose',
+ secoes:[
+  {h:'Ciclo celular, DNA e cromossomos',ps:[
+   'O ciclo de uma célula proliferativa compreende intérfase e fase de divisão. Na intérfase, G1 envolve crescimento e atividades metabólicas; na fase S ocorre duplicação do DNA; e G2 inclui preparação para a divisão. Algumas células entram em G0 e não prosseguem imediatamente no ciclo.',
+   'Depois da fase S, cada cromossomo duplicado apresenta duas cromátides-irmãs unidas na região do centrômero. A duplicação do DNA não dobra, por si só, o número de cromossomos quando estes são contados pelos centrômeros. Controles do ciclo verificam condições como integridade do DNA; falhas nesses controles podem contribuir para proliferação desregulada.'
+  ]},
+  {h:'Mitose e citocinese',ps:[
+   'A mitose distribui cromossomos duplicados entre dois núcleos. Na prófase ocorre condensação cromossômica e organização do fuso; na metáfase, os cromossomos se alinham; na anáfase, cromátides-irmãs se separam; na telófase, os núcleos se reorganizam. A citocinese divide o citoplasma.',
+   'Em condições usuais, uma divisão mitótica produz duas células com a mesma ploidia da célula inicial e informação genética muito semelhante, ressalvadas mutações ou erros. A mitose participa do crescimento e da renovação de tecidos e pode ocorrer em células haploides ou diploides; não é correto defini-la apenas como divisão de células 2n.'
+  ]},
+  {h:'Meiose I e recombinação',ps:[
+   'Após uma duplicação de DNA, a meiose compreende duas divisões. Na prófase I, cromossomos homólogos se pareiam e pode ocorrer crossing-over entre cromátides não irmãs, gerando novas combinações de alelos. Na metáfase I, pares de homólogos se orientam na placa equatorial.',
+   'Na anáfase I, os cromossomos homólogos se separam; as cromátides-irmãs permanecem juntas. A primeira divisão reduz o número de conjuntos cromossômicos de uma célula diploide, razão pela qual é chamada reducional. A orientação dos pares também contribui para a variedade das combinações cromossômicas.'
+  ]},
+  {h:'Meiose II, ploidia e variabilidade',ps:[
+   'Na meiose II, sem nova duplicação de DNA entre as divisões, ocorre a separação das cromátides-irmãs. Em uma descrição usual, uma célula diploide origina quatro células haploides; na formação de óvulos humanos, as divisões são desiguais e originam um óvulo funcional e corpúsculos polares.',
+   'Ploidia indica o número de conjuntos de cromossomos, não a quantidade total de DNA. Em humanos, células somáticas tipicamente possuem 2n = 46, e gametas normais têm n = 23. Crossing-over, segregação dos homólogos e fecundação contribuem para diversidade, mas não garantem que cada gameta seja único.'
+  ]},
+  {h:'Erros de segregação e interpretação de questões',ps:[
+   'A não disjunção ocorre quando cromossomos ou cromátides não se separam como esperado, podendo gerar células com número alterado de cromossomos. Seus efeitos dependem do cromossomo, do estágio e do organismo; uma alteração numérica não decorre obrigatoriamente de crossing-over.',
+   'Em problemas, identifique o tipo de divisão, a célula inicial, se houve duplicação e se a pergunta pede cromossomos, cromátides, conjuntos ou quantidade de DNA. Acompanhe cada etapa antes de calcular. Em plantas e outros grupos, a relação entre meiose e formação de gametas varia conforme o ciclo de vida.'
+  ]}
+ ],
+ chave:['Duplicação de DNA na fase S e distinção entre cromossomos e cromátides.','Mitose em crescimento, reparo e renovação celular.','Separação de homólogos na meiose I e cromátides na meiose II.','Crossing-over e segregação independente como fontes de combinações.','Ploidia e número cromossômico antes e depois de divisões.','Não disjunção e alterações no número de cromossomos.'],
+ exemplos:[
+  {titulo:'Renovação de tecido',texto:'“Após um corte, células da pele proliferam na região da lesão.” Divisões mitóticas produzem células que contribuem para a renovação do tecido.',comentario:'Crescimento e reparo apontam para mitose, e não para a divisão reducional associada à meiose.'},
+  {titulo:'Contagem após a fase S',texto:'“Uma célula humana com 46 cromossomos duplicou seu DNA e ainda não iniciou a mitose.” Ela continua com 46 cromossomos duplicados, agora com 92 cromátides.',comentario:'Duplicar DNA não equivale a duplicar o número de cromossomos antes de as cromátides se separarem.'}
+ ],
+ roteiro:['Identifique o organismo, a célula inicial e sua ploidia ou número de cromossomos.','Determine se a questão pede número de cromossomos, cromátides, conjuntos ou quantidade de DNA.','Verifique se a fase S já ocorreu e se a célula entrou em mitose ou meiose.','Na anáfase mitótica ou na meiose II, acompanhe cromátides; na meiose I, acompanhe homólogos.','Considere crossing-over ou não disjunção apenas se o enunciado permitir.','Conte o resultado solicitado e confira se os dados são suficientes.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em uma investigação, uma célula humana com 46 cromossomos é observada após completar a fase S da intérfase e antes de iniciar a mitose. Não houve erro na duplicação.'],enunciado:'Nessa situação, a célula apresenta:',alternativas:['23 cromossomos com uma cromátide cada.','46 cromossomos duplicados, com 92 cromátides.','92 cromossomos com uma cromátide cada.','46 cromossomos, sem DNA duplicado.','92 cromossomos duplicados, com 184 cromátides.'],correta:'B',resolucao:['Antes da fase S, a célula apresenta 46 cromossomos.','A fase S duplica o DNA: cada cromossomo passa a ter duas cromátides-irmãs.','Antes da separação das cromátides, contam-se 46 cromossomos e 92 cromátides. Alternativa B.'],porqueErram:['A: 23 é o número típico de cromossomos de gametas humanos, não dessa célula diploide.','C: antes da separação das cromátides, a contagem permanece em 46 cromossomos.','D: a fase S já duplicou o DNA.','E: a duplicação de DNA não produziu 92 cromossomos duplicados.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Durante a formação de gametas, cromossomos homólogos se pareiam, e segmentos podem ser trocados entre cromátides não irmãs.'],enunciado:'Esse processo contribui para a diversidade genética porque:',alternativas:['elimina todos os genes recessivos.','produz novas combinações de alelos nos cromossomos.','impede a separação dos homólogos na meiose I.','duplica o número de cromossomos em todos os gametas.','ocorre exclusivamente durante a citocinese mitótica.'],correta:'B',resolucao:['O pareamento de homólogos e a troca de segmentos descrevem crossing-over na prófase I da meiose.','A troca pode produzir cromátides com novas combinações de alelos.','Isso contribui para diversidade genética; a alternativa correta é B.'],porqueErram:['A: crossing-over não elimina necessariamente alelos recessivos.','C: a separação dos homólogos ocorre na meiose I; o processo descrito não a impede por definição.','D: a troca de segmentos não duplica obrigatoriamente o número de cromossomos dos gametas.','E: o processo mencionado ocorre na meiose, não exclusivamente na citocinese mitótica.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Uma célula diploide com 2n = 8 completa uma meiose normal, sem erros de segregação.'],enunciado:'Ao final da meiose II, cada célula resultante possui:',alternativas:['2 cromossomos.','4 cromossomos.','8 cromossomos.','16 cromossomos.','32 cromossomos.'],correta:'B',resolucao:['O número diploide é 2n = 8, portanto n = 4.','A separação de homólogos na meiose I reduz a ploidia; na meiose II, as cromátides-irmãs se separam.','Cada célula final tem quatro cromossomos. Alternativa B.'],porqueErram:['A: dois cromossomos não correspondem ao conjunto haploide informado.','C: oito é o número diploide inicial, não o resultado normal por célula após a meiose.','D: 16 não é o número final por célula; confunde contagem com duplicação de DNA.','E: 32 não decorre das etapas de uma meiose normal nessa célula.']}
+ ],
+ video:{busca:'Ciclo celular mitose meiose crossing over divisão celular Enem',canal:'Biologia com Samuel Cunha',titulo:'MITOSE E MEIOSE - Diferenças',url:'https://www.youtube.com/watch?v=f5B5sZZ4vuQ'},
+ fontes:[{titulo:'Divisão celular — UFRGS',url:'https://professor.ufrgs.br/simonemarcuzzo/files/mitose_e_meiose.pdf'}]
+}
+];
+
+/* ===== js/db/conteudos/subtema-bioenergetica.js ===== */
+const SUBTEMA_BIOENERGETICA = {
+ id:'bio-bioenergetica', codigo:'Biologia 1.6', titulo:'Bioenergética: fotossíntese, quimiossíntese, respiração e fermentação',
+ secoes:[
+  {h:'Energia, ATP e reações metabólicas',ps:[
+   'O metabolismo compreende reações de síntese e degradação. O ATP é uma molécula intermediária que pode transferir energia para processos celulares, por exemplo transporte e síntese; ele não é uma fonte inesgotável e precisa ser continuamente regenerado a partir de ADP e fosfato.',
+   'Organismos autotróficos produzem matéria orgânica a partir de fontes inorgânicas de carbono usando energia da luz ou de reações químicas. Heterotróficos obtêm matéria orgânica de outros organismos. Essas categorias tratam da fonte de carbono e não dizem, sozinhas, se a célula respira aerobicamente.'
+  ]},
+  {h:'Fotossíntese e suas etapas',ps:[
+   'Na fotossíntese oxigênica de plantas, algas e cianobactérias, a energia luminosa é convertida em energia química e o carbono do CO₂ é incorporado em compostos orgânicos. Nas plantas, reações dependentes de luz ocorrem nas membranas dos tilacoides; a oxidação da água fornece elétrons e libera O₂, além de ocorrer produção de ATP e NADPH.',
+   'No estroma, o ciclo de Calvin usa CO₂, ATP e NADPH para formar intermediários orgânicos. Ele não exige luz diretamente em cada reação, mas depende dos produtos e da regulação associados à etapa fotoquímica: chamá-lo de fase escura não significa que ocorre apenas à noite. A equação global simplificada não mostra todas as etapas.'
+  ]},
+  {h:'Quimiossíntese e ecossistemas',ps:[
+   'Alguns procariontes obtêm energia pela oxidação de substâncias inorgânicas e a utilizam para fixar carbono inorgânico. Em ecossistemas sem luz, como comunidades associadas a fontes hidrotermais, organismos quimioautotróficos podem sustentar cadeias alimentares.',
+   'Na nitrificação, microrganismos distintos oxidam amônia ou nitrito. As reações participam do ciclo do nitrogênio e parte desses organismos usa a energia obtida para fixar CO₂. Não confunda quimiossíntese com uso de energia luminosa nem suponha que todo procarionte realiza esse processo.'
+  ]},
+  {h:'Respiração celular aeróbia',ps:[
+   'Na glicólise, que ocorre no citosol, a glicose é convertida em piruvato e há produção líquida de ATP e NADH. Em condições aeróbias nas células eucarióticas, produtos derivados do piruvato são processados na mitocôndria, incluindo o ciclo de Krebs na matriz.',
+   'NADH e FADH₂ fornecem elétrons à cadeia transportadora na membrana mitocondrial interna. A energia liberada contribui para um gradiente de prótons que impulsiona a ATP sintase; o O₂ atua como aceptor final de elétrons e forma água. O rendimento total varia conforme organismo e condições, por isso use o valor informado na questão.'
+  ]},
+  {h:'Fermentação, respiração anaeróbia e rendimento',ps:[
+   'A fermentação regenera NAD⁺ a partir de NADH, permitindo a continuidade da glicólise sem utilizar uma cadeia respiratória nesse processo. Na fermentação lática forma-se lactato; na alcoólica, realizada por certas leveduras, formam-se etanol e CO₂. O ATP diretamente associado a essas fermentações vem da glicólise.',
+   'Fermentação não é sinônimo de respiração anaeróbia: nesta última há cadeia transportadora de elétrons com aceptor final diferente do O₂, em certos organismos. Na comparação usual por glicose, a respiração aeróbia rende mais ATP do que a fermentação, mas a quantidade exata depende do sistema considerado.'
+  ]}
+ ],
+ chave:['Origem do O₂ liberado na fotossíntese oxigênica.','Etapas e locais da fotossíntese e seu acoplamento.','Papel do oxigênio na respiração aeróbia.','Glicólise, fermentação e regeneração de NAD⁺.','Diferença entre fermentação e respiração anaeróbia.','Quimiossíntese e produtores em ambientes sem luz.'],
+ exemplos:[
+  {titulo:'Massa de pão',texto:'“A massa cresce quando leveduras liberam gás durante a fermentação.” Na fermentação alcoólica, o CO₂ pode formar bolhas que aumentam o volume da massa.',comentario:'Relacionar o produto observado ao processo diferencia fermentação alcoólica da lática.'},
+  {titulo:'Fundo oceânico',texto:'“Uma comunidade em torno de fontes hidrotermais vive sem luz solar direta.” Microrganismos podem usar energia obtida pela oxidação de compostos inorgânicos para produzir matéria orgânica.',comentario:'O exemplo mostra que produção autotrófica não depende necessariamente de luz.'}
+ ],
+ roteiro:['Identifique se o problema descreve síntese de matéria orgânica ou degradação de combustível.','Liste reagentes, produtos e fonte de energia informados.','Determine se a luz, oxigênio ou outra substância participa e qual seu papel.','Relacione a etapa ao local celular aplicável, sem generalizar organelas eucarióticas a bactérias.','Diferencie cadeia respiratória e fermentação e evite assumir rendimento de ATP não fornecido.','Compare as alternativas com a etapa, o local e os produtos efetivamente descritos.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em um experimento com plantas aquáticas, a água foi marcada com um isótopo de oxigênio. Depois da exposição à luz, os pesquisadores identificaram o isótopo no gás liberado pelo organismo.'],enunciado:'O resultado evidencia que o oxigênio gasoso liberado na fotossíntese oxigênica provém principalmente:',alternativas:['da água oxidada nas reações dependentes de luz.','do carbono do gás carbônico.','da quebra de glicose no ciclo de Calvin.','da fermentação alcoólica nos cloroplastos.','da fixação de nitrogênio na raiz.'],correta:'A',resolucao:['A marcação permite acompanhar o oxigênio inicialmente presente na água.','Na etapa fotoquímica oxigênica, a água é oxidada e origina O₂.','Encontrar a marca no gás liberado é compatível com essa origem. Alternativa A.'],porqueErram:['B: o gás carbônico fornece carbono para a matéria orgânica, mas não é a fonte do O₂ liberado nesse processo.','C: o ciclo de Calvin fixa carbono; não é a etapa descrita de liberação de O₂ por oxidação de água.','D: a fermentação alcoólica não é a origem do O₂ fotossintético.','E: fixação de nitrogênio não produz o gás oxigênio observado.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Leveduras usadas na fabricação de pães metabolizam glicose em uma condição experimental sem fornecimento de oxigênio. A produção de CO₂ é acompanhada da formação de etanol.'],enunciado:'O processo descrito permite à célula:',alternativas:['regenerar NAD⁺, favorecendo a continuidade da glicólise.','usar obrigatoriamente oxigênio como aceptor final de elétrons.','realizar fotólise da água para produzir etanol.','substituir a glicólise pelo ciclo de Calvin.','interromper completamente a produção de ATP.'],correta:'A',resolucao:['A formação de etanol e CO₂ por leveduras caracteriza fermentação alcoólica nas condições descritas.','A fermentação regenera NAD⁺ a partir de NADH.','O NAD⁺ regenerado permite a continuidade da glicólise, que produz ATP. Alternativa A.'],porqueErram:['B: o enunciado descreve condição sem fornecimento de oxigênio e fermentação.','C: fotólise da água está associada à fotossíntese oxigênica, não à produção de etanol.','D: glicólise não é substituída pelo ciclo de Calvin nessa fermentação.','E: a glicólise ainda pode produzir ATP.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Próximo a fontes hidrotermais oceânicas, microrganismos usam energia da oxidação de compostos inorgânicos para incorporar carbono inorgânico em matéria orgânica.'],enunciado:'A produção descrita é um exemplo de:',alternativas:['fermentação lática dependente de luz.','quimiossíntese por organismos quimioautotróficos.','fotossíntese oxigênica necessariamente realizada em cloroplastos.','ingestão de matéria orgânica por consumidores.','respiração pulmonar realizada por algas.'],correta:'B',resolucao:['A fonte de energia descrita é a oxidação de substâncias inorgânicas, não a luz.','O carbono inorgânico é fixado em matéria orgânica.','Essas características identificam quimioautotrofia ou quimiossíntese. Alternativa B.'],porqueErram:['A: fermentação lática não descreve a síntese autotrófica a partir de carbono inorgânico.','C: o ambiente descrito não exige luz nem cloroplastos.','D: o enunciado descreve produção de matéria orgânica, não sua ingestão.','E: o mecanismo descrito não é respiração pulmonar.']}
+ ],
+ video:{busca:'Fotossíntese quimiossíntese respiração celular fermentação Enem',canal:'BemnaBIO',titulo:'Enem 2023 - Biologia - Aula 2 - Fotossíntese, Respiração Celular e Fermentação',url:'https://www.youtube.com/watch?v=3OPf3LQvShQ'},
+ fontes:[{titulo:'Processo fotossintético — RTP Ensina',url:'https://ensina.rtp.pt/explicador/processo-fotossintetico/'}]
+};
+
+/* ===== js/db/conteudos/subtemas-portugues.js ===== */
+const SUBTEMAS_PORTUGUES = [
+{
+ id:'lin-leitura-aprofundada', codigo:'Língua Portuguesa 1.1', titulo:'Interpretação: ideia central, tese, argumentos e implícitos',
+ secoes:[
+  {h:'Situação comunicativa e ideia central',ps:[
+   'Um texto é produzido em determinada situação por alguém que se dirige a um público, em um gênero e suporte, com uma finalidade. Esses elementos orientam a seleção de linguagem e a interpretação: um anúncio, uma notícia e uma carta podem abordar o mesmo assunto com objetivos diferentes.',
+   'O assunto é o tema geral de que se fala; a ideia central expressa o que o texto diz de mais abrangente sobre esse assunto. Para formulá-la, observe título, início, desenvolvimento e conclusão e procure uma síntese que contemple o conjunto, sem reduzir o texto a um detalhe.'
+  ]},
+  {h:'Tese, argumento e evidência',ps:[
+   'Em textos argumentativos, a tese é o ponto de vista defendido sobre um problema. Argumentos são razões usadas para sustentá-lo; dados, exemplos, comparações e referências podem funcionar como evidências. Um mesmo dado só fortalece a tese quando sua relação com o raciocínio é explicada e pertinente.',
+   'Por exemplo, diante do tema mobilidade, uma tese pode afirmar que melhorar o transporte coletivo é essencial para reduzir desigualdades. O relato de longos deslocamentos em bairros afastados pode apoiar esse ponto de vista; não deve ser confundido com a própria tese nem automaticamente generalizado a todas as cidades.'
+  ]},
+  {h:'Informação explícita e inferência',ps:[
+   'Uma informação explícita está formulada no texto; uma inferência é uma conclusão construída a partir de pistas textuais e conhecimentos pertinentes ao contexto. Uma inferência adequada vai além da simples cópia, mas não autoriza inventar fatos que o texto não sustenta.',
+   'Se uma placa anuncia “Biblioteca fechada para reforma até sexta-feira”, pode-se inferir que o atendimento habitual está temporariamente interrompido. Não se pode concluir, apenas por essa frase, que o prédio será demolido ou que todas as bibliotecas da cidade estão fechadas.'
+  ]},
+  {h:'Pressupostos e subentendidos',ps:[
+   'Pressupostos são conteúdos implícitos ligados a marcas linguísticas da formulação. Em “A biblioteca voltou a abrir aos sábados”, o verbo voltou pressupõe que havia abertura aos sábados antes de uma interrupção. A informação não está apresentada como frase independente, mas é acionada pela escolha verbal.',
+   'Subentendidos dependem mais fortemente da situação e da intenção atribuída ao enunciador. Se uma pessoa diz “Está frio aqui” ao lado de uma janela aberta, pode estar sugerindo que a janela seja fechada, mas o pedido não é uma consequência obrigatória da frase fora daquele contexto.'
+  ]},
+  {h:'Efeitos de sentido e leitura multimodal',ps:[
+   'Sentidos também são produzidos por escolhas de vocabulário, conectivos, pontuação, ironia e vozes citadas. O conectivo “mas” costuma introduzir oposição ou ressalva; “portanto” sinaliza conclusão. O efeito concreto depende da relação construída no texto, e não de uma etiqueta decorada isoladamente.',
+   'Em tirinhas, cartazes e infográficos, relacione linguagem verbal e visual, autoria, público e contexto. Uma expressão aparentemente elogiosa pode ser irônica quando contrastada com a imagem. No Enem, retorne ao comando: a alternativa precisa responder ao que é pedido e ser sustentada pelas pistas do material.'
+  ]}
+ ],
+ chave:['Distinguir assunto, ideia central e tese.','Reconhecer argumentos, exemplos e evidências.','Separar informação explícita de inferência apoiada em pistas.','Identificar pressupostos marcados por palavras e subentendidos dependentes do contexto.','Relacionar imagens, linguagem verbal e finalidade comunicativa.','Examinar conectivos, ironia e efeitos de sentido.'],
+ exemplos:[
+  {titulo:'Tese e argumento',texto:'“A cidade precisa ampliar as linhas de ônibus, pois moradores de bairros distantes gastam horas no deslocamento.” A necessidade de ampliação é a tese; o tempo de deslocamento é a razão apresentada.',comentario:'A questão pode pedir a opinião defendida ou o argumento usado; trocar esses papéis altera a resposta.'},
+  {titulo:'Pressuposto e contexto',texto:'“O posto voltou a atender aos sábados.” A palavra voltou pressupõe atendimento anterior aos sábados, seguido de interrupção.',comentario:'A marca verbal sustenta uma informação implícita sem autorizar conclusões sobre o motivo da interrupção.'}
+ ],
+ roteiro:['Leia o comando e descubra se ele pede finalidade, tese, inferência ou efeito de sentido.','Identifique gênero, fonte, público e contexto disponíveis.','Resuma o assunto e localize a ideia central ou o ponto de vista.','Sublinhe as pistas textuais e visuais relevantes para a pergunta.','Compare as alternativas com essas pistas, evitando generalizações ou dados inventados.','Retorne ao texto e confirme se a escolhida responde ao comando.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['“A praça do bairro ganhou bancos novos, mas continua sem iluminação adequada. Para que os moradores possam frequentá-la também à noite, é necessário investir na rede elétrica do espaço.”'],enunciado:'O ponto de vista defendido no texto é que:',alternativas:['os bancos devem ser retirados da praça.','a praça precisa de iluminação adequada para uso noturno.','os moradores rejeitam todas as melhorias públicas.','a praça é frequentada apenas de dia por causa dos bancos.','a rede elétrica de todas as praças da cidade já foi reformada.'],correta:'B',resolucao:['O texto apresenta uma melhoria, mas contrapõe a ela um problema persistente de iluminação.','A frase final defende investir na rede elétrica para viabilizar o uso noturno.','Essa é a ideia expressa em B.'],porqueErram:['A: o texto não propõe a retirada dos bancos.','C: não há indicação de rejeição a todas as melhorias.','D: o texto não atribui aos bancos a limitação do uso noturno.','E: nenhuma informação permite concluir que todas as praças já foram reformadas.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Um aviso informa: “A biblioteca voltou a abrir aos sábados.”'],enunciado:'A escolha do verbo “voltar” pressupõe que:',alternativas:['a biblioteca jamais abriu aos sábados.','a abertura aos sábados existia antes de uma interrupção.','a biblioteca fechará permanentemente na próxima semana.','todos os serviços municipais funcionam aos sábados.','o prédio será transferido para outro bairro.'],correta:'B',resolucao:['O verbo voltou indica retomada de uma situação.','A retomada pressupõe que a abertura aos sábados já ocorria e foi interrompida.','A alternativa B registra esse pressuposto sem inventar o motivo da interrupção.'],porqueErram:['A: contradiz a ideia de retomada.','C: a frase nada diz sobre fechamento permanente futuro.','D: não há informação sobre outros serviços municipais.','E: não há referência à transferência do prédio.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Um cartaz mostra uma torneira aberta e, abaixo dela, a frase: “Cada gota conta. Feche a torneira ao escovar os dentes.”'],enunciado:'Ao combinar imagem e frase, o cartaz busca:',alternativas:['ensinar a construir uma torneira.','persuadir o público a reduzir o desperdício de água.','informar o preço de uma instalação hidráulica.','narrar uma história sobre a origem da água.','demonstrar que é impossível economizar água.'],correta:'B',resolucao:['A imagem mostra uma situação de uso de água, e o texto apresenta uma ordem dirigida ao leitor.','A expressão “Cada gota conta” valoriza a economia no cotidiano.','A finalidade é persuadir o público a evitar desperdício. Alternativa B.'],porqueErram:['A: não há instruções para construção.','C: o cartaz não apresenta preço.','D: não há narrativa sobre a origem da água.','E: o texto incentiva a economia, em vez de considerá-la impossível.']}
+ ],
+ video:{busca:'Interpretação de texto Enem ideia central tese argumentos pressupostos subentendidos',canal:'Professor Noslen',titulo:'Compreensão e Interpretação de Texto – Revisão ENEM',url:'https://www.youtube.com/watch?v=XsN0e_xPyNI'},
+ fontes:[{titulo:'Matriz de referência do Enem — Inep',url:'https://download.inep.gov.br/download/enem/matriz_referencia.pdf'}]
+},
+{
+ id:'lin-variacao-aprofundada', codigo:'Língua Portuguesa 1.2', titulo:'Variação linguística: região, história, grupos e situações',
+ secoes:[
+  {h:'Língua como prática social e diversidade',ps:[
+   'Uma língua é um conjunto dinâmico de práticas compartilhadas por seus falantes. Seus usos variam historicamente e entre comunidades, grupos e situações. A variação aparece em pronúncia, vocabulário, construções gramaticais e modos de interação; ela não indica ausência de regras.',
+   'As variedades não são incapazes de expressar ideias complexas. Em questões do Enem, observe quem fala, para quem, onde e com qual finalidade, além dos efeitos de identidade, pertencimento ou exclusão produzidos pela escolha linguística.'
+  ]},
+  {h:'Variação regional e histórica',ps:[
+   'A variação geográfica ou diatópica compreende diferenças relacionadas a regiões e redes de contato. Nomes como mandioca, macaxeira e aipim ilustram denominações regionais para um mesmo alimento, sem que uma escolha seja naturalmente superior a outra.',
+   'A variação histórica ou diacrônica envolve mudanças nos usos ao longo do tempo. Palavras, grafias e construções podem mudar, coexistir ou perder frequência. Uma forma antiga num documento pode ser evidência de seu período; não é adequado julgá-la apenas pelas convenções atuais.'
+  ]},
+  {h:'Variação social e de registro',ps:[
+   'A variação social ou diastrática envolve diferenças associadas a grupos, trajetórias, faixas etárias e comunidades profissionais, entre outros fatores. Gírias, jargões e formas de pronúncia podem sinalizar pertencimento, mas grupos são heterogêneos e nenhuma característica identifica uma pessoa de modo infalível.',
+   'A variação de registro ou diafásica depende da situação: relação entre interlocutores, finalidade, grau de formalidade e meio. A mesma pessoa pode escrever um requerimento formal e conversar informalmente com amigos. Oralidade e escrita não correspondem automaticamente a informalidade e formalidade.'
+  ]},
+  {h:'Adequação, norma-padrão e preconceito',ps:[
+   'A norma-padrão é um modelo de referência valorizado em situações formais de escrita e em instituições. Conhecê-la amplia possibilidades de atuação, mas não torna as demais variedades sem lógica. Adequação significa considerar expectativas e objetivos da situação concreta.',
+   'Preconceito linguístico ocorre quando uma variedade ou seus falantes são desqualificados socialmente por suas formas de expressão. Ele pode se combinar com desigualdades de classe, região e raça. Uma questão pode avaliar tanto a exigência de convenções em um contexto formal quanto a crítica à discriminação.'
+  ]},
+  {h:'Leitura de textos com variedades linguísticas',ps:[
+   'Em uma canção, conversa reproduzida ou narrativa, marcas de oralidade podem construir personagem, ritmo, humor, identidade ou proximidade com o público. Não as substitua automaticamente por formas padronizadas: primeiro avalie o efeito que produzem no gênero e no contexto.',
+   'Evite dois extremos: afirmar que todo uso serve igualmente a qualquer situação ou dizer que existe uma única forma legítima de comunicação. A resposta deve distinguir diversidade linguística de adequação às convenções da situação apresentada.'
+  ]}
+ ],
+ chave:['Marcas regionais e históricas em textos.','Diferença entre variedade social e registro situacional.','Adequação linguística ao gênero e ao interlocutor.','Crítica ao preconceito linguístico e à discriminação.','Efeitos de oralidade na construção de personagens e identidades.','Norma-padrão como convenção social, sem inferiorização de falantes.'],
+ exemplos:[
+  {titulo:'Vocabulário regional',texto:'“Na feira, uma pessoa pede macaxeira; em outra região, pode pedir mandioca ou aipim.” As denominações variam regionalmente para o mesmo alimento.',comentario:'A variação lexical permite reconhecer diversidade sem transformar uma opção em superioridade natural.'},
+  {titulo:'Mudança de registro',texto:'“Um estudante envia ‘E aí, tudo bem?’ a um amigo e ‘Prezada secretaria, solicito informações’ em um requerimento.” O interlocutor e a finalidade influenciam as escolhas.',comentario:'A mesma pessoa pode mobilizar registros diferentes de acordo com a situação.'}
+ ],
+ roteiro:['Identifique a situação, o gênero e os interlocutores.','Localize a marca linguística que a questão destaca.','Verifique se a diferença se relaciona a região, época, grupo social ou situação.','Considere o efeito da escolha: identidade, humor, proximidade ou adequação.','Elimine alternativas que tratem a variedade como ausência de regras ou julguem falantes como inferiores.','Confira se a resposta também respeita as exigências do contexto formal quando elas forem relevantes.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Uma feira reúne produtores de diferentes regiões. No mesmo balcão, placas identificam um alimento como “mandioca”, “macaxeira” e “aipim”.'],enunciado:'A presença desses nomes exemplifica principalmente:',alternativas:['variação regional de vocabulário.','ausência de regras na língua portuguesa.','erro que torna a comunicação impossível.','mudança obrigatória da língua em todas as regiões.','uso exclusivo de linguagem científica.'],correta:'A',resolucao:['As placas apresentam nomes distintos para um mesmo alimento.','A diferença é associada a regiões e usos lexicais.','Trata-se de variação regional de vocabulário. Alternativa A.'],porqueErram:['B: variedades têm regularidades; nomes distintos não mostram ausência de regras.','C: as placas permitem a identificação do alimento.','D: a existência das formas não exige que todas as regiões mudem seus usos.','E: os nomes citados não são apresentados como terminologia exclusivamente científica.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Uma pessoa usa linguagem informal numa conversa com amigos e emprega um registro mais formal ao escrever um pedido administrativo.'],enunciado:'Essa mudança de linguagem demonstra:',alternativas:['impossibilidade de um falante usar mais de uma variedade.','adequação das escolhas à situação comunicativa.','abandono definitivo de toda linguagem informal.','superioridade intelectual de quem escreve o pedido.','desaparecimento de diferenças entre fala e escrita.'],correta:'B',resolucao:['O interlocutor e o objetivo mudam entre as duas situações.','A pessoa seleciona registros compatíveis com cada interação.','Essa adaptação exemplifica adequação linguística. Alternativa B.'],porqueErram:['A: o caso mostra justamente usos distintos por uma mesma pessoa.','C: a situação não indica abandono definitivo de nenhum registro.','D: escolha de registro não demonstra superioridade intelectual.','E: a mudança de registro não elimina diferenças entre modalidades.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em uma campanha, uma escola contesta a ideia de que estudantes de determinada região “não sabem falar português” por usarem expressões locais.'],enunciado:'A posição defendida pela campanha combate:',alternativas:['o reconhecimento de diferenças regionais.','a existência de diferentes gêneros textuais.','o preconceito linguístico contra falantes de uma variedade.','o ensino de leitura e escrita em qualquer contexto.','a necessidade de compreender o interlocutor.'],correta:'C',resolucao:['A fala criticada desqualifica estudantes em razão de expressões regionais.','A campanha questiona essa associação entre diferença linguística e incapacidade.','Portanto, combate preconceito linguístico. Alternativa C.'],porqueErram:['A: a campanha pode reconhecer a diversidade sem discriminar.','B: o problema não é a existência de gêneros textuais.','D: criticar preconceito não implica rejeitar ensino de leitura e escrita.','E: considerar interlocutor é compatível com o reconhecimento da diversidade.']}
+ ],
+ video:{busca:'Variação linguística geográfica histórica social registro Enem',canal:'Professor Noslen',titulo:'Variação Linguística - AULA GRATUITA',url:'https://www.youtube.com/watch?v=G3F7sRfK9FE'},
+ fontes:[{titulo:'Matriz de referência do Enem — Inep',url:'https://download.inep.gov.br/download/enem/matriz_referencia.pdf'}]
+}
+];
+
+/* ===== js/db/conteudos/subtema-matematica-financeira.js ===== */
+const SUBTEMA_MAT_FINANCEIRA = {
+ id:'mat-percentuais-juros', codigo:'Matemática 1.3', titulo:'Porcentagem, descontos, aumentos e juros',
+ secoes:[
+  {h:'Porcentagem, fração e base de cálculo',ps:[
+   'Uma porcentagem expressa uma razão por 100: 12% = 12/100 = 0,12. Para calcular p% de uma quantidade B, transforme a taxa em decimal e multiplique B·p/100. A base B deve ser identificada no enunciado: 12% do preço original e 12% do preço já descontado não representam necessariamente o mesmo valor.',
+   'Para descobrir que porcentagem uma parte P representa do total B, com B diferente de zero, calcule 100·P/B. Se 18 de 60 estudantes participam de uma atividade, a proporção é 18/60 = 0,30, ou 30%. Verifique se o denominador é o grupo inteiro ou apenas um subconjunto.'
+  ]},
+  {h:'Fatores de aumento e de desconto',ps:[
+   'Um aumento de p% transforma o valor inicial em B·(1+p/100); um desconto de p% transforma-o em B·(1−p/100). O fator multiplica o valor de referência, enquanto o valor da variação isolada é B·p/100. Por exemplo, aumentar R$ 200 em 15% leva a R$ 230; o aumento é R$ 30, não R$ 230.',
+   'Para recuperar a base a partir do resultado, divida pelo fator correspondente quando ele for diferente de zero. Se o preço após desconto de 20% é R$ 80, o original é 80/0,8 = R$ 100. Não se recupera a base somando 20% ao preço reduzido, pois a base teria mudado.'
+  ]},
+  {h:'Variações sucessivas e pontos percentuais',ps:[
+   'Variações sucessivas são calculadas pela multiplicação dos fatores, pois cada taxa incide sobre a base vigente na etapa. Aumento de 20% seguido de desconto de 20% corresponde a 1,20·0,80 = 0,96: o resultado é 4% menor que o inicial, não igual a ele.',
+   'Pontos percentuais medem a diferença aritmética entre percentuais: passar de 20% a 25% é aumento de 5 pontos percentuais. A variação relativa em relação à taxa inicial é (25−20)/20 = 25%. Observe se o comando pede diferença em pontos ou crescimento percentual.'
+  ]},
+  {h:'Juros simples',ps:[
+   'Nos juros simples, os juros de cada período incidem sobre o capital inicial C. Com taxa decimal i por período e prazo t na mesma unidade, os juros são J=C·i·t e o montante é M=C+J=C·(1+i·t). Essa fórmula pressupõe taxa constante e ausência de aportes, retiradas ou encargos adicionais.',
+   'Por exemplo, R$ 1.000 a 2% ao mês por três meses geram R$ 20 por mês, totalizando R$ 60 de juros e R$ 1.060 de montante. Se a taxa for mensal e o prazo estiver em anos, converta o prazo para meses antes de substituir na fórmula.'
+  ]},
+  {h:'Juros compostos e comparação de propostas',ps:[
+   'Nos juros compostos, cada período aplica a taxa ao montante acumulado: M=C·(1+i)ᵗ para taxa constante e períodos inteiros. Nesse modelo, os juros de um período passam a integrar a base do seguinte. O juro total é J=M−C.',
+   'A comparação de empréstimos ou investimentos exige considerar taxa, prazo, periodicidade, capital inicial, taxas adicionais e as condições informadas. Não compare percentuais com bases ou períodos diferentes como se fossem equivalentes; uma taxa mensal não se converte em taxa anual composta apenas multiplicando por 12.'
+  ]}
+ ],
+ chave:['Base de cálculo de uma porcentagem e transformação em fração.','Aumentos, descontos e fator multiplicador.','Variações sucessivas e recuperação do preço original.','Distinção entre pontos percentuais e variação relativa.','Juros simples e compostos com taxa e prazo compatíveis.','Interpretação de preços e condições de pagamento.'],
+ exemplos:[
+  {titulo:'Descontos sucessivos',texto:'“Uma compra de R$ 200 recebe desconto de 10% e, depois, mais 20% sobre o novo preço.” O resultado é 200 × 0,90 × 0,80 = R$ 144.',comentario:'Somar os descontos e aplicar 30% ao preço inicial produziria R$ 140 e ignoraria a mudança de base.'},
+  {titulo:'Pontos percentuais',texto:'“A proporção de leitores passou de 40% para 50%.” O aumento foi de 10 pontos percentuais; em relação aos 40% iniciais, a variação relativa foi de 25%.',comentario:'O comando deve ser lido com atenção, pois pontos percentuais e variação relativa não são a mesma medida.'}
+ ],
+ roteiro:['Leia o comando e identifique o valor pedido: parte, total, taxa, juros ou montante.','Defina a base de cada percentual e transforme as taxas em decimais.','Para variações sucessivas, escreva um fator por etapa e multiplique na ordem do enunciado.','Se houver juros, identifique regime simples ou composto e alinhe unidades de taxa e prazo.','Substitua os dados na fórmula aplicável e só arredonde conforme solicitado.','Confira se a resposta tem unidade adequada e é coerente com aumento, desconto ou rendimento.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Um estabelecimento anuncia que um produto de R$ 300 receberá desconto de 20%. Para pagamento à vista, oferece mais 10% de desconto sobre o preço já reduzido.'],enunciado:'O preço final para pagamento à vista será:',alternativas:['R$ 210,00.','R$ 216,00.','R$ 220,00.','R$ 240,00.','R$ 270,00.'],correta:'B',resolucao:['O desconto de 20% corresponde ao fator 0,80: 300 × 0,80 = 240.','O segundo desconto incide sobre R$ 240: 240 × 0,90 = 216.','O preço final é R$ 216,00. Alternativa B.'],porqueErram:['A: corresponde a aplicar 30% de desconto diretamente ao preço original, somando as taxas indevidamente.','C: R$ 220 não resulta da aplicação sucessiva dos fatores 0,80 e 0,90.','D: considera apenas o primeiro desconto de 20%.','E: corresponde a aplicar apenas 10% ao preço original, sem o desconto inicial de 20%.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em uma pesquisa, a proporção de participantes que utilizam transporte coletivo passou de 40% em um ano para 50% no ano seguinte.'],enunciado:'A mudança corresponde a um aumento de:',alternativas:['10 pontos percentuais e 25% em relação à proporção inicial.','10 pontos percentuais e 10% em relação à proporção inicial.','25 pontos percentuais e 10% em relação à proporção inicial.','40 pontos percentuais e 50% em relação à proporção inicial.','50 pontos percentuais e 25% em relação à proporção inicial.'],correta:'A',resolucao:['A diferença direta é 50% − 40% = 10 pontos percentuais.','Para a variação relativa, divida a diferença pela taxa inicial: 10/40 = 0,25.','A variação relativa é 25%. Alternativa A.'],porqueErram:['B: a diferença é 10 pontos, mas a variação relativa é 10/40 = 25%, não 10%.','C: troca a diferença em pontos pela variação relativa e ainda informa a variação relativa incorreta.','D: 40 e 50 são as taxas observadas, não as duas medidas solicitadas.','E: 50% é a taxa final, não a diferença em pontos percentuais.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Uma pessoa aplica R$ 1.000 por dois meses, sem depósitos adicionais nem taxas extras, a juros compostos de 10% ao mês.'],enunciado:'O montante ao final do período será:',alternativas:['R$ 1.100,00.','R$ 1.200,00.','R$ 1.210,00.','R$ 1.220,00.','R$ 1.300,00.'],correta:'C',resolucao:['No primeiro mês, 1.000 × 1,10 = 1.100.','No segundo mês, a taxa incide sobre o saldo de R$ 1.100: 1.100 × 1,10 = 1.210.','O montante é R$ 1.210,00. Alternativa C.'],porqueErram:['A: representa o saldo ao fim de um mês, não de dois.','B: soma dois juros de R$ 100, como no regime simples, sem capitalizar os juros.','D: não corresponde ao produto 1.000 × 1,10².','E: equivale a um aumento de 30% sobre o capital e não é o resultado de dois períodos de 10% compostos.']}
+ ],
+ video:{busca:'Porcentagem aumentos descontos juros simples e compostos Enem',canal:'FTD Educação',titulo:'Porcentagem e escala, razão e proporção',url:'https://www.youtube.com/watch?v=EwTOIMDitwQ'},
+ fontes:[{titulo:'Matriz de referência do Enem — Inep',url:'https://download.inep.gov.br/download/enem/matriz_referencia.pdf'}]
+};
+
+/* ===== js/db/conteudos/subtema-brasil-colonia.js ===== */
+const SUBTEMA_BRASIL_COLONIA = {
+ id:'his-brasil-colonial', codigo:'História 1.1', titulo:'Brasil Colônia: economia, escravidão e revoltas',
+ secoes:[
+  {h:'Conquista, povos indígenas e administração',ps:[
+   'A presença portuguesa na América, iniciada no século XVI, significou conquista e colonização de territórios já habitados por numerosos povos indígenas. As relações envolveram alianças, disputas, catequese, escravização, deslocamentos forçados e epidemias; os povos indígenas atuaram e resistiram de maneiras variadas.',
+   'A Coroa adotou capitanias hereditárias e, depois, instituiu um governo-geral, sem eliminar as capitanias. Câmaras municipais reuniam autoridades locais e elites, mas a capacidade da metrópole de impor normas variava. A colonização deve ser entendida como processo, não como mera instalação automática de um sistema uniforme.'
+  ]},
+  {h:'Açúcar, propriedade e mercados',ps:[
+   'A produção de açúcar para exportação ganhou destaque em áreas litorâneas, sobretudo no Nordeste. Muitos engenhos articulavam grandes propriedades, monocultura voltada ao comércio externo e trabalho escravizado; entretanto, a economia colonial também incluía pequenas produções, abastecimento interno, pecuária e outros trabalhos.',
+   'Engenho designa tanto o complexo produtivo quanto, em certos usos, a unidade açucareira. As relações comerciais ligavam produtores, comerciantes, financiamento e mercados além da colônia. A concentração fundiária e a dependência do trabalho compulsório não significam que toda a população colonial fosse senhora de engenho ou pessoa escravizada.'
+  ]},
+  {h:'Escravização e resistência',ps:[
+   'A escravização de indígenas e o tráfico transatlântico de africanos integraram a colonização, embora variem conforme região e época. Pessoas escravizadas trabalharam em plantações, mineração, serviços urbanos e domésticos, enfrentando violência e restrições à liberdade. A escravidão foi uma instituição estruturante, não um detalhe periférico.',
+   'A resistência assumiu formas diversas, como fugas, revoltas, negociações, preservação e reelaboração de práticas culturais e formação de quilombos. Palmares foi uma experiência histórica importante, com população e organização próprias. Reconhecer a agência de pessoas escravizadas não diminui a violência do sistema.'
+  ]},
+  {h:'Mineração, interiorização e fiscalização',ps:[
+   'A descoberta e exploração de ouro e diamantes, sobretudo no século XVIII, ampliaram a ocupação de áreas do interior e estimularam caminhos, comércio e centros urbanos. A mineração empregou intensamente trabalho escravizado, além de envolver pessoas livres em atividades variadas.',
+   'A Coroa buscou controlar a extração e arrecadar tributos. O quinto correspondia, em termos gerais, à cobrança de uma quinta parte do ouro devido à Coroa; os mecanismos concretos de fiscalização variaram no tempo. Contrabando, pressões fiscais e restrições metropolitanas alimentaram tensões, mas não explicam isoladamente toda a sociedade mineradora.'
+  ]},
+  {h:'Revoltas e projetos políticos',ps:[
+   'Conflitos coloniais tiveram causas, participantes e objetivos diferentes: disputas por poder local e comércio, resistência à fiscalidade, contestação da escravidão e propostas de separação política podem aparecer em combinações distintas. Não é correto supor que toda revolta colonial defendia independência ou igualdade.',
+   'A Inconfidência Mineira, no final do século XVIII, reuniu participantes ligados a setores variados das elites e foi influenciada por ideias de seu tempo, mas não apresentou um consenso abolicionista. A Conjuração Baiana de 1798 teve participação social mais ampla e expressou reivindicações de liberdade e igualdade; examine a fonte para identificar quais propostas são documentadas.'
+  ]}
+ ],
+ chave:['Trabalho escravizado e resistência de africanos e indígenas.','Produção açucareira, grande propriedade e comércio atlântico.','Diversidade da economia colonial e relações entre exportação e abastecimento.','Mineração, interiorização, tributação e circulação de mercadorias.','Diferenças entre revoltas coloniais e seus projetos.','Leitura crítica de documentos produzidos por autoridades e elites.'],
+ exemplos:[
+  {titulo:'Produção e abastecimento',texto:'“Uma região produtora de açúcar adquiria alimentos, animais e ferramentas de outras áreas coloniais.” A produção voltada à exportação podia se articular a atividades de abastecimento.',comentario:'A existência de um produto de exportação importante não significa ausência de mercado interno ou de outras atividades.'},
+  {titulo:'Comparar revoltas',texto:'“Duas revoltas contestam o domínio colonial, mas apresentam participantes e propostas sociais distintas.” A análise deve examinar cada movimento e sua documentação.',comentario:'Classificar todas as revoltas como idênticas apaga diferenças de projetos e reivindicações.'}
+ ],
+ roteiro:['Identifique data, lugar, autoria e natureza da fonte apresentada.','Localize o fenômeno: administração, produção, escravização, mineração ou revolta.','Reconheça os grupos envolvidos e seus interesses, sem tratar a sociedade como homogênea.','Relacione produção, trabalho e circulação ao contexto colonial específico.','Compare os objetivos do movimento ou da medida com as alternativas, evitando anacronismos.','Escolha a interpretação sustentada pela fonte e pelo contexto histórico.'],
+ questoes:[
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em uma área açucareira colonial, um engenho exportava parte de sua produção e adquiria alimentos e animais de outras localidades.'],enunciado:'A situação evidencia que a economia colonial:',alternativas:['podia articular produção exportadora e atividades de abastecimento.','era composta exclusivamente pela produção de açúcar.','impedia qualquer circulação de mercadorias no interior.','dispensava trabalho humano nas plantações.','funcionava sem relações comerciais com o exterior.'],correta:'A',resolucao:['O engenho exportava açúcar, mas também comprava alimentos e animais.','Essas trocas indicam articulação entre produção exportadora e abastecimento de outras localidades.','A interpretação adequada é a da alternativa A.'],porqueErram:['B: o próprio texto menciona alimentos e animais além do açúcar.','C: a compra de produtos de outras localidades indica circulação.','D: não há informação de produção sem trabalho humano.','E: a exportação indica relação com mercados externos.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['Em áreas coloniais, pessoas escravizadas recorreram a diferentes formas de resistência, inclusive fugas e formação de comunidades que reuniam pessoas em busca de liberdade.'],enunciado:'A prática coletiva associada à formação dessas comunidades foi:',alternativas:['criação de quilombos.','constituição de câmaras municipais coloniais.','formação de companhias de comércio metropolitanas.','organização de aldeamentos missionários pela Coroa.','instituição de capitanias hereditárias.'],correta:'A',resolucao:['O texto descreve fuga e organização de comunidades de resistência.','Quilombos foram experiências históricas diversas ligadas, entre outras dinâmicas, à resistência à escravidão.','A alternativa adequada é A.'],porqueErram:['B: câmaras eram instituições municipais coloniais, não as comunidades de fuga descritas.','C: companhias de comércio eram organizações mercantis, não comunidades formadas por fugitivos.','D: aldeamentos missionários não designam as comunidades de resistência descritas.','E: capitanias hereditárias eram unidades administrativas da colonização, não quilombos.']},
+  {ano:null,fonte:'Questão autoral inédita · estilo Enem',textoApoio:['No século XVIII, autoridades portuguesas desenvolveram medidas para fiscalizar a extração aurífera e assegurar o recolhimento de tributos na América portuguesa.'],enunciado:'A finalidade central dessas medidas era:',alternativas:['controlar a arrecadação sobre a atividade mineradora.','assegurar igualdade de renda entre proprietários e trabalhadores.','garantir autonomia fiscal da colônia em relação à Coroa.','proibir toda a exportação de ouro colonial.','conceder imunidade tributária à produção aurífera.'],correta:'A',resolucao:['A fonte relaciona fiscalização da extração e recolhimento de tributos.','Essas medidas buscavam controlar a arrecadação relacionada à mineração.','A alternativa A corresponde à finalidade informada.'],porqueErram:['B: o texto trata de arrecadação, não de distribuição igualitária de renda.','C: recolher tributos para a Coroa reforçava sua arrecadação, não autonomia fiscal colonial.','D: fiscalizar e tributar a extração não equivale a proibir toda a exportação.','E: a imunidade tributária contraria o objetivo de recolher tributos.']}
+ ],
+ video:{busca:'Brasil Colônia economia açucareira mineração escravidão revoltas Enem',canal:'Não Perca a Cabeça',titulo:'Resumão - Brasil Colônia: invasões, açúcar e União Ibérica',url:'https://www.youtube.com/watch?v=n-A8PfScpIE'},
+ fontes:[{titulo:'Matriz de referência do Enem — Inep',url:'https://download.inep.gov.br/download/enem/matriz_referencia.pdf'}]
 };
 
 /* ===== js/db/conteudos/estrutura.js ===== */
@@ -19969,6 +20259,11 @@ const QUESTOES_REFORCO = {
 
 
 
+
+
+
+
+
 const PAGINAS = {
   ...PAGINAS_LINGUAGENS,
   'red-competencias': MATERIAL_REDACAO,
@@ -20023,10 +20318,13 @@ function paginaDe(id, conteudo) {
       formulas:textos.flatMap(({p}) => p.formulas),
       questoes:MATERIAL_MEMBRANA.questoes,
       recomendacoes:MATERIAL_MEMBRANA.recomendacoes,
+      subtemas:[SUBTEMAS_CITOLOGIA[0], SUBTEMA_BIOENERGETICA, SUBTEMAS_CITOLOGIA[1]],
       materiaisRelacionados:[{id:'bio-citologia-anterior', titulo:'Citologia: material e questões anteriores, incluindo questão do Enem', video:VIDEOS[id] || null}]
     };
   }
-  return {...principal, secoes, resumo:[],
+  const subtemasPorGrupo = {'lin-interpretacao':[SUBTEMAS_PORTUGUES[0]], 'lin-variacao':[SUBTEMAS_PORTUGUES[1]], 'mat-porcentagem':[SUBTEMA_MAT_FINANCEIRA], 'his-colonia':[SUBTEMA_BRASIL_COLONIA]};
+  const subtemas = subtemasPorGrupo[id] || [];
+  return {...principal, secoes, resumo:[], subtemas,
     exemplos:[...textos.flatMap(({p}) => p.exemplos), ...(apoio ? [{titulo:apoio.exemplo[0], texto:apoio.exemplo[1]}] : [])],
     figuras:[...textos.flatMap(({p}) => p.figuras), ...(apoio ? [{tipo:'fluxo', titulo:'Esquema de estudo', itens:apoio.esquema}] : [])],
     formulas:textos.flatMap(({p}) => p.formulas),
@@ -20050,7 +20348,7 @@ function temTexto(id) { return Array.isArray(PAGINAS[id]?.resumo) && PAGINAS[id]
 
 /** Quantas questões reais já foram resolvidas no guia inteiro. */
 const TOTAL_QUESTOES = AREAS.flatMap(a => a.materias.flatMap(m => m.conteudos))
-  .reduce((t, c) => t + paginaDe(c.id).questoes.length, 0);
+  .reduce((t, c) => { const p = paginaDe(c.id); return t + p.questoes.length + (p.subtemas || []).reduce((n, s) => n + s.questoes.length, 0); }, 0);
 
 /* ===== js/ui-conteudos.js ===== */
 /**
@@ -20275,6 +20573,7 @@ function viewConteudo(id) {
     ['#resumo', 'resumo'], p.exemplos.length ? ['#exemplos', 'exemplos'] : null,
     (figuras || formulas) ? ['#imagens', 'imagens e fórmulas'] : null,
     ['#questoes', 'questões'], p.video ? ['#video', 'vídeo'] : null,
+    ...(p.subtemas || []).map(t => [`#${t.id}`, t.titulo]),
   ].filter(Boolean).map(([href, rot]) => `<a href="${href}">${rot}</a>`).join('');
 
   return `
@@ -20303,6 +20602,7 @@ function viewConteudo(id) {
     ${imagens}
     ${questoes}
     ${video}
+    ${(p.subtemas || []).map(subtemaHTML).join('')}
     <section class="cp-bloco"><h2 class="cp-rot">Fontes para aprofundar</h2><p>Consulte a <a href="https://download.inep.gov.br/download/enem/matriz_referencia.pdf" target="_blank" rel="noopener noreferrer">matriz de referência do Enem</a> e os <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank" rel="noopener noreferrer">cadernos e gabaritos do Inep</a>. Para redação, confira também a cartilha oficial da edição vigente.</p></section>
     ${(p.materiaisRelacionados || []).length ? `<section class="cp-bloco"><h2 class="cp-rot">Materiais anteriores e aulas adicionais</h2><p>Os links preservam as páginas anteriores, com suas questões e vídeos específicos.</p><ul class="chave-lista">${p.materiaisRelacionados.map(item => `<li><a href="#/conteudos/c/${escQ(item.id)}">${escQ(item.titulo)}</a>${item.video ? ` · <a href="https://www.youtube.com/watch?v=${escQ(item.video.id)}" target="_blank" rel="noopener noreferrer">aula no YouTube</a>` : ''}</li>`).join('')}</ul></section>` : ''}
 
@@ -20311,6 +20611,32 @@ function viewConteudo(id) {
       ${prox ? `<a class="cp-nav-btn prox" href="#/conteudos/c/${prox.id}"><span><small>próximo</small>${escQ(prox.titulo)}</span>${icQ('seta')}</a>` : '<span></span>'}
     </nav>
   </article>`;
+}
+
+/** Tópico completo, dentro da página do grupo, com questões próprias. */
+function subtemaHTML(t) {
+  const linkSeguro = u => /^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|mundoeducacao\.uol\.com\.br|professor\.ufrgs\.br|ensina\.rtp\.pt|download\.inep\.gov\.br)\//.test(u);
+  const recomendacao = t.video;
+  const videoId = new URL(recomendacao.url).searchParams.get('v');
+  return `
+  <section class="subtema" id="${escQ(t.id)}" aria-labelledby="${escQ(t.id)}-titulo">
+    <header class="subtema-topo"><span class="eyebrow">${escQ(t.codigo)} · aprofundamento</span><h2 id="${escQ(t.id)}-titulo">${escQ(t.titulo)}</h2></header>
+    <div class="cp-duas subtema-duas">
+      <section class="cp-bloco cp-resumo"><h3 class="cp-rot">${icQ('livro')} resumo ampliado</h3>
+      ${t.secoes.map(s => `<section class="cp-secao"><h4>${escQ(s.h)}</h4>${s.ps.map(p => `<p>${escQ(p)}</p>`).join('')}</section>`).join('')}</section>
+      <aside class="cp-lado"><section class="cp-bloco"><h3 class="cp-rot">${icQ('alvo')} o que mais cai</h3><ul class="chave-lista">${t.chave.map(x=>`<li>${escQ(x)}</li>`).join('')}</ul></section></aside>
+    </div>
+    <section class="cp-bloco"><h3 class="cp-rot">${icQ('exemplo')} exemplos práticos</h3><div class="cp-exemplos">
+    ${t.exemplos.map((e,i)=>`<article class="cp-exemplo"><span class="cp-ex-num">${i+1}</span><div><h4>${escQ(e.titulo)}</h4><p class="cp-ex-texto">${escQ(e.texto)}</p><p class="cp-ex-coment"><b>Por que importa:</b> ${escQ(e.comentario)}</p></div></article>`).join('')}</div></section>
+    <section class="cp-bloco"><h3 class="cp-rot">${icQ('imagem')} imagens, esquemas e fórmulas</h3>${figuraHTML({tipo:'fluxo',titulo:'Roteiro de leitura e resolução',itens:t.roteiro})}</section>
+    <section class="cp-bloco"><h3 class="cp-rot">${icQ('check')} 3 questões inéditas resolvidas</h3>${t.questoes.map((q,i)=>questaoHTML(q,i)).join('')}</section>
+    <section class="cp-bloco"><h3 class="cp-rot">${icQ('video')} aula em vídeo</h3>
+    ${videoId && /^[A-Za-z0-9_-]{11}$/.test(videoId) ? `<div class="video-caixa"><div class="video-moldura"><iframe src="https://www.youtube-nocookie.com/embed/${escQ(videoId)}?rel=0" title="${escQ(recomendacao.titulo)}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></div>` : ''}
+    <p><b>Busca sugerida:</b> <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(recomendacao.busca)}" target="_blank" rel="noopener noreferrer">${escQ(recomendacao.busca)}</a></p>
+    <p><b>Canal:</b> ${escQ(recomendacao.canal)} · ${linkSeguro(recomendacao.url) ? `<a href="${escQ(recomendacao.url)}" target="_blank" rel="noopener noreferrer">${escQ(recomendacao.titulo)}</a>` : escQ(recomendacao.titulo)}</p>
+    <p>A aula recomendada pode não esgotar todos os detalhes; confira também as fontes de aprofundamento.</p>
+    <p><b>Fonte de apoio:</b> ${(t.fontes||[]).filter(f=>linkSeguro(f.url)).map(f=>`<a href="${escQ(f.url)}" target="_blank" rel="noopener noreferrer">${escQ(f.titulo)}</a>`).join(' · ')}</p></section>
+  </section>`;
 }
 
 /* figura simples desenhada em HTML/SVG, sem requisição externa */

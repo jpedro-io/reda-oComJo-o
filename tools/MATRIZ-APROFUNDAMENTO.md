@@ -12,8 +12,8 @@ continuam disponíveis no link de material anterior.
 ## Linguagens
 
 ### Língua Portuguesa e Interpretação
-- [ ] 1.1 Interpretação de texto
-- [ ] 1.2 Variação linguística
+- [x] 1.1 Interpretação de texto
+- [x] 1.2 Variação linguística
 - [ ] 1.3 Funções da linguagem
 - [ ] 1.4 Gêneros e tipos textuais
 - [ ] 1.5 Coesão e coerência
@@ -45,7 +45,7 @@ continuam disponíveis no link de material anterior.
 ## Ciências Humanas
 
 ### História
-- [ ] 1.1 Brasil Colônia
+- [x] 1.1 Brasil Colônia
 - [ ] 1.2 Brasil Império
 - [ ] 1.3 República Velha e coronelismo
 - [ ] 1.4 Era Vargas e Período Democrático
@@ -88,9 +88,9 @@ continuam disponíveis no link de material anterior.
 - [ ] 1.2 Relações ecológicas e ciclos biogeoquímicos
 - [ ] 1.3 Impactos ambientais
 - [x] 1.4 Citologia: membrana plasmática, transportes e parede celular
-- [ ] 1.5 Organelas celulares e funções fisiológicas
-- [ ] 1.6 Bioenergética
-- [ ] 1.7 Divisão celular
+- [x] 1.5 Organelas celulares e funções fisiológicas
+- [x] 1.6 Bioenergética
+- [x] 1.7 Divisão celular
 - [ ] 1.8 Genética mendeliana e herança ligada ao sexo
 - [ ] 1.9 Biotecnologia
 - [ ] 1.10 Evolução biológica
@@ -130,7 +130,7 @@ continuam disponíveis no link de material anterior.
 ## Matemática
 - [ ] 1.1 Razão, proporção e regra de três
 - [ ] 1.2 Escala cartográfica e representações proporcionais
-- [ ] 1.3 Porcentagem e matemática financeira
+- [x] 1.3 Porcentagem e matemática financeira
 - [ ] 1.4 Gráficos, tabelas e infográficos
 - [ ] 1.5 Geometria plana
 - [ ] 1.6 Triângulos

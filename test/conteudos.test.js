@@ -18,13 +18,13 @@ for (const [id, p] of Object.entries(EXPANSOES)) {
     assert.ok(q.resolucao.length >= 2, `${id}: resolução insuficiente`);
   });
   const html = viewConteudo(id);
-  assert.equal((html.match(/<details class="questao" open>/g) || []).length, 3, `${id}: questões renderizadas`);
+  assert.equal((html.match(/<details class="questao" open>/g) || []).length, 3 + 3 * (paginaDe(id).subtemas || []).length, `${id}: questões renderizadas`);
   const marcadores = ['id="resumo"','id="exemplos"','id="imagens"','id="questoes"','id="video"'];
   const pos = marcadores.map(m=>html.indexOf(m));
   assert.ok(pos.every(x=>x>=0) && pos.every((x,i)=>i===0 || x>pos[i-1]), `${id}: ordem das seções`);
 }
 assert.equal(TOTAL_COMPLETOS, conteudos.filter(c => paginaCompleta(c.id)).length);
-assert.equal(TOTAL_QUESTOES, conteudos.reduce((n,c)=>n+paginaDe(c.id).questoes.length,0));
+assert.equal(TOTAL_QUESTOES, conteudos.reduce((n,c)=>{ const p=paginaDe(c.id); return n+p.questoes.length+(p.subtemas||[]).reduce((t,s)=>t+s.questoes.length,0); },0));
 console.log(`Conteúdos: ${TOTAL_COMPLETOS}/${TOTAL_CONTEUDOS} ampliados; ${TOTAL_QUESTOES} questões exibidas.`);
 
 const reais = ['mat-porcentagem','mat-razao-proporcao','bio-fisiologia','fis-optica','bio-evolucao','bio-citologia-anterior'];
@@ -42,7 +42,7 @@ for (const c of conteudos) {
   const html = viewConteudo(c.id);
   const questoes = paginaDe(c.id).questoes;
   assert.equal(questoes.length, 3, `${c.id}: requer três questões`);
-  assert.equal((html.match(/<details class="questao" open>/g) || []).length, 3, `${c.id}: questões visíveis`);
+  assert.equal((html.match(/<details class="questao" open>/g) || []).length, 3 + 3 * (paginaDe(c.id).subtemas || []).length, `${c.id}: questões visíveis`);
   for (const q of questoes) {
     assert.ok(q.enunciado && q.fonte && /^[A-E]$/.test(q.correta), `${c.id}: questão incompleta`);
     assert.equal(q.alternativas.length, 5, `${c.id}: alternativas`);
@@ -83,3 +83,46 @@ assert.equal(membrana.figuras[0].itens.length,6);
 assert.ok(membrana.recomendacoes && membrana.materiaisRelacionados.some(m => m.id === 'bio-citologia-anterior'));
 assert.equal(paginaDe('bio-citologia-anterior').questoes.length,3);
 console.log('Citologia: tópico aprofundado e questões anteriores preservadas.');
+
+const subtemasCitologia = paginaDe('bio-citologia').subtemas;
+assert.equal(subtemasCitologia.length, 3);
+for (const t of subtemasCitologia) {
+  assert.ok(t.id && t.codigo && t.titulo && t.secoes.length>=3 && t.secoes.length<=5);
+  assert.ok(t.secoes.every(s=>s.h && s.ps.length>=2));
+  assert.ok(t.chave.length>=4 && t.chave.length<=6);
+  assert.equal(t.exemplos.length, 2);
+  assert.ok(t.exemplos.every(e=>e.titulo && e.texto && e.comentario));
+  assert.ok(t.roteiro.length>=4 && t.roteiro.length<=6);
+  assert.equal(t.questoes.length,3);
+  for (const q of t.questoes) {
+    assert.equal(q.ano,null);
+    assert.equal(q.alternativas.length,5);
+    assert.ok(/^[A-E]$/.test(q.correta));
+    assert.ok(q.resolucao.length>=3 && q.porqueErram.length===4);
+    const erradas='ABCDE'.split('').filter(x=>x!==q.correta);
+    assert.deepEqual(q.porqueErram.map(x=>x.slice(0,1)).sort(),erradas.sort());
+  }
+  assert.ok(t.video.url && t.video.busca && t.fontes.length);
+  const html=viewConteudo('bio-citologia');
+  assert.ok(html.includes(`id="${t.id}"`));
+}
+console.log('Três subtemas adicionais renderizados com três questões inéditas cada.');
+
+for (const id of ['lin-interpretacao','lin-variacao','mat-porcentagem','his-colonia']) {
+  const sub = paginaDe(id).subtemas;
+  assert.equal(sub.length,1);
+  for (const t of sub) {
+    assert.ok(t.secoes.length>=3 && t.secoes.length<=5 && t.secoes.every(s=>s.ps.length>=2));
+    assert.ok(t.chave.length>=4 && t.chave.length<=6);
+    assert.equal(t.exemplos.length,2);
+    assert.ok(t.roteiro.length>=4 && t.roteiro.length<=6);
+    assert.equal(t.questoes.length,3);
+    for (const q of t.questoes) {
+      assert.equal(q.alternativas.length,5);
+      assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(), 'ABCDE'.split('').filter(x=>x!==q.correta).sort());
+      assert.ok(q.resolucao.length>=3 && q.ano===null);
+    }
+    assert.ok(viewConteudo(id).includes(`id="${t.id}"`));
+  }
+}
+console.log('Interpretação e variação linguística: subtemas com questões inéditas.');

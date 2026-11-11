@@ -223,6 +223,7 @@ export function viewConteudo(id) {
     ['#resumo', 'resumo'], p.exemplos.length ? ['#exemplos', 'exemplos'] : null,
     (figuras || formulas) ? ['#imagens', 'imagens e fórmulas'] : null,
     ['#questoes', 'questões'], p.video ? ['#video', 'vídeo'] : null,
+    ...(p.subtemas || []).map(t => [`#${t.id}`, t.titulo]),
   ].filter(Boolean).map(([href, rot]) => `<a href="${href}">${rot}</a>`).join('');
 
   return `
@@ -251,6 +252,7 @@ export function viewConteudo(id) {
     ${imagens}
     ${questoes}
     ${video}
+    ${(p.subtemas || []).map(subtemaHTML).join('')}
     <section class="cp-bloco"><h2 class="cp-rot">Fontes para aprofundar</h2><p>Consulte a <a href="https://download.inep.gov.br/download/enem/matriz_referencia.pdf" target="_blank" rel="noopener noreferrer">matriz de referência do Enem</a> e os <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank" rel="noopener noreferrer">cadernos e gabaritos do Inep</a>. Para redação, confira também a cartilha oficial da edição vigente.</p></section>
     ${(p.materiaisRelacionados || []).length ? `<section class="cp-bloco"><h2 class="cp-rot">Materiais anteriores e aulas adicionais</h2><p>Os links preservam as páginas anteriores, com suas questões e vídeos específicos.</p><ul class="chave-lista">${p.materiaisRelacionados.map(item => `<li><a href="#/conteudos/c/${escQ(item.id)}">${escQ(item.titulo)}</a>${item.video ? ` · <a href="https://www.youtube.com/watch?v=${escQ(item.video.id)}" target="_blank" rel="noopener noreferrer">aula no YouTube</a>` : ''}</li>`).join('')}</ul></section>` : ''}
 
@@ -259,6 +261,32 @@ export function viewConteudo(id) {
       ${prox ? `<a class="cp-nav-btn prox" href="#/conteudos/c/${prox.id}"><span><small>próximo</small>${escQ(prox.titulo)}</span>${icQ('seta')}</a>` : '<span></span>'}
     </nav>
   </article>`;
+}
+
+/** Tópico completo, dentro da página do grupo, com questões próprias. */
+function subtemaHTML(t) {
+  const linkSeguro = u => /^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|mundoeducacao\.uol\.com\.br|professor\.ufrgs\.br|ensina\.rtp\.pt|download\.inep\.gov\.br)\//.test(u);
+  const recomendacao = t.video;
+  const videoId = new URL(recomendacao.url).searchParams.get('v');
+  return `
+  <section class="subtema" id="${escQ(t.id)}" aria-labelledby="${escQ(t.id)}-titulo">
+    <header class="subtema-topo"><span class="eyebrow">${escQ(t.codigo)} · aprofundamento</span><h2 id="${escQ(t.id)}-titulo">${escQ(t.titulo)}</h2></header>
+    <div class="cp-duas subtema-duas">
+      <section class="cp-bloco cp-resumo"><h3 class="cp-rot">${icQ('livro')} resumo ampliado</h3>
+      ${t.secoes.map(s => `<section class="cp-secao"><h4>${escQ(s.h)}</h4>${s.ps.map(p => `<p>${escQ(p)}</p>`).join('')}</section>`).join('')}</section>
+      <aside class="cp-lado"><section class="cp-bloco"><h3 class="cp-rot">${icQ('alvo')} o que mais cai</h3><ul class="chave-lista">${t.chave.map(x=>`<li>${escQ(x)}</li>`).join('')}</ul></section></aside>
+    </div>
+    <section class="cp-bloco"><h3 class="cp-rot">${icQ('exemplo')} exemplos práticos</h3><div class="cp-exemplos">
+    ${t.exemplos.map((e,i)=>`<article class="cp-exemplo"><span class="cp-ex-num">${i+1}</span><div><h4>${escQ(e.titulo)}</h4><p class="cp-ex-texto">${escQ(e.texto)}</p><p class="cp-ex-coment"><b>Por que importa:</b> ${escQ(e.comentario)}</p></div></article>`).join('')}</div></section>
+    <section class="cp-bloco"><h3 class="cp-rot">${icQ('imagem')} imagens, esquemas e fórmulas</h3>${figuraHTML({tipo:'fluxo',titulo:'Roteiro de leitura e resolução',itens:t.roteiro})}</section>
+    <section class="cp-bloco"><h3 class="cp-rot">${icQ('check')} 3 questões inéditas resolvidas</h3>${t.questoes.map((q,i)=>questaoHTML(q,i)).join('')}</section>
+    <section class="cp-bloco"><h3 class="cp-rot">${icQ('video')} aula em vídeo</h3>
+    ${videoId && /^[A-Za-z0-9_-]{11}$/.test(videoId) ? `<div class="video-caixa"><div class="video-moldura"><iframe src="https://www.youtube-nocookie.com/embed/${escQ(videoId)}?rel=0" title="${escQ(recomendacao.titulo)}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></div>` : ''}
+    <p><b>Busca sugerida:</b> <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(recomendacao.busca)}" target="_blank" rel="noopener noreferrer">${escQ(recomendacao.busca)}</a></p>
+    <p><b>Canal:</b> ${escQ(recomendacao.canal)} · ${linkSeguro(recomendacao.url) ? `<a href="${escQ(recomendacao.url)}" target="_blank" rel="noopener noreferrer">${escQ(recomendacao.titulo)}</a>` : escQ(recomendacao.titulo)}</p>
+    <p>A aula recomendada pode não esgotar todos os detalhes; confira também as fontes de aprofundamento.</p>
+    <p><b>Fonte de apoio:</b> ${(t.fontes||[]).filter(f=>linkSeguro(f.url)).map(f=>`<a href="${escQ(f.url)}" target="_blank" rel="noopener noreferrer">${escQ(f.titulo)}</a>`).join(' · ')}</p></section>
+  </section>`;
 }
 
 /* figura simples desenhada em HTML/SVG, sem requisição externa */
