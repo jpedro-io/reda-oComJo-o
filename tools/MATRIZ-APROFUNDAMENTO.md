@@ -98,11 +98,11 @@ continuam disponíveis no link de material anterior.
 - [x] 1.12 Parasitologia e saúde pública
 
 ### Física
-- [ ] 2.1 Cinemática
-- [ ] 2.2 Leis de Newton e aplicações
-- [ ] 2.3 Trabalho, energia e conservação
-- [ ] 2.4 Impulso, quantidade de movimento e colisões
-- [ ] 2.5 Hidrostática
+- [x] 2.1 Cinemática
+- [x] 2.2 Leis de Newton e aplicações
+- [x] 2.3 Trabalho, energia e conservação
+- [x] 2.4 Impulso, quantidade de movimento e colisões
+- [x] 2.5 Hidrostática
 - [ ] 2.6 Termologia e calorimetria
 - [ ] 2.7 Transmissão de calor e termodinâmica
 - [ ] 2.8 Ondulatória e fenômenos ondulatórios

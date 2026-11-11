@@ -269,3 +269,9 @@ for(const [id,codigos] of Object.entries(quiFinal)){
  assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo(id).includes(`id="${t.id}"`));}
 }
 console.log('Química: oito subtemas finais com questões autorais e recomendações.');
+
+const mecanica=paginaDe('fis-mecanica').subtemas.filter(t=>/^Física 2\.[1-5]$/.test(t.codigo));assert.equal(mecanica.length,5);
+for(const t of mecanica){assert.ok(t.secoes.length>=3&&t.secoes.length<=5&&t.secoes.every(s=>s.h&&s.ps.length>=2));assert.ok(t.chave.length>=4&&t.chave.length<=6);assert.equal(t.exemplos.length,2);assert.ok(t.exemplos.every(e=>e.titulo&&e.texto&&e.comentario));assert.ok(t.roteiro.length>=4&&t.roteiro.length<=6);assert.ok(t.questoes.length>=2&&t.questoes.length<=3);
+ for(const q of t.questoes){assert.equal(q.ano,null);assert.ok(q.fonte.includes('autoral'));assert.equal(q.alternativas.length,5);assert.ok(q.resolucao.length>=3);assert.deepEqual(q.porqueErram.map(x=>x[0]).sort(),'ABCDE'.split('').filter(x=>x!==q.correta).sort());}
+ assert.ok(t.video.busca&&t.video.titulo&&t.video.canal&&t.video.url);assert.ok(viewConteudo('fis-mecanica').includes(`id="${t.id}"`));}
+console.log('Física: cinco tópicos de mecânica com questões autorais e recomendações.');

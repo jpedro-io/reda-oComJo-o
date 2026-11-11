@@ -195,3 +195,20 @@ site modular e no standalone. Também passaram as suítes JS, as auditorias de
 layout em 120 rotas e as regressões dos lotes anteriores. Estado: **65/106
 incorporados, 41 pendentes**, com 243 questões exibidas, incluindo 23
 referências oficiais do Inep. Não houve deploy.
+
+
+## Física — mecânica e hidrostática
+
+Foram acrescentados os cinco tópicos iniciais de Física: cinemática, leis de
+Newton, trabalho e energia, impulso e colisões, e hidrostática. Cada um tem
+três blocos com dois parágrafos, cinco itens, dois exemplos, roteiro e duas
+questões autorais, com resolução e justificativa dos distratores. Aulas
+conferidas por título, canal, descrição e permissão de incorporação; a de
+hidrostática tem escopo parcial indicado. As fontes de apoio foram verificadas
+por disponibilidade e correspondência dos capítulos. Sem garantia de
+reprodução futura ou revisão pedagógica externa.
+
+Todas as suítes JS, auditorias de 120 rotas e testes de Chromium nos novos
+tópicos, versão modular e standalone, passaram. A matriz está em **70/106
+incorporados, 36 pendentes**; 253 questões exibidas, incluindo 23 referências
+oficiais do Inep. Não houve deploy.
