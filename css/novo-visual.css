@@ -249,3 +249,6 @@ main .ws-entrada, main .ws-proposta, main .ws-proposta .proposta {
   -webkit-backdrop-filter:none; backdrop-filter:none;
 }
 main .aviso-transcricao { margin:0; color:#d3e8da; font-size:.88rem; line-height:1.55; }
+
+/* Mensagem do projeto e nota de transparência no rodapé. */
+.footer .footer-aviso { margin-top:12px; font-size:.8rem; }
