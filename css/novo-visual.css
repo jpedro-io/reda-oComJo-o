@@ -297,3 +297,27 @@ main .comp-bloco .tabela-niveis thead th:first-child {
   .topbar .nav-pills { gap:1px; }
   .topbar .pill { padding:7px 6px; font-size:.8rem; white-space:nowrap; }
 }
+
+/* Os rótulos precisam de contraste e de espaço dentro de todas as caixas. */
+main .conteudo-btn .cb-tag { background:#214d32; border-color:#54c987; color:#e8f4ec !important; }
+main .conteudo-pag .cp-bloco:first-of-type { padding-top:22px !important; }
+main .conteudo-pag .cp-resumo:first-of-type { padding-top:34px !important; }
+@media (max-width:767px) {
+  main .conteudo-pag .cp-bloco:first-of-type,
+  main .conteudo-pag .cp-resumo:first-of-type { padding-top:18px !important; }
+}
+
+/* Sumário recolhível mantém os atalhos dos tópicos acessíveis e organizados. */
+main .cp-subtemas-menu { flex:1 1 100%; min-width:0; }
+main .cp-subtemas-menu > summary {
+  display:inline-flex; align-items:center; gap:9px; cursor:pointer; list-style:none;
+  padding:8px 13px; border:1px solid #588567; border-radius:999px;
+  background:#183d29; color:#e8f4ec; font-size:.82rem; font-weight:650;
+}
+main .cp-subtemas-menu > summary::-webkit-details-marker { display:none; }
+main .cp-subtemas-menu > summary:hover { background:#24543a; }
+main .cp-subtemas-menu > summary:focus-visible { outline:2px solid #69f6ad; outline-offset:3px; }
+main .cp-subtemas-contagem { color:#bfe7cc; font-size:.75rem; }
+main .cp-subtemas-menu[open] .cp-subtemas-seta { transform:rotate(180deg); }
+main .cp-subtemas-lista { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr)); gap:8px; margin-top:10px; padding:12px; border:1px solid #42694f; border-radius:14px; background:#102d1d; }
+main .cp-indice .cp-subtemas-lista a { display:block; min-width:0; border-radius:9px; padding:10px 12px; line-height:1.4; font-size:.8rem; letter-spacing:0; text-transform:none; overflow-wrap:anywhere; }

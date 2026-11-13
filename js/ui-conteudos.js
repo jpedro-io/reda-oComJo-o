@@ -227,8 +227,12 @@ export function viewConteudo(id) {
     ['#resumo', 'resumo'], p.exemplos.length ? ['#exemplos', 'exemplos'] : null,
     (figuras || formulas) ? ['#imagens', 'imagens e fórmulas'] : null,
     ['#questoes', 'questões'], p.video ? ['#video', 'vídeo'] : null,
-    ...(p.subtemas || []).map(t => [`#${t.id}`, t.titulo]),
-  ].filter(Boolean).map(([href, rot]) => `<a href="${href}">${rot}</a>`).join('');
+  ].filter(Boolean).map(([href, rot]) => `<a href="${escQ(href)}">${escQ(rot)}</a>`).join('');
+  const indiceSubtemas = (p.subtemas || []).length ? `
+    <details class="cp-subtemas-menu">
+      <summary>Subtópicos <span class="cp-subtemas-contagem">${p.subtemas.length}</span><span class="cp-subtemas-seta" aria-hidden="true">▾</span></summary>
+      <div class="cp-subtemas-lista">${p.subtemas.map(t => `<a href="#${escQ(t.id)}">${escQ(t.titulo)}</a>`).join('')}</div>
+    </details>` : '';
 
   return `
   <nav class="migalha" aria-label="Caminho">
@@ -241,7 +245,7 @@ export function viewConteudo(id) {
     <header class="cp-topo" data-entrada>
       <span class="eyebrow">${escQ(base.area.sigla)} · ${escQ(base.materia.nome)}</span>
       <h1>${escQ(base.titulo)}</h1>
-      <nav class="cp-indice" aria-label="Nesta página">${indicePagina}</nav>
+      <nav class="cp-indice" aria-label="Nesta página">${indicePagina}${indiceSubtemas}</nav>
     </header>
 
     <div class="cp-duas">
