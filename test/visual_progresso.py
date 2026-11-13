@@ -24,8 +24,8 @@ with sync_playwright() as p:
     backup=info.value.path();d=json.load(open(backup));assert len(d['redacoes'])==1 and 'his-colonia' in d['acessados']
     page.on('dialog', lambda dialog: dialog.accept())
     page.locator('[data-excluir-redacao]').click();assert page.locator('.historico-item').count()==0
-    page.locator('#arquivo-progresso').set_input_files(backup);assert page.locator('.historico-item').count()==1
-    page.locator('#arquivo-progresso').set_input_files(backup);assert page.locator('.historico-item').count()==1
+    page.locator('#arquivo-progresso').set_input_files(backup);page.locator('.historico-item').wait_for();assert page.locator('.historico-item').count()==1
+    page.locator('#arquivo-progresso').set_input_files(backup);page.wait_for_function("document.querySelector('#arquivo-progresso').files.length === 0");assert page.locator('.historico-item').count()==1
     page.locator('#limpar-acessos').click();assert page.locator('.historico-item').count()==1
     page.goto(base+'/#/conteudos/materia/historia');assert page.locator('.cb-visitado').count()==0
     # Standalone e site modular, no mesmo domínio, compartilham os dados locais.

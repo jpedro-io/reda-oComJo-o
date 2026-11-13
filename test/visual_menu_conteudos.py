@@ -24,9 +24,13 @@ with sync_playwright() as p:
      menu_total+=1;assert menu.locator('.cp-subtemas-lista a').count()==count
      for link in menu.locator('.cp-subtemas-lista a').all():
       href=link.get_attribute('href'); assert pg.locator('[id="'+href[1:]+'"].subtema').count()==1,(id,href)
+     pg.evaluate('window.scrollTo(0,document.documentElement.scrollHeight * 0.5)')
+     sticky=pg.locator('.cp-navegacao-flutuante')
+     pos=sticky.evaluate('e=>({y:e.getBoundingClientRect().top,bar:document.querySelector(".topbar").getBoundingClientRect().bottom})')
+     assert pos['bar']<=pos['y']<=pos['bar']+20,(id,width,pos)
      summary=menu.locator('summary');summary.focus();pg.keyboard.press('Enter');assert menu.get_attribute('open') is not None
      first=menu.locator('a').first;href=first.get_attribute('href');old=pg.url;first.click();assert menu.get_attribute('open') is None;assert pg.url==old
-     top=pg.locator('[id="'+href[1:]+'"]').evaluate('e=>e.getBoundingClientRect().top');assert -2<=top<=180,(id,width,top)
+     top=pg.locator('[id="'+href[1:]+'"]').evaluate('e=>e.getBoundingClientRect().top');barbottom=sticky.evaluate('e=>e.getBoundingClientRect().bottom');assert barbottom<=top<=180,(id,width,top,barbottom)
     assert pg.evaluate('document.documentElement.scrollWidth<=innerWidth+2'),(id,width)
    pg.close()
  assert not errors,errors

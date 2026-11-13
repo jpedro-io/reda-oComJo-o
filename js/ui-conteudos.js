@@ -245,8 +245,9 @@ export function viewConteudo(id) {
     <header class="cp-topo" data-entrada>
       <span class="eyebrow">${escQ(base.area.sigla)} · ${escQ(base.materia.nome)}</span>
       <h1>${escQ(base.titulo)}</h1>
-      <nav class="cp-indice" aria-label="Nesta página">${indicePagina}${indiceSubtemas}</nav>
+      <nav class="cp-indice" aria-label="Nesta página">${indicePagina}</nav>
     </header>
+    ${indiceSubtemas ? `<nav class="cp-navegacao-flutuante" aria-label="Navegação entre subtópicos">${indiceSubtemas}</nav>` : ''}
 
     <div class="cp-duas">
       <section class="cp-bloco cp-resumo" id="resumo" data-entrada>

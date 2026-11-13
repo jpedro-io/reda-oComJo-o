@@ -23,7 +23,7 @@ import { REDACOES, TIPOS_DESTAQUE, buscarRedacao, redacoesPorAno, TOTAL_NOTA_MIL
 import { EXEMPLOS } from './db/exemplos.js';
 import { corrigir } from './engine/corrigir.js';
 import { ativarMovimento } from './motion.js';
-import { viewConteudos, viewMateria, viewConteudo, tituloDeConteudos } from './ui-conteudos.js?v=2026-11-conteudos3';
+import { viewConteudos, viewMateria, viewConteudo, tituloDeConteudos } from './ui-conteudos.js?v=2026-11-menu-fixo4';
 import { conteudoPorId } from './db/conteudos/index.js';
 import { lerProgressoLocal, marcarAcessoLocal, salvarRedacaoLocal, excluirRedacaoLocal, limparAcessosLocal, importarProgressoLocal } from './progresso-local.js';
 
@@ -1093,13 +1093,13 @@ function tituloDa(partes = []) {
 
 // Os links internos não podem trocar o hash usado pelo roteador da aplicação.
 document.addEventListener('click', event => {
-  const link = event.target.closest('.cp-indice a[href^="#"]');
+  const link = event.target.closest('.cp-indice a[href^="#"], .cp-navegacao-flutuante a[href^="#"]');
   if (!link) return;
   const alvo = document.getElementById(link.getAttribute('href').slice(1));
   if (!alvo) return;
   event.preventDefault();
   const menu = link.closest('.cp-subtemas-menu');
-  if (menu) menu.open = false;
+  if (menu) { menu.open = false; menu.querySelector('summary')?.focus({ preventScroll: true }); }
   alvo.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce), (max-width: 767px), (pointer: coarse)').matches ? 'auto' : 'smooth', block: 'start' });
 });
 
