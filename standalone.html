@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Redação com João — competências, estrutura, temas e redações analisadas</title>
-<meta name="description" content="Guia completo da redação do ENEM: as 5 competências oficiais, estrutura parte por parte, como ler o comando do tema, banco de temas com repertórios, 13 redações nota 1000 analisadas (2014–2026) e correção com nota e pontos de melhoria." />
+<title>Redação com João — ENEM, redação, Sisu, Prouni e FIES</title>
+<meta name="description" content="Guia de redação e conteúdos do ENEM, com explicações sobre Sisu, Prouni e FIES, temas, modelos analisados e correção com nota e pontos de melhoria." />
 <meta name="theme-color" content="#06130d" />
 <meta name="color-scheme" content="dark" />
 <style>
@@ -6496,6 +6496,75 @@ main .cp-navegacao-flutuante { position:sticky; top:calc(var(--topo) + 8px); z-i
 main .cp-navegacao-flutuante .cp-subtemas-menu { pointer-events:auto; }
 main .cp-subtemas-menu > summary { box-shadow:0 3px 12px rgba(0,0,0,.25); }
 main .cp-subtemas-lista { max-height:min(55vh,450px); overflow-y:auto; overscroll-behavior:contain; box-shadow:0 10px 26px rgba(0,0,0,.45); }
+
+/* Guia de acesso ao ensino superior: três programas, duas ferramentas externas. */
+main .programas-topo { padding-top:42px; border-bottom:0; padding-bottom:10px; }
+main .programas-kicker { display:inline-block; margin-bottom:12px; color:#9decc1; font-size:.74rem; font-weight:700; letter-spacing:.12em; }
+main .programas-topo h1 { max-width:22ch; }
+main .programas-apresentacao { max-width:760px; margin:12px 0 28px; }
+main .programas-apresentacao p { color:#c5d9cb; font-size:1.03rem; line-height:1.7; }
+main .programas-lista { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; align-items:stretch; }
+main .programa-card {
+  display:flex; flex-direction:column; min-width:0; padding:24px;
+  border:1px solid #315742; border-radius:16px;
+  background:linear-gradient(155deg,rgba(19,55,35,.96),rgba(9,29,18,.96));
+  box-shadow:inset 0 1px 0 rgba(210,255,220,.06);
+}
+main .programa-card-topo { display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:30px; }
+main .programa-numero { color:#67eba7; font-size:.82rem; font-weight:700; letter-spacing:.1em; }
+main .programa-tipo { color:#bdd8c6; font-size:.66rem; font-weight:700; letter-spacing:.08em; text-align:right; }
+main .programa-card h2 { margin:18px 0 10px; color:#eff9f2; font-size:clamp(1.55rem,2.5vw,2rem); letter-spacing:-.035em; }
+main .programa-card p { color:#c6dacf; font-size:.94rem; line-height:1.65; }
+main .programa-card > p { margin:0 0 14px; }
+main .programa-card ul { margin:4px 0 16px; padding-left:20px; color:#d6e5da; }
+main .programa-card li { margin:0 0 9px; color:#d6e5da; font-size:.9rem; line-height:1.55; }
+main .programa-card li::marker { color:#61e79f; }
+main .programa-card .programa-observacao { margin-top:auto; padding:12px 13px; border-left:2px solid #4bd98d; background:rgba(4,22,13,.55); color:#d6e8dc; font-size:.82rem; }
+main .programa-acao { margin-top:18px; }
+main .programa-botao { display:flex; width:100%; min-width:0 !important; gap:12px; justify-content:space-between; }
+main .programa-card-prouni .programa-botao { border-color:#49745a; background:#1b3927; }
+main .programas-resumo { margin-top:52px; }
+main .programas-resumo-lista { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; margin:0; padding:0; list-style:none; border-top:1px solid #315742; }
+main .programas-resumo-lista li { display:grid; grid-template-columns:90px minmax(0,1fr); gap:14px; padding:16px 14px 16px 0; border-bottom:1px solid #315742; align-items:baseline; }
+main .programas-resumo-lista strong { color:#82eeb3; }
+main .programas-resumo-lista span { color:#c5d9cb; font-size:.88rem; line-height:1.5; }
+main .programas-aviso { margin:28px 0 70px; padding:18px 20px; border:1px solid #315742; border-radius:12px; background:rgba(11,34,21,.78); }
+main .programas-aviso strong { color:#a9f2c7; }
+main .programas-aviso p { margin:6px 0 0; color:#c5d9cb; font-size:.88rem; line-height:1.55; }
+@media (max-width:980px) {
+  main .programas-lista { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  main .programa-card-fies { grid-column:1/-1; }
+  main .programas-resumo-lista { grid-template-columns:1fr; }
+}
+@media (max-width:640px) {
+  main .programas-topo { padding-top:30px; }
+  main .programas-lista { grid-template-columns:minmax(0,1fr); gap:12px; }
+  main .programa-card-fies { grid-column:auto; }
+  main .programa-card { padding:20px; }
+  main .programas-resumo-lista li { grid-template-columns:78px minmax(0,1fr); gap:10px; padding-right:0; }
+  main .programas-aviso { margin-bottom:48px; padding:16px; }
+}
+
+/* Em tablets, o rótulo novo não pode deixar opções escondidas na barra. */
+@media (min-width:769px) and (max-width:900px) {
+  .topbar .topbar-inner { position:relative; gap:12px; }
+  .topbar .nav-abre {
+    display:inline-flex; flex:0 0 40px; flex-direction:column; justify-content:center;
+    gap:4px; width:40px; height:40px; padding:8px; margin-left:auto; order:3;
+    border:1px solid #466a52; border-radius:10px; background:#10291b;
+  }
+  .topbar .nav-abre-risco { display:block; width:100%; height:1px; background:#e8f4ec; }
+  .topbar .nav {
+    display:none; position:absolute; top:100%; left:0; right:0; z-index:101;
+    margin:0; padding:8px 18px 16px; border:1px solid #315742;
+    border-radius:0 0 14px 14px; background:rgba(4,15,9,.98);
+  }
+  .topbar .nav.aberto { display:block; }
+  .topbar .nav-pills { display:block; overflow:visible; }
+  .topbar .pill { display:block; padding:11px 0; border-bottom:1px solid #315742; white-space:normal; }
+  .topbar .pill[aria-current="page"]::after { display:none; }
+  .topbar .pill-cta { margin:12px 0 0; text-align:center; }
+}
 main .cp-navegacao-flutuante .cp-subtemas-lista a { color:#e8f4ec; background:#214632; border:1px solid #50785d; text-decoration:none; }
 main .cp-navegacao-flutuante .cp-subtemas-lista a:hover,
 main .cp-navegacao-flutuante .cp-subtemas-lista a:focus-visible { background:#2c6042; }
@@ -6534,6 +6603,7 @@ main .cp-menu-grupo { grid-column:1/-1; color:#a8d8ba; font-size:.72rem; font-we
         <a class="pill" href="#/temas">Temas</a>
         <a class="pill" href="#/redacoes">Redações</a>
         <a class="pill" href="#/conteudos">Conteúdos</a>
+        <a class="pill" href="#/programas">Sisu, Prouni e FIES</a>
         <a class="pill pill-cta" href="#/corrigir">Corrigir</a>
       </div>
     </nav>
@@ -22789,13 +22859,14 @@ function ativarMovimento(raiz = document) {
 
 /* ===== js/ui.js ===== */
 /**
- * INTERFACE — 6 páginas, um molde por conteúdo (ver DESIGN.md §5).
+ * INTERFACE — páginas do guia e da ferramenta (ver DESIGN.md §5).
  *
  *   #/                        hero assimétrico · índice · faixa das competências
  *   #/criterios               régua vertical de níveis
  *   #/estrutura               linha do tempo · trilha da proposta · esqueleto
  *   #/comandos                acordeão tipográfico dos comandos do tema
  *   #/temas                   lista densa com filtros
+ *   #/programas               guia rápido de Sisu, Prouni e FIES
  *   #/redacoes                crônica com espinha de ano
  *   #/redacoes/:id            documento comentado
  *   #/corrigir?tema=&texto=   workspace de correção
@@ -23248,6 +23319,92 @@ function viewConteudosTemas() {
 }
 
 const viewTemas = viewConteudosTemas;
+
+/* ------------------------------------------------------------------ 5A. SISU, PROUNI E FIES */
+
+function viewProgramas() {
+  return `
+  <div class="secao-topo programas-topo">
+    <span class="programas-kicker">ACESSO AO ENSINO SUPERIOR</span>
+    <h1 data-entrada>Enem: três caminhos para a graduação</h1>
+    <p class="sub" data-entrada>Sisu, Prouni e FIES podem usar a nota do Enem, mas funcionam de formas diferentes. Entenda o que cada programa oferece antes de escolher.</p>
+  </div>
+
+  <section class="programas-apresentacao" aria-label="Visão geral">
+    <p>Um caminho pode levar a uma vaga em uma instituição pública; outro pode oferecer uma bolsa em uma instituição privada; e há também o financiamento estudantil. Os requisitos, prazos e ofertas dependem do edital de cada edição.</p>
+  </section>
+
+  <section class="programas-lista" aria-label="Como funcionam Sisu, Prouni e FIES">
+    <article class="programa-card programa-card-sisu" id="programa-sisu" data-entrada>
+      <div class="programa-card-topo">
+        <span class="programa-numero">01</span>
+        <span class="programa-tipo">VAGA EM INSTITUIÇÃO PÚBLICA</span>
+      </div>
+      <h2>Sisu</h2>
+      <p>O Sistema de Seleção Unificada reúne vagas de instituições públicas de ensino superior que participam do processo seletivo. A classificação considera as notas do Enem, as opções de curso, a modalidade de concorrência e a quantidade de vagas.</p>
+      <ul>
+        <li>Pesos e notas mínimas podem variar entre cursos e instituições.</li>
+        <li>Vagas reservadas e ações afirmativas têm critérios próprios.</li>
+      </ul>
+      <p class="programa-observacao">A nota de corte é uma referência da concorrência; não garante a seleção.</p>
+      <div class="programa-acao">
+        <a class="novo-btn principal programa-botao" href="https://sisusimulator.com.br" target="_blank" rel="noopener noreferrer">
+          <span>Simulador Sisu</span><span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="programa-card programa-card-prouni" id="programa-prouni" data-entrada>
+      <div class="programa-card-topo">
+        <span class="programa-numero">02</span>
+        <span class="programa-tipo">BOLSA EM INSTITUIÇÃO PRIVADA</span>
+      </div>
+      <h2>Prouni</h2>
+      <p>O Programa Universidade para Todos oferece bolsas em cursos de instituições privadas participantes: integrais, que cobrem 100% da mensalidade, ou parciais, que cobrem 50%.</p>
+      <ul>
+        <li>A seleção usa o Enem e segue critérios de elegibilidade definidos no edital, incluindo requisitos de escolaridade e renda.</li>
+        <li>A oferta depende do curso, turno, instituição, local e modalidade.</li>
+      </ul>
+      <p class="programa-observacao">A pré-seleção pode exigir a comprovação das informações e dos documentos previstos no edital.</p>
+      <div class="programa-acao">
+        <a class="novo-btn secundario programa-botao" href="https://prounisimulator.com.br/?utm_source=sisusimulator.com.br&amp;utm_medium=link&amp;utm_campaign=sisusimulator" target="_blank" rel="noopener noreferrer">
+          <span>Simulador Prouni</span><span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="programa-card programa-card-fies" id="programa-fies" data-entrada>
+      <div class="programa-card-topo">
+        <span class="programa-numero">03</span>
+        <span class="programa-tipo">FINANCIAMENTO ESTUDANTIL</span>
+      </div>
+      <h2>FIES</h2>
+      <p>O Fundo de Financiamento Estudantil financia encargos educacionais de cursos de graduação em instituições privadas participantes. Não é uma bolsa: a contratação gera uma obrigação de pagamento conforme o contrato e as regras vigentes.</p>
+      <ul>
+        <li>A seleção considera a nota do Enem e os critérios e vagas definidos no edital.</li>
+        <li>O Fies Social tem regras próprias; candidatos elegíveis podem solicitar financiamento de até 100% dos encargos educacionais, conforme as condições vigentes.</li>
+      </ul>
+      <p class="programa-observacao">Antes de contratar, confira as condições, obrigações e etapas de validação da edição.</p>
+    </article>
+  </section>
+
+  <section class="programas-resumo" aria-labelledby="programas-resumo-titulo">
+    <div class="bloco-titulo">
+      <h2 id="programas-resumo-titulo">A diferença em uma linha</h2>
+      <span>bolsa, vaga ou financiamento</span>
+    </div>
+    <ul class="programas-resumo-lista">
+      <li><strong>Sisu</strong><span>Seleção para uma vaga em instituição pública participante.</span></li>
+      <li><strong>Prouni</strong><span>Bolsa de estudos em instituição privada participante.</span></li>
+      <li><strong>FIES</strong><span>Financiamento estudantil em instituição privada participante.</span></li>
+    </ul>
+  </section>
+
+  <aside class="programas-aviso" aria-label="Aviso sobre simuladores e editais">
+    <strong>Use a simulação como referência.</strong>
+    <p>Os dois botões levam a simuladores externos. Resultados estimados e notas de corte não substituem o edital, a inscrição oficial nem a confirmação dos requisitos do programa.</p>
+  </aside>`;
+}
 
 function ligarFiltros() {
   const busca = document.getElementById('busca-tema');
@@ -23829,6 +23986,7 @@ function render() {
   else if (partes[0] === 'estrutura') html = viewEstrutura();
   else if (partes[0] === 'comandos') html = viewComandos();
   else if (partes[0] === 'temas') html = viewTemas();
+  else if (partes[0] === 'programas') html = viewProgramas();
   else if (partes[0] === 'redacoes') {
     html = partes[1] ? viewRedacao(decodeURIComponent(partes[1])) : viewRedacoes();
   }
@@ -23873,6 +24031,7 @@ function tituloDa(partes = []) {
     estrutura: 'Estrutura da redação, Redação com João',
     comandos: 'Ler o comando do tema, Redação com João',
     temas: 'Temas do ENEM e de treino, Redação com João',
+    programas: 'Sisu, Prouni e FIES: entenda as diferenças, Redação com João',
     redacoes: 'Redações nota 1000 analisadas, Redação com João',
     corrigir: 'Corrigir redação, Redação com João'
   };

@@ -1,11 +1,12 @@
 /**
- * INTERFACE — 6 páginas, um molde por conteúdo (ver DESIGN.md §5).
+ * INTERFACE — páginas do guia e da ferramenta (ver DESIGN.md §5).
  *
  *   #/                        hero assimétrico · índice · faixa das competências
  *   #/criterios               régua vertical de níveis
  *   #/estrutura               linha do tempo · trilha da proposta · esqueleto
  *   #/comandos                acordeão tipográfico dos comandos do tema
  *   #/temas                   lista densa com filtros
+ *   #/programas               guia rápido de Sisu, Prouni e FIES
  *   #/redacoes                crônica com espinha de ano
  *   #/redacoes/:id            documento comentado
  *   #/corrigir?tema=&texto=   workspace de correção
@@ -458,6 +459,92 @@ function viewConteudosTemas() {
 }
 
 const viewTemas = viewConteudosTemas;
+
+/* ------------------------------------------------------------------ 5A. SISU, PROUNI E FIES */
+
+function viewProgramas() {
+  return `
+  <div class="secao-topo programas-topo">
+    <span class="programas-kicker">ACESSO AO ENSINO SUPERIOR</span>
+    <h1 data-entrada>Enem: três caminhos para a graduação</h1>
+    <p class="sub" data-entrada>Sisu, Prouni e FIES podem usar a nota do Enem, mas funcionam de formas diferentes. Entenda o que cada programa oferece antes de escolher.</p>
+  </div>
+
+  <section class="programas-apresentacao" aria-label="Visão geral">
+    <p>Um caminho pode levar a uma vaga em uma instituição pública; outro pode oferecer uma bolsa em uma instituição privada; e há também o financiamento estudantil. Os requisitos, prazos e ofertas dependem do edital de cada edição.</p>
+  </section>
+
+  <section class="programas-lista" aria-label="Como funcionam Sisu, Prouni e FIES">
+    <article class="programa-card programa-card-sisu" id="programa-sisu" data-entrada>
+      <div class="programa-card-topo">
+        <span class="programa-numero">01</span>
+        <span class="programa-tipo">VAGA EM INSTITUIÇÃO PÚBLICA</span>
+      </div>
+      <h2>Sisu</h2>
+      <p>O Sistema de Seleção Unificada reúne vagas de instituições públicas de ensino superior que participam do processo seletivo. A classificação considera as notas do Enem, as opções de curso, a modalidade de concorrência e a quantidade de vagas.</p>
+      <ul>
+        <li>Pesos e notas mínimas podem variar entre cursos e instituições.</li>
+        <li>Vagas reservadas e ações afirmativas têm critérios próprios.</li>
+      </ul>
+      <p class="programa-observacao">A nota de corte é uma referência da concorrência; não garante a seleção.</p>
+      <div class="programa-acao">
+        <a class="novo-btn principal programa-botao" href="https://sisusimulator.com.br" target="_blank" rel="noopener noreferrer">
+          <span>Simulador Sisu</span><span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="programa-card programa-card-prouni" id="programa-prouni" data-entrada>
+      <div class="programa-card-topo">
+        <span class="programa-numero">02</span>
+        <span class="programa-tipo">BOLSA EM INSTITUIÇÃO PRIVADA</span>
+      </div>
+      <h2>Prouni</h2>
+      <p>O Programa Universidade para Todos oferece bolsas em cursos de instituições privadas participantes: integrais, que cobrem 100% da mensalidade, ou parciais, que cobrem 50%.</p>
+      <ul>
+        <li>A seleção usa o Enem e segue critérios de elegibilidade definidos no edital, incluindo requisitos de escolaridade e renda.</li>
+        <li>A oferta depende do curso, turno, instituição, local e modalidade.</li>
+      </ul>
+      <p class="programa-observacao">A pré-seleção pode exigir a comprovação das informações e dos documentos previstos no edital.</p>
+      <div class="programa-acao">
+        <a class="novo-btn secundario programa-botao" href="https://prounisimulator.com.br/?utm_source=sisusimulator.com.br&amp;utm_medium=link&amp;utm_campaign=sisusimulator" target="_blank" rel="noopener noreferrer">
+          <span>Simulador Prouni</span><span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="programa-card programa-card-fies" id="programa-fies" data-entrada>
+      <div class="programa-card-topo">
+        <span class="programa-numero">03</span>
+        <span class="programa-tipo">FINANCIAMENTO ESTUDANTIL</span>
+      </div>
+      <h2>FIES</h2>
+      <p>O Fundo de Financiamento Estudantil financia encargos educacionais de cursos de graduação em instituições privadas participantes. Não é uma bolsa: a contratação gera uma obrigação de pagamento conforme o contrato e as regras vigentes.</p>
+      <ul>
+        <li>A seleção considera a nota do Enem e os critérios e vagas definidos no edital.</li>
+        <li>O Fies Social tem regras próprias; candidatos elegíveis podem solicitar financiamento de até 100% dos encargos educacionais, conforme as condições vigentes.</li>
+      </ul>
+      <p class="programa-observacao">Antes de contratar, confira as condições, obrigações e etapas de validação da edição.</p>
+    </article>
+  </section>
+
+  <section class="programas-resumo" aria-labelledby="programas-resumo-titulo">
+    <div class="bloco-titulo">
+      <h2 id="programas-resumo-titulo">A diferença em uma linha</h2>
+      <span>bolsa, vaga ou financiamento</span>
+    </div>
+    <ul class="programas-resumo-lista">
+      <li><strong>Sisu</strong><span>Seleção para uma vaga em instituição pública participante.</span></li>
+      <li><strong>Prouni</strong><span>Bolsa de estudos em instituição privada participante.</span></li>
+      <li><strong>FIES</strong><span>Financiamento estudantil em instituição privada participante.</span></li>
+    </ul>
+  </section>
+
+  <aside class="programas-aviso" aria-label="Aviso sobre simuladores e editais">
+    <strong>Use a simulação como referência.</strong>
+    <p>Os dois botões levam a simuladores externos. Resultados estimados e notas de corte não substituem o edital, a inscrição oficial nem a confirmação dos requisitos do programa.</p>
+  </aside>`;
+}
 
 function ligarFiltros() {
   const busca = document.getElementById('busca-tema');
@@ -1039,6 +1126,7 @@ function render() {
   else if (partes[0] === 'estrutura') html = viewEstrutura();
   else if (partes[0] === 'comandos') html = viewComandos();
   else if (partes[0] === 'temas') html = viewTemas();
+  else if (partes[0] === 'programas') html = viewProgramas();
   else if (partes[0] === 'redacoes') {
     html = partes[1] ? viewRedacao(decodeURIComponent(partes[1])) : viewRedacoes();
   }
@@ -1083,6 +1171,7 @@ function tituloDa(partes = []) {
     estrutura: 'Estrutura da redação, Redação com João',
     comandos: 'Ler o comando do tema, Redação com João',
     temas: 'Temas do ENEM e de treino, Redação com João',
+    programas: 'Sisu, Prouni e FIES: entenda as diferenças, Redação com João',
     redacoes: 'Redações nota 1000 analisadas, Redação com João',
     corrigir: 'Corrigir redação, Redação com João'
   };

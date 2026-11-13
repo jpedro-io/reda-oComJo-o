@@ -5,7 +5,7 @@ import json, os, subprocess, sys
 from playwright.sync_api import sync_playwright
 base = (sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8003').rstrip('/')
 ids = json.loads(subprocess.check_output(['node', '--input-type=module', '-e', "import {AREAS} from './js/db/conteudos/index.js'; console.log(JSON.stringify(AREAS.flatMap(a=>a.materias.flatMap(m=>m.conteudos.map(c=>c.id)))))"], text=True))
-routes = ['#/', '#/competencias', '#/estrutura', '#/comandos', '#/temas', '#/redacoes', '#/corrigir', '#/conteudos']
+routes = ['#/', '#/competencias', '#/estrutura', '#/comandos', '#/temas', '#/redacoes', '#/programas', '#/corrigir', '#/conteudos']
 with sync_playwright() as p:
     chromium = os.environ.get('PLAYWRIGHT_CHROMIUM_PATH','/home/user/.cache/ms-playwright/chromium-1148/chrome-linux/chrome')
     browser = p.chromium.launch(headless=True, executable_path=chromium if os.path.isfile(chromium) else None, args=['--no-sandbox'])
