@@ -23,7 +23,7 @@ import { REDACOES, TIPOS_DESTAQUE, buscarRedacao, redacoesPorAno, TOTAL_NOTA_MIL
 import { EXEMPLOS } from './db/exemplos.js';
 import { corrigir } from './engine/corrigir.js';
 import { ativarMovimento } from './motion.js';
-import { viewConteudos, viewMateria, viewConteudo, tituloDeConteudos } from './ui-conteudos.js?v=2026-11-menu-fixo4';
+import { viewConteudos, viewMateria, viewConteudo, tituloDeConteudos } from './ui-conteudos.js?v=2026-11-menu-completo5';
 import { conteudoPorId } from './db/conteudos/index.js';
 import { lerProgressoLocal, marcarAcessoLocal, salvarRedacaoLocal, excluirRedacaoLocal, limparAcessosLocal, importarProgressoLocal } from './progresso-local.js';
 

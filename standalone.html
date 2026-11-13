@@ -6499,7 +6499,10 @@ main .cp-subtemas-lista { max-height:min(55vh,450px); overflow-y:auto; overscrol
 main .cp-navegacao-flutuante .cp-subtemas-lista a { color:#e8f4ec; background:#214632; border:1px solid #50785d; text-decoration:none; }
 main .cp-navegacao-flutuante .cp-subtemas-lista a:hover,
 main .cp-navegacao-flutuante .cp-subtemas-lista a:focus-visible { background:#2c6042; }
-main .subtema[id] { scroll-margin-top:calc(var(--topo) + 72px); }
+main .conteudo-pag #resumo, main .conteudo-pag #exemplos,
+main .conteudo-pag #imagens, main .conteudo-pag #questoes,
+main .conteudo-pag #video, main .conteudo-pag .subtema[id] { scroll-margin-top:calc(var(--topo) + 72px); }
+main .cp-menu-grupo { grid-column:1/-1; color:#a8d8ba; font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 2px 0; }
 
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%274%27%20fill%3D%27%2325e88c%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2717%27%20fill%3D%27%2307130c%27%20text-anchor%3D%27middle%27%3ER%3C%2Ftext%3E%3C%2Fsvg%3E" />
@@ -22480,15 +22483,19 @@ function viewConteudo(id) {
   const prox = pos >= 0 && pos < irmaos.length - 1 ? irmaos[pos + 1] : null;
 
   const indicePagina = [
-    ['#resumo', 'resumo'], p.exemplos.length ? ['#exemplos', 'exemplos'] : null,
-    (figuras || formulas) ? ['#imagens', 'imagens e fórmulas'] : null,
-    ['#questoes', 'questões'], p.video ? ['#video', 'vídeo'] : null,
+    ['#resumo', 'Resumo'], p.exemplos.length ? ['#exemplos', 'Exemplos'] : null,
+    (figuras || formulas) ? ['#imagens', 'Imagens e fórmulas'] : null,
+    ['#questoes', 'Questões'], p.video ? ['#video', 'Vídeo'] : null,
   ].filter(Boolean).map(([href, rot]) => `<a href="${escQ(href)}">${escQ(rot)}</a>`).join('');
-  const indiceSubtemas = (p.subtemas || []).length ? `
+  const subtemas = p.subtemas || [];
+  const indiceCompleto = `
     <details class="cp-subtemas-menu">
-      <summary>Subtópicos <span class="cp-subtemas-contagem">${p.subtemas.length}</span><span class="cp-subtemas-seta" aria-hidden="true">▾</span></summary>
-      <div class="cp-subtemas-lista">${p.subtemas.map(t => `<a href="#${escQ(t.id)}">${escQ(t.titulo)}</a>`).join('')}</div>
-    </details>` : '';
+      <summary>Navegar nesta página <span class="cp-subtemas-seta" aria-hidden="true">▾</span></summary>
+      <div class="cp-subtemas-lista">
+        <span class="cp-menu-grupo">Seções</span>${indicePagina}
+        ${subtemas.length ? `<span class="cp-menu-grupo">Subtópicos</span>${subtemas.map(t => `<a class="cp-menu-subtema" href="#${escQ(t.id)}">${escQ(t.titulo)}</a>`).join('')}` : ''}
+      </div>
+    </details>`;
 
   return `
   <nav class="migalha" aria-label="Caminho">
@@ -22501,9 +22508,8 @@ function viewConteudo(id) {
     <header class="cp-topo" data-entrada>
       <span class="eyebrow">${escQ(base.area.sigla)} · ${escQ(base.materia.nome)}</span>
       <h1>${escQ(base.titulo)}</h1>
-      <nav class="cp-indice" aria-label="Nesta página">${indicePagina}</nav>
     </header>
-    ${indiceSubtemas ? `<nav class="cp-navegacao-flutuante" aria-label="Navegação entre subtópicos">${indiceSubtemas}</nav>` : ''}
+    <nav class="cp-navegacao-flutuante" aria-label="Navegação nesta página">${indiceCompleto}</nav>
 
     <div class="cp-duas">
       <section class="cp-bloco cp-resumo" id="resumo" data-entrada>

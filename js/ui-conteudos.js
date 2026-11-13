@@ -224,15 +224,19 @@ export function viewConteudo(id) {
   const prox = pos >= 0 && pos < irmaos.length - 1 ? irmaos[pos + 1] : null;
 
   const indicePagina = [
-    ['#resumo', 'resumo'], p.exemplos.length ? ['#exemplos', 'exemplos'] : null,
-    (figuras || formulas) ? ['#imagens', 'imagens e fórmulas'] : null,
-    ['#questoes', 'questões'], p.video ? ['#video', 'vídeo'] : null,
+    ['#resumo', 'Resumo'], p.exemplos.length ? ['#exemplos', 'Exemplos'] : null,
+    (figuras || formulas) ? ['#imagens', 'Imagens e fórmulas'] : null,
+    ['#questoes', 'Questões'], p.video ? ['#video', 'Vídeo'] : null,
   ].filter(Boolean).map(([href, rot]) => `<a href="${escQ(href)}">${escQ(rot)}</a>`).join('');
-  const indiceSubtemas = (p.subtemas || []).length ? `
+  const subtemas = p.subtemas || [];
+  const indiceCompleto = `
     <details class="cp-subtemas-menu">
-      <summary>Subtópicos <span class="cp-subtemas-contagem">${p.subtemas.length}</span><span class="cp-subtemas-seta" aria-hidden="true">▾</span></summary>
-      <div class="cp-subtemas-lista">${p.subtemas.map(t => `<a href="#${escQ(t.id)}">${escQ(t.titulo)}</a>`).join('')}</div>
-    </details>` : '';
+      <summary>Navegar nesta página <span class="cp-subtemas-seta" aria-hidden="true">▾</span></summary>
+      <div class="cp-subtemas-lista">
+        <span class="cp-menu-grupo">Seções</span>${indicePagina}
+        ${subtemas.length ? `<span class="cp-menu-grupo">Subtópicos</span>${subtemas.map(t => `<a class="cp-menu-subtema" href="#${escQ(t.id)}">${escQ(t.titulo)}</a>`).join('')}` : ''}
+      </div>
+    </details>`;
 
   return `
   <nav class="migalha" aria-label="Caminho">
@@ -245,9 +249,8 @@ export function viewConteudo(id) {
     <header class="cp-topo" data-entrada>
       <span class="eyebrow">${escQ(base.area.sigla)} · ${escQ(base.materia.nome)}</span>
       <h1>${escQ(base.titulo)}</h1>
-      <nav class="cp-indice" aria-label="Nesta página">${indicePagina}</nav>
     </header>
-    ${indiceSubtemas ? `<nav class="cp-navegacao-flutuante" aria-label="Navegação entre subtópicos">${indiceSubtemas}</nav>` : ''}
+    <nav class="cp-navegacao-flutuante" aria-label="Navegação nesta página">${indiceCompleto}</nav>
 
     <div class="cp-duas">
       <section class="cp-bloco cp-resumo" id="resumo" data-entrada>

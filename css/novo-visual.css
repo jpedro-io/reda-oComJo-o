@@ -331,4 +331,7 @@ main .cp-subtemas-lista { max-height:min(55vh,450px); overflow-y:auto; overscrol
 main .cp-navegacao-flutuante .cp-subtemas-lista a { color:#e8f4ec; background:#214632; border:1px solid #50785d; text-decoration:none; }
 main .cp-navegacao-flutuante .cp-subtemas-lista a:hover,
 main .cp-navegacao-flutuante .cp-subtemas-lista a:focus-visible { background:#2c6042; }
-main .subtema[id] { scroll-margin-top:calc(var(--topo) + 72px); }
+main .conteudo-pag #resumo, main .conteudo-pag #exemplos,
+main .conteudo-pag #imagens, main .conteudo-pag #questoes,
+main .conteudo-pag #video, main .conteudo-pag .subtema[id] { scroll-margin-top:calc(var(--topo) + 72px); }
+main .cp-menu-grupo { grid-column:1/-1; color:#a8d8ba; font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 2px 0; }
