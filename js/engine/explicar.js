@@ -11,7 +11,7 @@
  */
 
 /* sem alias de import: o build offline remove as linhas de import e deixa um
-escopo só — nomes aliasados quebrariam o standalone ("EXIGES is not defined"). */
+escopo só, nomes aliasados quebrariam o standalone ("EXIGES is not defined"). */
 import { GRADES, EXIGE, PARA_SUBIR } from '../db/cartilhas.js';
 import { NIVEIS, nivelDe } from '../db/niveis.js';
 
@@ -90,11 +90,11 @@ export function explicarC1(comp) {
     ].slice(0, 5);
     motivos.push(motivo(
       total > 8 ? 'alta' : 'media',
-      `${total} desvios de norma padrão — o nível 5 admite no máximo 2`,
-      'A grade da Competência I é combinatória: o 200 exige, ao mesmo tempo, estrutura sintática excelente (no máximo uma falha) e no máximo dois desvios no texto inteiro. E a regra geral manda ficar com o nível inferior quando o texto reúne características de dois níveis — por isso três desvios já bastam para tirar a redação do nível 5, mesmo com a estrutura impecável.',
+      `${total} desvios de norma padrão, o nível 5 admite no máximo 2`,
+      'A grade da Competência I é combinatória: o 200 exige, ao mesmo tempo, estrutura sintática excelente (no máximo uma falha) e no máximo dois desvios no texto inteiro. E a regra geral manda ficar com o nível inferior quando o texto reúne características de dois níveis, por isso três desvios já bastam para tirar a redação do nível 5, mesmo com a estrutura impecável.',
       grafia[0]?.contexto || construcao[0]?.contexto || null,
       total > 6
-        ? 'Priorize os desvios que se repetem: a recorrência é o que pesa mais na leitura do conjunto. Releia o texto em voz alta — a boca escuta o que o olho pula.'
+        ? 'Priorize os desvios que se repetem: a recorrência é o que pesa mais na leitura do conjunto. Releia o texto em voz alta, a boca escuta o que o olho pula.'
         : 'Falta pouco: elimine esses desvios na revisão final e o texto volta ao nível 5.',
       lista
     ));
@@ -114,7 +114,7 @@ export function explicarC1(comp) {
     motivos.push(motivo(
       longas.length > 1 ? 'alta' : 'media',
       `${longas.length} período(s) com mais de 45 palavras`,
-      'A estrutura sintática é metade da grade da Competência I: o nível 5 aceita no máximo uma falha. Período longo demais costuma virar período truncado ou mal pontuado — a falha mais comum apontada na cartilha é justamente o truncamento e a justaposição de orações que deveriam estar no mesmo período.',
+      'A estrutura sintática é metade da grade da Competência I: o nível 5 aceita no máximo uma falha. Período longo demais costuma virar período truncado ou mal pontuado, a falha mais comum apontada na cartilha é justamente o truncamento e a justaposição de orações que deveriam estar no mesmo período.',
       longas[0] ? `“${longas[0]}”` : null,
       'Divida o período em dois: localize a vírgula que separa duas ideias completas e troque por ponto final. Um período com mais de 45 palavras quase sempre tem duas ideias dentro.'
     ));
@@ -131,7 +131,7 @@ export function explicarC1(comp) {
     motivos.push(motivo(
       semPausa.length > 1 ? 'alta' : 'media',
       `${semPausa.length} período(s) longo(s) sem nenhuma pausa interna`,
-      '“Pontuação” aparece no descritor da Competência I junto de ortografia e concordância: não é enfeite, é norma. A cartilha aponta a justaposição de orações — período que atravessa 30, 40 palavras sem uma vírgula, um travessão ou dois-pontos — como falha de estrutura sintática, e o nível 5 admite no máximo uma falha.',
+      '“Pontuação” aparece no descritor da Competência I junto de ortografia e concordância: não é enfeite, é norma. A cartilha aponta a justaposição de orações (período que atravessa 30, 40 palavras sem uma vírgula, um travessão ou dois-pontos) como falha de estrutura sintática, e o nível 5 admite no máximo uma falha.',
       `“${semPausa[0]}…”`,
       'Localize onde termina a primeira ideia e ponha um sinal: ponto final para separar, vírgula para enumerar, dois-pontos para explicar. Se o período passa de 30 palavras sem pausa, quase sempre há duas orações independentes dentro dele.'
     ));
@@ -151,7 +151,7 @@ export function explicarC1(comp) {
     motivos.push(motivo(
       'media',
       `Pontuação escassa: ${s.exemplosPontuacao?.mediaPalavrasFrase} palavras por frase e ${s.exemplosPontuacao?.virgulasPorFrase} vírgula(s) por frase`,
-      'A cartilha chama de justaposição quando as orações se encostam sem sinal de relação. Um texto com períodos longos e quase nenhuma vírgula é lido de uma respirada só — e o avaliador registra isso como falta de recursos de pontuação, não como fluência.',
+      'A cartilha chama de justaposição quando as orações se encostam sem sinal de relação. Um texto com períodos longos e quase nenhuma vírgula é lido de uma respirada só, e o avaliador registra isso como falta de recursos de pontuação, não como fluência.',
       null,
       'Regra prática: nenhum período passa de 25 a 30 palavras sem uma pausa. Use a vírgula para o adjunto deslocado e para a enumeração, e o ponto para separar as ideias que se completam.'
     ));
@@ -161,7 +161,7 @@ export function explicarC1(comp) {
     motivos.push(motivo(
       'media',
       'Orações em série ligadas por “e”',
-      'A coordenação em cadeia (“... e faltam médicos e as filas crescem e as pessoas desistem”) é o retrato da falta de hierarquia sintática. A grade do nível 5 pede estrutura sintática excelente, com subordinação — e a cartilha lista a justaposição por coordenação como falha.',
+      'A coordenação em cadeia (“... e faltam médicos e as filas crescem e as pessoas desistem”) é o retrato da falta de hierarquia sintática. A grade do nível 5 pede estrutura sintática excelente, com subordinação, e a cartilha lista a justaposição por coordenação como falha.',
       null,
       'Troque metade dos “e” por uma relação explícita: causa (“porque”, “visto que”), consequência (“de modo que”, “por isso”) ou concessão (“embora”). Onde a ideia é independente, use ponto final.'
     ));
@@ -198,7 +198,7 @@ export function explicarC2(comp) {
       comp.nota === 200
         ? `O recorte cobre ${cobertura}% do vocabulário do núcleo da proposta`
         : `O recorte do tema aparece em ${cobertura}% do núcleo da proposta`,
-      'A grade da Competência II exige “abordagem completa do tema” para o nível 4, e o nível 5 herda essa exigência. Abordar o assunto não é abordar o tema: quando a proposta é tratada só em parte, o avaliador entende que o texto fala de um assunto vizinho — é o que separa tangência de recorte cumprido.',
+      'A grade da Competência II exige “abordagem completa do tema” para o nível 4, e o nível 5 herda essa exigência. Abordar o assunto não é abordar o tema: quando a proposta é tratada só em parte, o avaliador entende que o texto fala de um assunto vizinho, é o que separa tangência de recorte cumprido.',
       s.exemploParagrafoTema ? `“${s.exemploParagrafoTema}…”` : null,
       ausentes.length
         ? `Incorpore as palavras da própria proposta no seu texto, não como citação solta, mas como objeto da discussão: ${ausentes.slice(0, 5).join(', ')}.`
@@ -210,7 +210,7 @@ export function explicarC2(comp) {
     motivos.push(motivo(
       'alta',
       'Nenhum repertório sociocultural legitimado identificado',
-      'Sem repertório legitimado e pertinente ao tema, o texto não alcança o nível 4 — e o nível 5 exige ainda o uso produtivo. Repertório legitimado é o que se identifica como produzido nas áreas do conhecimento: lei, artigo, autor, obra, dado de instituição, fato histórico.',
+      'Sem repertório legitimado e pertinente ao tema, o texto não alcança o nível 4, e o nível 5 exige ainda o uso produtivo. Repertório legitimado é o que se identifica como produzido nas áreas do conhecimento: lei, artigo, autor, obra, dado de instituição, fato histórico.',
       null,
       'Traga duas referências que você realmente entenda: uma legal ou institucional (Constituição, lei, órgão, dado) e uma de outra área (autor, obra, conceito). Diga o que cada uma demonstra.'
     ));
@@ -218,7 +218,7 @@ export function explicarC2(comp) {
     motivos.push(motivo(
       'alta',
       `Repertório citado, mas sem uso produtivo (${s.repertoriosExibiveis.slice(0, 3).join(', ')})`,
-      'Esta é a diferença exata entre 160 e 200 na Competência II: a grade prevê “repertório legitimado e pertinente, mas com uso improdutivo” no nível 4 e reserva o nível 5 para o uso produtivo. Uso produtivo significa vincular o repertório à discussão — dizer o que ele prova sobre o seu argumento.',
+      'Esta é a diferença exata entre 160 e 200 na Competência II: a grade prevê “repertório legitimado e pertinente, mas com uso improdutivo” no nível 4 e reserva o nível 5 para o uso produtivo. Uso produtivo significa vincular o repertório à discussão, dizer o que ele prova sobre o seu argumento.',
       s.exemploCitacaoSolta ? `“${s.exemploCitacaoSolta}…”` : null,
       'Depois de citar, escreva a frase que faltava: “Isso demonstra que…”, “Esse dado evidencia que…”. Sem essa frase, o repertório é enfeite; com ela, vale 40 pontos a mais.'
     ));
@@ -238,7 +238,7 @@ export function explicarC2(comp) {
     motivos.push(motivo(
       'media',
       'O tema aparece concentrado em um único parágrafo',
-      'A grade exige as três partes do texto com função: introdução, argumentação e conclusão. Se o recorte só aparece na introdução, a argumentação corre solta — e o avaliador lê isso como abordagem parcial.',
+      'A grade exige as três partes do texto com função: introdução, argumentação e conclusão. Se o recorte só aparece na introdução, a argumentação corre solta, e o avaliador lê isso como abordagem parcial.',
       null,
       'Abra cada parágrafo de desenvolvimento retomando o recorte da proposta antes de apresentar o argumento.'
     ));
@@ -260,7 +260,7 @@ export function explicarC3(comp) {
     motivos.push(motivo(
       'alta',
       'Não há tese identificável na introdução',
-      'Sem tese não existe “direção”: a grade da Competência III avalia o projeto de texto — quais argumentos, em que ordem, a serviço de que ponto de vista. Se o leitor não sabe o que você defende, o texto é lido como “abordagem completa do tema e sem direção”, que é o nível 2.',
+      'Sem tese não existe “direção”: a grade da Competência III avalia o projeto de texto, quais argumentos, em que ordem, a serviço de que ponto de vista. Se o leitor não sabe o que você defende, o texto é lido como “abordagem completa do tema e sem direção”, que é o nível 2.',
       s.exemploIntro ? `“${s.exemploIntro}…”` : null,
       'Feche a introdução com uma afirmação sua sobre a causa ou a natureza do problema: “Esse cenário persiste porque…”. A tese é uma frase, não um tema.'
     ));
@@ -271,10 +271,10 @@ export function explicarC3(comp) {
       'alta',
       desenvolvidos === 1
         ? 'Apenas um argumento desenvolvido em todo o texto'
-        : 'Nenhum argumento desenvolvido — os parágrafos enunciam sem explicar',
+        : 'Nenhum argumento desenvolvido, os parágrafos enunciam sem explicar',
       desenvolvidos === 1
         ? 'A grade reserva o nível 3 para “desenvolvimento de algumas informações, fatos e opiniões” e exige, no nível 5, desenvolvimento em todo o texto. Com um único eixo sustentado, o projeto de texto fica incompleto: sobra espaço para a opinião, falta argumento.'
-        : 'A grade é explícita: “sem desenvolvimento ou com desenvolvimento de apenas uma informação, fato ou opinião” não passa do nível 3 — e, sem direção, cai ao nível 2. Enunciar não é argumentar: falta a frase que explica por que aquilo é verdade.',
+        : 'A grade é explícita: “sem desenvolvimento ou com desenvolvimento de apenas uma informação, fato ou opinião” não passa do nível 3, e, sem direção, cai ao nível 2. Enunciar não é argumentar: falta a frase que explica por que aquilo é verdade.',
       s.exemploParagrafoFraco ? `“${s.exemploParagrafoFraco}…”` : null,
       'Cada parágrafo de desenvolvimento precisa de: tópico frasal (o argumento em uma frase) + repertório ou dado + explicação + arremate ligando à tese. Se você apagar o parágrafo e a tese continuar de pé, ele não estava argumentando.'
     ));
@@ -284,7 +284,7 @@ export function explicarC3(comp) {
     motivos.push(motivo(
       (s.cliches ?? 0) >= 3 ? 'media' : 'baixa',
       `Fórmulas genéricas: ${(s.exemplosCliches || []).map(c => `“${c}”`).join(', ')}`,
-      'A competência avalia autoria — selecionar, relacionar, organizar e interpretar. Fórmula pronta não seleciona nada: serve para qualquer tema e, por isso, não sustenta ponto de vista.',
+      'A competência avalia autoria, selecionar, relacionar, organizar e interpretar. Fórmula pronta não seleciona nada: serve para qualquer tema e, por isso, não sustenta ponto de vista.',
       null,
       'Substitua cada fórmula por uma afirmação específica do seu argumento: em vez de “desde os tempos remotos”, diga o fato, a data ou o mecanismo.'
     ));
@@ -340,7 +340,7 @@ export function explicarC4(comp) {
     motivos.push(motivo(
       'media',
       `${semArt.length} parágrafo(s) com três ou mais frases e nenhum articulador interno`,
-      'Para o nível 5 a grade pede pelo menos um elemento coesivo dentro de todos os parágrafos. Parágrafo com frases justapostas quebra essa exigência naquele parágrafo específico — e a regra do nível inferior derruba o conjunto.',
+      'Para o nível 5 a grade pede pelo menos um elemento coesivo dentro de todos os parágrafos. Parágrafo com frases justapostas quebra essa exigência naquele parágrafo específico, e a regra do nível inferior derruba o conjunto.',
       `Parágrafo ${semArt[0].paragrafo}: “${semArt[0].inicio}…”`,
       'Ligue a segunda frase à primeira com “isso”, “esse cenário”, “tal prática”, “por isso”. A retomada pronominal já é elemento coesivo.'
     ));
@@ -371,7 +371,7 @@ export function explicarC4(comp) {
       frasesRep.length === 1
         ? 'Uma frase do texto se repete literalmente'
         : `${frasesRep.length} frases se repetem literalmente`,
-      'A grade da Competência IV cobra progressão: cada parágrafo deve acrescentar informação. Repetir a mesma frase — mesmo com outra roupa — é a definição de texto que não progride, e o avaliador marca isso tanto na coesão quanto na coerência.',
+      'A grade da Competência IV cobra progressão: cada parágrafo deve acrescentar informação. Repetir a mesma frase (mesmo com outra roupa) é a definição de texto que não progride, e o avaliador marca isso tanto na coesão quanto na coerência.',
       `“${frasesRep[0].frase}…”`,
       'Corte a segunda ocorrência e escreva o que ela deveria acrescentar: uma consequência (“por isso, a fila cresce”), um exemplo ou um dado. Se não houver nada a acrescentar, o parágrafo é dispensável.'
     ));
@@ -389,7 +389,7 @@ export function explicarC4(comp) {
     motivos.push(motivo(
       'media',
       'Repetição de termo: ' + mediaRep.slice(0, 3).map(a => `“${a.termo}” (${a.n}×)`).join(', '),
-      'A cartilha cobra a retomada por sinônimo ou pronome. Repetir o mesmo termo seis, sete vezes ao longo do texto é o mínimo que o avaliador registra como repetição — e repetição é um dos itens que impedem o nível 5.',
+      'A cartilha cobra a retomada por sinônimo ou pronome. Repetir o mesmo termo seis, sete vezes ao longo do texto é o mínimo que o avaliador registra como repetição, e repetição é um dos itens que impedem o nível 5.',
       null,
       'Alterne: sinônimo na segunda ocorrência, pronome relativo ou demonstrativo na terceira. Se o termo é técnico e não tem sinônimo, use “esse conceito”, “tal prática”.'
     ));
@@ -397,7 +397,7 @@ export function explicarC4(comp) {
     motivos.push(motivo(
       'baixa',
       'Palavras de recheio repetidas: ' + leve.slice(0, 3).map(a => `“${a.termo}” (${a.n}×)`).join(', '),
-      '“Problema”, “pessoas”, “muito”, “questão” não são vocabulário do tema: são recheio. Repetir recheio mostra que o texto fala do assunto sem dizer nada específico — e a grade pede que a articulação se faça com recursos, não com palavras vazias.',
+      '“Problema”, “pessoas”, “muito”, “questão” não são vocabulário do tema: são recheio. Repetir recheio mostra que o texto fala do assunto sem dizer nada específico, e a grade pede que a articulação se faça com recursos, não com palavras vazias.',
       null,
       'Cada vez que “problema” aparecer, pergunte qual é o problema: falta de médicos, fila, subfinanciamento. A palavra genérica vira informação concreta.'
     ));
@@ -453,7 +453,7 @@ export function explicarC4(comp) {
 const ELEMENTOS = {
   agente: {
     nome: 'agente',
-    porque: 'sem dizer quem executa, o leitor preenche a lacuna por você — e a cartilha é clara: só conta o agente textualmente marcado.',
+    porque: 'sem dizer quem executa, o leitor preenche a lacuna por você, e a cartilha é clara: só conta o agente textualmente marcado.',
     exemplo: '“cabe ao Ministério da Saúde…”'
   },
   acao: {
@@ -463,7 +463,7 @@ const ELEMENTOS = {
   },
   meio: {
     nome: 'meio/modo',
-    porque: 'o meio é o instrumento — sem ele, a proposta fica no desejo (“é preciso conscientizar”) em vez de virar providência.',
+    porque: 'o meio é o instrumento, sem ele, a proposta fica no desejo (“é preciso conscientizar”) em vez de virar providência.',
     exemplo: '“…por meio da revisão dos repasses federais…”'
   },
   finalidade: {
@@ -488,7 +488,7 @@ export function explicarC5(comp) {
     motivos.push(motivo(
       'alta',
       'A proposta pode ferir direitos humanos',
-      'A Competência V é zerada quando a intervenção desrespeita os direitos humanos — é a única situação, além da ausência, que zera uma competência isolada.',
+      'A Competência V é zerada quando a intervenção desrespeita os direitos humanos, é a única situação, além da ausência, que zera uma competência isolada.',
       (s.blocoProposta || '').slice(0, 200),
       'Reescreva a proposta sem punição violenta, tortura ou “justiça com as próprias mãos”. Propostas de prevenção e de política pública sempre passam.'
     ));
@@ -498,18 +498,18 @@ export function explicarC5(comp) {
     motivos.push(motivo(
       'alta',
       'Não foi identificada proposta de intervenção no fechamento',
-      'A contagem da grade parte do zero: sem proposta não há elementos. E atenção a um caso que a cartilha destaca — constatação de falta não é proposta: “falta liberdade de escolha” aponta o problema; “é preciso garantir a liberdade de escolha” aponta a solução.',
+      'A contagem da grade parte do zero: sem proposta não há elementos. E atenção a um caso que a cartilha destaca, constatação de falta não é proposta: “falta liberdade de escolha” aponta o problema; “é preciso garantir a liberdade de escolha” aponta a solução.',
       s.blocoProposta ? `“${s.blocoProposta}…”` : null,
       'Reserve o último parágrafo para a proposta completa: agente + ação + meio + finalidade + detalhamento, em duas a quatro linhas.'
     ));
   } else if (faltando.length) {
-    const listaExemplos = faltando.map(k => `• ${ELEMENTOS[k].nome} — ${ELEMENTOS[k].exemplo}`).join('\n');
+    const listaExemplos = faltando.map(k => `• ${ELEMENTOS[k].nome}, ${ELEMENTOS[k].exemplo}`).join('\n');
     motivos.push(motivo(
       'alta',
       faltando.length === 1
         ? `Falta 1 dos 5 elementos: ${faltando.map(k => ELEMENTOS[k].nome).join(', ')}`
         : `Faltam ${faltando.length} dos 5 elementos: ${faltando.map(k => ELEMENTOS[k].nome).join(', ')}`,
-      `A pontuação da Competência V é uma contagem objetiva: 5 elementos = 200, 4 = 160, 3 = 120, 2 = 80, 1 = 40. Seu texto tem ${presentes.length}. Cada elemento que falta custa 40 pontos — e o que falta não é “escrever mais”, é cumprir a função que o elemento tem na proposta.`,
+      `A pontuação da Competência V é uma contagem objetiva: 5 elementos = 200, 4 = 160, 3 = 120, 2 = 80, 1 = 40. Seu texto tem ${presentes.length}. Cada elemento que falta custa 40 pontos, e o que falta não é “escrever mais”, é cumprir a função que o elemento tem na proposta.`,
       s.blocoProposta ? `“${s.blocoProposta}…”` : null,
       `Complete assim:\n${listaExemplos}`,
       faltando.map(k => `${ELEMENTOS[k].nome}: ${ELEMENTOS[k].porque}`)
@@ -566,11 +566,11 @@ export function explicarCompetencias(comps = []) {
       explicacao.motivos.push(motivo(
         'alta',
         'Competência zerada pela situação de nota zero',
-        `A redação foi anulada, e a anulação alcança todas as competências: fuga ao tema, até 7 linhas, trecho desconectado, gênero diferente do pedido ou desrespeito à seriedade do exame levam a nota a 0 em C1–C5. ${original ? `Nesta competência, isoladamente, o texto estava em ${original}/200 — mas a anulação prevalece.` : ''}`,
+        `A redação foi anulada, e a anulação alcança todas as competências: fuga ao tema, até 7 linhas, trecho desconectado, gênero diferente do pedido ou desrespeito à seriedade do exame levam a nota a 0 em C1–C5. ${original ? `Nesta competência, isoladamente, o texto estava em ${original}/200, mas a anulação prevalece.` : ''}`,
         null,
         'Resolva primeiro o motivo da anulação. Enquanto ele existir, nenhuma competência pontua.'
       ));
-      explicacao.sintese = 'Ficou em 0/200 porque a redação foi anulada — a anulação zera as cinco competências.';
+      explicacao.sintese = 'Ficou em 0/200 porque a redação foi anulada, a anulação zera as cinco competências.';
     }
 
     // toda nota abaixo de 200 precisa de um motivo explícito, mesmo quando o
@@ -580,7 +580,7 @@ export function explicarCompetencias(comps = []) {
       explicacao.motivos.push(motivo(
         'baixa',
         alvo ? `Falta cumprir o descritor de ${alvo.pontos}: ${alvo.exige}` : 'Falta cumprir integralmente o descritor de 200',
-        `Nesta amostra nenhum defeito objetivo foi encontrado, e o texto cumpre o descritor de ${c.nota}. A nota não sobe porque o nível seguinte exige o descritor inteiro, por escrito — e é aí que o segundo avaliador também não subiria sozinho. A faixa do relatório mostra até onde a dupla de avaliadores poderia chegar.`,
+        `Nesta amostra nenhum defeito objetivo foi encontrado, e o texto cumpre o descritor de ${c.nota}. A nota não sobe porque o nível seguinte exige o descritor inteiro, por escrito, e é aí que o segundo avaliador também não subiria sozinho. A faixa do relatório mostra até onde a dupla de avaliadores poderia chegar.`,
         null,
         alvo
           ? `Cumpra por escrito o que o descritor de ${alvo.pontos} pede; a diferença entre ele e o seu texto é o que falta.`

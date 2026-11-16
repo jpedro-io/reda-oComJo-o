@@ -23,9 +23,10 @@ let io = null;
 /** Observa tudo que tem [data-entrada] e solta o stagger na primeira aparição. */
 export function observarEntradas(raiz = document) {
   const alvos = [...raiz.querySelectorAll('[data-entrada]:not(.entrou)')];
+  if (io) io.disconnect(); // Não manter páginas removidas no observador.
   if (!alvos.length) return;
 
-  if (reduzirMovimento() || !('IntersectionObserver' in window)) {
+  if (reduzirMovimento() || consulta('(max-width: 767px), (pointer: coarse)').matches || !('IntersectionObserver' in window)) {
     alvos.forEach(el => el.classList.add('entrou'));
     return;
   }
@@ -105,6 +106,7 @@ export function ligarProgresso() {
   const barra = document.getElementById('progresso');
   if (!barra) return;
   let travado = false;
+  const modoLeve = consulta('(max-width: 767px), (pointer: coarse)');
   const pintar = () => {
     const h = document.documentElement;
     const total = h.scrollHeight - h.clientHeight;
@@ -113,11 +115,36 @@ export function ligarProgresso() {
     travado = false;
   };
   window.addEventListener('scroll', () => {
-    if (travado) return;
+    if (modoLeve.matches || travado) return;
     travado = true;
     requestAnimationFrame(pintar);
   }, { passive: true });
   pintar();
+}
+
+/**
+ * Brilho que acompanha o ponteiro: um halo suave de 520px, movido com
+ * lerp para nunca travar o scroll. Só em desktop, sem reduced-motion.
+ */
+export function ligarBrilhoCursor() {
+  const fino = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!fino || reduzirMovimento() || !document.body) return;
+
+  const halo = document.createElement('div');
+  halo.className = 'brilho-cursor';
+  halo.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(halo);
+
+  let x = innerWidth / 2, y = innerHeight / 2;
+  let ax = x, ay = y;
+  addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; }, { passive: true });
+
+  (function quadro() {
+    ax += (x - ax) * .08;
+    ay += (y - ay) * .08;
+    halo.style.transform = `translate3d(${ax}px, ${ay}px, 0)`;
+    requestAnimationFrame(quadro);
+  })();
 }
 
 /** Chamado depois de cada render de rota. */
@@ -126,3 +153,6 @@ export function ativarMovimento(raiz = document) {
   animarNumeros(raiz);
   pintarAneis(raiz);
 }
+
+/* o halo existe desde a primeira pintura, não espera a rota */
+ligarBrilhoCursor();

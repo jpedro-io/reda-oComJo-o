@@ -1,0 +1,1534 @@
+/* ==========================================================================
+   REDAÇÃO COM JOÃO · CAMADA DE VIDRO
+
+   Esta folha entra por cima de style.css e editorial.css. Ela troca a folha
+   branca por um fundo esmeralda profundo com vários tons e trata as
+   superfícies como vidro: fundo translúcido, desfoque do que está atrás,
+   fio claro de 1px e brilho que segue o ponteiro.
+   ========================================================================== */
+
+:root {
+  /* tons de esmeralda, do mais fundo ao mais claro */
+  --g-950: #031A13;
+  --g-900: #04241B;
+  --g-800: #063A2B;
+  --g-700: #065F46;
+  --g-600: #047857;
+  --g-500: #059669;
+  --g-400: #10B981;
+  --g-300: #34D399;
+  --g-200: #6EE7B7;
+  --g-100: #A7F3D0;
+
+  /* tokens do resto do site, reinterpretados para o escuro */
+  --bg: transparent;
+  --surface: rgba(255, 255, 255, .06);
+  --ink: #EDF9F3;
+  --muted: rgba(214, 240, 230, .72);
+  --line: rgba(255, 255, 255, .14);
+  --brand: var(--g-300);
+  --brand-dark: var(--g-200);
+  --brand-soft: rgba(16, 185, 129, .16);
+  --highlight: rgba(52, 211, 153, .38);
+  --alert: #FF8F85;
+  --alert-soft: rgba(180, 35, 24, .3);
+  --tinta-2: var(--muted);
+  --tinta-3: rgba(214, 240, 230, .58);
+
+  /* geometria: o vidro pede raio maior */
+  --r-vidro: 20px;
+  --r-vidro-p: 14px;
+  --fio: 1px solid rgba(255, 255, 255, .16);
+  --fio-forte: 1px solid rgba(255, 255, 255, .26);
+  --vidro-fundo: linear-gradient(155deg, rgba(255, 255, 255, .11), rgba(255, 255, 255, .035));
+  --vidro-sombra: 0 24px 60px -30px rgba(0, 0, 0, .7), inset 0 1px 0 rgba(255, 255, 255, .22);
+
+  --largura: 1400px;
+}
+
+/* ------------------------------------------------------------- 1. o fundo */
+html { background: var(--g-950); }
+
+body {
+  background-color: var(--g-950);
+  background-image:
+    radial-gradient(1100px 720px at 8% -8%, rgba(16, 185, 129, .42), transparent 62%),
+    radial-gradient(880px 640px at 92% -4%, rgba(110, 231, 183, .26), transparent 60%),
+    radial-gradient(1200px 900px at 76% 104%, rgba(4, 120, 87, .55), transparent 64%),
+    radial-gradient(900px 700px at 4% 88%, rgba(5, 150, 105, .34), transparent 60%),
+    linear-gradient(168deg, #052A1F 0%, #04241B 42%, #031A13 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--ink);
+}
+
+::selection { background: rgba(52, 211, 153, .45); color: #fff; }
+
+a { color: var(--g-200); }
+a:hover { color: #fff; }
+
+h1, h2, h3, h4 { color: #fff; }
+p, li, dd, dt, td, th, label, blockquote { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--g-300); outline-offset: 3px; border-radius: 4px; }
+
+.progresso { background: linear-gradient(90deg, var(--g-500), var(--g-300)); height: 3px; }
+
+/* --------------------------------------------------------- 2. barra de topo */
+.topbar {
+  background: rgba(4, 36, 27, .62);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 18px 40px -30px rgba(0, 0, 0, .9);
+}
+.brand-text { color: #fff; }
+.brand:hover .brand-text { color: #fff; }
+.marca-texto {
+  background-image: linear-gradient(120deg, rgba(16, 185, 129, .85), rgba(52, 211, 153, .85));
+  color: #04241B !important;
+  border-radius: 4px;
+  padding: 0 .18em;
+}
+
+.pill {
+  color: rgba(233, 250, 243, .82);
+  border-radius: 999px;
+  padding: 7px 14px;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+.pill:hover { color: #fff; background: rgba(255, 255, 255, .08); }
+.pill.ativo, .pill[aria-current="page"] {
+  color: #04241B;
+  background: var(--g-200);
+}
+.nav-abre { border-color: rgba(255, 255, 255, .28); }
+.nav-abre-risco { background: #fff; }
+
+/* ------------------------------------------------------- 3. tipografia base */
+.eyebrow, .kicker, .rot { color: var(--g-200); }
+.sub, .secao-topo p, .bloco-titulo span, .frase { color: var(--muted); }
+.bloco-titulo { border-bottom: 1px solid rgba(255, 255, 255, .14); }
+
+/* --------------------------------------------------- 4. superfícies de vidro */
+.folha,
+.card,
+.cartao,
+.painel,
+.painel-solido,
+.aviso,
+.motivo,
+.motivo-zero,
+.proposta,
+.metricas,
+.rel-topo,
+.comp-bloco,
+.hub-materia,
+.tema-linha,
+.red-card,
+.conteudo-btn,
+.side-bloco,
+.ac-bloco,
+.trilha,
+.workspace,
+.ws-entrada,
+.ws-saida,
+.ws-proposta,
+.caixa,
+.bloco,
+.destaque {
+  background: var(--vidro-fundo);
+  border: var(--fio);
+  border-radius: var(--r-vidro);
+  box-shadow: var(--vidro-sombra);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+/* o brilho que segue o ponteiro, desenhado por js/glass.js */
+.brilho::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(110, 231, 183, .22), rgba(52, 211, 153, .10) 38%, transparent 66%);
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+.brilho:hover::after, .brilho:focus-within::after { opacity: 1; }
+
+/* inclinação de 3 graus nos blocos grandes, só onde glass.js marca */
+.inclina { transform-style:preserve-3d; will-change:transform; }
+
+/* no vidro, o cartão dentro do cartão perde a caixa e vira linha */
+.painel .card,
+.card .card,
+.comp-bloco .painel,
+.painel-solido .painel {
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------ 5. a folha */
+.folha { background: rgba(255, 255, 255, .07); }
+.folha-topo, .folha-legenda { color: var(--muted); border-color: rgba(255, 255, 255, .14); }
+.folha-texto p { color: var(--ink); }
+.folha-texto mark {
+  background: rgba(52, 211, 153, .3);
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(110, 231, 183, .35) inset;
+}
+.folha-erro { text-decoration-color: var(--alert); }
+.folha-nota { color: var(--alert); }
+
+/* --------------------------------------------------------- 6. listas e índices */
+.indice-item, .indice-link { color: var(--ink); }
+.indice-item {
+  border-radius: var(--r-vidro-p);
+  border: 1px solid transparent;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+.indice-item:hover {
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .16);
+  transform: translateY(-1px);
+}
+.idx-num, .idx-desc, .idx-go { color: var(--muted); }
+.idx-tit { color: #fff; }
+
+.faixa-comp .rc-item {
+  background: var(--vidro-fundo);
+  border: var(--fio);
+  border-radius: var(--r-vidro-p);
+  box-shadow: var(--vidro-sombra);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+.faixa-comp .rc-num { color: var(--g-200); }
+.faixa-comp .rc-nome { color: #fff; }
+.faixa-comp .rc-nota { color: var(--muted); }
+.faixa-comp .rc-item:hover { border-color: rgba(110, 231, 183, .5); transform: translateY(-2px); }
+
+/* ---------------------------------------------------------------- 7. tabelas */
+.tabela-redacoes, .tabela-niveis, .tabela-simples, table {
+  border-color: rgba(255, 255, 255, .14);
+  color: var(--ink);
+}
+.tabela-redacoes thead th,
+.tabela-niveis thead th,
+table thead th {
+  color: var(--muted);
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+  font-weight: 400;
+}
+.tabela-redacoes tbody td,
+.tabela-niveis tbody td,
+table tbody td {
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  color: var(--ink);
+}
+.tabela-redacoes tbody tr, .tabela-niveis tbody tr { transition: background-color 180ms ease; }
+.tabela-redacoes tbody tr:hover, .tabela-niveis tbody tr:hover { background: rgba(255, 255, 255, .05); }
+.tabela-redacoes .ano, .tabela-redacoes td.ano { color: var(--g-200); font-variant-numeric: tabular-nums; }
+.tabela-redacoes .nota, .tabela-redacoes td:nth-child(3) { color: #fff; }
+
+/* a lista de redações ganha corpo de vidro */
+.lista-redacoes, .tabela-redacoes {
+  background: var(--vidro-fundo);
+  border: var(--fio);
+  border-radius: var(--r-vidro);
+  box-shadow: var(--vidro-sombra);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  overflow: hidden;
+  padding: 4px 22px;
+}
+.tabela-redacoes thead th:first-child { border-top-left-radius: 0; }
+
+/* ---------------------------------------------------------------- 8. botões */
+.btn {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+.btn:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .42); color: #fff; }
+.btn:active { transform: translateY(1px); }
+
+.btn-primario, .btn.btn-primario {
+  background: linear-gradient(135deg, var(--g-400), var(--g-600) 70%);
+  border-color: rgba(255, 255, 255, .3);
+  color: #04241B;
+  font-weight: 600;
+  box-shadow: 0 14px 34px -14px rgba(16, 185, 129, .8), inset 0 1px 0 rgba(255, 255, 255, .45);
+}
+.btn-primario:hover, .btn.btn-primario:hover {
+  background: linear-gradient(135deg, var(--g-300), var(--g-500) 70%);
+  color: #04241B;
+  box-shadow: 0 18px 44px -14px rgba(52, 211, 153, .9), inset 0 1px 0 rgba(255, 255, 255, .55);
+}
+.hero-cta .btn:not(.btn-primario) { color: var(--g-200); border-color: rgba(110, 231, 183, .45); }
+.hero-cta .btn:not(.btn-primario):hover { color: #fff; }
+
+/* campos do corretor */
+textarea, input[type="text"], input[type="search"], select {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: var(--r-vidro-p);
+  color: var(--ink);
+}
+textarea::placeholder, input::placeholder { color: rgba(214, 240, 230, .5); }
+select option { background: var(--g-900); color: var(--ink); }
+
+/* ------------------------------------------------------- 9. chips e etiquetas */
+.chip, .m-tag, .selo, .tag, .niv, .badge {
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: var(--ink);
+}
+.chip, .tag { border-radius: 999px; }
+
+/* ------------------------------------------------------- 10. rodapé */
+.footer, footer { border-top: 1px solid rgba(255, 255, 255, .12); color: var(--muted); }
+.footer p, footer p, footer a { color: var(--muted); }
+
+/* ------------------------------------------- 11. estados de nota e de erro */
+.nota-grande, .rel-nota, .nota-num { color: #fff; }
+.perigo, .erro, .motivo-zero { color: var(--alert); }
+.lista-check li::before, .fortes-lista li::before { color: var(--g-200); }
+
+/* --------------------------------------------------- 12. ajustes de largura */
+.wrap { max-width: var(--largura); }
+main.wrap { padding-left: 40px; padding-right: 40px; }
+
+/* o painel principal ocupa a tela: colunas mais largas, respiro menor */
+.hero { gap: 64px; }
+.hero-folha .folha { padding: 28px; }
+
+/* ------------------------------------------------- 13. movimento e acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .brilho::after { display: none; }
+  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+@media (max-width: 1024px) {
+  .wrap { max-width: none; }
+  main.wrap { padding-left: 24px; padding-right: 24px; }
+}
+
+@media (max-width: 768px) {
+  main.wrap { padding-left: 18px; padding-right: 18px; }
+  .lista-redacoes, .tabela-redacoes { padding: 2px 14px; }
+  .folha, .card, .painel, .comp-bloco { border-radius: 16px; }
+}
+
+/* ------------------------------------------------- 14. correções de superfície */
+/* o índice da home era cartão branco; agora é linha de vidro */
+.indice-item {
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+.indice-item:hover {
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .16);
+  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, .8);
+}
+.indice-link { background: none; }
+.indice-link:hover { background: none; }
+.idx-num { color: var(--g-300); }
+.idx-tit { color: #fff; }
+.idx-desc { color: var(--muted); }
+.idx-go { color: var(--g-300); }
+
+/* a marca-texto do logo: fita esmeralda, letra escura */
+.topbar .marca-texto,
+.brand .marca-texto {
+  background: linear-gradient(120deg, var(--g-300), var(--g-200)) !important;
+  color: #04241B !important;
+  border-radius: 3px;
+}
+
+/* a pílula ativa não precisa da risca de baixo */
+.pill.ativo::after, .pill[aria-current="page"]::after, .pill.ativo::before { display: none; }
+.nav, .nav-pills { gap: 4px; }
+.pill { padding: 8px 14px; }
+
+/* zebra branca que sobrava nas tabelas */
+.tabela-redacoes tbody tr:nth-child(even),
+.tabela-niveis tbody tr:nth-child(even),
+table tbody tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
+
+/* blocos que ainda recebiam papel branco */
+.secao-topo, .bloco-titulo, .comp-topo, .regra-geral, .grade-regra,
+.tl-corpo, .tl-acoes, .lista-num, .zero-lista, .rev-lista, .fortes-lista {
+  background: transparent;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   15. TONS POR SEÇÃO — do off-white ao verde claro
+   Cada seção ganha um tom próprio, andando do quase branco até o verde
+   claro. O tom aparece na faixa do título, no fio da esquerda e no número;
+   o corpo do texto continua em vidro escuro para o site não voltar a branco.
+   ========================================================================== */
+:root {
+  --tom1-faixa: #F4FBF7;  --tom1-luz: rgba(244, 251, 247, .12);  --tom1-fio: rgba(244, 251, 247, .55);
+  --tom2-faixa: #E7F8EF;  --tom2-luz: rgba(231, 248, 239, .12);  --tom2-fio: rgba(221, 247, 235, .58);
+  --tom3-faixa: #D9F4E5;  --tom3-luz: rgba(217, 244, 229, .13);  --tom3-fio: rgba(190, 240, 214, .6);
+  --tom4-faixa: #C6EFD9;  --tom4-luz: rgba(198, 239, 217, .14);  --tom4-fio: rgba(150, 232, 197, .62);
+  --tom5-faixa: #B2EACD;  --tom5-luz: rgba(178, 234, 205, .15);  --tom5-fio: rgba(110, 231, 183, .66);
+  --tinta-clara: #062A1F;
+  --tinta-clara-2: rgba(6, 42, 31, .68);
+}
+
+/* ---------- a) blocos de competência (#/competencias) ---------- */
+.regua { display: flex; flex-direction: column; gap: 26px; }
+.comp-bloco {
+  padding: 0 0 30px;
+  background: linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .06)), rgba(255, 255, 255, .025) 55%, rgba(3, 26, 19, .35));
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 24px;
+  overflow: hidden;
+}
+.comp-topo {                      /* faixa clara: é aqui que o tom aparece */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 26px;
+  background: linear-gradient(100deg, var(--tom-faixa, #F4FBF7), color-mix(in srgb, var(--tom-faixa, #F4FBF7) 55%, transparent));
+  border-bottom: 1px solid rgba(6, 42, 31, .12);
+}
+.comp-nome {
+  color: var(--tinta-clara);
+  letter-spacing: -.01em;
+}
+.comp-id { color: var(--tinta-clara-2); }
+.comp-nota {
+  background: rgba(6, 42, 31, .12);
+  border: 1px solid rgba(6, 42, 31, .22);
+  color: var(--tinta-clara);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-weight: 600;
+}
+.comp-bloco > .comp-resumo,
+.comp-bloco > .comp-regra,
+.comp-bloco > .tabela-niveis,
+.comp-bloco > .comp-colunas,
+.comp-bloco > .side-bloco,
+.comp-bloco > .oficial-det { margin-left: 26px; margin-right: 26px; }
+.comp-bloco > .comp-resumo { margin-top: 22px; color: var(--ink); }
+.comp-regra {
+  border-left: 3px solid var(--tom-fio, rgba(255, 255, 255, .3));
+  background: linear-gradient(90deg, var(--tom-luz, rgba(255,255,255,.05)), transparent 70%);
+  border-radius: 0 12px 12px 0;
+  padding: 12px 16px;
+  color: var(--muted);
+}
+
+/* tons em ciclo, cinco competências, cinco tons */
+.comp-bloco:nth-child(5n+1) { --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); --tom-fio: var(--tom1-fio); }
+.comp-bloco:nth-child(5n+2) { --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); --tom-fio: var(--tom2-fio); }
+.comp-bloco:nth-child(5n+3) { --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); --tom-fio: var(--tom3-fio); }
+.comp-bloco:nth-child(5n+4) { --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); --tom-fio: var(--tom4-fio); }
+.comp-bloco:nth-child(5n)   { --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); --tom-fio: var(--tom5-fio); }
+
+/* tabela dentro do bloco: cabeçalho com o tom da seção */
+.comp-bloco .tabela-niveis thead th {
+  background: color-mix(in srgb, var(--tom-faixa, #fff) 22%, transparent);
+  color: var(--tinta-clara);
+  border-bottom: 1px solid var(--tom-fio);
+}
+.comp-bloco .tabela-niveis th:first-child { border-radius: 10px 0 0 10px; }
+.comp-bloco .tabela-niveis th:last-child { border-radius: 0 10px 10px 0; }
+.comp-bloco .tabela-niveis tbody tr:hover { background: var(--tom-luz); }
+.comp-bloco .niv {
+  color: var(--tinta-clara);
+  background: var(--tom-faixa);
+  border-radius: 9px;
+  font-weight: 700;
+}
+.comp-bloco .side-bloco {
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-top: 2px solid var(--tom-fio);
+  border-radius: 16px;
+  box-shadow: none;
+}
+.comp-bloco .side-bloco h3 { color: var(--tom-faixa); }
+
+/* ---------- b) mesma ideia nas outras páginas ---------- */
+/* home: índice com fio do tom à esquerda */
+.indice-item { border-left: 3px solid transparent; }
+.indice-item:nth-child(5n+1) { --tom-fio: var(--tom1-fio); --tom-faixa: var(--tom1-faixa); }
+.indice-item:nth-child(5n+2) { --tom-fio: var(--tom2-fio); --tom-faixa: var(--tom2-faixa); }
+.indice-item:nth-child(5n+3) { --tom-fio: var(--tom3-fio); --tom-faixa: var(--tom3-faixa); }
+.indice-item:nth-child(5n+4) { --tom-fio: var(--tom4-fio); --tom-faixa: var(--tom4-faixa); }
+.indice-item:nth-child(5n)   { --tom-fio: var(--tom5-fio); --tom-faixa: var(--tom5-faixa); }
+.indice-item { border-left-color: var(--tom-fio, transparent); }
+.indice-item:nth-child(odd) { background: rgba(255, 255, 255, .028); }
+.idx-num { color: var(--tom-faixa, var(--g-300)); font-weight: 700; }
+
+/* estrutura: cada parte com faixa clara */
+.partes { display: flex; flex-direction: column; gap: 22px; }
+.parte {
+  padding: 0 0 24px;
+  background: linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .05)), rgba(255, 255, 255, .02));
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.parte > h3, .parte > .parte-topo {
+  margin: 0;
+  padding: 14px 24px;
+  background: linear-gradient(100deg, var(--tom-faixa, #F4FBF7), color-mix(in srgb, var(--tom-faixa, #F4FBF7) 50%, transparent));
+  color: var(--tinta-clara);
+  border-bottom: 1px solid rgba(6, 42, 31, .1);
+}
+.parte > *:not(h3):not(.parte-topo) { margin-left: 24px; margin-right: 24px; }
+.parte:nth-child(5n+1) { --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); --tom-fio: var(--tom1-fio); }
+.parte:nth-child(5n+2) { --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); --tom-fio: var(--tom2-fio); }
+.parte:nth-child(5n+3) { --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); --tom-fio: var(--tom3-fio); }
+.parte:nth-child(5n+4) { --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); --tom-fio: var(--tom4-fio); }
+.parte:nth-child(5n)   { --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); --tom-fio: var(--tom5-fio); }
+
+/* comandos: o resumo de cada item abre com o tom */
+.acordeao { display: flex; flex-direction: column; gap: 14px; }
+.ac-item {
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 18px;
+  background: linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .05)), rgba(255, 255, 255, .02));
+  overflow: hidden;
+}
+.ac-item > summary {
+  background: linear-gradient(100deg, var(--tom-faixa, #F4FBF7), color-mix(in srgb, var(--tom-faixa, #F4FBF7) 48%, transparent));
+  color: var(--tinta-clara);
+  padding: 12px 20px;
+  border-radius: 0;
+}
+.ac-item > summary * { color: var(--tinta-clara); }
+.ac-item:nth-child(5n+1) { --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); }
+.ac-item:nth-child(5n+2) { --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); }
+.ac-item:nth-child(5n+3) { --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); }
+.ac-item:nth-child(5n+4) { --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); }
+.ac-item:nth-child(5n)   { --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); }
+
+/* temas: fio do tom em cada linha */
+.lista-temas { display: flex; flex-direction: column; gap: 14px; }
+.tema-linha { border-left: 3px solid var(--tom-fio, transparent); }
+.tema-linha:nth-child(5n+1) { --tom-fio: var(--tom1-fio); --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); }
+.tema-linha:nth-child(5n+2) { --tom-fio: var(--tom2-fio); --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); }
+.tema-linha:nth-child(5n+3) { --tom-fio: var(--tom3-fio); --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); }
+.tema-linha:nth-child(5n+4) { --tom-fio: var(--tom4-fio); --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); }
+.tema-linha:nth-child(5n)   { --tom-fio: var(--tom5-fio); --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); }
+.tema-linha .tema-ano, .tema-linha .tema-selo { color: var(--tom-faixa, var(--g-300)); }
+
+/* conteúdos: cabeçalho da área com o tom */
+.hub { display: flex; flex-direction: column; gap: 26px; }
+.hub-area-topo {
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: linear-gradient(100deg, var(--tom-faixa, #F4FBF7), color-mix(in srgb, var(--tom-faixa, #F4FBF7) 45%, transparent));
+  color: var(--tinta-clara);
+}
+.hub-area-topo * { color: var(--tinta-clara); }
+.hub-area:nth-child(5n+1) { --tom-faixa: var(--tom1-faixa); --tom-luz: var(--tom1-luz); --tom-fio: var(--tom1-fio); }
+.hub-area:nth-child(5n+2) { --tom-faixa: var(--tom2-faixa); --tom-luz: var(--tom2-luz); --tom-fio: var(--tom2-fio); }
+.hub-area:nth-child(5n+3) { --tom-faixa: var(--tom3-faixa); --tom-luz: var(--tom3-luz); --tom-fio: var(--tom3-fio); }
+.hub-area:nth-child(5n+4) { --tom-faixa: var(--tom4-faixa); --tom-luz: var(--tom4-luz); --tom-fio: var(--tom4-fio); }
+.hub-area:nth-child(5n)   { --tom-faixa: var(--tom5-faixa); --tom-luz: var(--tom5-luz); --tom-fio: var(--tom5-fio); }
+.hub-materia { border-top: 2px solid var(--tom-fio, transparent); }
+.hub-materia:hover { background: var(--tom-luz, rgba(255, 255, 255, .07)); }
+
+/* redações: zebra com o tom, nota em destaque */
+.tabela-redacoes tbody tr:nth-child(odd) { background: rgba(255, 255, 255, .028); }
+.tabela-redacoes tbody tr:nth-child(10n+1),
+.tabela-redacoes tbody tr:nth-child(10n+6) { box-shadow: inset 3px 0 0 var(--tom1-fio); }
+.tabela-redacoes tbody tr:nth-child(10n+2),
+.tabela-redacoes tbody tr:nth-child(10n+7) { box-shadow: inset 3px 0 0 var(--tom2-fio); }
+.tabela-redacoes tbody tr:nth-child(10n+3),
+.tabela-redacoes tbody tr:nth-child(10n+8) { box-shadow: inset 3px 0 0 var(--tom3-fio); }
+.tabela-redacoes tbody tr:nth-child(10n+4),
+.tabela-redacoes tbody tr:nth-child(10n+9) { box-shadow: inset 3px 0 0 var(--tom4-fio); }
+.tabela-redacoes tbody tr:nth-child(10n+5),
+.tabela-redacoes tbody tr:nth-child(10n)   { box-shadow: inset 3px 0 0 var(--tom5-fio); }
+
+/* ---------- c) campos de formulário: nunca brancos ---------- */
+textarea, input[type="text"], input[type="search"], input[type="number"],
+select, .campo input, .campo textarea, .campo select,
+.textarea, .select, .input {
+  background: rgba(255, 255, 255, .07) !important;
+  border: 1px solid rgba(255, 255, 255, .2) !important;
+  border-radius: var(--r-vidro-p);
+  color: var(--ink) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+textarea:focus, input:focus, select:focus, .textarea:focus, .select:focus {
+  outline: 2px solid rgba(52, 211, 153, .55);
+  outline-offset: 1px;
+  border-color: rgba(110, 231, 183, .6) !important;
+}
+
+/* ---------- d) fios entre seções ---------- */
+.secao-topo {
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  padding-bottom: 22px;
+  margin-bottom: 26px;
+}
+.bloco-titulo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+.bloco-titulo h2, .bloco-titulo span { color: var(--muted); }
+.bloco-titulo h2 { color: var(--ink); }
+
+/* ==========================================================================
+   16. ENDURECIMENTO
+   O editorial.css usa `.regua > *` com !important e um brilho branco em
+   `.secao-topo::after`; aqui os dois são reescritos para o tema de vidro.
+   ========================================================================== */
+
+/* fora o véu branco do topo de seção; no lugar, uma luz verde */
+.secao-topo::after {
+  background:
+    radial-gradient(46% 64% at 92% 0%, rgba(52, 211, 153, .20), transparent 72%),
+    radial-gradient(40% 60% at 4% 6%, rgba(110, 231, 183, .12), transparent 70%) !important;
+}
+
+/* a régua das competências: cartões de verdade, não linhas de 14px */
+main .regua { display: flex; flex-direction: column; gap: 26px; margin: 30px 0 8px; }
+main .regua > .comp-bloco {
+  padding: 0 0 30px !important;
+  border-top: 0 !important;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 24px;
+  background:
+    linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .06)), rgba(255, 255, 255, .022) 58%, rgba(3, 26, 19, .4)) !important;
+  box-shadow: 0 30px 70px -40px rgba(0, 0, 0, .85), inset 0 1px 0 rgba(255, 255, 255, .1);
+  overflow: hidden;
+}
+main .regua > .comp-bloco > * + * { margin-top: 16px; }
+main .regua > .comp-bloco > .comp-topo { margin-top: 0 !important; }
+
+/* a tabela respeita o recuo do cartão */
+main .comp-bloco > .tabela-niveis { width: calc(100% - 52px); }
+
+/* o número do nível: sem bloco branco, agora é número grande no tom da seção */
+main .comp-bloco .tabela-niveis td.niv {
+  background: transparent !important;
+  color: var(--tom-faixa, var(--g-200)) !important;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.1;
+  padding-top: 18px;
+  border-radius: 0;
+}
+main .comp-bloco .tabela-niveis thead th {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 10px 12px;
+}
+main .comp-bloco .tabela-niveis thead th:first-child { padding-left: 0; }
+main .comp-bloco .tabela-niveis tbody td { border-bottom: 1px solid rgba(255, 255, 255, .07); }
+main .comp-bloco .tabela-niveis tbody td.num,
+main .comp-bloco .tabela-niveis tbody th { color: var(--tom-faixa, var(--g-200)); }
+
+/* a faixa do título da competência fica mais verde que branca */
+main .regua > .comp-bloco > .comp-topo {
+  background:
+    linear-gradient(100deg,
+      color-mix(in srgb, var(--tom-faixa, #F4FBF7) 88%, var(--g-300)) 0%,
+      color-mix(in srgb, var(--tom-faixa, #F4FBF7) 42%, transparent) 68%,
+      transparent 100%) !important;
+}
+
+/* mesma proteção nas outras listas */
+main .partes > .parte {
+  padding: 0 0 24px !important;
+  border-top: 0 !important;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 22px;
+}
+main .acordeao > .ac-item { border-radius: 18px; }
+main .lista-temas > .tema-linha { border-radius: 16px; }
+
+/* fios entre as seções de texto longo */
+main .comp-resumo + .comp-regra { margin-top: 18px; }
+main .comp-colunas { margin-top: 22px; }
+
+/* ---------- 17. ajustes finos ---------- */
+.secao-topo::after {
+  background: radial-gradient(38% 62% at 96% 0%, rgba(52, 211, 153, .16), transparent 70%) !important;
+}
+main .comp-bloco > .comp-resumo,
+main .comp-bloco > .comp-regra { max-width: 980px; }
+main .comp-bloco > .comp-topo .comp-nota {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(6, 42, 31, .16) !important;
+  color: var(--tinta-clara) !important;
+  box-shadow: 0 2px 10px -4px rgba(6, 42, 31, .5);
+}
+main .comp-bloco > .comp-topo .comp-nome { font-weight: 400; }
+main .comp-bloco > .comp-topo .comp-id {
+  font-family: var(--sans, system-ui);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(6, 42, 31, .55) !important;
+}
+
+/* ---------- 18. corretor, estrutura e comandos: conserto de layout ---------- */
+/* o sticky do resumo do tema brigava com o overflow do vidro */
+main .ws-proposta { position: static !important; }
+main .workspace { align-items: start; gap: 24px; }
+main .ws-entrada,
+main .ws-saida {
+  display: flex !important;
+  flex-direction: column;
+  gap: 20px;
+  padding: 26px !important;
+  align-content: normal;
+}
+main .ws-proposta {
+  padding: 22px !important;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .12);
+}
+main .ws-saida { min-height: 240px; }
+main .ws-saida .vazio { border-radius: 14px; padding: 26px; }
+
+/* estrutura: faixa clara no título de cada parte */
+main .partes > .parte > .parte-tit {
+  margin: 0 !important;
+  padding: 16px 26px !important;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 82%, var(--g-300)) 0%,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 40%, transparent) 70%,
+    transparent 100%) !important;
+  color: var(--tinta-clara) !important;
+}
+main .partes > .parte > .parte-meta { color: var(--muted); margin: 16px 26px 0 !important; }
+main .partes > .parte > *:not(.parte-tit):not(.parte-topo) { margin-left: 26px !important; margin-right: 26px !important; }
+
+/* comandos: o sinal de abrir precisa de tinta escura na faixa clara */
+main .ac-item > summary .ac-mais,
+main .ac-item > summary .ac-palavra,
+main .ac-item > summary .ac-temas,
+main .ac-item > summary .ac-sum { color: var(--tinta-clara) !important; }
+main .ac-item > summary .ac-palavra { font-weight: 600; }
+main .ac-item > summary .ac-temas { color: var(--tinta-clara-2) !important; }
+main .regra-geral {
+  padding: 26px 28px !important;
+  border-radius: 20px;
+  background: linear-gradient(140deg, rgba(244, 251, 247, .10), rgba(52, 211, 153, .06) 60%, transparent) !important;
+  border: 1px solid rgba(255, 255, 255, .12);
+}
+main .regra-geral p:last-child { margin-bottom: 0; }
+
+/* temas: o ano pega o tom da linha */
+main .tema-linha .tl-ano { color: var(--tom-faixa, var(--g-200)); }
+
+/* topo de seção vira uma faixa de vidro assumida */
+main .secao-topo {
+  position: relative;
+  padding: 34px 38px 30px !important;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-bottom: 1px solid rgba(255, 255, 255, .13) !important;
+  background:
+    linear-gradient(122deg, rgba(244, 251, 247, .13) 0%, rgba(167, 243, 208, .08) 38%, rgba(4, 36, 27, .1) 78%) !important;
+  box-shadow: 0 30px 80px -50px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .16);
+  overflow: hidden;
+  margin-bottom: 34px;
+}
+main .secao-topo h1 { margin-top: 0; }
+
+/* faixa do título da competência: mais verde */
+main .regua > .comp-bloco > .comp-topo {
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 74%, var(--g-300)) 0%,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 38%, transparent) 64%,
+    transparent 100%) !important;
+}
+
+/* ==========================================================================
+   19. o que ainda estava chapado no papel
+   O editorial.css zera fundo de hub, índice e tabelas com !important; aqui
+   essas peças voltam a ter superfície, tom e fio.
+   ========================================================================== */
+
+/* home: cada item do índice é uma linha de vidro com o fio do tom */
+main .indice-item {
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 14px;
+  box-shadow: inset 3px 0 0 var(--tom-fio, rgba(255, 255, 255, .4));
+  margin-bottom: 10px !important;
+  overflow: hidden;
+  transition: background-color 180ms ease, transform 180ms ease, border-color 180ms ease;
+}
+main .indice-item:nth-child(odd) { background: rgba(255, 255, 255, .065); }
+main .indice-item:hover {
+  background: var(--tom-luz, rgba(255, 255, 255, .09));
+  border-color: var(--tom-fio, rgba(255, 255, 255, .3));
+  transform: translateY(-2px);
+}
+main .indice-item .idx-num { color: var(--tom-faixa, var(--g-200)) !important; }
+main .indice-item .idx-go { color: var(--tom-faixa, var(--g-200)) !important; }
+
+/* estrutura: a tabela de distribuição e o esqueleto também são superfícies */
+main .bloco-tabela,
+main .bloco-titulo + .esqueleto,
+main .esqueleto {
+  background: linear-gradient(158deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .022)) !important;
+  border: 1px solid rgba(255, 255, 255, .12) !important;
+  border-radius: 20px !important;
+  padding: 22px 26px !important;
+  box-shadow: 0 26px 60px -46px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+main .bloco-tabela .tabela { margin-bottom: 0; }
+main .partes { margin-top: 30px !important; }
+main .bloco-titulo { margin-top: 34px !important; }
+
+/* comandos: o bloco de abertura ocupa a largura toda e o sinal herda a tinta */
+main .regra-geral { max-width: none !important; }
+main .ac-item > summary { cursor: pointer; }
+main .ac-item > summary .ac-mais,
+main .ac-item > summary::after,
+main .ac-item > summary::marker { color: var(--tinta-clara) !important; }
+
+/* conteúdos: área e matéria voltam a ser cartões com faixa clara */
+main .hub-area {
+  background: linear-gradient(158deg, var(--tom-luz, rgba(255, 255, 255, .06)), rgba(255, 255, 255, .02) 62%, rgba(3, 26, 19, .32)) !important;
+  border: 1px solid rgba(255, 255, 255, .12) !important;
+  border-top: 1px solid rgba(255, 255, 255, .12) !important;
+  border-radius: 22px !important;
+  margin: 24px 0 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -50px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+main .hub-area-topo {
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 76%, var(--g-300)) 0%,
+    color-mix(in srgb, var(--tom-faixa, #F4FBF7) 34%, transparent) 66%,
+    transparent 100%) !important;
+  padding: 16px 24px !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .1) !important;
+  align-items: center !important;
+}
+main .hub-area-topo h2 { color: var(--tinta-clara) !important; }
+main .hub-area-topo p,
+main .hub-area-topo span,
+main .hub-area-topo .hub-conta { color: var(--tinta-clara-2) !important; }
+main .hub-materias {
+  border-top: 0 !important;
+  gap: 10px !important;
+  padding: 16px 18px 20px !important;
+}
+main .hub-materia {
+  background: rgba(255, 255, 255, .05) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 14px !important;
+  padding: 14px 16px !important;
+  box-shadow: inset 0 2px 0 var(--tom-fio, rgba(255, 255, 255, .3));
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+main .hub-materia:hover { background: rgba(255, 255, 255, .09) !important; transform: translateY(-2px); }
+main .hub-materia:hover .hm-nome { text-decoration: none !important; }
+main .hub-nota {
+  background: rgba(255, 255, 255, .045) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 16px !important;
+  padding: 18px 22px !important;
+  color: var(--muted) !important;
+}
+
+/* ==========================================================================
+   20. barra fixa e leitura da redação
+   ========================================================================== */
+
+/* a barra de cima ficava branca ao rolar */
+.topbar.rolado {
+  background: rgba(4, 36, 27, .84) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(160%);
+  backdrop-filter: blur(26px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 24px 60px -46px #000;
+}
+.topbar.rolado .pill { color: var(--ink); }
+.nav-abre-risco { background: var(--ink); }
+
+/* a redação: texto à esquerda, análise à direita, nas duas colunas da tela */
+main .red-doc { width: 100% !important; max-width: none !important; }
+
+main .doc-cabeca {
+  padding: 30px 34px !important;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, .13);
+  background: linear-gradient(122deg, rgba(244, 251, 247, .13) 0%, rgba(167, 243, 208, .08) 42%, rgba(4, 36, 27, .12) 82%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16);
+  margin-bottom: 22px;
+}
+main .doc-cabeca h1 { margin: 6px 0 10px; }
+main .doc-cabeca .eyebrow { color: var(--g-200); }
+
+main .red-doc > section {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 372px;
+  column-gap: 36px;
+  padding: 26px 30px !important;
+  margin: 0 0 20px !important;
+  border: 1px solid rgba(255, 255, 255, .11);
+  border-radius: 20px;
+  background: linear-gradient(158deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .022));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+main .red-doc > section > .num-parag { grid-column: 1 / -1; }
+main .red-doc > section > .par-texto { grid-column: 1; max-width: 74ch; }
+main .red-doc > section > .par-analise {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-left: 3px solid var(--g-300);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .05);
+  padding: 16px 18px;
+  margin: 0 !important;
+}
+main .red-doc > section > .par-analise * { color: var(--muted); }
+main .red-doc > section > .num-parag .n {
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .2);
+  color: var(--g-200);
+  border-radius: 10px;
+}
+main .red-doc > section > .num-parag .funcao { color: var(--muted) !important; }
+
+/* blocos soltos da página da redação ganham superfície */
+main .red-doc > .porque,
+main .red-doc > .comp-notas,
+main .regra-geral {
+  border-radius: 18px !important;
+}
+main .red-doc > .porque {
+  background: linear-gradient(140deg, rgba(244, 251, 247, .10), rgba(52, 211, 153, .06) 62%, transparent) !important;
+  border: 1px solid rgba(255, 255, 255, .12) !important;
+  padding: 24px 26px !important;
+  margin-bottom: 20px !important;
+}
+main .red-doc > .porque h2 { color: var(--g-100); }
+main .red-doc > .marcas { margin: 6px 0 22px !important; }
+main .red-doc > .comp-notas {
+  background: rgba(255, 255, 255, .045) !important;
+  border: 1px solid rgba(255, 255, 255, .11) !important;
+  padding: 22px !important;
+}
+main .red-doc > p { color: var(--muted); }
+
+@media (max-width: 1100px) {
+  main .red-doc > section { grid-template-columns: minmax(0, 1fr) !important; }
+  main .red-doc > section > .par-analise { grid-column: 1 !important; grid-row: auto !important; margin-top: 14px !important; }
+}
+
+/* ==========================================================================
+   21. matéria e conteúdo: as duas páginas que ainda ficavam estreitas
+   ========================================================================== */
+
+/* lista de conteúdos de uma matéria: linha de vidro com colunas previsíveis */
+main .conteudo-lista {
+  border-top: 0 !important;
+  margin: 26px 0 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+main .conteudo-btn {
+  display: grid !important;
+  grid-template-columns: 54px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px !important;
+  background: rgba(255, 255, 255, .05) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 14px !important;
+  box-shadow: inset 3px 0 0 var(--g-400) !important;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+main .conteudo-btn:hover {
+  background: rgba(255, 255, 255, .09) !important;
+  transform: translateX(3px);
+}
+main .conteudo-btn .cb-num { color: var(--g-200) !important; font-variant-numeric: tabular-nums; }
+main .conteudo-btn .cb-nome { color: var(--ink) !important; font-size: 1.02rem; }
+main .conteudo-btn .cb-acoes { justify-self: end; }
+
+/* página de conteúdo: resumo à esquerda, apoio à direita, vídeo na largura toda */
+main .conteudo-pag {
+  width: 100% !important;
+  max-width: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 20px 26px;
+  align-items: start;
+  margin-top: 8px;
+}
+main .conteudo-pag > .cp-topo { grid-column: 1 / -1; }
+main .conteudo-pag > .cp-resumo { grid-column: 1; }
+main .conteudo-pag > .cp-bloco { grid-column: 2; }
+main .conteudo-pag > .cp-bloco:has(.video-caixa) { grid-column: 1 / -1; }
+main .conteudo-pag > .cp-nav { grid-column: 1 / -1; }
+
+main .cp-bloco {
+  background: linear-gradient(158deg, rgba(255, 255, 255, .062), rgba(255, 255, 255, .022)) !important;
+  border: 1px solid rgba(255, 255, 255, .11) !important;
+  border-radius: 18px !important;
+  padding: 22px 24px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+main .cp-resumo { padding: 28px 30px !important; }
+main .cp-resumo p { max-width: 78ch; }
+main .cp-rot {
+  color: var(--g-200) !important;
+  font-family: var(--sans, system-ui) !important;
+  font-size: 11px !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  opacity: .9;
+}
+main .cp-aviso {
+  background: rgba(52, 211, 153, .1) !important;
+  border-left: 3px solid var(--g-300);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 16px !important;
+  color: var(--ink) !important;
+}
+main .chave-lista li { color: var(--ink); }
+main .chave-lista li::marker { color: var(--g-300); }
+main .video-caixa {
+  border-radius: 16px !important;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .04) !important;
+}
+main .cp-nav-btn {
+  background: rgba(255, 255, 255, .05) !important;
+  border: 1px solid rgba(255, 255, 255, .12) !important;
+  border-radius: 14px !important;
+  padding: 14px 18px !important;
+}
+main .migalha, main .migalha a, main .migalha b { color: var(--muted); }
+main .migalha a:hover { color: var(--g-200); }
+main .migalha { padding: 6px 0 14px; }
+
+@media (max-width: 1100px) {
+  main .conteudo-pag { grid-template-columns: minmax(0, 1fr); }
+  main .conteudo-pag > .cp-resumo,
+  main .conteudo-pag > .cp-bloco { grid-column: 1; }
+}
+
+/* ---------- 22. últimos detalhes ---------- */
+.topbar.rolado { background: rgba(4, 36, 27, .92) !important; }
+main .red-doc > .comp-notas + p { margin-top: 14px !important; }
+main .red-doc > p + p { margin-top: 6px !important; }
+main .hub-area-topo .hub-conta { color: var(--tinta-clara-2) !important; }
+
+/* a ordem das colunas: o resumo fica na coluna larga da esquerda */
+main .conteudo-pag > .cp-bloco.cp-resumo { grid-column: 1 !important; }
+main .conteudo-pag > .cp-bloco:not(.cp-resumo):not(:has(.video-caixa)) { grid-column: 2 !important; }
+main .conteudo-pag > .cp-bloco:has(.video-caixa) { grid-column: 1 / -1 !important; }
+
+/* ==========================================================================
+   23. competência: o cartão passa a ter respiro próprio
+   O bloco ganha padding e a faixa do título sai para fora dele; assim os
+   blocos internos com margem negativa (side-bloco, exemplo-par) param de
+   bater na borda.
+   ========================================================================== */
+main .regua > .comp-bloco {
+  padding: 0 26px 28px !important;
+}
+main .regua > .comp-bloco > .comp-topo {
+  margin: -0px -26px 20px !important;
+  padding: 16px 26px !important;
+  border-radius: 23px 23px 0 0;
+  border-bottom: 1px solid rgba(6, 42, 31, .14) !important;
+}
+main .regua > .comp-bloco > .comp-resumo,
+main .regua > .comp-bloco > .comp-regra,
+main .regua > .comp-bloco > .tabela-niveis,
+main .regua > .comp-bloco > .comp-colunas,
+main .regua > .comp-bloco > .side-bloco,
+main .regua > .comp-bloco > .oficial-det,
+main .regua > .comp-bloco > .exemplo-par {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+main .regua > .comp-bloco > .tabela-niveis { width: 100% !important; }
+main .comp-bloco .side-bloco { padding: 18px 20px !important; }
+main .comp-bloco .side-bloco h3:first-child { margin-top: 0 !important; }
+main .comp-bloco .exemplo-par { border-radius: 14px; overflow: hidden; }
+main .comp-bloco .oficial-det { background: rgba(255, 255, 255, .04); border-radius: 14px; padding: 4px 16px; }
+main .comp-bloco .oficial-det summary { color: var(--g-200); }
+
+/* ---------- 24. mobile: o botão do menu e os cartões ---------- */
+.nav-abre {
+  background: rgba(255, 255, 255, .1) !important;
+  border: 1px solid rgba(255, 255, 255, .22) !important;
+  border-radius: 12px;
+}
+.nav-abre-risco { background: var(--ink) !important; }
+.nav.aberto, .nav-pills.aberto { background: rgba(4, 36, 27, .96) !important; border: 1px solid rgba(255, 255, 255, .14); border-radius: 16px; }
+@media (max-width: 720px) {
+  main .regua > .comp-bloco { padding: 0 16px 22px !important; border-radius: 18px; }
+  main .regua > .comp-bloco > .comp-topo { margin: 0 -16px 16px !important; padding: 14px 16px !important; border-radius: 17px 17px 0 0; }
+  main .secao-topo { padding: 24px 20px 22px !important; border-radius: 20px; }
+  main .comp-bloco .side-bloco { padding: 14px 16px !important; }
+  main .red-doc > section { padding: 18px 18px !important; }
+  main .conteudo-btn { grid-template-columns: 40px minmax(0, 1fr) auto !important; padding: 12px 14px !important; }
+  main .conteudo-btn .cb-acoes { display: none; }
+  main .doc-cabeca { padding: 22px 20px !important; border-radius: 20px; }
+  main .hub-area-topo { padding: 12px 16px !important; }
+  main .ws-entrada, main .ws-saida { padding: 16px !important; }
+}
+
+/* ==========================================================================
+   25. LEITURA: alto contraste e as seções novas do conteúdo
+   ========================================================================== */
+
+/* tinta mais firme em todo o site: texto sobre vidro precisa de contraste */
+:root {
+  --ink: #F6FDFA;
+  --muted: rgba(228, 246, 238, .88);
+  --tinta-3: rgba(226, 244, 236, .74);
+}
+
+main p, main li, main dd, main td, main .sub { color: var(--ink); }
+main .sub, main .cp-rot, main .q-apoio { color: var(--muted); }
+
+/* páginas de conteúdo: coluna de leitura mais legível */
+main .conteudo-pag { grid-template-columns: minmax(0, 1fr) 410px !important; gap: 22px 28px !important; }
+main .cp-bloco {
+  background: linear-gradient(158deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .035)) !important;
+  border-color: rgba(255, 255, 255, .16) !important;
+}
+main .cp-resumo { padding: 34px 38px !important; }
+main .cp-resumo p { font-size: 1.06rem; line-height: 1.74; color: var(--ink); }
+
+/* subtemas do texto completo */
+main .cp-secao + .cp-secao { margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, .12); }
+main .cp-secao h3 {
+  font-family: var(--f-display, 'Sentient', Georgia, serif);
+  font-size: 1.28rem;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0 0 10px;
+  letter-spacing: -.01em;
+}
+main .cp-secao h3::before {
+  content: '';
+  display: inline-block;
+  width: 9px; height: 9px;
+  margin-right: 10px;
+  border-radius: 2px;
+  background: var(--g-300);
+  transform: translateY(-3px) rotate(45deg);
+}
+main .cp-secao p { max-width: 78ch; color: var(--ink); }
+main .cp-secao p + p { margin-top: 12px; }
+
+/* índice curto no topo da página */
+main .cp-indice { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+main .cp-indice a {
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--g-100);
+  background: rgba(255, 255, 255, .09);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+main .cp-indice a:hover { background: rgba(110, 231, 183, .2); color: #fff; }
+
+/* exemplos */
+main .cp-exemplo {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
+main .cp-exemplo:first-of-type { border-top: 0; padding-top: 2px; }
+main .cp-ex-num {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border-radius: 9px;
+  background: rgba(52, 211, 153, .18);
+  border: 1px solid rgba(110, 231, 183, .45);
+  color: var(--g-100);
+  font-size: .82rem;
+  font-weight: 600;
+}
+main .cp-exemplo h3 { font-size: 1rem; font-weight: 600; color: #fff; margin: 0 0 6px; }
+main .cp-ex-texto {
+  font-size: .99rem;
+  line-height: 1.66;
+  color: var(--ink);
+  background: rgba(0, 0, 0, .22);
+  border-left: 3px solid var(--g-400);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+  margin: 0;
+  font-family: var(--f-display, Georgia, serif);
+}
+main .cp-ex-coment { margin: 8px 0 0; font-size: .95rem; color: var(--muted); }
+
+/* figuras */
+main .cp-figura {
+  margin: 6px 0 20px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(0, 0, 0, .2);
+}
+main .cp-figura figcaption {
+  font-size: .76rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--g-200);
+  margin-bottom: 14px;
+}
+main .fig-legenda { margin: 12px 0 0; font-size: .9rem; color: var(--muted); }
+
+main .fig-fluxo { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; counter-reset: f; }
+main .fig-fluxo li {
+  flex: 1 1 150px;
+  position: relative;
+  padding: 12px 14px 12px 34px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .14);
+  font-size: .93rem;
+  line-height: 1.45;
+  color: var(--ink);
+  counter-increment: f;
+}
+main .fig-fluxo li::before {
+  content: counter(f);
+  position: absolute; left: 12px; top: 12px;
+  color: var(--g-200); font-size: .78rem; font-weight: 700;
+}
+main .ff-nota { display: block; margin-top: 4px; font-size: .82rem; color: var(--muted); }
+
+main .fig-camadas { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+main .fig-camadas li {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(52, 211, 153, .26), rgba(52, 211, 153, .06));
+  border: 1px solid rgba(110, 231, 183, .3);
+  font-size: .93rem;
+  color: var(--ink);
+}
+main .fig-camadas li b { color: #fff; font-weight: 600; }
+main .fig-camadas li span { display: block; font-size: .84rem; color: var(--muted); margin-top: 2px; }
+
+main .fig-barras { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+main .fig-barras li { display: grid; grid-template-columns: 132px minmax(0, 1fr) auto; align-items: center; gap: 12px; font-size: .9rem; color: var(--ink); }
+main .fb-trilha { height: 10px; border-radius: 999px; background: rgba(255, 255, 255, .12); overflow: hidden; }
+main .fb-preenche { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--g-400), var(--g-200)); }
+main .fb-val { color: var(--g-100); font-variant-numeric: tabular-nums; }
+
+main .fig-lista { margin: 0; padding-left: 18px; color: var(--ink); }
+main .fig-lista li { margin: 6px 0; }
+
+/* fórmulas com legenda de uso */
+main .formula-card { background: rgba(0, 0, 0, .26) !important; border: 1px solid rgba(255, 255, 255, .16) !important; }
+main .fc-expr { font-size: 1.02rem !important; color: #fff !important; }
+main .fc-rot { color: var(--g-200) !important; }
+main .fc-uso { display: block; margin-top: 8px; font-size: .86rem; color: var(--muted); }
+
+/* questões: resolução escrita, em passos numerados */
+main .q-passos { margin: 8px 0 0; padding-left: 20px; color: var(--ink); }
+main .q-passos li { margin: 8px 0; line-height: 1.62; }
+main .q-passos li::marker { color: var(--g-200); font-weight: 700; }
+main .q-erram { margin-top: 14px; padding-top: 12px; border-top: 1px dashed rgba(255, 255, 255, .16); }
+main .q-erram ul { margin: 8px 0 0; padding-left: 18px; }
+main .q-erram li { color: var(--muted); font-size: .93rem; margin: 4px 0; }
+main .q-enunciado { font-size: 1.02rem; line-height: 1.62; color: #fff; }
+main .q-apoio { font-size: .96rem; line-height: 1.62; }
+main .q-alts li { color: var(--ink); }
+main .q-alts li.correta { background: rgba(52, 211, 153, .16); border-color: rgba(110, 231, 183, .45); }
+main .q-alts li.correta .alt-txt { color: #fff; }
+main .cb-tag.completo { background: rgba(52, 211, 153, .22); border-color: rgba(110, 231, 183, .5); color: #DFFCEF; }
+main .questao { background: rgba(255, 255, 255, .05) !important; border: 1px solid rgba(255, 255, 255, .14) !important; border-radius: 16px; }
+
+/* ---------- 26. página de conteúdo em coluna cheia, na ordem pedida ---------- */
+main .conteudo-pag { display: block !important; max-width: none !important; }
+main .cp-bloco { margin: 0 0 20px !important; }
+
+main .cp-duas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+main .cp-lado { position: sticky; top: 92px; }
+main .cp-lado .cp-bloco { margin: 0 !important; }
+main .cp-duas .cp-resumo { margin: 0 !important; }
+
+/* exemplos em três colunas */
+main .cp-exemplos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+}
+main .cp-exemplo {
+  display: block;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .055);
+}
+main .cp-exemplo:first-of-type { padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .14); }
+main .cp-ex-num { margin-bottom: 10px; }
+main .cp-ex-texto { font-size: 1rem; }
+
+/* figuras lado a lado quando houver mais de uma */
+main .cp-figuras { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 16px; }
+main .cp-figuras .cp-figura { margin: 0; }
+main .formula-grade { margin-top: 16px; }
+
+/* questões ocupam a largura toda */
+main #questoes .questao { margin-bottom: 14px; }
+
+@media (max-width: 1100px) {
+  main .cp-duas { grid-template-columns: minmax(0, 1fr); }
+  main .cp-lado { position: static; }
+}
+
+/* questões abertas por padrão: resolução escrita sempre visível */
+main .questao[open] > .q-topo { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+main .questao .q-abre { color: rgba(226, 244, 236, .72); }
+main .questao[open] .q-abre { color: var(--tinta-3); }
+
+/* 27. Uma plataforma de estudos própria: índigo, menta e luz de vidro. */
+:root {
+  --g-950:#0a1222; --g-900:#111d31; --g-800:#1b2b42; --g-700:#28505a;
+  --g-600:#358075; --g-500:#5cb6a5; --g-400:#80d8c3; --g-300:#a6ead7;
+  --g-200:#bcefdc; --g-100:#dcf5e8;
+  --ink:#f3f8fa; --muted:#c9d9e1; --tinta-3:#c2d4dd;
+  --tinta-clara:#14282b; --tinta-clara-2:#23423f;
+  --tom1-faixa:#d6efe8; --tom2-faixa:#d9e3f4; --tom3-faixa:#d5eede;
+  --tom4-faixa:#e7e2f3; --tom5-faixa:#e8eacf;
+}
+html { background:#0a1222; }
+body {
+  background-color:#0a1222;
+  background-image: radial-gradient(ellipse at 8% 0%,rgba(67,123,117,.32),transparent 42%),
+    radial-gradient(ellipse at 91% 6%,rgba(94,93,153,.34),transparent 38%),
+    radial-gradient(ellipse at 80% 90%,rgba(29,106,91,.28),transparent 46%),
+    linear-gradient(160deg,#132638 0%,#10182c 48%,#102a2c 100%);
+}
+.topbar, .topbar.rolado { background:rgba(12,24,40,.9) !important; }
+.marca-texto { background:#a6ead7; color:#132b29 !important; }
+main .novo-hero {
+  position:relative; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(340px,.8fr);
+  align-items:center; gap:clamp(35px,6vw,90px); padding:clamp(36px,5vw,72px);
+  margin:18px 0 82px; border:1px solid rgba(219,242,239,.18); border-radius:30px;
+  background:linear-gradient(135deg,rgba(58,102,107,.23),rgba(62,58,107,.22) 58%,rgba(10,24,39,.52));
+  box-shadow:0 30px 90px rgba(3,10,20,.3), inset 0 1px 0 rgba(240,255,250,.12);
+  overflow:hidden;
+}
+main .novo-hero:before { content:''; pointer-events:none; position:absolute; width:470px; height:470px; right:-100px; top:-180px; background:radial-gradient(circle,rgba(170,151,234,.16),transparent 68%); }
+main .novo-hero-copy, main .novo-painel { position:relative; z-index:1; }
+main .novo-kicker { display:inline-flex; align-items:center; gap:9px; color:#b8eadb; font:700 .73rem/1.4 var(--sans); letter-spacing:.13em; }
+main .novo-kicker span { font-size:1.15rem; color:#ddbe8c; }
+main .novo-hero h1 { max-width:760px; margin:24px 0 22px; color:#f2f8f5; font-size:clamp(2.6rem,4.7vw,5rem); line-height:1.06; letter-spacing:-.035em; }
+main .novo-hero h1 em { color:#a9dfd0; font-weight:400; }
+main .novo-hero-copy > p { color:#d4e4e7; max-width:530px; font-size:1.12rem; line-height:1.7; }
+main .novo-acoes { display:flex; flex-wrap:wrap; gap:12px; margin:30px 0 36px; }
+main .novo-btn { display:inline-flex; align-items:center; justify-content:center; gap:24px; min-height:52px; padding:14px 20px; border-radius:12px; font-weight:700; text-decoration:none; transition:transform .2s, box-shadow .2s; }
+main .novo-btn:hover, main .novo-passo:hover { transform:translateY(-3px); }
+main .novo-btn.principal { color:#102d29; background:#a6ead7; box-shadow:0 5px 0 #5ea99c; }
+main .novo-btn.secundario { color:#e1f4f0; border:1px solid rgba(208,242,234,.42); background:rgba(15,37,46,.45); }
+main .novo-etapas { display:flex; flex-wrap:wrap; gap:24px; color:#91b8b4; font-size:.79rem; letter-spacing:.04em; }
+main .novo-etapas b { color:#daeae9; letter-spacing:0; font-weight:600; margin-left:4px; }
+main .novo-painel { transform:rotate(1deg); padding:26px; border-radius:24px; background:linear-gradient(155deg,rgba(79,99,119,.62),rgba(27,44,60,.88)); border:1px solid rgba(223,247,238,.23); box-shadow:0 25px 60px rgba(3,12,25,.38), inset 0 1px 0 rgba(255,255,255,.15); }
+main .novo-painel-top, main .novo-painel-rodape { display:flex; justify-content:space-between; align-items:center; color:#b5e6d6; font-size:.7rem; letter-spacing:.15em; font-weight:700; }
+main .novo-painel-top span:last-child { font-size:1.6rem; color:#d4bfee; }
+main .novo-painel-titulo { margin:24px 0 4px; color:#f1f8f5; font:400 clamp(1.55rem,2.2vw,2.05rem)/1.1 var(--serif); }
+main .novo-painel-sub { margin:0 0 24px; color:#c4d6d9; font-size:.9rem; }
+main .novo-passo { display:grid; grid-template-columns:42px 1fr auto; gap:14px; align-items:center; margin:9px 0; padding:12px; border-radius:14px; border:1px solid rgba(222,242,237,.13); background:rgba(12,25,42,.48); text-decoration:none; color:#f1f8f5; transition:transform .2s, background .2s; }
+main .novo-passo strong, main .novo-passo small { display:block; }
+main .novo-passo small { color:#c4d9da; margin-top:2px; font-size:.78rem; }
+main .novo-passo > b { color:#c4e6de; }
+main .novo-icon { width:42px; height:42px; display:grid; place-items:center; border-radius:11px; font-size:1.2rem; font-weight:700; color:#28304a; }
+main .novo-icon.roxo { background:#cbbce7; } main .novo-icon.menta { background:#a6dfcc; } main .novo-icon.coral { background:#e9c6a9; }
+main .novo-painel-rodape { padding-top:20px; color:#bfd6d4; }
+main .hub { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+main .hub-area { margin:0 !important; min-width:0; }
+main .hub-area-topo { background:var(--tom-faixa,#d6efe8) !important; }
+main .hub-area-topo h2 { color:#152f2d !important; }
+main .hub-area-topo p, main .hub-area-topo span, main .hub-area-topo .hub-conta { color:#21413d !important; opacity:1 !important; }
+main .hub-materias { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+main .hub-materia { background:rgba(28,50,61,.82) !important; }
+main .hub-materia:hover { background:rgba(68,105,102,.8) !important; }
+main .hm-nome, main .hm-conta { color:#e6f4f1 !important; }
+main .q-fontes { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 18px; }
+main .q-fontes a { display:inline-flex; padding:7px 11px; border-radius:8px; background:#234d4c; color:#e8faf2; border:1px solid #6aa49d; font-size:.86rem; }
+@media (max-width:800px) { main .novo-hero { grid-template-columns:minmax(0,1fr); gap:34px; padding:30px 24px; margin:12px 0 56px; } main .novo-painel { transform:none; } main .hub { grid-template-columns:minmax(0,1fr); } }
+@media (max-width:430px) { main .novo-hero h1 { font-size:2.55rem; } main .novo-acoes { flex-direction:column; align-items:stretch; } main .novo-btn { justify-content:space-between; } main .novo-etapas { gap:12px; } main .hub-materias { grid-template-columns:minmax(0,1fr) !important; } }
+.topbar .pill-cta { color:#102d29 !important; background:#a6ead7 !important; }
+.topbar .pill-cta:hover, .topbar .pill-cta:focus-visible { color:#102d29 !important; background:#c7f0e4 !important; }
+main .novo-painel .novo-painel-titulo { font-family:Georgia,serif; font-size:clamp(1.55rem,2.2vw,2.05rem); line-height:1.2; color:#f1f8f5; }
+main .comp-bloco .comp-topo { background:var(--tom-faixa,#d6efe8) !important; }
+main .comp-bloco .comp-topo .comp-nota { background:#b8e4d5 !important; color:#163b34 !important; border:1px solid #8abcae !important; }
+main .comp-bloco .tabela-niveis thead, main .comp-bloco .tabela-niveis thead tr { background:#274d50 !important; }
+main .comp-bloco .tabela-niveis thead th { color:#ecfaf4 !important; opacity:1 !important; }
+
+/* Em telas estreitas, a tabela mantém seus rótulos e não força o documento. */
+@media (max-width: 600px) {
+  main .bloco-tabela { padding: 18px 14px !important; min-width: 0; }
+  main .bloco-tabela .tabela { table-layout: fixed; width: 100%; }
+  main .bloco-tabela .tabela th,
+  main .bloco-tabela .tabela td { overflow-wrap: anywhere; padding-right: 8px; }
+  main .bloco-tabela .tabela th:nth-child(1) { width: 27%; }
+  main .bloco-tabela .tabela th:nth-child(2) { width: 20%; }
+  main .bloco-tabela .tabela th:nth-child(3) { width: 53%; }
+}
+
+/* 28. Azul céu: quatro cores de referência sobre vidro azul profundo.
+   O azul escuro de apoio preserva legibilidade nas superfícies translúcidas. */
+:root {
+  --g-950:#07162c; --g-900:#0b2444; --g-800:#103663; --g-700:#164c83;
+  --g-600:#0063c9; --g-500:#007fff; --g-400:#1e90ff; --g-300:#66ccff;
+  --g-200:#b8e7ff; --g-100:#f0f8ff;
+  --azure-royal:#007fff; --azure-sky:#66ccff; --azure-ice:#f0f8ff; --azure-dodger:#1e90ff;
+  --azul:#007fff; --azul-txt:#b8e7ff; --azul-alto:#66ccff;
+  --azul-fundo:#d3ecff; --azul-linha:rgba(102,204,255,.35);
+  --dourado-txt:#b8e7ff; --verde-agua:#66ccff; --menta:#b8e7ff;
+  --brand:#66ccff; --brand-dark:#b8e7ff; --brand-soft:rgba(0,127,255,.18);
+  --ink:#f0f8ff; --muted:#d0e7f8; --tinta-3:#bdd8ec;
+  --tinta-clara:#092747; --tinta-clara-2:#123b61;
+  --highlight:rgba(0,127,255,.42);
+  --tom1-faixa:#c9e9ff; --tom2-faixa:#b8ddfb; --tom3-faixa:#a9d6f9;
+  --tom4-faixa:#d9edfc; --tom5-faixa:#c3e2fa;
+  --tom1-luz:rgba(102,204,255,.13); --tom2-luz:rgba(30,144,255,.13);
+  --tom3-luz:rgba(0,127,255,.13); --tom4-luz:rgba(166,219,255,.13); --tom5-luz:rgba(80,177,247,.13);
+  --tom1-fio:rgba(102,204,255,.55); --tom2-fio:rgba(70,170,255,.6);
+  --tom3-fio:rgba(0,127,255,.65); --tom4-fio:rgba(166,219,255,.6); --tom5-fio:rgba(80,177,247,.6);
+}
+html { background:#07162c; }
+body {
+  background-color:#07162c;
+  background-image:radial-gradient(ellipse at 5% 0%,rgba(0,127,255,.28),transparent 43%),
+    radial-gradient(ellipse at 92% 6%,rgba(102,204,255,.20),transparent 40%),
+    radial-gradient(ellipse at 80% 90%,rgba(30,144,255,.20),transparent 47%),
+    linear-gradient(160deg,#0b2b50 0%,#0b1d39 48%,#082644 100%);
+}
+::selection { background:rgba(0,127,255,.55); color:#f0f8ff; }
+.topbar, .topbar.rolado { background:rgba(7,25,49,.95) !important; }
+.nav.aberto, .nav-pills.aberto { background:rgba(8,31,58,.98) !important; }
+.marca-texto { background:#66ccff !important; color:#092747 !important; }
+.pill.ativo, .pill[aria-current="page"] { background:#b8e7ff; color:#092747; }
+.topbar .pill-cta, main .novo-btn.principal {
+  background:#66ccff !important; color:#082845 !important;
+}
+.topbar .pill-cta:hover, .topbar .pill-cta:focus-visible { background:#b8e7ff !important; color:#082845 !important; }
+main .novo-btn.principal { box-shadow:0 5px 0 #0071d2; }
+.btn.btn-primario, .btn-primario {
+  background:linear-gradient(135deg,#66ccff,#1e90ff) !important;
+  color:#082747 !important; border-color:#9adfff !important;
+  box-shadow:0 14px 34px -14px rgba(0,127,255,.8),inset 0 1px 0 rgba(240,248,255,.5);
+}
+.btn.btn-primario:hover, .btn-primario:hover { background:linear-gradient(135deg,#b8e7ff,#66ccff) !important; color:#082747 !important; }
+main .novo-hero {
+  background:linear-gradient(135deg,rgba(0,127,255,.27),rgba(30,144,255,.16) 58%,rgba(8,30,56,.72));
+  border-color:rgba(166,220,255,.3);
+}
+main .novo-hero:before { background:radial-gradient(circle,rgba(102,204,255,.22),transparent 68%); }
+main .novo-kicker, main .novo-kicker span, main .novo-hero h1 em { color:#b8e7ff; }
+main .novo-hero-copy > p, main .novo-etapas, main .novo-etapas b { color:#d6edff; }
+main .novo-btn.secundario { color:#f0f8ff; background:rgba(9,45,81,.7); border-color:rgba(166,220,255,.55); }
+main .novo-painel { background:linear-gradient(155deg,rgba(31,103,164,.76),rgba(10,42,78,.95)); border-color:rgba(166,220,255,.35); }
+main .novo-painel-top, main .novo-painel-rodape, main .novo-painel-top span:last-child,
+main .novo-passo > b { color:#b8e7ff; }
+main .novo-painel-sub, main .novo-passo small { color:#d0e7f8; }
+main .novo-passo { background:rgba(5,32,65,.75); border-color:rgba(166,220,255,.22); }
+main .novo-icon.roxo { background:#b8e7ff; color:#092747; }
+main .novo-icon.menta { background:#66ccff; color:#092747; }
+main .novo-icon.coral { background:#a8d8ff; color:#092747; }
+main .hub-area-topo h2 { color:#092747 !important; }
+main .hub-area-topo p, main .hub-area-topo span, main .hub-area-topo .hub-conta { color:#123b61 !important; }
+main .hub-materia { background:rgba(13,55,97,.85) !important; }
+main .hub-materia:hover { background:rgba(22,85,145,.92) !important; }
+main .comp-bloco .comp-topo .comp-nota { background:#9cd5fb !important; color:#092747 !important; border-color:#579ccd !important; }
+main .comp-bloco .comp-topo .comp-id { color:#214d70 !important; }
+main .comp-bloco .tabela-niveis thead, main .comp-bloco .tabela-niveis thead tr { background:#174877 !important; }
+main .comp-bloco .tabela-niveis thead th { color:#f0f8ff !important; }
+main .q-fontes a { background:#145185; color:#f0f8ff; border-color:#79c8f4; }
+main .q-alts li.correta { background:rgba(0,127,255,.23); border-color:rgba(102,204,255,.7); }
+main .cb-tag.completo { background:rgba(30,144,255,.26); border-color:#66ccff; color:#f0f8ff; }
+main .fig-camadas li { background:linear-gradient(90deg,rgba(30,144,255,.30),rgba(30,144,255,.08)); border-color:rgba(102,204,255,.5); }
+textarea, input[type="text"], input[type="search"], input[type="number"], select,
+.campo input, .campo textarea, .campo select, .textarea, .select, .input {
+  background:rgba(9,45,81,.72) !important; color:#f0f8ff !important; border-color:rgba(166,220,255,.45) !important;
+}
+textarea::placeholder, input::placeholder { color:#bad4e9; opacity:1; }
+textarea:focus, input:focus, select:focus, .textarea:focus, .select:focus { outline-color:#66ccff; border-color:#66ccff !important; }
+
+/* Os estilos antigos posicionavam o marcador sobre a primeira letra e também
+   não reservavam espaço para as linhas seguintes. Um recuo único vale em toda
+   largura de tela; marcadores não participam do fluxo do texto. */
+main .cc-body .rev-lista, main .cc-body .fortes-lista { list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+main .cc-body .rev-lista li, main .cc-body .fortes-lista li {
+  position:relative; padding:0 0 0 1.8rem; margin:0; min-width:0; line-height:1.65; color:var(--ink);
+}
+main .cc-body .rev-lista li::before, main .cc-body .fortes-lista li::before {
+  position:absolute; left:0; top:0; display:block; width:1.3rem; height:auto;
+  padding:0; margin:0; border:0; transform:none; text-align:center; line-height:1.65;
+  color:#8ed7ff;
+}
+main .cc-body .rev-lista li::before { content:'☐'; }
+main .cc-body .fortes-lista li::before { content:'✓'; }
+
+/* A camada especular branca antiga clareava demais o relatório no celular. */
+main .ws-saida { background:rgba(5,31,61,.92) !important; }
+main .ws-saida::before { background:linear-gradient(145deg,rgba(102,204,255,.08),transparent 40%); }
+.toast {
+  left:16px; right:auto; bottom:16px; max-width:calc(100vw - 32px);
+  background:#d4edff !important; color:#092747 !important; border:1px solid #66ccff;
+  box-shadow:0 12px 32px rgba(0,15,35,.35); transform:translateY(12px);
+}
+.toast.visivel { transform:translateY(0); }
+
+/* Cabeçalhos claros têm tinta escura em toda a largura, sem fim transparente. */
+main .secao-topo { background:linear-gradient(122deg,rgba(30,144,255,.22),rgba(102,204,255,.10) 45%,rgba(8,37,70,.30)) !important; }
+main .secao-topo::after { background:radial-gradient(38% 62% at 96% 0%,rgba(102,204,255,.18),transparent 70%) !important; }
+main .regua > .comp-bloco > .comp-topo { background:var(--tom-faixa,#c9e9ff) !important; }
+main .questao[open] .q-alts li.correta .alt-letra { color:#f0f8ff !important; }

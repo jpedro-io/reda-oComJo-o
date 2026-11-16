@@ -20,11 +20,26 @@ ordem = [
     'js/db/redacoes-2014-2019.js', 'js/db/redacoes-2020-2026.js', 'js/db/redacoes.js',
     'js/engine/estilo.js',
     'js/engine/competencias.js', 'js/engine/explicar.js', 'js/engine/corrigir.js',
+    'js/db/conteudos/grupos-natureza.js', 'js/db/conteudos/grupos-matematica.js',
+    'js/db/conteudos/grupos-humanas.js', 'js/db/conteudos/grupos-linguagens.js',
+    'js/db/conteudos/material-redacao.js', 'js/db/conteudos/apoio-grupos.js', 'js/db/conteudos/material-membrana.js',
+    'js/db/conteudos/subtemas-citologia.js', 'js/db/conteudos/subtema-bioenergetica.js', 'js/db/conteudos/subtemas-portugues.js', 'js/db/conteudos/subtema-matematica-financeira.js', 'js/db/conteudos/subtema-brasil-colonia.js', 'js/db/conteudos/subtemas-ecologia.js', 'js/db/conteudos/subtemas-matematica.js', 'js/db/conteudos/subtemas-geometria-funcoes.js', 'js/db/conteudos/subtemas-portugues-aplicado.js', 'js/db/conteudos/alternativas-autorais.js', 'js/db/conteudos/subtemas-literatura.js', 'js/db/conteudos/subtemas-artes-corpo.js', 'js/db/conteudos/subtemas-linguas.js', 'js/db/conteudos/subtemas-biologia-vida.js', 'js/db/conteudos/subtemas-quimica-inicial.js', 'js/db/conteudos/subtemas-quimica-final.js', 'js/db/conteudos/subtemas-fisica-mecanica.js', 'js/db/conteudos/subtemas-fisica-termica-ondas.js', 'js/db/conteudos/subtemas-fisica-eletrica-optica.js', 'js/db/conteudos/subtemas-sociologia.js', 'js/db/conteudos/subtemas-filosofia.js', 'js/db/conteudos/subtemas-geografia.js', 'js/db/conteudos/subtemas-historia.js',
+    'js/db/conteudos/estrutura.js', 'js/db/conteudos/videos.js',
+    'js/db/conteudos/paginas-linguagens.js', 'js/db/conteudos/paginas-humanas.js',
+    'js/db/conteudos/paginas-natureza.js', 'js/db/conteudos/paginas-matematica.js',
+    'js/db/conteudos/expansao-linguagens.js', 'js/db/conteudos/expansao-humanas.js',
+    'js/db/conteudos/expansao-natureza.js', 'js/db/conteudos/expansao-matematica.js',
+    'js/db/conteudos/expansoes.js', 'js/db/conteudos/questoes-enem.js', 'js/db/conteudos/questoes-inep-dia1.js', 'js/db/conteudos/questoes-inep-reaplicacao.js', 'js/db/conteudos/questoes-autorais-complementares.js', 'js/db/conteudos/questoes-autorais-reforco.js',
+    'js/db/conteudos/index.js', 'js/progresso-local.js', 'js/ui-conteudos.js',
     'js/motion.js', 'js/ui.js',
 ]
 
 
 def sem_modulos(src: str) -> str:
+    # re-export (`export { x } from './y.js'`) precisa sair inteiro: sem isso
+    # sobra um `export ... from` que o navegador recusa e a página inteira
+    # morre com "Unexpected token '}'".
+    src = re.sub(r"export\s*\{[^}]*\}\s*from\s*['\"][^'\"]+['\"];?", '', src)
     src = re.sub(r"import\s*\{[^}]*\}\s*from\s*['\"][^'\"]+['\"];?", '', src)
     src = re.sub(r"import\s+[\w*,\s]+\s*from\s*['\"][^'\"]+['\"];?", '', src)
     src = re.sub(r"^export\s+", '', src, flags=re.M)
@@ -51,8 +66,31 @@ def embutir_fontes(css: str) -> str:
     return re.sub(r"url\('\.\./fonts/([^']+)'\)\s*format\('woff2'\)", troca, css)
 
 
+def embutir_imagens(css: str) -> str:
+    # cada foto entra uma única vez, como custom property; o resto do CSS usa var()
+    vistos = {}
+
+    def troca(m):
+        nome = m.group(1)
+        if nome not in vistos:
+            dados = base64.b64encode((raiz / 'assets' / nome).read_bytes()).decode('ascii')
+            vistos[nome] = 'hero' if nome.startswith('hero') else re.sub(r'[^a-z0-9]+', '-', nome.lower())
+        return f"var(--foto-{vistos[nome]})"
+
+    css = re.sub(r"""url\(['"]\.\./assets/([^'"]+)['"]\)""", troca, css)
+    if not vistos:
+        return css
+    raiz_vars = ':root {\n' + ''.join(
+        f"  --foto-{apelido}: url('data:image/jpeg;base64,{base64.b64encode((raiz / 'assets' / nome).read_bytes()).decode('ascii')}');\n"
+        for nome, apelido in vistos.items()) + '}\n'
+    return raiz_vars + css
+
+
 css_fontes = embutir_fontes((raiz / 'css/fontes.css').read_text(encoding='utf-8'))
 css = (raiz / 'css/style.css').read_text(encoding='utf-8')
+css_edit = embutir_imagens((raiz / 'css/editorial.css').read_text(encoding='utf-8'))
+css_glass = embutir_imagens((raiz / 'css/glass.css').read_text(encoding='utf-8'))
+css_novo = embutir_imagens((raiz / 'css/novo-visual.css').read_text(encoding='utf-8'))
 
 # o index.html carrega os assets com ?v=... (cache-busting); o build ignora a query
 html = re.sub(r'\?v=[\w.-]+', '', html)
@@ -61,6 +99,14 @@ html = re.sub(r'<link rel="stylesheet" href="css/fontes\.css" />',
               lambda m: '<style>\n' + css_fontes + '\n</style>', html)
 html = re.sub(r'<link rel="stylesheet" href="css/style\.css" />',
               lambda m: '<style>\n' + css + '\n</style>', html)
+html = re.sub(r'<link rel="stylesheet" href="css/editorial\.css" />',
+              lambda m: '<style>\n' + css_edit + '\n</style>', html)
+html = re.sub(r'<link rel="stylesheet" href="css/glass\.css" />',
+              lambda m: '<style>\n' + css_glass + '\n</style>', html)
+html = re.sub(r'<link rel="stylesheet" href="css/novo-visual\.css" />',
+              lambda m: '<style>\n' + css_novo + '\n</style>', html)
+html = re.sub(r'<script src="js/glass\.js" defer></script>',
+              lambda m: '<script>\n' + sem_modulos((raiz / 'js/glass.js').read_text(encoding='utf-8')) + '\n</script>', html)
 html = re.sub(r'<script type="module" src="js/ui\.js"></script>',
               lambda m: '<script>\n' + js + '\n</script>', html)
 html = re.sub(r'<script type="module" src="js/bg\.js"></script>',

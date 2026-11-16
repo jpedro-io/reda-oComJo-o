@@ -1,0 +1,319 @@
+# Guia: cobertura e verificação
+
+Estado local: 40/80 páginas com resumo ampliado; faltam 40 ampliações. O critério é estrutural e não comprova cobertura exaustiva nem revisão factual completa.
+
+Cada um dos 80 conteúdos agora exibe três questões com resolução escrita: 240 exibições ao todo. Dessas, 59 exibições em 40 conteúdos são adaptações com caderno e gabarito do Inep; a mesma questão pode aparecer em mais de um conteúdo. As demais são exercícios autorais identificados. As antigas questões com ano e referência não conferida foram retiradas da exibição; duas referências antigas associavam números e cores de caderno incorretamente. Ainda não há três questões oficiais verificadas para todos os conteúdos.
+
+Fontes consultadas: provas e gabaritos Inep 2022 1º dia caderno azul e 2º dia caderno amarelo; 2023 2ª aplicação, 1º dia caderno azul. Os resumos são sínteses de estudo, não transcrições literais. A auditoria automatizada de contagem e formato não substitui revisão pedagógica e factual individual de todas as questões.
+
+No celular, corrigida a tabela da página Estrutura; auditoria automatizada percorreu os 80 conteúdos em 320 px. Outras resoluções e combinações de navegador e dispositivo ainda devem ser verificadas.
+
+| Área | Resumos ampliados | Pendentes |
+|---|---:|---:|
+| Linguagens, Códigos e suas Tecnologias | 4 | 14 |
+| Ciências Humanas e suas Tecnologias | 2 | 26 |
+| Ciências da Natureza e suas Tecnologias | 19 | 0 |
+| Matemática e suas Tecnologias | 15 | 0 |
+
+## Pendentes de resumo
+
+- **Língua Portuguesa e Interpretação:** Gêneros e tipos textuais (lin-generos); Figuras de linguagem (lin-figuras).
+- **Literatura:** Modernismo (1ª e 2ª fases) (lit-modernismo); Romantismo (lit-romantismo); Realismo e Naturalismo (lit-realismo); Literatura contemporânea (lit-contemporanea); Intertextualidade e artes visuais (lit-intertexto).
+- **Artes e Educação Física:** Vanguardas europeias (art-vanguardas); Arte contemporânea (art-contemporanea); Elementos das artes visuais (art-plasticas); Patrimônio cultural (art-patrimonio); Práticas corporais, saúde e sociedade (edf-corporal).
+- **Língua Estrangeira (Inglês / Espanhol):** Inglês: interpretação de texto (ing-interpretacao); Espanhol: interpretação de texto (esp-interpretacao).
+- **História:** Brasil Império (his-imperio); República Velha (his-republica-velha); Era Vargas (his-vargas); Ditadura Militar (his-ditadura); Redemocratização (his-redemocratizacao); Revolução Industrial (his-revolucao-industrial); Guerra Fria (his-guerra-fria); Primeira e Segunda Guerra Mundial (his-guerras-mundiais); Antiguidade Clássica (his-antiguidade); Povos indígenas e escravidão (his-indigenas).
+- **Geografia:** Biomas brasileiros (geo-biomas); Desmatamento e mudanças climáticas (geo-clima); Climatologia (geo-climatologia); Geografia agrária (geo-agraria); Demografia (geo-demografia); Geopolítica global (geo-geopolitica); Globalização e blocos econômicos (geo-globalizacao).
+- **Filosofia:** Filosofia antiga: Sócrates, Platão e Aristóteles (fil-antiga); Ética (fil-etica); Filosofia política (fil-politica); Iluminismo (fil-iluminismo); Racionalismo e empirismo (fil-racionalismo-empirismo).
+- **Sociologia:** Mundo do trabalho (soc-trabalho); Movimentos sociais e cidadania (soc-movimentos); Cultura e indústria cultural (soc-cultura); Marx, Durkheim e Weber (soc-classicos).
+
+## Critérios para conclusão
+
+- Ampliar os 80 textos e revisar a precisão e a cobertura de cada subtema.
+- Três questões efetivamente aplicadas pelo Enem por conteúdo, com fonte, caderno, ano, gabarito e resolução.
+- Conferir os vídeos: aulas integrais, pertinentes e disponíveis; não usar cortes.
+- Manter ordem resumo → exemplos → esquemas/fórmulas → questões → vídeo.
+- Conferir contraste e navegação no celular e no desktop.
+
+## Reorganização em grupos (novembro de 2026)
+
+A navegação reúne 35 grupos, incluindo Redação. Os 80 IDs anteriores continuam
+válidos; o material textual dos IDs associados foi reunido no grupo e as
+páginas anteriores preservam exercícios e aulas específicas. Cada grupo exibe
+três exercícios resolvidos, sem classificar questões autorais como oficiais.
+Na contagem dos 35 grupos, 24 exibições têm referências a prova e gabarito do
+Inep, em 15 grupos; outros exercícios são autorais. Não se deve inferir que
+cada subtema tem três questões oficiais. Os textos novos são uma introdução e
+não uma auditoria de completude de todo o programa; vídeos vinculados podem
+cobrir apenas o subtema nomeado, e sua abrangência precisa de verificação.
+
+## Aprofundamento por tópico da matriz
+
+Em andamento, antes de novo deploy. A lista e a situação de cada tópico estão
+em `tools/MATRIZ-APROFUNDAMENTO.md`. Foram acrescentados sete subtemas completos
+além do piloto de membrana: organelas, bioenergética, divisão celular,
+interpretação, variação linguística, porcentagem/juros e Brasil Colônia. Cada
+subtema novo reúne cinco blocos, exemplos, roteiro, três questões autorais com
+quatro distratores justificados e recomendação de vídeo. As aulas recomendadas
+podem não cobrir todos os detalhes; a marcação no acompanhamento não equivale a
+auditoria externa ou a garantia de abrangência integral de cada vídeo.
+
+A navegação exibe 126 questões nos grupos e subtemas abertos, 23 delas com
+referência oficial em 14 grupos; o material anterior de Citologia, incluindo
+questões oficiais, continua acessível pelo link específico. Os novos exercícios
+são autorais, não questões oficiais do Enem. Permanecem 98 tópicos sem marcação
+nesse novo padrão e o site não foi publicado nesta rodada.
+
+## Revisão de vídeos após relato de Citologia
+
+A aula `d3yKgcDZPSg` era de Ecologia, apesar do título genérico de Biologia.
+Foi substituída localmente por `wvq6CVOmkm0`, “Aula #04 Citologia ENEM |
+Professor Gustavo Schmidt”, do canal Me Gusta Bio. Descrição e transcrição
+sustentam os temas organelas, ácidos nucleicos e metabolismo; foi sinalizada
+como revisão parcial, não como cobertura de toda a Citologia. YouTube indicou
+permissão de incorporação na consulta, não garantia de reprodução em todo
+navegador, região ou data. A mesma troca alcança o link de material anterior.
+
+As recomendações dos oito tópicos no novo padrão foram confrontadas com as
+páginas/descrições e transcrições: são pertinentes, embora algumas cubram
+apenas parte do tópico. Isso não equivale a uma revisão pedagógica integral
+nem a testes de reprodução em todos os navegadores.
+
+Uma triagem adicional dos 74 IDs de `videos.js` por título, canal, descrição e
+duração revelou os seguintes vínculos suspeitos ou inadequados naquele momento:
+`fis-ondulatoria` e `fis-optica` apontam para revisão de mecânica;
+`geo-agraria` para vegetação; `geo-clima` para live de agropecuária e história;
+`his-imperio` para Brasil Colônia; `mat-escalas` para ângulos;
+`mat-financeira` para adição e subtração; `mat-probabilidade` para razão e
+proporção; `soc-cultura` para introdução à filosofia; `soc-trabalho` para
+uma apresentação de 22 segundos. Outros, como biomas e guerras mundiais, são
+vídeos muito curtos ou têm escopo parcial. Essa triagem não é uma auditoria
+semântica integral; os itens devem ser verificados e corrigidos individualmente
+antes de publicação. Não usar `buscar-videos.mjs --tudo` sem revisão: ele pode
+sobrescrever as correções e escolhe automaticamente um resultado sem avaliar
+seu conteúdo.
+
+## Ecologia — aprofundamento local subsequente
+
+Acrescentados os tópicos Biologia 1.1, 1.2 e 1.3, com resumo, revisão,
+exemplos, roteiro, três questões autorais comentadas e aulas pertinentes. As
+páginas e descrições das quatro recomendações foram consultadas e o YouTube
+informava permitir incorporação; isso não garante reprodução em todos os
+navegadores. A aula principal do tópico 1.2 aborda relações ecológicas e a
+aula complementar cobre o ciclo do nitrogênio; não esgotam todos os ciclos.
+Estes três tópicos somam-se aos oito anteriores: 11/106 incorporados, 95
+pendentes. Os números anteriores deste documento registram estados históricos.
+Sem deploy; outros vídeos anteriores ainda exigem revisão individual.
+
+## Complementos de Matemática e Português
+
+Foram integrados os 15 tópicos de Matemática que faltavam (1.1, 1.2 e 1.4–1.16)
+mais Português 1.3–1.7: 20 tópicos novos. Os materiais preservam 3 blocos,
+4–6 pontos de revisão, dois exemplos, roteiro de 5 etapas e duas questões
+autorais com alternativas e quatro distratores comentados. O pedido original
+permite duas ou três questões por tópico; o critério do checklist e o título
+renderizado foram corrigidos para refletir essa faixa. O material anterior e
+suas URLs permanecem acessíveis. Português 1.1–1.7 e Matemática 1.1–1.16
+estão incorporados ao novo padrão, sem alegar revisão pedagógica externa.
+
+Foram consultadas páginas, títulos, canais e descrições das aulas novas e o
+YouTube indicou permissão de incorporação, mas não se garante funcionamento em
+todas as regiões ou navegadores nem que cada aula cubra inteiramente o tópico.
+A aula de Geometria Espacial tem escopo parcial de prismas e paralelepípedos;
+a de sintaxe aborda pontuação. Substituídos os vídeos antigos inadequados de
+`mat-escalas`, `mat-financeira`, `mat-probabilidade` e `mat-geo-espacial`.
+A lista de vídeos suspeitos na seção anterior é registro histórico: os demais
+itens daquela lista continuam pendentes de avaliação ou correção.
+
+Estado atual do checklist: 31/106 incorporados e 75 pendentes. Exibem-se 175
+questões nos grupos e subtemas; o cálculo inclui as autorais. Executados testes
+JS, navegação dos novos grupos e standalone no Chromium, e auditoria de texto
+em 120 rotas nas larguras 320 e 390 px. Os testes não comprovam correção
+pedagógica exaustiva. Não houve deploy.
+
+## Linguagens — Literatura, Artes, Educação Física e línguas estrangeiras
+
+Foram incorporados 16 tópicos: os sete de Literatura, os cinco de Artes e
+Educação Física e os quatro de Língua Estrangeira. Cada tópico tem três blocos
+com dois parágrafos, revisão, dois exemplos, roteiro de cinco passos e duas
+questões autorais com resolução e justificativa das demais alternativas. Nos
+quatro de Língua Estrangeira há uma questão de inglês e outra de espanhol,
+com aulas indicadas para ambas as línguas. Junto com os sete de Português já
+acrescentados, os 23 tópicos de Linguagens estão incorporados ao padrão; isso
+não substitui revisão pedagógica externa ou garantia de cobertura exaustiva.
+
+As recomendações foram selecionadas por tema e verificadas em título, canal,
+descrição e indicação de permissão de incorporação; algumas também tiveram
+transcrição consultada. As aulas de poesia romântica e de patrimônio têm escopo
+parcial identificado no site. A proposta inicial de vídeo sobre instalação
+artística foi retirada após uma transcrição atribuir a Tropicália à década de
+1970; a recomendação final é sobre patrimônio e informa a limitação. Sem teste
+de reprodução de todos os vídeos em todas as regiões ou navegadores.
+
+A posição das alternativas dos novos exercícios foi distribuída de forma
+determinística, preservando o texto correto e vinculando cada justificativa à
+alternativa correspondente. Os testes comparam a associação, mas não provam
+rigor pedagógico completo. Regressões JavaScript, 120 rotas em 320/390 px e
+renderização dos 16 tópicos tanto no site modular quanto no standalone em
+Chromium passaram. Estado atual: **47/106 tópicos incorporados, 59 pendentes**;
+207 questões exibidas contando grupos e novos subtemas. Sem deploy.
+
+
+## Biologia complementar e primeiros tópicos de Química
+
+Foram incorporados cinco tópicos de Biologia (genética, biotecnologia,
+evolução, fisiologia/imunologia e parasitologia) e cinco de Química
+(ligações/interações, funções inorgânicas, separação, estequiometria e
+soluções), com duas questões autorais inéditas por tópico. O vídeo geral de
+evolução foi substituído por aula sobre Darwin e Lamarck e recebeu indicação
+de escopo; não foram corrigidas todas as demais recomendações antigas
+suspeitas. A seleção das novas aulas verificou título, canal, descrição e
+permissão de incorporação. Alguns vídeos cobrem apenas parte do conteúdo,
+com indicação de escopo e complementação. Esses testes não garantem
+reprodução futura, disponibilidade regional nem revisão pedagógica externa.
+
+Regressões JavaScript, auditorias móveis em 120 rotas e teste dos dez subtemas
+em Chromium no site modular e no standalone passaram; o roteiro específico
+está em test/visual_biologia_quimica.py. Estado: **57/106 incorporados,
+49 pendentes**, 227 questões exibidas contando grupos e autorais, das quais
+23 são referências oficiais do Inep. Nenhum deploy foi realizado.
+
+
+## Química — termoquímica, cinética, equilíbrio, eletroquímica e orgânica
+
+Os oito tópicos restantes de Química foram incorporados: termoquímica,
+cinética, equilíbrio, eletroquímica, funções orgânicas, isomeria, reações
+orgânicas e química ambiental. Cada um tem três blocos de dois parágrafos,
+cinco pontos de revisão, dois exemplos, um roteiro de cinco passos e duas
+questões autorais com comentários dos distratores. As aulas tiveram título,
+canal, descrição e permissão de incorporação verificados; indicações de
+escopo parcial e aulas complementares foram incluídas quando necessário.
+Isso não garante disponibilidade futura nem substitui revisão pedagógica externa.
+
+O primeiro teste do standalone identificou colisão de nome entre módulos
+concatenados; a função foi renomeada e os testes de Chromium passaram no
+site modular e no standalone. Também passaram as suítes JS, as auditorias de
+layout em 120 rotas e as regressões dos lotes anteriores. Estado: **65/106
+incorporados, 41 pendentes**, com 243 questões exibidas, incluindo 23
+referências oficiais do Inep. Não houve deploy.
+
+
+## Física — mecânica e hidrostática
+
+Foram acrescentados os cinco tópicos iniciais de Física: cinemática, leis de
+Newton, trabalho e energia, impulso e colisões, e hidrostática. Cada um tem
+três blocos com dois parágrafos, cinco itens, dois exemplos, roteiro e duas
+questões autorais, com resolução e justificativa dos distratores. Aulas
+conferidas por título, canal, descrição e permissão de incorporação; a de
+hidrostática tem escopo parcial indicado. As fontes de apoio foram verificadas
+por disponibilidade e correspondência dos capítulos. Sem garantia de
+reprodução futura ou revisão pedagógica externa.
+
+Todas as suítes JS, auditorias de 120 rotas e testes de Chromium nos novos
+tópicos, versão modular e standalone, passaram. A matriz está em **70/106
+incorporados, 36 pendentes**; 253 questões exibidas, incluindo 23 referências
+oficiais do Inep. Não houve deploy.
+
+
+## Física — termologia e ondas
+
+Foram incorporados termologia/calorimetria, transmissão de calor e
+termodinâmica, fenômenos ondulatórios, e acústica/espectro eletromagnético.
+Cada tópico recebeu três blocos de estudo, cinco pontos, dois exemplos,
+roteiro e duas questões autorais comentadas. Títulos, canais, descrições e
+permissão de incorporação das aulas foram conferidos; foram especificados
+escopos parciais e aula complementar quando pertinente. Também foi corrigido
+o vídeo geral de ondulatória, que antes apontava a mecânica. O vídeo geral de
+óptica e outros anteriormente suspeitos ainda precisam ser verificados.
+
+Suítes JavaScript, auditoria móvel das 120 rotas e testes de renderização em
+Chromium do site modular e standalone passaram. Duas URLs de fontes que
+retornaram 404 foram substituídas por páginas conferidas. Estado: **74/106
+incorporados, 32 pendentes**, 261 questões exibidas, sendo 23 referências
+oficiais do Inep. Não houve deploy nem revisão pedagógica externa.
+
+
+## Física — eletricidade, magnetismo e óptica
+
+Os quatro tópicos finais de Física foram incorporados: eletrostática e
+circuitos, potência e consumo, magnetismo e indução, e óptica/visão. Cada um
+tem três blocos de dois parágrafos, cinco pontos, dois exemplos, roteiro e
+duas questões autorais com resolução e análise dos distratores. Conferidos
+título, canal, descrição e permissão de incorporação das aulas; complementos
+e escopo parcial aparecem nos tópicos. O vídeo geral de óptica, antes
+inadequado, foi substituído por aula de óptica e lentes; outros vídeos gerais
+suspeitos de Humanas continuam pendentes. Reprodução futura e revisão
+pedagógica externa não são garantidas.
+
+Passaram as suítes JS, auditorias móveis em 120 rotas e teste específico do
+site modular e standalone em Chromium. Uma fonte que retornou 404 foi
+substituída pela seção correta. Estado: **78/106 incorporados, 28 pendentes**;
+269 questões exibidas, incluindo 23 referências oficiais do Inep. Os
+pendentes pertencem a Ciências Humanas. Não houve deploy.
+
+
+## Sociologia — clássicos e temas contemporâneos
+
+Foram incorporados os seis tópicos de Sociologia: teoria clássica, Marx,
+mundo do trabalho, indústria cultural e mídia, cidadania e movimentos,
+e desigualdade e instituições. Há resumos em 3–4 blocos, exemplos, roteiros e
+12 questões autorais resolvidas com comentários para as incorretas. Foram
+conferidos os títulos, canais, descrições e permissões de incorporação das
+recomendações; os escopos parciais foram indicados. Os vídeos gerais incorretos
+de cultura e trabalho foram substituídos. Fontes legais e estatísticas
+incluem Câmara, UNICEF e IBGE; o IBGE pode apresentar bloqueio automatizado
+em algumas conexões. Uma URL OpenStax incorreta foi substituída.
+
+Suítes JS, auditorias móveis em 120 rotas e teste em Chromium dos seis
+subtemas no site e standalone passaram. Estado: **84/106 incorporados,
+22 pendentes**, com 281 questões exibidas, incluindo 23 referências oficiais
+do Inep. Não houve deploy nem revisão pedagógica externa.
+
+
+## Filosofia — Antiguidade à contemporaneidade
+
+Foram incorporados os seis tópicos de Filosofia: Antiga, Medieval,
+epistemologia moderna, política e contratualismo, ética e Iluminismo, e
+filosofia contemporânea. Cada um contém três blocos de estudo, cinco pontos,
+dois exemplos, roteiro e duas questões autorais com justificativas. As aulas
+foram conferidas por título, canal, descrição e permissão de incorporação;
+os escopos parciais foram identificados. Uma sugestão sobre filosofia antiga
+foi descartada por classificar Sócrates, Platão e Aristóteles como helenistas
+na descrição. Fontes da Stanford Encyclopedia of Philosophy responderam 200;
+isso não substitui revisão pedagógica externa nem assegura vídeos no futuro.
+
+Passaram todas as suítes JS, auditoria das 120 rotas em 320/390 px e testes
+em Chromium dos seis tópicos tanto no site modular quanto no standalone.
+Estado: **90/106 tópicos incorporados, 16 pendentes**; 293 questões exibidas,
+incluindo 23 referências oficiais do Inep. Pendentes são oito tópicos de
+História e oito de Geografia. Não houve deploy.
+
+## Geografia — tópicos 2.1–2.8
+
+Os oito tópicos foram integrados aos grupos de Geografia Física e Humana,
+com 16 questões autorais, referências e aulas verificadas por metadados,
+descrição e possibilidade de incorporação. Substituídos vídeos gerais
+incompatíveis de biomas, clima e questão agrária. Onde a aula cobre apenas
+parte do tópico, o escopo é explicitado. O Censo Agropecuário de 2017 é uma
+referência datada, não um retrato automático do presente; sites do IBGE podem
+bloquear acesso automatizado. Passaram testes estruturais e verificação
+visual mobile e standalone. Estado: **98/106 tópicos**, 309 questões exibidas;
+restam oito de História. Não houve deploy ou revisão pedagógica externa.
+
+## História e conclusão estrutural da matriz
+
+Os oito tópicos restantes de História foram incorporados aos grupos de
+História do Brasil e História Geral, com 16 questões autorais adicionais e
+referências. As recomendações foram conferidas por metadados, descrição e
+permissão de incorporação; o vídeo geral de Brasil Império, que era sobre
+Colônia, foi substituído. Referências de História responderam 200 na consulta.
+Os escopos parciais são sinalizados, mas títulos, descrição e disponibilidade
+não equivalem à revisão integral do conteúdo audiovisual.
+
+A auditoria automatizada registra **106/106 tópicos**: 105 subtemas e o
+material principal de membrana em Citologia, com códigos de matriz únicos.
+Há **325 questões exibidas**, das quais 23 exibições trazem referência e
+gabarito do Inep; as novas questões são autorais, não oficiais. Os 35 grupos
+e 80 URLs anteriores seguem preservados. Passaram as suítes JS, auditoria
+mobile de 120 rotas em 320/390 px e teste visual de História nos formatos
+modular e standalone. Verificação estrutural não substitui revisão pedagógica
+especializada nem auditoria factual e audiovisual integral. Sem deploy.

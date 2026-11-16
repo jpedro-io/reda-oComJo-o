@@ -1,0 +1,181 @@
+/* ==========================================================================
+   VISUAL — camada de acabamento (formas, paleta, movimento)
+   Entra por último: ajusta o visual sem tocar nas folhas base.
+   ========================================================================== */
+
+:root {
+  /* as famílias carregadas em fontes.css finalmente comandam o texto */
+  --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-texto: var(--sans);
+  --f-display: 'Sentient', Georgia, serif;
+
+  /* paleta: um toque de âmbar só nos detalhes, sem brigar com o verde */
+  --amb: #F5C86B;
+  --amb-txt: #8a6410;
+  --amb-soft: rgba(245, 200, 107, .16);
+  --amb-fio: rgba(245, 200, 107, .45);
+
+  /* formas: retas dão lugar a cantos vivos */
+  --raio: 16px;
+  --raio-p: 999px;
+
+  /* movimento */
+  --t-micro: 160ms;
+  --e-salto: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+/* ---------------------------------------------------------------- formas */
+.topbar, .nav.aberto, .nav-pills { border-radius: 0 0 var(--raio) var(--raio); }
+
+.pill { border-radius: var(--raio-p); }
+
+.btn, .novo-btn, .conteudo-btn, .programa-botao, .tema-linha, .rc-item,
+.comp-bloco, .hub-materia, .red-card, .painel-solido, .aviso, .folha,
+.historico-item, .video-caixa, .questao, .ac-item > summary, .ac-body,
+.painel, .cartao, .card, .bloco, .proposta, .metricas, .rel-topo,
+.cc-bloco, .ac-bloco, .side-bloco, .ex, .aviso-transcricao {
+  border-radius: var(--raio) !important;
+}
+
+/* o CTA e os chips ganham contorno de pílula */
+.btn-primario, .pill-cta, .badge, .cc-tag, .cb-tag, .hp-selo, .lt-meta span,
+.cp-subtemas-menu > summary { border-radius: var(--raio-p) !important; }
+
+.tick-n, .lt-marker, .comp-id, .cb-id { border-radius: var(--raio-p) !important; }
+
+/* ---------------------------------------------------------------- cor */
+/* o verde vivo dos botões ganha profundidade e o âmbar aparece nos detalhes */
+.btn-primario, .pill-cta {
+  background: linear-gradient(180deg, #4cec9f 0%, #2ced91 52%, #17b56a 100%) !important;
+  color: #07271a !important;
+  box-shadow: 0 10px 28px -12px rgba(44, 237, 145, .55), inset 0 1px 0 rgba(255,255,255,.55) !important;
+}
+.btn-primario:hover, .pill-cta:hover {
+  background: linear-gradient(180deg, #8ff5bc, #4cec9f 55%, #2bd57f) !important;
+  transform: translateY(-1px);
+}
+
+/* marca-texto e âncoras ganham o âmbar em vez do verde plano */
+.marca-texto, .hero h1 em, .novo-hero h1 em { color: var(--amb) !important; }
+
+/* números e destaques de nota */
+.idx-num, .rc-num, .cb-id, .comp-id, .tick[data-n='5'] .tick-n, .lista-num li::before {
+  color: var(--amb) !important;
+}
+
+/* faixa da nota máxima ganha realce âmbar */
+.tick[data-n='5'] .tick-n { border-color: var(--amb-fio) !important; background: var(--amb-soft) !important; }
+
+/* ---------------------------------------------------------------- micro-interações */
+.pill { position: relative; }
+.pill::after {
+  content: '';
+  position: absolute;
+  left: 14px; right: 14px; bottom: 6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--amb);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .25s var(--e-out);
+}
+.pill:hover::after { transform: scaleX(1); }
+.pill[aria-current='page']::after { transform: scaleX(1); background: #fff; }
+
+/* cartões: levam o ponteiro com inclinação leve já existente; aqui, sombra */
+.rc-item, .hub-materia, .conteudo-btn, .tema-linha, .programa-card, .novo-passo {
+  transition: transform .22s var(--e-out), box-shadow .22s var(--e-out), border-color .22s var(--e-out);
+}
+.rc-item:hover, .hub-materia:hover, .conteudo-btn:hover, .tema-linha:hover,
+.programa-card:hover, .novo-passo:hover {
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, .6), 0 0 0 1px rgba(83, 239, 164, .25) !important;
+}
+
+/* link do índice: a seta acompanha o olhar */
+.indice-link:hover .idx-go { transform: translateX(6px); color: var(--amb); }
+
+/* ---------------------------------------------------------------- entradas */
+[data-entrada] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s var(--e-out), transform .6s var(--e-out);
+}
+[data-entrada].entrou { opacity: 1; transform: none; }
+
+/* ---------------------------------------------------------------- vida extra */
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes pulsar {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(44, 237, 145, .45); }
+  70% { box-shadow: 0 0 0 10px rgba(44, 237, 145, 0); }
+}
+@keyframes brilho {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* o CTA da home respira de leve */
+.novo-btn.principal { animation: pulsar 3.2s var(--e-inout) infinite; }
+
+/* selo e chips ganham cintilação lenta */
+.hp-selo, .badge {
+  background-size: 200% 100%;
+  animation: brilho 6s linear infinite;
+}
+
+/* ícones dos passos flutuam */
+.novo-icon { animation: flutuar 4s ease-in-out infinite; }
+.novo-passo:nth-child(2) .novo-icon { animation-delay: .6s; }
+.novo-passo:nth-child(3) .novo-icon { animation-delay: 1.2s; }
+
+/* marca no topo ganha vida ao passar o mouse */
+.brand { transition: transform .25s var(--e-toque); }
+.brand:hover { transform: scale(1.03); }
+
+/* barra de progresso de leitura ganha ponta brilhante */
+.progresso {
+  background: linear-gradient(90deg, #2ced91, #8ff5bc, #2ced91);
+  background-size: 200% 100%;
+  animation: brilho 2.4s linear infinite;
+}
+
+/* toast entra com salto */
+.toast { animation: abrir .35s var(--e-toque) both; }
+
+/* detalhes/summary: o marcador gira ao abrir */
+.ac-item > summary .ac-mais { transition: transform .25s var(--e-toque); }
+
+/* ------------------------------------------------------- tipografia de vista */
+/* Sentient (a display) governa as aberturas; General Sans reina no texto */
+main .novo-hero h1 {
+  font-family: var(--f-display) !important;
+  font-weight: 500 !important;
+  letter-spacing: -.03em !important;
+}
+main .novo-hero h1 em { font-style: italic; }
+
+/* ---------------------------------------------------------- brilho do ponteiro */
+.brilho-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 520px; height: 520px;
+  margin: -260px 0 0 -260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(44, 237, 145, .13), rgba(44, 237, 145, .05) 40%, transparent 68%);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+/* ---------------------------------------------------------- acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  [data-entrada] { opacity: 1 !important; transform: none !important; }
+}

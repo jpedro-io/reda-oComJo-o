@@ -1,170 +1,162 @@
-# Decisões de direção de arte — Redação com João
+# Decisões de arte
 
-Documento de decisão fechado **antes** do visual. Tudo abaixo vale para o site inteiro.
+## 1. Identidade: folha de correção
+O site deve parecer uma folha de correção de redação, não um painel de vendas.
+Papel branco, tinta preta-esverdeada, marca-texto esmeralda e caneta vermelha
+só onde há algo a corrigir. Três adjetivos guiam cada escolha: editorial,
+sóbrio, confiável.
 
----
-
-## 1. Cores
-
-Paleta refeita por decisão do cliente: **fundo branco, azul royal nos botões e barras, títulos em branco e preto, liquid glass**. A instrução anterior (marinho + areia + dourado, com tema escuro) está revogada — inclusive o dourado, que era cor de "conquista".
-
-**Um tema só.** O site é branco. `prefers-color-scheme: dark` foi removido do CSS, do `index.html` e do `js/bg.js`: fundo branco aqui é decisão de marca, não preferência do sistema. Manter um tema escuro "de cortesia" obrigaria a manter duas paletas para sempre e a testar tudo duas vezes.
-
-| Papel | Token | Valor | Uso |
-|---|---|---|---|
-| Royal | `--azul` | `#1A3EC8` | botão primário, barra, trilho da nota, faixa de seção |
-| Royal (texto) | `--azul-txt` | `#14309B` | links e palavras-âncora sobre branco (AA) |
-| Royal realce | `--azul-alto` | `#2F55F0` | topo do gradiente dos botões, hover |
-| Véu azul | `--azul-fundo` | `#E9EEFF` | chips, badges, blocos de apoio |
-| Tinta | `--tinta` | `#080D1C` | texto principal e **títulos sobre o branco** |
-| Tinta 2 / 3 | `--tinta-2` / `--tinta-3` | `rgba(8,13,28,.76)` / `.54` | texto secundário, legenda |
-| Fundo | `--fundo-0` / `--fundo-1` | `#FFFFFF` / `#FFFFFF` | base e superfícies |
-| Apoio | `--fundo-2` / `--fundo-3` | `#F7F9FF` / `#EDF1FF` | camadas internas, tabelas, hover |
-| Erro | `--erro` | `#B3261E` | nota zero, "impede o 200" |
-| Alerta | `--alerta` | `#8A5A0B` | atenção, "pesa na nota" |
-| Sucesso | `--ok` | `#0A7A55` | "o que já está certo" |
-
-**Onde o título é branco.** Em duas superfícies, e só nelas: a faixa do hero da home e a faixa de abertura de cada página (`.secao-topo`), ambas em gradiente royal `#2B4FEC → #1A3EC8 → #102A96` com brilho radial no canto. Fora da faixa, todo título é preto sobre branco. Isso dá o contraste preto/branco pedido sem inverter a página inteira: a mancha azul fica concentrada no alto, e o conteúdo respira em fundo branco.
-
-**Contraste (AA):** texto ≥ 4,5:1 no pior ponto do fundo, incluindo o branco sobre a faixa azul (13:1 no trecho escuro, 7:1 no mais claro) e o `--azul-txt` sobre branco (9:1). Onde há vidro, existe véu branco antes do desfoque — nunca texto direto sobre gradiente.
-
-**Cor por função:** azul = estrutura, ação e nota; vermelho = risco; verde = acerto; véu azul claro = apoio. Não existe cor decorativa.
-
-## 1b. Vidro líquido — o material do site
-
-Não é "caixa com transparência": são **três camadas** obrigatórias, sempre nesta ordem.
-
-| # | Camada | Implementação |
+| Papel | Cor | Uso |
 |---|---|---|
-| 1 | Véu translúcido | `--vidro: rgba(255,255,255,.58)` (`.82` quando o conteúdo exige leitura densa) |
-| 2 | Desfoque que carrega a cor de trás | `backdrop-filter: blur(26px) saturate(190%)` |
-| 3 | Realce especular | `inset 0 1px 0 rgba(255,255,255,.9)` em cima, `inset 0 -1px 0 rgba(8,13,28,.04)` embaixo, mais `--sombra-flut` azulada |
+| fundo | `#FFFFFF` | papel |
+| superfície | `#F6FAF8` | bloco secundário, citação |
+| tinta | `#10201A` | texto e títulos |
+| discreto | `#5B6B64` | rótulos, legendas, metadados |
+| linha | `#DFE8E3` | fio de 1px, divisória universal |
+| marca | `#047857` | botão, link, destaque |
+| marca escura | `#065F46` | hover, `:visited` |
+| marca clara | `#ECFDF5` | fundo de apoio |
+| marca-texto | `#D1FAE5` | trecho elogiado, grifo na logo |
+| alerta | `#B42318` | só o que precisa ser corrigido |
 
-Sobre as **faixas azuis** o vidro se inverte: véu branco a 12–16%, borda a 34%, realce claro — é o painel "Como a nota se forma" do hero. Nos **botões primários**, um pseudo-elemento `::after` desenha a faixa de luz do topo, como reflexo em superfície curva.
+**Regra de cor com sentido:** esmeralda significa "está certo"; vermelho
+significa "corrija isto". Nenhuma cor é usada para enfeitar.
 
-Requisitos que continuam valendo: algo interessante atrás do vidro (aurora royal em CSS + campo 3D), no máximo 3 camadas com blur simultâneas, `@supports not (backdrop-filter)` cai para fundo sólido, `prefers-reduced-transparency` idem, e `prefers-reduced-motion` desliga as animações.
+## 2. Arquitetura das folhas de estilo
+`css/style.css` guarda o desenho anterior (faixas verdes, vidro, pílulas).
+`css/editorial.css` carrega depois e é a camada que manda: redefine os tokens
+(`--ink`, `--muted`, `--line`, `--brand`, raio 6px, sombras desligadas, vidro
+desligado) e sobrescreve os componentes que precisam mudar de linguagem.
+Duas folhas em vez de uma reescrita de 2.600 linhas: o risco de quebrar o
+motor de correção fica em zero e a camada nova é legível por inteiro.
 
-**Marca:** `assets/logo.svg` — **duas aspas de abertura** brancas sobre um fio de citação, dentro do squircle de vidro azul royal com realce especular e contorno claro. O desenho diz o que o site faz: aspas são o gesto de citar repertório, que é o coração da Competência II e o que separa a redação nota 1000 da redação correta e vazia. O mesmo desenho é o favicon (data-URI) e a marca do cabeçalho, e continua legível a 16 px.
+## 3. Tipografia
+- **Sentient** nos títulos (serifada, editorial), servida do próprio site.
+- **General Sans** no texto (sem serifa, neutra), servida do próprio site.
+- Três tamanhos de título (44, 30, 22 px), dois pesos (400 e 600).
+- Nenhuma fonte vem de CDN: o site funciona offline e no preview sem rede.
 
-Duas marcas anteriores foram aposentadas: o quadrado de letras "RJ" (inicial em caixa dentro de quadrado é assinatura de placeholder) e o **bico de pena** — a pena é o clichê visual de qualquer coisa ligada a escrita, e o traço fino do bico desaparecia no tamanho da topbar.
+## 4. Geometria
+- Raio 6px em caixas, botões, campos e imagens. Nada de pílula.
+- Borda de 1px em tudo que é caixa; **nenhuma sombra difusa** no site.
+- Separação entre blocos é linha fina, não cartão dentro de cartão.
+- Um nível de caixa por tela; o segundo nível vira fio.
 
-## 2. Tipografia — 1 par, justificado
+## 5. Componentes
+- **Header:** branco, fio inferior, links em tinta, ativo em esmeralda com
+  sublinhado de 2px. Só "Corrigir" é botão cheio. No celular vira hambúrguer.
+- **Cabeçalho de página:** título serifado à esquerda, uma frase de apoio em
+  cinza e um fio embaixo. Sem eyebrow, sem caixa, sem gradiente.
+- **Botão primário:** fundo esmeralda, texto branco, 6px. **Secundário:**
+  link sublinhado. Nunca dois botões iguais empilhados.
+- **Rótulos:** texto pequeno em cinza, sem caixa alta espaçada.
 
-- **Fraunces** (variável, serifada) — display, títulos e o texto das redações.
-- **Manrope** (variável, grotesca humanista) — interface, corpo de texto, números.
+## 6. Movimento
+Só fade-in de 240 ms na entrada e transição de cor no hover. Sem parallax,
+sem partículas, sem contador animado. `prefers-reduced-motion` desliga tudo.
 
-> **Justificativa:** o site é sobre escrita, então o display é serifado e editorial (Fraunces, com eixo óptico que fecha bem em títulos grandes); a interface é densa em tabelas, filtros e números, onde Manrope ganha por altura-x alta e algarismos tabulares.
+## 7. Relatório de correção
+- Nota final em serifada grande, com "de 1000" ao lado, sem cartão nem barra.
+- Cada competência é uma linha `C1 · Domínio da norma padrão ⋯ 80/200`,
+  clicável, com o detalhe abrindo embaixo.
+- Trecho elogiado leva marca-texto `#D1FAE5`; trecho com problema leva
+  sublinhado na cor de alerta e fundo `#FEF3F2`.
+- "O que revisar" usa caixa de seleção; "o que já está certo" usa ✓.
 
-Não foram usadas Inter, Geist, Space Grotesk nem Lucide. Fontes **self-hosted** (woff2, subsets latin + latin-ext, 163 KB no total), sem chamada a CDN.
+## 8. Guia de conteúdos
+Sumário em quatro blocos com o nome da área em serifada e a contagem à
+direita; matérias em linhas finas; conteúdo em páginas com seções separadas
+por fio. Questão fechada por padrão: o gabarito só aparece ao abrir, porque
+questão que não se tenta não ensina.
 
-**Ícones:** uma única família própria — traço 1,75 px, grade 24 px, cantos arredondados. São 9 glifos inline (seta, check, alerta, documento, régua, camada, tema, análise, mira). Sem biblioteca de ícones.
+## 9. Acessibilidade
+Contraste mínimo AA (o cinza `#5B6B64` sobre branco dá 5,1:1), foco visível
+com contorno de 2px em esmeralda, alvos de toque de 40px, tabelas que
+empilham no celular e menu por botão anunciado com `aria-expanded`.
 
-## 3. Espaçamento e raio
+## 10. A capa
+A capa não usa foto. No lugar dela, à direita do título, entra uma amostra do
+relatório: um trecho real de uma das redações nota 1000 do site, em serifada de
+18 px sobre 1,7, com marca-texto esmeralda nos acertos e sublinhado ondulado
+vermelho no ponto de melhoria, com a anotação na margem direita. No celular a
+anotação desce para baixo do parágrafo. O bloco é uma caixa branca de borda
+1 px, raio 6 px, sem sombra e sem animação. Duas colunas no desktop, uma no
+resto, dentro de 1120 px, com 44 px entre o cabeçalho e o título.
 
-**Escala de espaçamento** (base 4): `4 · 8 · 12 · 16 · 24 · 32 · 48 · 72 · 112`
-→ tokens `--s1` … `--s9`. Nenhum valor fora da escala.
+## 11. Camada de vidro (2026-11)
+O site passou de folha branca para **vidro sobre esmeralda profundo**, sem
+tocar no motor de correção: `css/glass.css` entra por cima de `style.css` e
+`editorial.css` e `js/glass.js` cuida do brilho e da inclinação.
 
-**Lógica de raio** — o raio cresce com a elevação da superfície e nunca coincide com o raio de quem a contém:
-
-| Elevação | Raio | Onde |
+| Papel | Cor | Uso |
 |---|---|---|
-| 0 — etiqueta/chip | `4px` | chips, tags, badges |
-| 1 — controle | `10px` | botões, inputs, selects |
-| 2 — conteúdo | `16px` | blocos de texto, itens de lista |
-| 3 — superfície de vidro | `22px` | navegação, painel do hero, painel de resultado |
-| — pílula | `999px` | filtros e navegação em pílula |
+| fundo | `#031A13` | esmeralda mais fundo, base do `body` |
+| fundo 2 | `#04241B` | meio do gradiente |
+| vidro | `rgba(255,255,255,.11) → .035` | superfície padrão, com `backdrop-filter: blur(20px)` |
+| fio | `rgba(255,255,255,.16)` | 1px de borda clara |
+| tom 1 | `#F4FBF7` | faixa da C1: o off-white da escala |
+| tom 2 | `#E7F8EF` | faixa da C2 |
+| tom 3 | `#D9F4E5` | faixa da C3 |
+| tom 4 | `#C6EFD9` | faixa da C4 |
+| tom 5 | `#B2EACD` | faixa da C5: o verde mais claro da escala |
 
-## 4. Movimento — tokens únicos
+**Escala de tons.** Cada seção (competência, parte da estrutura, comando,
+área de conteúdo, item de índice, tema) recebe um dos cinco tons por
+`:nth-child`, do off-white ao verde claro. O tom aparece na faixa do título,
+no fio da esquerda e no número; o corpo do texto continua em vidro escuro,
+para a página não voltar a ser branca.
 
-| Token | Valor | Uso |
-|---|---|---|
-| `--t-micro` | `150ms` | hover de chip, underline de link |
-| `--t-hover` | `220ms` | elevação, borda, foco |
-| `--t-entrada` | `600ms` | entrada de seção (fade + 12px de subida) |
-| `--t-hero` | `800ms` | primeira dobra, com stagger de 80ms |
-| `--e-out` | `cubic-bezier(.22,1,.36,1)` | entradas |
-| `--e-inout` | `cubic-bezier(.65,0,.35,1)` | loops do fundo (24s) |
-| `--e-toque` | `cubic-bezier(.34,1.56,.64,1)` | confirmação/feedback de clique |
+**Interação.** `js/glass.js` aplica `.brilho` (spotlight que segue o ponteiro,
+desenhado em `::after` com `--mx`/`--my`) e `.inclina` (tilt 3D de até 3,2°,
+`perspective(1000px)`), só em blocos grandes, nunca em linha de tabela, e
+desligado em `prefers-reduced-motion`.
 
-Anima **apenas** `transform`, `opacity` e, em casos isolados, `filter`. Hierarquia: o movimento mais forte está no hero e na seção de correção; o resto entra discreto. Nada de parallax em texto.
+**Largura.** `--largura: 1400px` e `main.wrap` com 40px de respiro lateral: o
+conteúdo ocupa a tela no desktop. Páginas de leitura longa usam duas colunas
+(redação: texto à esquerda, análise à direita; conteúdo: resumo à esquerda,
+apoio à direita, vídeo na largura toda).
 
-**`prefers-reduced-motion`:** desliga o fundo animado, o stagger e as entradas (o conteúdo aparece direto; só o feedback de estado permanece).
+## Guia de conteúdo — rodada em andamento
 
-## 5. Estrutura — um molde por conteúdo
+As páginas ampliadas combinam resumo e painel lateral no desktop, exemplos,
+esquemas e fórmulas, três questões abertas com resolução escrita e vídeo ao
+final. No celular, os blocos se empilham sem exigir rolagem horizontal. Os
+links do índice rolam até a seção sem alterar a rota baseada em hash. O estado
+real de cobertura e os pendentes estão em `tools/PROGRESSO-QUESTOES.md`;
+“ampliado” é um critério estrutural, não uma garantia de revisão factual nem
+comprovação de que todos os vídeos são aulas integrais.
 
-| Seção | Formato derivado do conteúdo |
-|---|---|
-| Home | hero assimétrico (texto 7/12 + painel de vidro 5/12) → índice numerado em lista → faixa horizontal das 5 competências |
-| Critérios | **régua vertical de níveis**: cada competência tem a escala oficial de **6 níveis** (0 a 200, de 40 em 40), com o descritor da cartilha ao lado do risco e, abaixo dele, o que o avaliador procura no texto |
-| Estrutura | **linha do tempo** das 4 partes + trilha horizontal dos 5 elementos da proposta + tabela de conectivos |
-| Ler o tema | **acordeão tipográfico**: índice de palavras-comando, cada uma abre com o que pede / armadilha / como fazer |
-| Temas | **lista densa** (ano · título · comando · eixo) com filtros em pílula, **textos motivadores** em bloco expansível e repertórios em detalhe próprio |
-| Redações analisadas | **crônica com espinha de ano** (número do ano fixo enquanto os textos rolam) e blocos largos |
-| Corrigir | **workspace** em duas colunas: proposta + editor à esquerda, painel de resultado em vidro à direita. No celular, a proposta encolhe primeiro e o resultado vem logo abaixo do botão |
+## Direção visual de estudos
 
-## 6. Vidro — só onde tem função
+A plataforma de referência serviu para observar a entrada orientada a estudo,
+a clareza das ações e a organização das disciplinas, sem reutilizar imagens,
+marcas ou layout literal. A identidade própria combina índigo escuro, menta,
+lavanda e vidro translúcido; os cabeçalhos preservam tons claros diferentes,
+com texto escuro e contraste. A capa oferece caminhos para conteúdos, modelos
+e correção. Questões oficiais parafraseadas apontam para prova e gabarito Inep;
+as demais continuam explicitamente identificadas, sem parecerem oficiais.
 
-O glassmorphism é usado em **4 superfícies**, e apenas elas:
+## Atualização — Vibrant Azure
 
-1. barra de navegação (fixa, sobre o fundo animado);
-2. painel do hero;
-3. painel de resultado da correção (superfície flutuante sobre o fundo);
-4. toast/modal.
+A paleta de referência usa azul royal `#007FFF`, azul céu `#66CCFF`,
+azul-gelo `#F0F8FF` e azul `#1E90FF`. Para manter o vidro e o contraste,
+os fundos de leitura usam azul-marinho de apoio e as faixas claras usam tinta
+azul-escura. Entradas, botões, navegação e tabelas não usam branco puro como
+superfície. Os marcadores dos comentários da correção possuem uma coluna própria
+para não cobrir o início do texto, inclusive quando o texto quebra em linhas.
+Na C4, a orientação de revisão prioriza um sinal observado, em vez de afirmar
+que faltam classes de conectivos quando a própria análise identificou variedade.
 
-Todo o resto é **superfície sólida** com tom da marca. Construção em camadas: `backdrop-filter: blur(26px) saturate(190%)` + fundo semitransparente + borda de 1px com highlight superior e sombra inferior + reflexo interno.
+## Revisão visual — inspiração Skillgrove
 
-**Requisitos atendidos:**
-- O vidro tem **algo interessante atrás**: campo 3D em WebGL com a paleta da marca.
-- `@supports not (backdrop-filter: blur(1px))` → fundo sólido `#0B2438`.
-- `prefers-reduced-transparency: reduce` → fundo sólido, sem blur.
-- Máximo de 3 camadas com blur simultâneas; no celular o fundo vira gradiente CSS, sem canvas.
-- Refração real com `feDisplacementMap` fica como melhoria progressiva opcional — o fallback é blur simples.
-
-## 7. 3D — decisão de dependência
-
-**Não entra Three.js / React Three Fiber.** O r180 distribui 2,1 MB (`three.module.js` 644 KB + `three.core.js` 1,5 MB); para um fundo decorativo isso é desproporcional e atrapalha o LCP.
-
-**Implementado:** campo de profundidade em WebGL puro (~4 KB), com partículas em três planos de paralaxe e uma luz na cor da marca. Carrega depois do primeiro paint, só em telas ≥ 900 px, com WebGL e sem `reduced-motion`. Fallback: gradiente aurora em CSS (usado no celular, no standalone e em qualquer falha).
-
-**Sobre Framer Motion:** as regras de animação (só `transform`/`opacity`, 150–250 ms em micro-interações, 600–800 ms em entradas, hierarquia e `reduced-motion`) foram implementadas com Web Animations API + tokens de CSS — o site é estático, sem React, e a API nativa cobre o mesmo escopo com 0 KB. Se o projeto migrar para React, o lugar de trocar é `js/motion.js`, mantendo os mesmos tokens.
-
-## 8. Escala de nota — o número nunca aparece sozinho
-
-A nota de cada competência é uma das **seis oficiais** — 0, 40, 80, 120, 160, 200 — e o relatório **nunca publica um número exato**: publica uma **faixa**, "nota entre X e Y". Motivo de cartilha: a nota final do Enem é a média aritmética das notas totais de dois avaliadores, e dois avaliadores divergem. 180 não é nota: é leitura interna do motor, e vira "160 com faixa até 200".
-
-| Onde | O que aparece |
-|---|---|
-| Critérios | a **régua dos seis níveis** (200 → 0), com o descritor oficial do nível e, abaixo dele, o que o avaliador procura no texto |
-| Cartão do relatório | a faixa em destaque — `160–200` — com `/200` em corpo menor; selo `Nível 4 de 5 · nota entre 160 e 200`; chip azul explicando **por que** a faixa abre 20 ou 40 |
-| Motivos | cartões `IMPEDE O 200` / `PESA NA NOTA` / `OBSERVAÇÃO`, cada um com regra, trecho e ação |
-| Próximo passo | `Para subir · 200`, com o descritor oficial do nível seguinte |
-| Anel da nota final | **dois arcos**: azul sólido até o mínimo da faixa, azul claro cobrindo a margem até o máximo; dentro, `entre 800 – 900` e `de 1000` |
-
-Hierarquia: a **faixa** é o protagonista, e a cor nunca é de alerta — a faixa aparece em azul mesmo quando a nota é baixa (o vermelho fica reservado à nota em si, no cartão).
-
-**Por que a faixa não vira ruído:** ela tem duas larguras e ambas dizem algo. 20 = "o texto está firme no nível; é a divergência previsível". 40 = "o texto já mostra parte do descritor seguinte; o segundo avaliador poderia subir um nível". A faixa total nunca passa de 100 pontos, o limite em que a cartilha manda chamar o terceiro avaliador.
-
-Regra em um lugar só (`oficializar()`, em `js/engine/texto.js`): `nota = floor(pontos/40)*40`; `abertura = 20` (firme) ou `40` (mostra o seguinte); `faixa = [nota, nota+abertura]`. `tetoPorAmostra()` corta em 120/160/180 pontos internos para textos com menos de 150/200/240 palavras. Redação zerada não tem faixa: os dois avaliadores chegam ao mesmo 0.
-
-## 9. Celular — decisões, não sobras
-
-O celular é alvo de projeto. O que muda de fato (≤ 860 px):
-
-| Elemento | Decisão |
-|---|---|
-| Topo | duas linhas: marca + **CTA "Corrigir" fixo à direita** na primeira; navegação em pílulas roláveis na segunda. O CTA nunca sai da tela |
-| Altura do topo | `--topo` sobe para 108 px (96 px abaixo de 430 px) para o conteúdo não ficar sob a barra |
-| Alvos de toque | ≥ 44 px em botão, pílula, `summary` e filtro; 40 px é o mínimo absoluto em elementos secundários |
-| Espaço | os tokens `--s7/--s8/--s9` encolhem (40/56/72 px), o resto da escala é o mesmo |
-| Critérios | a régua de 6 degraus fica em coluna única; o cabeçalho da competência reflui e a nota vai para a linha de baixo |
-| Estrutura | linha do tempo com marcador menor; trilha de 5 elementos vira lista vertical; esqueleto de 30 linhas empilha |
-| Temas | `ano` fica em coluna estreita, os botões descem para uma linha própria; filtros rolam na horizontal |
-| Corrigir | editor acima do relatório; depois de corrigir, `scrollIntoView` leva à nota; o painel de proposta fica recolhido por padrão |
-| Redações | crônica sem espinha fixa, nota alinhada à esquerda |
-| Hover | `@media (hover: none)` desliga elevações e deslocamentos que só fazem sentido com mouse |
-
-**Testado em** Chromium 390×844 e 360×800: nenhuma rolagem horizontal em nenhuma das 6 rotas. A faixa azul do hero e das seções reduz o padding no celular (24 px) para não comer a tela.
-
-## 10. Sombras
-
-Sombra só em quem flutua de verdade: navegação fixa, painel de vidro, toast, o botão primário e as faixas azuis. Todas são **azuis** (`rgba(16,34,120,…)`), nunca cinza — sombra cinza sobre branco suja a cor. Blocos de conteúdo usam borda (`rgba(8,13,28,.08)`) em vez de sombra.
+A interface usa uma direção própria inspirada na referência fornecida: abertura
+centralizada, tipografia sem serifa, verde vivo sobre fundos verde-escuros e
+superfícies discretas. Não utiliza marcas, depoimentos, imagens ou números do
+modelo. Elementos translúcidos, realce e leve profundidade permanecem no
+computador. Em telas estreitas e dispositivos de toque, a camada pesada de
+backdrop-filter, fundo fixo, animações de entrada e barra de progresso na
+rolagem são desativados para reduzir trabalho de pintura; a navegação continua
+funcional sem movimento. O teste automatizado não substitui teste em aparelho
+real. A tabela da estrutura apresenta linhas empilhadas em telas pequenas,
+sem remover seus cabeçalhos semânticos; caixas aninhadas no corretor têm
+espaçamento reduzido para preservar uma largura confortável de texto.

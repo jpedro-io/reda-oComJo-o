@@ -18,7 +18,7 @@ export const TEMAS_EXTRA = [
       'lgpd', 'hereditariedade', 'diagnostico', 'vazamento', 'consentimento informado',
       'mercantilizacao', 'eugenismo', 'familia'],
     repertorios: [
-      { nome: 'Lei Geral de Proteção de Dados (Lei 13.709/2018)', uso: 'Classifica dados genéticos como dados sensíveis — base direta para a discussão.' },
+      { nome: 'Lei Geral de Proteção de Dados (Lei 13.709/2018)', uso: 'Classifica dados genéticos como dados sensíveis, base direta para a discussão.' },
       { nome: 'Declaração Universal sobre o Genoma Humano e os Direitos Humanos (Unesco, 1997)', uso: 'Afirma que o genoma é patrimônio da humanidade e veda discriminação genética.' },
       { nome: 'Caso do Projeto Genográfico e a venda de testes de ancestralidade', uso: 'Mostra o descompasso entre oferta comercial e compreensão do consumidor.' },
       { nome: 'Conceito de “determinismo genético” (crítica de Evelyn Fox Keller)', uso: 'Questiona a leitura de que o DNA define destino, base dos preconceitos.' }
@@ -39,7 +39,7 @@ export const TEMAS_EXTRA = [
     repertorios: [
       { nome: 'Estratégia Nacional de Educação Financeira (Decreto 7.397/2010)', uso: 'Política pública que prevê educação financeira nas escolas.' },
       { nome: 'Pesquisa de Endividamento e Inadimplência do Consumidor (Peic/CNC)', uso: 'Dado recorrente sobre famílias endividadas.' },
-      { nome: 'Zygmunt Bauman — “consumo” como identidade na modernidade líquida', uso: 'Explica a pressão simbólica do consumo entre jovens.' },
+      { nome: 'Zygmunt Bauman, “consumo” como identidade na modernidade líquida', uso: 'Explica a pressão simbólica do consumo entre jovens.' },
       { nome: 'Base Nacional Comum Curricular (competência de cultura digital e projeto de vida)', uso: 'Mostra onde a educação financeira pode entrar no currículo.' }
     ]
   },
@@ -58,7 +58,7 @@ export const TEMAS_EXTRA = [
     repertorios: [
       { nome: 'Constituição Federal, art. 5º, IV, V e IX', uso: 'Garante liberdade de expressão e, ao mesmo tempo, direito de resposta e indenização por dano.' },
       { nome: 'Lei 14.532/2023 (injúria racial equiparada ao racismo)', uso: 'Mostra o que já é crime e o que não deveria ser resolvido por pressão digital.' },
-      { nome: 'John Stuart Mill — “Sobre a liberdade”', uso: 'Sustenta que a liberdade de expressão só se limita pelo dano a terceiros.' },
+      { nome: 'John Stuart Mill, “Sobre a liberdade”', uso: 'Sustenta que a liberdade de expressão só se limita pelo dano a terceiros.' },
       { nome: 'Relatorias da ONU sobre liberdade de expressão e moderação de conteúdo', uso: 'Discutem o papel das plataformas no espaço público.' }
     ]
   },
@@ -97,7 +97,7 @@ export const TEMAS_EXTRA = [
       { nome: 'Lei Brasileira de Inclusão (Lei 13.146/2015)', uso: 'Define acessibilidade como direito e estabelece obrigações ao poder público.' },
       { nome: 'Convenção da ONU sobre os Direitos das Pessoas com Deficiência', uso: 'Introduz o modelo social da deficiência, adotado pelo Brasil com status constitucional.' },
       { nome: 'Conceito de capacitismo (movimento internacional de pessoas com deficiência)', uso: 'Nomeia o preconceito estrutural que o texto precisa enfrentar.' },
-      { nome: 'Censo escolar do Inep — matrículas de estudantes com deficiência', uso: 'Mostra o avanço do acesso e o gargalo da permanência.' }
+      { nome: 'Censo escolar do Inep, matrículas de estudantes com deficiência', uso: 'Mostra o avanço do acesso e o gargalo da permanência.' }
     ]
   },
   {
@@ -116,7 +116,7 @@ export const TEMAS_EXTRA = [
       { nome: 'Constituição Federal, art. 6º (moradia como direito social)', uso: 'Sustenta a moradia como direito, e não mercadoria.' },
       { nome: 'Estatuto da Cidade (Lei 10.257/2001)', uso: 'Estabelece a função social da propriedade e instrumentos de política urbana.' },
       { nome: 'Anna Tibaijuka / ONU-Habitat e a noção de direito à cidade', uso: 'Conecta moradia à participação na vida urbana.' },
-      { nome: 'Fundação João Pinheiro — déficit habitacional no Brasil', uso: 'Dado de referência para dimensionar o problema.' }
+      { nome: 'Fundação João Pinheiro, déficit habitacional no Brasil', uso: 'Dado de referência para dimensionar o problema.' }
     ]
   },
   {
@@ -135,7 +135,7 @@ export const TEMAS_EXTRA = [
       { nome: 'Acordo de Paris (2015) e a NDC brasileira', uso: 'Compromisso climático formal que condiciona a política energética.' },
       { nome: 'Relatórios do IPCC sobre aquecimento global', uso: 'Base científica que justifica a urgência.' },
       { nome: 'Conceito de “transição justa” (OIT / movimento sindical)', uso: 'Desloca a discussão de tecnologia para quem paga a conta da mudança.' },
-      { nome: 'Empresa de Pesquisa Energética (EPE) — matriz elétrica brasileira', uso: 'Mostra o perfil predominantemente renovável e suas tensões.' }
+      { nome: 'Empresa de Pesquisa Energética (EPE), matriz elétrica brasileira', uso: 'Mostra o perfil predominantemente renovável e suas tensões.' }
     ]
   },
   {
@@ -152,9 +152,9 @@ export const TEMAS_EXTRA = [
       'atencao basica', 'uso racional de medicamentos'],
     repertorios: [
       { nome: 'Política Nacional de Medicamentos (Portaria 3.916/1998)', uso: 'Preconiza o uso racional de medicamentos no SUS.' },
-      { nome: 'OMS — uso racional de medicamentos', uso: 'Define automedicação como problema de saúde pública global.' },
+      { nome: 'OMS, uso racional de medicamentos', uso: 'Define automedicação como problema de saúde pública global.' },
       { nome: 'Conceito de “medicalização da vida” (Ivan Illich)', uso: 'Critica a tradução de sofrimentos cotidianos em prescrição.' },
-      { nome: 'Anvisa — bulário eletrônico e farmácias notificadoras', uso: 'Mostra instrumentos existentes de informação e controle.' }
+      { nome: 'Anvisa, bulário eletrônico e farmácias notificadoras', uso: 'Mostra instrumentos existentes de informação e controle.' }
     ]
   },
   {

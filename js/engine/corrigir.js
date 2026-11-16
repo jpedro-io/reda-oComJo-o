@@ -16,6 +16,32 @@ function faixaDe(nota) {
 }
 
 /** Resolve o tema: registro da base ou tema livre digitado. */
+
+/* O relatório fala em "3 períodos" e "1 período". Os textos do motor nasceram
+   com "período(s)"; esta função resolve o plural pela contagem que vem antes,
+   sem obrigar a reescrever cada mensagem. */
+function ajustarPlural(txt) {
+  return String(txt)
+    .replace(/(\d+)\s+([A-Za-zÀ-ÿ]+?)\((s|m)\)/g, (m, n, base, suf) =>
+      Number(n) === 1 ? `${n} ${base}` : `${n} ${base}${suf}`)
+    .replace(/([A-Za-zÀ-ÿ]+?)\((s|m)\)/g, (m, base, suf) => {
+      const numeros = String(txt).match(/\d+/g);
+      const n = numeros ? Number(numeros[0]) : 0;
+      return n === 1 ? base : `${base}${suf}`;
+    });
+}
+
+function ajustarPluraisEm(valor) {
+  if (typeof valor === 'string') return ajustarPlural(valor);
+  if (Array.isArray(valor)) return valor.map(ajustarPluraisEm);
+  if (valor && typeof valor === 'object') {
+    const saida = {};
+    for (const [k, v] of Object.entries(valor)) saida[k] = ajustarPluraisEm(v);
+    return saida;
+  }
+  return valor;
+}
+
 export function resolverTema({ temaId, temaLivre }) {
   if (temaId && temaId !== 'livre') {
     const t = buscarTema(temaId);
@@ -76,7 +102,7 @@ export function corrigir(textoBruto, opts = {}) {
   if (tema && c2.sinais.riscoTema === 'tangenciamento' && c2.sinais.coberturaTema <= 10) {
     motivosZero.push({
       titulo: 'Risco de fuga total ao tema',
-      detalhe: 'O vocabulário do recorte proposto quase não aparece. Se o texto não desenvolve o tema da proposta, a nota é zero — confira antes de considerar a nota abaixo.'
+      detalhe: 'O vocabulário do recorte proposto quase não aparece. Se o texto não desenvolve o tema da proposta, a nota é zero, confira antes de considerar a nota abaixo.'
     });
   }
 
@@ -135,7 +161,7 @@ export function corrigir(textoBruto, opts = {}) {
       c.explicacao = c.explicacao || {};
       c.explicacao.zero = motivosZero.map(m => ({ titulo: m.titulo, detalhe: m.detalhe }));
       c.explicacao.sintese = `Nota zero: ${motivosZero.map(m => m.titulo.toLowerCase()).join('; ')}. `
-        + 'A cartilha zera o texto por esse motivo antes de avaliar a escrita — o que aparece '
+        + 'A cartilha zera o texto por esse motivo antes de avaliar a escrita, o que aparece '
         + 'abaixo são observações sobre o texto, não a causa da nota.';
     }
   }
@@ -206,7 +232,7 @@ export function corrigir(textoBruto, opts = {}) {
     ? 'alta'
     : ctx.metricas.palavras >= 120 ? 'media' : 'baixa';
 
-  return {
+  return ajustarPluraisEm({
     ok: true,
     texto,
     tema,
@@ -225,5 +251,5 @@ export function corrigir(textoBruto, opts = {}) {
       paragrafos: ctx.metricas.paragrafos
     },
     geradoEm: new Date().toISOString()
-  };
+  });
 }

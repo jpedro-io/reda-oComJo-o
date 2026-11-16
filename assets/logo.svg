@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Redação com João">
   <defs>
     <linearGradient id="marca-azul" x1="6" y1="0" x2="42" y2="48" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#4C6BF7"/>
-      <stop offset=".42" stop-color="#1A3EC8"/>
-      <stop offset="1" stop-color="#0C2078"/>
+      <stop offset="0" stop-color="#5CCDA7"/>
+      <stop offset=".42" stop-color="#026842"/>
+      <stop offset="1" stop-color="#003817"/>
     </linearGradient>
     <linearGradient id="marca-brilho" x1="10" y1="4" x2="30" y2="26" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#FFFFFF" stop-opacity=".55"/>

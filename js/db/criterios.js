@@ -16,7 +16,7 @@ export const CRITERIOS = [
       'Convenções da escrita: ortografia, acentuação, pontuação',
       'Gramática: concordância, regência, flexões, paralelismo sintático',
       'Escolha de registro: ausência de marcas de oralidade e de informalidade',
-      'Recorrência dos desvios — o mesmo erro repetido pesa mais que o erro isolado'
+      'Recorrência dos desvios, o mesmo erro repetido pesa mais que o erro isolado'
     ],
     niveis: [
       { n: 5, texto: "Demonstra excelente domínio da modalidade escrita formal da língua portuguesa e de escolha de registro. Desvios gramaticais ou de convenções da escrita serão aceitos somente como excepcionalidade e quando não caracterizarem reincidência." },
@@ -30,15 +30,15 @@ export const CRITERIOS = [
       'O mesmo desvio repetido: “reincidência” é o que separa 160 de 120 na descrição oficial.',
       'Trocas clássicas: “mais” por “mas”, “a cerca de” por “acerca de”, “ao invés de” por “em vez de”.',
       'Vírgula entre sujeito e verbo ou antes de complemento direto.',
-      'Marcas de fala: “pra”, “aí”, “tipo”, “coisa”, “né” — a escolha de registro está na descrição do nível.',
+      'Marcas de fala: “pra”, “aí”, “tipo”, “coisa”, “né”, a escolha de registro está na descrição do nível.',
       'Período longo (30+ palavras) sem nenhuma pausa interna: é a justaposição que a cartilha aponta como falha de estrutura sintática.',
-      'Parágrafo — ou o texto — que termina sem ponto final.',
+      'Parágrafo (ou o texto) que termina sem ponto final.',
       'Períodos longos com quase nenhuma vírgula: o texto é lido de uma respirada só.',
       'Orações em série ligadas só por “e”, no lugar da subordinação.'
     ],
     sobem: [
       'Reserve os últimos 5 minutos para reler em voz baixa: a boca escuta o erro que o olho pula.',
-      'Prefira períodos mais curtos — 40+ palavras costumam virar problema de pontuação.',
+      'Prefira períodos mais curtos, 40+ palavras costumam virar problema de pontuação.',
       'Na dúvida sobre uma palavra difícil, troque por uma que você domina: erro em vocabulário rebuscado pesa mais que simplicidade correta.',
       'Cuidado com “onde”: só com antecedente de lugar.'
     ],
@@ -55,7 +55,7 @@ export const CRITERIOS = [
     oQueAvalia: [
       'Se o texto desenvolve o recorte específico da proposta (não apenas o assunto)',
       'Domínio da estrutura dissertativo-argumentativa: proposição, argumentação e conclusão',
-      'Repertório sociocultural produtivo — e não apenas citado',
+      'Repertório sociocultural produtivo, e não apenas citado',
       'Atenção: copiar trechos dos textos motivadores derruba para 80'
     ],
     niveis: [
@@ -67,27 +67,27 @@ export const CRITERIOS = [
       { n: 0, texto: "Fuga ao tema ou não atendimento à estrutura dissertativo-argumentativa. Nestes casos a redação recebe nota 0 (zero) e é anulada." }
     ],
     derrubam: [
-      'Tangenciar: falar do assunto amplo e não do recorte. Em C2 isso trava a nota em 40 — e o mesmo limite se aplica a C3 e C5.',
+      'Tangenciar: falar do assunto amplo e não do recorte. Em C2 isso trava a nota em 40, e o mesmo limite se aplica a C3 e C5.',
       'Copiar trechos dos textos motivadores: o nível 80 descreve exatamente essa situação.',
       'Repertório de bolso: citar autor ou lei e seguir adiante sem explicar o que aquilo demonstra.',
       'Contaminar o texto com narração, descrição, poema ou diálogo.'
     ],
     sobem: [
-      'Sublinhe o recorte exato da proposta — as palavras que limitam o tema.',
+      'Sublinhe o recorte exato da proposta, as palavras que limitam o tema.',
       'Um repertório por argumento, sempre explicado: “Segundo X, [ideia]. Isso explica, no caso brasileiro, que...”.',
       'Prefira repertório legitimado: Constituição, leis, instituições, autores, obras, dados de pesquisa.',
       'Cite o núcleo do tema com as mesmas palavras da proposta pelo menos uma vez.'
     ],
     exemplo: {
       fraco: 'Segundo Bauman, vivemos em tempos líquidos. Portanto, é preciso resolver o problema.',
-      forte: 'Segundo Bauman, as relações contemporâneas são marcadas pela fluidez — é exatamente esse desenho que se observa no convívio digital, em que vínculos se desfazem antes de qualquer responsabilidade legal.'
+      forte: 'Segundo Bauman, as relações contemporâneas são marcadas pela fluidez, é exatamente esse desenho que se observa no convívio digital, em que vínculos se desfazem antes de qualquer responsabilidade legal.'
     }
   },
   {
     id: 'C3',
     nome: 'Seleção e organização de argumentos',
     valor: 200,
-    resumo: 'Selecionar, relacionar, organizar e interpretar informações, fatos e opiniões em defesa de um ponto de vista — configurando autoria.',
+    resumo: 'Selecionar, relacionar, organizar e interpretar informações, fatos e opiniões em defesa de um ponto de vista, configurando autoria.',
     oQueAvalia: [
       'Existência de um ponto de vista explícito (tese)',
       'Autoria: argumento próprio, e não apenas o que os textos motivadores já diziam',
@@ -106,13 +106,13 @@ export const CRITERIOS = [
       'Repetir exatamente os argumentos dos textos motivadores: a descrição do nível 120 diz isso com todas as letras.',
       'Argumento circular: retomar a tese com outras palavras sem justificar.',
       'Contradição entre parágrafos.',
-      'Primeira pessoa (“eu acho”, “na minha opinião”) — quebra a impessoalidade.',
+      'Primeira pessoa (“eu acho”, “na minha opinião”), quebra a impessoalidade.',
       'Clichês de abertura que ocupam linhas sem construir ideia.'
     ],
     sobem: [
       'Feche a introdução com uma frase-tese sobre o problema, não com uma pergunta.',
       'Abra cada desenvolvimento com um tópico frasal que já anuncie o argumento.',
-      'Sustente com causa, consequência, comparação ou dado — não com adjetivo.',
+      'Sustente com causa, consequência, comparação ou dado, não com adjetivo.',
       'Antecipe a objeção do leitor e responda: isso é o que a descrição chama de autoria.'
     ],
     exemplo: {
@@ -141,12 +141,12 @@ export const CRITERIOS = [
     ],
     derrubam: [
       'Parágrafos empilhados, sem transição.',
-      'Repetir o mesmo conectivo (“além disso” três, quatro vezes) — a descrição fala em repertório pouco diversificado.',
+      'Repetir o mesmo conectivo (“além disso” três, quatro vezes), a descrição fala em repertório pouco diversificado.',
       'Relação lógica invertida: “porém” onde a ideia é de consequência.',
       'Frases coladas só por “e”, típicas de escrita espontânea.',
       'Termo repetido sem retomada: a cartilha pede retomada por sinônimos ou pronomes.',
       'Palavra de recheio martelada (“problema”, “pessoas”, “questão” voltando seis, oito vezes).',
-      'A mesma frase aparecendo duas vezes — repetir não é progressão.',
+      'A mesma frase aparecendo duas vezes, repetir não é progressão.',
       'Expressão e abertura de período repetidas: o texto fica monocórdio.'
     ],
     sobem: [
@@ -169,7 +169,7 @@ export const CRITERIOS = [
       'Presença de proposta ligada ao tema (e não apenas ao assunto)',
       'Detalhamento: agente, ação, meio/modo, finalidade e detalhamento',
       'Articulação com a discussão construída no texto',
-      'Respeito aos direitos humanos — condição eliminatória'
+      'Respeito aos direitos humanos, condição eliminatória'
     ],
     niveis: [
       { n: 5, texto: "Elabora muito bem proposta de intervenção, detalhada, relacionada ao tema e articulada à discussão desenvolvida no texto." },
@@ -180,7 +180,7 @@ export const CRITERIOS = [
       { n: 0, texto: "Não apresenta proposta de intervenção ou apresenta proposta não relacionada ao tema ou ao assunto." }
     ],
     derrubam: [
-      'Proposta vaga: “é preciso conscientizar a sociedade” — sem quem, como e para quê.',
+      'Proposta vaga: “é preciso conscientizar a sociedade”, sem quem, como e para quê.',
       'Proposta relacionada apenas ao assunto (e não ao recorte do tema): nível 40 na descrição oficial.',
       'Faltar o agente: dizer o que fazer sem nomear quem executa.',
       'Faltar o meio: não indicar o instrumento (campanha, verba, lei, plataforma, programa).',
@@ -190,7 +190,7 @@ export const CRITERIOS = [
       'Use a estrutura: agente + ação + meio/modo + finalidade + detalhamento.',
       'Nomeie instituições reais: Ministério da Saúde, MEC, prefeituras, escolas, mídia, ONGs.',
       'Detalhe com exemplo concreto (tipo de campanha, fonte de verba, público-alvo).',
-      'Reserve de 5 a 7 linhas para a conclusão — é a parte mais previsível de gabaritar.'
+      'Reserve de 5 a 7 linhas para a conclusão, é a parte mais previsível de gabaritar.'
     ],
     exemplo: {
       fraco: 'Portanto, o governo deve fazer algo para melhorar essa situação e conscientizar as pessoas.',
@@ -209,18 +209,18 @@ export const ZEROS = [
 ];
 
 export const AVISO_TANGENCIAMENTO = {
-  titulo: 'Tangenciamento não zera — mas custa caro',
+  titulo: 'Tangenciamento não zera, mas custa caro',
   texto: 'Se o texto aborda apenas o assunto, tangenciando o tema, a redação continua sendo avaliada, porém as Competências II, III e V ficam limitadas a 40 pontos cada. Na prática, isso derruba a nota máxima possível para 560.'
 };
 
 export const CALCULO_NOTA = [
   { titulo: 'Dois avaliadores, às cegas', texto: 'Cada redação é corrigida por dois avaliadores independentes, sem acesso ao nome do participante e sem ver a nota do outro.' },
-  { titulo: 'Nota por competência', texto: 'Cada avaliador atribui 0, 40, 80, 120, 160 ou 200 em cada uma das cinco competências — as seis notas da grade oficial. Não existe nota intermediária: 180 não é uma nota da grade.' },
+  { titulo: 'Nota por competência', texto: 'Cada avaliador atribui 0, 40, 80, 120, 160 ou 200 em cada uma das cinco competências, as seis notas da grade oficial. Não existe nota intermediária: 180 não é uma nota da grade.' },
   { titulo: 'Média das duas notas', texto: 'A nota final do participante é a média aritmética das notas totais atribuídas pelos dois avaliadores, somando até 1.000 pontos. É por isso que a nota final nunca é um número “redondo”: ela nasce de duas leituras que divergem.' },
   { titulo: 'Quando entra um terceiro', texto: 'Há discrepância se a diferença total passar de 100 pontos, se passar de 80 pontos em qualquer competência, ou se um avaliador zerar e o outro não. Nesse caso, um terceiro avaliador corrige o texto e a nota final passa a ser a média das duas notas mais próximas entre si.' },
-  { titulo: 'Por que o relatório mostra uma faixa', texto: 'Se a nota final é uma média de duas leituras possíveis, publicar “180” seria inventar uma precisão que o exame não tem. O corretor mostra a nota oficial mínima (0, 40, 80, 120, 160 ou 200) e o teto que o texto ainda comporta — daí a leitura “nota entre 160 e 200”.' },
-  { titulo: 'A faixa tem duas larguras', texto: 'Quando o texto está firme no nível, a faixa abre 20 pontos: é a divergência previsível entre dois avaliadores diante do mesmo texto. Quando o texto cumpre o nível e já mostra parte do descritor seguinte, a faixa abre 40 — o segundo avaliador poderia subir um nível inteiro. No total, a faixa nunca passa de 100 pontos, o limite em que a cartilha manda chamar um terceiro avaliador.' },
+  { titulo: 'Por que o relatório mostra uma faixa', texto: 'Se a nota final é uma média de duas leituras possíveis, publicar “180” seria inventar uma precisão que o exame não tem. O corretor mostra a nota oficial mínima (0, 40, 80, 120, 160 ou 200) e o teto que o texto ainda comporta, daí a leitura “nota entre 160 e 200”.' },
+  { titulo: 'A faixa tem duas larguras', texto: 'Quando o texto está firme no nível, a faixa abre 20 pontos: é a divergência previsível entre dois avaliadores diante do mesmo texto. Quando o texto cumpre o nível e já mostra parte do descritor seguinte, a faixa abre 40, o segundo avaliador poderia subir um nível inteiro. No total, a faixa nunca passa de 100 pontos, o limite em que a cartilha manda chamar um terceiro avaliador.' },
   { titulo: 'Característica de dois níveis', texto: 'Texto que reúne características de dois níveis recebe a nota do nível inferior. Isso vale para o avaliador humano e para o corretor: não se arredonda para cima por entusiasmo, e a nota máxima exige prova do descritor completo.' },
-  { titulo: 'Amostra curta tem teto', texto: 'Nenhuma competência passa de 120 em texto com menos de 150 palavras, de 160 abaixo de 200 e de 180 abaixo de 240. O descritor exige prova — parágrafos, repertório desenvolvido, proposta completa — e amostra curta não tem espaço para essa prova; por isso não sai 200 de um texto de dez linhas.' },
+  { titulo: 'Amostra curta tem teto', texto: 'Nenhuma competência passa de 120 em texto com menos de 150 palavras, de 160 abaixo de 200 e de 180 abaixo de 240. O descritor exige prova (parágrafos, repertório desenvolvido, proposta completa) e amostra curta não tem espaço para essa prova; por isso não sai 200 de um texto de dez linhas.' },
   { titulo: 'Controle de qualidade', texto: 'A cada 50 redações, o avaliador recebe 2 redações de controle já pontuadas pela comissão. Serve para medir calibragem e pode gerar recapacitação.' }
 ];

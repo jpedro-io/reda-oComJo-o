@@ -1,6 +1,6 @@
 # Redação com João
 
-Site estático de estudo da redação do ENEM. Paleta de seriedade e foco: **azul-marinho `#17395C`** e **azul-petróleo `#1F5A63`** sobre **cinza-gelo quente `#F6F4EF`**, com **areia `#EFE6D6`** como neutro de apoio e **dourado `#B8891F`** reservado a conquistas — notas, medalhas, "o que já está certo". Tema escuro automático em chumbo `#14181D`. **Vidro em quatro superfícies apenas**, mobile primeiro, sem dependências externas e sem build obrigatório.
+Site estático de estudo da redação do ENEM. Paleta de vidro sobre **esmeralda profundo**: fundo `#031A13`, superfícies translúcidas com desfoque de fundo e faixa clara de tom próprio em cada seção, indo do **off-white `#F4FBF7`** ao **verde claro `#B2EACD`**. Botão, link e destaque em esmeralda `#34D399`, alerta em `#FF8F85`. Camada de vidro em `css/glass.css` sobre `style.css`/`editorial.css`, interação em `js/glass.js`.
 
 > As decisões de direção de arte (cores, par de fontes, ícones, escala de espaçamento, lógica de raio, tokens de movimento, formato de cada seção, uso do vidro e por que **não** entrou Three.js/Framer Motion) estão fechadas em [`DESIGN.md`](DESIGN.md).
 
@@ -57,6 +57,7 @@ js/db/redacoes.js             índice das análises, cores dos destaques
 js/db/exemplos.js             textos dos botões de exemplo do corretor
 tools/build-standalone.py     gera standalone.html (embute CSS, JS e fontes em data URI)
 test/                         testes do motor (node) — engine, casos, redações, explicações, escala, acentos e gramática
+js/db/conteudos/              guia do Enem: estrutura, páginas por área e vídeos
 ../uploads/                   cartilhas de capacitação (PDF) e o texto extraído em uploads/txt/
 ```
 
@@ -121,6 +122,31 @@ Além de acentuação, concordância e repertório, o motor mede o que um avalia
 Cada achado chega ao relatório como um cartão **“impede o 200”** (ou “pesa na nota”), com o título do problema, a regra da grade que ele viola, o trecho do próprio texto e a correção concreta. É a mesma lógica da cartilha: o nível 5 admite no máximo uma falha de estrutura e no máximo dois desvios no texto inteiro — e repetição e falta de pontuação contam nessa conta.
 
 **Calibragem** (`node test/calibragem.js`): texto fraco de dez linhas fica entre **280 e 480**; redação repetitiva, **280**; texto com frases repetidas, **320**; texto sem pontuação, **280**; redação sólida com repertório explicado e proposta completa, **800**; as treze redações modelo, **960–1000**.
+
+## Interface
+
+Duas folhas de estilo: `css/style.css` (desenho antigo) e `css/editorial.css`
+(a camada que manda hoje: papel branco, tinta, marca-texto esmeralda, fio de
+1px, raio 6px, sem sombra e sem gradiente). Fontes Sentient e General Sans
+servidas do próprio site, em `fonts/`. As decisões estão em `DESIGN.md`.
+
+## Guia de conteúdos (áreas → matérias → conteúdo)
+
+Além do guia de redação, o site tem um guia das quatro áreas da prova:
+
+| Rota | Tela |
+|---|---|
+| `#/conteudos` | sumário: as 4 áreas, cada uma com suas matérias e a contagem de conteúdos |
+| `#/conteudos/materia/:id` | lista de botões, um por conteúdo da matéria |
+| `#/conteudos/c/:id` | resumo, "o que mais cai", fórmulas, questões resolvidas e aula em vídeo |
+
+**Dados.** `js/db/conteudos/estrutura.js` guarda a hierarquia (80 conteúdos em 17 matérias). O texto de cada conteúdo mora em `paginas-<area>.js`, procurado pelo mesmo `id`. O `id` é global e estável: link salvo no celular de um aluno não pode virar 404 porque o título mudou.
+
+**Vídeos.** `js/db/conteudos/videos.js` é gerado por `node tools/buscar-videos.mjs`, que busca no YouTube o assunto + o canal indicado da matéria e grava `id`, título e canal. O título fica visível embaixo do player justamente para você conferir se a busca trouxe a aula certa; para trocar, mude o `id` no arquivo (11 caracteres, o trecho depois de `watch?v=`).
+
+**Questões.** Cada página traz questões de edições anteriores com resolução comentada passo a passo e gabarito oficial. As que aparecem hoje foram transcritas das provas oficiais do Inep (PDF), não de sites de resumo — inclusive os distratores, que são parte do ensino. Onde a questão original depende de figura, ela não entra sem a imagem: a página avisa que as resoluções daquele assunto ainda estão sendo transcritas, em vez de inventar questão.
+
+**Regra editorial:** nenhuma questão entra sem enunciado conferido na prova original e sem resolução escrita que explique também por que as outras alternativas erram.
 
 ## Crase, concordância e pontuação — regras de contexto
 
@@ -234,3 +260,21 @@ Estado atual: 1374/1374 (explicações), 796/796 (notas e faixas), 832/832 (acen
 - Os **textos motivadores** são adaptações didáticas (ver seção acima), não reproduções oficiais.
 - A **nota publicada é sempre uma das seis da grade (0, 40, 80, 120, 160, 200)** e vem sempre como **faixa** ("nota entre X e Y"): a nota do Enem é a média de dois avaliadores, e dois avaliadores divergem. Nenhum relatório mostra nota exata.
 - O motor de correção é **heurístico**: mede desvios de grafia, aderência ao vocabulário do tema, tese e sustentação, variedade de conectivos e os cinco elementos da proposta. Não interpreta sentido. A correção oficial é humana, com dois avaliadores independentes.
+
+### Histórico local e conteúdos acessados
+
+Ao clicar em **Corrigir**, a redação, o tema, a data e o relatório original são
+salvos no armazenamento local do navegador, sem criar conta nem enviar esses
+dados a um servidor de histórico. Abra ou exclua cada redação na seção
+“Suas redações neste navegador”. Os exemplos corrigidos automaticamente não
+são adicionados ao histórico até o usuário clicar em **Corrigir**.
+
+Nas listas das matérias, ✓ **Acessado** indica que a página do conteúdo foi
+aberta naquele navegador, não que o estudo foi concluído. É possível apagar as
+marcações sem apagar as redações. O histórico e as marcações não sincronizam
+entre navegadores ou dispositivos e podem desaparecer quando seus dados são
+limpos; navegação privada também pode descartá-los. Se não houver espaço ou o
+armazenamento estiver bloqueado, o site avisa que não foi possível salvar.
+Em dispositivos compartilhados, outras pessoas com acesso ao navegador podem
+ler os dados. O backup JSON exportável contém redações e acessos e deve ser
+mantido em local privado; a importação combina os dados, sem apagar os atuais.
