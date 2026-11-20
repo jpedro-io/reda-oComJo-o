@@ -1,0 +1,13 @@
+{
+  "name": "corretor-enem",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Corretor de redação do ENEM por competências e guia de estudos",
+  "scripts": {
+    "start": "python3 -m http.server 8000 --bind 0.0.0.0",
+    "build": "python3 tools/build-standalone.py",
+    "test": "node test/engine.test.js",
+    "test:completo": "node test/casos.js && node test/redacoes.test.js && node test/explicacoes.test.js && node test/niveis.js && node test/acentos.js && node test/calibragem.js && node test/gramatica.js && node test/conteudos.test.js && node test/progresso-local.test.js"
+  }
+}

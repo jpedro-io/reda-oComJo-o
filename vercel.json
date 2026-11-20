@@ -1,0 +1,6 @@
+{
+  "outputDirectory": ".",
+  "framework": null,
+  "buildCommand": "echo 'Static site - no build needed'",
+  "devCommand": "npx serve ."
+}
